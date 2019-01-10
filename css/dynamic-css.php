@@ -6,7 +6,7 @@ global $post;
 $content = wpautop($post->post_content);
 
 //Googleフォント
-if(add_google_fonts()) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'"}';
+if(add_google_fonts()) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'" !important}';
 
 //横幅とレイアウト
 if(is_singular()) {
