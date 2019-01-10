@@ -69,7 +69,7 @@ function add_google_fonts() {
 }
 //Googleフォント適用箇所
 function is_google_fonts() {
-    return get_theme_mod( 'is_google_fonts', '*' );
+    return get_theme_mod( 'is_google_fonts', null );
 }
 //前後記事リンクを同じカテゴリだけに
 function next_prev_in_same_term() {
@@ -95,14 +95,6 @@ function modified_date_datetime() {
 function is_page_time_mtime() {
     return get_theme_mod( 'is_page_time_mtime', null );
 }
-//ピックアップ表示の文字
-function pickup_text_post_top() {
-    return esc_html(get_theme_mod( 'pickup_text_post_top', '注目' ));
-}
-//ピックアップ表示の文字
-function pickup_text_post_bottom() {
-    return esc_html(get_theme_mod( 'pickup_text_post_bottom', '注目' ));
-}
 //この記事を書いた人、記事ページ
 function is_profile_4536($post_type) {
     return get_theme_mod( $post_type, true );
@@ -111,14 +103,6 @@ function is_profile_4536($post_type) {
 function post_prev_next_4536() {
     return get_theme_mod( 'post_prev_next', true );
 }
-//ウィジェットの表示切り替え
-//function sidebar_widget_design() {
-//    return get_theme_mod( 'sidebar_widget_design', null );
-//}
-//サイドバースクロールの表示切り替え
-//function sidebar_scroll_display() {
-//    return get_theme_mod( 'sidebar_scroll_display', 'all' );
-//}
 ////////////////////////////////////
 // 見出し
 ////////////////////////////////////
@@ -200,10 +184,6 @@ function google_custom_search_result() {
 function google_custom_search_slug() {
     return esc_html(get_theme_mod( 'google_custom_search_slug', null ));
 }
-//検索窓
-//function search_page_searchform() {
-//    return get_theme_mod( 'search_page_searchform', true );
-//}
 ////////////////////////////////////
 // SNS
 ////////////////////////////////////

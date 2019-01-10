@@ -372,15 +372,16 @@ $wp_customize->add_section( 'page_setting', [
     ]);
     //Googleフォントの適用箇所
     $wp_customize->add_setting( 'is_google_fonts', [
-        'default' => '*',
+        'default' => null,
     ]);
     $wp_customize->add_control( 'is_google_fonts', [
         'section' => 'page_setting',
         'settings' => 'is_google_fonts',
         'label' =>'Googleフォントの適用箇所',
-        'type' => 'radio',
+        'type' => 'select',
         'choices' => [
-            'body' => 'すべてのフォントに適用。',
+            null => '選択してください',
+            'body' => 'すべてのフォントに適用',
             '#sitename a' => 'サイトのタイトル',
             'h2,h3,h4,h5' => '見出し',
         ],
@@ -466,26 +467,6 @@ $wp_customize->add_section( 'page_setting', [
         'label' =>'固定ページに投稿日と更新日を表示する',
         'type' => 'checkbox',
     ]);
-    //記事上ピックアップの文字
-    $wp_customize->add_setting( 'pickup_text_post_top', array (
-        'default' => '注目',
-    ));
-    $wp_customize->add_control( 'pickup_text_post_top', array(
-        'section' => 'page_setting',
-        'settings' => 'pickup_text_post_top',
-        'label' =>'記事上ピックアップ表示（テキスト版）の文字',
-        'type' => 'text',
-    ));
-    //記事下ピックアップの文字
-    $wp_customize->add_setting( 'pickup_text_post_bottom', array (
-        'default' => '注目',
-    ));
-    $wp_customize->add_control( 'pickup_text_post_bottom', array(
-        'section' => 'page_setting',
-        'settings' => 'pickup_text_post_bottom',
-        'label' =>'記事下ピックアップ表示（テキスト版）の文字',
-        'type' => 'text',
-    ));
     //この記事を書いた人
     $list = [
         'single' => '記事ページ',
