@@ -17,3 +17,8 @@
 元々4536は「アーティストが自分の作品を簡単に発信できるように」というコンセプトで開発を始めたテーマでした。
 デフォルトでは「音楽」と「動画」を通常の記事と同じように投稿できるようになっていて、作品をアップロードして公開するだけでサイト内の露出度が高い位置に自動的に表示されます。
 一般的なブログメディアの構築はもちろんのこと、アーティストの方はぜひこの機能をご活用ください。
+
+## 使用ライブラリ
+
+- plugin-update-checker [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
+
