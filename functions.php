@@ -17,7 +17,7 @@ require_once('plugin-update-checker-4.2/plugin-update-checker.php');
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://4536.jp/wp-content/themes/4536/theme-update.json',
 	__FILE__,
-	'4536' //テーマ名
+	'4536'
 );
 
 //テーマのバージョン
