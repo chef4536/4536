@@ -1155,7 +1155,7 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
     }
     /* widget */
     .double-rectangle-wrapper .ad-left {
-        margin: 0 20px 0 0;
+        margin: 0 1em 0 0;
     }
     /* nav */
     #pc-nav-menu .menu-item-has-children:hover .sub-menu {

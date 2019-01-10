@@ -7,23 +7,23 @@ require_once('preload-css.php'); //非同期読み込み
 //スタイルシート読み込み
 add_action( 'wp_footer', function() {
     $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : ''; ?>
-<script>
-    var loadDeferredStyles = function() {
-        var addStylesNode = document.getElementById("deferred-styles-4536");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addStylesNode.textContent;
-        document.body.appendChild(replacement)
-        addStylesNode.parentElement.removeChild(addStylesNode);
-    };
-    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-      window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    if(raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-    else window.addEventListener('load', loadDeferredStyles);
-</script>
-<noscript id="deferred-styles-4536">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
-    <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
-</noscript>
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles-4536");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if(raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <noscript id="deferred-styles-4536">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
+        <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
+    </noscript>
 <?php });
 
 //head内にインラインCSSを出力
