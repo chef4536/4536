@@ -18,6 +18,11 @@
 デフォルトでは「音楽」と「動画」を通常の記事と同じように投稿できるようになっていて、作品をアップロードして公開するだけでサイト内の露出度が高い位置に自動的に表示されます。
 一般的なブログメディアの構築はもちろんのこと、アーティストの方はぜひこの機能をご活用ください。
 
+### 直感的
+
+とことん「使いやすさ」にこだわって開発しています。
+中上級者はもちろんのこと、初心者の方でもすぐに始められると思います。
+
 ## 使用ライブラリ
 
 - [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
@@ -26,3 +31,5 @@
 - [https://github.com/aFarkas/html5shiv](https://github.com/aFarkas/html5shiv)
 - [https://highlightjs.org/](https://highlightjs.org/)
 - [https://github.com/toddmotto/echo](https://github.com/toddmotto/echo)
+
+※記載漏れがあればご連絡いただけると嬉しいです。
