@@ -48,8 +48,25 @@ function admin_4536_setting_manual() { ?>
             <p>4536の使い方やサイト運営をする上で必要な情報は「<a href="https://4536.jp/category/manual" target="_blank">4536公式サイト</a>」で随時更新しています。</p>
             <p>フォーラムでいただいた質問への回答を記事にして公開することがあるので、チェックしていただけると助かります。</p>
             <p>また、公開した記事はTwitterやFacebookでもシェアしているので、ぜひフォローをお願いします。</p>
-            <p><i class="far fa-arrow-alt-circle-right"></i><a href="//twitter.com/intent/follow?screen_name=4536jp" target="_blank" rel="nofollow">Twitterアカウントはこちら</a></p>
-            <p><i class="far fa-arrow-alt-circle-right"></i><a href="//www.facebook.com/4536.jp/" target="_blank" rel="nofollow">Facebookアカウントはこちら</a></p>
+            <p><i class="far fa-arrow-alt-circle-right"></i><a href="//twitter.com/intent/follow?screen_name=4536jp" target="_blank">Twitterアカウントはこちら</a></p>
+            <p><i class="far fa-arrow-alt-circle-right"></i><a href="//www.facebook.com/4536.jp/" target="_blank">Facebookアカウントはこちら</a></p>
+        </div>
+    </div>
+    </div>
+
+    <div class="metabox-holder">
+    <div class="postbox" >
+        <h3 class="hndle">リリース前のバージョンや過去のバージョンを使う場合</h3>
+        <div class="inside">
+            <p>Githubでバージョン管理をしているので、リリース前のバージョンや過去のバージョンを使うことが可能です。</p>
+            <p><small>（現在整備中です）</small></p>
+            <ul style="list-style-type:disc;margin-left:1em;">
+                <li>リリース前の新しいバージョンを使いたい</li>
+                <li>軽度な修正をしたファイルに変更したい</li>
+                <li>何かしらの事情があって過去のバージョンを使いたい</li>
+            </ul>
+            <p>といった場合にぜひご活用ください。</p>
+            <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://github.com/chef4536/4536" target="_blank">リンクはこちら</a></p>
         </div>
     </div>
     </div>
