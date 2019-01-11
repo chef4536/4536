@@ -20,5 +20,9 @@
 
 ## 使用ライブラリ
 
-- plugin-update-checker [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
-
+- [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
+- [github.com/necolas/normalize.css](github.com/necolas/normalize.css)
+- [https://github.com/filamentgroup/loadCSS](https://github.com/filamentgroup/loadCSS)
+- [https://github.com/aFarkas/html5shiv](https://github.com/aFarkas/html5shiv)
+- [https://highlightjs.org/](https://highlightjs.org/)
+- [https://github.com/toddmotto/echo](https://github.com/toddmotto/echo)
