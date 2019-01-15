@@ -30,8 +30,6 @@
 
 - [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
 
-※記載漏れがあればご連絡いただけると嬉しいです。
-
 ## 使用リソース
 
 - [github.com/necolas/normalize.css](github.com/necolas/normalize.css)
