@@ -34,5 +34,6 @@
 - [https://github.com/aFarkas/html5shiv](https://github.com/aFarkas/html5shiv)
 - [https://highlightjs.org/](https://highlightjs.org/)
 - [https://github.com/toddmotto/echo](https://github.com/toddmotto/echo)
+- [https://fontawesome.com/](https://fontawesome.com/)
 
 ※記載漏れがあればご連絡いただけると嬉しいです。
