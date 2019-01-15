@@ -3,26 +3,8 @@
 //エディター拡張
 add_action( 'init', function() {
     $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
-    //ブロック関係
-    $script = [
-        'balloon',
-    ];
-    foreach($script as $name) {
-        wp_register_script( 'gutenberg-'.$name.'-4536', $path . 'blocks/' . $name . '/' . $name . '.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ] );
-        if(function_exists('register_block_type')) register_block_type( 'blocks/'.$name, [ 'editor_script' => 'gutenberg-'.$name.'-4536' ]);
-    }
-    //ツールバー
-    $script = [
-        'inline-code',
-        'inline-font-color',
-        'inline-font-size-large',
-        'inline-font-size-small',
-        'inline-font-underline',
-    ];
-    foreach($script as $name) {
-        wp_register_script( 'gutenberg-'.$name.'-4536', $path . 'toolbar/' . $name . '/' . $name  . '.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ] );
-        if(function_exists('register_block_type')) register_block_type( 'toolbar/'.$name, [ 'editor_script' => 'gutenberg-'.$name.'-4536' ]);
-    }
+    wp_register_script( 'gutenberg-extention-4536', $path . 'dist/bundle.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ] );
+    if(function_exists('register_block_type')) register_block_type( 'blocks/extention', [ 'editor_script' => 'gutenberg-extention-4536' ]);
 });
 
 //ブロックカテゴリー追加
