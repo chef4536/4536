@@ -59,14 +59,13 @@ function admin_4536_setting_manual() { ?>
         <h3 class="hndle">リリース前のバージョンや過去のバージョンを使う場合</h3>
         <div class="inside">
             <p>Githubでバージョン管理をしているので、リリース前のバージョンや過去のバージョンを使うことが可能です。</p>
-            <p><small>（現在整備中です）</small></p>
             <ul style="list-style-type:disc;margin-left:1em;">
                 <li>リリース前の新しいバージョンを使いたい</li>
                 <li>軽度な修正をしたファイルに変更したい</li>
                 <li>何かしらの事情があって過去のバージョンを使いたい</li>
             </ul>
             <p>といった場合にぜひご活用ください。</p>
-            <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://github.com/chef4536/4536" target="_blank">リンクはこちら</a></p>
+            <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://github.com/chef4536/4536" target="_blank">4536のGitHubページはこちら</a></p>
         </div>
     </div>
     </div>
