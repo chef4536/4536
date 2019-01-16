@@ -10,7 +10,7 @@
 
 など、4536ではサイト運営に役立つ便利な機能を用意しています。
 
-さらに詳しい情報は[https://4536.jp](https://4536.jp)をご覧ください。
+※詳しい情報は[https://4536.jp](https://4536.jp)をご覧ください。
 
 ## 使用ライブラリ
 
@@ -18,7 +18,7 @@
 
 ## 使用リソース
 
-- [github.com/necolas/normalize.css](github.com/necolas/normalize.css)
+- [https://github.com/necolas/normalize.css](https://github.com/necolas/normalize.css)
 - [https://github.com/filamentgroup/loadCSS](https://github.com/filamentgroup/loadCSS)
 - [https://github.com/aFarkas/html5shiv](https://github.com/aFarkas/html5shiv)
 - [https://highlightjs.org/](https://highlightjs.org/)
