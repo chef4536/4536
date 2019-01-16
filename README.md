@@ -16,7 +16,7 @@
 
 4536は100%GPLです。
 
-※ライセンスの詳細は[//www.gnu.org/licenses/gpl-3.0.html](//www.gnu.org/licenses/gpl-3.0.html)をご覧ください。
+※ライセンスの詳細は[https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)をご覧ください。
 
 ## 開発者（オーサー）
 
