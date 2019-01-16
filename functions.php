@@ -15,7 +15,6 @@ require_once('js/_init.php');
 //テーマアップデート
 require_once('plugin-update-checker/plugin-update-checker.php');
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-//    'https://4536.jp/wp-content/themes/4536/theme-update.json',
 	'https://raw.githubusercontent.com/chef4536/4536/master/theme-update.json',
 	__FILE__,
 	'4536'
