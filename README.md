@@ -20,7 +20,7 @@
 
 ## 開発者（オーサー）
 
-シェフ[https://github.com/chef4536](https://github.com/chef4536)
+シェフ（[https://github.com/chef4536](https://github.com/chef4536)）
 
 ## 使用ライブラリ
 
