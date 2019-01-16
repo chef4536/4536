@@ -12,6 +12,16 @@
 
 ※詳しい情報は[https://4536.jp](https://4536.jp)をご覧ください。
 
+## テーマライセンス
+
+4536は100%GPLです。
+
+※ライセンスの詳細は[http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)をご覧ください。
+
+## 開発者（オーサー）
+
+シェフ[https://github.com/chef4536](https://github.com/chef4536)
+
 ## 使用ライブラリ
 
 - [https://github.com/YahnisElsts/plugin-update-checker](https://github.com/YahnisElsts/plugin-update-checker)
