@@ -220,3 +220,11 @@ amp-facebook-like {
 .has-small-font-size {
     font-size: 13px;
 }
+
+@media (max-width: 600px) {
+    .wp-block-media-text.is-stacked-on-mobile {
+        grid-template-columns: 100%;
+        grid-template-areas: "media-text-media" "media-text-content";
+    }
+/* max-600px END */
+}
