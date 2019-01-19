@@ -691,34 +691,27 @@ ul.children {
  * オリジナルのフレーム
 */
 .frame {
-    width: 90%;
-    margin: 30px auto 20px;
-    padding: 30px 20px 0;
-    border: 3px solid #aaa;
+    margin: 1.5em auto;
+    padding: 2em 1em 0;
+    border: 2px solid #aaa;
     position: relative;
     border-radius: 3px;
     background-color: #fff;
 }
 .frame-title {
-    line-height: normal;
     position: absolute;
-    top: -13px;
-    left: 20px;
-    padding: 0 5px;
-    background-color: #fff;
-    border-radius: 3px;
-}
-.frame-title .fa {
-    margin-right: 5px;
+    top: 0;
+    left: 0;
+    padding: 0 .5em;
+    font-size: .8em;
+    line-height: 1.5em;
 }
 .caution {
     background-color: #ff4500;
-    border: 2px solid #ff4500;
     color: #fff;
 }
 .one-point {
     background-color: #0000ff;
-    border: 2px solid #0000ff;
     color: #fff;
 }
 /*
