@@ -57,6 +57,9 @@ require_once('pagination.php');
 //小物系
 require_once('setting.php');
 
+//本文のフィルター
+require_once('content-filter.php');
+
 //ユーザー管理
 require_once('user-profile.php');
 
