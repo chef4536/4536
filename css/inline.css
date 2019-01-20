@@ -2,7 +2,7 @@
 /*
  * 要素設定
 */
-* { 
+* {
     margin: 0;
 	padding: 0;
     -webkit-box-sizing: border-box;
@@ -179,7 +179,6 @@ body {
     overflow-wrap: break-word;
     background-color: #fcfcfc;
     height: 100%;
-    font-size: 16px;
 }
 #wrapper,.inner,#header-image {
 	margin: 0 auto;
@@ -296,7 +295,7 @@ body {
     color: #000;
 }
 .post-list-thumbnail {
-    position: relative;    
+    position: relative;
     float: left;
     margin-right: 10px;
 }
@@ -693,7 +692,7 @@ a.simple-sns-button-2 {
         height: auto;
         float: none;
         margin: 0;
-    }    
+    }
     .list-2-5 .post-info {
         padding: .8em;
     }
@@ -701,7 +700,7 @@ a.simple-sns-button-2 {
     .list-4-2 .post-info {
         padding-top: .8em;
     }
-    
+
     .list-2-5 .thumbnail,
     .list-3-3 .thumbnail,
     .list-4-2 .thumbnail {

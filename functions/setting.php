@@ -27,6 +27,7 @@ add_filter( 'body_class', function($classes) {
         'cool',
         'cool2',
         'cool3',
+        'font-size-16px',
     ];
     foreach($list as $class) {
 	   $classes[] = $class;
@@ -205,9 +206,9 @@ function post_is_in_descendant_category_4536( $cats, $_post = null ) {
 function add_cat_slug_class_4536( $output, $args ) {
     $regex = '/<li class="cat-item cat-item-([\d]+)[^"]*">/';
     $taxonomy = isset( $args['taxonomy'] ) && taxonomy_exists( $args['taxonomy'] ) ? $args['taxonomy'] : 'category';
-     
+
     preg_match_all( $regex, $output, $m );
-     
+
     if ( ! empty( $m[1] ) ) {
         $replace = array();
         foreach ( $m[1] as $term_id ) {
@@ -360,4 +361,3 @@ function is_android_4536($ua = null) {
     $device = (preg_match('/Android/ui', $ua)) ? true : false;
     return $device;
 }
-
