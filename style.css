@@ -695,16 +695,17 @@ ul.children {
     padding: 2em 1em 0;
     border: 2px solid #aaa;
     position: relative;
-    border-radius: 3px;
+    border-radius: 2px;
     background-color: #fff;
 }
 .frame-title {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0 .5em;
+    letter-spacing: .1em;
+    font-style: italic;
+    padding: .3em .5em;
     font-size: .8em;
-    line-height: 1.5em;
 }
 .caution {
     background-color: #ff4500;
