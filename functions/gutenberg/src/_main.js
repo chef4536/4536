@@ -1,5 +1,6 @@
 //blocks
 import './blocks/balloon.js';
+import './blocks/aleart.js';
 
 //toolbar
 import './toolbar/inline-code.js';
