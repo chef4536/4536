@@ -2,9 +2,10 @@ import classNames from 'classnames'
 
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
-const { InspectorControls, RichText, BlockControls, AlignmentToolbar } = wp.editor;
+const { InspectorControls, RichText, BlockControls, AlignmentToolbar, PanelColorSettings, getColorObjectByColorValue } = wp.editor;
 const { PanelBody, SelectControl, TextControl, RadioControl } = wp.components;
 const { __ } = wp.i18n;
+var colors;
 
 registerBlockType( 'gutenberg-extention-4536/aleart', {
 
@@ -32,11 +33,14 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
         type: 'string',
         default: 'fa-exclamation-triangle',
       },
+      fontColor: {
+        type: 'string',
+      },
     },
 
     edit( { attributes, className, setAttributes } ) {
 
-      const { content, alignment, title, icon } = attributes;
+      const { content, alignment, title, icon, fontColor } = attributes;
 
       return (
         <Fragment>
@@ -50,7 +54,6 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             <PanelBody title={ __('警告オプション') }>
               <RadioControl
                 label={ __('アイコン') }
-                // value={ icon }
                 onChange={ ( value ) => setAttributes({ icon: value }) }
                 selected={ icon }
                 options={[
@@ -75,9 +78,21 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
               <TextControl
                 label={ __('タイトル') }
                 value={ title }
-                onChange={ ( value ) => setAttributes({ title: value }) }
+                onChange={ (value) => setAttributes({ title: value }) }
               />
             </PanelBody>
+            <PanelColorSettings
+              title={ __( '色設定' ) }
+              colorSettings={[
+                {
+                  label: __( '文字色' ),
+                  value: fontColor,
+                  onChange: (value) => setAttributes({ fontColor: value }),
+                },
+              ]}
+              initialOpen={ false }
+              disableCustomColors={ true }
+            />
           </InspectorControls>
           <div className={ classNames('frame', 'frame-red') }>
             <div className={ classNames('frame-title', 'caution') }>
@@ -87,8 +102,9 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             <RichText
                 key="editable"
                 tagName="p"
-                className={ className }
-                style={ { textAlign: alignment } }
+                // className={ classNames('has-color', getColorClassName( 'color', fontColor ) ) }
+                className={ classNames('has-color', getColorObjectByColorValue( colors, fontColor ) ) }
+                style={ { color: fontColor } }
                 value={ content }
                 onChange={ ( value ) => setAttributes({ content: value }) }
             />
@@ -99,7 +115,7 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
 
     save( { attributes } ) {
 
-      const { content, alignment, title, icon } = attributes;
+      const { content, alignment, title, icon, fontColor } = attributes;
 
       return (
         <div className={ classNames('frame', 'frame-red') }>
@@ -108,7 +124,8 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             <span>{ title }</span>
           </div>
           <RichText.Content
-              style={ { textAlign: alignment } }
+            className={ classNames('has-color', getColorObjectByColorValue( colors, fontColor ) ) }
+              style={ { color: fontColor } }
               value={ content }
               tagName="p"
           />
