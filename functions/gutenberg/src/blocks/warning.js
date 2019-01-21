@@ -23,7 +23,7 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
       alignment: {
         type: 'string',
       },
-      title: {
+      label: {
         type: 'string',
         selector: 'span',
         default: 'WARNING',
@@ -39,7 +39,7 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
 
     edit( { attributes, className, setAttributes } ) {
 
-      const { content, alignment, title, icon, fontColor } = attributes;
+      const { content, alignment, label, icon, fontColor } = attributes;
 
       return (
         <Fragment>
@@ -50,7 +50,7 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             />
           </BlockControls>
           <InspectorControls>
-            <PanelBody title={ __('警告オプション') }>
+            <PanelBody title={ __('オプション') }>
               <RadioControl
                 label={ __('アイコン') }
                 onChange={ ( value ) => setAttributes({ icon: value }) }
@@ -76,8 +76,8 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
               />
               <TextControl
                 label={ __('タイトル') }
-                value={ title }
-                onChange={ (value) => setAttributes({ title: value }) }
+                value={ label }
+                onChange={ (value) => setAttributes({ label: value }) }
               />
             </PanelBody>
             <PanelColorSettings
@@ -96,7 +96,7 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
           <div className={ classNames('frame', 'frame-red') }>
             <div className={ classNames('frame-title', 'caution') }>
               <i className={ classNames('fas', icon) }></i>
-              <span>{ title }</span>
+              <span>{ label }</span>
             </div>
             <RichText
                 key="editable"
@@ -112,13 +112,13 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
 
     save( { attributes } ) {
 
-      const { content, alignment, title, icon, fontColor } = attributes;
+      const { content, alignment, label, icon, fontColor } = attributes;
 
       return (
         <div className={ classNames('frame', 'frame-red') }>
           <div className={ classNames('frame-title', 'caution') }>
             <i className={ classNames('fas', icon) }></i>
-            <span>{ title }</span>
+            <span>{ label }</span>
           </div>
           <RichText.Content
             style={ { color: fontColor } }
