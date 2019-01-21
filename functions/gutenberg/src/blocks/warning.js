@@ -2,10 +2,9 @@ import classNames from 'classnames'
 
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
-const { InspectorControls, RichText, BlockControls, AlignmentToolbar, PanelColorSettings, getColorObjectByColorValue } = wp.editor;
+const { InspectorControls, RichText, BlockControls, AlignmentToolbar, PanelColorSettings } = wp.editor;
 const { PanelBody, SelectControl, TextControl, RadioControl } = wp.components;
 const { __ } = wp.i18n;
-var colors;
 
 registerBlockType( 'gutenberg-extention-4536/aleart', {
 
@@ -102,8 +101,6 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             <RichText
                 key="editable"
                 tagName="p"
-                // className={ classNames('has-color', getColorClassName( 'color', fontColor ) ) }
-                className={ classNames('has-color', getColorObjectByColorValue( colors, fontColor ) ) }
                 style={ { color: fontColor } }
                 value={ content }
                 onChange={ ( value ) => setAttributes({ content: value }) }
@@ -124,10 +121,9 @@ registerBlockType( 'gutenberg-extention-4536/aleart', {
             <span>{ title }</span>
           </div>
           <RichText.Content
-            className={ classNames('has-color', getColorObjectByColorValue( colors, fontColor ) ) }
-              style={ { color: fontColor } }
-              value={ content }
-              tagName="p"
+            style={ { color: fontColor } }
+            value={ content }
+            tagName="p"
           />
         </div>
       );
