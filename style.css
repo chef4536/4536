@@ -706,6 +706,7 @@ ul.children {
     font-style: italic;
     padding: .3em .5em;
     font-size: .8em;
+    line-height: 1;
 }
 .caution {
     background-color: #ff4500;
