@@ -185,6 +185,7 @@ body {
     clear: both;
 }
 #contents-wrapper {
+    width: 100%;
     max-width: 100%;
 }
 #main {

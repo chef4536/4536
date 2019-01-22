@@ -74,7 +74,7 @@ register_sidebar([
     'name' => 'フッター上',
     'id' => 'footer-top',
     'description' => 'サイト下部に表示されます。',
-    'before_widget' => '<div class="%1$s %2$s footer-top-widget margin-1em-auto clearfix">',
+    'before_widget' => '<div class="%1$s %2$s footer-top-widget margin-1em-auto text-align-center clearfix">',
     'after_widget' => '</div>',
     'before_title' => '<h4 class="footer-top-widget-title widget-title">',
     'after_title' => '</h4>',

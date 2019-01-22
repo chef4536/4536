@@ -1,4 +1,7 @@
 <?php
+
+echo '</div>'; //#wrapper
+
 if(!is_amp() && is_active_sidebar('footer-top')) { //フッター上 ?>
     <div id="footer-top-widget-area">
         <div class="inner padding-20px-10px">
@@ -6,8 +9,6 @@ if(!is_amp() && is_active_sidebar('footer-top')) { //フッター上 ?>
         </div>
     </div>
 <?php }
-
-echo '</div>'; //#wrapper
 
 ?>
 
