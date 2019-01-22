@@ -3,7 +3,8 @@
 //エディター拡張
 add_action( 'init', function() {
     $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
-    wp_register_script( 'gutenberg-extention-4536', $path . 'dist/bundle.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ] );
+    $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : '';
+    wp_register_script( 'gutenberg-extention-4536', $path . 'dist/bundle.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ], $ver );
     if(function_exists('register_block_type')) register_block_type( 'blocks/extention', [ 'editor_script' => 'gutenberg-extention-4536' ]);
 });
 
