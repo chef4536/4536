@@ -71,6 +71,7 @@ function admin_etc_setting_4536() { ?>
     <div class="postbox" >
         <h3 class="hndle">投稿画面の編集画面読み込み時の初期エディター</h3>
         <div class="inside">
+            <p><small>WordPress5.0以前の標準エディター（TinyMCE）に関する設定です。</small></p>
             <p>
                 <input type="checkbox" id="first_tinymce_active_editor" name="first_tinymce_active_editor" value="1" <?php checked(get_option('first_tinymce_active_editor'), 1);?> />
                 <label for="first_tinymce_active_editor">最初のエディターを必ずビジュアルエディターにする</label>
