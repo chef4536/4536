@@ -1,5 +1,7 @@
 <?php
 
+//参考サイト：https://nelog.jp/wordpress-blog-card
+
 //サイトドメインを取得
 function get_this_site_domain_4536(){
   //ドメイン情報を$results[1]に取得する
