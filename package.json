@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "lozad": "^1.7.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
