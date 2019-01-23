@@ -1,5 +1,5 @@
 //必ず最初に読み込む
-// require('intersection-observer');
+require('intersection-observer');
 
 //Lazyload
 import lozad from 'lozad';
