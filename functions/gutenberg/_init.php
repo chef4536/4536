@@ -2,9 +2,9 @@
 
 //エディター拡張
 add_action( 'init', function() {
-    $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
+    // $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
     $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : '';
-    wp_register_script( 'gutenberg-extention-4536', $path . 'dist/bundle.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ], $ver );
+    wp_register_script( 'gutenberg-extention-4536', get_parent_theme_file_uri('dist/custom_block.js'), [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor' ], $ver );
     if(function_exists('register_block_type')) register_block_type( 'blocks/extention', [ 'editor_script' => 'gutenberg-extention-4536' ]);
 });
 
@@ -19,9 +19,9 @@ add_filter('block_categories', function($categories) {
 
 //エディタの見た目を実際のサイトに近づける
 add_action( 'enqueue_block_editor_assets', function() {
-    
+
     $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
-    
+
 //    $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
 //    wp_enqueue_style( 'editor-style', $path . 'gutenberg-editor-style.min.css', [], theme_version_4536(), 'all' );
 //    wp_enqueue_script( 'custom-block-4536', $path . 'custom-block.js', [ 'wp-blocks', 'wp-element' ] );
@@ -36,7 +36,7 @@ add_action( 'enqueue_block_editor_assets', function() {
     foreach($list as $name) {
         wp_enqueue_style( $name, get_theme_file_uri( '/css/'.$name.'.min.css' ), false, theme_version_4536(), 'all' );
     }
-    
+
     wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.min.css', [], theme_version_4536() );
     if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
 
@@ -88,11 +88,10 @@ class GutenbergEditorJS4536 {
 	}
     function editor_custom() { ?>
         <script>
-            window.addEventListener('DOMContentLoaded', function(){ 
+            window.addEventListener('DOMContentLoaded', function(){
                 [].forEach.call(document.querySelectorAll("div.edit-post-visual-editor"), e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3'));
             });
         </script>
     <?php }
 }
 new GutenbergEditorJS4536();
-
