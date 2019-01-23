@@ -1,6 +1,9 @@
-import lozad from 'lozad';
 
-const observer = lozad();
+import lozad from 'lozad';
+const observer = lozad('.lozad', {
+  rootMargin: '300px 40px',
+  threshold: [0, 0.5, 1.0]
+});
 observer.observe();
 
 function fixed_footer_overlay_4536() {

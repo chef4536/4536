@@ -19,20 +19,23 @@ function lazy_load_content_4536($html) {
             $new_image = str_replace($class[1], $new_class, $new_image);
             $noscript = '<noscript>'.$image.'</noscript>';
             $new_image = $new_image.$noscript;
-            $html = preg_replace('{'.preg_quote($image).'}', $new_image, $html);
+            $html = str_replace($image, $new_image, $html);
         }
     }
     if(preg_match_all('/<iframe.+?><\/iframe>/i', $html, $iframes)) {
         foreach($iframes[0] as $iframe) {
             preg_match('/class="(.+?)"/i', $iframe, $class);
-            if(empty($class)) continue;
-            if(strpos($class[1], 'lozad') !== false) continue;
-            $new_iframe = str_replace('src="', 'data-src="', $iframe);
-            $new_class = substr_replace($class[1], 'lozad ', 0, 0);
-            $new_iframe = str_replace($class[1], $new_class, $new_iframe);
+            if(empty($class)) {
+              $new_iframe = str_replace('<iframe', '<iframe class="lozad"', $iframe);
+            } else {
+              if(strpos($class[1], 'lozad') !== false) continue;
+              $new_class = substr_replace($class[1], 'lozad ', 0, 0);
+              $new_iframe = str_replace($class[1], $new_class, $iframe);
+            }
+            $new_iframe = str_replace('src="', 'data-src="', $new_iframe);
             $noscript = '<noscript>'.$iframe.'</noscript>';
             $new_iframe = $new_iframe.$noscript;
-            $html = preg_replace('{'.preg_quote($iframe).'}', $new_iframe, $html);
+            $html = str_replace($iframe, $new_iframe, $html);
         }
     }
     return $html;
