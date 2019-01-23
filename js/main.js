@@ -1,4 +1,7 @@
+//必ず最初に読み込む
+// require('intersection-observer');
 
+//Lazyload
 import lozad from 'lozad';
 const observer = lozad('.lozad', {
   rootMargin: '300px 40px',
