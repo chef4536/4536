@@ -3,6 +3,7 @@ module.exports = {
   mode: 'production',
 
   entry: {
+    main_bundle: './js/main.js',
     custom_block: './functions/gutenberg/src/_main.js',
   },
 

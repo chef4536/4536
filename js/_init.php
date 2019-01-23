@@ -1,15 +1,5 @@
 <?php
 
-//スクリプトをフッターで実行
-add_action( 'wp_footer', function() { ?>
-    <script>
-    <?php require_once get_template_directory() . '/js/main.min.js';
-    if(is_highlight_js_4536()) { ?>
-        hljs.initHighlightingOnLoad();
-    <?php } ?>
-    </script>
-<?php }, 999);
-
 //highlight.jsの条件分岐
 function is_highlight_js_4536() {
     $highlight = false;
@@ -21,10 +11,16 @@ function is_highlight_js_4536() {
 
 //JS読み込み
 add_action( 'wp_enqueue_scripts', function() {
-    wp_deregister_script('jquery');
-    if(get_option('is_jquery_lib')) return;
+  $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : '';
+  wp_enqueue_script( '4536-master', get_parent_theme_file_uri('dist/main_bundle.js'), [], $ver, true );
+  wp_deregister_script('jquery');
+  if(!get_option('is_jquery_lib')) {
     wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', [], false, true);
-    if(is_highlight_js_4536()) wp_enqueue_script( 'highlight-js', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js', [], false, true);
+  }
+  if(is_highlight_js_4536()) {
+    wp_enqueue_script( 'highlight-js', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js', [], false, true);
+    wp_add_inline_script( 'highlight-js', 'hljs.initHighlightingOnLoad()', 'after' );
+  }
 });
 
 //JavaScriptにdefer属性追加
@@ -41,7 +37,7 @@ if(!is_admin() && javascript_load()) add_filter('script_loader_tag', function( $
 // 処理内容
 function title_counter() { ?>
 <script>
-    
+
     TITLE_COUNTER_MAX_LENGTH = 28; //スタイルを変更する文字数（必要ない場合は0）
 
     function strLength(strSrc) {
