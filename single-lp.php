@@ -3,7 +3,7 @@
 <main role="main" class="padding-wrap-main-4536">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    
+
     <article class="post">
         <header>
             <h1 class="post-title"><?php the_title(); ?></h1>
@@ -45,10 +45,8 @@ wp_reset_postdata();
 </footer>
 
 <?php if(!is_amp()) {
-wp_enqueue_script('main',get_bloginfo('template_url') . '/js/main.js', array());
-echo add_html_js_body();
-//echo add_custom_fields_html_js_body();
-wp_footer();
+  echo add_html_js_body();
+  wp_footer();
 }
 ?>
 </body>
