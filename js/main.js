@@ -4,8 +4,10 @@ require('intersection-observer');
 //Lazyload
 import lozad from 'lozad';
 const observer = lozad('.lozad', {
-  rootMargin: '300px 40px',
-  threshold: [0, 0.5, 1.0]
+  rootMargin: '100px 40px',
+  loaded: function(el) {
+    el.classList.add('fade-in');
+  }
 });
 observer.observe();
 

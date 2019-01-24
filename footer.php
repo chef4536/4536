@@ -51,6 +51,10 @@ if(!is_amp() && is_active_sidebar('footer-top')) { //フッター上 ?>
 </footer>
 
 <?php
+get_template_part('lib/fixed-footer');
+get_template_part('lib/fixed-footer-share-button');
+get_template_part('lib/fixed-footer-search');
+get_template_part('lib/slide-menu');
 if(is_amp()) {
     if(!fixed_footer()) echo '<a class="page-top" href="#header"><i class="fas fa-angle-up"></i></a>';
 } else {
@@ -59,8 +63,4 @@ if(is_amp()) {
     if(add_html_js_body()) echo add_html_js_body();
     echo '<a id="page-top" class="page-top display-none" href="#header"><i class="fas fa-angle-up"></i></a>';
 }
-get_template_part('lib/fixed-footer');
-get_template_part('lib/fixed-footer-share-button');
-get_template_part('lib/fixed-footer-search');
-get_template_part('lib/slide-menu');
 echo '</body></html>';

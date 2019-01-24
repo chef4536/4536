@@ -522,6 +522,26 @@ a.simple-sns-button-2 {
     -webkit-transition: .2s ease-out;
     transition: .2s ease-out;
 }
+.fade-in {
+    -webkit-animation: fadeIn .8s ease 0s 1 normal;
+    animation: fadeIn .8s ease 0s 1 normal;
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 /* --------------------------------------------------
 /* max-480px BEGIN
 --------------------------------------------------- */
