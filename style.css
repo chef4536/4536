@@ -7,7 +7,7 @@ Author: Chef
 Author URI: https://4536.jp
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Version: 1.0.1
+Version: 1.0.2
 ---------------------------------------------------------*/
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select,textarea {
@@ -478,7 +478,7 @@ ul.children {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100%;    
+    height: 100%;
 }
 .prev-title, .next-title {
     font-weight: bold;
@@ -755,7 +755,7 @@ ul.children {
     padding: 1em;
     margin-bottom: 1.5em;
     font-size: 16px;
-    line-height: 1.6;    
+    line-height: 1.6;
 }
 .border-4536 {
     border: 2px solid;
@@ -1173,7 +1173,7 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
     /* ad */
     #search {
         max-width: 600px;
-    }    
+    }
     /* ページトップ */
     .page-top a {
         width: 1.5em;
