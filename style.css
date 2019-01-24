@@ -816,15 +816,16 @@ ul.children {
 }
 .reference {
     position: relative;
-    color: #fff;
     font-size: 12px;
     margin-right: 10px;
     padding: 3px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
 }
-.reference {
+.reference,
+.info {
     background-color: #fd7c37;
+    color: #fff;
 }
 .reference::after {
     position: absolute;

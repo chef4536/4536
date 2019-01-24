@@ -2,6 +2,7 @@
 import './blocks/balloon.js';
 import './blocks/warning.js';
 import './blocks/point.js';
+import './blocks/info.js';
 
 //toolbar
 import './toolbar/inline-code.js';
