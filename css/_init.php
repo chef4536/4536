@@ -65,6 +65,6 @@ function fontawesome_url() {
     return 'https://use.fontawesome.com/releases/v5.6.3/css/all.css';
 }
 //管理画面でFontAwesomeのリンクを読み込む
-add_action('init', function() {
-    wp_enqueue_style( 'fontawesome', fontawesome_url(), [], theme_version_4536() );
+add_action('admin_enqueue_scripts', function() {
+  wp_enqueue_style( 'admin-fontawesome', fontawesome_url(), [], theme_version_4536() );
 });
