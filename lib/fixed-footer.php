@@ -64,7 +64,7 @@ if(fixed_footer()==='menu') { ?>
                     continue;
                 }
             } else {
-              continue;  
+              continue;
             } ?>
             <div class="fixed-footer-menu-item flex-1<?php echo $class; ?>">
                 <?php echo $start_tag; ?>
