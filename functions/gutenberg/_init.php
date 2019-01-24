@@ -20,45 +20,24 @@ add_filter('block_categories', function($categories) {
 //エディタの見た目を実際のサイトに近づける
 add_action( 'enqueue_block_editor_assets', function() {
 
-    $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
+  if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
 
-//    $path = get_parent_theme_file_uri() . '/functions/gutenberg/';
-//    wp_enqueue_style( 'editor-style', $path . 'gutenberg-editor-style.min.css', [], theme_version_4536(), 'all' );
-//    wp_enqueue_script( 'custom-block-4536', $path . 'custom-block.js', [ 'wp-blocks', 'wp-element' ] );
-//    wp_localize_script( 'custom-block-4536' , 'gutenberg-path' , [ 'url' => $path ] );
+  ob_start();
+  heading_style_change_4536().customizer_color().dynamic_css_head_4536();
+  $admin_style_color = ob_get_clean();
+  $css = $admin_style_color.wp_get_custom_css();
+  $css = str_replace('#contents-inner', 'body', $css );
+  $css = str_replace('.article-body', '', $css );
+  wp_register_style( 'custom-inline', false );
+	wp_enqueue_style( 'custom-inline' );
+	wp_add_inline_style( 'custom-inline', $css );
 
-    //エディター専用
-    wp_enqueue_style( 'editor-style', $path . 'gutenberg-editor-style.min.css', [], theme_version_4536(), 'all' );
-
-    $list = [
-        'inline',
-    ];
-    foreach($list as $name) {
-        wp_enqueue_style( $name, get_theme_file_uri( '/css/'.$name.'.min.css' ), false, theme_version_4536(), 'all' );
-    }
-
-    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.min.css', [], theme_version_4536() );
-    if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
-
-//    $mtime = date("ymdHis", filemtime( get_stylesheet_directory().'/style.css'));
-//    if(is_child_theme()) wp_enqueue_style( 'child-style', get_stylesheet_directory_uri().'/style.css?'.$mtime, theme_version_4536() );
-
-    ob_start();
-    heading_style_change_4536().customizer_color().dynamic_css_head_4536();
-    $admin_style_color = ob_get_clean();
-    $css = $admin_style_color.wp_get_custom_css();
-    $css = str_replace('#contents-inner', 'body', $css );
-    $css = str_replace('.article-body', '', $css );
-    wp_register_style( 'custom-inline-css', false );
-	wp_enqueue_style( 'custom-inline-css' );
-	wp_add_inline_style( 'custom-inline-css', $css );
-
-    //吹き出し用カスタムデータ
-    $user = wp_get_current_user();
-    $avatar = get_avatar_url($user->ID);
-    $avatar_name = $user->display_name;
-    echo '<div id="gutenberg-balloon-avatar" data-balloon-avatar="'.$avatar.'" style="display:none;"></div>'.
-    '<div id="gutenberg-balloon-avatar-name" data-balloon-avatar-name="'.$avatar_name.'" style="display:none;"></div>';
+  //吹き出し用カスタムデータ
+  $user = wp_get_current_user();
+  $avatar = get_avatar_url($user->ID);
+  $avatar_name = $user->display_name;
+  echo '<div id="gutenberg-balloon-avatar" data-balloon-avatar="'.$avatar.'" style="display:none;"></div>'.
+  '<div id="gutenberg-balloon-avatar-name" data-balloon-avatar-name="'.$avatar_name.'" style="display:none;"></div>';
 
 });
 
