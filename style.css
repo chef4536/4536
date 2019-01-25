@@ -94,7 +94,113 @@ pre code {
     margin-bottom: 1.5em;
 }
 /* 吹き出し */
-.balloon{margin-bottom:2em;position:relative}.balloon:after,.balloon:before{clear:both;content:"";display:block}.balloon-image-left{float:left;margin-right:20px}.balloon-image-right{float:right;margin-left:20px}.balloon-image-description{padding:5px 0 0;font-size:10px;text-align:center;display:block}.balloon-text-left,.balloon-text-right{position:relative;padding:10px;border:1px solid #aaa;border-radius:10px;max-width:calc(100% - 90pt);display:inline-block}.balloon-text-right{float:left}.balloon-text-left{float:right}.balloon p{margin:0 0 20px}.balloon p:last-child{margin-bottom:0}.balloon-text-right:before{border-right:10px solid #aaa;left:-20px}.balloon-text-right:after,.balloon-text-right:before{position:absolute;content:"";border-top:10px solid transparent;border-left:10px solid transparent;border-bottom:10px solid transparent;top:15px}.balloon-text-right:after{border-right:10px solid #fff;left:-19px}.balloon-text-left:before{border-left:10px solid #aaa;right:-20px}.balloon-text-left:after,.balloon-text-left:before{position:absolute;content:"";border-top:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid transparent;top:15px}.balloon-text-left:after{border-left:10px solid #fff;right:-19px}.think .balloon-text-left,.think .balloon-text-right{border-radius:30px}.think .balloon-text-right:before{left:-9pt}.think .balloon-text-right:after{border:1px solid #aaa;border-radius:50%;width:4px;height:4px;top:20px;left:-19px}.think .balloon-text-left:before,.think .balloon-text-right:before{border:1px solid #aaa;border-radius:50%;width:8px;height:8px;top:15px}.think .balloon-text-left:before{right:-9pt}.think .balloon-text-left:after{border:1px solid #aaa;border-radius:50%;width:4px;height:4px;top:20px;right:-19px}
+.balloon {
+    margin-bottom: 2em;
+    position: relative;
+}
+.balloon:after,.balloon:before {
+    clear:both;
+    content:"";
+    display:block;
+}
+.balloon-image-left{
+    float:left;
+    margin-right:20px;
+}
+.balloon-image-right{
+    float:right;
+    margin-left:20px;
+}
+.balloon-image-description{
+    padding:5px 0 0;
+    font-size:10px;
+    text-align:center;
+    display:block;
+}
+.balloon-text-left,.balloon-text-right {
+    position:relative;
+    padding:10px;
+    border:1px solid #aaa;
+    border-radius:10px;
+    max-width:calc(100% - 90pt);
+    display:inline-block;
+}
+.balloon-text-right {
+    float:left;
+}
+.balloon-text-left {
+    float:right;
+}
+.balloon p {
+    margin:0 0 20px;
+}
+.balloon p:last-child {
+    margin-bottom:0;
+}
+.balloon-text-right:before{
+    border-right:10px solid #aaa;
+    left:-20px;
+}
+.balloon-text-right:after,.balloon-text-right:before {
+    position:absolute;
+    content:"";
+    border-top:10px solid transparent;
+    border-left:10px solid transparent;
+    border-bottom:10px solid transparent;
+    top:15px;
+}
+.balloon-text-right:after {
+    border-right:10px solid #fff;
+    left:-19px;
+}
+.balloon-text-left:before {
+    border-left:10px solid #aaa;
+    right:-20px;
+}
+.balloon-text-left:after,.balloon-text-left:before {
+    position:absolute;
+    content:"";
+    border-top:10px solid transparent;
+    border-right:10px solid transparent;
+    border-bottom:10px solid transparent;
+    top:15px;
+}
+.balloon-text-left:after {
+    border-left:10px solid #fff;
+    right:-19px;
+}
+.think .balloon-text-left,.think .balloon-text-right {
+    border-radius:30px;
+}
+.think .balloon-text-right:before {
+    left:-9pt;
+}
+.think .balloon-text-right:after {
+    border:1px solid #aaa;
+    border-radius:50%;
+    width:4px;
+    height:4px;
+    top:20px;
+    left:-19px;
+}
+.think .balloon-text-left:before,.think .balloon-text-right:before {
+    border:1px solid #aaa;
+    border-radius:50%;
+    width:8px;
+    height:8px;
+    top:15px;
+}
+.think .balloon-text-left:before {
+    right:-9pt;
+}
+.think .balloon-text-left:after {
+    border:1px solid #aaa;
+    border-radius:50%;
+    width:4px;
+    height:4px;
+    top:20px;
+    right:-19px;
+}
 /* ブログカード */
 .blog-card{margin:1.5em auto;border:1px solid #ddd;word-wrap:break-word;width:100%;border-radius:2px}.blog-card-info{padding:.5em;-webkit-box-flex:1;-ms-flex:1;flex:1}.blog-card-title{line-height:1.6;font-size:90%;font-weight:700}.blog-card-title:before{content:"関連";background-color:#000;color:#fff;margin-right:5px;padding:2px 3px;font-size:9pt;border-radius:2px}.blog-card-excerpt{color:#333;font-size:80%;line-height:1.4;margin-top:10px}
 /* 目次 */

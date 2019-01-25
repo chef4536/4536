@@ -15,3 +15,6 @@ import './toolbar/inline-font-underline.js';
 import '../../../style.css';
 import '../../../css/inline.css';
 import '../gutenberg-editor-style.css';
+
+//old-blocks
+import './blocks/old/balloon-of-JS5.js';
