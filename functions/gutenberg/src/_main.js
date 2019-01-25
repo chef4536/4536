@@ -17,4 +17,4 @@ import '../../../css/inline.css';
 import '../gutenberg-editor-style.css';
 
 //old-blocks
-import './blocks/old/balloon-of-JS5.js';
+// import './blocks/old/balloon-of-JS5.js';
