@@ -9,7 +9,7 @@
         InspectorControls = wp.editor.InspectorControls,
         BlockControls = wp.editor.BlockControls,
         AlignmentToolbar = wp.editor.AlignmentToolbar;
-    
+
     registerBlockType( 'text/ex', {
 
         title: i18n.__('吹き出し'),
@@ -45,9 +45,8 @@
             },
             content: {
                 type: 'string',
-                source: 'text',
+                source: 'html',
                 selector: 'p',
-                default: '',
             },
         },
 
@@ -159,7 +158,7 @@
                                 className: balloonContent,
 //                                onChange: function( className ) {
 //                                    props.setAttributes( { balloonContent: className } );
-//                                },                                
+//                                },
                             },
                             el( //content
                                 RichText, {
