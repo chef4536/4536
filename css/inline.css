@@ -616,6 +616,14 @@ a.simple-sns-button-2 {
     .display-none-pc {
         display: none;
     }
+    .thumbnail:not(.thumbnail-widget-4536) {
+        width: 150px;
+        height: 150px;
+    }
+    .thumbnail-wide:not(.thumbnail-widget-4536) {
+        width: 150px;
+        height: 113px;
+    }
     /* リストスタイル */
     .list-2-5,
     .list-3-3,
@@ -686,18 +694,16 @@ a.simple-sns-button-2 {
         flex-basis: calc(50% - 1em);
         max-width: 336px;
     }
-/* min-768px END */
-}
-
-/* --------------------------------------------------
-/* max-1023px BEGIN for mobile-phone and tablet
---------------------------------------------------- */
-@media screen and (max-width: 1023px) {
-    #sidebar {
-        margin-top: 20px;
-        padding: 0 10px;
+    /* 本文 */
+    .padding-wrap-main-4536 {
+        padding-left: 20px;
+        padding-right: 20px;
     }
-/* max-1023px END */
+    .alignfull {
+        margin-left: -20px;
+        width: calc(100% + 40px);
+    }
+/* min-768px END */
 }
 
 /* --------------------------------------------------
@@ -741,28 +747,6 @@ a.simple-sns-button-2 {
         -webkit-box-direction: reverse;
         -ms-flex-flow: row-reverse;
         flex-flow: row-reverse;
-    }
-    .thumbnail:not(.thumbnail-widget-4536) {
-        width: 150px;
-        height: 150px;
-    }
-    .thumbnail-wide:not(.thumbnail-widget-4536) {
-        width: 150px;
-        height: 113px;
-    }
-    /* 本文 */
-    .padding-wrap-main-4536 {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .alignfull {
-        margin-left: -20px;
-        width: calc(100% + 40px);
-    }
-    #header.fixed .sub-menu {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: 1px solid;
     }
 /* min-1024px END */
 }
