@@ -17,6 +17,5 @@ if(!is_amp() && !is_active_sidebar('slide-widget')) return;
             }
             ?>
         </div>
-        <label for="slide-toggle" class="close-button"><i class="fas fa-times"></i>CLOSE</label>
     </div>
 </div>
