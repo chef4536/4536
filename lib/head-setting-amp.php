@@ -1,7 +1,7 @@
 <html amp>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,viewport-fit=cover">
         <link rel="canonical" href="<?php the_permalink() ?>" />
         <?php if(!empty(add_google_fonts())) { ?>
         <link href="https://fonts.googleapis.com/css?family=<?php echo add_google_fonts(); ?>" rel="stylesheet">
