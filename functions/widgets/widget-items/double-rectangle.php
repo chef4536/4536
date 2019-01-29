@@ -59,16 +59,22 @@ class DoubleRectangleWidgetItem extends WP_Widget {
         $ad = '';
         
         if(!empty($rectangle_left)) {
-            if(!empty($display_none_mobile_rectangle_left)) $left_class = ' display-none-mobile ';
+            if(!empty($display_none_mobile_rectangle_left)) $left_class = ' display-none-mobile';
             $ad .= '<div class="ad ad-left'.$left_class.'">'.$rectangle_left.'</div>';
         }
         
         if(!empty($rectangle_right)) {
-            if(!empty($display_none_mobile_rectangle_right)) $right_class = ' display-none-mobile ';
+            if(!empty($display_none_mobile_rectangle_right)) $right_class = ' display-none-mobile';
             $ad .= '<div class="ad ad-right'.$right_class.'">'.$rectangle_right.'</div>';
         }
         
-        if(!empty($is_double_rectangle)) $ad = str_replace('<ins class="adsbygoogle"', '<ins class="adsbygoogle double-rectangle"', $ad);
+        if(!empty($is_double_rectangle)) {
+            preg_match('/<ins class="adsbygoogle/i', $ad, $match);
+            if(!empty($match)) {
+                $ad = str_replace('class="adsbygoogle', 'class="adsbygoogle double-rectangle', $ad);
+                $ad = preg_replace('/data-ad-format=".+?"/i', 'data-ad-format="rectangle"', $ad);
+            }
+        }
         
         echo $ad;
         

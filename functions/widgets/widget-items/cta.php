@@ -27,7 +27,7 @@ class CtaWidgetItem extends WP_Widget {
             $size = get_image_width_and_height_4536($src);
             if($size['width']) $width = 'width="'.$size['width'].'"';
             if($size['height']) $height = ' height="'.$size['width'].'"';
-            $thumbnail = '<figure class="cta-thumbnail '.$image_style.'"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
+            $thumbnail = '<figure class="cta-thumbnail text-align-center '.$image_style.'"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
             echo convert_content_to_amp($thumbnail);
         }
         if($description) echo '<p class="clearfix">'.$description.'</p>';
