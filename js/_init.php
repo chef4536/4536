@@ -12,7 +12,7 @@ function is_highlight_js_4536() {
 //JS読み込み
 add_action( 'wp_enqueue_scripts', function() {
   $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : '';
-  wp_enqueue_script( '4536-master', get_parent_theme_file_uri('dist/main_bundle.js'), [], $ver, true );
+  wp_enqueue_script( '4536-master', get_parent_theme_file_uri('dist/main_bundle.js'), [], $ver, false );
   wp_deregister_script('jquery');
   if(!get_option('is_jquery_lib')) {
     wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', [], false, true);
@@ -23,8 +23,9 @@ add_action( 'wp_enqueue_scripts', function() {
   }
 });
 
-//JavaScriptにdefer属性追加
-if(!is_admin() && javascript_load()) add_filter('script_loader_tag', function( $tag, $handle ) {
+//JavaScriptに非同期属性追加
+if(!is_admin()) add_filter('script_loader_tag', function( $tag, $handle ) {
+    if($handle==='4536-master') return str_replace( ' src', ' async src', $tag );
     if($handle==='jquery') return $tag;
     if($handle==='highlight-js') return $tag;
     if(javascript_load()==='defer') return str_replace( ' src', ' defer src', $tag );
