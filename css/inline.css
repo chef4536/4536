@@ -684,8 +684,6 @@ a.simple-sns-button-2 {
     .double-rectangle-wrapper .ad {
         -ms-flex-preferred-size: calc(50% - 1em);
         flex-basis: calc(50% - 1em);
-    }
-    .double-rectangle {
         max-width: 336px;
     }
 /* min-768px END */
@@ -695,14 +693,21 @@ a.simple-sns-button-2 {
 /* max-1023px BEGIN for mobile-phone and tablet
 --------------------------------------------------- */
 @media screen and (max-width: 1023px) {
-    #wrapper,.inner,#header-image {
-        max-width: 980px !important;
-    }
     #sidebar {
         margin-top: 20px;
         padding: 0 10px;
     }
 /* max-1023px END */
+}
+
+/* --------------------------------------------------
+/* max-1024px BEGIN for landscape tablet
+--------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    #wrapper,.inner,#header-image {
+        max-width: 980px !important;
+    }
+/* max-1024px END */
 }
 
 /* --------------------------------------------------
