@@ -62,8 +62,7 @@ class RelatedPostWidgetItem extends WP_Widget {
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance[$this->_title] = strip_tags($new_instance[$this->_title]);
-        $str = mb_convert_kana(strip_tags($new_instance[$this->_count]), 'n');
-        $instance[$this->_count] = $str;
+        $instance[$this->_count] = strip_tags($new_instance[$this->_count]);
         $instance[$this->_style] = $new_instance[$this->_style];
         return $instance;
     }
@@ -83,12 +82,11 @@ class RelatedPostWidgetItem extends WP_Widget {
         </p>
         <p>
           <label for="<?php echo $this->get_field_id($count); ?>"><?php _e('表示数'); ?></label>
-          <input class="widefat" id="<?php echo $this->get_field_id($count); ?>" name="<?php echo $this->get_field_name($count); ?>" type="text" value="<?php echo esc_attr($instance[$count]); ?>" />
+          <input class="widefat" id="<?php echo $this->get_field_id($count); ?>" name="<?php echo $this->get_field_name($count); ?>" type="number" value="<?php echo esc_attr($instance[$count]); ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id($style); ?>"><?php _e( '表示スタイル' ); ?></label>
-            <select class="widefat" id="<?php echo $this->get_field_id($style); ?>"
-                name="<?php echo $this->get_field_name($style); ?>" type="text">
+            <select class="widefat" id="<?php echo $this->get_field_id($style); ?>" name="<?php echo $this->get_field_name($style); ?>" type="text">
                 <?php foreach($list as $name => $desc) { ?>
                 <option value="<?php echo $name; ?>"<?php echo ($instance[$style]===$name) ? ' selected' : ''; ?>>
                     <?php echo $desc; ?>

@@ -46,8 +46,7 @@ class NewEntryWidgetItem extends WP_Widget {
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance['title_new'] = strip_tags($new_instance['title_new']);
-        $str = mb_convert_kana(strip_tags($new_instance['entry_count']), 'n');
-        $instance['entry_count'] = $str;
+        $instance['entry_count'] = strip_tags($new_instance['entry_count']);
         return $instance;
     }
     function form($instance) {
@@ -55,17 +54,12 @@ class NewEntryWidgetItem extends WP_Widget {
         $entry_count = esc_attr($instance['entry_count']);
         ?>
         <p>
-          <label for="<?php echo $this->get_field_id('title_new'); ?>">
-          <?php _e('新着記事のタイトル'); ?>
-          </label>
-          <input class="widefat" id="<?php echo $this->get_field_id('title_new'); ?>" name="<?php echo $this->get_field_name('title_new'); ?>" type="text" value="<?php echo $title_new; ?>" />
+            <label for="<?php echo $this->get_field_id('title_new'); ?>"><?php _e('新着記事のタイトル'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title_new'); ?>" name="<?php echo $this->get_field_name('title_new'); ?>" type="text" value="<?php echo $title_new; ?>" />
         </p>
-        <?php //表示数入力フォーム ?>
         <p>
-          <label for="<?php echo $this->get_field_id('entry_count'); ?>">
-          <?php _e('表示数'); ?>
-          </label>
-          <input class="widefat" id="<?php echo $this->get_field_id('entry_count'); ?>" name="<?php echo $this->get_field_name('entry_count'); ?>" type="text" value="<?php echo $entry_count; ?>" />
+            <label for="<?php echo $this->get_field_id('entry_count'); ?>"><?php _e('表示数'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('entry_count'); ?>" name="<?php echo $this->get_field_name('entry_count'); ?>" type="number" value="<?php echo $entry_count; ?>" />
         </p>
         <?php
     }
