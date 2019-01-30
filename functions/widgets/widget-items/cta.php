@@ -115,34 +115,34 @@ class CtaWidgetItem extends WP_Widget {
         </p>
         <p>
             <label for="<?php echo $this->get_field_id( 'cta_button_color' ); ?>"><?php _e( 'ボタンの色' ); ?></label>
-            <select class='widefat' id="<?php echo $this->get_field_id('cta_button_color'); ?>"
+            <select class="widefat" id="<?php echo $this->get_field_id('cta_button_color'); ?>"
                 name="<?php echo $this->get_field_name('cta_button_color'); ?>" type="text">
-                <option value='background-color-orange'<?php echo ($button_color=='background-color-orange')?'selected':''; ?>>
+                <option value="background-color-orange"<?php echo ($button_color=='background-color-orange')?'selected':''; ?>>
                   オレンジ
                 </option>
-                <option value='background-color-green'<?php echo ($button_color=='background-color-green')?'selected':''; ?>>
+                <option value="background-color-green"<?php echo ($button_color=='background-color-green')?'selected':''; ?>>
                   緑
                 </option>
-                <option value='background-color-blue'<?php echo ($button_color=='background-color-blue')?'selected':''; ?>>
+                <option value="background-color-blue"<?php echo ($button_color=='background-color-blue')?'selected':''; ?>>
                   青
                 </option>
-                <option value='background-color-red'<?php echo ($button_color=='background-color-red')?'selected':''; ?>>
+                <option value="background-color-red"<?php echo ($button_color=='background-color-red')?'selected':''; ?>>
                   赤
                 </option>
             </select>
         </p>
         <p>
-            <input class='widefat' id="<?php echo $this->get_field_id('cta_button_reflection'); ?>"
+            <input class="widefat" id="<?php echo $this->get_field_id('cta_button_reflection'); ?>"
                 name="<?php echo $this->get_field_name('cta_button_reflection'); ?>" value="is-reflection" <?php checked($button_reflection, 'is-reflection');?> type="checkbox">
             <label for="<?php echo $this->get_field_id('cta_button_reflection'); ?>"><?php _e( 'ボタンを光らせる' ); ?></label>
         </p>
         <p>
-            <input class='widefat' id="<?php echo $this->get_field_id('cta_button_bounce'); ?>"
+            <input class="widefat" id="<?php echo $this->get_field_id('cta_button_bounce'); ?>"
                 name="<?php echo $this->get_field_name('cta_button_bounce'); ?>" value="is-bounce" <?php checked($button_bounce, 'is-bounce');?> type="checkbox">
             <label for="<?php echo $this->get_field_id('cta_button_bounce'); ?>"><?php _e( 'ボタンをバウンドさせる' ); ?></label>
         </p>
         <p>
-            <input class='widefat' id="<?php echo $this->get_field_id('cta_button_text_shadow'); ?>"
+            <input class="widefat" id="<?php echo $this->get_field_id('cta_button_text_shadow'); ?>"
                 name="<?php echo $this->get_field_name('cta_button_text_shadow'); ?>" value="text-shadow" <?php checked($button_text_shadow, 'text-shadow');?> type="checkbox">
             <label for="<?php echo $this->get_field_id('cta_button_text_shadow'); ?>"><?php _e( 'ボタンの文字に影をつける' ); ?></label>
         </p>

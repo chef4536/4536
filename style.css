@@ -313,10 +313,10 @@ pre code {
 /*
  * サイドバー
 */
-.sidebar-widget .post-list:last-child {
+li.post-list:last-child {
     border-bottom: none;
 }
-#sidebar .post-list:last-child a {
+li.post-list:last-child a {
     padding-bottom: 0;
 }
 
@@ -697,7 +697,7 @@ ul.children {
 /*
  * Widget
 */
-.footer-widget li {
+.widget-4536 ul {
     list-style-type: none;
 }
 .slide-widget {
@@ -718,50 +718,6 @@ ul.children {
     font-size: 12px;
     text-align: center;
     color: #666;
-}
-.widget_nav_menu li,
-.widget_categories li,
-.widget_archive li,
-.widget_recent_entries li,
-.widget_pages li,
-.widget_recent_comments li,
-.text_widget li {
-    line-height: 1.4;
-    border-bottom: 1px dotted #ddd;
-    position: relative;
-    list-style: none;
-}
-.widget_nav_menu li:last-child,
-.widget_categories li:last-child,
-.widget_archive li:last-child,
-.widget_recent_entries li:last-child,
-.widget_pages li:last-child,
-.widget_recent_comments li:last-child,
-.text_widget li:last-child {
-    border-bottom: none;
-}
-.widget_nav_menu li a,
-.widget_categories li a,
-.widget_archive li a,
-.widget_recent_entries li a,
-.widget_pages li a,
-.widget_recent_comments li a,
-.text_widget li a {
-    display: block;
-    margin: .6em 0 .6em 1.5em;
-    color: #000;
-}
-.widget_nav_menu li a::before,
-.widget_categories li a::before,
-.widget_archive li a::before,
-.widget_recent_entries li a::before,
-.widget_pages li a::before,
-.text_widget li a::before {
-    position: absolute;
-    left: 5px;
-    font-family: "Font Awesome 5 Free";
-    content: "\f138";
-    font-weight: 900;
 }
 .widget_categories li ul {
     margin: 15px 0 5px 15px;

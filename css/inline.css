@@ -199,10 +199,10 @@ body {
     padding: 0 10px;
 }
 /* ウィジェット */
-.textwidget {
+.widget-4536 {
     position: relative;
 }
-.textwidget iframe, .textwidget img {
+.widget-4536 iframe, .widget-4536 img {
     display: block;
     margin: 0 auto;
 }
@@ -336,6 +336,7 @@ body {
     line-height: 1.4;
     overflow: hidden;
     word-break: break-all;
+    text-align: left;
 }
 h2.post-title { /* トップの新着記事 */
     margin-bottom: 5px;

@@ -200,44 +200,6 @@ function post_is_in_descendant_category_4536( $cats, $_post = null ) {
     }
     return false;
 }
-///////////////////////////////////
-// カテゴリーにクラス名を付与
-///////////////////////////////////
-function add_cat_slug_class_4536( $output, $args ) {
-    $regex = '/<li class="cat-item cat-item-([\d]+)[^"]*">/';
-    $taxonomy = isset( $args['taxonomy'] ) && taxonomy_exists( $args['taxonomy'] ) ? $args['taxonomy'] : 'category';
-
-    preg_match_all( $regex, $output, $m );
-
-    if ( ! empty( $m[1] ) ) {
-        $replace = array();
-        foreach ( $m[1] as $term_id ) {
-            $term = get_term( $term_id, $taxonomy );
-            if ( $term && ! is_wp_error( $term ) ) {
-                $replace['/<li class="cat-item cat-item-' . $term_id . '("| )/'] = '<li class="cat-item cat-item-' . $term_id . ' cat-item-' . esc_attr( $term->slug ) . '$1';
-            }
-        }
-        $output = preg_replace( array_keys( $replace ), $replace, $output );
-    }
-    return $output;
-}
-add_filter( 'wp_list_categories', 'add_cat_slug_class_4536', 10, 2 );
-
-///////////////////////////////////
-// ウィジェットの投稿数をリンクタグに入れる
-///////////////////////////////////
-//カテゴリ
-function widget_categories_number_of_posts_link_4536( $output, $args ) {
-    $output = preg_replace('/<\/a>\s*\((\d+)\)/',' ($1)</a>',$output);
-    return $output;
-}
-add_filter( 'wp_list_categories', 'widget_categories_number_of_posts_link_4536', 10, 2 );
-//ウィジェット
-function widget_archives_number_of_posts_link_4536( $output ) {
-    $output = preg_replace('/<\/a>\s*( )\((\d+)\)/',' ($2)</a>',$output);
-    return $output;
-}
-add_filter( 'get_archives_link', 'widget_archives_number_of_posts_link_4536' );
 
 ///////////////////////////////////
 // WordPressの自動更新

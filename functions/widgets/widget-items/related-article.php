@@ -4,6 +4,7 @@ class RelatedPostWidgetItem extends WP_Widget {
     
     public $_title = 'related_title';
     public $_count = 'related_count';
+    public $_style = 'related_style';
     
     function __construct() {
 		parent::__construct(
@@ -44,7 +45,7 @@ class RelatedPostWidgetItem extends WP_Widget {
         foreach($related_posts as $post) : setup_postdata( $post ); ?>
             <li class="post-list">
                 <a class="clearfix" href="<?php the_permalink(); ?>">
-                    <?php echo thumbnail_4536('widget')['thumbnail']; ?>
+                    <?php echo ($instance[$this->_style]==='thumbnail') ? thumbnail_4536('widget')['thumbnail'] : '<i class="far fa-arrow-alt-circle-right"></i>'; ?>
                     <div class="post-info">
                         <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
                     </div>
@@ -63,12 +64,18 @@ class RelatedPostWidgetItem extends WP_Widget {
         $instance[$this->_title] = strip_tags($new_instance[$this->_title]);
         $str = mb_convert_kana(strip_tags($new_instance[$this->_count]), 'n');
         $instance[$this->_count] = $str;
+        $instance[$this->_style] = $new_instance[$this->_style];
         return $instance;
     }
     
     function form($instance) {
         $title = $this->_title;
         $count = $this->_count;
+        $style = $this->_style;
+        $list = [
+            'thumbnail' => 'サムネイルあり',
+            'text' => 'サムネイルなし（テキストのみ）',
+        ];
         ?>
         <p>
           <label for="<?php echo $this->get_field_id($title); ?>"><?php _e('関連記事のタイトル'); ?></label>
@@ -77,7 +84,18 @@ class RelatedPostWidgetItem extends WP_Widget {
         <p>
           <label for="<?php echo $this->get_field_id($count); ?>"><?php _e('表示数'); ?></label>
           <input class="widefat" id="<?php echo $this->get_field_id($count); ?>" name="<?php echo $this->get_field_name($count); ?>" type="text" value="<?php echo esc_attr($instance[$count]); ?>" />
-        </p>    
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id($style); ?>"><?php _e( '表示スタイル' ); ?></label>
+            <select class="widefat" id="<?php echo $this->get_field_id($style); ?>"
+                name="<?php echo $this->get_field_name($style); ?>" type="text">
+                <?php foreach($list as $name => $desc) { ?>
+                <option value="<?php echo $name; ?>"<?php echo ($instance[$style]===$name) ? ' selected' : ''; ?>>
+                    <?php echo $desc; ?>
+                </option>
+                <?php } ?>
+            </select>
+        </p>
     <?php }
     
 }

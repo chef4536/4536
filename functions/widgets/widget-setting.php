@@ -94,6 +94,55 @@ function cta_widget_thumbnail_4536() {
     return $css;
 }
 
+///////////////////////////////////
+// カテゴリーにクラス名を付与
+///////////////////////////////////
+add_filter( 'wp_list_categories', function( $output, $args ) {
+    
+    $regex = '/<li class="cat-item cat-item-([\d]+)[^"]*">/';
+    $taxonomy = isset( $args['taxonomy'] ) && taxonomy_exists( $args['taxonomy'] ) ? $args['taxonomy'] : 'category';
+
+    preg_match_all( $regex, $output, $m );
+
+    if ( ! empty( $m[1] ) ) {
+        $replace = array();
+        foreach ( $m[1] as $term_id ) {
+            $term = get_term( $term_id, $taxonomy );
+            if ( $term && ! is_wp_error( $term ) ) {
+                $replace['/<li class="cat-item cat-item-' . $term_id . '("| )/'] = '<li class="cat-item cat-item-' . $term_id . ' cat-item-' . esc_attr( $term->slug ) . '$1';
+            }
+        }
+        $output = preg_replace( array_keys( $replace ), $replace, $output );
+    }
+    
+    return $output;
+    
+}, 10, 2);
+
+///////////////////////////////////
+// ウィジェットの投稿数をリンクタグに入れる
+///////////////////////////////////
+add_filter( 'wp_list_categories', 'posted_count_in_textlink_4536'); //カテゴリ
+add_filter( 'get_archives_link', 'posted_count_in_textlink_4536'); //アーカイブ
+function posted_count_in_textlink_4536($output) {
+    $output = preg_replace('/<\/a>\s*( )\((\d+)\)/',' ($2)</a>',$output);
+    return $output;    
+}
+
+///////////////////////////////////
+// ウィジェットのテキストリンクにアイコン追加
+///////////////////////////////////
+add_filter( 'wp_list_categories', 'widget_before_icon_4536'); //カテゴリ
+add_filter( 'get_archives_link', 'widget_before_icon_4536'); //アーカイブ
+add_filter( 'wp_list_pages', 'widget_before_icon_4536'); //固定ページ
+function widget_before_icon_4536($output) {
+    $output = preg_replace('/<a(.+?)>/', '<a$1><i class="fas fa-angle-right"></i>', $output);
+    return $output;    
+}
+
+///////////////////////////////////
+// ウィジェットページのCSS
+///////////////////////////////////
 add_action('admin_head-widgets.php', function() { ?>
     <style>
         .tab-item {
