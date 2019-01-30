@@ -1,6 +1,7 @@
 <?php
 
 class EmptyWidgetItem extends WP_Widget {
+    
     function __construct() {
 		parent::__construct(
 			'empty_item',
@@ -8,21 +9,22 @@ class EmptyWidgetItem extends WP_Widget {
 			[ 'description' => __( '入力されたものをそのまま出力します。', '4536' ), ]
 		);
 	}
+    
     function widget($args, $instance) {
         extract( $args );
-        $item_new = apply_filters( 'widget_item_new', $instance['item_new'] );
+        $item_new = apply_filters( 'empty_widget_item', $instance['empty_item'] );
         echo $item_new;
     }
+    
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        $instance['item_new'] = $new_instance['item_new'];
+        $instance['empty_item'] = $new_instance['empty_item'];
         return $instance;
     }
-    function form($instance) {
-        $item_new = esc_attr($instance['item_new']);
-    ?>
+    
+    function form($instance) { ?>
         <p>
-            <textarea class="widefat" rows="10" id="<?php echo $this->get_field_id('item_new'); ?>" name="<?php echo $this->get_field_name('item_new'); ?>"><?php echo esc_textarea( $instance['item_new'] ); ?></textarea>
+            <textarea class="widefat" rows="10" id="<?php echo $this->get_field_id('empty_item'); ?>" name="<?php echo $this->get_field_name('empty_item'); ?>"><?php echo esc_textarea( $instance['empty_item'] ); ?></textarea>
         </p>
         <?php
     }

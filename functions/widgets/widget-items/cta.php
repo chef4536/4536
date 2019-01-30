@@ -1,6 +1,7 @@
 <?php
 
 class CtaWidgetItem extends WP_Widget {
+    
     function __construct() {
         add_action('admin_enqueue_scripts', [$this, 'scripts']);
 		parent::__construct(
@@ -8,8 +9,9 @@ class CtaWidgetItem extends WP_Widget {
 			__( '(4536)CTA', '4536' )
 		);
 	}
+    
     function widget($args, $instance) {
-        $title = apply_filters( 'cta_title', $instance['cta_title'] );
+        $title = apply_filters( 'widget_title', $instance['cta_title'] );
         $src = !empty($instance['cta_image_src']) ? $instance['cta_image_src'] : '';
         $image_style = !empty( $instance['cta_image_style'] ) ? $instance['cta_image_style'] : '';
         $description = apply_filters( 'cta_description', $instance['cta_description'] );
@@ -43,6 +45,7 @@ class CtaWidgetItem extends WP_Widget {
         if($button) echo $button;
         echo $args['after_widget'].'</div>';
     }
+    
     function update($new_instance, $old_instance) {
         $instance = array();
         $instance['cta_title'] = !empty($new_instance['cta_title']) ? strip_tags($new_instance['cta_title']) : '';
@@ -58,6 +61,7 @@ class CtaWidgetItem extends WP_Widget {
         $instance['cta_button_text_shadow'] = !empty($new_instance['cta_button_text_shadow']) ? $new_instance['cta_button_text_shadow'] : '';
         return $instance;
     }
+    
     function form($instance) {
         $title = !empty($instance['cta_title']) ? $instance['cta_title'] : '';
         $src = !empty($instance['cta_image_src']) ? $instance['cta_image_src'] : '';
@@ -148,10 +152,12 @@ class CtaWidgetItem extends WP_Widget {
         </p>
         <?php
     }
+    
     function scripts() {
         wp_enqueue_script( 'media-upload' );
         wp_enqueue_media();
         wp_enqueue_script('media-uploader', get_template_directory_uri() . '/functions/widgets/media-uploader.js', array('jquery'));
     }
+    
 }
 add_action( 'widgets_init', function() { register_widget( 'CtaWidgetItem' ); });
