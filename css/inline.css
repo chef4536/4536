@@ -194,6 +194,10 @@ body {
     width: 100%;
     overflow: hidden;
 }
+#sidebar {
+    margin-top: 20px;
+    padding: 0 10px;
+}
 /* ウィジェット */
 .textwidget {
     position: relative;
@@ -707,17 +711,6 @@ a.simple-sns-button-2 {
 }
 
 /* --------------------------------------------------
-/* max-1023px BEGIN for mobile-phone and tablet
---------------------------------------------------- */
-@media screen and (max-width: 1023px) {
-    #sidebar {
-        margin-top: 20px;
-        padding: 0 10px;
-    }
-/* max-1023px END */
-}
-
-/* --------------------------------------------------
 /* max-1024px BEGIN for landscape tablet
 --------------------------------------------------- */
 @media screen and (max-width: 1024px) {
@@ -740,6 +733,7 @@ a.simple-sns-button-2 {
     #sidebar {
         width: 320px;
         margin: 0 0 0 20px;
+        padding: 0;
     }
     #scroll-sidebar {
         position: -webkit-sticky;
