@@ -4,7 +4,7 @@ get_header(); ?>
     <div id="contents-inner">
         <main id="main" class="padding-wrap-main-4536" role="main">
             <h1 id="post-h1"><?php the_title(); ?></h1>
-            <div class="all-categories post article-body">
+            <div id="all-categories" class="post article-body">
                 <?php
                 $args = [
                     'title_li' => null,

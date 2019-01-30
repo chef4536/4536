@@ -222,7 +222,7 @@ function customizer_color() {
         $css[] = '.pagination span, .pagination a, #prev-next a,.prev-post-arrow, .next-post-arrow{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色
-        $css[] = '#main,#main .post-info,#main .all-categories a,#related-post a,#prev-next a,#header.fixed-top,.fixed-top .nav-menu,#header.fixed-top .nav-menu a,.fixed-top #sitename a, .follow-button a{color:'.$post_color.$option.'}';
+        $css[] = '#main,#main .post-info,#all-categories a,#related-post a,#prev-next a,#header.fixed-top,.fixed-top .nav-menu,#header.fixed-top .nav-menu a,.fixed-top #sitename a, .follow-button a{color:'.$post_color.$option.'}';
         $css[] = '.pagination span, .pagination a, .prev-post-arrow, .next-post-arrow{background-color:'.$post_color.$option.'}';
     }
 

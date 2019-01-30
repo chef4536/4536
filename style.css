@@ -77,6 +77,12 @@ pre code {
     max-width: 90%;
     font-size: small;
 }
+#all-categories ul {
+    list-style: none;
+}
+#all-categories ul:not(.children) {
+    padding: 0;
+}
 /* Gutenberg */
 .wp-block-image,.wp-block-file,.wp-block-media-text {
     margin-bottom: 1.5em;

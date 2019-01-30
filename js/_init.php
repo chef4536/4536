@@ -24,12 +24,14 @@ add_action( 'wp_enqueue_scripts', function() {
 });
 
 //JavaScriptに非同期属性追加
-if(!is_admin()) add_filter('script_loader_tag', function( $tag, $handle ) {
-    if($handle==='4536-master') return str_replace( ' src', ' async src', $tag );
+add_filter('script_loader_tag', function( $tag, $handle ) {
+    if(is_admin()) return $tag;
+    if($handle==='4536-master') return str_replace( 'src', 'async src', $tag );
     if($handle==='jquery') return $tag;
     if($handle==='highlight-js') return $tag;
-    if(javascript_load()==='defer') return str_replace( ' src', ' defer src', $tag );
-    if(javascript_load()==='async') return str_replace( ' src', ' async src', $tag );
+    if(javascript_load()==='defer') $tag = str_replace( 'src', 'defer src', $tag );
+    if(javascript_load()==='async') $tag = str_replace( 'src', 'async src', $tag );
+    return $tag;
 }, 10 ,2 );
 
 ////////////////////////////////////
