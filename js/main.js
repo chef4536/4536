@@ -125,7 +125,7 @@ function topButton(elmId, duration) {
         const begin = new Date() - 0;
         const yOffset = window.pageYOffset;
         const timer = setInterval(function() {
-            const current = new Date() - begin;
+            let current = new Date() - begin;
             if (current > duration) {
                 clearInterval(timer);
                 current = duration;
