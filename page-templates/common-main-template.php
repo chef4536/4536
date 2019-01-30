@@ -10,7 +10,7 @@
                 } else {
                     if(is_active_sidebar('post-bottom')) dynamic_sidebar('post-bottom');
                 }
-                if(is_single() && !is_singular(['music', 'movie'])) {
+                if(is_singular('post')) {
                     get_template_part('page-templates/related-post');
                     if(is_comments('is_comments_single') && (comments_open() || get_comments_number())) comments_template();
                     get_template_part('page-templates/page-nav');
