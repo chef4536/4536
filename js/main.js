@@ -13,16 +13,15 @@ observer.observe();
 
 function fixed_footer_overlay_4536() {
 
-    var menu = document.getElementById('fixed-footer-overlay');
+    const menu = document.getElementById('fixed-footer-overlay');
     if(menu == null) return;
 
-    var new_scroll_position = 0;
-    var last_scroll_position;
-    var closeBtn = document.querySelector('.fixed-footer-close-button');
-    var footer = document.getElementById('footer');
+    let new_scroll_position = 0;
+    const closeBtn = document.querySelector('.fixed-footer-close-button');
+    const footer = document.getElementById('footer');
 
     window.addEventListener('scroll', function(e) {
-        last_scroll_position = window.scrollY;
+        const last_scroll_position = window.scrollY;
         if(new_scroll_position < last_scroll_position && last_scroll_position > 100) {
             menu.classList.add('fade-in');
             menu.classList.remove('display-none');
@@ -34,14 +33,13 @@ function fixed_footer_overlay_4536() {
         menu.parentNode.removeChild(menu);
         closeBtn.parentNode.removeChild(closeBtn);
         footer.style.paddingBottom = '0';
-//        document.getElementById('wrapper').style.paddingBottom = footer.offsetHeight + 'px';
     });
 
 }
 
 function scroll_content_4536() {
 
-    var list = [
+    const list = [
         'mobile-nav-menu',
         'music',
         'movie',
@@ -50,14 +48,14 @@ function scroll_content_4536() {
 
     list.forEach(function( value ) {
 
-        var parent = document.getElementById( value );
+        const parent = document.getElementById( value );
         if(parent == null) return;
-        var rightButton = parent.querySelector('.rightbutton');
-        var leftButton = parent.querySelector('.leftbutton');
-        var scroll_wrap = parent.querySelector('.scroll-left');
-        var scroll_wrap_width = scroll_wrap.clientWidth;
-        var scroll_inner = parent.querySelector('.scroll-content');
-        var scroll_inner_width = scroll_inner.clientWidth;
+        const rightButton = parent.querySelector('.rightbutton');
+        const leftButton = parent.querySelector('.leftbutton');
+        const scroll_wrap = parent.querySelector('.scroll-left');
+        const scroll_wrap_width = scroll_wrap.clientWidth;
+        const scroll_inner = parent.querySelector('.scroll-content');
+        const scroll_inner_width = scroll_inner.clientWidth;
 
         if(scroll_inner_width > scroll_wrap_width) {
             rightButton.classList.remove('display-none');
@@ -69,9 +67,9 @@ function scroll_content_4536() {
 
             e.preventDefault();
 
-            var i = 10;
-            var t = 0;
-            var right_int = setInterval(function() {
+            let i = 10;
+            let t = 0;
+            const right_int = setInterval(function() {
                 scroll_wrap.scrollBy(i, 0);
                 i = 10;
                 t += 10;
@@ -84,9 +82,9 @@ function scroll_content_4536() {
 
             e.preventDefault();
 
-            var i = -10;
-            var t = 0;
-            var left_int = setInterval(function() {
+            let i = -10;
+            let t = 0;
+            const left_int = setInterval(function() {
                 scroll_wrap.scrollBy(i, 0);
                 i = -10;
                 t += 10;
@@ -118,16 +116,16 @@ function scroll_content_4536() {
 
 function topButton(elmId, duration) {
 
-    var topButton = document.getElementById(elmId);
+    const topButton = document.getElementById(elmId);
 
     topButton.addEventListener('click', function(e){
 
         e.preventDefault();
 
-        var begin = new Date() - 0;
-        var yOffset = window.pageYOffset;
-        var timer= setInterval(function() {
-            var current = new Date() - begin;
+        const begin = new Date() - 0;
+        const yOffset = window.pageYOffset;
+        const timer = setInterval(function() {
+            const current = new Date() - begin;
             if (current > duration) {
                 clearInterval(timer);
                 current = duration;
@@ -144,34 +142,27 @@ function topButton(elmId, duration) {
 //実行
 document.addEventListener('DOMContentLoaded', function() {
 
-    var is_mobile = window.matchMedia('screen and (max-width: 767px)');
-    var body = document.body;
-    var new_scroll_position = 0;
-    var last_scroll_position;
-    var header = document.getElementById('header');
-    var header_h = header.offsetHeight;
-    var to_top = document.getElementById('page-top');
-    var wrapper = document.getElementById('wrapper');
-    var footer = document.getElementById('footer');
-    var fixed_footer = document.querySelector('.fixed-footer');
+    const is_mobile = window.matchMedia('screen and (max-width: 767px)');
+    const to_top = document.getElementById('page-top');
+    const wrapper = document.getElementById('wrapper');
+    const footer = document.getElementById('footer');
+    const fixed_footer = document.querySelector('.fixed-footer');
+    
+    let new_scroll_position = 0;
 
     //トップに戻る
     if(to_top != null) topButton('page-top', 400);
-
-    //フッター下に固定
-//    wrapper.style.paddingBottom = footer.offsetHeight + 'px';
-//    footer.style.position = 'absolute';
-//    footer.style.bottom = '0';
-//    footer.style.left = '0';
-//    footer.style.right = '0';
 
     //全体のスクロールイベント
     window.addEventListener('scroll', function(e) {
 
         e.preventDefault();
 
-        last_scroll_position = window.scrollY;
-
+        const body = document.body;
+        const last_scroll_position = window.scrollY;
+        const header = document.getElementById('header');
+        const header_h = header.offsetHeight;
+        
         //固定ヘッダー
         if(header.classList.contains('fixed-header')) {
             if(new_scroll_position < last_scroll_position && last_scroll_position > header_h) {

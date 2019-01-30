@@ -1,5 +1,15 @@
 <?php
 if(is_singular('lp')) return;
+if(is_amp()) {
+    ob_start();
+    dynamic_sidebar('amp-fixed-footer');
+    $amp_fixed_footer = ob_get_clean();
+} else {
+    ob_start();
+    dynamic_sidebar('fixed-footer');
+    $fixed_footer = ob_get_clean();
+}
+
 if(fixed_footer()==='menu') { ?>
     <div id="fixed-footer-menu" class="fixed-footer display-none-pc display-flex text-align-center">
         <?php
@@ -74,13 +84,13 @@ if(fixed_footer()==='menu') { ?>
             </div>
         <?php } ?>
     </div>
-<?php } elseif(fixed_footer()=='overlay' && is_active_sidebar('fixed-footer') && !is_amp()) { ?>
+<?php } elseif(fixed_footer()==='overlay' && !empty($fixed_footer)) { ?>
     <div id="fixed-footer-overlay" class="fixed-footer display-none text-align-center">
-        <?php dynamic_sidebar('fixed-footer'); ?>
+        <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button"><i class="fas fa-times"></i></div>
     </div>
-<?php } elseif(fixed_footer()=='overlay' && is_active_sidebar('amp-fixed-footer') && is_amp()) { ?>
+<?php } elseif(fixed_footer()==='overlay' && !empty($amp_fixed_footer)) { ?>
     <amp-sticky-ad layout="nodisplay">
-        <?php dynamic_sidebar('amp-fixed-footer'); ?>
+        <?php echo $amp_fixed_footer; ?>
     </amp-sticky-ad>
 <?php }
