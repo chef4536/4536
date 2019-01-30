@@ -5,3 +5,4 @@ require_once('empty.php'); //空のウィジェット
 require_once('toc.php'); //目次
 require_once('cta.php'); //CTA
 require_once('double-rectangle.php'); //ダブルレクタングル
+require_once('related-article.php'); //関連記事
