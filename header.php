@@ -31,13 +31,15 @@ if(is_amp()) {
         echo $header_image_end_tag.'</header>';
 
         //navigation
-        $display = '';
         $location = '';
         if(has_nav_menu('navbar')) {
           $location = 'navbar';
           $display = ' display-none-pc';
         };
-        if(has_nav_menu('below_header_nav_menu_common')) $location = 'below_header_nav_menu_common';
+        if(has_nav_menu('below_header_nav_menu_common')) {
+          $location = 'below_header_nav_menu_common';
+          $display = '';
+        }
         if(!empty($location)) {
             $defaults = [
                 'theme_location'  => $location,
