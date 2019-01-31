@@ -199,12 +199,12 @@ function customizer_color() {
     }
 
     if( !empty($header_background_color) ) { //ヘッダー背景色
-        $css[] = '#header,.sub-menu,#mobile-nav-menu{background-color:'.$header_background_color.'}';
+        $css[] = '#header,.sub-menu,#below-header-nav-menu{background-color:'.$header_background_color.'}';
     }
 
     if( !empty($header_color) ) { //ヘッダー文字色
 //        $css[] = '#header,#header button,.nav-menu,.nav-menu li a,#sitename a{color:'.$header_color.'}';
-        $css[] = '#header,#header a,#mobile-nav-menu,#mobile-nav-menu a{color:'.$header_color.'}';
+        $css[] = '#header,#header a,#below-header-nav-menu,#below-header-nav-menu a{color:'.$header_color.'}';
     }
 
     if( !empty($description_color) ) { //ディスクリプションの文字色

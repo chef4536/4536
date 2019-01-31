@@ -280,7 +280,7 @@ $wp_customize->add_section( 'design', [
         'label' => '関連記事の表示数',
         'description' => '数字のみ入力してください（例：10記事→10、6記事→6、非表示→0または空白）',
         'type' => 'text',
-    ]);    
+    ]);
     //抜粋の文字数
     $wp_customize->add_setting( 'custom_excerpt_length', [
         'default' => 40,
@@ -330,7 +330,7 @@ $wp_customize->add_section( 'design', [
             null => '非表示（デフォルト）',
             'menu' => 'メニューを表示',
             'overlay' => 'オーバーレイ広告',
-        ),        
+        ),
     ));
     //固定フッターメニューリスト
     $fixed_footer_menu_list = [
@@ -911,7 +911,7 @@ $wp_customize->add_section( 'comments', [
         'single' => true,
         'page' => false,
         'media' => true,
-    ];    
+    ];
     foreach($list as $post_type => $default) {
         $wp_customize->add_setting( 'is_comments_'.$post_type, [
             'default' => $default,
@@ -1220,7 +1220,7 @@ $wp_customize->add_section( 'etc', array (
         'choices'    => [
             'amp' => 'AMPページだけ変換',
             'singular_amp' => 'AMPページと通常の記事ページ',
-        ],        
+        ],
     ]);
     //カエレバのデザイン
     $wp_customize->add_setting( 'kaereba_design', [
@@ -1235,7 +1235,7 @@ $wp_customize->add_section( 'etc', array (
             'amp' => 'AMPページだけ適用',
             'singular_amp' => 'AMPページと通常の記事ページ',
             null => '適用しない（自分でCSSを編集できる方向け）',
-        ],        
+        ],
     ]);
     //ウィジェット自動生成解除
     $wp_customize->add_setting( 'is_widget_wpautop', [
@@ -1249,7 +1249,7 @@ $wp_customize->add_section( 'etc', array (
         'type' => 'checkbox',
     ]);
 
-    
+
 }//終わり
 add_action('customize_register', 'theme_customizer_extension');
 
@@ -1266,4 +1266,3 @@ $custom_header = [
     'default-image' => '',
 ];
 add_theme_support( 'custom-header', $custom_header );
-

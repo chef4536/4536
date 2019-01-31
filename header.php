@@ -31,9 +31,16 @@ if(is_amp()) {
         echo $header_image_end_tag.'</header>';
 
         //navigation
+        $display = '';
+        $location = '';
         if(has_nav_menu('navbar')) {
+          $location = 'navbar';
+          $display = ' display-none-pc';
+        };
+        if(has_nav_menu('below_header_nav_menu_common')) $location = 'below_header_nav_menu_common';
+        if(!empty($location)) {
             $defaults = [
-                'theme_location'  => 'navbar',
+                'theme_location'  => $location,
                 'container' => false,
                 'fallback_cb' => false,
                 'echo' => true,
@@ -41,7 +48,7 @@ if(is_amp()) {
             ];
             $button = (is_amp()) ? '' : '<div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>';
             ?>
-            <nav id="mobile-nav-menu" class="nav-menu icon display-none-pc text-align-center" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+            <nav id="below-header-nav-menu" class="nav-menu icon text-align-center<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
                 <div class="scroll-wrapper inner padding-0-10px">
                     <div class="scroll-left">
                         <?php
@@ -69,7 +76,7 @@ if(is_amp()) {
         <?php }
 
         breadcrumb();
-        
+
     }
     ?>
 

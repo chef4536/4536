@@ -258,7 +258,7 @@ body {
     margin: 0;
     position: relative
 }
-#mobile-nav-menu li{
+#below-header-nav-menu li{
     padding: 5px 0;
 }
 .nav-menu .current-menu-item a {

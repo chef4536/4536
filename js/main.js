@@ -40,7 +40,7 @@ function fixed_footer_overlay_4536() {
 function scroll_content_4536() {
 
     const list = [
-        'mobile-nav-menu',
+        'below-header-nav-menu',
         'music',
         'movie',
         'pickup',
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.getElementById('wrapper');
     const footer = document.getElementById('footer');
     const fixed_footer = document.querySelector('.fixed-footer');
-    
+
     let new_scroll_position = 0;
 
     //トップに戻る
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const last_scroll_position = window.scrollY;
         const header = document.getElementById('header');
         const header_h = header.offsetHeight;
-        
+
         //固定ヘッダー
         if(header.classList.contains('fixed-header')) {
             if(new_scroll_position < last_scroll_position && last_scroll_position > header_h) {

@@ -51,8 +51,9 @@ function custom_excerpt_4536($content) {
 
 // カスタムメニュー
 register_nav_menus([
-    'navbar' => 'ヘッダーナビ（モバイル）',
+    'navbar' => 'ヘッダー下ナビ（モバイル）',
     'navbar_pc' => 'ヘッダーナビ（PC）',
+    'below_header_nav_menu_common' => 'ヘッダー下ナビ（全デバイス共通）',
     'navbar_footer' => 'フッターナビ（全デバイス共通）',
 ]);
 
