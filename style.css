@@ -705,6 +705,7 @@ ul.children {
 */
 .widget-4536 ul li a {
     color: #000;
+    display: block;
 }
 .widget-4536 ul {
     list-style-type: none;
