@@ -39,9 +39,6 @@ require_once('custom-post-type.php');
 //パンくず
 require_once('breadcrumb.php');
 
-//ブログカード
-require_once('custom-blogcard.php');
-
 //ショートコード
 require_once('shortcode.php');
 
@@ -80,4 +77,3 @@ require_once('widgets/_init.php');
 
 //旧エディタTinyMCE関連
 require_once('tinymce/_init.php');
-

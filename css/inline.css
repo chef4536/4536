@@ -388,7 +388,7 @@ h2.post-title { /* トップの新着記事 */
 	line-height: 1.6;
 	margin-bottom: 1.5em;
 }
-.article-body p a:not(.blog-card) {
+.article-body p a:not(.blogcard) {
     text-decoration: underline;
 }
 .article-body ol,.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {

@@ -3,7 +3,7 @@
 //レスポンシブiframe
 add_filter('the_content', function($the_content) {
     if(is_singular()) {
-        $the_content = preg_replace('/<iframe[^>]+?youtube\.com[^<]+?<\/iframe>/i', '<div class="youtube-wrapper">${0}</div>', $the_content);
+        $the_content = preg_replace('/<iframe[^>]+?youtube\.com[^<]+?<\/iframe>/i', '<div class="responsive-wrapper">${0}</div>', $the_content);
     }
     return $the_content;
 });
@@ -29,7 +29,7 @@ if(get_option('thumbnail_generate_4536')) { //サムネイルを生成
         add_image_size('thumb100_100',100,100,true);
         add_image_size('thumb150_150',150,150,true);
         add_image_size('thumb300_300',300,300,true);
-        add_image_size('thumb500_500',500,500,true);        
+        add_image_size('thumb500_500',500,500,true);
     }
     if(esc_html(get_option('admin_sub_media'))) {
         add_image_size('thumb196_110',196,110,true);

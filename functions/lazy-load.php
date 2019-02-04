@@ -49,7 +49,7 @@ function lazy_load_media_4536($image) {
   preg_match('/class="(.+?)"/i', $image, $class);
   if(empty($class)) return $image;
   if(strpos($class[1], 'lozad') !== false) return $image;
-  if(strpos($class[1], 'blog-card-thumb-image') !== false) return $image;
+  if(strpos($class[1], 'blogcard-thumb-image') !== false) return $image;
   // if(strpos($class[1], 'attachment-post-thumbnail') !== false) return $image;
   $new_image = str_replace('src="', 'data-src="', $image);
   $new_image = str_replace('srcset="', 'data-srcset="', $new_image);

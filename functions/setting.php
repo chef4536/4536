@@ -38,8 +38,9 @@ add_filter( 'body_class', function($classes) {
 // 綺麗な抜粋を取得
 function custom_excerpt_4536($content) {
     $content = preg_replace('/<!--more-->.+/is', "", $content);
-    $content = strip_tags( $content );
-    $content = str_replace( array( '\r\n', '\n', '\r', '&nbsp;' ), '', $content );
+    $content = wp_strip_all_tags($content, true);
+    // $content = strip_tags( $content );
+    // $content = str_replace( array( '\r\n', '\n', '\r', '&nbsp;' ), '', $content );
     $length = custom_excerpt_length();
     $length = mb_convert_kana(strip_tags($length), 'n');
     if(mb_strlen($content,'UTF-8') > $length) {
@@ -47,6 +48,12 @@ function custom_excerpt_4536($content) {
         return $content.'...';
     }
     return $content;
+}
+
+//サイトドメインを取得
+function get_this_site_domain_4536() {
+  if(preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $match ) !== 1) return null;
+  return $match[1];
 }
 
 // カスタムメニュー

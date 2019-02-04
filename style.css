@@ -208,7 +208,46 @@ pre code {
     right:-19px;
 }
 /* ブログカード */
-.blog-card{margin:1.5em auto;border:1px solid #ddd;word-wrap:break-word;width:100%;border-radius:2px}.blog-card-info{padding:.5em;-webkit-box-flex:1;-ms-flex:1;flex:1}.blog-card-title{line-height:1.6;font-size:90%;font-weight:700}.blog-card-title:before{content:"関連";background-color:#000;color:#fff;margin-right:5px;padding:2px 3px;font-size:9pt;border-radius:2px}.blog-card-excerpt{color:#333;font-size:80%;line-height:1.4;margin-top:10px}
+.blogcard {
+    padding: .5em;
+    border:1px solid #ddd;
+    word-wrap:break-word;
+    width:100%;
+    border-radius:2px;
+}
+.blogcard-info {
+    margin-left: .5em;
+    line-height: 1.5;
+    font-size: 90%;
+    font-weight: 700;
+    position: relative;
+}
+.blogcard-title {
+    margin-left: .3em;
+}
+.blogcard-related-font,
+.blogcard-more-wrap {
+    border: 1px solid;
+    padding: .3em;
+    font-size: 9pt;
+    border-radius: 2px;
+}
+.blogcard-more-wrap {
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.blogcard-more {
+    margin-right: .3em;
+}
+.blogcard-excerpt {
+    color:#aaa;
+    font-size:80%;
+    line-height:1.4;
+    margin-top:10px;
+}
 /* 目次 */
 .toc-4536:not(.toc-sidebar){border:1px solid #e5e5e5;border-radius:2px;padding:1em;margin:1em 0}.toc-4536 a{text-decoration:none}.toc-title-4536{font-size:1.2em;font-weight:700;margin-bottom:1em;text-align:center}.toc-title-4536 a{font-size:14px;font-weight:400}.toc-outline{overflow:hidden}.toc-4536 ul{counter-reset:a;list-style-type:none}.toc-4536 ul ul{margin-left:1.5em}.toc-4536 ul a{display:block;padding:.05em 0;font-size:14px}.toc-4536 li{margin:0}.toc-4536 li a:before{counter-increment:a;content:counters(a,".") "";margin-right:.5em;display:block;float:left}
 
@@ -257,13 +296,13 @@ pre code {
     content: "NEW";
 }
 /* youtubeのレスポンシブ */
-.youtube-wrapper {
+.responsive-wrapper {
 	position: relative;
 	padding-bottom: 56.25%;
 	height: 0;
 	overflow: hidden;
 }
-.youtube-wrapper iframe {
+.responsive-wrapper iframe {
 	position: absolute;
 	top: 0;
 	right: 0;
