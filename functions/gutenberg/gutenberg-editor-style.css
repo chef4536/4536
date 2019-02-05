@@ -23,3 +23,7 @@ body.block-editor-page .editor-block-list__block[data-align="full"] {
     width: inherit !important;
     height: inherit !important;
 }
+
+blockquote.wp-embedded-content {
+  display: none !important;
+}

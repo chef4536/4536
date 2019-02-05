@@ -7,7 +7,10 @@
         <link href="https://fonts.googleapis.com/css?family=<?php echo add_google_fonts(); ?>" rel="stylesheet">
         <?php } ?>
         <link rel="stylesheet" href="<?php echo fontawesome_url(); ?>" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
         <?php
+        // rest_output_link_wp_head();
+        // wp_oembed_add_discovery_links();
         get_template_part('lib/amp-script');
         custom_seo_meta_4536();
         ogp_setting_4536();

@@ -35,9 +35,9 @@ function archive_template_4536($page_4536) { ?>
 <?php }
 
 function post_list_template_4536($page_4536) {
-    
+
     $thumbnail_size = $page_4536;
-    
+
     if($page_4536==='new-post') {
         $post_list_style_mobile = new_post_list_style_mobile();
         $post_list_style_pc = new_post_list_style_pc();
@@ -52,7 +52,7 @@ function post_list_template_4536($page_4536) {
 
     $post_list_style_mobile = ($post_list_style_mobile==='') ? '' : 'list-'.$post_list_style_mobile;
     $post_list_style_pc = ($post_list_style_pc==='') ? ' post-list-pc' : ' list-'.$post_list_style_pc;
-    if($post_list_style_mobile===$post_list_style_pc) $post_list_style_pc = '';    
+    if($post_list_style_mobile===$post_list_style_pc) $post_list_style_pc = '';
     $style = $post_list_style_mobile.$post_list_style_pc;
 
     $count = '';
@@ -60,7 +60,7 @@ function post_list_template_4536($page_4536) {
     $line_clamp = '';
     if(line_clamp()==='2line') $line_clamp = ' line-clamp-2';
     if(line_clamp()==='3line') $line_clamp = ' line-clamp-3';
-    
+
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
         <article class="post-list <?php echo $style; ?>">
@@ -70,7 +70,7 @@ function post_list_template_4536($page_4536) {
                     <h2 class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></h2>
                     <div class="post-meta">
                         <div class="excerpt display-none">
-                            <?php echo custom_excerpt_4536(get_the_content()); ?>
+                            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
                         </div>
                         <?php echo ($ptime) ? '<div class="posted-date"><i class="far fa-calendar-check"></i><span>'.$ptime.'</span></div>' : ''; ?>
                     </div>
@@ -88,5 +88,5 @@ function post_list_template_4536($page_4536) {
         echo '<p class="padding-0-1em margin-1em-0">記事がありませんでした。</p>';
     endif;
     wp_reset_postdata();
-    
+
 }

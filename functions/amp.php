@@ -25,9 +25,9 @@ function is_amp() {
 
 //AMP用にコンテンツを変換する
 function convert_content_to_amp($the_content) {
-    
+
     if(!is_amp()) return $the_content;
-    
+
     //C2A0文字コード（UTF-8の半角スペース）を通常の半角スペースに置換
     $the_content = str_replace('\xc2\xa0', ' ', $the_content);
 
@@ -46,6 +46,22 @@ function convert_content_to_amp($the_content) {
     //FONTタグを取り除く
     $the_content = preg_replace('/<font[^>]+?>/i', '', $the_content);
     $the_content = preg_replace('/<\/font>/i', '', $the_content);
+
+    //marginwidth属性を取り除く
+    $the_content = preg_replace('/ +?marginwidth=["][^"]*?["]/i', '', $the_content);
+    $the_content = preg_replace('/ +?marginwidth=[\'][^\']*?[\']/i', '', $the_content);
+    //marginheight属性を取り除く
+    $the_content = preg_replace('/ +?marginheight=["][^"]*?["]/i', '', $the_content);
+    $the_content = preg_replace('/ +?marginheight=[\'][^\']*?[\']/i', '', $the_content);
+    //contenteditable属性を取り除く
+    $the_content = preg_replace('/ +?contenteditable=["][^"]*?["]/i', '', $the_content);
+    $the_content = preg_replace('/ +?contenteditable=[\'][^\']*?[\']/i', '', $the_content);
+    //sandbox属性を取り除く
+    $the_content = preg_replace('/ +?sandbox=["][^"]*?["]/i', '', $the_content);
+    $the_content = preg_replace('/ +?sandbox=[\'][^\']*?[\']/i', '', $the_content);
+    //security属性を取り除く
+    $the_content = preg_replace('/ +?security=["][^"]*?["]/i', '', $the_content);
+    $the_content = preg_replace('/ +?security=[\'][^\']*?[\']/i', '', $the_content);
 
     //カエレバ・ヨメレバのAmazon商品画像にwidthとhightを追加する
     $the_content = preg_replace('/ src="http:\/\/ecx.images-amazon.com/i', ' width="75" height="75" sizes="(max-width: 75px) 75vw, 75px" src="http://ecx.images-amazon.com', $the_content);
@@ -124,7 +140,7 @@ function convert_content_to_amp($the_content) {
 
     // SoundCloud
     $pattern = '/<iframe.+?src="https:\/\/w.soundcloud.com\/player\/\?url=https%3A\/\/api.soundcloud.com\/(tracks|playlists)\/(\d+)&.*?height="(\d+)".*?><\/iframe>/is';
-    $append = '<amp-soundcloud data-$1id="$2" height="$3" layout="fixed-height" data-visual="true"></amp-soundcloud>';    
+    $append = '<amp-soundcloud data-$1id="$2" height="$3" layout="fixed-height" data-visual="true"></amp-soundcloud>';
     if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
     $the_content = str_replace('<amp-soundcloud data-tracksid', '<amp-soundcloud data-trackid', $the_content);
     $the_content = str_replace('<amp-soundcloud data-playlistsid', '<amp-soundcloud data-playlistid', $the_content);
@@ -134,12 +150,7 @@ function convert_content_to_amp($the_content) {
     $append = '<amp-iframe layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups"';
     if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
     $pattern = '/<\/iframe>/i';
-    $append = '</amp-iframe>';
-    if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
-    
-    // amp-iframeで禁止の属性を排除・変換
-    $pattern = '/<amp-iframe(.+?)(frameborder=".+?")(.*?)><\/amp-iframe>/is';
-    $append = '<amp-iframe$1$3></amp-iframe>';
+    $append = '<span placeholder></span></amp-iframe>';
     if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
 
     // videoをamp-videoに置換する
@@ -202,7 +213,7 @@ function amp_adsense_code_top() {
     $data_ad_client = $match[1];
     preg_match('/data-ad-slot="([^"]+?)"/i', $ad, $match);
     if (empty($match[1])) return;//マッチしなかったら処理停止
-    $data_ad_slot = $match[1];    
+    $data_ad_slot = $match[1];
     $amp_adsense_code = '<amp-ad layout="fixed-height" height="100" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
     $amp_adsense = $ad_title.$amp_adsense_code;
     return $amp_adsense;
@@ -223,6 +234,6 @@ function convert_avatar_to_amp_4536 ($avatar) {
 
 $avatar = '<div>'.$avatar.'</div>';
  return $avatar;
- 
+
 }
 add_filter('get_avatar','convert_avatar_to_amp_4536', 9999999999);

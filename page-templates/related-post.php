@@ -41,7 +41,7 @@ if(!$related_posts) return;
                     <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
                     <div class="post-meta">
                         <p class="excerpt display-none">
-                            <?php echo custom_excerpt_4536(get_the_content()); ?>
+                            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
                         </p>
                     </div>
                 </div>
