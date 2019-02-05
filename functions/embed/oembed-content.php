@@ -2,15 +2,6 @@
 
 if(!custom_blogcard()) return;
 
-//埋め込みコンテンツのキャッシュ削除
-$data = $wpdb->prepare("
-    DELETE FROM $wpdb->postmeta
-    WHERE meta_key LIKE %s
-    AND meta_value = %s
-    AND post_id = %d
-", '_oembed_%', '{{unknown}}', 29097);
-// $wpdb->query($data);
-
 //埋め込みコンテンツのキャッシュ削除（コア実装済み）
 // function delete_oembed_caches_4536( $post_ID ) {
 // 	$post_metas = get_post_custom_keys( $post_ID );

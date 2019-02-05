@@ -3,11 +3,17 @@
 add_action( 'admin_menu', function() {
     add_menu_page( '4536設定', '4536設定', 'manage_options', '4536-setting', '', '', 4);
     add_submenu_page( '4536-setting', 'マニュアル', 'マニュアル', 'manage_options', '4536-setting', 'admin_4536_setting_manual');
-    add_submenu_page( '4536-setting', 'SEO', 'SEO', 'manage_options', 'seo', 'admin_seo_setting_4536');
-    add_submenu_page( '4536-setting', 'メディア', 'メディア', 'manage_options', 'media', 'admin_media_setting_4536');
-    add_submenu_page( '4536-setting', 'AMP', 'AMP', 'manage_options', 'amp', 'admin_amp_setting_4536');
-    add_submenu_page( '4536-setting', '高速化', '高速化', 'manage_options', 'speeding_up', 'admin_speeding_up_setting_4536');
-    add_submenu_page( '4536-setting', 'その他', 'その他', 'manage_options', 'etc', 'admin_etc_setting_4536');
+    $list = [
+      'SEO' => 'seo',
+      'メディア' => 'media',
+      'AMP' => 'amp',
+      '高速化' => 'speeding_up',
+      'その他' => 'etc',
+      'データベース' => 'database',
+    ];
+    foreach($list as $name => $key) {
+      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $key, 'admin_'.$key.'_setting_4536');
+    }
 });
 
 add_action( 'admin_init', function() {
@@ -59,7 +65,7 @@ add_action( 'admin_init', function() {
         'admin_amp_adsense_sidebar',
         'admin_amp_add_html_js_head',
         'admin_amp_add_html_js_body',
-    ];    
+    ];
     foreach($list as $name) {
         register_setting( 'amp_group', $name );
     }
@@ -99,6 +105,12 @@ add_action( 'admin_init', function() {
     foreach($list as $name) {
         register_setting( 'speeding_up_group', $name );
     }
+    $list = [
+      'embed_cache_delete',
+    ];
+    foreach($list as $name) {
+        register_setting( 'database_group', $name );
+    }
 });
 
 //add_action( 'load-toplevel_page_4536-setting', function() {
@@ -131,6 +143,7 @@ $list = [
     'admin_sub_media' => 'ムービー',
     'sub_media_slug' => 'movie',
     'sub_media_name' => 'Movie',
+    'embed_cache_delete' => null,
 ];
 foreach($list as $name => $val) {
     if(get_option($name)===false) update_option($name, $val);
@@ -144,3 +157,4 @@ require_once('seo-setting-form.php');
 require_once('amp-setting-form.php');
 require_once('speeding-up-setting-form.php');
 require_once('etc-setting-form.php');
+require_once('database-setting-form.php');
