@@ -21,8 +21,8 @@ add_action( 'wp_footer', function() {
         else window.addEventListener('load', loadDeferredStyles);
     </script>
     <noscript id="deferred-styles-4536">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
         <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
     </noscript>
 <?php });
 

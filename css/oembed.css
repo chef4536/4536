@@ -107,7 +107,7 @@ body {
 p.wp-embed-heading {
 	margin: 0 0 15px;
 	font-weight: 600;
-	font-size: 22px;
+	font-size: 20px;
 	line-height: 1.3;
 }
 
@@ -368,6 +368,7 @@ html[dir="rtl"] .wp-embed-share-tab-button + .wp-embed-share-tab-button {
     overflow: hidden;
 }
 .read-more-wrap {
+    width: 100%;
     display: block;
     text-align: center;
     margin: .5em auto;
@@ -386,6 +387,9 @@ html[dir="rtl"] .wp-embed-share-tab-button + .wp-embed-share-tab-button {
 }
 
 @media screen and (min-width: 480px) {
+    .read-more-wrap {
+        width: inherit;
+    }
     .read-more {
         text-align: right;
     }

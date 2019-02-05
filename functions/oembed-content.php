@@ -1,5 +1,7 @@
 <?php
 
+if(!custom_blogcard()) return;
+
 //埋め込みコンテンツのキャッシュ削除
 $data = $wpdb->prepare("
     DELETE FROM $wpdb->postmeta
@@ -7,7 +9,7 @@ $data = $wpdb->prepare("
     AND meta_value = %s
     AND post_id = %d
 ", '_oembed_%', '{{unknown}}', 29097);
-$wpdb->query($data);
+// $wpdb->query($data);
 
 //埋め込みコンテンツのキャッシュ削除（コア実装済み）
 // function delete_oembed_caches_4536( $post_ID ) {
@@ -40,11 +42,25 @@ add_filter('embed_oembed_html', function( $output, $post, $width, $height ) {
   // if(preg_match('/<blockquote class="wp-embedded-content"><a href="(.+?)"/i', $output, $match) !== 1) return $output;
   if(preg_match('/<blockquote class="wp-embedded-content".*?<\/blockquote>/i', $output, $match) !== 1) return $output;
   $output = str_ireplace($match[0], '', $output);
-  $cite = str_ireplace('<blockquote', '<cite', $match[0]);
+  $cite = str_ireplace('<blockquote', '<cite data-embed-content-4536="true"', $match[0]);
   $cite = str_ireplace('</blockquote>', '</cite>', $cite);
   $output = $output.$cite;
   return $output;
 }, 10, 4 );
+
+add_filter('the_content', function($content) {
+  $is_embed_content = preg_match_all('/<figure class="wp-block-embed.+?<\/figure>/is', $content, $matches);
+  if(empty($is_embed_content)) return $content;
+  foreach($matches[0] as $match) {
+    if(strpos($match, '<figcaption') !== false) continue;
+    if(preg_match('/<cite data-embed-content-4536="true".+?<\/cite>/', $match, $cite_match) !== 1) continue;
+    $cite = '<figcaption>'.$cite_match[0].'</figcaption>';
+    $new_match = str_replace($cite_match[0], '', $match);
+    $new_match = str_replace('</figure>', $cite.'</figure>', $new_match);
+    $content = str_replace($match, $new_match, $content);
+  }
+  return $content;
+});
 
 add_filter('embed_head', function() {
   wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
@@ -124,15 +140,14 @@ add_filter('embed_thumbnail_image_shape', function() {
 //   return $output;
 // }
 
-add_action('init', function() {
-  return;
-    if(!custom_blogcard()) return;
-    //oembed無効
-    add_filter( 'embed_oembed_discover', '__return_false' );
-    //Embeds
-    remove_action( 'parse_query', 'wp_oembed_parse_query' );
-    remove_action( 'wp_head', 'wp_oembed_remove_discovery_links' );
-    remove_action( 'wp_head', 'wp_oembed_remove_host_js' );
-    //Wordpress4.5.3でポスト時に再び表示されるようになってしまったので対処
-    remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result');
-});
+// add_action('init', function() {
+//     if(!custom_blogcard()) return;
+//     //oembed無効
+//     add_filter( 'embed_oembed_discover', '__return_false' );
+//     //Embeds
+//     remove_action( 'parse_query', 'wp_oembed_parse_query' );
+//     remove_action( 'wp_head', 'wp_oembed_remove_discovery_links' );
+//     remove_action( 'wp_head', 'wp_oembed_remove_host_js' );
+//     //Wordpress4.5.3でポスト時に再び表示されるようになってしまったので対処
+//     remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result');
+// });

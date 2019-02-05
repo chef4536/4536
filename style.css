@@ -99,6 +99,9 @@ pre code {
 .wp-block-separator {
     margin-bottom: 1.5em;
 }
+.wp-block-embed {
+    margin-bottom: 1.5em;
+}
 /* 吹き出し */
 .balloon {
     margin-bottom: 2em;
@@ -211,7 +214,8 @@ pre code {
 cite.wp-embedded-content {
     display: block;
     font-size: small;
-    margin: 1em 0;
+    text-align: left;
+    margin: .5em auto;
 }
 
 /*
