@@ -1,11 +1,11 @@
 <?php
 
 class RelatedPostWidgetItem extends WP_Widget {
-    
+
     public $_title = 'related_title';
     public $_count = 'related_count';
     public $_style = 'related_style';
-    
+
     function __construct() {
 		parent::__construct(
 			'related_post',
@@ -13,7 +13,7 @@ class RelatedPostWidgetItem extends WP_Widget {
 			[ 'description' => __( '関連記事を出力します。', '4536' ) ]
 		);
 	}
-    
+
     function widget($args, $instance) {
         if(!is_single() || is_singular(['music', 'movie'])) return;
         extract( $args );
@@ -28,7 +28,7 @@ class RelatedPostWidgetItem extends WP_Widget {
         $categories = get_the_category($post->ID);
         $category_ID = [];
         foreach($categories as $category) {
-            array_push( $category_ID, $category->cat_ID);
+            $category_ID[] = $category->cat_ID;
         }
         $default = [
             'post__not_in' => [$post->ID],
@@ -40,7 +40,7 @@ class RelatedPostWidgetItem extends WP_Widget {
         if(!$related_posts) return;
         echo $args['before_widget'];
         if(!empty($title)) echo $args['before_title'].$title.$args['after_title'];
-        
+
         echo '<ul>';
         foreach($related_posts as $post) : setup_postdata( $post ); ?>
             <li class="post-list">
@@ -55,10 +55,10 @@ class RelatedPostWidgetItem extends WP_Widget {
         endforeach;
         wp_reset_postdata();
         echo '</ul>';
-        
+
         echo $args['after_widget'];
     }
-    
+
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance[$this->_title] = strip_tags($new_instance[$this->_title]);
@@ -66,7 +66,7 @@ class RelatedPostWidgetItem extends WP_Widget {
         $instance[$this->_style] = $new_instance[$this->_style];
         return $instance;
     }
-    
+
     function form($instance) {
         $title = $this->_title;
         $count = $this->_count;
@@ -95,6 +95,6 @@ class RelatedPostWidgetItem extends WP_Widget {
             </select>
         </p>
     <?php }
-    
+
 }
 add_action( 'widgets_init', function(){ register_widget( 'RelatedPostWidgetItem' ); });

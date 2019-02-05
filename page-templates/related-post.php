@@ -13,7 +13,7 @@ if(related_post_list_style_mobile()==='big') $thumbnail_size = 'big';
 $categories = get_the_category($post->ID);
 $category_ID = [];
 foreach($categories as $category) {
-    array_push( $category_ID, $category->cat_ID);
+    $category_ID[] = $category->cat_ID;
 }
 
 if(line_clamp()=='2line') $line_clamp = ' line-clamp-2';
