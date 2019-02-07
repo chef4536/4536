@@ -1170,7 +1170,7 @@ cite.wp-embedded-content {
     text-align: left;
     margin: .5em auto;
 }
-.blogcard {
+.wp-embed {
     padding: 1em;
     border: 1px solid #e5e5e5;
     word-wrap: break-word;
@@ -1196,14 +1196,16 @@ p.blogcard-title {
     font-weight: 700;
     margin-bottom: 0;
     font-size: 20px;
+    line-height: 1.4;
 }
 .blogcard-image-info-wrap {
-    margin: .5em 0;
+    margin: 1em 0;
 }
 .embed-image {
     float: left;
     max-width: 150px;
     height: auto;
+    margin-right: 1em;
 }
 .blogcard-info {
     position: relative;
@@ -1226,6 +1228,33 @@ p.blogcard-more-wrap {
     border: 1px solid;
     color: #000;
     display: block;
+}
+.blogcard-footer {
+    display: table;
+    width: 100%;
+}
+.blogcard-footer-parts {
+    display: table-cell;
+    line-height: 1;
+}
+.blogcard-comments {
+    text-align: right;
+}
+.dashicons {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: center;
+	-webkit-transition: background .1s ease-in;
+	transition: background .1s ease-in;
+	position: relative;
+	top: 5px;
+}
+.dashicons-admin-comments {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M5%202h9q.82%200%201.41.59T16%204v7q0%20.82-.59%201.41T14%2013h-2l-5%205v-5H5q-.82%200-1.41-.59T3%2011V4q0-.82.59-1.41T5%202z%27%20fill%3D%27%2382878c%27%2F%3E%3C%2Fsvg%3E");
 }
 @media screen and (min-width: 480px) {
     .blogcard-image-info-wrap {

@@ -15,20 +15,31 @@ if(empty(custom_blogcard())) return;
 class ConvertEmbedContentFrom_url_4536 {
 
   function __construct() {
-    add_filter('embed_html', [$this, 'create_embed_content_before']); //前
-    // add_filter('embed_oembed_html', [$this, 'create_embed_content']); //後
-    add_filter('the_content', [$this, 'create_embed_content_after']); //前
+    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //これ使う
+    // add_filter('embed_html', [$this, 'create_embed_content_before']);
+    // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']);
+    // add_filter('the_content', [$this, 'create_embed_content_after']);
   }
 
   function create_embed_content_from_url($url) {
     if(strpos( $url, site_url() ) !== false) {
       $data = $this->get_data_from_internal_link($url);
       $thumbnail = $data['thumbnail'];
+      $sitename = $data['sitename'];
+      $icon = $data['icon'];
+      $comment = (empty($data['comment'])) ? '' : '<div class="blogcard-comments blogcard-footer-parts"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></div>';
     } else {
       $data = $this->get_data_from_external_link($url);
-      $src = $data['src'];
-      $thumbnail = $src; //処理
+      $thumbnail = '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />'; //処理
+      $sitename = $data['host'];
+      $icon = '';
+      $comment = '';
     }
+
+
+
+    if(empty($icon)) $icon = '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
+
     $title = $data['title'];
     $excerpt = $data['excerpt'];
     if(empty($thumbnail)) {
@@ -56,6 +67,13 @@ $output = <<< EOM
       <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
     </div>
   </div>
+  <div class="blogcard-footer">
+    <div class="blogcard-siteinfo blogcard-footer-parts">
+      <span class="site_icon">{$icon}</span>
+      <span class="sitename">{$sitename}</span>
+    </div>
+    {$comment}
+  </div>
 </a>
 EOM;
 
@@ -76,70 +94,17 @@ EOM;
     if(preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1) return $output;
     $html = $this->create_embed_content_from_url($match[1]);
     return $html;
-
-
-    // $id = url_to_postid($url);
-    // if(empty($id)) return $cache;
-    // $post = get_post($id);
-    // $title = $post->post_title;
-    // $content = $post->post_content;
-    // $excerpt = '<div class="blogcard-excerpt display-none-mobile">'.custom_excerpt_4536($content, custom_excerpt_length()).'</div>';
-    // $image_size = (thumbnail_size()=='thumbnail') ? 'thumbnail' : 'thumbnail-wide' ;
-    // $height = (thumbnail_size()=='thumbnail') ? '512' : '341' ;
-    // if(blogcard_thumbnail_display()==='image') {
-    //     if(thumbnail_size()=='thumbnail') {
-    //         $thumb100 = [100,100];
-    //         $thumb150 = [150,150];
-    //         $thumb300 = [300,300];
-    //     } else {
-    //         $thumb100 = [100,75];
-    //         $thumb150 = [150,113];
-    //         $thumb300 = [300,225];
-    //     }
-    //     $thumb = (thumbnail_quality()==='high') ? $thumb300 : $thumb150;
-    //     $thumbnail = get_the_post_thumbnail($id, $thumb, ['class' => 'blogcard-thumb-image'] );//サムネイルの取得
-    //     if(empty($thumbnail) && function_exists('get_first_image_4536') && get_first_image_4536()) {
-    //         preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $first_img);
-    //         $src = ($first_img) ? $first_img[1] : '';
-    //         $thumbnail = '<img src="'.$src.'" width="512" height="'.$height.'" />';
-    //     }
-    //     if($thumbnail) {
-    //         $thumbnail = '<div class="'.$image_size.'">'.$thumbnail.'</div>';
-    //     } else {
-    //         $thumbnail = null;
-    //     }
-    // } else {
-    //     $src = get_the_post_thumbnail_url($id);
-    //     if(!$src && function_exists('get_first_image_4536') && get_first_image_4536()) {
-    //         preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $first_img);
-    //         $src = ($first_img[1]) ? $first_img[1] : '';
-    //     }
-    //     if($src) {
-    //         $class = get_thumbnail_class_4536($src);
-    //         $thumbnail = '<div class="post-list-thumbnail '.$image_size.'"><div class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></div></div>';
-    //     } else {
-    //         $thumbnail = null;
-    //     }
-    // }
-    // if(line_clamp()=='2line') $line_clamp = ' line-clamp-2';
-    // if(line_clamp()=='3line') $line_clamp = ' line-clamp-3';
-    //
-    // $output = '<a class="blogcard margin-1_5em-auto post-list flexbox-row-wrap blogcard-link" href="'.$url.'">'.$thumbnail.'<div class="blogcard-info flex-1'.$line_clamp.'">'.
-    //           '<span class="blogcard-related-font">関連</span>'.
-    //           '<span class="blogcard-title">'.$title.'</span>'.
-    //           $excerpt.
-    //           '<div class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span><i class="fas fa-long-arrow-alt-right"></i></div>'.
-    //         '</div></a>';
-    //
-    // return $output;
-
-
   }
 
   function get_data_from_internal_link($url) {
     $id = url_to_postid($url);
     $data = get_post($id);
+    $sitename = get_bloginfo('name');
+    $title = $data->post_title;
     $content = $data->post_content;
+    $comment = $data->comment_count;
+    $icon = wp_get_attachment_image( get_option('site_icon'), [16,16] );
+    $excerpt = custom_excerpt_4536($content, 60);
     if(thumbnail_size()==='thumbnail') {
         $thumb150 = [150,150];
         $thumb300 = [300,300];
@@ -153,12 +118,15 @@ EOM;
     } else {
       $thumbnail = get_some_image_4536($content);
     }
-    return [
-      'title' => $data->post_title,
-      'excerpt' => custom_excerpt_4536($content, 60),
-      'thumbnail' => $thumbnail,
-      'comment' => $data->comment_count,
-    ];
+
+    return compact(
+      'title',
+      'excerpt',
+      'thumbnail',
+      'sitename',
+      'icon',
+      'comment'
+    );
   }
 
   function get_data_from_external_link($url) {
@@ -168,6 +136,7 @@ EOM;
       'title' => $data->title,
       'excerpt' => $data->description,
       'src' => $data->image,
+      'host' => parse_url(esc_url($url))['host'],
     ];
     return $data;
   }
@@ -175,8 +144,17 @@ EOM;
 }
 new ConvertEmbedContentFrom_url_4536();
 
-
-
 // add_filter( 'pre_oembed_result', function($html, $url, $args) {
 //   //
 // }, 10, 3);
+
+remove_action( 'embed_head', 'print_embed_styles' );
+
+
+add_filter('embed_head', function() {
+  wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
+});
+
+add_filter('embed_thumbnail_image_shape', function() {
+  return 'square';
+});

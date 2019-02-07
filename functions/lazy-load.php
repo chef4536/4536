@@ -8,15 +8,19 @@ function lazy_load_content_4536($html) {
     if(!is_lazy_load_4536()) return $html;
     if(preg_match_all('/<img.+?>/i', $html, $images)) {
         foreach($images[0] as $image) {
-            preg_match('/class="(.+?)"/i', $image, $class);
-            if(empty($class)) continue;
-            if(strpos($class[1], 'lozad') !== false) continue;
+            preg_match('/class="(.*?)"/i', $image, $class);
+            if(empty($class[0])) {
+              $new_image = str_replace('<img', '<img class="lozad"', $image);
+            } else {
+              if(strpos($class[1], 'lozad') !== false) continue;
+              $new_class = substr_replace($class[1], 'lozad ', 0, 0);
+              $new_image = str_replace($class[1], $new_class, $image);
+            }
             preg_match('/(width|height)="1"/i', $image, $tag);
-            if($tag) continue;
-            $new_image = str_replace('src="', 'data-src="', $image);
+            if(!empty($tag[0])) continue;
+
+            $new_image = str_replace('src="', 'data-src="', $new_image);
             $new_image = str_replace('srcset="', 'data-srcset="', $new_image);
-            $new_class = substr_replace($class[1], 'lozad ', 0, 0);
-            $new_image = str_replace($class[1], $new_class, $new_image);
             $noscript = '<noscript>'.$image.'</noscript>';
             $new_image = $new_image.$noscript;
             $html = str_replace($image, $new_image, $html);
