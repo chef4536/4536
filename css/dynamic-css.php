@@ -78,12 +78,7 @@ if(blogcard_thumbnail_display()==='background-image') {
             $id = url_to_postid($url);//IDを取得（URLから投稿ID変換）
             if(!$id) continue;//IDを取得できない場合はループを飛ばす
             $src = get_the_post_thumbnail_url($id);
-            if(!$src && function_exists('get_first_image_4536') && get_first_image_4536()) {
-                $content_post = get_post($id);
-                $content = $content_post->post_content;
-                preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $first_img);
-                $src = ($first_img) ? $first_img[1] : '';
-            }
+            if(empty($src)) get_some_image_url_4536($content);
             $class = get_thumbnail_class_4536($src);
             $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
         }

@@ -43,6 +43,27 @@ if(get_option('thumbnail_generate_4536')) { //サムネイルを生成
     }
 }
 
+function get_some_image_4536( $content ) {
+  $w_px = get_image_width_and_height_4536(get_some_image_url_4536($content))['width'];
+  $h_px = get_image_width_and_height_4536(get_some_image_url_4536($content))['height'];
+  $sizes = ' sizes="(max-width:'.$w_px.'px) 100vw, '.$w_px.'px"';
+  $thumbnail = '<img src="'.get_some_image_url_4536($content).'" alt="'.get_the_title().'" width="'.$w_px.'" height="'.$h_px.'"'.$sizes.'>';
+  return $thumbnail;
+}
+
+function get_some_image_url_4536( $content = null ) {
+  $src = get_first_image_4536($content);
+  if(empty($src) && has_site_icon()) $src = get_site_icon_url();
+  if(empty($src)) $src = no_image_url_4536();
+  return $src;
+}
+
+function no_image_url_4536() {
+  $height = (thumbnail_size()==='thumbnail') ? '512' : '341' ;
+  $src = get_template_directory_uri().'/img/no-image-512-'.$height.'.png';
+  return $src;
+}
+
 //アイキャッチ画像情報取得
 function get_the_post_thumbnail_4536() {
     $src = get_the_post_thumbnail_url();
@@ -375,7 +396,7 @@ function auto_post_thumbnail_image_4536() {
     }
   }
 }
-if(get_post_first_image()=='get_save') {
+if(get_post_first_image()==='get_save') {
     add_action('save_post', 'auto_post_thumbnail_image_4536');
     add_action('draft_to_publish', 'auto_post_thumbnail_image_4536');
     add_action('new_to_publish', 'auto_post_thumbnail_image_4536');
@@ -385,11 +406,10 @@ if(get_post_first_image()=='get_save') {
 }
 
 //記事の最初の画像を取得（アイキャッチ画像として保存はしない）
-function get_first_image_4536() {
-    if(get_post_first_image()!=='get') return;
-    global $post;
-    preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $first_img);
-    return ($first_img) ? $first_img[1] : '';
+function get_first_image_4536($content) {
+    if(get_post_first_image() !=='get' ) return null;
+    preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $first_img);
+    return (!empty($first_img)) ? $first_img[1] : '';
 }
 
 //オリジナルのサムネをセット

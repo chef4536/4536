@@ -210,56 +210,6 @@ pre code {
     top:20px;
     right:-19px;
 }
-/* ブログカード */
-cite.wp-embedded-content {
-    display: block;
-    font-size: small;
-    text-align: left;
-    margin: .5em auto;
-}
-
-/*
-.blogcard {
-    padding: .5em;
-    border:1px solid #ddd;
-    word-wrap:break-word;
-    width:100%;
-    border-radius:2px;
-}
-.blogcard-info {
-    margin-left: .5em;
-    line-height: 1.5;
-    font-size: 90%;
-    font-weight: 700;
-    position: relative;
-}
-.blogcard-title {
-    margin-left: .3em;
-}
-.blogcard-related-font,
-.blogcard-more-wrap {
-    border: 1px solid;
-    padding: .3em;
-    font-size: 9pt;
-    border-radius: 2px;
-}
-.blogcard-more-wrap {
-    background-color: #000;
-    color: #fff;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-.blogcard-more {
-    margin-right: .3em;
-}
-.blogcard-excerpt {
-    color:#aaa;
-    font-size:80%;
-    line-height:1.4;
-    margin-top:10px;
-}
-*/
 /* 目次 */
 .toc-4536:not(.toc-sidebar){border:1px solid #e5e5e5;border-radius:2px;padding:1em;margin:1em 0}.toc-4536 a{text-decoration:none}.toc-title-4536{font-size:1.2em;font-weight:700;margin-bottom:1em;text-align:center}.toc-title-4536 a{font-size:14px;font-weight:400}.toc-outline{overflow:hidden}.toc-4536 ul{counter-reset:a;list-style-type:none}.toc-4536 ul ul{margin-left:1.5em}.toc-4536 ul a{display:block;padding:.05em 0;font-size:14px}.toc-4536 li{margin:0}.toc-4536 li a:before{counter-increment:a;content:counters(a,".") "";margin-right:.5em;display:block;float:left}
 
@@ -1213,7 +1163,62 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
     width: 100%;
     height: 100%;
 }
-
+/* ブログカード */
+cite.wp-embedded-content {
+    display: block;
+    font-size: small;
+    text-align: left;
+    margin: .5em auto;
+}
+.blogcard {
+    padding: 1em;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    width: 100%;
+    color: #82878c;
+    line-height: 1.5;
+    display: block;
+    border-radius: 2px;
+}
+.blogcard::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+p.blogcard-title {
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.embed-image {
+    float: left;
+}
+p.blogcard-excerpt {
+    margin-bottom: 0;
+    font-size: small;
+}
+p.blogcard-more-wrap {
+    margin-bottom: 0;
+    text-align: center;
+}
+.blogcard-more {
+    border: 1px solid;
+    padding: .3em;
+    font-size: 9pt;
+    border-radius: 2px;
+    background-color: #000;
+    color: #fff;
+    display: block;
+}
+@media screen and (min-width: 480px) {
+    p.blogcard-more-wrap {
+        text-align: right;
+    }
+    .blogcard-more {
+        display: inline-block;
+    }
+/* min-480px END */
+}
 /* --------------------------------------------------
 /* min-768px BEGIN for tablet and pc
 --------------------------------------------------- */

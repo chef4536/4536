@@ -9,6 +9,8 @@ function thumbnail_4536($thumbnail_style) {
     $thumbnail = '';
     $src = '';
     $class = '';
+    $content = get_the_content();
+
     if(thumbnail_size()=='thumbnail-wide') {
         $thumb500 = [500,375];
         $thumb300 = [300,225];
@@ -20,7 +22,7 @@ function thumbnail_4536($thumbnail_style) {
         $thumb150 = [150,150];
         $thumb150 = [100,100];
     }
-    
+
     $thumbnail_size = thumbnail_size();
 
     if($thumbnail_style=='2-5') {
@@ -54,8 +56,6 @@ function thumbnail_4536($thumbnail_style) {
     }
     if(is_amp()) $post_thumbnail = get_the_post_thumbnail( $post->ID, $thumb500 );
 
-    $height = (thumbnail_size()=='thumbnail') ? '512' : '341' ;
-    
     //カテゴリー
     $cat = get_the_category();
     $cat_name = $cat[0]->name;
@@ -66,34 +66,20 @@ function thumbnail_4536($thumbnail_style) {
     //サムネイル
     if(thumbnail_display()==='image') {
         $start_tag = '<figure class="post-list-thumbnail '.$thumbnail_size.'">';
-        $img_s_tag = (is_amp()) ? 'amp-img' : 'img';
-        $img_e_tag = (is_amp()) ? '</amp-img>' : '';
-        if ( has_post_thumbnail() ) {
-            $thumbnail = $post_thumbnail;
-        } elseif (function_exists('get_first_image_4536') && get_first_image_4536()) {
-            $w_px = get_image_width_and_height_4536(get_first_image_4536())['width'];
-            $h_px = get_image_width_and_height_4536(get_first_image_4536())['height'];
-            $sizes = (is_amp()) ? ' sizes="(max-width:'.$w_px.'px) 100vw, '.$w_px.'px"' : '';
-            $thumbnail = '<'.$img_s_tag.' src="'.get_first_image_4536().'" alt="'.get_the_title().'" width="'.$w_px.'" height="'.$h_px.'"'.$sizes.'>'.$img_e_tag;
-        } else {
-            $thumbnail = '<'.$img_s_tag.' src="'.get_template_directory_uri().'/img/no-image-512-'.$height.'.png" alt="no image" title="no image" width="512" height="'.$height.'" sizes="(max-width:512px) 100vw, 512px">'.$img_e_tag;
-        }
+        $thumbnail = ( has_post_thumbnail() ) ? $post_thumbnail : get_some_image_4536($content);
         $end_tag = $new_icon.$category.'</figure>';
         $thumbnail = $start_tag.$thumbnail.$end_tag;
     } else {
         if(has_post_thumbnail()) {
-            preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_thumbnail, $m);
-            $src = ($m) ? $m[1] : get_the_post_thumbnail_url();
-            $class = get_thumbnail_class_4536($src);
-        } elseif(function_exists('get_first_image_4536') && get_first_image_4536()) {
-            $src = get_first_image_4536();
-            $class = get_thumbnail_class_4536($src);
+          preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_thumbnail, $m);
+          $src = ($m) ? $m[1] : get_the_post_thumbnail_url();
         } else {
-            $src = get_template_directory_uri().'/img/no-image-512-'.$height.'.png';
-            $class = 'thumbnail-no-img-512-'.$height;
+          $src = get_some_image_url_4536($content);
         }
+        $class = get_thumbnail_class_4536($src);
+
         //参考：https://teratail.com/questions/28223#reply-44119
-        
+
         $thumbnail = '<div class="background-thumbnail-4536 '.$class.'"></div>';
         $thumbnail = '<div class="post-list-thumbnail '.$thumbnail_size.'">'.$thumbnail.$new_icon.$category.'</div>';
     }
