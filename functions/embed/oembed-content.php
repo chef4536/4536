@@ -37,21 +37,25 @@ class ConvertEmbedContentFrom_url_4536 {
 
     // return $title.$description.$src;
 
-    $image_size = (thumbnail_size()=='thumbnail') ? 'thumbnail' : 'thumbnail-wide' ;
+    $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
     if(blogcard_thumbnail_display()==='image') {
-      $thumbnail = (!empty($thumbnail)) ? '<div class="embed-image '.$image_size.'">'.$thumbnail.'</div>' : '';
+      $thumbnail = (!empty($thumbnail)) ? '<div class="embed-image'.$image_size.'">'.$thumbnail.'</div>' : '';
     } else {
       $src = (has_post_thumbnail()) ? get_the_post_thumbnail_url($id) : get_some_image_url_4536($content);
       $class = get_thumbnail_class_4536($src);
-      $thumbnail = '<div class="post-list-thumbnail '.$image_size.'"><div class="embed-image background-thumbnail-4536 blogcard-thumbnail '.$class.'"></div></div>';
+      $thumbnail = '<div class="post-list-thumbnail'.$image_size.'"><div class="embed-image background-thumbnail-4536 blogcard-thumbnail '.$class.'"></div></div>';
     }
 
 $output = <<< EOM
-<a class="blogcard margin-1_5em-auto post-list blogcard-link" href="{$url}">
+<a class="blogcard post-list blogcard-link" href="{$url}">
   <p class="blogcard-title">{$title}</p>
-  {$thumbnail}
-  <p class="blogcard-excerpt">{$excerpt}</p>
-  <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
+  <div class="blogcard-image-info-wrap">
+    {$thumbnail}
+    <div class="blogcard-info">
+      <p class="blogcard-excerpt">{$excerpt}</p>
+      <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
+    </div>
+  </div>
 </a>
 EOM;
 
