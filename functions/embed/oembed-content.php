@@ -18,7 +18,7 @@ class ConvertEmbedContentFrom_url_4536 {
     add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //前
     // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
     // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']); //後
-    // add_filter('the_content', [$this, 'create_embed_content_after']); //前
+    add_filter('the_content', [$this, 'create_embed_content_after']); //前
   }
 
   function create_embed_content_from_url($url) {
@@ -85,7 +85,7 @@ EOM;
     $res = preg_match_all('/^(<p>||<div class="wp-block-embed__wrapper">)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>||<\/div>)?/im', $content, $matches);
     foreach ($matches[0] as $match) {
       $url = strip_tags($match);
-      $content = str_replace($match, $this->create_embed_content_from_url($url), $content);
+      $content = preg_replace('{^'.preg_quote($match, '{}').'}im', $this->create_embed_content_from_url($url), $content, 1);
     }
     return $content;
   }
@@ -130,8 +130,23 @@ EOM;
   }
 
   function get_data_from_external_link($url) {
-    $data = [];
-    $data = OpenGraph::fetch($url);
+
+    $url = esc_url($url);
+
+    $transient = md5($url);
+
+    $data = $cache = get_transient($transient);
+
+    if ($cache === false) {
+      $data = [];
+      $data = OpenGraph::fetch($url);
+      set_transient(
+        $transient,
+        $data,
+        WEEK_IN_SECONDS //1週間
+      );
+    }
+
     if(!empty($data)) $data = [
       'title' => $data->title,
       'excerpt' => $data->description,
