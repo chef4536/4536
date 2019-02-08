@@ -80,6 +80,12 @@ EOM;
 
   }
 
+  function create_embed_content_before($output) {
+    if(preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1) return $output;
+    $html = $this->create_embed_content_from_url($match[1]);
+    return $html;
+  }
+
   function create_embed_content_after($content) {
     $res = preg_match_all('/^(<p>||<div class="wp-block-embed__wrapper">)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>||<\/div>)?/im', $content, $matches);
     foreach ($matches[0] as $match) {
@@ -89,13 +95,8 @@ EOM;
     return $content;
   }
 
-  function create_embed_content_before($output) {
-    if(preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1) return $output;
-    $html = $this->create_embed_content_from_url($match[1]);
-    return $html;
-  }
-
   function get_data_from_internal_link($url) {
+
     $id = url_to_postid($url);
     $data = get_post($id);
     $sitename = get_bloginfo('name');
