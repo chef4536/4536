@@ -24,9 +24,9 @@ function admin_database_setting_4536() { ?>
         <div class="inside">
           <?php
           $list = [
-            null => 'キャッシュを削除しない',
-            'all' => 'すべての埋め込みコンテンツのキャッシュを削除',
-            'unknown' => 'カスタムされたブログカードのキャッシュを削除',
+            'all' => 'すべての埋め込みコンテンツ',
+            'unknown' => 'カスタムされたブログカード',
+            'ogp' => '外部URLのブログカード',
           ];
           foreach($list as $val => $description) { ?>
             <p>
@@ -34,11 +34,12 @@ function admin_database_setting_4536() { ?>
                 <label for="<?php echo $val.'_button'; ?>"><?php echo $description; ?></label>
             </p>
           <?php } ?>
+          <p>
+            <?php submit_button('キャッシュを削除する', 'primary large', 'embed_cache_delete_submit_4536', $wrap, $other_attributes); ?>
+          </p>
         </div>
     </div>
     </div>
-
-    <?php submit_button($text, 'primary large', 'admin_database_setting_submit_4536', $wrap, $other_attributes); ?>
 
     </form>
 
@@ -58,5 +59,10 @@ $list = [
 ];
 foreach($list as $name) {
     $val = (isset($_POST[$name])) ? $_POST[$name] : '' ;
-    if(isset($_POST['admin_database_setting_submit_4536'])) update_option($name, $val);
+    if(isset($_POST['embed_cache_delete_submit_4536'])) {
+      update_option($name, $val);
+      add_action( 'admin_notices', function() {
+          echo '<div class="updated"><p>キャッシュを削除しました。</p></div>';
+      });
+    }
 }

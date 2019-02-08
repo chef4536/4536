@@ -143,7 +143,7 @@ $list = [
     'admin_sub_media' => 'ムービー',
     'sub_media_slug' => 'movie',
     'sub_media_name' => 'Movie',
-    'embed_cache_delete' => null,
+    'embed_cache_delete' => 'all',
 ];
 foreach($list as $name => $val) {
     if(get_option($name)===false) update_option($name, $val);
