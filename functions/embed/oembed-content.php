@@ -15,9 +15,9 @@ if(empty(custom_blogcard())) return;
 class ConvertEmbedContentFrom_url_4536 {
 
   function __construct() {
-    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //内部用
     // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
     // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']); //後
+    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //内部用
     add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
   }
 
@@ -30,7 +30,7 @@ class ConvertEmbedContentFrom_url_4536 {
       $thumbnail = $data['thumbnail'];
       $sitename = $data['sitename'];
       $icon = $data['icon'];
-      $comment = (empty($data['comment'])) ? '' : '<div class="blogcard-comments blogcard-footer-parts"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></div>';
+      $comment = (empty($data['comment'])) ? '' : '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></span>';
     } else {
       $data = $this->get_data_from_external_link($url);
       $thumbnail = ( !empty($data['src']) ) ? '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />' : '';
@@ -47,31 +47,32 @@ class ConvertEmbedContentFrom_url_4536 {
     if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$title.'</a>';
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
-    if(blogcard_thumbnail_display()==='image') {
-      $thumbnail = '<div class="embed-image'.$image_size.'">'.$thumbnail.'</div>';
-    } else {
+
+    if( blogcard_thumbnail_display()==='background-image' ) {
       $src = (has_post_thumbnail()) ? get_the_post_thumbnail_url($id) : get_some_image_url_4536($content);
       $class = get_thumbnail_class_4536($src);
-      $thumbnail = '<div class="post-list-thumbnail'.$image_size.'"><div class="embed-image background-thumbnail-4536 blogcard-thumbnail '.$class.'"></div></div>';
+      $thumbnail = '<span class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></span>';
     }
 
     $output = <<< EOM
-    <a class="blogcard post-list blogcard-link" href="{$url}">
-      <p class="blogcard-title">{$title}</p>
-      <div class="blogcard-image-info-wrap">
-        {$thumbnail}
-        <div class="blogcard-info">
-          <p class="blogcard-excerpt">{$excerpt}</p>
-          <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
-        </div>
-      </div>
-      <div class="blogcard-footer">
-        <div class="blogcard-siteinfo blogcard-footer-parts">
+    <a class="wp-embed" href="{$url}">
+      <span class="wp-embed-heading">{$title}</span>
+      <span class="blogcard-image-info-wrap">
+        <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
+          {$thumbnail}
+        </span>
+        <span class="blogcard-info">
+          <span class="wp-embed-excerpt">{$excerpt}</span>
+          <span class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></span>
+        </span>
+      </span>
+      <span class="wp-embed-footer">
+        <span class="blogcard-siteinfo">
           <span class="site_icon">{$icon}</span>
-          <span class="sitename">{$sitename}</span>
-        </div>
+          <span class="wp-embed-site-title">{$sitename}</span>
+        </span>
         {$comment}
-      </div>
+      </span>
     </a>
 EOM;
 
@@ -161,7 +162,13 @@ new ConvertEmbedContentFrom_url_4536();
 //   //
 // }, 10, 3);
 
+add_filter('template_include', function( $template ) {
+  //include_test
+  // $template = __DIR__.'/template.php';
+  return $template;
+});
 
 add_filter('embed_head', function() {
   wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
 });
+// remove_action( 'embed_head', 'print_embed_styles' );

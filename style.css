@@ -1185,13 +1185,14 @@ cite.wp-embedded-content {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     zoom: 1;
+    text-decoration: none;
 }
-.blogcard::after {
+.wp-embed::after {
     content: "";
     display: table;
     clear: both;
 }
-p.blogcard-title {
+.wp-embed-heading {
     color: #000;
     font-weight: 700;
     margin-bottom: 0;
@@ -1200,8 +1201,9 @@ p.blogcard-title {
 }
 .blogcard-image-info-wrap {
     margin: 1em 0;
+    display: block;
 }
-.embed-image {
+.wp-embed-featured-image {
     float: left;
     max-width: 150px;
     height: auto;
@@ -1213,13 +1215,17 @@ p.blogcard-title {
     -ms-flex: 1;
     flex: 1;
 }
-p.blogcard-excerpt {
+.wp-embed-excerpt {
     margin-bottom: 0;
     font-size: small;
+    overflow: auto;
+    display: block;
 }
-p.blogcard-more-wrap {
+.blogcard-more-wrap {
     margin: 1em 0;
     text-align: center;
+    overflow: auto;
+    display: block;
 }
 .blogcard-more {
     padding: .5em;
@@ -1229,15 +1235,22 @@ p.blogcard-more-wrap {
     color: #000;
     display: block;
 }
-.blogcard-footer {
+.wp-embed-footer {
     display: table;
     width: 100%;
+    margin-top: 1em;
 }
-.blogcard-footer-parts {
+.blogcard-siteinfo,
+.wp-embed-comments,
+.site_icon,
+.wp-embed-site-title {
     display: table-cell;
     line-height: 1;
 }
-.blogcard-comments {
+.site_icon {
+    padding-right: .2em;
+}
+.wp-embed-comments {
     text-align: right;
 }
 .dashicons {
@@ -1262,7 +1275,7 @@ p.blogcard-more-wrap {
         display: -ms-flexbox;
         display: flex;
     }
-    p.blogcard-more-wrap {
+    .blogcard-more-wrap {
         text-align: right;
         position: absolute;
         right: 0;

@@ -69,6 +69,7 @@ function thumbnail_4536($thumbnail_style) {
         $thumbnail = ( has_post_thumbnail() ) ? $post_thumbnail : get_some_image_4536($content);
         $end_tag = $new_icon.$category.'</figure>';
         $thumbnail = $start_tag.$thumbnail.$end_tag;
+        $thumbnail = convert_content_to_amp($thumbnail);
     } else {
         if(has_post_thumbnail()) {
           preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_thumbnail, $m);

@@ -5,6 +5,13 @@ html, body {
 body {
 	font-family: 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
 }
+/* ブログカード */
+cite.wp-embedded-content {
+    display: block;
+    font-size: small;
+    text-align: left;
+    margin: .5em auto;
+}
 .wp-embed {
     padding: 1em;
     border: 1px solid #e5e5e5;
@@ -20,13 +27,14 @@ body {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     zoom: 1;
+    text-decoration: none;
 }
 .wp-embed::after {
     content: "";
     display: table;
     clear: both;
 }
-p.wp-embed-heading {
+.wp-embed-heading {
     color: #000;
     font-weight: 700;
     margin-bottom: 0;
@@ -35,6 +43,7 @@ p.wp-embed-heading {
 }
 .blogcard-image-info-wrap {
     margin: 1em 0;
+    display: block;
 }
 .wp-embed-featured-image {
     float: left;
@@ -48,15 +57,19 @@ p.wp-embed-heading {
     -ms-flex: 1;
     flex: 1;
 }
-p.wp-embed-excerpt {
+.wp-embed-excerpt {
     margin-bottom: 0;
     font-size: small;
+    overflow: auto;
+    display: block;
 }
-p.blogcard-more-wrap {
+.blogcard-more-wrap {
     margin: 1em 0;
     text-align: center;
+    overflow: auto;
+    display: block;
 }
-.wp-embed-more {
+.blogcard-more {
     padding: .5em;
     font-size: 9pt;
     border-radius: 2px;
@@ -67,32 +80,21 @@ p.blogcard-more-wrap {
 .wp-embed-footer {
     display: table;
     width: 100%;
+    margin-top: 1em;
 }
-.wp-embed-site-title,
-.wp-embed-comments {
+.blogcard-siteinfo,
+.wp-embed-comments,
+.site_icon,
+.wp-embed-site-title {
     display: table-cell;
     line-height: 1;
+}
+.site_icon {
+    padding-right: .2em;
 }
 .wp-embed-comments {
     text-align: right;
 }
-
-
-
-.screen-reader-text {
-    border: 0;
-    clip: rect(1px,1px,1px,1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal!important;
-}
-/*
 .dashicons {
 	display: inline-block;
 	width: 20px;
@@ -109,14 +111,13 @@ p.blogcard-more-wrap {
 .dashicons-admin-comments {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M5%202h9q.82%200%201.41.59T16%204v7q0%20.82-.59%201.41T14%2013h-2l-5%205v-5H5q-.82%200-1.41-.59T3%2011V4q0-.82.59-1.41T5%202z%27%20fill%3D%27%2382878c%27%2F%3E%3C%2Fsvg%3E");
 }
-*/
 @media screen and (min-width: 480px) {
     .blogcard-image-info-wrap {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
     }
-    p.blogcard-more-wrap {
+    .blogcard-more-wrap {
         text-align: right;
         position: absolute;
         right: 0;
@@ -124,4 +125,33 @@ p.blogcard-more-wrap {
         margin: 0;
     }
 /* min-480px END */
+}
+
+
+
+
+/*
+
+For Editor
+
+*/
+
+.wp-embed {
+    margin: 0;
+}
+.wp-embed-heading {
+    margin: 1em 0;
+}
+.wp-embed-featured-image img {
+    width: 100%;
+    height: auto;
+    border: none;
+}
+.wp-embed-share-dialog,
+.screen-reader-text,
+.wp-embed-share {
+    display: none;
+}
+.wp-embed-comments {
+    display: inline;
 }
