@@ -15,13 +15,16 @@ if(empty(custom_blogcard())) return;
 class ConvertEmbedContentFrom_url_4536 {
 
   function __construct() {
-    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //前
+    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //内部用
     // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
     // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']); //後
-    add_filter('the_content', [$this, 'create_embed_content_after']); //前
+    add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
   }
 
   function create_embed_content_from_url($url) {
+
+    $url = esc_url($url);
+
     if(strpos( $url, site_url() ) !== false) {
       $data = $this->get_data_from_internal_link($url);
       $thumbnail = $data['thumbnail'];
@@ -30,51 +33,46 @@ class ConvertEmbedContentFrom_url_4536 {
       $comment = (empty($data['comment'])) ? '' : '<div class="blogcard-comments blogcard-footer-parts"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></div>';
     } else {
       $data = $this->get_data_from_external_link($url);
-      $thumbnail = '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />'; //処理
+      $thumbnail = ( !empty($data['src']) ) ? '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />' : '';
       $sitename = $data['host'];
       $icon = '';
       $comment = '';
     }
 
-
-
     if(empty($icon)) $icon = '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
     $title = $data['title'];
     $excerpt = $data['excerpt'];
-    if(empty($thumbnail)) {
-      //処理
-    }
 
-    // return $title.$description.$src;
+    if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$title.'</a>';
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
     if(blogcard_thumbnail_display()==='image') {
-      $thumbnail = (!empty($thumbnail)) ? '<div class="embed-image'.$image_size.'">'.$thumbnail.'</div>' : '';
+      $thumbnail = '<div class="embed-image'.$image_size.'">'.$thumbnail.'</div>';
     } else {
       $src = (has_post_thumbnail()) ? get_the_post_thumbnail_url($id) : get_some_image_url_4536($content);
       $class = get_thumbnail_class_4536($src);
       $thumbnail = '<div class="post-list-thumbnail'.$image_size.'"><div class="embed-image background-thumbnail-4536 blogcard-thumbnail '.$class.'"></div></div>';
     }
 
-$output = <<< EOM
-<a class="blogcard post-list blogcard-link" href="{$url}">
-  <p class="blogcard-title">{$title}</p>
-  <div class="blogcard-image-info-wrap">
-    {$thumbnail}
-    <div class="blogcard-info">
-      <p class="blogcard-excerpt">{$excerpt}</p>
-      <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
-    </div>
-  </div>
-  <div class="blogcard-footer">
-    <div class="blogcard-siteinfo blogcard-footer-parts">
-      <span class="site_icon">{$icon}</span>
-      <span class="sitename">{$sitename}</span>
-    </div>
-    {$comment}
-  </div>
-</a>
+    $output = <<< EOM
+    <a class="blogcard post-list blogcard-link" href="{$url}">
+      <p class="blogcard-title">{$title}</p>
+      <div class="blogcard-image-info-wrap">
+        {$thumbnail}
+        <div class="blogcard-info">
+          <p class="blogcard-excerpt">{$excerpt}</p>
+          <p class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></p>
+        </div>
+      </div>
+      <div class="blogcard-footer">
+        <div class="blogcard-siteinfo blogcard-footer-parts">
+          <span class="site_icon">{$icon}</span>
+          <span class="sitename">{$sitename}</span>
+        </div>
+        {$comment}
+      </div>
+    </a>
 EOM;
 
     return $output;
@@ -133,7 +131,7 @@ EOM;
 
     $url = esc_url($url);
 
-    $transient = md5($url);
+    $transient = 'ogp_cache_4536_'.md5($url);
 
     $data = $cache = get_transient($transient);
 
