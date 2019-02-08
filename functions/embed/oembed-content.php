@@ -15,10 +15,10 @@ if(empty(custom_blogcard())) return;
 class ConvertEmbedContentFrom_url_4536 {
 
   function __construct() {
-    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //これ使う
-    // add_filter('embed_html', [$this, 'create_embed_content_before']);
-    // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']);
-    // add_filter('the_content', [$this, 'create_embed_content_after']);
+    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //前
+    // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
+    // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']); //後
+    // add_filter('the_content', [$this, 'create_embed_content_after']); //前
   }
 
   function create_embed_content_from_url($url) {
@@ -148,13 +148,7 @@ new ConvertEmbedContentFrom_url_4536();
 //   //
 // }, 10, 3);
 
-remove_action( 'embed_head', 'print_embed_styles' );
-
 
 add_filter('embed_head', function() {
   wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
-});
-
-add_filter('embed_thumbnail_image_shape', function() {
-  return 'square';
 });
