@@ -189,7 +189,7 @@ EOM;
     if ($cache === false) {
       $data = [];
       $data = OpenGraph::fetch($url);
-      if( !is_array($data) ) return false;
+      if( !is_object($data) ) return false;
       set_transient(
         $transient,
         $data,
