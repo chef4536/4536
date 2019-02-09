@@ -395,14 +395,15 @@ h2.post-title { /* トップの新着記事 */
     padding-left: 1.5em;
     margin-bottom: 1.5em;
 }
-.article-body blockquote {
+.article-body blockquote:not(.external-website-embed-content) {
     padding: 20px 20px 0 !important;
     margin: 10px 0 1.5em;
     position: relative;
     border: 1px solid !important;
     border-radius: 2px;
 }
-.article-body blockquote::before,.article-body blockquote::after {
+.article-body blockquote:not(.external-website-embed-content)::before,
+.article-body blockquote:not(.external-website-embed-content)::after {
     position: absolute;
     background-color: #fff;
     font-size: 18px;
@@ -415,12 +416,12 @@ h2.post-title { /* トップの新着記事 */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
-.article-body blockquote::before {
+.article-body blockquote:not(.external-website-embed-content)::before {
     left: -10px;
     top: -10px;
     content: '\f10d';
 }
-.article-body blockquote::after {
+.article-body blockquote:not(.external-website-embed-content)::after {
     right: -10px;
     bottom: -10px;
     content: '\f10e';

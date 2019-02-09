@@ -32,6 +32,7 @@ class ConvertEmbedContentFrom_url_4536 {
       $comment = (empty($data['comment'])) ? '' : '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></span>';
     } else {
       $data = $this->get_data_from_external_link($url);
+      if( $data === false ) return $url;
       $thumbnail = ( !empty($data['src']) ) ? '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />' : '';
       $sitename = $data['host'];
       $icon = '';
@@ -53,8 +54,15 @@ class ConvertEmbedContentFrom_url_4536 {
       $thumbnail = '<span class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></span>';
     }
 
+    $blockquote_begin = $blockquote_end = '';
+    if ( is_my_website( $url ) === false ) {
+      $blockquote_begin = '<blockquote class="external-website-embed-content" cite="'.$url.'"><p>';
+      $blockquote_end = '</p></blockquote>';
+    }
+
     $output = <<< EOM
-    <a class="wp-embed" href="{$url}">
+    {$blockquote_begin}
+    <a data-embed-content="true" class="wp-embed" href="{$url}">
       <span class="wp-embed-heading">{$title}</span>
       <span class="blogcard-image-info-wrap">
         <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
@@ -73,6 +81,7 @@ class ConvertEmbedContentFrom_url_4536 {
         {$comment}
       </span>
     </a>
+    {$blockquote_end}
 EOM;
 
     return $output;
@@ -82,17 +91,21 @@ EOM;
   function create_embed_content_before($output) {
     if ( preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1 ) return $output;
     $url = esc_url($match[1]);
-    if ( strpos( $url, site_url() )  === false ) return $url;
+    if ( is_my_website( $url ) === false ) return $url;
     $html = $this->create_embed_content_from_url($url);
     return $html;
   }
 
   function create_embed_content_after($content) {
-    $res = preg_match_all('/^(<p>||<div class="wp-block-embed__wrapper">)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>||<\/div>)?/im', $content, $matches);
+
+    $res = preg_match_all('/^(<p>)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>)?/im', $content, $matches);
+
+    if ( empty($res) ) return $content;
     foreach ($matches[0] as $match) {
       $url = esc_url( strip_tags($match) );
       $content = preg_replace('{^'.preg_quote($match, '{}').'}im', $this->create_embed_content_from_url($url), $content, 1);
     }
+
     return $content;
   }
 
@@ -176,6 +189,7 @@ EOM;
     if ($cache === false) {
       $data = [];
       $data = OpenGraph::fetch($url);
+      if( !is_array($data) ) return false;
       set_transient(
         $transient,
         $data,

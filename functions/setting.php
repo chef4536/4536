@@ -49,6 +49,13 @@ function custom_excerpt_4536($content, $length) {
     return $content;
 }
 
+//自分のサイトかどうか調べる
+function is_my_website( $url = null ) {
+  if ( $url === null ) $url = site_url();
+  if ( strpos( $url, get_this_site_domain_4536() )  !== false ) return true;
+  return false;
+}
+
 //サイトドメインを取得
 function get_this_site_domain_4536() {
   if(preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $match ) !== 1) return null;
