@@ -23,10 +23,9 @@ class ConvertEmbedContentFrom_url_4536 {
 
   function create_embed_content_from_url($url) {
 
-    $url = esc_url($url);
+    $data = $this->get_data_from_internal_link($url);
 
-    if(strpos( $url, site_url() ) !== false) {
-      $data = $this->get_data_from_internal_link($url);
+    if( $data !== false ) {
       $thumbnail = $data['thumbnail'];
       $sitename = $data['sitename'];
       $icon = $data['icon'];
@@ -81,15 +80,17 @@ EOM;
   }
 
   function create_embed_content_before($output) {
-    if(preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1) return $output;
-    $html = $this->create_embed_content_from_url($match[1]);
+    if ( preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1 ) return $output;
+    $url = esc_url($match[1]);
+    if ( strpos( $url, site_url() )  === false ) return $url;
+    $html = $this->create_embed_content_from_url($url);
     return $html;
   }
 
   function create_embed_content_after($content) {
     $res = preg_match_all('/^(<p>||<div class="wp-block-embed__wrapper">)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>||<\/div>)?/im', $content, $matches);
     foreach ($matches[0] as $match) {
-      $url = strip_tags($match);
+      $url = esc_url( strip_tags($match) );
       $content = preg_replace('{^'.preg_quote($match, '{}').'}im', $this->create_embed_content_from_url($url), $content, 1);
     }
     return $content;
@@ -98,13 +99,11 @@ EOM;
   function get_data_from_internal_link($url) {
 
     $id = url_to_postid($url);
-    $data = get_post($id);
-    $sitename = get_bloginfo('name');
-    $title = $data->post_title;
-    $content = $data->post_content;
-    $comment = $data->comment_count;
+
+    $sitename = ( !empty( site_title() ) ) ? site_title() : get_bloginfo('name');
+
     $icon = wp_get_attachment_image( get_option('site_icon'), [16,16] );
-    $excerpt = custom_excerpt_4536($content, 60);
+
     if(thumbnail_size()==='thumbnail') {
         $thumb150 = [150,150];
         $thumb300 = [300,300];
@@ -119,6 +118,45 @@ EOM;
       $thumbnail = get_some_image_4536($content);
     }
 
+    if ( $id !== 0 ) {
+      $data = get_post($id);
+      $title = $data->post_title;
+      $content = $data->post_content;
+      $comment = $data->comment_count;
+      $excerpt = custom_excerpt_4536($content, 60);
+    } else {
+      if ( $url === site_url() ) {
+        $title = $sitename;
+        $content = (custom_home_description()) ? custom_home_description() : get_bloginfo('description');
+        $excerpt = custom_excerpt_4536($content, 60);
+      } else {
+        $path = str_replace( site_url().'/', '', $url );
+        // $parse_url = parse_url( $url );
+        $path = explode( '/', $path );
+        if ( !is_array($path) ) return false;
+        // $reverse_path = array_reverse($path);
+        $type = $path[0];
+        $slug = end( $path );
+        if ( $type === 'category' ) {
+          $cat = get_term_by( 'slug', $slug, 'category' );
+          $title = $cat->name;
+          $excerpt = ( !empty($cat->description) ) ? $cat->description : $title.'の記事一覧';
+        } elseif ( $type === 'tag' ) {
+          $tag = get_term_by( 'slug', $slug, 'post_tag' );
+          $title = $tag->name;
+          $excerpt = ( !empty($tag->description) ) ? $tag->description : $title.'の記事一覧';
+        } elseif ( $type === 'author' ) {
+          $excerpt = get_user_by( 'slug', $slug )->display_name.'の記事一覧';
+        } else {
+          return false;
+        }
+      }
+    }
+
+    // if ( $cat = get_category_by_path($url, false) ) {
+    //   //https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/get_category_by_path
+    // }
+
     return compact(
       'title',
       'excerpt',
@@ -130,8 +168,6 @@ EOM;
   }
 
   function get_data_from_external_link($url) {
-
-    $url = esc_url($url);
 
     $transient = 'ogp_cache_4536_'.md5($url);
 
@@ -149,7 +185,7 @@ EOM;
 
     if(!empty($data)) $data = [
       'title' => $data->title,
-      'excerpt' => $data->description,
+      'excerpt' => custom_excerpt_4536( $data->description, 60 ),
       'src' => $data->image,
       'host' => parse_url(esc_url($url))['host'],
     ];
@@ -169,7 +205,12 @@ add_filter('template_include', function( $template ) {
   return $template;
 });
 
-add_filter('embed_head', function() {
+add_filter( 'embed_head', function() {
   wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
 });
 // remove_action( 'embed_head', 'print_embed_styles' );
+
+add_filter( 'the_excerpt_embed', function() {
+  $excerpt = custom_excerpt_4536(get_the_content(), 60);
+  return $excerpt;
+});

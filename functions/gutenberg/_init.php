@@ -67,8 +67,11 @@ class GutenbergEditorJS4536 {
 	}
     function editor_custom() { ?>
         <script>
-            window.addEventListener('DOMContentLoaded', function(){
-                [].forEach.call(document.querySelectorAll("div.edit-post-visual-editor"), e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3'));
+            window.addEventListener( 'DOMContentLoaded', function() {
+                [].forEach.call(
+                  document.querySelectorAll( 'div.edit-post-visual-editor' ),
+                  e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3')
+                );
             });
         </script>
     <?php }

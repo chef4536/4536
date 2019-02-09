@@ -1207,7 +1207,7 @@ cite.wp-embedded-content {
     float: left;
     max-width: 150px;
     height: auto;
-    margin-right: 1em;
+    margin: 0 1em 1em 0;
 }
 .blogcard-info {
     position: relative;
@@ -1246,6 +1246,7 @@ cite.wp-embedded-content {
 .wp-embed-site-title {
     display: table-cell;
     line-height: 1;
+    font-size: 16px;
 }
 .site_icon {
     padding-right: .2em;
@@ -1274,6 +1275,9 @@ cite.wp-embedded-content {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+    }
+    .wp-embed-featured-image {
+        margin-bottom: 0;
     }
     .blogcard-more-wrap {
         text-align: right;

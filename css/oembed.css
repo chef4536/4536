@@ -49,7 +49,7 @@ cite.wp-embedded-content {
     float: left;
     max-width: 150px;
     height: auto;
-    margin-right: 1em;
+    margin: 0 1em 1em 0;
 }
 .blogcard-info {
     position: relative;
@@ -88,6 +88,7 @@ cite.wp-embedded-content {
 .wp-embed-site-title {
     display: table-cell;
     line-height: 1;
+    font-size: 16px;
 }
 .site_icon {
     padding-right: .2em;
@@ -138,6 +139,7 @@ For Editor
 
 .wp-embed {
     margin: 0;
+    width: inherit;
 }
 .wp-embed-heading {
     margin: 1em 0;
