@@ -1164,12 +1164,14 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
     height: 100%;
 }
 /* ブログカード */
+/*
 cite.wp-embedded-content {
     display: block;
     font-size: small;
     text-align: left;
     margin: .5em auto;
 }
+*/
 .wp-embed {
     padding: 1em;
     border: 1px solid #e5e5e5;
@@ -1235,6 +1237,7 @@ cite.wp-embedded-content {
     border-radius: 2px;
     border: 1px solid;
     color: #000;
+    background-color: #fff;
     display: block;
 }
 .wp-embed-footer {
@@ -1255,6 +1258,10 @@ cite.wp-embedded-content {
 }
 .wp-embed-comments {
     text-align: right;
+}
+a[data-embed-content="false"] {
+    margin-bottom: 1.5em;
+    display: block;
 }
 .dashicons {
 	display: inline-block;

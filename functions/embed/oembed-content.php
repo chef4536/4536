@@ -32,7 +32,9 @@ class ConvertEmbedContentFrom_url_4536 {
       $comment = (empty($data['comment'])) ? '' : '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></span>';
     } else {
       $data = $this->get_data_from_external_link($url);
-      if( $data === false ) return $url;
+      if( $data === false ) {
+        return '<p><del>'.$url.'</del></p>';
+      }
       $thumbnail = ( !empty($data['src']) ) ? '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />' : '';
       $sitename = $data['host'];
       $icon = '';
@@ -48,7 +50,9 @@ class ConvertEmbedContentFrom_url_4536 {
     $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
-    if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$data['title'].'</a>';
+    $external_link = 'target="_blank" rel="noreferrer noopener"';
+
+    if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'" '.$external_link.'>'.$data['title'].'</a>';
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
 
@@ -58,15 +62,17 @@ class ConvertEmbedContentFrom_url_4536 {
       $thumbnail = '<span class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></span>';
     }
 
-    $blockquote_begin = $blockquote_end = '';
-    if ( is_my_website( $url ) === false ) {
+    if ( is_my_website( $url ) === true ) {
+      $blockquote_begin = $blockquote_end = '';
+      $external_link = '';
+    } else {
       $blockquote_begin = '<blockquote class="external-website-embed-content" cite="'.$url.'"><p>';
       $blockquote_end = '</p></blockquote>';
     }
 
     $output = <<< EOM
     {$blockquote_begin}
-    <a data-embed-content="true" class="wp-embed" href="{$url}">
+    <a data-embed-content="true" class="wp-embed" href="{$url}" {$external_link}>
       {$title}
       <span class="blogcard-image-info-wrap">
         <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
