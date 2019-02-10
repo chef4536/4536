@@ -1,9 +1,8 @@
 <?php
 function auto_description_4536() {
-    $auto_description = get_post(get_the_ID())->post_content;
-    $auto_description = strip_tags(str_replace(array("\r\n", "\r", "\n"), '', $auto_description));
-    $auto_description = mb_strimwidth($auto_description, 0, 320, "...", "utf-8");
-    return $auto_description;
+  $content = get_post(get_the_ID())->post_content;
+  $content = custom_excerpt_4536( $content, 160 );
+  return $content;
 }
 function description_4536() {
     if(is_home()) {
@@ -11,11 +10,9 @@ function description_4536() {
     } elseif(is_singular() || is_front_page()) { // 記事ページ
         //カスタムフィールドで設定したディスクリプション
         $custom_description = get_post_meta(get_the_ID(), 'description', true);
-        $custom_description = strip_tags(str_replace(array("\r\n", "\r", "\n"), '', $custom_description));
-        $custom_description = mb_strimwidth($custom_description, 0, 320, "...", "utf-8");
+        $custom_description = custom_excerpt_4536( $custom_description, 160 );
         //条件によって読み込むディスクリプションを変更
-        $post_description = ($custom_description) ? $custom_description : auto_description_4536() ;
-        $description = $post_description;
+        $description = ( !empty($custom_description) ) ? $custom_description : auto_description_4536() ;
     } elseif(is_category()) { // カテゴリーページ
         if(term_description()) { //カテゴリーの説明を入力している場合
             $description = term_description();

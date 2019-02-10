@@ -41,17 +41,18 @@ function custom_excerpt_4536($content, $length) {
     $content = wp_strip_all_tags($content, true);
     // $content = strip_tags( $content );
     // $content = str_replace( array( '\r\n', '\n', '\r', '&nbsp;' ), '', $content );
-    $length = mb_convert_kana(strip_tags($length), 'n');
-    if(mb_strlen($content,'UTF-8') > $length) {
-        $content = mb_substr( $content, 0, $length, 'UTF-8' );
-        return $content.'...';
-    }
+    $length = mb_convert_kana(strip_tags($length), 'n') * 2;
+    $content = mb_strimwidth( $content, 0, $length, '...' );
+    // if(mb_strlen($content,'UTF-8') > $length) {
+    //     $content = mb_substr( $content, 0, $length, 'UTF-8' );
+    //     return $content.'...';
+    // }
     return $content;
 }
 
 //自分のサイトかどうか調べる
-function is_my_website( $url = null ) {
-  if ( $url === null ) $url = site_url();
+function is_my_website( $url ) {
+  $url = esc_url( $url );
   if ( strpos( $url, get_this_site_domain_4536() )  !== false ) return true;
   return false;
 }

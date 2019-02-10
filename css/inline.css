@@ -694,6 +694,7 @@ a.simple-sns-button-2 {
     }
     .post-list-pc .excerpt {
         display: block;
+        margin-bottom: .4em;
     }
     .double-rectangle-wrapper .ad {
         -ms-flex-preferred-size: calc(50% - 1em);

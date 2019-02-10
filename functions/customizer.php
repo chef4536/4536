@@ -279,18 +279,18 @@ $wp_customize->add_section( 'design', [
         'settings' => 'related_post_count',
         'label' => '関連記事の表示数',
         'description' => '数字のみ入力してください（例：10記事→10、6記事→6、非表示→0または空白）',
-        'type' => 'text',
+        'type' => 'number',
     ]);
     //抜粋の文字数
     $wp_customize->add_setting( 'custom_excerpt_length', [
-        'default' => 40,
+        'default' => 80,
     ]);
     $wp_customize->add_control( 'custom_excerpt_length', [
         'section' => 'design',
         'settings' => 'custom_excerpt_length',
         'label' => '抜粋の長さ',
         'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
-        'type' => 'text',
+        'type' => 'number',
     ]);
     //文字を丸める
     $wp_customize->add_setting( 'line_clamp', [
@@ -647,7 +647,7 @@ $wp_customize->add_section( 'media', [
         'settings' => 'new_icon_date',
         'label' => 'NEWアイコンを表示する期間',
         'description' => '数字のみ入力してください（例：1日→1、1週間→7、非表示→未入力）',
-        'type' => 'text',
+        'type' => 'number',
     ]);
     //アイキャッチ画像の表示
     $wp_customize->add_setting( 'is_post_thumbnail', [
