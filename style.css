@@ -1181,7 +1181,7 @@ cite.wp-embedded-content {
     line-height: 1.5;
     display: block;
     border-radius: 2px;
-    margin: 1.5em 0;
+    margin-bottom: 1.5em;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     zoom: 1;
@@ -1195,12 +1195,13 @@ cite.wp-embedded-content {
 .wp-embed-heading {
     color: #000;
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 1em;
     font-size: 20px;
     line-height: 1.4;
+    display: block;
 }
 .blogcard-image-info-wrap {
-    margin: 1em 0;
+    margin-bottom: 1em;
     display: block;
 }
 .wp-embed-featured-image {

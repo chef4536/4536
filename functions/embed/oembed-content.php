@@ -42,7 +42,11 @@ class ConvertEmbedContentFrom_url_4536 {
     if(empty($icon)) $icon = '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
     $title = $data['title'];
-    $excerpt = $data['excerpt'];
+
+    $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
+
+    $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
+    $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
     if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$title.'</a>';
 
@@ -63,13 +67,13 @@ class ConvertEmbedContentFrom_url_4536 {
     $output = <<< EOM
     {$blockquote_begin}
     <a data-embed-content="true" class="wp-embed" href="{$url}">
-      <span class="wp-embed-heading">{$title}</span>
+      {$title}
       <span class="blogcard-image-info-wrap">
         <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
           {$thumbnail}
         </span>
         <span class="blogcard-info">
-          <span class="wp-embed-excerpt">{$excerpt}</span>
+          {$excerpt}
           <span class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></span>
         </span>
       </span>
@@ -152,12 +156,12 @@ EOM;
         $slug = end( $path );
         if ( $type === 'category' ) {
           $cat = get_term_by( 'slug', $slug, 'category' );
-          $title = $cat->name;
-          $excerpt = ( !empty($cat->description) ) ? $cat->description : $title.'の記事一覧';
+          $title = $cat->name.'の記事一覧';
+          $excerpt = ( !empty($cat->description) ) ? $cat->description : '';
         } elseif ( $type === 'tag' ) {
           $tag = get_term_by( 'slug', $slug, 'post_tag' );
-          $title = $tag->name;
-          $excerpt = ( !empty($tag->description) ) ? $tag->description : $title.'の記事一覧';
+          $title = $tag->name.'の記事一覧';
+          $excerpt = ( !empty($tag->description) ) ? $tag->description : '';
         } elseif ( $type === 'author' ) {
           $excerpt = get_user_by( 'slug', $slug )->display_name.'の記事一覧';
         } else {
