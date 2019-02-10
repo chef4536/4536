@@ -42,14 +42,12 @@ function related_post_list_style_pc() {
 //関連記事の表示数
 function related_post_count() {
     $count = get_theme_mod( 'related_post_count', 10 );
-    $count = preg_replace( '/[^d]/', '', $count );
     if (empty($count)) $count = 0;
     return mb_convert_kana(strip_tags($count), 'n');
 }
 //抜粋長さ
 function custom_excerpt_length() {
   $content = get_theme_mod( 'custom_excerpt_length', 80 );
-  $content = preg_replace( '/[^d]/', '', $content );
   if (empty($content)) $content = 0;
   return $content;
 }
@@ -153,7 +151,6 @@ function thumbnail_quality() {
 //NEWアイコン
 function new_icon_date() {
   $date = get_theme_mod( 'new_icon_date', 1 );
-  $date = preg_replace( '/[^d]/', '', $date );
   if (empty($date)) $date = 0;
   return $date;
 }
