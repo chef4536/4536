@@ -48,7 +48,7 @@ class ConvertEmbedContentFrom_url_4536 {
     $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
-    if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$title.'</a>';
+    if ( empty($thumbnail) ) return '<a href="'.$url.'" target="_blank" rel="noreferrer noopener">'.$data['title'].'</a>';
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
 
