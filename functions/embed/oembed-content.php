@@ -50,9 +50,9 @@ class ConvertEmbedContentFrom_url_4536 {
     $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
-    $external_link = 'target="_blank" rel="noreferrer noopener"';
+    $external_link = ' target="_blank" rel="noreferrer noopener"';
 
-    if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'" '.$external_link.'>'.$data['title'].'</a>';
+    if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'"'.$external_link.'>'.$data['title'].'</a>';
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
 
@@ -72,7 +72,7 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $output = <<< EOM
     {$blockquote_begin}
-    <a data-embed-content="true" class="wp-embed" href="{$url}" {$external_link}>
+    <a data-embed-content="true" class="wp-embed" href="{$url}"{$external_link}>
       {$title}
       <span class="blogcard-image-info-wrap">
         <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
