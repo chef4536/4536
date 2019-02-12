@@ -56,24 +56,42 @@ add_theme_support( 'align-wide' );
 
 //エディター拡張
 class GutenbergEditorJS4536 {
+
 	function __construct() {
         $list = [
             'editor_custom',
+            'admin_menu_fix'
         ];
         foreach($list as $name) {
             add_action( 'admin_head-post.php', [$this, $name] );
             add_action( 'admin_head-post-new.php', [$this, $name] );
         }
 	}
-    function editor_custom() { ?>
-        <script>
-            window.addEventListener( 'DOMContentLoaded', function() {
-                [].forEach.call(
-                  document.querySelectorAll( 'div.edit-post-visual-editor' ),
-                  e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3')
-                );
-            });
-        </script>
-    <?php }
+
+  function editor_custom() { ?>
+    <script>
+        window.addEventListener( 'DOMContentLoaded', function() {
+            [].forEach.call(
+              document.querySelectorAll( 'div.edit-post-visual-editor' ),
+              e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3')
+            );
+        });
+    </script>
+  <?php }
+
+  function admin_menu_fix() { ?>
+    <style>
+      #adminmenuwrap {
+        height: 100%;
+        overflow: hidden;
+      }
+      #adminmenu {
+        overflow-y: scroll;
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  <?php }
+
 }
 new GutenbergEditorJS4536();
