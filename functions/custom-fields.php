@@ -8,7 +8,7 @@ class Custom_Field_4536 {
         add_action( 'add_meta_boxes', [ $this, 'init' ] );
         add_action( 'transition_post_status', [ $this, 'save' ], 10, 3 );
 	}
-    
+
     function init() {
         $list = [
             'SEO対策' => 'add_seo_form',
@@ -79,7 +79,7 @@ class Custom_Field_4536 {
             });
         }
     }
-    
+
     function title_update($title) {
         global $post;
         $seo_title = get_post_meta($post->ID,'seo_title',true);
@@ -161,7 +161,7 @@ function add_html_js_css_form() {
 function amp_custom_fields() {
     global $post;
     $amp = get_post_meta($post->ID,'amp',true);
-    $amp_check = ( $amp == 1 ) ? 'checked' : '/' ; 
+    $amp_check = ( $amp == 1 ) ? 'checked' : '/' ;
     echo '<input type="checkbox" name="amp" id="amp" value="1" ' . $amp_check . '>'.
         '<label class="select" for="amp">AMP機能を無効にします</label>';
 }
@@ -169,7 +169,7 @@ function amp_custom_fields() {
 function toc_custom_fields() {
     global $post;
     $toc = get_post_meta($post->ID,'toc',true);
-    $toc_check = ( $toc == 1 ) ? 'checked' : '/' ; 
+    $toc_check = ( $toc == 1 ) ? 'checked' : '/' ;
     echo '<input type="checkbox" name="toc" id="toc" value="1" ' . $toc_check . '>'.
         '<label class="select" for="toc">目次機能をオフにします</label>';
 }
@@ -197,7 +197,7 @@ function singular_layout_custom_fields() {
         if( $layout === $get_layout ) $selected = ' selected';
         echo '<option value="' . $layout . '"' . $selected . '>' . $description . '</option>';
     }
-    echo '</select>';    
+    echo '</select>';
 }
 
 function singular_body_width_custom_fields() {
@@ -307,7 +307,7 @@ function text_counter_4536() { ?>
         $.each(list, function(index,value) {
             function counter() {
                 var length = $(value).val().length;
-                $(value + '-counter').html(length);            
+                $(value + '-counter').html(length);
             }
             counter();
             $(value).on('keydown keyup keypress change', counter);

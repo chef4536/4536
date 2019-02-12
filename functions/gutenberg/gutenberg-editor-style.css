@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 div.editor-styles-wrapper {
     font-family: 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
 }
@@ -26,4 +28,9 @@ body.block-editor-page .editor-block-list__block[data-align="full"] {
 
 blockquote.wp-embedded-content {
   display: none !important;
+}
+
+div.editor-writing-flow {
+  height: auto;
+  display: block;
 }
