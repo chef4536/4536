@@ -35,3 +35,4 @@
 - [https://github.com/ApoorvSaxena/lozad.js](https://github.com/ApoorvSaxena/lozad.js)
 - [https://www.npmjs.com/package/intersection-observer](https://www.npmjs.com/package/intersection-observer)
 - [https://fontawesome.com/](https://fontawesome.com/)
+- [https://github.com/scottmac/opengraph](https://github.com/scottmac/opengraph)
