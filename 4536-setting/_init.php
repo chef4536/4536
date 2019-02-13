@@ -12,7 +12,7 @@ add_action( 'admin_menu', function() {
       'データベース' => 'database',
     ];
     foreach($list as $name => $key) {
-      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $key, 'admin_'.$key.'_setting_4536');
+      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $key, 'admin_'.$key.'_setting_4536' );
     }
 });
 
@@ -42,11 +42,6 @@ add_action( 'admin_init', function() {
         'admin_get_aio',
         'admin_canonical',
         'admin_next_prev',
-        'import_aioseo_title',
-        'import_aioseo_description',
-        'import_aioseo_keywords',
-        'import_aioseo_noindex',
-        'import_aioseo_nofollow',
     ];
     foreach($list as $name) {
         register_setting( 'seo_group', $name );
@@ -107,6 +102,11 @@ add_action( 'admin_init', function() {
     }
     $list = [
       'embed_cache_delete',
+      'import_aioseo_title',
+      'import_aioseo_description',
+      'import_aioseo_keywords',
+      'import_aioseo_noindex',
+      'import_aioseo_nofollow',
     ];
     foreach($list as $name) {
         register_setting( 'database_group', $name );

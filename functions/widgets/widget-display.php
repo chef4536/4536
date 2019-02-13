@@ -1,7 +1,7 @@
 <?php
 
 class Widget_Display_4536 {
-    
+
     public $list_default = [
         'widget_display_post_id' => '投稿記事',
         'widget_display_page_id' => '固定ページ',
@@ -41,7 +41,7 @@ class Widget_Display_4536 {
         null => 'デフォルト',
         'widget-style-box-4536' => 'ボックス',
     ];
-    
+
     function __construct() {
 		if(is_admin()) {
 			add_action( 'in_widget_form', [ $this, 'form' ], 10, 3 );
@@ -85,7 +85,7 @@ class Widget_Display_4536 {
                     </div>
                     <?php
                     $defaults = array( 'widget_display_cat_id' => array() );
-                    $instance = wp_parse_args( (array) $instance, $defaults );    
+                    $instance = wp_parse_args( (array) $instance, $defaults );
                     $walker = new Walker_Category_Checklist_Widget (
                         $widget->get_field_name( 'widget_display_cat_id' ),
                         $widget->get_field_id( 'widget_display_cat_id' )
@@ -110,7 +110,7 @@ class Widget_Display_4536 {
                         </li>
                     <?php } ?>
                     </ul>
-                </div>                
+                </div>
             </div>
             <p>
                 <label for="<?php echo $widget->get_field_id('widget_display'); ?>"><?php _e('表示設定'); ?></label>
@@ -203,7 +203,11 @@ class Widget_Display_4536 {
         $page = ($page_id) ? is_page($page_id) : '';
         $cat = ($cat_id) ? in_category($cat_id) : '';
         $cat_child = ($cat_id) ? post_is_in_descendant_category_4536($cat_id) : '';
-        $home = ($instance['widget_display_home']) ? is_home() : '';
+        if($instance['widget_display_home']) {
+          $home = (is_front_page()) ? is_front_page() : is_home();
+        } else {
+          $home = '';
+        }
         $pc = ($instance['widget_display_pc']) ? !is_mobile() : '';
         $mobile = ($instance['widget_display_mobile']) ? is_mobile() : '';
         $is_single = ($instance['widget_display_single']) ? is_single() : '';
@@ -296,7 +300,7 @@ class Widget_Display_4536 {
             });
         </script>
     <?php }
-    
+
     function all_check() { ?>
         <script>
             $(function() {
@@ -327,7 +331,7 @@ class Widget_Display_4536 {
             }
         </style>
     <?php }
-    
+
 }
 new Widget_Display_4536();
 
@@ -349,12 +353,12 @@ class Walker_Category_Checklist_Widget extends Walker_Category_Checklist {
         $class = ' class="category-list"';
         $id = $this->id . '-' . $cat->term_id;
         $checked = checked( in_array( $cat->term_id, $selected_cats ), true, false );
-        $output .= "\n<li id='{$taxonomy}-{$cat->term_id}'$class>" 
-            . '<label class="selectit"><input value="' 
-            . $cat->term_id . '" type="checkbox" name="' . $this->name 
-            . '[]" id="in-'. $id . '"' . $checked 
-            . disabled( empty( $args['disabled'] ), false, false ) . ' /> ' 
-            . esc_html( apply_filters( 'the_category', $cat->name ) ) 
+        $output .= "\n<li id='{$taxonomy}-{$cat->term_id}'$class>"
+            . '<label class="selectit"><input value="'
+            . $cat->term_id . '" type="checkbox" name="' . $this->name
+            . '[]" id="in-'. $id . '"' . $checked
+            . disabled( empty( $args['disabled'] ), false, false ) . ' /> '
+            . esc_html( apply_filters( 'the_category', $cat->name ) )
             . '</label>';
       }
 }
