@@ -3,7 +3,7 @@
 function admin_4536_setting_manual() { ?>
 
 <div class="wrap">
-    
+
     <h2>4536マニュアル</h2>
 
     <div class="metabox-holder">
@@ -31,6 +31,7 @@ function admin_4536_setting_manual() { ?>
                     'media' => 'メディア（音楽や動画）の設定はこちら',
                     'amp' => 'AMPの設定はこちら',
                     'speeding_up' => '高速化の設定はこちら',
+                    'database' => 'データベースの操作はこちら',
                     'etc' => 'その他の設定はこちら',
                 ];
                 foreach($list as $name => $desc) { ?>
@@ -89,4 +90,3 @@ function admin_4536_setting_manual() { ?>
 </style>
 
 <?php }
-
