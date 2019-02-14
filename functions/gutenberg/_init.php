@@ -81,14 +81,18 @@ class GutenbergEditorJS4536 {
 
   function admin_menu_fix() { ?>
     <style>
-      #adminmenuwrap {
-        height: 100%;
+      #wpwrap {
         overflow: hidden;
       }
-      #adminmenu {
-        overflow-y: scroll;
+      #adminmenuwrap {
         height: 100%;
-        margin: 0;
+        overflow-y: scroll;
+        /* overflow: hidden; */
+      }
+      #adminmenu {
+        height: 100%;
+        /* margin: 0; */
+        margin: 10px 0;
       }
     </style>
   <?php }
