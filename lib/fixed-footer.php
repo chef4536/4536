@@ -28,7 +28,7 @@ if(fixed_footer()==='menu') { ?>
             $title = '';
             if(fixed_footer_menu_item($name) === true) {
                 if($name === 'home') {
-                    if(is_home()) continue;
+                    if( is_home() || is_front_page() ) continue;
                     $start_tag = '<a href="'.home_url().'">';
                     $end_tag = '</a>';
                     $icon = 'home';
