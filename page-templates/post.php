@@ -1,21 +1,21 @@
 <?php
 
-if(is_singular('post')) {
-    $is_profile = is_profile_4536('profile_single');
-    $is_sns_top = is_sns_top_4536('is_sns_top_single');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_single');
-} elseif(is_page()) {
-    $is_profile = is_profile_4536('profile_page');
-    $is_sns_top = is_sns_top_4536('is_sns_top_page');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_page');
-} elseif(is_singular(['music', 'movie'])) {
-    $is_profile = is_profile_4536('profile_media');
-    $is_sns_top = is_sns_top_4536('is_sns_top_media');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_media');
+if( is_singular('post') ) {
+  $is_profile = is_profile_4536('profile_single');
+  $is_sns_top = is_sns_top_4536('is_sns_top_single');
+  $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_single');
+} elseif( is_page() ) {
+  $is_profile = is_profile_4536('profile_page');
+  $is_sns_top = is_sns_top_4536('is_sns_top_page');
+  $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_page');
+} elseif( is_singular(['music', 'movie']) ) {
+  $is_profile = is_profile_4536('profile_media');
+  $is_sns_top = is_sns_top_4536('is_sns_top_media');
+  $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_media');
 } else {
-    $is_profile = '';
-    $is_sns_top = '';
-    $is_sns_bottom = '';
+  $is_profile = false;
+  $is_sns_top = false;
+  $is_sns_bottom = false;
 }
 
 //get_template_part('page-templates/pickup-post-top');
@@ -52,7 +52,7 @@ echo '<header>';
 
     the_post_thumbnail_4536(); //アイキャッチ
 
-    if($is_sns_top) sns_button_4536('post_top');
+    if( $is_sns_top === true ) sns_button_4536('post_top');
 echo '</header>';
 
 echo '<div class="article-body">';
@@ -112,8 +112,8 @@ echo '<footer>';
     </div>
     <?php }
 
-    if($is_sns_bottom) sns_button_4536('post_bottom');
-    if($is_profile) get_template_part('page-templates/profile');
+    if( $is_sns_bottom === true ) sns_button_4536('post_bottom');
+    if( $is_profile === true ) get_template_part('page-templates/profile');
 
 echo '</footer>';
 

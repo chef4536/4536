@@ -57,10 +57,9 @@ function sns_button_4536($position) {
     $line = '<a class="line '.$sns_class.'" href="http://line.me/R/msg/text/?'.$title.'%0A'.$url.'"'.$target.'><i class="fab fa-line"></i></a>';
 
     $style = (sns_style()) ? ' simple-sns' : '';
-
     $flex_option = 'justify-content-center';
-
     $padding = ' padding-1_5em-0';
+    $display = ( fixed_footer() === 'share' ) ? ' display-none-mobile' : '';
 
     if( $position === 'post_top' ) $padding = $margin = ' margin-1_5em-auto';
 
@@ -69,9 +68,10 @@ function sns_button_4536($position) {
     if( $position === 'fixed_footer_share_button' ) {
       $padding = ' padding-10px';
       $flex_option = 'justify-content-flex-end flex-direction-row-reverse';
+      $display = '';
     }
 
-    $class = $style.$padding;
+    $class = $style.$padding.$display;
 
     ?>
 
