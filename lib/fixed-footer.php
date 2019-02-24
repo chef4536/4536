@@ -10,7 +10,7 @@ if(is_amp()) {
     $fixed_footer = ob_get_clean();
 }
 
-if(fixed_footer()==='menu') { ?>
+if( fixed_footer()==='menu' ) { ?>
     <div id="fixed-footer-menu" class="fixed-footer display-none-pc display-flex text-align-center">
         <?php
         $list = [
@@ -84,12 +84,17 @@ if(fixed_footer()==='menu') { ?>
             </div>
         <?php } ?>
     </div>
-<?php } elseif(fixed_footer()==='overlay' && !empty($fixed_footer)) { ?>
+<?php } elseif( fixed_footer()==='share' ) { ?>
+  <div id="fixed-footer-share-button" class="fixed-footer display-none-pc">
+    <?php sns_button_4536('fixed_footer_share_button'); ?>
+    <div id="fixed-share-button-mask"></div>
+  </div>
+<?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
     <div id="fixed-footer-overlay" class="fixed-footer display-none text-align-center">
         <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button"><i class="fas fa-times"></i></div>
     </div>
-<?php } elseif(fixed_footer()==='overlay' && !empty($amp_fixed_footer)) { ?>
+<?php } elseif( fixed_footer()==='overlay' && !empty($amp_fixed_footer) ) { ?>
     <amp-sticky-ad layout="nodisplay">
         <?php echo $amp_fixed_footer; ?>
     </amp-sticky-ad>

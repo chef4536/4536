@@ -3,7 +3,7 @@
 add_theme_support('custom-background'); //カスタム背景
 
 add_action('customize_register', function($wp_customize) {
-    
+
     //色セクション
     $list = [
         'link_color' => [
@@ -61,7 +61,7 @@ add_action('customize_register', function($wp_customize) {
             'label' => $args['label'],
             'section' => 'colors',
             'settings' => $name,
-        ]));        
+        ]));
     }
 
     //見出しセクション
@@ -109,7 +109,7 @@ add_action('customize_register', function($wp_customize) {
             'priority' => $args['priority'],
         ]));
     }
-    
+
     //SNSセクション
     $wp_customize->add_setting( 'fb_like_background_color', ['default' => '#2b2b2b'] );
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'fb_like_background_color', [
@@ -159,7 +159,7 @@ add_action('customize_register', function($wp_customize) {
 });
 
 function customizer_color() {
-    
+
     //デフォルトカラー
     $link_color = get_theme_mod( 'link_color', '#00a0e9' );
     $header_background_color = get_theme_mod( 'header_background_color', '#000000');
@@ -193,7 +193,7 @@ function customizer_color() {
     $balloon_right_font_color = get_theme_mod( 'balloon_right_font_color', '');
 
     $css = [];
-    
+
     if( !empty($link_color) ) { //リンクカラー
         $css[] = 'a{color:'.$link_color.'}';
     }
@@ -218,7 +218,7 @@ function customizer_color() {
     global $pagenow;
     $option = (is_admin() && $pagenow===('post.php'||'post-new.php')) ? ' !important;' : ';' ;
     if( !empty($post_backround_color) ) { //記事背景色
-        $css[] = '#main,#header.fixed-top,.fixed-top .nav-menu,.fixed-top .nav-menu a,.fixed-top .nav-menu .sub-menu{background-color:'.$post_backround_color.$option.'}';
+        $css[] = '#main,#header.fixed-top,.fixed-top .nav-menu,.fixed-top .nav-menu a,.fixed-top .nav-menu .sub-menu,#fixed-share-button-mask{background-color:'.$post_backround_color.$option.'}';
         $css[] = '.pagination span, .pagination a, #prev-next a,.prev-post-arrow, .next-post-arrow{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色
@@ -330,8 +330,8 @@ function customizer_color() {
     if( !empty($balloon_left_font_color) ) { //右吹き出し文字
         $css[] = '.balloon .balloon-text-left{color:'.$balloon_left_font_color.'}';
     }
-    
+
     $css = implode('', $css);
     echo $css;
-    
+
 }

@@ -318,20 +318,21 @@ $wp_customize->add_section( 'design', [
         'type' => 'checkbox',
     ));
     //固定フッター
-    $wp_customize->add_setting( 'fixed_footer', array (
+    $wp_customize->add_setting( 'fixed_footer', [
         'default' => null,
-    ));
-    $wp_customize->add_control( 'fixed_footer', array(
+    ]);
+    $wp_customize->add_control( 'fixed_footer', [
         'section' => 'design',
         'settings' => 'fixed_footer',
         'label' =>'固定フッター',
         'type' => 'radio',
-        'choices'    => array(
-            null => '非表示（デフォルト）',
-            'menu' => 'メニューを表示',
-            'overlay' => 'オーバーレイ広告',
-        ),
-    ));
+        'choices' => [
+          null => '非表示（デフォルト）',
+          'menu' => 'メニューを表示',
+					'share' => 'シェアボタン',
+          'overlay' => 'オーバーレイ広告',
+        ],
+    ]);
     //固定フッターメニューリスト
     $fixed_footer_menu_list = [
         'home' => 'ホームに戻る',
@@ -527,21 +528,21 @@ $wp_customize->add_section( 'page_setting', [
 //    ]);
 
 //見出し
-$wp_customize->add_section( 'heading_style', array (
-    'title' => '見出し',
-    'priority' => 30,
-    'description' => '見出しのデザインと色を変更できます。',
-));
+$wp_customize->add_section( 'heading_style', [
+  'title' => '見出し',
+  'priority' => 30,
+  'description' => '見出しのデザインと色を変更できます。',
+]);
     //見出しスタイル
     $h_style_list = [
-            null => '装飾なし',
-            'simple1' => 'シンプル1',
-            'simple2' => 'シンプル2',
-            'simple3' => 'シンプル3',
-            'pop' => 'ポップ',
-            'cool' => 'クール',
-            'cool2' => 'クール2',
-            'cool3' => 'クール3',
+      null => '装飾なし',
+      'simple1' => 'シンプル1',
+      'simple2' => 'シンプル2',
+      'simple3' => 'シンプル3',
+      'pop' => 'ポップ',
+      'cool' => 'クール',
+      'cool2' => 'クール2',
+      'cool3' => 'クール3',
     ];
     //見出しリスト
     $menu_list = [

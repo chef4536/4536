@@ -357,6 +357,9 @@ if(copy_guard()) $css[] = 'body{-webkit-touch-callout:none;-webkit-user-select:n
 //固定フッター
 if(fixed_footer()) $css[] = '.footer{padding-bottom:40px}';
 
+//固定シェアボタン
+if(fixed_footer()==='share') $css[] = '#fixed-share-button-mask{position:absolute;top:0;left:0;right:0;bottom:0;opacity:.9;z-index:-1}';
+
 //サムネ配列整理
 $css = array_unique($css);
 $css = array_values($css);

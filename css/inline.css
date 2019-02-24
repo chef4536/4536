@@ -85,6 +85,9 @@ li {
 .padding-20px-10px {
     padding: 20px 10px;
 }
+.padding-1_5em-0 {
+    padding: 1.5em 0;
+}
 /* margin関連 */
 .margin-auto {
     margin: auto;
@@ -155,6 +158,12 @@ li {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+}
+.flex-direction-row-reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 .fa, .far, .fas, .fab {
     letter-spacing: 2px;
@@ -445,11 +454,7 @@ h2.post-title { /* トップの新着記事 */
 .sns {
 	width: 100%;
     clear: both;
-	margin: 2em auto 1.5em;
     line-height: 1.4;
-}
-.post .simple-sns {
-    padding-bottom: 1.5em;
 }
 .sns-title {
     margin: .5em;

@@ -1,7 +1,7 @@
 <?php
 
 function sns_button_4536($position) {
-    
+
     if(is_amp() || is_singular()) {
         $url = esc_url(get_permalink());
         $title = esc_html(get_the_title());
@@ -56,15 +56,28 @@ function sns_button_4536($position) {
 
     $line = '<a class="line '.$sns_class.'" href="http://line.me/R/msg/text/?'.$title.'%0A'.$url.'"'.$target.'><i class="fab fa-line"></i></a>';
 
-    $class = (sns_style()) ? ' simple-sns' : '';
-    
-    if($position==='fixed_footer') $class .= ' padding-0-10px';
-    
+    $style = (sns_style()) ? ' simple-sns' : '';
+
+    $flex_option = 'justify-content-center';
+
+    $padding = ' padding-1_5em-0';
+
+    if( $position === 'post_top' ) $padding = $margin = ' margin-1_5em-auto';
+
+    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px';
+
+    if( $position === 'fixed_footer_share_button' ) {
+      $padding = ' padding-10px';
+      $flex_option = 'justify-content-flex-end flex-direction-row-reverse';
+    }
+
+    $class = $style.$padding;
+
     ?>
 
     <div class="share sns text-align-center<?php echo $class; ?>">
         <?php if($position==='post_bottom' && sns_share_text()) echo '<p class="sns-title">'.sns_share_text().'</p>'; ?>
-        <div class="display-flex justify-content-center">
+        <div class="display-flex <?php echo $flex_option; ?>">
             <?php echo $twitter.$facebook.$hatebu.$pocket.$line; ?>
         </div>
     </div>
