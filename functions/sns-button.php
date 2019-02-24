@@ -30,13 +30,16 @@ function sns_button_4536($position) {
 
     if(!sns_style()) {
         $sns_class = 'default-sns-button colorful-sns-button flex-1';
-    } elseif(sns_style()=='simple1') {
+    } elseif(sns_style()==='simple1') {
         $sns_class = 'simple-sns-button colorful-sns-button';
-    } elseif(sns_style()=='simple2') {
+    } elseif(sns_style()==='simple2') {
         $sns_class = 'simple-sns-button simple-sns-button-2';
-    } elseif(sns_style()=='rich') {
+    } elseif(sns_style()==='rich') {
         $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button flex-1';
     }
+
+    if( $position === 'fixed_footer_share_button' ) $sns_class = 'simple-sns-button colorful-sns-button';
+    
     if(sns_style()) {
         $twitter_count = '';
         $facebook_count = '';

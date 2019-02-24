@@ -219,7 +219,7 @@ function customizer_color() {
     $option = (is_admin() && $pagenow===('post.php'||'post-new.php')) ? ' !important;' : ';' ;
     if( !empty($post_backround_color) ) { //記事背景色
         $css[] = '#main,#header.fixed-top,.fixed-top .nav-menu,.fixed-top .nav-menu a,.fixed-top .nav-menu .sub-menu,#fixed-share-button-mask{background-color:'.$post_backround_color.$option.'}';
-        $css[] = '.pagination span, .pagination a, #prev-next a,.prev-post-arrow, .next-post-arrow{color:'.$post_backround_color.$option.'}';
+        $css[] = '.pagination span, .pagination a, #prev-next a,.prev-post-arrow, .next-post-arrow,#fixed-footer-share-button a{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色
         $css[] = '#main,#main .post-info,#all-categories a,#related-post a,#prev-next a,#header.fixed-top,.fixed-top .nav-menu,#header.fixed-top .nav-menu a,.fixed-top #sitename a, .follow-button a{color:'.$post_color.$option.'}';
