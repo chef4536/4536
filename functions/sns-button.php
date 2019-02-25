@@ -39,8 +39,8 @@ function sns_button_4536($position) {
     }
 
     if( $position === 'fixed_footer_share_button' ) $sns_class = 'simple-sns-button colorful-sns-button';
-    
-    if(sns_style()) {
+
+    if( !empty(sns_style()) || $position==='fixed_footer_share_button' ) {
         $twitter_count = '';
         $facebook_count = '';
         $hatebu_count = '';
