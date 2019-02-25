@@ -29,23 +29,23 @@ class ConvertEmbedContentFrom_url_4536 {
       $thumbnail = $data['thumbnail'];
       $sitename = $data['sitename'];
       $icon = $data['icon'];
-      $comment = (empty($data['comment'])) ? '' : '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$data['comment'].'</span></span>';
+      $comment = $data['comment'];
     } else {
       $data = $this->get_data_from_external_link($url);
-      if( $data === false ) {
-        return '<p><del>'.$url.'</del></p>';
-      }
+      if( $data === false ) return '<p><del>'.$url.'</del></p>';
       $thumbnail = ( !empty($data['src']) ) ? '<img width="150" height="150" src="'.$data['src'].'" class="external-thumbnail" />' : '';
       $sitename = $data['host'];
-      $icon = '';
-      $comment = '';
     }
-
-    if(empty($icon)) $icon = '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
     $title = $data['title'];
 
     $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
+
+    $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more">'.$data['more_text'].'</span></span>' : '';
+
+    $icon = ( isset($icon)===true && !empty($icon) ) ? $icon : '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
+
+    $comment = ( isset($comment) && !empty($comment) ) ? '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$comment.'</span></span>' : '';
 
     $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
@@ -80,7 +80,7 @@ class ConvertEmbedContentFrom_url_4536 {
         </span>
         <span class="blogcard-info">
           {$excerpt}
-          <span class="blogcard-more-wrap"><span class="blogcard-more">続きを読む</span></span>
+          {$more_text}
         </span>
       </span>
       <span class="wp-embed-footer">
@@ -147,6 +147,7 @@ EOM;
       $content = $data->post_content;
       $comment = $data->comment_count;
       $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
+      $more_text = '続きを見る';
     } else {
       if ( $url === site_url() ) {
         $title = $sitename;
@@ -186,7 +187,8 @@ EOM;
       'thumbnail',
       'sitename',
       'icon',
-      'comment'
+      'comment',
+      'more_text'
     );
   }
 
