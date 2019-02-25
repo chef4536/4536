@@ -16,9 +16,9 @@ get_header(); ?>
             </div>
         </main>
         <?php
-        get_template_part('page-templates/music');
-        get_template_part('page-templates/movie');
-        get_template_part('page-templates/pickup');
+        get_template_part('template-parts/music');
+        get_template_part('template-parts/movie');
+        get_template_part('template-parts/pickup');
         ?>
     </div>
 </div>

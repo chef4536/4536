@@ -5,9 +5,9 @@ Theme URI: https://4536.jp
 -->
 <?php
 if(is_amp()) {
-    get_template_part('lib/head-setting-amp');
+    get_template_part('template-parts/head-setting-amp');
 } else {
-    get_template_part('lib/head-setting');
+    get_template_part('template-parts/head-setting');
 }
 ?>
 <body <?php body_class(); ?>>
@@ -16,7 +16,7 @@ if(is_amp()) {
 
     if(is_amp()) {
         if(!empty(amp_add_html_js_body())) echo amp_add_html_js_body();
-        get_template_part('lib/google-analytics');
+        get_template_part('template-parts/google-analytics');
     }
 
     if(fixed_header() && !has_header_image()) $header_class = ' fixed-header';
@@ -27,7 +27,7 @@ if(is_amp()) {
     }
     if(!is_singular('lp')) { //ランディングページ以外
         echo '<header id="header" class="header'.$header_class.'" itemscope itemtype="http://schema.org/WPHeader" role="banner">'.$header_image_start_tag;
-        get_template_part('page-templates/header-menu');
+        get_template_part('template-parts/header-menu');
         echo $header_image_end_tag.'</header>';
 
         //navigation

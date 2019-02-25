@@ -11,7 +11,7 @@
         <?php
         // rest_output_link_wp_head();
         // wp_oembed_add_discovery_links();
-        get_template_part('lib/amp-script');
+        get_template_part('template-parts/amp-script');
         custom_seo_meta_4536();
         ogp_setting_4536();
         ?>

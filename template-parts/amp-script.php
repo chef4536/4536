@@ -13,7 +13,7 @@
 <script async custom-element="amp-sticky-ad" src="https://cdn.ampproject.org/v0/amp-sticky-ad-1.0.js"></script>
 <script async custom-element="amp-soundcloud" src="https://cdn.ampproject.org/v0/amp-soundcloud-0.1.js"></script>
 <?php
-get_template_part('lib/json-ld');
+get_template_part('template-parts/json-ld');
 $amp_facebook = '<script async custom-element="amp-facebook-like" src="https://cdn.ampproject.org/v0/amp-facebook-like-0.1.js"></script>';
 if(is_page_template() || is_singular('lp')) $amp_facebook = null;
 $facebook_id = get_the_author_meta('facebook', 1);

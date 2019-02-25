@@ -9,9 +9,9 @@
     <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <?php
-    if(is_rel_canonical()) get_template_part('lib/canonical');
+    if(is_rel_canonical()) get_template_part('template-parts/canonical');
     if(!is_amp()) wp_head();
-    get_template_part('lib/google-analytics');
+    get_template_part('template-parts/google-analytics');
     if( (!is_category() && !is_post_type_archive() && is_archive()) || is_search() || is_attachment() || is_404() ) echo '<meta name="robots" content="noindex,follow">';
     if(add_html_js_head()) echo add_html_js_head();
     //if(add_custom_fields_html_js_head()) echo add_custom_fields_html_js_head();
@@ -29,7 +29,7 @@
     foreach($list as $post_type => $d) {
         if(is_singular($post_type) && is_amp_post_type($d)) echo $amphtml;
     }
-    get_template_part('lib/json-ld');
+    get_template_part('template-parts/json-ld');
     ?>
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>

@@ -26,9 +26,9 @@ function archive_template_4536($page_4536) { ?>
                 <?php pagination($wp_query->max_num_pages); ?>
             </main>
             <?php
-            if($page_4536!=='music') get_template_part('page-templates/music');
-            if($page_4536!=='movie') get_template_part('page-templates/movie');
-            if(!is_tag('pickup')) get_template_part('page-templates/pickup');
+            if($page_4536!=='music') get_template_part('template-parts/music');
+            if($page_4536!=='movie') get_template_part('template-parts/movie');
+            if(!is_tag('pickup')) get_template_part('template-parts/pickup');
             ?>
         </div>
     </div>

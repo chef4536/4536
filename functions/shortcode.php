@@ -23,7 +23,7 @@ add_shortcode('dropdown-pages-4536', function($defaults) {
 //前後の記事
 add_shortcode('post-prev-next-4536', function() {
     ob_start();
-    get_template_part('page-templates/page-nav');
+    get_template_part('template-parts/page-nav');
     $page_nav = ob_get_clean();
     return $page_nav;
 });

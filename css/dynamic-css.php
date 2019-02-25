@@ -330,13 +330,13 @@ if(cta_widget_thumbnail_4536()) $css = array_merge($css,cta_widget_thumbnail_453
 //メディアセクション使ってるかどうか
 if(!is_admin()) {
     ob_start();
-    get_template_part('page-templates/movie');
+    get_template_part('template-parts/movie');
     $movie = ob_get_clean();
     ob_start();
-    get_template_part('page-templates/music');
+    get_template_part('template-parts/music');
     $music = ob_get_clean();
     ob_start();
-    get_template_part('page-templates/pickup');
+    get_template_part('template-parts/pickup');
     $pickup = ob_get_clean();
 }
 if($movie||$music||$pickup) {

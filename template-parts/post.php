@@ -18,7 +18,7 @@ if( is_singular('post') ) {
   $is_sns_bottom = false;
 }
 
-//get_template_part('page-templates/pickup-post-top');
+//get_template_part('template-parts/pickup-post-top');
 
 if( have_posts() ) : while ( have_posts() ) : the_post();
 
@@ -82,7 +82,7 @@ echo '<footer>';
     }
     if(!empty($ad)) dynamic_sidebar($ad);
 
-//    get_template_part('page-templates/pickup-post-bottom');
+//    get_template_part('template-parts/pickup-post-bottom');
 
     if(is_singular(['music','movie'])) {
         $post_type = get_post_type();
@@ -113,7 +113,7 @@ echo '<footer>';
     <?php }
 
     if( $is_sns_bottom === true ) sns_button_4536('post_bottom');
-    if( $is_profile === true ) get_template_part('page-templates/profile');
+    if( $is_profile === true ) get_template_part('template-parts/profile');
 
 echo '</footer>';
 
