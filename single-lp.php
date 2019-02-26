@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main role="main" class="padding-wrap-main-4536">
+<main id="main" role="main" class="padding-wrap-main-4536 post-bg-color post-color">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

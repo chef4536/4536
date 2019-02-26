@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <div id="contents-wrapper">
         <div id="contents-inner">
-            <main id="main" role="main">
+            <main id="main" class="post-bg-color post-color" role="main">
                 <?php get_template_part('template-parts/music'); ?>
                 <div id="new-post" class="flexbox-row-wrap clearfix padding-wrap-main-4536">
                     <?php post_list_template_4536('new-post'); ?>

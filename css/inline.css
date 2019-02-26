@@ -305,7 +305,6 @@ body {
 .post-list a {
     display: block;
     padding-bottom: 1em;
-    color: #000;
 }
 .post-list-thumbnail {
     position: relative;
@@ -357,7 +356,7 @@ h2.post-title { /* トップの新着記事 */
 .post-meta {
     font-size: 12px;
     line-height: 1.5;
-    color: #888888;
+    opacity: .7;
 }
 /*
  * 記事本文のスタイル

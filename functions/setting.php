@@ -96,6 +96,11 @@ if(get_option('disenable_wp_emoji')) {
     remove_action( 'admin_print_styles', 'print_emoji_styles' );
 }
 
+//すべてのカテゴリーページのaタグにクラスを付与
+add_filter( 'wp_list_categories', function( $list ) {
+  return str_replace( '<a', '<a class="post-color"', $list );
+});
+
 //クエリバー追加
 //add_filter('query_vars', function( $vars ) {
 //    $vars[] = 'list_style';

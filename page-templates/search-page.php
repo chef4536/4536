@@ -4,7 +4,7 @@ get_header(); ?>
 
 <div id="contents-wrapper">
     <div id="contents-inner">
-        <main id="main" class="padding-wrap-main-4536" role="main">
+        <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
             <h1 id="post-h1"><?php the_title(); ?></h1>
             <?php echo google_custom_search_result(); ?>
         </main>

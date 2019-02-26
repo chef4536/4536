@@ -2,7 +2,7 @@
 
 <div id="contents-wrapper">
     <div id="contents-inner">
-        <main id="main" class="padding-wrap-main-4536" role="main">
+        <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
             <article>
                 <div class="post">
                     <h1 id="_404-title">ページが見つかりませんでした！</h1>

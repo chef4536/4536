@@ -199,12 +199,12 @@ function customizer_color() {
     }
 
     if( !empty($header_background_color) ) { //ヘッダー背景色
-        $css[] = '#header,.sub-menu,#below-header-nav-menu{background-color:'.$header_background_color.'}';
+        $css[] = '.header-section,.sub-menu{background-color:'.$header_background_color.'}';
     }
 
     if( !empty($header_color) ) { //ヘッダー文字色
 //        $css[] = '#header,#header button,.nav-menu,.nav-menu li a,#sitename a{color:'.$header_color.'}';
-        $css[] = '#header,#header a,#below-header-nav-menu,#below-header-nav-menu a{color:'.$header_color.'}';
+        $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
     }
 
     if( !empty($description_color) ) { //ディスクリプションの文字色
@@ -218,12 +218,14 @@ function customizer_color() {
     global $pagenow;
     $option = (is_admin() && $pagenow===('post.php'||'post-new.php')) ? ' !important;' : ';' ;
     if( !empty($post_backround_color) ) { //記事背景色
-        $css[] = '#main,#header.fixed-top,.fixed-top .nav-menu,.fixed-top .nav-menu a,.fixed-top .nav-menu .sub-menu,#fixed-share-button-mask{background-color:'.$post_backround_color.$option.'}';
-        $css[] = '.pagination span, .pagination a, #prev-next a,.prev-post-arrow, .next-post-arrow,#fixed-footer-share-button a{color:'.$post_backround_color.$option.'}';
+      $post_bgc_class = ( fixed_header() === true ) ? '.post-bg-color,.fixed-top .sub-menu' : '.post-bg-color';
+      $css[] = $post_bgc_class.'{background-color:'.$post_backround_color.$option.'}';
+      $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色
-        $css[] = '#main,#main .post-info,#all-categories a,#related-post a,#prev-next a,#header.fixed-top,.fixed-top .nav-menu,#header.fixed-top .nav-menu a,.fixed-top #sitename a, .follow-button a{color:'.$post_color.$option.'}';
-        $css[] = '.pagination span, .pagination a, .prev-post-arrow, .next-post-arrow{background-color:'.$post_color.$option.'}';
+      $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
+      $css[] = $post_color_class.'{color:'.$post_color.$option.'}';
+      $css[] = '.pagination span, .pagination a{background-color:'.$post_color.$option.'}';
     }
 
     if( !empty($fb_like_background_color) ) { //いいねボックス背景色

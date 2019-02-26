@@ -3,7 +3,7 @@
 function archive_template_4536($page_4536) { ?>
     <div id="contents-wrapper">
         <div id="contents-inner">
-            <main id="main" class="padding-wrap-main-4536" role="main">
+            <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
                 <section id="post-search" class="clearfix">
                     <?php
                     if(is_category()||is_tag()||is_tax()) $title = single_term_title("", false);
@@ -64,7 +64,7 @@ function post_list_template_4536($page_4536) {
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
         <article class="post-list <?php echo $style; ?>">
-            <a class="clearfix" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+            <a class="clearfix post-color" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
                 <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
                 <div class="post-info">
                     <h2 class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></h2>

@@ -19,14 +19,14 @@ if(is_amp()) {
         get_template_part('template-parts/google-analytics');
     }
 
-    if(fixed_header() && !has_header_image()) $header_class = ' fixed-header';
+    $header_class = (fixed_header() && !has_header_image()) ? ' fixed-header' : '';
 
     if(has_header_image()) {
         $header_image_start_tag = '<div id="header-image">';
         $header_image_end_tag = '</div>';
     }
     if(!is_singular('lp')) { //ランディングページ以外
-        echo '<header id="header" class="header'.$header_class.'" itemscope itemtype="http://schema.org/WPHeader" role="banner">'.$header_image_start_tag;
+        echo '<header id="header" class="header header-section'.$header_class.'" itemscope itemtype="http://schema.org/WPHeader" role="banner">'.$header_image_start_tag;
         get_template_part('template-parts/header-menu');
         echo $header_image_end_tag.'</header>';
 
@@ -50,7 +50,7 @@ if(is_amp()) {
             ];
             $button = (is_amp()) ? '' : '<div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>';
             ?>
-            <nav id="below-header-nav-menu" class="nav-menu icon text-align-center<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+            <nav id="below-header-nav-menu" class="nav-menu header-section icon text-align-center<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
                 <div class="scroll-wrapper inner padding-0-10px">
                     <div class="scroll-left">
                         <?php

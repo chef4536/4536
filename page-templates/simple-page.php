@@ -3,7 +3,7 @@ get_header(); ?>
 
 <div id="contents-wrapper">
     <div id="contents-inner">
-        <main id="main" class="padding-wrap-main-4536" role="main">
+        <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
             <article class="post">
                 <?php if( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <h1 id="post-h1"><?php the_title(); ?></h1>

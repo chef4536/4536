@@ -72,7 +72,7 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $output = <<< EOM
     {$blockquote_begin}
-    <a data-embed-content="true" class="wp-embed" href="{$url}"{$external_link}>
+    <a data-embed-content="true" class="wp-embed post-color" href="{$url}"{$external_link}>
       {$title}
       <span class="blogcard-image-info-wrap">
         <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
