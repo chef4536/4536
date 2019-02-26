@@ -34,34 +34,45 @@ add_filter( 'widget_title', function( $widget_title ) {
 });
 
 //ウィジェットのカラー
-function widget_color_4536() {
-    global $wp_registered_widgets;
-    foreach(wp_get_sidebars_widgets() as $int => $ids) {
-        foreach($ids as $int => $id) {
-            $widget_obj = $wp_registered_widgets[$id];
-            $num = preg_replace('/.*?-(\d)/', '$1', $id);
-            $widget_opt = get_option($widget_obj['callback'][0]->option_name);
-            $widget_font_color = $widget_opt[$num]['widget_font_color'];
-            $is_widget_font_color = $widget_opt[$num]['is_widget_font_color'];
-            $font_color = ($is_widget_font_color && $widget_font_color) ? 'color:'.$widget_font_color.';border-color:'.$widget_font_color : '';
-            $widget_background_color = $widget_opt[$num]['widget_background_color'];
-            $is_widget_background_color = $widget_opt[$num]['is_widget_background_color'];
-            $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
-            $class = '.'.$id;
-            if( !empty($background_color) ) echo $class.'{'.$background_color.'}';
-            if( !empty($font_color) ) {
-              $classes = [];
-              $classes[] = $class;
-              $classes[] = $class.' a';
-              $classes[] = $class.' .main-widget-title';
-              $classes[] = $class.' .main-widget-title::before';
-              $classes[] = $class.' .main-widget-title::after';
-              $classes = implode( ',', $classes );
-              echo $classes.'{'.$font_color.'}';
-            }
-        }
+add_filter( 'inline_style_4536', function( $css ) {
+
+  global $wp_registered_widgets;
+
+  foreach(wp_get_sidebars_widgets() as $int => $ids) {
+
+    foreach($ids as $int => $id) {
+
+      $widget_obj = $wp_registered_widgets[$id];
+      $num = preg_replace('/.*?-(\d)/', '$1', $id);
+      $widget_opt = get_option($widget_obj['callback'][0]->option_name);
+      $widget_font_color = $widget_opt[$num]['widget_font_color'];
+      $is_widget_font_color = $widget_opt[$num]['is_widget_font_color'];
+      $font_color = ($is_widget_font_color && $widget_font_color) ? 'color:'.$widget_font_color.';border-color:'.$widget_font_color : '';
+      $widget_background_color = $widget_opt[$num]['widget_background_color'];
+      $is_widget_background_color = $widget_opt[$num]['is_widget_background_color'];
+      $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
+      $class = '.'.$id;
+
+      if( !empty($background_color) ) $css[] = $class.'{'.$background_color.'}';
+
+      if( !empty($font_color) ) {
+        $classes = [];
+        $classes[] = $class;
+        $classes[] = $class.' a';
+        $classes[] = $class.' .main-widget-title';
+        $classes[] = $class.' .main-widget-title::before';
+        $classes[] = $class.' .main-widget-title::after';
+        $classes = implode( ',', $classes );
+        $css[] = $classes.'{'.$font_color.'}';
+      }
+
     }
-}
+
+  }
+
+  return $css;
+
+});
 
 //ウィジェットの記事表示数
 function widget_post_count_4536() {

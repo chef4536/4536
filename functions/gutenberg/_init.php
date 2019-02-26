@@ -22,15 +22,12 @@ add_action( 'enqueue_block_editor_assets', function() {
 
   if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
 
-  ob_start();
-  heading_style_change_4536().customizer_color().dynamic_css_head_4536();
-  $admin_style_color = ob_get_clean();
-  $css = $admin_style_color.wp_get_custom_css();
+  $css = add_inline_style_4536();
   $css = str_replace('#contents-inner', 'body', $css );
   $css = str_replace('.article-body', '', $css );
-  wp_register_style( 'custom-inline', false );
-	wp_enqueue_style( 'custom-inline' );
-	wp_add_inline_style( 'custom-inline', $css );
+  // wp_register_style( 'custom-inline', false );
+	// wp_enqueue_style( 'custom-inline' );
+	// wp_add_inline_style( 'custom-inline', $css );
 
   //吹き出し用カスタムデータ
   $user = wp_get_current_user();

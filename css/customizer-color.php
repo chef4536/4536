@@ -2,7 +2,7 @@
 
 add_theme_support('custom-background'); //カスタム背景
 
-add_action('customize_register', function($wp_customize) {
+add_action( 'customize_register', function( $wp_customize ) {
 
     //色セクション
     $list = [
@@ -158,7 +158,7 @@ add_action('customize_register', function($wp_customize) {
 
 });
 
-function customizer_color() {
+add_filter( 'inline_style_4536', function( $css ) {
 
     //デフォルトカラー
     $link_color = get_theme_mod( 'link_color', '#00a0e9' );
@@ -192,7 +192,7 @@ function customizer_color() {
     $balloon_left_font_color = get_theme_mod( 'balloon_left_font_color', '');
     $balloon_right_font_color = get_theme_mod( 'balloon_right_font_color', '');
 
-    $css = [];
+    // $css = [];
 
     if( !empty($link_color) ) { //リンクカラー
         $css[] = 'a{color:'.$link_color.'}';
@@ -257,19 +257,19 @@ function customizer_color() {
             if(is_admin()) $wrap = '';
             $headline = $wrap.$headline;
             if($style()=='simple1') {
-                echo '.simple1 '.$headline.' { background-color: '.$key.'; }';
+                $css[] = '.simple1 '.$headline.' { background-color: '.$key.'; }';
             } elseif($style()=='simple2') {
-                echo '.simple2 '.$headline.' { border-color: '.$key.'; }';
+                $css[] = '.simple2 '.$headline.' { border-color: '.$key.'; }';
             } elseif($style()=='simple3') {
-                echo '.simple3 '.$headline.' { border-color: '.$key.'; }';
+                $css[] = '.simple3 '.$headline.' { border-color: '.$key.'; }';
             } elseif($style()=='pop') {
-                echo '.pop '.$headline.' { border-color: '.$key.'; }';
+                $css[] = '.pop '.$headline.' { border-color: '.$key.'; }';
             } elseif($style()=='cool') {
-                echo '.cool '.$headline.'::before,.cool '.$headline.'::after { border-color: '.$key.'; }';
+                $css[] = '.cool '.$headline.'::before,.cool '.$headline.'::after { border-color: '.$key.'; }';
             } elseif($style()=='cool2') {
-                echo '.cool2 '.$headline.' {border-color: '.$key.';}.cool2 '.$headline.'::before,.cool2 '.$headline.'::after {border-color: '.$key.';}';
+                $css[] = '.cool2 '.$headline.' {border-color: '.$key.';}.cool2 '.$headline.'::before,.cool2 '.$headline.'::after {border-color: '.$key.';}';
             } elseif($style()=='cool3') {
-                echo '.cool3 '.$headline.'::before {border-color: '.$key.';}';
+                $css[] = '.cool3 '.$headline.'::before {border-color: '.$key.';}';
             }
         }
     }
@@ -283,16 +283,15 @@ function customizer_color() {
         '.main-widget-title' => $main_title_color,
     ];
     foreach($list as $headline => $color) {
-        if(!empty($color)) { //文字色
-            $wrap = null;
-            if($headline=='h2') $wrap = '.article-body ';
-            if($headline=='h3') $wrap = '.article-body ';
-            if($headline=='h4') $wrap = '.article-body ';
-            if(is_admin()) $wrap = '.edit-post-visual-editor ';
-            $headline = str_replace('h1', '#post-h1', $headline);
-            $headline = $wrap.$headline;
-            echo $headline; ?>{color:<?php echo $color; ?>;}
-        <?php }
+      if ( empty( $color ) ) continue;
+      $wrap = '';
+      if( $headline==='h2' ) $wrap = '.article-body ';
+      if( $headline==='h3' ) $wrap = '.article-body ';
+      if( $headline==='h4' ) $wrap = '.article-body ';
+      if( is_admin() ) $wrap = '.edit-post-visual-editor ';
+      $headline = str_replace('h1', '#post-h1', $headline);
+      $headline = $wrap.$headline;
+      $css[] = $headline.'{color:'.$color.'}';
     }
 
     if( !empty($table_background_color_2_line) ) { //テーブル偶数番目背景色
@@ -333,7 +332,6 @@ function customizer_color() {
         $css[] = '.balloon .balloon-text-left{color:'.$balloon_left_font_color.'}';
     }
 
-    $css = implode('', $css);
-    echo $css;
+    return $css;
 
-}
+});

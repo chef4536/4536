@@ -4,16 +4,15 @@
 add_filter('before_wp_tiny_mce', function($init) {
     ob_start();
     require_once(get_template_directory() . '/css/inline.min.css');
-    heading_style_change_4536().customizer_color().dynamic_css_head_4536();
     $admin_style_color = ob_get_clean();
-    $css = $admin_style_color.wp_get_custom_css();
+    $css = $admin_style_color.add_inline_style_4536();
     $css = str_replace('#contents-inner', 'body', $css );
     $css = str_replace('.article-body', '', $css );
     if( get_option('first_tinymce_active_editor') && !get_user_option('rich_editing') ) { ?>
     <script>
         $(function() {
             if(!tinyMCE.activeEditor) $('.wp-editor-wrap .switch-tmce').trigger('click');
-        })        
+        })
     </script>
     <?php } ?>
     <script>
