@@ -18,7 +18,7 @@ add_filter('the_content', function($the_content) {
             $ad = ob_get_clean();
         }
     }
-    
+
     if( is_single() && !empty($ad) ) {
         $ad = '<div class="ad-wrapper text-align-center clearfix">'.$ad.'</div>';
         preg_match( '/<h2.*?>/i', $the_content, $h2 );
@@ -29,8 +29,8 @@ add_filter('the_content', function($the_content) {
 });
 
 //ウィジェットのタイトル消す
-add_filter( 'widget_title', function($widget_title) {
-    return (substr( $widget_title, 0, 1 )=='!') ? null : $widget_title ;
+add_filter( 'widget_title', function( $widget_title ) {
+    return ( substr( $widget_title, 0, 1 ) === '!' ) ? null : $widget_title ;
 });
 
 //ウィジェットのカラー
@@ -43,12 +43,22 @@ function widget_color_4536() {
             $widget_opt = get_option($widget_obj['callback'][0]->option_name);
             $widget_font_color = $widget_opt[$num]['widget_font_color'];
             $is_widget_font_color = $widget_opt[$num]['is_widget_font_color'];
-            $font_color = ($is_widget_font_color && $widget_font_color) ? 'color:'.$widget_font_color : '';
+            $font_color = ($is_widget_font_color && $widget_font_color) ? 'color:'.$widget_font_color.';border-color:'.$widget_font_color : '';
             $widget_background_color = $widget_opt[$num]['widget_background_color'];
             $is_widget_background_color = $widget_opt[$num]['is_widget_background_color'];
             $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
-            if($background_color) echo '.'.$id.'{'.$background_color.'}';
-            if($font_color) echo '.'.$id.' *{'.$font_color.'}';
+            $class = '.'.$id;
+            if( !empty($background_color) ) echo $class.'{'.$background_color.'}';
+            if( !empty($font_color) ) {
+              $classes = [];
+              $classes[] = $class;
+              $classes[] = $class.' a';
+              $classes[] = $class.' .main-widget-title';
+              $classes[] = $class.' .main-widget-title::before';
+              $classes[] = $class.' .main-widget-title::after';
+              $classes = implode( ',', $classes );
+              echo $classes.'{'.$font_color.'}';
+            }
         }
     }
 }
@@ -98,7 +108,7 @@ function cta_widget_thumbnail_4536() {
 // カテゴリーにクラス名を付与
 ///////////////////////////////////
 add_filter( 'wp_list_categories', function( $output, $args ) {
-    
+
     $regex = '/<li class="cat-item cat-item-([\d]+)[^"]*">/';
     $taxonomy = isset( $args['taxonomy'] ) && taxonomy_exists( $args['taxonomy'] ) ? $args['taxonomy'] : 'category';
 
@@ -114,9 +124,9 @@ add_filter( 'wp_list_categories', function( $output, $args ) {
         }
         $output = preg_replace( array_keys( $replace ), $replace, $output );
     }
-    
+
     return $output;
-    
+
 }, 10, 2);
 
 ///////////////////////////////////
@@ -126,7 +136,7 @@ add_filter( 'wp_list_categories', 'posted_count_in_textlink_4536'); //カテゴ�
 add_filter( 'get_archives_link', 'posted_count_in_textlink_4536'); //アーカイブ
 function posted_count_in_textlink_4536($output) {
     $output = preg_replace('/<\/a>\s*( )\((\d+)\)/',' ($2)</a>',$output);
-    return $output;    
+    return $output;
 }
 
 ///////////////////////////////////
@@ -137,7 +147,7 @@ add_filter( 'get_archives_link', 'widget_before_icon_4536'); //アーカイブ
 add_filter( 'wp_list_pages', 'widget_before_icon_4536'); //固定ページ
 function widget_before_icon_4536($output) {
     $output = preg_replace('/<a(.+?)>/', '<a$1><i class="fas fa-angle-right"></i>', $output);
-    return $output;    
+    return $output;
 }
 
 ///////////////////////////////////
@@ -190,4 +200,3 @@ add_action('admin_head-widgets.php', function() { ?>
         }
     </style>
 <?php });
-

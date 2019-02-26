@@ -64,7 +64,7 @@ function post_list_template_4536($page_4536) {
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
         <article class="post-list <?php echo $style; ?>">
-            <a class="clearfix post-color" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+            <a class="clearfix post-color display-block padding-bottom-1em" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
                 <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
                 <div class="post-info">
                     <h2 class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></h2>
@@ -79,7 +79,7 @@ function post_list_template_4536($page_4536) {
         </article>
         <?php
         if( $count===$rand && $page_4536==='new-post' && is_active_sidebar('sp-infeed-ad') ) { //インフィード広告 ?>
-            <div class="post-list clearfix infeed-ad <?php echo $style; ?>">
+            <div class="post-list clearfix infeed-ad display-block padding-bottom-1em <?php echo $style; ?>">
                 <?php dynamic_sidebar('sp-infeed-ad'); ?>
             </div>
         <?php }

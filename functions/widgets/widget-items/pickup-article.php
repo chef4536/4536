@@ -1,11 +1,11 @@
 <?php
 
 class PickupPostWidgetItem extends WP_Widget {
-    
+
     public $_title = 'pickup_title';
     public $_count = 'pickup_count';
     public $_tag = 'pickup_tag';
-    
+
     function __construct() {
 		parent::__construct(
 			'pickup_post',
@@ -13,7 +13,7 @@ class PickupPostWidgetItem extends WP_Widget {
 			['description' => __( '特定のタグがある記事をサムネイルありで表示します', '4536' )]
 		);
 	}
-    
+
     function widget($args, $instance) {
         extract( $args );
         $title = apply_filters( 'widget_title', empty($instance[$this->_title]) ? 'ピックアップ記事' : $instance[$this->_title] );
@@ -39,7 +39,7 @@ class PickupPostWidgetItem extends WP_Widget {
         echo '<ul>';
         foreach($pickupPosts as $post) : setup_postdata( $post ); ?>
             <li class="post-list">
-                <a class="clearfix" href="<?php the_permalink(); ?>">
+                <a class="clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
                     <?php echo thumbnail_4536('widget')['thumbnail']; ?>
                     <div class="post-info">
                         <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
@@ -52,7 +52,7 @@ class PickupPostWidgetItem extends WP_Widget {
         echo '</ul>';
         echo $args['after_widget'];
     }
-    
+
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance[$this->_title] = strip_tags($new_instance[$this->_title]);
@@ -60,7 +60,7 @@ class PickupPostWidgetItem extends WP_Widget {
         $instance[$this->_count] = strip_tags($new_instance[$this->_count]);
         return $instance;
     }
-    
+
     function form($instance) {
         $title = $this->_title;
         $count = $this->_count;
@@ -85,6 +85,6 @@ class PickupPostWidgetItem extends WP_Widget {
             </select>
         </p>
     <?php }
-    
+
 }
 add_action( 'widgets_init', function() { register_widget( 'PickupPostWidgetItem' ); });

@@ -265,11 +265,11 @@ function customizer_color() {
             } elseif($style()=='pop') {
                 echo '.pop '.$headline.' { border-color: '.$key.'; }';
             } elseif($style()=='cool') {
-                echo '.cool '.$headline.'::before,.cool '.$headline.'::after { background-color: '.$key.'; }';
+                echo '.cool '.$headline.'::before,.cool '.$headline.'::after { border-color: '.$key.'; }';
             } elseif($style()=='cool2') {
-                echo '.cool2 '.$headline.' {border-color: '.$key.';}.cool2 '.$headline.'::before,.cool2 '.$headline.'::after {background-color: '.$key.';}';
+                echo '.cool2 '.$headline.' {border-color: '.$key.';}.cool2 '.$headline.'::before,.cool2 '.$headline.'::after {border-color: '.$key.';}';
             } elseif($style()=='cool3') {
-                echo '.cool3 '.$headline.'::before {background-color: '.$key.';}';
+                echo '.cool3 '.$headline.'::before {border-color: '.$key.';}';
             }
         }
     }

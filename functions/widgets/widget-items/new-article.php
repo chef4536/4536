@@ -4,7 +4,7 @@ class NewEntryWidgetItem extends WP_Widget {
 
     public $_title = 'new_title';
     public $_count = 'new_count';
-    
+
     function __construct() {
 		parent::__construct(
 			'new_post',
@@ -12,7 +12,7 @@ class NewEntryWidgetItem extends WP_Widget {
 			[ 'description' => __( 'サムネイルありの新着記事を表示します（トップページでは非表示）', '4536' ) ]
 		);
 	}
-    
+
     function widget($args, $instance) {
         extract( $args );
         $title = apply_filters( 'widget_title', empty($instance[$this->_title]) ? '新着記事' : $instance[$this->_title] );
@@ -30,7 +30,7 @@ class NewEntryWidgetItem extends WP_Widget {
         <ul>
             <?php foreach($new_posts as $post) : setup_postdata( $post ); ?>
                 <li class="post-list">
-                    <a class="clearfix" href="<?php the_permalink(); ?>">
+                    <a class="clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
                     <?php echo thumbnail_4536('widget')['thumbnail']; ?>
                         <div class="post-info">
                             <p class="post-title <?php echo $line_clamp; ?>"><?php the_title(); ?></p>
@@ -45,14 +45,14 @@ class NewEntryWidgetItem extends WP_Widget {
         <?php
         echo $args['after_widget'];
     }
-    
+
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance[$this->_title] = strip_tags($new_instance[$this->_title]);
         $instance[$this->_count] = strip_tags($new_instance[$this->_count]);
         return $instance;
     }
-    
+
     function form($instance) {
         $title = $this->_title;
         $count = $this->_count;
@@ -67,7 +67,7 @@ class NewEntryWidgetItem extends WP_Widget {
         </p>
         <?php
     }
-    
+
 }
 add_action( 'widgets_init', function() { register_widget( 'NewEntryWidgetItem' ); });
 

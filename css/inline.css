@@ -43,6 +43,9 @@ li {
 .display-none {
     display: none;
 }
+.display-block {
+    display: block;
+}
 .text-align-center {
     text-align: center;
 }
@@ -87,6 +90,9 @@ li {
 }
 .padding-1_5em-0 {
     padding: 1.5em 0;
+}
+.padding-bottom-1em {
+    padding-bottom: 1em;
 }
 /* margin関連 */
 .margin-auto {
@@ -301,10 +307,6 @@ body {
     overflow: hidden;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
-}
-.post-list a {
-    display: block;
-    padding-bottom: 1em;
 }
 .post-list-thumbnail {
     position: relative;
