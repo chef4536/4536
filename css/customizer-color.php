@@ -273,7 +273,7 @@ add_filter( 'inline_style_4536', function( $css ) {
       $key_color = $val['key_color'];
       $font_color = $val['font_color'];
       $tag = $val['tag'];
-      if ( is_admin() ) $tag = str_replace( 'article-body', 'edit-post-visual-editor', $tag );
+      // if ( is_admin() ) $tag = str_replace( 'article-body', 'edit-post-visual-editor', $tag );
 
       //キーカラーとスタイル
       switch ( heading_style_4536($key) ) {

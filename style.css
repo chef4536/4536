@@ -891,28 +891,12 @@ ul.children {
     font-size: 12px;
     margin-right: 10px;
     padding: 3px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-radius: 2px;
 }
 .reference,
 .info {
     background-color: #ff8c00;
     color: #fff;
-}
-.reference::after {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 100%;
-    width: 0;
-    height: 0;
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-.reference::after {
-    border-left: 8px solid #fd7c37;
 }
 /* 計測タグ */
 img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {

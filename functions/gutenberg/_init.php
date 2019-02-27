@@ -23,11 +23,11 @@ add_action( 'enqueue_block_editor_assets', function() {
   if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
 
   $css = add_inline_style_4536();
-  $css = str_replace('#contents-inner', 'body', $css );
-  $css = str_replace('.article-body', '', $css );
-  // wp_register_style( 'custom-inline', false );
-	// wp_enqueue_style( 'custom-inline' );
-	// wp_add_inline_style( 'custom-inline', $css );
+  // $css = str_replace('#contents-inner', 'body', $css );
+  // $css = str_replace('.article-body', '', $css );
+  wp_register_style( 'custom-gutenberg', false );
+	wp_enqueue_style( 'custom-gutenberg' );
+	wp_add_inline_style( 'custom-gutenberg', $css );
 
   //吹き出し用カスタムデータ
   $user = wp_get_current_user();
@@ -70,7 +70,11 @@ class GutenbergEditorJS4536 {
         window.addEventListener( 'DOMContentLoaded', function() {
             [].forEach.call(
               document.querySelectorAll( 'div.edit-post-visual-editor' ),
-              e => e.classList.add('post', 'article-body', 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3')
+              e => e.classList.add( 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3' )
+            );
+            [].forEach.call(
+              document.querySelectorAll( 'div.editor-writing-flow' ),
+              e => e.classList.add( 'post', 'article-body' )
             );
         });
     </script>
