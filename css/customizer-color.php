@@ -169,13 +169,13 @@ add_filter( 'inline_style_4536', function( $css ) {
     $post_backround_color = get_theme_mod( 'post_background_color', '#ffffff');
     $post_color = get_theme_mod( 'post_color', '#333333');
     $h1_key_color = get_theme_mod( 'h1_key_color', '#f2f2f2');
-    $h1_color = get_theme_mod( 'h1_font_color', '');
+    $h1_color = get_theme_mod( 'h1_color', '');
     $h2_key_color = get_theme_mod( 'h2_key_color', '#f2f2f2');
-    $h2_color = get_theme_mod( 'h2_font_color', '');
+    $h2_color = get_theme_mod( 'h2_color', '');
     $h3_key_color = get_theme_mod( 'h3_key_color', '#f2f2f2');
-    $h3_color = get_theme_mod( 'h3_font_color', '');
+    $h3_color = get_theme_mod( 'h3_color', '');
     $h4_key_color = get_theme_mod( 'h4_key_color', '#f2f2f2');
-    $h4_color = get_theme_mod( 'h4_font_color', '');
+    $h4_color = get_theme_mod( 'h4_color', '');
     $table_background_color_2_line = get_theme_mod( 'table_background_color_2_line', '#f6f6f6');
     $fb_like_background_color = get_theme_mod( 'fb_like_background_color', '#2b2b2b');
     $fb_like_color = get_theme_mod( 'fb_like_color', '#ffffff');
@@ -191,8 +191,6 @@ add_filter( 'inline_style_4536', function( $css ) {
     $balloon_right_background_color = get_theme_mod( 'balloon_right_background_color', '');
     $balloon_left_font_color = get_theme_mod( 'balloon_left_font_color', '');
     $balloon_right_font_color = get_theme_mod( 'balloon_right_font_color', '');
-
-    // $css = [];
 
     if( !empty($link_color) ) { //リンクカラー
         $css[] = 'a{color:'.$link_color.'}';
@@ -237,61 +235,83 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     $list = [
-        'h1_style' => $h1_key_color,
-        'h2_style' => $h2_key_color,
-        'h3_style' => $h3_key_color,
-        'h4_style' => $h4_key_color,
-        'related_post_title_style' => $related_post_title_key_color,
-        'widget_title_style' => $main_title_key_color,
+      'h1_style' => [
+        'tag' => '#post-h1',
+        'key_color' => $h1_key_color,
+        'font_color' => $h1_color,
+      ],
+      'h2_style' => [
+        'tag' => '.article-body h2',
+        'key_color' => $h2_key_color,
+        'font_color' => $h2_color,
+      ],
+      'h3_style' => [
+        'tag' => '.article-body h3',
+        'key_color' => $h3_key_color,
+        'font_color' => $h3_color,
+      ],
+      'h4_style' => [
+        'tag' => '.article-body h4',
+        'key_color' => $h4_key_color,
+        'font_color' => $h4_color,
+      ],
+      'related_post_title_style' => [
+        'tag' => '#related-post-title',
+        'key_color' => $related_post_title_key_color,
+        'font_color' => $related_post_title_color,
+      ],
+      'main_widget_title_style' => [
+        'tag' => '.main-widget-title',
+        'key_color' => $main_title_key_color,
+        'font_color' => $main_title_color,
+      ],
     ];
-    foreach($list as $style => $key) {
-        if(!empty($key)) {//キー色
-            $wrap = '';
-            if($style==='h2_style') $wrap = '.article-body ';
-            if($style==='h3_style') $wrap = '.article-body ';
-            if($style==='h4_style') $wrap = '.article-body ';
-            $headline = str_replace('_style', '', $style);
-            $headline = str_replace('h1', '#post-h1', $headline);
-            $headline = str_replace('related_post_title', '#related-post-title', $headline);
-            $headline = str_replace('widget_title', '.main-widget-title', $headline);
-            if(is_admin()) $wrap = '';
-            $headline = $wrap.$headline;
-            if($style()=='simple1') {
-                $css[] = '.simple1 '.$headline.' { background-color: '.$key.'; }';
-            } elseif($style()=='simple2') {
-                $css[] = '.simple2 '.$headline.' { border-color: '.$key.'; }';
-            } elseif($style()=='simple3') {
-                $css[] = '.simple3 '.$headline.' { border-color: '.$key.'; }';
-            } elseif($style()=='pop') {
-                $css[] = '.pop '.$headline.' { border-color: '.$key.'; }';
-            } elseif($style()=='cool') {
-                $css[] = '.cool '.$headline.'::before,.cool '.$headline.'::after { border-color: '.$key.'; }';
-            } elseif($style()=='cool2') {
-                $css[] = '.cool2 '.$headline.' {border-color: '.$key.';}.cool2 '.$headline.'::before,.cool2 '.$headline.'::after {border-color: '.$key.';}';
-            } elseif($style()=='cool3') {
-                $css[] = '.cool3 '.$headline.'::before {border-color: '.$key.';}';
-            }
-        }
-    }
 
-    $list = [
-        'h1' => $h1_color,
-        'h2' => $h2_color,
-        'h3' => $h3_color,
-        'h4' => $h4_color,
-        '#related-post-title' => $related_post_title_color,
-        '.main-widget-title' => $main_title_color,
-    ];
-    foreach($list as $headline => $color) {
-      if ( empty( $color ) ) continue;
-      $wrap = '';
-      if( $headline==='h2' ) $wrap = '.article-body ';
-      if( $headline==='h3' ) $wrap = '.article-body ';
-      if( $headline==='h4' ) $wrap = '.article-body ';
-      if( is_admin() ) $wrap = '.edit-post-visual-editor ';
-      $headline = str_replace('h1', '#post-h1', $headline);
-      $headline = $wrap.$headline;
-      $css[] = $headline.'{color:'.$color.'}';
+    //キーカラー
+    foreach ( $list as $key => $val ) {
+
+      $key_color = $val['key_color'];
+      $font_color = $val['font_color'];
+      $tag = $val['tag'];
+      if ( is_admin() ) $tag = str_replace( 'article-body', 'edit-post-visual-editor', $tag );
+
+      //キーカラーとスタイル
+      switch ( heading_style_4536($key) ) {
+        case 'simple1':
+          $key_color_css = ( !empty($key_color) ) ? 'background-color:'.$key_color : '';
+          $css[] = '.simple1 '.$tag.'{border-radius:2px;padding:.8em;'.$key_color_css.'}';
+          break;
+        case 'simple2':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
+          $css[] = '.simple2 '.$tag.'{border-bottom:solid 3px;padding: 0 0 .4em .4em;'.$key_color_css.'}';
+          break;
+        case 'simple3':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
+          $css[] = '.simple3 '.$tag.'{border-left:5px solid;padding-left:.4em;'.$key_color_css.'}';
+          break;
+        case 'pop':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
+          $css[] = '.pop '.$tag.'{border-radius:2px;padding:.8em;border:dashed 2px;'.$key_color_css.'}';
+          break;
+        case 'cool':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
+          $css[] = '.cool '.$tag.'{display:table;padding:0 55px}.cool '.$tag.'::before{left:0}.cool '.$tag.'::after{right:0}';
+          $css[] = '.cool '.$tag.'::before,.cool '.$tag.'::after{content:"";position:absolute;top:50%;display:inline-block;width:45px;border:.5px solid;'.$key_color_css.'}';
+          break;
+        case 'cool2':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
+          $css[] = '.cool2 '.$tag.'{padding:.8em 1em;border-top:solid 2px;border-bottom:solid 2px;'.$key_color_css.'}.cool2 '.$tag.'::before{left:7px}.cool2 '.$tag.'::after{right:7px}';
+          $css[] = '.cool2 '.$tag.'::before,.cool2 '.$tag.'::after{content:"";position:absolute;top:-7px;border:1px solid;height:-webkit-calc(100% + 14px);height:calc(100% + 14px);'.$key_color_css.'}';
+          break;
+        case 'cool3':
+          $key_color_css = ( !empty($key_color) ) ? 'border-color: '.$key_color : '';
+          $css[] = '.cool3 '.$tag.'{display:block;text-align:center}.cool3 '.$tag.'::before{content:"";position:absolute;bottom:-10px;display:block;width:60px;border:1.5px solid;left:50%;-moz-transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);border-radius:2px;'.$key_color_css.'}';
+          break;
+      }
+
+      //文字色
+      if ( !empty( $font_color ) ) $css[] = $tag.'{color:'.$font_color.'}';
+
     }
 
     if( !empty($table_background_color_2_line) ) { //テーブル偶数番目背景色

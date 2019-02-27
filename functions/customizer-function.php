@@ -109,29 +109,31 @@ function post_prev_next_4536() {
 ////////////////////////////////////
 // 見出し
 ////////////////////////////////////
-//見出し1
-function h1_style() {
-    return get_theme_mod( 'h1_style', null );
-}
-//見出し2
-function h2_style() {
-    return get_theme_mod( 'h2_style', 'simple1' );
-}
-//見出し3
-function h3_style() {
-    return get_theme_mod( 'h3_style', 'simple2' );
-}
-//見出し4
-function h4_style() {
-    return get_theme_mod( 'h4_style', 'simple3' );
-}
-//関連記事タイトル
-function related_post_title_style() {
-    return get_theme_mod( 'related_post_title_style', 'simple1' );
-}
-//ウィジェット
-function widget_title_style() {
-    return get_theme_mod( 'main_widget_title_style', 'simple1' );
+function heading_style_4536( $tag ) {
+
+  switch ( $tag ) {
+    case 'h1_style':
+      $default = null;
+      break;
+    case 'h2_style':
+      $default = 'simple1';
+      break;
+    case 'h3_style':
+      $default = 'simple2';
+      break;
+    case 'h4_style':
+      $default = 'simple3';
+      break;
+    case 'related_post_title_style':
+      $default = 'simple1';
+      break;
+    case 'main_widget_title_style':
+      $default = 'simple1';
+      break;
+  }
+
+  return get_theme_mod( $tag, $default );
+
 }
 ////////////////////////////////////
 // メディア関連

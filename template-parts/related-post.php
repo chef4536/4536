@@ -31,7 +31,7 @@ if(!$related_posts) return;
 ?>
 
 <div id="related-post">
-    <h3 id="related-post-title">関連記事</h3>
+    <h3 id="related-post-title" class="position-relative">関連記事</h3>
     <div class="related-post-wrap flexbox-row-wrap">
         <?php foreach($related_posts as $post) : setup_postdata( $post ) ; ?>
         <div class="post-list<?php echo $style; ?>">
