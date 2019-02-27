@@ -1,17 +1,17 @@
 <?php
 
-function admin_amp_setting_4536() { ?>
+function admin_amp_setting_form_4536() { ?>
 
 <div class="wrap">
-    
+
     <h2>AMP設定</h2>
-    
+
     <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://4536.jp/amp" target="_blank">AMPとは？</a></p>
-    
+
     <p><small>プラグインで対応する場合はこの画面で設定する必要はありません。</small></p>
 
     <form method="post" action="options.php">
-        
+
     <?php settings_fields( 'amp_group' ); do_settings_sections( 'amp_group' ); ?>
 
     <!-- AMP有効 -->
@@ -102,7 +102,7 @@ function admin_amp_setting_4536() { ?>
     </div>
 
     <?php submit_button(); ?>
-    
+
     </form>
 
     <style>

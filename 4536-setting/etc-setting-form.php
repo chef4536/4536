@@ -1,13 +1,13 @@
 <?php
 
-function admin_etc_setting_4536() { ?>
+function admin_etc_setting_form_4536() { ?>
 
 <div class="wrap">
-    
+
     <h2>その他の設定</h2>
 
     <form method="post" action="options.php">
-        
+
     <?php settings_fields( 'etc_group' ); do_settings_sections( 'etc_group' ); ?>
 
     <!-- 投稿の編集画面カスタマイズ -->
@@ -135,7 +135,7 @@ function admin_etc_setting_4536() { ?>
     </div>
 
     <?php submit_button(); ?>
-    
+
     </form>
 
 </div>

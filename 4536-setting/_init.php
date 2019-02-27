@@ -5,9 +5,9 @@ require_once('4536-manual.php');
 require_once('media-setting-form.php');
 require_once('seo-setting-form.php');
 require_once('amp-setting-form.php');
-require_once('speeding-up-setting-form.php');
+require_once('speeding-up-setting.php');
 require_once('etc-setting-form.php');
-require_once('database-setting-form.php');
+require_once('database-setting.php');
 
 add_action( 'admin_menu', function() {
     add_menu_page( '4536設定', '4536設定', 'manage_options', '4536-setting', '', '', 4);
@@ -21,7 +21,7 @@ add_action( 'admin_menu', function() {
       'データベース' => 'database',
     ];
     foreach($list as $name => $key) {
-      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $key, 'admin_'.$key.'_setting_4536' );
+      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $key, 'admin_'.$key.'_setting_form_4536' );
     }
 });
 

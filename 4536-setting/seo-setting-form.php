@@ -1,6 +1,6 @@
 <?php
 
-function admin_seo_setting_4536() { ?>
+function admin_seo_setting_form_4536() { ?>
 
 <div class="wrap">
 

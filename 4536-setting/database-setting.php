@@ -1,6 +1,6 @@
 <?php
 
-function admin_database_setting_4536() { ?>
+function admin_database_setting_form_4536() { ?>
 
   <div class="wrap">
 

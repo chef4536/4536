@@ -66,9 +66,6 @@ require_once('sns-button.php');
 //新エディタGutenberg関連
 require_once('gutenberg/_init.php');
 
-//高速化関連
-require_once('speeding-up/_init.php');
-
 //埋め込み関連
 require_once('embed/_init.php');
 
