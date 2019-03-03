@@ -6,8 +6,22 @@
 class HtaccessUpdate_4536 {
 
   public $array = [
-    'is_enable_browser_cache' => '/#4536BrowserCacheBegin.+?#4536BrowserCacheEnd/s',
-    'is_enable_gzip' => '/#4536GzipBegin.+?#4536GzipEnd/s',
+    'is_enable_protect_wp_config' => [
+      'search_pattern' => '/#4536ProtectWpConfigBegin.+?#4536ProtectWpConfigEnd/s',
+      'priority' => 'high'
+    ],
+    'is_enable_redirect_to_https' => [
+      'search_pattern' => '/#4536RedirectToHttpsBegin.+?#4536RedirectToHttpsEnd/s',
+      'priority' => 'high'
+    ],
+    'is_enable_browser_cache' => [
+      'search_pattern' => '/#4536BrowserCacheBegin.+?#4536BrowserCacheEnd/s',
+      'priority' => 'low'
+    ],
+    'is_enable_gzip' => [
+      'search_pattern' => '/#4536GzipBegin.+?#4536GzipEnd/s',
+      'priority' => 'low'
+    ],
   ];
 
   function __construct() {
@@ -67,18 +81,22 @@ class HtaccessUpdate_4536 {
     chmod($backup_file, 0644);
 
     $text_file_list = [
-      __DIR__.'/../htaccess-text/browser-cache.conf',
-      __DIR__.'/../htaccess-text/gzip.conf',
+      'browser-cache.conf',
+      'gzip.conf',
+      'protect-wp-config.conf',
+      'redirect-to-https.conf',
     ];
     ob_start();
     foreach ( $text_file_list as $filename ) {
-      require_once( $filename );
+      require_once( __DIR__.'/../htaccess-text/'.$filename );
     }
     $data = ob_get_clean();
 
     $htaccess_txt = $this->get_htaccess_text();
 
-    foreach( $this->array as $key => $search ) {
+    foreach( $this->array as $key => $val ) {
+      $search = $val['search_pattern'];
+      $priority = $val['priority'];
       preg_match($search, $htaccess_txt, $htaccess_match);
       preg_match($search, $data, $data_match);
       if ( get_option($key)==='1' ) {
@@ -86,15 +104,21 @@ class HtaccessUpdate_4536 {
         if( !empty($htaccess_match) ) {
           $htaccess_txt = preg_replace($search, $data_match[0], $htaccess_txt);
         } else {
-          $data_merge .= $data_match[0].PHP_EOL;
+          if( $priority === 'high' ) {
+            $data_merge_before .= $data_match[0].PHP_EOL;
+          } elseif( $priority === 'low' ) {
+            $data_merge_after .= $data_match[0].PHP_EOL;
+          }
         }
       } else {
         if( !empty($htaccess_match) ) $htaccess_txt = preg_replace($search, '', $htaccess_txt);
       }
     }
-    $htaccess_txt = rtrim($htaccess_txt);
-    $htaccess_txt = $htaccess_txt.PHP_EOL;
-    if( isset($data_merge) && !empty($data_merge) ) $htaccess_txt = $htaccess_txt.PHP_EOL.$data_merge;
+
+    $htaccess_txt = PHP_EOL.trim( $htaccess_txt ).PHP_EOL;
+    if( isset($data_merge_before) && !empty($data_merge_before) ) $htaccess_txt = PHP_EOL.$data_merge_before.$htaccess_txt;
+    if( isset($data_merge_after) && !empty($data_merge_after) ) $htaccess_txt = $htaccess_txt.PHP_EOL.$data_merge_after;
+
     file_put_contents($htaccess_file, $htaccess_txt);
 
     add_action( 'admin_notices', function() {
@@ -111,7 +135,7 @@ class HtaccessUpdate_4536 {
   function form() { ?>
 
     <div class="wrap">
-        <h2>htaccessの編集</h2>
+        <h2>htaccess設定</h2>
         <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://4536.jp/speeding-up" target="_blank" >高速化について</a></p>
         <form method="post" action="">
         <?php
@@ -122,6 +146,12 @@ class HtaccessUpdate_4536 {
           '高速化' => [
             'is_enable_browser_cache' => 'ブラウザキャッシュ',
             'is_enable_gzip' => 'Gzip圧縮',
+          ],
+          'セキュリティ' => [
+            'is_enable_protect_wp_config' => 'wp-configファイルへのアクセス禁止',
+          ],
+          'リダイレクト' => [
+            'is_enable_redirect_to_https' => 'httpへのアクセスをhttpsにリダイレクトする',
           ],
         ];
 
@@ -167,10 +197,6 @@ class HtaccessUpdate_4536 {
     </div>
 
   <?php }
-
-  function register_setting() {
-
-  }
 
 }
 new HtaccessUpdate_4536();
