@@ -59,8 +59,8 @@ function admin_etc_setting_form_4536() { ?>
         <h3 class="hndle">jQueryライブラリの読み込み</h3>
         <div class="inside">
             <p>
-                <input type="checkbox" id="is_jquery_lib" name="is_jquery_lib" value="1" <?php checked(get_option('is_jquery_lib'), 1);?> />
-                <label for="is_jquery_lib">ライブラリを読み込まない</label>
+                <input type="checkbox" id="is_enable_jquery_lib" name="is_enable_jquery_lib" value="1" <?php checked(get_option('is_enable_jquery_lib'), 1);?> />
+                <label for="is_enable_jquery_lib">ライブラリを読み込む</label>
             </p>
         </div>
     </div>

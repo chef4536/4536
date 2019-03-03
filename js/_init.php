@@ -14,10 +14,10 @@ add_action( 'wp_enqueue_scripts', function() {
   $ver = (function_exists('theme_version_4536')) ? theme_version_4536() : '';
   wp_enqueue_script( '4536-master', get_parent_theme_file_uri('dist/main_bundle.js'), [], $ver, true );
   wp_deregister_script('jquery');
-  if(!get_option('is_jquery_lib')) {
+  if( get_option('is_enable_jquery_lib')==='1' ) {
     wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', [], false, true);
   }
-  if(is_highlight_js_4536()) {
+  if( is_highlight_js_4536() ) {
     wp_enqueue_script( 'highlight-js', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js', [], false, true);
     wp_add_inline_script( 'highlight-js', 'hljs.initHighlightingOnLoad()', 'after' );
   }

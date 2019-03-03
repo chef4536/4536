@@ -30,7 +30,7 @@ function admin_4536_setting_manual() { ?>
                     'seo' => 'SEOの設定はこちら',
                     'media' => 'メディア（音楽や動画）の設定はこちら',
                     'amp' => 'AMPの設定はこちら',
-                    'speeding_up' => '高速化の設定はこちら',
+                    'htaccess' => '高速化とリダイレクトの設定はこちら',
                     'database' => 'データベースの操作はこちら',
                     'etc' => 'その他の設定はこちら',
                 ];
