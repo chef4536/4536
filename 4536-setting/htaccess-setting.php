@@ -8,19 +8,19 @@ class HtaccessUpdate_4536 {
   public $array = [
     'is_enable_protect_wp_config' => [
       'search_pattern' => '/#4536ProtectWpConfigBegin.+?#4536ProtectWpConfigEnd/s',
-      'priority' => 'high'
+      'location' => 'before'
     ],
     'is_enable_redirect_to_https' => [
       'search_pattern' => '/#4536RedirectToHttpsBegin.+?#4536RedirectToHttpsEnd/s',
-      'priority' => 'high'
+      'location' => 'before'
     ],
     'is_enable_browser_cache' => [
       'search_pattern' => '/#4536BrowserCacheBegin.+?#4536BrowserCacheEnd/s',
-      'priority' => 'low'
+      'location' => 'after'
     ],
     'is_enable_gzip' => [
       'search_pattern' => '/#4536GzipBegin.+?#4536GzipEnd/s',
-      'priority' => 'low'
+      'location' => 'after'
     ],
   ];
 
@@ -96,7 +96,7 @@ class HtaccessUpdate_4536 {
 
     foreach( $this->array as $key => $val ) {
       $search = $val['search_pattern'];
-      $priority = $val['priority'];
+      $location = $val['location'];
       preg_match($search, $htaccess_txt, $htaccess_match);
       preg_match($search, $data, $data_match);
       if ( get_option($key)==='1' ) {
@@ -104,9 +104,9 @@ class HtaccessUpdate_4536 {
         if( !empty($htaccess_match) ) {
           $htaccess_txt = preg_replace($search, $data_match[0], $htaccess_txt);
         } else {
-          if( $priority === 'high' ) {
+          if( $location === 'before' ) {
             $data_merge_before .= $data_match[0].PHP_EOL;
-          } elseif( $priority === 'low' ) {
+          } elseif( $location === 'after' ) {
             $data_merge_after .= $data_match[0].PHP_EOL;
           }
         }
