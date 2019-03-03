@@ -40,8 +40,9 @@ class HtaccessUpdate_4536 {
     if ( isset( $_POST['admin_speeding_up_setting_submit_4536'] ) ) {
 
       $cat_id = $_POST['post_category'];
-      update_option( 'redirect_post_in_category', $cat_id );
-      // var_dump(get_option('redirect_post_in_category'));
+      update_option( 'redirect_cat_id', $cat_id );
+      // var_dump(get_option('redirect_cat_id'));
+      require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
 
       foreach ( $this->array as $key => $val ) {
         $this->update_option( $key );
@@ -185,7 +186,7 @@ class HtaccessUpdate_4536 {
             <h3 class="hndle">リダイレクト（外部）</h3>
             <div class="inside">
               <ul>
-                <?php wp_category_checklist( 0, 0, get_option('redirect_post_in_category'), false, null, false ); ?>
+                <?php wp_category_checklist( 0, 0, get_option('redirect_cat_id'), false, null, false ); ?>
               </ul>
             </div>
           </div>
