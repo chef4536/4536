@@ -151,7 +151,7 @@ class HtaccessUpdate_4536 {
             'is_enable_protect_wp_config' => 'wp-configファイルへのアクセス禁止',
           ],
           'リダイレクト' => [
-            'is_enable_redirect_to_https' => 'httpへのアクセスをhttpsにリダイレクトする',
+            'is_enable_redirect_to_https' => 'httpへのアクセスをhttpsにリダイレクト（要：SSL化）',
           ],
         ];
 
@@ -171,9 +171,15 @@ class HtaccessUpdate_4536 {
           </div>
           </div>
 
-        <?php } ?>
+        <?php }
 
-        <div class="metabox-holder">
+        submit_button($text, 'primary large', 'admin_speeding_up_setting_submit_4536', $wrap, $other_attributes);
+
+        ?>
+
+        </form>
+
+        <div class="metabox-holder" style="margin-top:20px">
           <div class="postbox" >
             <h3 class="hndle">htaccessファイル（確認用）</h3>
             <div class="inside">
@@ -183,10 +189,6 @@ class HtaccessUpdate_4536 {
             </div>
           </div>
         </div>
-
-        <?php submit_button($text, 'primary large', 'admin_speeding_up_setting_submit_4536', $wrap, $other_attributes); ?>
-
-        </form>
 
         <style>
             .far {

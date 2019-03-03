@@ -7,7 +7,6 @@ add_action( 'admin_menu', function() {
     'SEO' => 'seo',
     'メディア' => 'media',
     'AMP' => 'amp',
-    'データベース' => 'database',
     'その他' => 'etc',
   ];
   foreach($list as $name => $key) {
@@ -91,17 +90,6 @@ add_action( 'admin_init', function() {
     ];
     foreach($list as $name) {
         register_setting( 'etc_group', $name );
-    }
-    $list = [
-      'embed_cache_delete',
-      'import_aioseo_title',
-      'import_aioseo_description',
-      'import_aioseo_keywords',
-      'import_aioseo_noindex',
-      'import_aioseo_nofollow',
-    ];
-    foreach($list as $name) {
-        register_setting( 'database_group', $name );
     }
 });
 
