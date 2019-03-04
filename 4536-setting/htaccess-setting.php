@@ -26,23 +26,31 @@ class HtaccessUpdate_4536 {
 
   function __construct() {
 
+    // var_dump( get_option('redirect_my_test') ); //test
+    // var_dump( $this->redirect_count() ); //test
+
     add_action( 'admin_init', function() {
+      if( get_option( 'redirect_my_test' ) === false ) update_option( 'redirect_my_test', [] );
       foreach( $this->array as $key => $value ) {
         register_setting( 'htaccess_group', $key );
       }
+      register_setting( 'htaccess_group', 'redirect_my_test' );
     });
 
     add_action( 'admin_menu', function() {
-      $name = 'htaccess';
-      add_submenu_page( '4536-setting', $name, $name, 'manage_options', $name, [$this, 'form'] );
+      add_submenu_page( '4536-setting', 'htaccess', 'htaccess', 'manage_options', 'htaccess', [$this, 'form'] );
     });
 
     if ( isset( $_POST['admin_speeding_up_setting_submit_4536'] ) ) {
 
-      $cat_id = $_POST['post_category'];
-      update_option( 'redirect_cat_id', $cat_id );
-      // var_dump(get_option('redirect_cat_id'));
-      require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
+      $array = [];
+
+      $array['cat_id'] = ( !empty( $_POST['cat_id'] ) ) ? $_POST['cat_id'] : [];
+      $array['cat_id'] = array_values( $array['cat_id'] );
+      update_option( 'redirect_my_test', $array );
+      // var_dump(get_option('redirect_my_test')); //test
+
+      // require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
 
       foreach ( $this->array as $key => $val ) {
         $this->update_option( $key );
@@ -140,6 +148,13 @@ class HtaccessUpdate_4536 {
     update_option( $option, $val );
   }
 
+  function redirect_count() {
+    // return 3;
+    $array = get_option( 'redirect_my_test' );
+    $count = ( !empty($array['cat_id']) ) ? count( $array['cat_id'] ) : 1 ;
+    return $count;
+  }
+
   function form() { ?>
 
     <div class="wrap">
@@ -181,16 +196,58 @@ class HtaccessUpdate_4536 {
 
         <?php } ?>
 
-        <div class="metabox-holder">
-          <div class="postbox" >
-            <h3 class="hndle">リダイレクト（外部）</h3>
-            <div class="inside">
-              <ul>
-                <?php wp_category_checklist( 0, 0, get_option('redirect_cat_id'), false, null, false ); ?>
-              </ul>
+        <?php for( $num=0; $num < $this->redirect_count(); $num++ ) { ?>
+          <div id="redirect_post_in_category-<?php echo $num; ?>" class="metabox-holder redirect_post_in_category-section">
+            <div class="postbox">
+              <h3 class="hndle">リダイレクト（外部）</h3>
+              <div class="inside scroll">
+                <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
+                <input type="url" name="redirect_url[<?php echo $num; ?>][]" size="40" required>
+                <ul>
+                  <?php
+                  $walker = new Walker_Category_Checklist_Widget (
+                    'cat_id['.$num.']',
+                    'cat_id['.$num.']'
+                  );
+                  wp_category_checklist( 0, 0, get_option('redirect_my_test')['cat_id'][$num], false, $walker, false );
+                  ?>
+                </ul>
+              </div>
+              <div class="button-section">
+                <input type="button" id="clone" class="clone button small-button" value="複製">
+                <input type="button" id="delete" class="delete button small-button" value="削除">
+              </div>
             </div>
           </div>
-        </div>
+        <?php } ?>
+
+        <div id="clone_point_redirect_content"></div>
+
+        <script>
+          $(function() {
+
+            let count = <?php echo $this->redirect_count(); ?>;
+
+            $('input.clone').on( 'click' , function() {
+              let origin = $(this).closest('.redirect_post_in_category-section');
+              let clone = origin.clone().html();
+              clone = clone.replace( /cat_id\[\d\]/g, 'cat_id[' + count + ']' );
+              const clone_point = $('#clone_point_redirect_content');
+              clone_point.before( clone );
+              $('html,body').animate({scrollTop:clone_point.offset().top - 400 });
+              // let lastElm = Array.prototype.slice.call(document.getElementsByClassName('redirect_post_in_category-section')).slice(-1)[0];
+              // lastElm.after( clone );
+              // lastElm.insertAdjacentHTML( 'afterend', clone );
+              count = count + 1;
+              // console.log( clone );
+            });
+
+            $('input.delete').on( 'click' , function() {
+              $(this).closest('.redirect_post_in_category-section').remove();
+            });
+
+          });
+        </script>
 
         <?php submit_button($text, 'primary large', 'admin_speeding_up_setting_submit_4536', $wrap, $other_attributes); ?>
 
@@ -200,7 +257,7 @@ class HtaccessUpdate_4536 {
           <div class="postbox" >
             <h3 class="hndle">htaccessファイル（確認用）</h3>
             <div class="inside">
-              <textarea readonly style="width:100%;min-height:400px;background-color:#fcfcfc;">
+              <textarea readonly style="width:100%;min-height:300px;background-color:#fcfcfc;">
                 <?php echo $this->get_htaccess_text(); ?>
               </textarea>
             </div>
@@ -210,6 +267,16 @@ class HtaccessUpdate_4536 {
         <style>
           .far {
             margin-right: 5px;
+          }
+          .button-section {
+            margin: 12px;
+          }
+          .scroll {
+            height: 200px;
+            overflow-y: scroll;
+          }
+          .small-button {
+            margin: 12px;
           }
         </style>
 
