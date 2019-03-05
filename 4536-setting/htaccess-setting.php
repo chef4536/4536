@@ -47,9 +47,13 @@ class HtaccessUpdate_4536 {
 
       $array['cat_id'] = ( !empty( $_POST['cat_id'] ) ) ? $_POST['cat_id'] : [];
       $array['cat_id'] = array_values( $array['cat_id'] );
-      update_option( 'redirect_my_test', $array );
-      // var_dump(get_option('redirect_my_test')); //test
 
+      $array['redirect_url'] = ( !empty( $_POST['redirect_url'] ) ) ? $_POST['redirect_url'] : '';
+      $array['redirect_url'] = array_values( $array['redirect_url'] );
+
+      update_option( 'redirect_my_test', $array );
+
+      var_dump(get_option('redirect_my_test')); //test
       // require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
 
       foreach ( $this->array as $key => $val ) {
@@ -202,7 +206,7 @@ class HtaccessUpdate_4536 {
               <h3 class="hndle">リダイレクト（外部）</h3>
               <div class="inside scroll">
                 <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
-                <input type="url" name="redirect_url[<?php echo $num; ?>][]" size="40" required>
+                <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo get_option('redirect_my_test')['redirect_url'][$num]; ?>" required>
                 <ul>
                   <?php
                   $walker = new Walker_Category_Checklist_Widget (
@@ -231,7 +235,8 @@ class HtaccessUpdate_4536 {
             $('input.clone').on( 'click' , function() {
               let origin = $(this).closest('.redirect_post_in_category-section');
               let clone = origin.clone().html();
-              clone = clone.replace( /cat_id\[\d\]/g, 'cat_id[' + count + ']' );
+              clone = clone.replace( /name="cat_id\[\d\]/g, 'name="cat_id[' + count + ']' );
+              clone = clone.replace( /name="redirect_url\[\d\]"/g, 'name="redirect_url[' + count + ']"' );
               const clone_point = $('#clone_point_redirect_content');
               clone_point.before( clone );
               $('html,body').animate({scrollTop:clone_point.offset().top - 400 });
