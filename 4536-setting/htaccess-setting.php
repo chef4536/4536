@@ -26,9 +26,6 @@ class HtaccessUpdate_4536 {
 
   function __construct() {
 
-    // var_dump( get_option('redirect_my_test') ); //test
-    // var_dump( $this->redirect_count() ); //test
-
     add_action( 'admin_init', function() {
       if( get_option( 'redirect_my_test' ) === false ) update_option( 'redirect_my_test', [] );
       foreach( $this->array as $key => $value ) {
@@ -41,14 +38,14 @@ class HtaccessUpdate_4536 {
       add_submenu_page( '4536-setting', 'htaccess', 'htaccess', 'manage_options', 'htaccess', [$this, 'form'] );
     });
 
-    if ( isset( $_POST['admin_speeding_up_setting_submit_4536'] ) ) {
+    if ( isset( $_POST['admin_htaccess_setting_submit_4536'] ) ) {
 
       $array = [];
 
       $array['cat_id'] = ( !empty( $_POST['cat_id'] ) ) ? $_POST['cat_id'] : [];
       $array['cat_id'] = array_values( $array['cat_id'] );
 
-      $array['redirect_url'] = ( !empty( $_POST['redirect_url'] ) ) ? $_POST['redirect_url'] : '';
+      $array['redirect_url'] = ( !empty( $_POST['redirect_url'] ) ) ? $_POST['redirect_url'] : [];
       $array['redirect_url'] = array_values( $array['redirect_url'] );
 
       update_option( 'redirect_my_test', $array );
@@ -153,10 +150,8 @@ class HtaccessUpdate_4536 {
   }
 
   function redirect_count() {
-    // return 3;
     $array = get_option( 'redirect_my_test' );
-    $count = ( !empty($array['cat_id']) ) ? count( $array['cat_id'] ) : 1 ;
-    return $count;
+    return ( !empty($array['redirect_url']) ) ? count( $array['redirect_url'] ) : 1 ;
   }
 
   function form() { ?>
@@ -165,96 +160,105 @@ class HtaccessUpdate_4536 {
         <h2>htaccess設定</h2>
         <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://4536.jp/speeding-up" target="_blank" >高速化について</a></p>
         <form method="post" action="">
-        <?php
+          <?php
 
-        settings_fields( 'htaccess_group' ); do_settings_sections( 'htaccess_group' );
+          settings_fields( 'htaccess_group' ); do_settings_sections( 'htaccess_group' );
 
-        $array = [
-          '高速化' => [
-            'is_enable_browser_cache' => 'ブラウザキャッシュ',
-            'is_enable_gzip' => 'Gzip圧縮',
-          ],
-          'セキュリティ' => [
-            'is_enable_protect_wp_config' => 'wp-configファイルへのアクセス禁止',
-          ],
-          'リダイレクト（内部）' => [
-            'is_enable_redirect_to_https' => 'httpへのアクセスをhttpsにリダイレクト（要：SSL化）',
-          ],
-        ];
+          $array = [
+            '高速化' => [
+              'is_enable_browser_cache' => 'ブラウザキャッシュ',
+              'is_enable_gzip' => 'Gzip圧縮',
+            ],
+            'セキュリティ' => [
+              'is_enable_protect_wp_config' => 'wp-configファイルへのアクセス禁止',
+            ],
+            'リダイレクト（内部）' => [
+              'is_enable_redirect_to_https' => 'httpへのアクセスをhttpsにリダイレクト（要：SSL化）',
+            ],
+          ];
 
-        foreach( $array as $key => $values ) { ?>
+          foreach( $array as $key => $values ) { ?>
 
-          <div class="metabox-holder">
-            <div class="postbox" >
-              <h3 class="hndle"><?php echo $key; ?></h3>
-              <div class="inside">
-                <?php foreach( $values as $name => $desc ) { ?>
-                  <p>
-                    <input type="checkbox" id="<?php echo $name; ?>" name="<?php echo $name; ?>" value="1" <?php checked(get_option($name), 1);?> />
-                    <label for="<?php echo $name; ?>"><?php echo $desc; ?></label>
-                  </p>
-                <?php } ?>
+            <div class="metabox-holder">
+              <div class="postbox" >
+                <h3 class="hndle"><?php echo $key; ?></h3>
+                <div class="inside">
+                  <?php foreach( $values as $name => $desc ) { ?>
+                    <p>
+                      <input type="checkbox" id="<?php echo $name; ?>" name="<?php echo $name; ?>" value="1" <?php checked(get_option($name), 1);?> />
+                      <label for="<?php echo $name; ?>"><?php echo $desc; ?></label>
+                    </p>
+                  <?php } ?>
+                </div>
               </div>
             </div>
-          </div>
 
-        <?php } ?>
+          <?php } ?>
 
-        <?php for( $num=0; $num < $this->redirect_count(); $num++ ) { ?>
-          <div id="redirect_post_in_category-<?php echo $num; ?>" class="metabox-holder redirect_post_in_category-section">
-            <div class="postbox">
-              <h3 class="hndle">リダイレクト（外部）</h3>
-              <div class="inside scroll">
-                <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
-                <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo get_option('redirect_my_test')['redirect_url'][$num]; ?>" required>
-                <ul>
-                  <?php
-                  $walker = new Walker_Category_Checklist_Widget (
-                    'cat_id['.$num.']',
-                    'cat_id['.$num.']'
-                  );
-                  wp_category_checklist( 0, 0, get_option('redirect_my_test')['cat_id'][$num], false, $walker, false );
-                  ?>
-                </ul>
-              </div>
-              <div class="button-section">
-                <input type="button" id="clone" class="clone button small-button" value="複製">
-                <input type="button" id="delete" class="delete button small-button" value="削除">
+          <?php for( $num=0; $num < $this->redirect_count(); $num++ ) { ?>
+            <div class="metabox-holder redirect_post_in_category-section">
+              <div class="postbox">
+                <h3 class="hndle">リダイレクト（外部）</h3>
+                <div class="inside" style="padding-bottom:0">
+                  <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
+                  <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo get_option('redirect_my_test')['redirect_url'][$num]; ?>">
+                  <ul style="height:200px;overflow-y:scroll;margin-bottom:0">
+                    <?php
+                    $walker = new Walker_Category_Checklist_Widget (
+                      'cat_id['.$num.']',
+                      'cat_id-'.$num
+                    );
+                    wp_category_checklist( 0, 0, get_option('redirect_my_test')['cat_id'][$num], false, $walker, false );
+                    ?>
+                  </ul>
+                </div>
+                <div class="button-section">
+                  <input type="button" id="create-redirect-section" class="create button small-button" value="新規追加">
+                  <input type="button" id="clone-redirect-section" class="clone button small-button" value="複製">
+                  <input type="button" id="delete-redirect-section" class="delete button small-button" value="削除">
+                </div>
               </div>
             </div>
-          </div>
-        <?php } ?>
+          <?php } ?>
 
-        <div id="clone_point_redirect_content"></div>
+          <div id="clone_point_redirect_content"></div>
 
-        <script>
-          $(function() {
+          <script>
+            $(function() {
 
-            let count = <?php echo $this->redirect_count(); ?>;
-
-            $('input.clone').on( 'click' , function() {
-              let origin = $(this).closest('.redirect_post_in_category-section');
-              let clone = origin.clone().html();
-              clone = clone.replace( /name="cat_id\[\d\]/g, 'name="cat_id[' + count + ']' );
-              clone = clone.replace( /name="redirect_url\[\d\]"/g, 'name="redirect_url[' + count + ']"' );
+              let count = <?php echo $this->redirect_count(); ?>;
               const clone_point = $('#clone_point_redirect_content');
-              clone_point.before( clone );
-              $('html,body').animate({scrollTop:clone_point.offset().top - 400 });
-              // let lastElm = Array.prototype.slice.call(document.getElementsByClassName('redirect_post_in_category-section')).slice(-1)[0];
-              // lastElm.after( clone );
-              // lastElm.insertAdjacentHTML( 'afterend', clone );
-              count = count + 1;
-              // console.log( clone );
+
+              const create = function( e ) {
+                const type = e.data.type;
+                const origin = $(this).closest('.redirect_post_in_category-section');
+                const clone = origin.clone(true);
+                let newElm = clone.find('input[type="url"]').attr( 'name', 'redirect_url['+count+']' ).end();
+                    newElm = clone.find('.selectit input[type="checkbox"]').attr({
+                      name: 'cat_id['+count+'][]',
+                      id: '',
+                    }).end();
+                if ( type === 'new' ) {
+                  newElm = newElm.find('input:checked').removeAttr('checked').end();
+                  newElm = newElm.find('input[type="url"]').val('').end();
+                }
+                clone_point.before( newElm );
+                $('html,body').animate({scrollTop:clone_point.offset().top - 500 });
+                count = count + 1;
+              }
+
+              $('input.create').on( 'click', {type:'new'}, create );
+
+              $('input.clone').on( 'click', {type:'clone'}, create );
+
+              $('input.delete').on( 'click', function() {
+                $(this).closest('.redirect_post_in_category-section').remove();
+              });
+
             });
+          </script>
 
-            $('input.delete').on( 'click' , function() {
-              $(this).closest('.redirect_post_in_category-section').remove();
-            });
-
-          });
-        </script>
-
-        <?php submit_button($text, 'primary large', 'admin_speeding_up_setting_submit_4536', $wrap, $other_attributes); ?>
+          <?php submit_button($text, 'primary large', 'admin_htaccess_setting_submit_4536', $wrap, $other_attributes); ?>
 
         </form>
 
@@ -273,12 +277,12 @@ class HtaccessUpdate_4536 {
           .far {
             margin-right: 5px;
           }
+          ul.children {
+            margin-top: .5em;
+            padding-left: 1.5em;
+          }
           .button-section {
             margin: 12px;
-          }
-          .scroll {
-            height: 200px;
-            overflow-y: scroll;
           }
           .small-button {
             margin: 12px;
