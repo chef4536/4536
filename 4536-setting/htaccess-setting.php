@@ -10,6 +10,10 @@ class HtaccessUpdate_4536 {
       'search_pattern' => '/#4536ProtectWpConfigBegin.+?#4536ProtectWpConfigEnd/s',
       'location' => 'before'
     ],
+    'is_enable_redirect_post_in_category' => [
+      'search_pattern' => '/#4536RedirectPostInCategoryBegin.+?#4536RedirectPostInCategoryEnd/s',
+      'location' => 'before'
+    ],
     'is_enable_redirect_to_https' => [
       'search_pattern' => '/#4536RedirectToHttpsBegin.+?#4536RedirectToHttpsEnd/s',
       'location' => 'before'
@@ -27,7 +31,7 @@ class HtaccessUpdate_4536 {
   function __construct() {
 
     add_action( 'admin_init', function() {
-      if( get_option( 'redirect_my_test' ) === false ) update_option( 'redirect_my_test', [] );
+      if( redirect_post_in_category_settings() === false ) update_option( 'redirect_my_test', [] );
       foreach( $this->array as $key => $value ) {
         register_setting( 'htaccess_group', $key );
       }
@@ -50,7 +54,7 @@ class HtaccessUpdate_4536 {
 
       update_option( 'redirect_my_test', $array );
 
-      var_dump(get_option('redirect_my_test')); //test
+      // var_dump(get_option('redirect_my_test')); //test
       // require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
 
       foreach ( $this->array as $key => $val ) {
@@ -116,7 +120,7 @@ class HtaccessUpdate_4536 {
       $location = $val['location'];
       preg_match($search, $htaccess_txt, $htaccess_match);
       preg_match($search, $data, $data_match);
-      if ( get_option($key)==='1' ) {
+      if ( get_option($key) === '1' ) {
         if( $htaccess_match === $data_match ) continue;
         if( !empty($htaccess_match) ) {
           $htaccess_txt = preg_replace($search, $data_match[0], $htaccess_txt);
@@ -147,11 +151,6 @@ class HtaccessUpdate_4536 {
   function update_option( $option ) {
     $val = ( isset($_POST[$option]) ) ? $_POST[$option] : '' ;
     update_option( $option, $val );
-  }
-
-  function redirect_count() {
-    $array = get_option( 'redirect_my_test' );
-    return ( !empty($array['redirect_url']) ) ? count( $array['redirect_url'] ) : 1 ;
   }
 
   function form() { ?>
@@ -195,20 +194,20 @@ class HtaccessUpdate_4536 {
 
           <?php } ?>
 
-          <?php for( $num=0; $num < $this->redirect_count(); $num++ ) { ?>
+          <?php for( $num=0; $num < redirect_count(); $num++ ) { ?>
             <div class="metabox-holder redirect_post_in_category-section">
               <div class="postbox">
                 <h3 class="hndle">リダイレクト（外部）</h3>
                 <div class="inside" style="padding-bottom:0">
                   <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
-                  <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo get_option('redirect_my_test')['redirect_url'][$num]; ?>">
+                  <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo redirect_post_in_category_settings()['redirect_url'][$num]; ?>"<?php if(redirect_count() > 1) echo 'required'; ?>>
                   <ul style="height:200px;overflow-y:scroll;margin-bottom:0">
                     <?php
                     $walker = new Walker_Category_Checklist_Widget (
                       'cat_id['.$num.']',
                       'cat_id-'.$num
                     );
-                    wp_category_checklist( 0, 0, get_option('redirect_my_test')['cat_id'][$num], false, $walker, false );
+                    wp_category_checklist( 0, 0, redirect_post_in_category_settings()['cat_id'][$num], false, $walker, false );
                     ?>
                   </ul>
                 </div>
@@ -226,18 +225,21 @@ class HtaccessUpdate_4536 {
           <script>
             $(function() {
 
-              let count = <?php echo $this->redirect_count(); ?>;
+              let count = <?php echo redirect_count(); ?>;
               const clone_point = $('#clone_point_redirect_content');
 
               const create = function( e ) {
                 const type = e.data.type;
                 const origin = $(this).closest('.redirect_post_in_category-section');
                 const clone = origin.clone(true);
-                let newElm = clone.find('input[type="url"]').attr( 'name', 'redirect_url['+count+']' ).end();
-                    newElm = clone.find('.selectit input[type="checkbox"]').attr({
-                      name: 'cat_id['+count+'][]',
-                      id: '',
-                    }).end();
+                let newElm = clone.find('input[type="url"]').attr({
+                  name: 'redirect_url['+count+']',
+                  required: true,
+                }).end();
+                newElm = clone.find('.selectit input[type="checkbox"]').attr({
+                  name: 'cat_id['+count+'][]',
+                  id: '',
+                }).end();
                 if ( type === 'new' ) {
                   newElm = newElm.find('input:checked').removeAttr('checked').end();
                   newElm = newElm.find('input[type="url"]').val('').end();
@@ -295,3 +297,12 @@ class HtaccessUpdate_4536 {
 
 }
 new HtaccessUpdate_4536();
+
+function redirect_post_in_category_settings() {
+  return get_option( 'redirect_my_test' );
+}
+
+function redirect_count() {
+  $array = redirect_post_in_category_settings();
+  return ( !empty($array['redirect_url']) ) ? count( $array['redirect_url'] ) : 1 ;
+}
