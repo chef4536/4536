@@ -1,10 +1,10 @@
 <?php
 
-//管理画面の設定ページ
-require_once('4536-setting/_init.php');
-
 //functionsフォルダのファイル読み込み
 require_once('functions/_init.php');
+
+//管理画面の設定ページ
+require_once('4536-setting/_init.php');
 
 //CSS関連
 require_once('css/_init.php');
