@@ -5,6 +5,7 @@ $rewrite_array = [];
 
 for ($i=0; $i < redirect_count(); $i++) {
 	$rewrite_cond = [];
+	$redirect_type = ( $redirect_settings['redirect_check_302'][$i] === '1' ) ? '302' : '301' ;
 	$site_url = $redirect_settings['redirect_url'][$i];
 	if( empty($site_url) ) $site_url = false;
 	$cat_id_array = $redirect_settings['cat_id'][$i];
@@ -24,7 +25,7 @@ for ($i=0; $i < redirect_count(); $i++) {
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(/category/.)';
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(/tag/.)';
 	$site_url = rtrim( $site_url, '/' ) . '/';
-	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ([^/]+?)/?$ '.$site_url.'\$1 [R=302,L]';
+	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ([^/]+?)/?$ '.$site_url.'\$1 [R='.$redirect_type.',L]';
 	$rewrite = '#setting_no_'.$i.'_begin'.PHP_EOL.$rewrite.PHP_EOL.'#setting_no_'.$i.'_end';
 	$rewrite_array[] = $rewrite;
 }

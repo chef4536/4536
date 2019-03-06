@@ -52,6 +52,9 @@ class HtaccessUpdate_4536 {
       $array['redirect_url'] = ( !empty( $_POST['redirect_url'] ) ) ? $_POST['redirect_url'] : [];
       $array['redirect_url'] = array_values( $array['redirect_url'] );
 
+      $array['redirect_check_302'] = ( !empty( $_POST['redirect_check_302'] ) ) ? $_POST['redirect_check_302'] : [];
+      $array['redirect_check_302'] = array_values( $array['redirect_check_302'] );
+
       update_option( 'redirect_my_test', $array );
 
       // var_dump(get_option('redirect_my_test')); //test
@@ -201,7 +204,8 @@ class HtaccessUpdate_4536 {
                 <div class="inside" style="padding-bottom:0">
                   <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
                   <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo redirect_post_in_category_settings()['redirect_url'][$num]; ?>"<?php if(redirect_count() > 1) echo 'required'; ?>>
-                  <ul style="height:200px;overflow-y:scroll;margin-bottom:0">
+                  <p style="margin-bottom:0">リダイレクトしたい記事のカテゴリー</p>
+                  <ul style="height:200px;overflow-y:scroll;margin:0;background-color:#fcfcfc;padding:.5em;display:inline-block;">
                     <?php
                     $walker = new Walker_Category_Checklist_Widget (
                       'cat_id['.$num.']',
@@ -210,6 +214,14 @@ class HtaccessUpdate_4536 {
                     wp_category_checklist( 0, 0, redirect_post_in_category_settings()['cat_id'][$num], false, $walker, false );
                     ?>
                   </ul>
+                  <div class="check_302_redirect" style="margin:1em 0">
+                    <label style="font-size:small">
+                      <input type="checkbox" name="redirect_check_302[<?php echo $num; ?>]" value="1" <?php checked( redirect_post_in_category_settings()['redirect_check_302'][$num], 1 )?>>
+                      302リダイレクトにする（確認用）
+                    </label>
+                    <br />
+                    <small style="color:red">※リダイレクト確認後は必ずチェックを外してください。</small>
+                  </div>
                 </div>
                 <div class="button-section">
                   <input type="button" id="create-redirect-section" class="create button small-button" value="新規追加">
@@ -239,6 +251,9 @@ class HtaccessUpdate_4536 {
                 newElm = clone.find('.selectit input[type="checkbox"]').attr({
                   name: 'cat_id['+count+'][]',
                   id: '',
+                }).end();
+                newElm = clone.find('.check_302_redirect input[type="checkbox"]').attr({
+                  name: 'redirect_check_302['+count+']',
                 }).end();
                 if ( type === 'new' ) {
                   newElm = newElm.find('input:checked').removeAttr('checked').end();
