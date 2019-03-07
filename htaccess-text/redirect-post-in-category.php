@@ -6,7 +6,7 @@ $rewrite_array = [];
 for ($i=0; $i < redirect_count(); $i++) {
 	$rewrite_cond = [];
 	$redirect_type = ( $redirect_settings['redirect_check_302'][$i] === '1' ) ? '302' : '301' ;
-	$site_url = $redirect_settings['redirect_url'][$i];
+	$site_url = esc_url( $redirect_settings['redirect_url'][$i] );
 	if( empty($site_url) ) $site_url = false;
 	$cat_id_array = $redirect_settings['cat_id'][$i];
 	$cat_id_array = array_filter( $cat_id_array, 'strlen' );
