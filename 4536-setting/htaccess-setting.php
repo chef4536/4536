@@ -31,11 +31,11 @@ class HtaccessUpdate_4536 {
   function __construct() {
 
     add_action( 'admin_init', function() {
-      if( redirect_post_in_category_settings() === false ) update_option( 'redirect_my_test', [] );
+      if( redirect_post_in_category_settings() === false ) update_option( 'redirect_post_in_category_settings_option', [] );
       foreach( $this->array as $key => $value ) {
         register_setting( 'htaccess_group', $key );
       }
-      register_setting( 'htaccess_group', 'redirect_my_test' );
+      register_setting( 'htaccess_group', 'redirect_post_in_category_settings_option' );
     });
 
     add_action( 'admin_menu', function() {
@@ -55,7 +55,7 @@ class HtaccessUpdate_4536 {
       $array['redirect_check_302'] = ( !empty( $_POST['redirect_check_302'] ) ) ? $_POST['redirect_check_302'] : [];
       $array['redirect_check_302'] = array_values( $array['redirect_check_302'] );
 
-      update_option( 'redirect_my_test', $array );
+      update_option( 'redirect_post_in_category_settings_option', $array );
 
       foreach ( $this->array as $key => $val ) {
         $this->update_option( $key );
@@ -321,7 +321,7 @@ class HtaccessUpdate_4536 {
 new HtaccessUpdate_4536();
 
 function redirect_post_in_category_settings() {
-  return get_option( 'redirect_my_test' );
+  return get_option( 'redirect_post_in_category_settings_option' );
 }
 
 function redirect_count() {
