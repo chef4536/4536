@@ -46,18 +46,18 @@ class HtaccessUpdate_4536 {
 
       $array = [];
 
-      $array['cat_id'] = ( !empty( $_POST['cat_id'] ) ) ? $_POST['cat_id'] : [];
-      $array['cat_id'] = array_values( $array['cat_id'] );
-
       $array['redirect_url'] = ( !empty( $_POST['redirect_url'] ) ) ? $_POST['redirect_url'] : [];
       $array['redirect_url'] = array_values( $array['redirect_url'] );
+
+      $array['cat_id'] = ( !empty( $_POST['cat_id'] ) ) ? $_POST['cat_id'] : [];
+      $array['cat_id'] = array_values( $array['cat_id'] );
 
       $array['redirect_check_302'] = ( !empty( $_POST['redirect_check_302'] ) ) ? $_POST['redirect_check_302'] : [];
       $array['redirect_check_302'] = array_values( $array['redirect_check_302'] );
 
       update_option( 'redirect_my_test', $array );
 
-      // var_dump(get_option('redirect_my_test')); //test
+      var_dump(get_option('redirect_my_test')); //test
       // require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
 
       foreach ( $this->array as $key => $val ) {
@@ -198,12 +198,22 @@ class HtaccessUpdate_4536 {
           <?php } ?>
 
           <?php for( $num=0; $num < redirect_count(); $num++ ) { ?>
+
             <div class="metabox-holder redirect_post_in_category-section">
+
+              <input type="hidden" class="redirect_url_input_field" name="redirect_url[<?php echo $num; ?>]">
+              <div class="category-list" style="display:none">
+                <input type="hidden" name="cat_id[<?php echo $num; ?>]" value="">
+              </div>
+              <div class="check_302_redirect">
+                <input type="hidden" name="redirect_check_302[<?php echo $num; ?>]" value="">
+              </div>
+
               <div class="postbox">
                 <h3 class="hndle">リダイレクト（外部）</h3>
                 <div class="inside" style="padding-bottom:0">
                   <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
-                  <input type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo redirect_post_in_category_settings()['redirect_url'][$num]; ?>"<?php if(redirect_count() > 1) echo 'required'; ?>>
+                  <input class="redirect_url_input_field" type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo redirect_post_in_category_settings()['redirect_url'][$num]; ?>"<?php if(redirect_count() > 1) echo 'required'; ?>>
                   <p style="margin-bottom:0">リダイレクトしたい記事のカテゴリー</p>
                   <ul style="height:200px;overflow-y:scroll;margin:0;background-color:#fcfcfc;padding:.5em;display:inline-block;">
                     <?php
@@ -244,15 +254,15 @@ class HtaccessUpdate_4536 {
                 const type = e.data.type;
                 const origin = $(this).closest('.redirect_post_in_category-section');
                 const clone = origin.clone(true);
-                let newElm = clone.find('input[type="url"]').attr({
+                let newElm = clone.find('input.redirect_url_input_field').attr({
                   name: 'redirect_url['+count+']',
                   required: true,
                 }).end();
-                newElm = clone.find('.selectit input[type="checkbox"]').attr({
+                newElm = newElm.find('.category-list input').attr({
                   name: 'cat_id['+count+'][]',
                   id: '',
                 }).end();
-                newElm = clone.find('.check_302_redirect input[type="checkbox"]').attr({
+                newElm = newElm.find('.check_302_redirect input').attr({
                   name: 'redirect_check_302['+count+']',
                 }).end();
                 if ( type === 'new' ) {
