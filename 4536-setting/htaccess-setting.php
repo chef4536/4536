@@ -57,9 +57,6 @@ class HtaccessUpdate_4536 {
 
       update_option( 'redirect_my_test', $array );
 
-      var_dump(get_option('redirect_my_test')); //test
-      // require_once( __DIR__.'/../htaccess-text/redirect-post-in-category.php' ); //test
-
       foreach ( $this->array as $key => $val ) {
         $this->update_option( $key );
       }

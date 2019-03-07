@@ -9,7 +9,8 @@ for ($i=0; $i < redirect_count(); $i++) {
 	$site_url = $redirect_settings['redirect_url'][$i];
 	if( empty($site_url) ) $site_url = false;
 	$cat_id_array = $redirect_settings['cat_id'][$i];
-	$cat_id = ( is_array($cat_id_array) ) ? implode( ',', $cat_id_array ) : false;
+	$cat_id = ( is_array($cat_id_array) && !in_array('', $cat_id_array) ) ? implode( ',', $cat_id_array ) : false;
+	if( empty($cat_id) ) $cat_id = false;
 	if ( $site_url===false || $cat_id===false ) continue;
 	$args = [
 		'posts_per_page' => -1,
