@@ -44,7 +44,7 @@ class RelatedPostWidgetItem extends WP_Widget {
         echo '<ul>';
         foreach($related_posts as $post) : setup_postdata( $post ); ?>
             <li class="post-list">
-                <a class="clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
+                <a class="post-color clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
                     <?php echo ($instance[$this->_style]==='thumbnail') ? thumbnail_4536('widget')['thumbnail'] : '<i class="far fa-arrow-alt-circle-right"></i>'; ?>
                     <div class="post-info">
                         <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>

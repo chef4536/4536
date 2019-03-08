@@ -35,7 +35,7 @@ if(!$related_posts) return;
     <div class="related-post-wrap flexbox-row-wrap">
         <?php foreach($related_posts as $post) : setup_postdata( $post ) ; ?>
         <div class="post-list<?php echo $style; ?>">
-            <a class="clearfix post-color" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+            <a class="clearfix post-color display-block padding-bottom-1em" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
             <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
                 <div class="post-info">
                     <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>

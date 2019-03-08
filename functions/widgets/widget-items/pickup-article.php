@@ -39,7 +39,7 @@ class PickupPostWidgetItem extends WP_Widget {
         echo '<ul>';
         foreach($pickupPosts as $post) : setup_postdata( $post ); ?>
             <li class="post-list">
-                <a class="clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
+                <a class="post-color clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
                     <?php echo thumbnail_4536('widget')['thumbnail']; ?>
                     <div class="post-info">
                         <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
