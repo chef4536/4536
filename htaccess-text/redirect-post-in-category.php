@@ -21,14 +21,14 @@ for ($i=0; $i < redirect_count(); $i++) {
 	$posts_array = get_posts( $args );
 	foreach ( $posts_array as $post_info ) {
 	  $slug = $post_info->post_name;
-	  $rewrite_cond[] = 'RewriteCond %{REQUEST_URI} ./'.$slug.'/?$ [OR]';
+	  $rewrite_cond[] = 'RewriteCond %{REQUEST_URI} .\/'.preg_quote($slug).'\/?$ [OR]';
 	}
 	$rewrite_cond = implode( PHP_EOL, $rewrite_cond );
 	$rewrite_cond = rtrim( $rewrite_cond, ' [OR]' );
-	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(/category/.)';
-	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(/tag/.)';
+	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/category\/.)';
+	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/tag\/.)';
 	$site_url = rtrim( $site_url, '/' ) . '/';
-	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ([^/]+?)/?$ '.$site_url.'\$1 [R='.$redirect_type.',L]';
+	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ([^\/]+?)\/?$ '.preg_quote($site_url, '/').'\$1 [R='.$redirect_type.',L]';
 	$rewrite = '#setting_no_'.$i.'_begin'.PHP_EOL.$rewrite.PHP_EOL.'#setting_no_'.$i.'_end';
 	$rewrite_array[] = $rewrite;
 }
