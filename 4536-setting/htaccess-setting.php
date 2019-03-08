@@ -92,7 +92,7 @@ class HtaccessUpdate_4536 {
       return;
     }
 
-    $backup_dir = $path.'htaccess_backup_4536';
+    $backup_dir = ABSPATH.'htaccess_backup_4536';
     if( !file_exists($backup_dir) ) mkdir($backup_dir);
     $ver = theme_version_4536();
     $backup_file = $backup_dir.'/.htaccess_backup_4536_'.$ver;
