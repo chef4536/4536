@@ -3,7 +3,8 @@
 $redirect_settings = redirect_post_in_category_settings();
 $rewrite_array = [];
 
-preg_match( '/([^\/]+?)?$/', site_url(), $sub_dir);
+$my_site_url = preg_replace( '/https?\:\/\//', '', site_url() );
+preg_match( '/\/(.+[^\/])/', $my_site_url, $sub_dir );
 $sub_dir = ( !empty($sub_dir[1]) ) ? '\/'.$sub_dir[1] : '';
 
 for ($i=0; $i < redirect_count(); $i++) {
