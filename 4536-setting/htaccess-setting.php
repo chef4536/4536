@@ -259,6 +259,9 @@ class HtaccessUpdate_4536 {
                   name: 'cat_id['+count+'][]',
                   id: '',
                 }).end();
+                newElm = newElm.find('.category-list input[type="hidden"]').attr({
+                  name: 'cat_id['+count+']',
+                }).end();
                 newElm = newElm.find('.check_302_redirect input').attr({
                   name: 'redirect_check_302['+count+']',
                 }).end();

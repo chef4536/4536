@@ -11,8 +11,9 @@ for ($i=0; $i < redirect_count(); $i++) {
 	$cat_id_array = $redirect_settings['cat_id'][$i];
 	$cat_id_array = array_filter( $cat_id_array );
 	$cat_id = ( is_array($cat_id_array) ) ? implode( ',', $cat_id_array ) : false;
+	if( strpos( $cat_id, '-' ) !== false ) $cat_id = false;
 	if( empty($cat_id) ) $cat_id = false;
-	if ( $site_url===false || $cat_id===false ) continue;
+	if( $site_url===false || $cat_id===false ) continue;
 	$args = [
 		'posts_per_page' => -1,
 		'category' => $cat_id,
