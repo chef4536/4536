@@ -29,6 +29,7 @@ for ($i=0; $i < redirect_count(); $i++) {
 	}
 	$rewrite_cond = implode( PHP_EOL, $rewrite_cond );
 	$rewrite_cond = rtrim( $rewrite_cond, ' [OR]' );
+	if( empty($rewrite_cond) ) continue;
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/category\/.)';
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/tag\/.)';
 	$site_url = rtrim( $site_url, '/' ) . '/';
