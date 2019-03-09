@@ -32,7 +32,7 @@ for ($i=0; $i < redirect_count(); $i++) {
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/category\/.)';
 	$rewrite_cond = $rewrite_cond.PHP_EOL.'RewriteCond %{REQUEST_URI} !(\/tag\/.)';
 	$site_url = rtrim( $site_url, '/' ) . '/';
-	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ^([^\/]+?)?$ '.preg_quote($site_url, '/').'\$1 [R='.$redirect_type.',L]';
+	$rewrite = $rewrite_cond.PHP_EOL.'RewriteRule ^([^\/]+?)?$ '.preg_quote($site_url, '/').'$1 [R='.$redirect_type.',L]';
 	$rewrite = '#setting_no_'.$i.'_begin'.PHP_EOL.$rewrite.PHP_EOL.'#setting_no_'.$i.'_end';
 	$rewrite_array[] = $rewrite;
 }

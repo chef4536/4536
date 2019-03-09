@@ -123,7 +123,8 @@ class HtaccessUpdate_4536 {
       if ( get_option($key) === '1' ) {
         if( $htaccess_match === $data_match ) continue;
         if( !empty($htaccess_match) ) {
-          $htaccess_txt = preg_replace($search, $data_match[0], $htaccess_txt);
+          $data_match[0] = str_replace( '$1', '\$1', $data_match[0] );
+          $htaccess_txt = preg_replace( $search, $data_match[0], $htaccess_txt );
         } else {
           if( $location === 'before' ) {
             $data_merge_before .= $data_match[0].PHP_EOL;
