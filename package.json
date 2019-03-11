@@ -17,7 +17,7 @@
     "classnames": "^2.2.6",
     "intersection-observer": "^0.5.1",
     "lozad": "^1.7.0",
-    "npm": "^6.7.0",
+    "npm": "^6.9.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
