@@ -218,6 +218,7 @@ add_filter( 'inline_style_4536', function( $css ) {
     if( !empty($post_backround_color) ) { //記事背景色
       $post_bgc_class = ( fixed_header() === true ) ? '.post-bg-color,.fixed-top .sub-menu' : '.post-bg-color';
       $css[] = $post_bgc_class.'{background-color:'.$post_backround_color.$option.'}';
+      $css[] = '.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after{background-color:'.$post_backround_color.$option.'}';
       $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色

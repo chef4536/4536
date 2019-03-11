@@ -39,7 +39,7 @@ function get_outline_info_4536($content) {
             }
             $target_anchor_toc = '#outline-' . implode('-', $level_fullpath);
             $target_anchor_content = 'outline-' . implode('-', $level_fullpath);
-            $outline .= sprintf('<a href="%s" class="clearfix"><div class="toc-outline">%s</div></a>', $target_anchor_toc, $text);
+            $outline .= sprintf('<a href="%s" class="clearfix post-color"><div class="toc-outline">%s</div></a>', $target_anchor_toc, $text);
             $content = preg_replace('/<h(['.$search_level.'])>/', '<h\1 id="' . $target_anchor_content . '">', $content, 1);
         }
         $search = '/<h(['.$search_level.'])\s(.*?)>(.*?)<\/h\1>/';

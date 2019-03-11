@@ -370,8 +370,8 @@ h2.post-title { /* トップの新着記事 */
 .post-date {
     margin: 1em 0;
     font-size: 0.8em;
-    color: #888888;
     text-align: right;
+    opacity: .5;
 }
 /* 更新日 */
 .modified-date {
@@ -418,7 +418,6 @@ h2.post-title { /* トップの新着記事 */
 .article-body blockquote:not(.external-website-embed-content)::before,
 .article-body blockquote:not(.external-website-embed-content)::after {
     position: absolute;
-    background-color: #fff;
     font-size: 18px;
     width: 30px;
     height: 30px;

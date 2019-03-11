@@ -35,7 +35,7 @@ if(!post_datetime() || !$mtime) {
 }
 $ptime = ($ptime) ? '<span class="posted-date"><i class="far fa-calendar-check"></i>'.$posted_datetime.'</span>' : '' ;
 $mtime = ($mtime) ? '<span class="modified-date"><i class="fas fa-redo"></i>'.$modified_datetime.'</span>' : '' ;
-$post_date = '<div class="post-date">'.$ptime.$mtime.'</div>';
+$post_date = '<div class="post-date post-data">'.$ptime.$mtime.'</div>';
 if(is_page() && !is_page_time_mtime()) $post_date = '';
 $title = '<h1 id="post-h1">'.get_the_title().'</h1>';
 
