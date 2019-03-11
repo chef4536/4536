@@ -214,7 +214,7 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     global $pagenow;
-    $option = (is_admin() && $pagenow===('post.php'||'post-new.php')) ? ' !important;' : ';' ;
+    $option = ( $pagenow == ('post.php'||'post-new.php') ) ? ' !important;' : ';' ;
     if( !empty($post_backround_color) ) { //記事背景色
       $post_bgc_class = '.post-bg-color';
       $post_bgc_class .= ',.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after';

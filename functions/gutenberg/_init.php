@@ -70,11 +70,18 @@ class GutenbergEditorJS4536 {
         window.addEventListener( 'DOMContentLoaded', function() {
             [].forEach.call(
               document.querySelectorAll( 'div.edit-post-visual-editor' ),
-              e => e.classList.add( 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3' )
+              e => e.classList.add( 'simple1', 'simple2', 'simple3', 'pop', 'cool', 'cool2', 'cool3', 'post-bg-color' )
             );
             [].forEach.call(
               document.querySelectorAll( 'div.editor-writing-flow' ),
-              e => e.classList.add( 'post', 'article-body' )
+              e => e.classList.add( 'post', 'article-body', 'post-color' )
+            );
+            [].forEach.call(
+              document.querySelectorAll( 'textarea.editor-post-title__input' ),
+              e => [
+                e.classList.add( 'post-color' ),
+                e.id = 'post-h1'
+              ]
             );
         });
     </script>

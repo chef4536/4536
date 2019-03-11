@@ -34,3 +34,13 @@ div.editor-writing-flow {
   height: auto;
   display: block;
 }
+/* font-size */
+.article-body .wp-block-heading h2 {
+  font-size: 1.4em;
+}
+.article-body .wp-block-heading h3 {
+  font-size: 1.3em;
+}
+.article-body .wp-block-heading h4 {
+  font-size: 1.2em;
+}
