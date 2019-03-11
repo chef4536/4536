@@ -159,7 +159,8 @@ pre code {
     top:15px;
 }
 .balloon-text-right:after {
-    border-right:10px solid #fff;
+    border-right-style: solid;
+    border-right-width: 10px;
     left:-19px;
 }
 .balloon-text-left:before {
@@ -175,8 +176,9 @@ pre code {
     top:15px;
 }
 .balloon-text-left:after {
-    border-left:10px solid #fff;
-    right:-19px;
+    border-left-style: solid;
+    border-left-width: 10px;
+    right: -19px;
 }
 .think .balloon-text-left,.think .balloon-text-right {
     border-radius:30px;

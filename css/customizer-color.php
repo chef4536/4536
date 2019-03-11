@@ -218,9 +218,10 @@ add_filter( 'inline_style_4536', function( $css ) {
     if( !empty($post_backround_color) ) { //記事背景色
       $post_bgc_class = '.post-bg-color';
       $post_bgc_class .= ',.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after';
-      $post_bgc_class .= ',.balloon-text-right:after';
       if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
       $css[] = $post_bgc_class.'{background-color:'.$post_backround_color.$option.'}';
+      $css[] = '.balloon-text-right:after{border-right-color:'.$post_backround_color.$option.'}';
+      $css[] = '.balloon-text-left:after{border-left-color:'.$post_backround_color.$option.'}';
       $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.$option.'}';
     }
     if( !empty($post_color) ) { //記事文字色
