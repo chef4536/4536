@@ -158,7 +158,6 @@ class HtaccessUpdate_4536 {
 
     <div class="wrap">
         <h2>htaccess設定</h2>
-        <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://4536.jp/speeding-up" target="_blank" >高速化について</a></p>
         <form method="post" action="">
           <?php
 
@@ -183,7 +182,13 @@ class HtaccessUpdate_4536 {
               <div class="postbox" >
                 <h3 class="hndle"><?php echo $key; ?></h3>
                 <div class="inside">
-                  <?php foreach( $values as $name => $desc ) { ?>
+                  <?php
+                  switch ($key) {
+                    case '高速化':
+                      echo '<p><i class="fas fa-info-circle"></i><a href="https://4536.jp/speeding-up" target="_blank" >高速化について</a></p>';
+                      break;
+                  }
+                  foreach( $values as $name => $desc ) { ?>
                     <p>
                       <input type="checkbox" id="<?php echo $name; ?>" name="<?php echo $name; ?>" value="1" <?php checked(get_option($name), 1);?> />
                       <label for="<?php echo $name; ?>"><?php echo $desc; ?></label>
@@ -210,6 +215,7 @@ class HtaccessUpdate_4536 {
               <div class="postbox">
                 <h3 class="hndle">リダイレクト（外部）</h3>
                 <div class="inside" style="padding-bottom:0">
+                  <p><i class="fas fa-info-circle"></i><a href="https://4536.jp/htaccess-redirect" target="_blank" >外部リダイレクトについて</a></p>
                   <label style="font-size:small">スキーム＋ホスト（例：https://4536.jp）</label></br>
                   <input class="redirect_url_input_field" type="url" name="redirect_url[<?php echo $num; ?>]" size="40" value="<?php echo redirect_post_in_category_settings()['redirect_url'][$num]; ?>"<?php if(redirect_count() > 1) echo 'required'; ?>>
                   <p style="margin-bottom:0">リダイレクトしたい記事のカテゴリー</p>
@@ -302,7 +308,7 @@ class HtaccessUpdate_4536 {
         </div>
 
         <style>
-          .far {
+          .fas {
             margin-right: 5px;
           }
           ul.children {

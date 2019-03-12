@@ -7,7 +7,7 @@ Author: Chef
 Author URI: https://4536.jp
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Version: 1.0.6
+Version: 1.0.7
 ---------------------------------------------------------*/
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select,textarea {
@@ -775,10 +775,10 @@ ul.children {
     opacity: .5;
 }
 .widget_categories li ul {
-    margin: 15px 0 5px 15px;
+    margin-left: 15px;
 }
 .widget-style-box-4536 {
-    padding: .5em;
+    padding: .8em;
     border: 1px solid #e5e5e5;
     border-radius: 2px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
