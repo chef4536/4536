@@ -129,7 +129,7 @@ function convert_content_to_amp($the_content) {
     if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
 
     // Instagramをamp-instagramに置換する
-    $pattern = '/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>/is';
+    $pattern = '/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/.*?".+?<\/blockquote>/is';
     $append = '<p><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="592" ></amp-instagram></p>';
     if(preg_match($pattern,$the_content,$matches) === 1) $the_content = preg_replace($pattern, $append, $the_content);
 

@@ -32,6 +32,7 @@ wp_reset_postdata();
 </main>
 
 </div>
+</div>
 <footer id="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
 <div class="inner padding-20px-10px">
     <div id="copyright">
