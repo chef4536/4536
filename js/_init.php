@@ -60,10 +60,10 @@ function title_counter() { ?>
 
     $( window ).load( function() {
         $('#titlewrap').before('<div id="title-counter" class="counter"></div>');
-        $('#post-title-0').before('<div id="post-title-0-counter" class="counter" style="padding:1em 1em 0 1em;"></div>');
+        $('#post-h1').before('<div id="post-h1-counter" class="counter" style="padding:1em 1em 0 1em;"></div>');
         var list = [
             '#title',
-            '#post-title-0',
+            '#post-h1',
         ];
         $.each(list, function(index,value) {
             function counter() {
