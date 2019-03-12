@@ -661,7 +661,6 @@ ul.children {
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 99;
     padding-bottom: calc(env(safe-area-inset-bottom) - 1em); /* for iphone x */
 }
 .fixed-footer-menu-item {

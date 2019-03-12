@@ -11,6 +11,7 @@ if(is_amp()) {
 }
 ?>
 <body <?php body_class(); ?>>
+  <div id="main-column" class="flex-1">
 
     <?php
 

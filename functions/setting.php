@@ -28,6 +28,8 @@ add_filter( 'body_class', function($classes) {
         'cool2',
         'cool3',
         'font-size-16px',
+        'display-flex',
+        'flex-direction-column',
     ];
     foreach($list as $class) {
 	   $classes[] = $class;

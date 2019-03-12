@@ -10,6 +10,8 @@ if(!is_amp() && is_active_sidebar('footer-top')) { //フッター上 ?>
     </div>
 <?php }
 
+echo '</div>'; //#main-column
+
 ?>
 
 <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
