@@ -213,7 +213,52 @@ pre code {
     right:-19px;
 }
 /* 目次 */
-.toc-4536:not(.toc-sidebar){border:1px solid #e5e5e5;border-radius:2px;padding:1em;margin:1em 0}.toc-4536 a{text-decoration:none}.toc-title-4536{font-size:1.2em;font-weight:700;margin-bottom:1em;text-align:center}.toc-title-4536 a{font-size:14px;font-weight:400}.toc-outline{overflow:hidden}.toc-4536 ul{counter-reset:a;list-style-type:none}.toc-4536 ul ul{margin-left:1.5em}.toc-4536 ul a{display:block;padding:.05em 0;font-size:14px}.toc-4536 li{margin:0}.toc-4536 li a:before{counter-increment:a;content:counters(a,".") "";margin-right:.5em;display:block;float:left}
+.toc-4536:not(.toc-sidebar) {
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 1em;
+    margin: 1em 0;
+}
+.toc-4536 a {
+    text-decoration: none
+}
+.toc-title-4536 {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+}
+.toc-title-4536 a {
+    font-size: 14px;
+    font-weight: 400;
+}
+.toc-outline {
+    overflow:hidden;
+}
+.toc-4536 ul {
+    counter-reset: a;
+    list-style-type: none;
+}
+.toc-4536 ul ul {
+    margin-left: 1.5em;
+}
+.toc-4536 ul a {
+    display: block;
+	border-bottom: 1px solid;
+	padding: 0;
+	margin: .8em 0;
+    font-size: small;
+}
+.toc-4536 li {
+    margin: 0;
+}
+.toc-4536 li a:before {
+    counter-increment: a;
+    content: counters(a,".") "";
+    margin-right: .5em;
+    display: block;
+    float:left;
+}
 
 /* キャプション */
 .wp-caption {
@@ -692,8 +737,7 @@ ul.children {
     line-height: 50px;
     text-align: center;
     position: fixed;
-    z-index: 99;
-    bottom: 10px;
+    bottom: 20px;
     right: 10px;
     background: #665e53;
     color: #fff;

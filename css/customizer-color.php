@@ -36,7 +36,7 @@ add_action( 'customize_register', function( $wp_customize ) {
         ],
         'table_background_color_2_line' => [
             'label' => 'テーブルの偶数番目の背景',
-            'color' => '#f6f6f6',
+            'color' => '',
         ],
         'media_section_background_color' => [
             'label' => 'メディアセクション（Music,Movie,Pickup）の背景',
@@ -176,7 +176,7 @@ add_filter( 'inline_style_4536', function( $css ) {
     $h3_color = get_theme_mod( 'h3_color', '');
     $h4_key_color = get_theme_mod( 'h4_key_color', '#f2f2f2');
     $h4_color = get_theme_mod( 'h4_color', '');
-    $table_background_color_2_line = get_theme_mod( 'table_background_color_2_line', '#f6f6f6');
+    $table_background_color_2_line = get_theme_mod( 'table_background_color_2_line', '');
     $fb_like_background_color = get_theme_mod( 'fb_like_background_color', '#2b2b2b');
     $fb_like_color = get_theme_mod( 'fb_like_color', '#ffffff');
     $related_post_title_key_color = get_theme_mod( 'related_post_title_key_color', '#f2f2f2');
@@ -214,20 +214,20 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     global $pagenow;
-    $option = ( $pagenow == ('post.php'||'post-new.php') ) ? ' !important;' : ';' ;
+    $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
     if( !empty($post_backround_color) ) { //記事背景色
       $post_bgc_class = '.post-bg-color';
       $post_bgc_class .= ',.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after';
       if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
       $css[] = $post_bgc_class.'{background-color:'.$post_backround_color.$option.'}';
-      $css[] = '.balloon-text-right:after{border-right-color:'.$post_backround_color.$option.'}';
-      $css[] = '.balloon-text-left:after{border-left-color:'.$post_backround_color.$option.'}';
-      $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.$option.'}';
+      $css[] = '.balloon-text-right:after{border-right-color:'.$post_backround_color.'}';
+      $css[] = '.balloon-text-left:after{border-left-color:'.$post_backround_color.'}';
+      $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.'}';
     }
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
       $css[] = $post_color_class.'{color:'.$post_color.$option.'}';
-      $css[] = '.pagination span, .pagination a{background-color:'.$post_color.$option.'}';
+      $css[] = '.pagination span, .pagination a{background-color:'.$post_color.'}';
     }
 
     if( !empty($fb_like_background_color) ) { //いいねボックス背景色
@@ -314,7 +314,7 @@ add_filter( 'inline_style_4536', function( $css ) {
       }
 
       //文字色
-      if ( !empty( $font_color ) ) $css[] = $tag.'{color:'.$font_color.'}';
+      if ( !empty( $font_color ) ) $css[] = $tag.'{color:'.$font_color.$option.'}';
 
     }
 
