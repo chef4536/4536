@@ -8,6 +8,7 @@ add_filter('before_wp_tiny_mce', function($init) {
     $css = $admin_style_color.add_inline_style_4536();
     $css = str_replace('#contents-inner', 'body', $css );
     $css = str_replace('.article-body', '', $css );
+    $css .= 'html{height:auto}';
     if( get_option('first_tinymce_active_editor') && !get_user_option('rich_editing') ) { ?>
     <script>
         $(function() {
@@ -31,8 +32,7 @@ add_filter( 'tiny_mce_before_init', function($initArray) {
 
 //管理画面にCSS追加
 add_action( 'after_setup_theme', function() {
-    add_editor_style('style.css'); //メインのCSS
-    add_editor_style('editor-style.css'); //管理画面のCSS
+    add_editor_style( 'style.css' ); //メインのCSS
     $custom_font = (add_google_fonts()) ? '|'.add_google_fonts() : '';
     $font_url[] = '//fonts.googleapis.com/css?family=Nunito'.$custom_font;
     $font_url[] = '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css';
