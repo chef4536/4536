@@ -35,7 +35,7 @@ function thumbnail_4536($thumbnail_style) {
         $post_thumbnail = get_the_post_thumbnail( $post->ID, $thumb500 );
         if(thumbnail_quality()==='high') $post_thumbnail = get_the_post_thumbnail();
     } elseif($thumbnail_style=='pickup') {
-        $thumbnail_size .= ' thumbnail-pickup-4536';
+        $thumbnail_size = ' thumbnail-pickup-4536';
         $post_thumbnail = get_the_post_thumbnail( $post->ID, $thumb150 );
         if(thumbnail_quality()==='high') $post_thumbnail = get_the_post_thumbnail( $post->ID, $thumb300 );
     } elseif($thumbnail_style=='widget') {

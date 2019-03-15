@@ -66,7 +66,7 @@ function sns_button_4536($position) {
 
     if( $position === 'post_top' ) $padding = $margin = ' margin-1_5em-auto';
 
-    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px';
+    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px margin-1_5em-auto';
 
     if( $position === 'fixed_footer_share_button' ) {
       $padding = ' padding-10px';
