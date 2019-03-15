@@ -2,10 +2,6 @@
 
 function breadcrumb() {
 
-  global $post;
-  $post_id = $post->ID;
-  $post_url = get_the_permalink( $post_id );
-  $post_title = $post->post_title;
   $page_count_url = '';
   $page_count_name = '';
   if( is_paged() ) {
@@ -143,9 +139,77 @@ function breadcrumb() {
         ];
         break;
 
+      case is_single() && !is_attachment():
+        switch (get_post_type()) {
+          case 'post':
+            // if ( get_option( 'page_for_posts' ) ) {
+            //
+            // }
+            $categories = get_the_category( $object->ID );
+            $cat = $categories[0];
+            if ( $cat->parent !== 0 ) {
+              $ancestors = array_reverse( get_ancestors( $cat->term_id, 'category' ) );
+              foreach ( $ancestors as $id ) {
+                $pos = $pos + 1;
+                $arr[ $pos ] = [
+                  'name' => get_cat_name( $id ),
+                  'url' => get_category_link( $id ),
+                ];
+              }
+            }
+            $arr[ $pos + 1 ] = [
+              'name' => get_cat_name( $cat->term_id ),
+              'url' => get_category_link( $cat->term_id ),
+            ];
+            break;
+          default:
+            $object = get_post_type_object( $type = get_post_type() );
+            switch( $type ) {
+              case 'music':
+                $name = esc_html(get_option('main_media_name'));
+                break;
+              case 'movie':
+                $name = esc_html(get_option('sub_media_name'));
+                break;
+              default:
+                $name = $object->label;
+                break;
+            }
+            $arr[ $pos + 1 ] = [
+              'name' => $name,
+              'url' => get_post_type_archive_link( $type ),
+            ];
+            break;
+        }
+        $arr[ $pos + 2 ] = [
+          'name' => get_the_title( $object->ID ),
+          'url' => get_the_permalink( $object->ID ),
+        ];
+        break;
 
+      case is_attachment():
+        $arr[ $pos + 1 ] = [
+          'name' => get_the_title( $object->ID ),
+          'url' => get_the_permalink( $object->ID ),
+        ];
+        break;
 
-
+      case is_page():
+        if ( $object->post_parent !== 0 ) {
+          $ancestors = array_reverse( get_post_ancestors( $object->ID ) );
+          foreach ( $ancestors as $id ) {
+            $pos = $pos + 1;
+            $arr[ $pos ] = [
+              'name' => get_the_title( $id ),
+              'url' => get_the_permalink( $id ),
+            ];
+          }
+        }
+        $arr[ $pos + 1 ] = [
+          'name' => get_the_title( $object->ID ),
+          'url' => get_the_permalink( $object->ID ),
+        ];
+        break;
 
   }
 
@@ -166,10 +230,11 @@ function breadcrumb() {
   echo '<pre>';var_dump($arr);echo'</pre>';
   // var_dump( $object );
   // var_dump( $arr );
-  return;
   //-------- dev mode --------------------
 
 }
+
+return;
 
 ?>
 
