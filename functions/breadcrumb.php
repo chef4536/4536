@@ -23,20 +23,29 @@ function breadcrumb() {
 
   switch ( true ) {
 
+    //フロントページ
+    case is_front_page():
+      $arr[ $pos ] = [
+        'name' => $site_name,
+        'url' => $site_url,
+      ];
+      break;
+
+    //固定ページのブログ投稿インデックス
+    case is_home():
+      $arr[ $pos + 1 ] = [
+        'name' => '投稿一覧' . $page_count_name,
+        'url' => rtrim( get_the_permalink( $object->ID ), '/' ) . $page_count_url,
+      ];
+      break;
+
+    //2ページ目以降
     case is_home() && is_paged():
       $arr[ $pos + 1 ] = [
         'name' => '投稿一覧' . $page_count_name,
         'url' => rtrim( $site_url, '/' ) . $page_count_url,
       ];
       break;
-
-    //フロントページ
-    // case is_front_page():
-    //   $arr[ $pos ] = [
-    //     'url' => $post_url,
-    //     'name' => $post_title,
-    //   ];
-    //   break;
 
     //カテゴリー、タグ、タクソノミーのアーカイブ
     case is_category():
@@ -106,6 +115,7 @@ function breadcrumb() {
       }
       break;
 
+      //カスタム投稿アーカイブ
       case is_post_type_archive( $type = get_post_type() ):
         switch( $type ) {
           case 'music':
@@ -124,6 +134,7 @@ function breadcrumb() {
         ];
         break;
 
+      //検索結果
       case is_search():
         $arr[ $pos + 1 ] = [
           'name' => '「' . get_search_query() . '」の検索結果',
@@ -131,6 +142,7 @@ function breadcrumb() {
         ];
         break;
 
+      //404ページ
       case is_404():
       $_404_url = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $arr[ $pos + 1 ] = [
@@ -139,12 +151,10 @@ function breadcrumb() {
         ];
         break;
 
+      //投稿記事
       case is_single() && !is_attachment():
         switch (get_post_type()) {
           case 'post':
-            // if ( get_option( 'page_for_posts' ) ) {
-            //
-            // }
             $categories = get_the_category( $object->ID );
             $cat = $categories[0];
             if ( $cat->parent !== 0 ) {
@@ -187,6 +197,7 @@ function breadcrumb() {
         ];
         break;
 
+      //添付ページ
       case is_attachment():
         $arr[ $pos + 1 ] = [
           'name' => get_the_title( $object->ID ),
@@ -194,6 +205,7 @@ function breadcrumb() {
         ];
         break;
 
+      //固定ページ
       case is_page():
         if ( $object->post_parent !== 0 ) {
           $ancestors = array_reverse( get_post_ancestors( $object->ID ) );
@@ -226,8 +238,8 @@ function breadcrumb() {
 
 
   //-------- dev mode --------------------
-  // echo '<pre>'.$elm.'</pre>';
-  echo '<pre>';var_dump($arr);echo'</pre>';
+  echo '<pre>'.$elm.'</pre>';
+  // echo '<pre>';var_dump($arr);echo'</pre>';
   // var_dump( $object );
   // var_dump( $arr );
   //-------- dev mode --------------------
