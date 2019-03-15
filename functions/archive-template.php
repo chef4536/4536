@@ -23,7 +23,10 @@ function archive_template_4536($page_4536) { ?>
                         <?php post_list_template_4536($page_4536); ?>
                     </div>
                 </section>
-                <?php pagination($wp_query->max_num_pages); ?>
+                <?php
+                pagination($wp_query->max_num_pages);
+                echo breadcrumb( 'html' );
+                ?>
             </main>
             <?php
             if($page_4536!=='music') get_template_part('template-parts/music');

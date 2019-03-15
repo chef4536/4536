@@ -366,6 +366,20 @@ pre code {
     opacity: .5;
 }
 /*
+ *パンくず
+*/
+#breadcrumb {
+    margin: 2em auto;
+    line-height: 1.6;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-size: small;
+}
+.breadcrumb-delimiter {
+    margin: 0 .5em;
+}
+/*
  * サイドバー
 */
 li.post-list:last-child {

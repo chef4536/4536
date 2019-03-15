@@ -1,6 +1,6 @@
 <?php
 
-function breadcrumb() {
+function breadcrumb( $output = 'json' ) {
 
   $page_count_url = '';
   $page_count_name = '';
@@ -13,7 +13,7 @@ function breadcrumb() {
 
   $pos = 1;
 
-  //ブログ投稿インデックス
+  //トップ
   $site_name = get_bloginfo('name');
   $site_url = site_url();
   $arr[ $pos ] = [
@@ -226,19 +226,35 @@ function breadcrumb() {
   }
 
   $elm = [];
-  foreach( $arr as $key => $value ) {
-    $elm[] = '{
-      "@type": "ListItem",
-      "position": ' . $key . ',
-      "name": ' . $value['name'] . ',
-      "item": ' . $value['url'] . '
-    }';
-  }
-  $elm = implode( ',', $elm );
 
+  if( $output === 'json' ) {
+    foreach( $arr as $key => $value ) {
+      $elm[] = '{
+        "@type": "ListItem",
+        "position": ' . $key . ',
+        "name": "' . $value['name'] . '",
+        "item": "' . $value['url'] . '"
+      }';
+    }
+    $elm = implode( ',', $elm );
+  } elseif ( $output === 'html' ) {
+    $arr_count = count( $arr );
+    foreach( $arr as $key => $value ) {
+      $name = ( $key === 1 ) ? 'ホーム' : $value['name'];
+      if( $key !== $arr_count ) {
+        $elm[] = '<a href="'.$value['url'].'">'.$name.'</a>';
+        continue;
+      }
+      $elm[] = '<span class="current-breadcrumb">' . $name . '</span>';
+    }
+    $elm = implode( '<span class="breadcrumb-delimiter"><i class="fas fa-angle-right"></i></span>', $elm );
+    $elm = '<div id="breadcrumb">'.$elm.'</div>';
+  }
+
+  return $elm;
 
   //-------- dev mode --------------------
-  echo '<pre>'.$elm.'</pre>';
+  // echo '<pre>'.$elm.'</pre>';
   // echo '<pre>';var_dump($arr);echo'</pre>';
   // var_dump( $object );
   // var_dump( $arr );
@@ -246,14 +262,12 @@ function breadcrumb() {
 
 }
 
-return;
-
-?>
-
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [ <?php echo $elm; ?> ]
-}
-</script>
+add_action( 'wp_head_4536', function( $meta ) { ?>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [<?php echo breadcrumb(); ?>]
+  }
+  </script>
+<?php });

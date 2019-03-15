@@ -82,36 +82,6 @@ echo '<footer>';
     }
     if(!empty($ad)) dynamic_sidebar($ad);
 
-//    get_template_part('template-parts/pickup-post-bottom');
-
-    if(is_singular(['music','movie'])) {
-        $post_type = get_post_type();
-        $post_type_object = get_post_type_object($post_type);
-        $cat_name = $post_type_object->label;
-        $cat_link = get_post_type_archive_link($post_type);
-        $custom_post_link = '<a href="'.$cat_link.'" rel="category tag">'.$cat_name.'</a>';
-    }
-    if( (is_singular('post') && has_category()) || $custom_post_link ) {
-    ?>
-    <div class="category-tag flexbox-row-wrap align-items-center margin-1_5em-auto padding-10px">
-        <span class="category-title">カテゴリー</span>
-        <?php
-            if(is_singular('post')) {
-                $categories = get_the_category();
-                $output = '';
-                if($categories) {
-                    foreach( $categories as $category ) {
-                        $output .= '<span class="post-category"><a href="' . get_category_link( $category->term_id ) . '" rel="category tag">' . $category->cat_name . '</a></span>';
-                    }
-                    echo '<div id="post-categories">' . trim( $output ) . '</div>';
-                }
-            } elseif(is_singular(['music','movie'])) {
-                echo '<div id="post-categories"><span>'.$custom_post_link.'</span></div>';
-            }
-        ?>
-    </div>
-    <?php }
-
     if( $is_sns_bottom === true ) sns_button_4536('post_bottom');
     if( $is_profile === true ) get_template_part('template-parts/profile');
 

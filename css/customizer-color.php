@@ -210,7 +210,7 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     if( !empty($breadcrumb_color) ) { //パンくずリストの文字色
-        $css[] = '#breadcrumb,#breadcrumb a{color:'.$breadcrumb_color.'}';
+        $css[] = '.current-breadcrumb{color:'.$breadcrumb_color.'}';
     }
 
     global $pagenow;

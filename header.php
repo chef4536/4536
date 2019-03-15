@@ -78,8 +78,6 @@ if(is_amp()) {
             </div>
         <?php }
 
-        breadcrumb();
-
     }
     ?>
 
