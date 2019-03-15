@@ -67,6 +67,50 @@ function breadcrumb() {
       ];
       break;
 
+    //日付アーカイブ
+    case is_year():
+    case is_month():
+    case is_day():
+      $year = get_the_time( 'Y' );
+      $month = get_the_time( 'm' );
+      $day = get_the_time( 'd' );
+      $time['year'] = [
+        'name' => $year . '年',
+        'url' =>  get_year_link( $year ),
+      ];
+      $time['month'] = [
+        'name' => $month . '月',
+        'url' =>  get_month_link( $year, $month ),
+      ];
+      $time['day'] = [
+        'name' => $day . '日',
+        'url' =>  get_day_link( $year, $month, $day ),
+      ];
+      $page_time_count_name = '';
+      $page_time_count_url = '';
+      foreach( $time as $key => $value ) {
+        if( is_month() && $key==='day' ) break;
+        if(
+          (is_year() && $key==='year') ||
+          (is_month() && $key==='month') ||
+          (is_day() && $key==='day')
+        ) {
+          $page_time_count_name = $page_count_name;
+          $page_time_count_url = $page_count_url;
+        }
+        $pos = $pos + 1;
+        $arr[ $pos ] = [
+          'name' => $value['name'] . $page_time_count_name,
+          'url' => rtrim( ($value['url']), '/' ) . $page_time_count_url,
+        ];
+        if( is_year() ) break;
+      }
+      break;
+
+
+
+
+
   }
 
   $elm = [];
