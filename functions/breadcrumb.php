@@ -20,16 +20,19 @@ function breadcrumb() {
   //ブログ投稿インデックス
   $site_name = get_bloginfo('name');
   $site_url = site_url();
-  if( is_home() ) {
-    $site_name .= $page_count_name;
-    $site_url = rtrim( $site_url, '/' ) . $page_count_url ;
-  }
   $arr[ $pos ] = [
     'name' => $site_name,
     'url' => $site_url,
   ];
 
   switch ( true ) {
+
+    case is_home() && is_paged():
+      $arr[ $pos + 1 ] = [
+        'name' => '投稿一覧' . $page_count_name,
+        'url' => rtrim( $site_url, '/' ) . $page_count_url,
+      ];
+      break;
 
     //フロントページ
     // case is_front_page():
@@ -101,11 +104,44 @@ function breadcrumb() {
         $pos = $pos + 1;
         $arr[ $pos ] = [
           'name' => $value['name'] . $page_time_count_name,
-          'url' => rtrim( ($value['url']), '/' ) . $page_time_count_url,
+          'url' => rtrim( $value['url'], '/' ) . $page_time_count_url,
         ];
         if( is_year() ) break;
       }
       break;
+
+      case is_post_type_archive( $type = get_post_type() ):
+        switch( $type ) {
+          case 'music':
+            $name = esc_html(get_option('main_media_name'));
+            break;
+          case 'movie':
+            $name = esc_html(get_option('sub_media_name'));
+            break;
+          default:
+            $name = $object->label;
+            break;
+        }
+        $arr[ $pos + 1 ] = [
+          'name' => $name . $page_count_name,
+          'url' => rtrim( get_post_type_archive_link( get_post_type() ), '/' ) . $page_count_url,
+        ];
+        break;
+
+      case is_search():
+        $arr[ $pos + 1 ] = [
+          'name' => '「' . get_search_query() . '」の検索結果',
+          'url' => rtrim( $site_url, '/' ) . '/?s=' . get_search_query(),
+        ];
+        break;
+
+      case is_404():
+      $_404_url = ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $arr[ $pos + 1 ] = [
+          'name' => '404 Not Found',
+          'url' => $_404_url,
+        ];
+        break;
 
 
 
