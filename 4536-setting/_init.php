@@ -6,7 +6,6 @@ add_action( 'admin_menu', function() {
   $list = [
     'SEO' => 'seo',
     'メディア' => 'media',
-    'AMP' => 'amp',
     'その他' => 'etc',
   ];
   foreach($list as $name => $key) {
@@ -43,24 +42,6 @@ add_action( 'admin_init', function() {
     ];
     foreach($list as $name) {
         register_setting( 'seo_group', $name );
-    }
-    $list = [
-        'admin_amp',
-        'is_amp_page',
-        'is_amp_media',
-        'is_amp_lp',
-        'admin_amp_adsense_code',
-        'admin_amp_adsense_title',
-        'admin_amp_adsense_header',
-        'admin_amp_adsense_post_top',
-        'admin_amp_adsense_h2',
-        'admin_amp_adsense_post_bottom',
-        'admin_amp_adsense_sidebar',
-        'admin_amp_add_html_js_head',
-        'admin_amp_add_html_js_body',
-    ];
-    foreach($list as $name) {
-        register_setting( 'amp_group', $name );
     }
     $list = [
         'admin_comment',

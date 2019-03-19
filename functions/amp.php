@@ -3,24 +3,21 @@
 // 参考：https://nelog.jp/wordpress-content-to-amp
 // 参考：https://wp-simplicity.com/
 
-//AMP判別関数
-//今回は、?amp=1パラメーターを使用（環境によっては変更する必要があるかも）
 function is_amp() {
-    $is_amp = false;
-    if(empty($_GET['amp'])) return $is_amp;
-    $list = [
-        'post' => 'single',
-        'page' => 'page',
-        'music' => 'media',
-        'movie' => 'media',
-        'lp' => 'lp',
-    ];
-    foreach($list as $post_type => $d) {
-        if(is_singular($post_type) && is_amp_post_type($d) && $_GET['amp']==='1') $is_amp = true;
-    }
-//    if(amp_exclude()) $is_amp = false;
-    if(is_page_template('page-templates/search-page.php')) $is_amp = false;
-    return $is_amp;
+  $is_amp = false;
+  if(empty($_GET['amp'])) return $is_amp;
+  $list = [
+    'post' => 'single',
+    'page' => 'page',
+    'music' => 'media',
+    'movie' => 'media',
+    'lp' => 'lp',
+  ];
+  foreach($list as $post_type => $d) {
+    if(is_singular($post_type) && is_amp_post_type($d) && $_GET['amp']==='1') $is_amp = true;
+  }
+  if(is_page_template('page-templates/search-page.php')) $is_amp = false;
+  return $is_amp;
 }
 
 //AMP用にコンテンツを変換する
@@ -188,52 +185,49 @@ add_filter('widget_text','convert_content_to_amp', 99999);
 add_filter('widget_item_new','convert_content_to_amp', 99999);
 
 //////////////////////////////
-//AMP用広告
+//AMP用アドセンス広告生成
 //////////////////////////////
-//記事中・記事下アドセンスコード生成
-function amp_adsense_code(){
-    if (!empty(amp_ad_title())) $ad_title = '<p class="ad-title">'.amp_ad_title().'</p>';
-    $ad = get_amp_adsense_code();
-    preg_match('/data-ad-client="(ca-pub-[^"]+?)"/i', $ad, $match);
-    if (empty($match[1])) return;//マッチしなかったら処理停止
-    $data_ad_client = $match[1];
-    preg_match('/data-ad-slot="([^"]+?)"/i', $ad, $match);
-    if (empty($match[1])) return;//マッチしなかったら処理停止
-    $data_ad_slot = $match[1];
-    $amp_adsense_code = '<amp-ad layout="responsive" width="336" height="280" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
-    $amp_adsense = '<div class="amp-adsense margin-1_5em-auto">'.$ad_title.$amp_adsense_code.'</div>';
-    return $amp_adsense;
-}
-//記事上アドセンス生成
-function amp_adsense_code_top() {
-    if (!empty(amp_ad_title())) $ad_title = '<p class="ad-title">'.amp_ad_title().'</p>';
-    $ad = get_amp_adsense_code();
-    preg_match('/data-ad-client="(ca-pub-[^"]+?)"/i', $ad, $match);
-    if (empty($match[1])) return;//マッチしなかったら処理停止
-    $data_ad_client = $match[1];
-    preg_match('/data-ad-slot="([^"]+?)"/i', $ad, $match);
-    if (empty($match[1])) return;//マッチしなかったら処理停止
-    $data_ad_slot = $match[1];
-    $amp_adsense_code = '<amp-ad layout="fixed-height" height="100" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
-    $amp_adsense = $ad_title.$amp_adsense_code;
-    return $amp_adsense;
+function amp_adsense_code( $size = 'rectangle' ) {
+  $ad_title = ( !empty(amp_ad_title()) ) ? '<p class="ad-title">'.amp_ad_title().'</p>' : '';
+  $ad = get_amp_adsense_code();
+  preg_match('/data-ad-client="(ca-pub-[^"]+?)"/i', $ad, $match);
+  if( empty($match[1]) ) return;
+  $data_ad_client = $match[1];
+  preg_match('/data-ad-slot="([^"]+?)"/i', $ad, $match);
+  if( empty($match[1]) ) return;
+  $data_ad_slot = $match[1];
+  switch( $size ) {
+    case 'rectangle':
+      $layout = 'responsive';
+      $width = ' width="336"';
+      $height = '280';
+      break;
+    case 'horizon':
+      $layout = 'fixed-height';
+      $width = '';
+      $height = '100';
+      break;
+  }
+  $amp_adsense_code = '<amp-ad layout="'.$layout.'"'.$width.' height="'.$height.'" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
+  $amp_adsense = $ad_title.$amp_adsense_code;
+  if(
+    ( get_option('amp_adsense_post')==='' && is_singular('post') ) ||
+    ( get_option('amp_adsense_page')==='' && is_page() ) ||
+    ( get_option('amp_adsense_media')==='' && is_singular([ 'music', 'movie' ]) )
+  ) return;
+  return $amp_adsense;
 }
 
 //アバター画像変換
-function convert_avatar_to_amp_4536 ($avatar) {
- if ( !is_amp() ) {
- return $avatar;
- }
+add_filter( 'get_avatar', function( $avatar ) {
 
-//style属性を取り除く
- $avatar = preg_replace('/ +style=["][^"]*?["]/i', '', $avatar);
- $avatar = preg_replace('/ +style=[\'][^\']*?[\']/i', '', $avatar);
+  if( !is_amp() ) return $avatar;
 
-//画像タグをAMP用に置換
- $avatar = preg_replace('/<img/i', '<amp-img', $avatar);
+  //style属性を取り除く
+  $avatar = preg_replace('/ +style=["][^"]*?["]/i', '', $avatar);
+  $avatar = preg_replace('/ +style=[\'][^\']*?[\']/i', '', $avatar);
+  $avatar = str_replace( '<img', '<amp-img', $avatar );
+  $avatar = '<div>'.$avatar.'</div>';
+  return $avatar;
 
-$avatar = '<div>'.$avatar.'</div>';
- return $avatar;
-
-}
-add_filter('get_avatar','convert_avatar_to_amp_4536', 9999999999);
+}, 9999999999 );

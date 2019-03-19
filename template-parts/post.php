@@ -42,7 +42,7 @@ $title = '<h1 id="post-h1">'.get_the_title().'</h1>';
 echo '<header>';
     echo (!post_title_date()) ? $post_date.$title : $title.$post_date;
 
-    if(is_amp() && is_amp_post_top()) echo '<div class="amp-adsense-header margin-1em-auto">'.amp_adsense_code_top().'</div>';
+    if(is_amp() && is_amp_post_top()) echo '<div class="amp-adsense-header margin-1em-auto">'.amp_adsense_code( 'horizon' ).'</div>';
 
     if(is_amp()) {
         dynamic_sidebar('amp-post-top');
