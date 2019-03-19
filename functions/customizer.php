@@ -2,358 +2,356 @@
 
 function theme_customizer_extension($wp_customize) {
 
-/*	テーマカスタマイザーにテキストエリア追加
-/*-------------------------------------------*/
-if(class_exists('WP_Customize_Control')):
-	class Textarea_Control extends WP_Customize_Control {
-		public $type = 'textarea';
-		public function render_content() {
-			?>
-			<label>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<textarea rows="13" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-			</label>
-			<?php
+	/*	テーマカスタマイザーにテキストエリア追加
+	/*-------------------------------------------*/
+	if( class_exists('WP_Customize_Control') ):
+		class Textarea_Control extends WP_Customize_Control {
+			public $type = 'textarea';
+			public function render_content() { ?>
+				<label>
+					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+					<textarea rows="13" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+				</label>
+			<?php }
 		}
-	}
-endif;
+	endif;
 
-//既存のセクションに追加
-    //ロゴ画像
-    $wp_customize->add_setting( 'header_logo_url' );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_url', [
-        'section' => 'header_image',
-        'settings' => 'header_logo_url',
-        'label' => 'ロゴ画像',
-        'description' => '（横幅238px・高さ48px）',
-    ]));
-    //ヘッダー背景画像
-    $wp_customize->add_setting( 'header_background_url' );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_background_url', [
+	//既存のセクションに追加
+  //ロゴ画像
+  $wp_customize->add_setting( 'header_logo_url' );
+  $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_url', [
     'section' => 'header_image',
-    'settings' => 'header_background_url',
-    'label' => 'ヘッダー背景画像',
-    ]));
-    //ヘッダー背景画像の大きさ
-    $wp_customize->add_setting( 'header_background_size', [
-        'default' => 'cover',
+    'settings' => 'header_logo_url',
+    'label' => 'ロゴ画像',
+    'description' => '（横幅238px・高さ48px）',
+  ]));
+  //ヘッダー背景画像
+  $wp_customize->add_setting( 'header_background_url' );
+  $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_background_url', [
+	  'section' => 'header_image',
+	  'settings' => 'header_background_url',
+	  'label' => 'ヘッダー背景画像',
+  ]));
+  //ヘッダー背景画像の大きさ
+  $wp_customize->add_setting( 'header_background_size', [
+    'default' => 'cover',
+  ]);
+  $list = [
+    'cover' => 'フルスクリーン',
+    'auto' => '元の大きさ',
+    'contain' => '画面に合わせる',
+  ];
+  $wp_customize->add_control( 'header_background_size', [
+    'section' => 'header_image',
+    'settings' => 'header_background_size',
+    'label' => '画像のサイズ',
+    'type' => 'select',
+    'choices' => $list,
+  ]);
+  //ヘッダー背景画像の位置
+  $wp_customize->add_setting( 'header_background_position', [
+    'default' => 'center center',
+  ]);
+  $list = [
+    'left top' => '左上',
+    'center top' => '上',
+    'right top' => '右上',
+    'left center' => '左',
+    'center center' => '中央',
+    'right center' => '右',
+    'left bottom' => '左下',
+    'center bottom' => '下',
+    'right bottom' => '右下',
+  ];
+  $wp_customize->add_control( 'header_background_position', [
+    'section' => 'header_image',
+    'settings' => 'header_background_position',
+    'label' => '画像の位置',
+    'type' => 'select',
+    'choices' => $list,
+  ]);
+  //ヘッダー背景画像の繰り返し
+  $wp_customize->add_setting( 'header_background_repeat', [
+    'default' => 'no-repeat',
+  ]);
+  $list = [
+    'no-repeat' => '繰り返さない',
+    'repeat' => '繰り返す',
+  ];
+  $wp_customize->add_control( 'header_background_repeat', [
+    'section' => 'header_image',
+    'settings' => 'header_background_repeat',
+    'label' => '画像の繰り返し',
+    'type' => 'select',
+    'choices' => $list,
+  ]);
+  //ヘッダー背景画像の高さ
+  $list = [
+    'mobile' => 'スマホ',
+    'pc' => 'PC',
+  ];
+  foreach($list as $device => $desc) {
+    $wp_customize->add_setting( 'header_background_height_'.$device, [
+      'default' => null,
     ]);
-    $list = [
-        'cover' => 'フルスクリーン',
-        'auto' => '元の大きさ',
-        'contain' => '画面に合わせる',
-    ];
-    $wp_customize->add_control( 'header_background_size', [
-        'section' => 'header_image',
-        'settings' => 'header_background_size',
-        'label' => '画像のサイズ',
-        'type' => 'select',
-        'choices' => $list,
+    $wp_customize->add_control( 'header_background_height_'.$device, [
+      'section' => 'header_image',
+      'settings' => 'header_background_height_'.$device,
+      'label' => '画像の高さ（'.$desc.'）',
+      'description' => '背景画像の高さを明確に指定したい場合だけ数値を入力。未入力の場合は中の要素分の高さになります。',
+      'type' => 'text',
     ]);
-    //ヘッダー背景画像の位置
-    $wp_customize->add_setting( 'header_background_position', [
-        'default' => 'center center',
-    ]);
-    $list = [
-        'left top' => '左上',
-        'center top' => '上',
-        'right top' => '右上',
-        'left center' => '左',
-        'center center' => '中央',
-        'right center' => '右',
-        'left bottom' => '左下',
-        'center bottom' => '下',
-        'right bottom' => '右下',
-    ];
-    $wp_customize->add_control( 'header_background_position', [
-        'section' => 'header_image',
-        'settings' => 'header_background_position',
-        'label' => '画像の位置',
-        'type' => 'select',
-        'choices' => $list,
-    ]);
-    //ヘッダー背景画像の繰り返し
-    $wp_customize->add_setting( 'header_background_repeat', [
-        'default' => 'no-repeat',
-    ]);
-    $list = [
-        'no-repeat' => '繰り返さない',
-        'repeat' => '繰り返す',
-    ];
-    $wp_customize->add_control( 'header_background_repeat', [
-        'section' => 'header_image',
-        'settings' => 'header_background_repeat',
-        'label' => '画像の繰り返し',
-        'type' => 'select',
-        'choices' => $list,
-    ]);
-    //ヘッダー背景画像の高さ
-    $list = [
-        'mobile' => 'スマホ',
-        'pc' => 'PC',
-    ];
-    foreach($list as $device => $desc) {
-        $wp_customize->add_setting( 'header_background_height_'.$device, [
-            'default' => null,
-        ]);
-        $wp_customize->add_control( 'header_background_height_'.$device, [
-            'section' => 'header_image',
-            'settings' => 'header_background_height_'.$device,
-            'label' => '画像の高さ（'.$desc.'）',
-            'description' => '背景画像の高さを明確に指定したい場合だけ数値を入力。未入力の場合は中の要素分の高さになります。',
-            'type' => 'text',
-        ]);
-    }
+  }
 
-//デザイン設定
-$wp_customize->add_section( 'design', [
+	//デザイン設定
+	$wp_customize->add_section( 'design', [
     'title' => 'デザイン',
     'priority' => 20,
-]);
-    //レイアウトリスト
-    $layout_list = [
-        'left-content' => '2カラム（右サイドバー：デフォルト）',
-        'right-content' => '2カラム（左サイドバー）',
-        'center-content' => '1カラム（サイドバーなし）',
-    ];
-    //トップページレイアウト
-    $wp_customize->add_setting( 'layout_home', [
-        'default' => 'left-content',
-    ]);
-    $wp_customize->add_control( 'layout_home', [
-        'section' => 'design',
-        'settings' => 'layout_home',
-        'label' =>'トップページのレイアウト（PC）',
-        'type' => 'select',
-        'choices'    => $layout_list,
-    ]);
-    //記事レイアウト
-    $wp_customize->add_setting( 'layout_singular', [
-        'default' => 'left-content',
-    ]);
-    $wp_customize->add_control( 'layout_singular', [
-        'section' => 'design',
-        'settings' => 'layout_singular',
-        'label' =>'記事のレイアウト（PC）',
-        'type' => 'select',
-        'choices'    => $layout_list,
-    ]);
-    //アーカイブページレイアウト
-    $wp_customize->add_setting( 'layout_archive', [
-        'default' => 'left-content',
-    ]);
-    $wp_customize->add_control( 'layout_archive', [
-        'section' => 'design',
-        'settings' => 'layout_archive',
-        'label' =>'アーカイブページのレイアウト（PC）',
-        'type' => 'select',
-        'choices'    => $layout_list,
-    ]);
-    $width_list = [
-        'width-780' => '780px',
-        'width-880' => '880px',
-        'width-980' => '980px',
-        'width-1080' => '1080px（デフォルト）',
-        'width-1180' => '1180px',
-        'width-1280' => '1280px',
-        'width-1380' => '1380px',
-        'width-1480' => '1480px',
-    ];
-    //トップ横幅
-    $wp_customize->add_setting( 'body_width_home', array (
-        'default' => 'width-1080',
-    ));
-    $wp_customize->add_control( 'body_width_home', array(
-        'section' => 'design',
-        'settings' => 'body_width_home',
-        'label' =>'トップページの横幅（最大幅）',
-        'type' => 'select',
-        'choices'    => $width_list,
-    ));
-    //シングル横幅
-    $wp_customize->add_setting( 'body_width_singular', array (
-        'default' => 'width-1080',
-    ));
-    $wp_customize->add_control( 'body_width_singular', array(
-        'section' => 'design',
-        'settings' => 'body_width_singular',
-        'label' =>'記事の横幅（最大幅）',
-        'type' => 'select',
-        'choices'    => $width_list,
-    ));
-    //アーカイブ横幅
-    $wp_customize->add_setting( 'body_width_archive', array (
-        'default' => 'width-1080',
-    ));
-    $wp_customize->add_control( 'body_width_archive', array(
-        'section' => 'design',
-        'settings' => 'body_width_archive',
-        'label' =>'アーカイブページの横幅（最大幅）',
-        'type' => 'select',
-        'choices'    => $width_list,
-    ));
-    //記事一覧のデザインスマホ
-    $post_style_list = [
-        null => 'シンプル（デフォルト）',
-        'big' => 'ビッグ（1列）',
-    ];
-    //トップページモバイル
-    $wp_customize->add_setting( 'new_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_mobile',
-        'label' => '新着記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページモバイル
-    $wp_customize->add_setting( 'archive_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_mobile',
-        'label' => 'アーカイブ記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事モバイル
-    $wp_customize->add_setting( 'related_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_mobile',
-        'label' => '関連記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //PC用
-    $post_style_list += [
-        '2-5' => '2列',
-        '3-3' => '3列',
-        '4-2' => '4列',
-    ];
-    unset($post_style_list['big']);
-    //トップページPC
-    $wp_customize->add_setting( 'new_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_pc',
-        'label' => '新着記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページPC
-    $wp_customize->add_setting( 'archive_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_pc',
-        'label' => 'アーカイブ記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事PC
-    $wp_customize->add_setting( 'related_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_pc',
-        'label' => '関連記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事の表示数
-    $wp_customize->add_setting( 'related_post_count', [
-        'default' => 10,
-    ]);
-    $wp_customize->add_control( 'related_post_count', [
-        'section' => 'design',
-        'settings' => 'related_post_count',
-        'label' => '関連記事の表示数',
-        'description' => '数字のみ入力してください（例：10記事→10、6記事→6、非表示→0または空白）',
-        'type' => 'number',
-    ]);
-    //抜粋の文字数
-    $wp_customize->add_setting( 'custom_excerpt_length', [
-        'default' => 80,
-    ]);
-    $wp_customize->add_control( 'custom_excerpt_length', [
-        'section' => 'design',
-        'settings' => 'custom_excerpt_length',
-        'label' => '抜粋の長さ',
-        'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
-        'type' => 'number',
-    ]);
-    //文字を丸める
-    $wp_customize->add_setting( 'line_clamp', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'line_clamp', [
-        'section' => 'design',
-        'settings' => 'line_clamp',
-        'label' => '記事一覧のタイトルが指定行より長い場合に文字を省略する',
-        'type' => 'radio',
-        'choices'    => [
-            null => '文字を省略しない',
-            '2line' => '2行で省略',
-            '3line' => '3行で省略',
-        ],
-    ]);
-    //固定ヘッダー
-    $wp_customize->add_setting( 'fixed_header', array (
-        'default' => false,
-    ));
-    $wp_customize->add_control( 'fixed_header', array(
-        'section' => 'design',
-        'settings' => 'fixed_header',
-        'label' =>'固定ヘッダー',
-        'type' => 'checkbox',
-    ));
-    //固定フッター
-    $wp_customize->add_setting( 'fixed_footer', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'fixed_footer', [
-        'section' => 'design',
-        'settings' => 'fixed_footer',
-        'label' =>'固定フッター',
-        'type' => 'radio',
-        'choices' => [
-          null => '非表示（デフォルト）',
-          'menu' => 'メニューを表示',
-					'share' => 'シェアボタン',
-          'overlay' => 'オーバーレイ広告',
-        ],
-    ]);
-    //固定フッターメニューリスト
-    $fixed_footer_menu_list = [
-        'home' => 'ホームに戻る',
-        'search' => '検索',
-        'share' => 'シェア',
-        'slide-menu' => 'スライドメニュー',
-        'top' => 'トップに戻る',
-        'prev' => '前の記事',
-        'next' => '次の記事',
-    ];
-    foreach ($fixed_footer_menu_list as $default => $name) {
-        $wp_customize->add_setting( 'fixed_footer_menu_'.$default, [
-            'default' => true,
-        ]);
-        $wp_customize->add_control( 'fixed_footer_menu_'.$default, [
-            'section' => 'design',
-            'settings' => 'fixed_footer_menu_'.$default,
-            'label' => $name,
-            'type' => 'checkbox',
-        ]);
-    }
+	]);
+  //レイアウトリスト
+  $layout_list = [
+      'left-content' => '2カラム（右サイドバー：デフォルト）',
+      'right-content' => '2カラム（左サイドバー）',
+      'center-content' => '1カラム（サイドバーなし）',
+  ];
+  //トップページレイアウト
+  $wp_customize->add_setting( 'layout_home', [
+      'default' => 'left-content',
+  ]);
+  $wp_customize->add_control( 'layout_home', [
+      'section' => 'design',
+      'settings' => 'layout_home',
+      'label' =>'トップページのレイアウト（PC）',
+      'type' => 'select',
+      'choices'    => $layout_list,
+  ]);
+  //記事レイアウト
+  $wp_customize->add_setting( 'layout_singular', [
+      'default' => 'left-content',
+  ]);
+  $wp_customize->add_control( 'layout_singular', [
+      'section' => 'design',
+      'settings' => 'layout_singular',
+      'label' =>'記事のレイアウト（PC）',
+      'type' => 'select',
+      'choices'    => $layout_list,
+  ]);
+  //アーカイブページレイアウト
+  $wp_customize->add_setting( 'layout_archive', [
+      'default' => 'left-content',
+  ]);
+  $wp_customize->add_control( 'layout_archive', [
+      'section' => 'design',
+      'settings' => 'layout_archive',
+      'label' =>'アーカイブページのレイアウト（PC）',
+      'type' => 'select',
+      'choices'    => $layout_list,
+  ]);
+  $width_list = [
+      'width-780' => '780px',
+      'width-880' => '880px',
+      'width-980' => '980px',
+      'width-1080' => '1080px（デフォルト）',
+      'width-1180' => '1180px',
+      'width-1280' => '1280px',
+      'width-1380' => '1380px',
+      'width-1480' => '1480px',
+  ];
+  //トップ横幅
+  $wp_customize->add_setting( 'body_width_home', array (
+      'default' => 'width-1080',
+  ));
+  $wp_customize->add_control( 'body_width_home', array(
+      'section' => 'design',
+      'settings' => 'body_width_home',
+      'label' =>'トップページの横幅（最大幅）',
+      'type' => 'select',
+      'choices'    => $width_list,
+  ));
+  //シングル横幅
+  $wp_customize->add_setting( 'body_width_singular', array (
+      'default' => 'width-1080',
+  ));
+  $wp_customize->add_control( 'body_width_singular', array(
+      'section' => 'design',
+      'settings' => 'body_width_singular',
+      'label' =>'記事の横幅（最大幅）',
+      'type' => 'select',
+      'choices'    => $width_list,
+  ));
+  //アーカイブ横幅
+  $wp_customize->add_setting( 'body_width_archive', array (
+      'default' => 'width-1080',
+  ));
+  $wp_customize->add_control( 'body_width_archive', array(
+      'section' => 'design',
+      'settings' => 'body_width_archive',
+      'label' =>'アーカイブページの横幅（最大幅）',
+      'type' => 'select',
+      'choices'    => $width_list,
+  ));
+  //記事一覧のデザインスマホ
+  $post_style_list = [
+      null => 'シンプル（デフォルト）',
+      'big' => 'ビッグ（1列）',
+  ];
+  //トップページモバイル
+  $wp_customize->add_setting( 'new_post_list_style_mobile', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'new_post_list_style_mobile', [
+      'section' => 'design',
+      'settings' => 'new_post_list_style_mobile',
+      'label' => '新着記事一覧デザイン（スマホ）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //アーカイブページモバイル
+  $wp_customize->add_setting( 'archive_post_list_style_mobile', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'archive_post_list_style_mobile', [
+      'section' => 'design',
+      'settings' => 'archive_post_list_style_mobile',
+      'label' => 'アーカイブ記事一覧デザイン（スマホ）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //関連記事モバイル
+  $wp_customize->add_setting( 'related_post_list_style_mobile', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'related_post_list_style_mobile', [
+      'section' => 'design',
+      'settings' => 'related_post_list_style_mobile',
+      'label' => '関連記事一覧デザイン（スマホ）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //PC用
+  $post_style_list += [
+      '2-5' => '2列',
+      '3-3' => '3列',
+      '4-2' => '4列',
+  ];
+  unset($post_style_list['big']);
+  //トップページPC
+  $wp_customize->add_setting( 'new_post_list_style_pc', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'new_post_list_style_pc', [
+      'section' => 'design',
+      'settings' => 'new_post_list_style_pc',
+      'label' => '新着記事一覧デザイン（PC）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //アーカイブページPC
+  $wp_customize->add_setting( 'archive_post_list_style_pc', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'archive_post_list_style_pc', [
+      'section' => 'design',
+      'settings' => 'archive_post_list_style_pc',
+      'label' => 'アーカイブ記事一覧デザイン（PC）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //関連記事PC
+  $wp_customize->add_setting( 'related_post_list_style_pc', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'related_post_list_style_pc', [
+      'section' => 'design',
+      'settings' => 'related_post_list_style_pc',
+      'label' => '関連記事一覧デザイン（PC）',
+      'type' => 'select',
+      'choices' => $post_style_list,
+  ]);
+  //関連記事の表示数
+  $wp_customize->add_setting( 'related_post_count', [
+      'default' => 10,
+  ]);
+  $wp_customize->add_control( 'related_post_count', [
+      'section' => 'design',
+      'settings' => 'related_post_count',
+      'label' => '関連記事の表示数',
+      'description' => '数字のみ入力してください（例：10記事→10、6記事→6、非表示→0または空白）',
+      'type' => 'number',
+  ]);
+  //抜粋の文字数
+  $wp_customize->add_setting( 'custom_excerpt_length', [
+      'default' => 80,
+  ]);
+  $wp_customize->add_control( 'custom_excerpt_length', [
+      'section' => 'design',
+      'settings' => 'custom_excerpt_length',
+      'label' => '抜粋の長さ',
+      'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
+      'type' => 'number',
+  ]);
+  //文字を丸める
+  $wp_customize->add_setting( 'line_clamp', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'line_clamp', [
+      'section' => 'design',
+      'settings' => 'line_clamp',
+      'label' => '記事一覧のタイトルが指定行より長い場合に文字を省略する',
+      'type' => 'radio',
+      'choices'    => [
+          null => '文字を省略しない',
+          '2line' => '2行で省略',
+          '3line' => '3行で省略',
+      ],
+  ]);
+  //固定ヘッダー
+  $wp_customize->add_setting( 'fixed_header', array (
+      'default' => false,
+  ));
+  $wp_customize->add_control( 'fixed_header', array(
+      'section' => 'design',
+      'settings' => 'fixed_header',
+      'label' =>'固定ヘッダー',
+      'type' => 'checkbox',
+  ));
+  //固定フッター
+  $wp_customize->add_setting( 'fixed_footer', [
+      'default' => null,
+  ]);
+  $wp_customize->add_control( 'fixed_footer', [
+      'section' => 'design',
+      'settings' => 'fixed_footer',
+      'label' =>'固定フッター',
+      'type' => 'radio',
+      'choices' => [
+        null => '非表示（デフォルト）',
+        'menu' => 'メニューを表示',
+				'share' => 'シェアボタン',
+        'overlay' => 'オーバーレイ広告',
+      ],
+  ]);
+  //固定フッターメニューリスト
+  $fixed_footer_menu_list = [
+      'home' => 'ホームに戻る',
+      'search' => '検索',
+      'share' => 'シェア',
+      'slide-menu' => 'スライドメニュー',
+      'top' => 'トップに戻る',
+      'prev' => '前の記事',
+      'next' => '次の記事',
+  ];
+  foreach ($fixed_footer_menu_list as $default => $name) {
+      $wp_customize->add_setting( 'fixed_footer_menu_'.$default, [
+          'default' => true,
+      ]);
+      $wp_customize->add_control( 'fixed_footer_menu_'.$default, [
+          'section' => 'design',
+          'settings' => 'fixed_footer_menu_'.$default,
+          'label' => $name,
+          'type' => 'checkbox',
+      ]);
+  }
 
 //ページ設定
 $wp_customize->add_section( 'page_setting', [
@@ -495,37 +493,6 @@ $wp_customize->add_section( 'page_setting', [
         'label' => '前後の記事を表示する',
         'type' => 'checkbox',
     ]);
-//    //サイドバーウィジェットのデザイン
-//    $wp_customize->add_setting( 'sidebar_widget_design', array (
-//        'default' => null,
-//    ));
-//    $wp_customize->add_control( 'sidebar_widget_design', array(
-//        'section' => 'page_setting',
-//        'settings' => 'sidebar_widget_design',
-//        'label' =>'サイドバーウィジェットのデザイン',
-//        'type' => 'select',
-//        'choices' => [
-//            null => '装飾なし',
-//            'box' => 'ボックス',
-//        ],
-//    ));
-//    //サイドバーのスクロール部分
-//    $wp_customize->add_setting( 'sidebar_scroll_display', [
-//        'default' => 'all',
-//    ]);
-//    $wp_customize->add_control( 'sidebar_scroll_display', [
-//        'section' => 'page_setting',
-//        'settings' => 'sidebar_scroll_display',
-//        'label' =>'サイドバースクロールエリアの表示切り替え',
-//        'description' => 'PC・タブレットの時だけサイドバーのスクロール部分を表示するようにします。モバイル画面ではほぼ見られない部分なのでユーザビリティが高くなります。',
-//        'type' => 'select',
-//        'choices' => [
-//            'all' => 'すべてのデバイスで表示',
-//            'pc_mobile_single' => 'すべてのデバイスの記事ページでのみ表示',
-//            'mobile_none' => 'PC・タブレットだけ表示',
-//            'pc_single' => 'PC・タブレットの記事ページでのみ表示',
-//        ],
-//    ]);
 
 //見出し
 $wp_customize->add_section( 'heading_style', [
