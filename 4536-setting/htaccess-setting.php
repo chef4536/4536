@@ -58,7 +58,7 @@ class HtaccessUpdate_4536 {
       update_option( 'redirect_post_in_category_settings_option', $array );
 
       foreach ( $this->array as $key => $val ) {
-        $this->update_option( $key );
+        update_option_4536( $key );
       }
 
       $this->htaccess_update();
@@ -147,11 +147,6 @@ class HtaccessUpdate_4536 {
       echo '<div class="updated"><p>変更を保存しました。</p></div>';
     });
 
-  }
-
-  function update_option( $option ) {
-    $val = ( isset($_POST[$option]) ) ? $_POST[$option] : '' ;
-    update_option( $option, $val );
   }
 
   function form() { ?>

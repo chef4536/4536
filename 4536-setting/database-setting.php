@@ -47,20 +47,20 @@ class AdminDatabaseSettings_4536 {
     });
 
     if( isset($_POST['embed_cache_delete_submit_4536']) ) {
-      $this->update_option( 'embed_cache_delete' );
+      update_option_4536( 'embed_cache_delete' );
       $this->cache_delete();
       add_action( 'admin_notices', function() {
-          echo '<div class="updated"><p>キャッシュを削除しました。</p></div>';
+        echo '<div class="updated"><p>キャッシュを削除しました。</p></div>';
       });
     }
 
     if( isset($_POST['aioseo_data_import_submit_4536']) ) {
       foreach ($this->aioseo_import_args as $key => $value) {
-        $this->update_option( $key );
+        update_option_4536( $key );
       }
       $this->data_import();
       add_action( 'admin_notices', function() {
-          echo '<div class="updated"><p>インポートしました。</p></div>';
+        echo '<div class="updated"><p>インポートしました。</p></div>';
       });
     }
 
@@ -218,11 +218,6 @@ class AdminDatabaseSettings_4536 {
     </div>
 
   <?php }
-
-  function update_option( $option ) {
-    $val = ( isset($_POST[$option]) ) ? $_POST[$option] : '' ;
-    update_option( $option, $val );
-  }
 
 }
 new AdminDatabaseSettings_4536();

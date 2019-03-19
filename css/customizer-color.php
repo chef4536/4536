@@ -22,10 +22,6 @@ add_action( 'customize_register', function( $wp_customize ) {
             'label' => 'トップページのサイト説明',
             'color' => '',
         ],
-        'breadcrumb_color' => [
-            'label' => 'パンくずリストの文字',
-            'color' => '#666666',
-        ],
         'post_background_color' => [
             'label' => '記事（一覧含む）背景',
             'color' => '#ffffff',
@@ -165,7 +161,6 @@ add_filter( 'inline_style_4536', function( $css ) {
     $header_background_color = get_theme_mod( 'header_background_color', '#000000');
     $header_color = get_theme_mod( 'header_color', '#ffffff');
     $description_color = get_theme_mod( 'description_color', '');
-    $breadcrumb_color = get_theme_mod( 'breadcrumb_color', '#666666');
     $post_backround_color = get_theme_mod( 'post_background_color', '#ffffff');
     $post_color = get_theme_mod( 'post_color', '#333333');
     $h1_key_color = get_theme_mod( 'h1_key_color', '#f2f2f2');
@@ -207,10 +202,6 @@ add_filter( 'inline_style_4536', function( $css ) {
 
     if( !empty($description_color) ) { //ディスクリプションの文字色
         $css[] = '#description{color:'.$description_color.'}';
-    }
-
-    if( !empty($breadcrumb_color) ) { //パンくずリストの文字色
-        $css[] = '.current-breadcrumb{color:'.$breadcrumb_color.'}';
     }
 
     global $pagenow;
