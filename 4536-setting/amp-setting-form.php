@@ -59,7 +59,7 @@ class AdminAmpSetting_4536 {
 
     <div class="wrap">
 
-      <h2>AMP対応するページの種類</h2>
+      <h2>AMP設定</h2>
 
       <p><i class="far fa-arrow-alt-circle-right"></i><a href="https://4536.jp/amp" target="_blank">AMPとは？</a></p>
 
@@ -72,7 +72,7 @@ class AdminAmpSetting_4536 {
         <!-- AMP有効 -->
         <div class="metabox-holder">
         <div class="postbox" >
-          <h3 class="hndle">AMP対応</h3>
+          <h3 class="hndle">AMP対応するページの種類</h3>
           <div class="inside">
             <p><small>AMPページを生成します。記事毎にこの機能をオフにすることも可能です。</small></p>
             <?php foreach( $this->is_amp_post_type as $key => $value ) { ?>
