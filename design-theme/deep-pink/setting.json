@@ -17,6 +17,7 @@
   "related_post_title_color": "#ffffff",
   "sidebar_widget_title_key_color": "#ff0099",
   "sidebar_widget_title_color": "#ffffff",
+  "background_image": "/img/dot.png",
   "footer_background_color": "#ff0099",
   "footer_color": "#ffffff"
 }

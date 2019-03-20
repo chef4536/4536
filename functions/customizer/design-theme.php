@@ -16,7 +16,7 @@ class EasySettings_4536 {
 
   function __construct() {
     add_action( 'customize_register', [ $this, 'register' ] );
-    add_action( 'wp_loaded', [ $this, 'save' ] );
+    add_action( 'wp_loaded', [ $this, 'update' ] );
   }
 
   function register( $wp_customize ) {
@@ -46,19 +46,20 @@ class EasySettings_4536 {
       ]);
   }
 
-  function save() {
+  function update() {
     if( !is_user_logged_in() ) return;
     if( empty(get_theme_mod( 'is_design_theme', false )) ) return;
     // $old = get_option( 'theme_mods_' . wp_get_theme() )['design_theme'];
     $current = get_theme_mod( 'design_theme', '_default' );
     // if( $old === $current ) return;
-    $path = __DIR__ . '/design-theme/' . $current . '/setting.json';
+    $path = TEMPLATEPATH . '/design-theme/' . $current . '/setting.json';
     if( !file_exists($path) ) return;
     ob_start();
     require_once( $path );
     $json = ob_get_clean();
     $array = json_decode( $json );
     foreach( $array as $key => $value ) {
+      if( $key === 'background_image' ) $value = str_replace( '/img', get_parent_theme_file_uri('design-theme/') . $current . '/img', $value );
       set_theme_mod( $key, $value );
     }
     set_theme_mod( 'h1_style', null );

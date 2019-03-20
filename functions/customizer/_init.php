@@ -1,7 +1,7 @@
 <?php
 
 //簡単設定
-require_once('easy-settings.php');
+require_once('design-theme.php');
 //テーマカスタマイザー
 require_once('customizer.php');
 //色関連のテーマカスタマイザー
