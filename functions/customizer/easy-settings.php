@@ -24,22 +24,34 @@ class EasySettings_4536 {
       'title' => 'デザインテーマ（かんたん設定）',
       'priority' => 0,
     ]);
-    $wp_customize->add_setting( 'design_theme', [
-      'default' => '_default',
-    ]);
-    $wp_customize->add_control( 'design_theme', [
-      'section' => 'design_theme',
-      'settings' => 'design_theme',
-      // 'label' => 'デザインテーマ',
-      'type' => 'radio',
-      'choices' => $this->design_theme_array,
-    ]);
+      $wp_customize->add_setting( 'is_design_theme', [
+        'default' => false,
+      ]);
+      $wp_customize->add_control( 'is_design_theme', [
+        'section' => 'design_theme',
+        'settings' => 'is_design_theme',
+        'label' => 'デザインテーマを適用',
+        'description' => '<small style="color:#965042">デザインテーマ適用後、個別に色を変更する場合はチェックを外してください。（デザインテーマの設定で上書きされてしまうため）</small>',
+        'type' => 'checkbox',
+      ]);
+      $wp_customize->add_setting( 'design_theme', [
+        'default' => '_default',
+      ]);
+      $wp_customize->add_control( 'design_theme', [
+        'section' => 'design_theme',
+        'settings' => 'design_theme',
+        'label' => 'デザインテーマ一覧',
+        'type' => 'radio',
+        'choices' => $this->design_theme_array,
+      ]);
   }
 
   function save() {
-    // $old = get_option('theme_mods_' . wp_get_theme() )['design_theme'];
+    if( !is_user_logged_in() ) return;
+    if( empty(get_theme_mod( 'is_design_theme', false )) ) return;
+    // $old = get_option( 'theme_mods_' . wp_get_theme() )['design_theme'];
     $current = get_theme_mod( 'design_theme', '_default' );
-    // if( $old === $this->current_design() ) return;
+    // if( $old === $current ) return;
     $path = __DIR__ . '/design-theme/' . $current . '/setting.json';
     if( !file_exists($path) ) return;
     ob_start();

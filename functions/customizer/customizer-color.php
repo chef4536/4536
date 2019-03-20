@@ -152,7 +152,6 @@ class CustomizerColorSettings_4536 {
   ];
 
   function __construct() {
-    add_theme_support('custom-background'); //カスタム背景
     add_action( 'customize_register', [$this, 'init'] );
     add_filter( 'inline_style_4536', [$this, 'add_style'] );
   }

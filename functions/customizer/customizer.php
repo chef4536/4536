@@ -1,6 +1,6 @@
 <?php
 
-function theme_customizer_extension($wp_customize) {
+add_action('customize_register', function( $wp_customize ) {
 
 	/*	テーマカスタマイザーにテキストエリア追加
 	/*-------------------------------------------*/
@@ -1218,8 +1218,7 @@ $wp_customize->add_section( 'etc', array (
     ]);
 
 
-}//終わり
-add_action('customize_register', 'theme_customizer_extension');
+});
 
 //カスタムヘッダー
 $custom_header = [
