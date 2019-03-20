@@ -1,207 +1,238 @@
 <?php
 
-add_theme_support('custom-background'); //カスタム背景
+/**
+ *
+ */
+class CustomizerColorSettings_4536 {
 
-add_action( 'customize_register', function( $wp_customize ) {
+  //色セクション
+  public $main_array = [
+    'link_color' => [
+      'label' => 'リンク',
+      'color' => '#00a0e9',
+    ],
+    'header_background_color' => [
+      'label' => 'ヘッダー背景',
+      'color' => '#000000',
+    ],
+    'header_color' => [
+      'label' => 'ヘッダー文字',
+      'color' => '#ffffff',
+    ],
+    'description_color' => [
+      'label' => 'トップページのサイト説明',
+      'color' => '',
+    ],
+    'post_background_color' => [
+      'label' => '記事（一覧含む）背景',
+      'color' => '#ffffff',
+    ],
+    'post_color' => [
+      'label' => '記事（一覧含む）文字',
+      'color' => '#333333',
+    ],
+    'table_background_color_2_line' => [
+      'label' => 'テーブルの偶数番目の背景',
+      'color' => '',
+    ],
+    'media_section_background_color' => [
+      'label' => 'メディアセクション（Music,Movie,Pickup）の背景',
+      'color' => '#222222',
+    ],
+    'media_section_title_color' => [
+      'label' => 'メディアセクション（Music,Movie,Pickup）の文字',
+      'color' => '#ffffff',
+    ],
+    'footer_background_color' => [
+      'label' => 'フッター背景',
+      'color' => '#000000',
+    ],
+    'footer_color' => [
+      'label' => 'フッター文字',
+      'color' => '#ffffff',
+    ],
+  ];
 
-    //色セクション
-    $list = [
-        'link_color' => [
-            'label' => 'リンク',
-            'color' => '#00a0e9',
-        ],
-        'header_background_color' => [
-            'label' => 'ヘッダー背景',
-            'color' => '#000000',
-        ],
-        'header_color' => [
-            'label' => 'ヘッダー文字',
-            'color' => '#ffffff',
-        ],
-        'description_color' => [
-            'label' => 'トップページのサイト説明',
-            'color' => '',
-        ],
-        'post_background_color' => [
-            'label' => '記事（一覧含む）背景',
-            'color' => '#ffffff',
-        ],
-        'post_color' => [
-            'label' => '記事（一覧含む）文字',
-            'color' => '#333333',
-        ],
-        'table_background_color_2_line' => [
-            'label' => 'テーブルの偶数番目の背景',
-            'color' => '',
-        ],
-        'media_section_background_color' => [
-            'label' => 'メディアセクション（Music,Movie,Pickup）の背景',
-            'color' => '#222222',
-        ],
-        'media_section_title_color' => [
-            'label' => 'メディアセクション（Music,Movie,Pickup）の文字',
-            'color' => '#ffffff',
-        ],
-        'footer_background_color' => [
-            'label' => 'フッター背景',
-            'color' => '#000000',
-        ],
-        'footer_color' => [
-            'label' => 'フッター文字',
-            'color' => '#ffffff',
-        ],
-    ];
-    foreach($list as $name => $args) {
-        $wp_customize->add_setting( $name, [ 'default' => $args['color'] ] );
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $name, [
-            'label' => $args['label'],
-            'section' => 'colors',
-            'settings' => $name,
-        ]));
+  //見出しセクション
+  public $heading_array = [
+    'h1_key_color' => [
+      'label' => '見出し1（h1）のキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 10,
+    ],
+    'h1_color' => [
+      'label' => '見出し1（h1）の文字色',
+      'color' => '',
+      'priority' => 10,
+    ],
+    'h2_key_color' => [
+      'label' => '見出し2（h2）のキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 20,
+    ],
+    'h2_color' => [
+      'label' => '見出し2（h2）の文字色',
+      'color' => '',
+      'priority' => 20,
+    ],
+    'h3_key_color' => [
+      'label' => '見出し3（h3）のキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 30,
+    ],
+    'h3_color' => [
+      'label' => '見出し3（h3）の文字色',
+      'color' => '',
+      'priority' => 30,
+    ],
+    'h4_key_color' => [
+      'label' => '見出し4（h4）のキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 40,
+    ],
+    'h4_color' => [
+      'label' => '見出し4（h4）の文字色',
+      'color' => '',
+      'priority' => 40,
+    ],
+    'related_post_title_key_color' => [
+      'label' => '関連記事タイトルのキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 50,
+    ],
+    'related_post_title_color' => [
+      'label' => '関連記事タイトルの文字色',
+      'color' => '',
+      'priority' => 50,
+    ],
+    'widget_title_key_color' => [
+      'label' => 'ウィジェットのキーカラー',
+      'color' => '#f2f2f2',
+      'priority' => 60,
+    ],
+    'widget_title_color' => [
+      'label' => 'ウィジェットの文字色',
+      'color' => '',
+      'priority' => 60,
+    ],
+  ];
+
+  public $sns_array = [
+    'fb_like_background_color' => [
+      'label' => 'バイラル風いいねボックスの背景色',
+      'color' => '#2b2b2b',
+    ],
+    'fb_like_color' => [
+      'label' => 'バイラル風いいねボックスの文字色',
+      'color' => '#ffffff',
+    ],
+  ];
+
+  public $balloon_array = [
+    'balloon_right_background_color' => [
+      'label' => '左吹き出しの背景色',
+      'color' => '',
+      'priority' => 10,
+    ],
+    'balloon_right_font_color' => [
+      'label' => '左吹き出しの文字色',
+      'color' => '',
+      'priority' => 10,
+    ],
+    'balloon_left_background_color' => [
+      'label' => '右吹き出しの背景色',
+      'color' => '',
+      'priority' => 50,
+    ],
+    'balloon_left_font_color' => [
+      'label' => '右吹き出しの文字色',
+      'color' => '',
+      'priority' => 50,
+    ],
+  ];
+
+  function __construct() {
+    add_theme_support('custom-background'); //カスタム背景
+    add_action( 'customize_register', [$this, 'init'] );
+    add_filter( 'inline_style_4536', [$this, 'add_style'] );
+  }
+
+  function init( $wp_customize ) {
+
+    //メイン
+    foreach( $this->main_array as $key => $value ) {
+      $wp_customize->add_setting( $key, [ 'default' => $value['color'] ] );
+      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
+          'label' => $value['label'],
+          'section' => 'colors',
+          'settings' => $key,
+      ]));
     }
 
-    //見出しセクション
-    $list = [
-        'h1' => [
-            'label' => '見出し1（h1）',
-            'priority' => 10,
-        ],
-        'h2' => [
-            'label' => '見出し2（h2）',
-            'priority' => 20,
-        ],
-        'h3' => [
-            'label' => '見出し3（h3）',
-            'priority' => 30,
-        ],
-        'h4' => [
-            'label' => '見出し4（h4）',
-            'priority' => 40,
-        ],
-        'related_post_title' => [
-            'label' => '関連記事タイトル',
-            'priority' => 50,
-        ],
-        'main_title' => [
-            'label' => 'ウィジェット',
-            'priority' => 60,
-        ],
-    ];
-    foreach($list as $name => $args) {
-        $key_color_name = $name.'_key_color';
-        $wp_customize->add_setting( $key_color_name, ['default' => '#f2f2f2'] );
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key_color_name, [
-            'label' => $args['label'].'のキーカラー',
-            'section' => 'heading_style',
-            'settings' => $key_color_name,
-            'priority' => $args['priority'],
-        ]));
-        $color_name = $name.'_color';
-        $wp_customize->add_setting( $color_name, ['default' => ''] );
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $color_name, [
-            'label' => $args['label'].'の文字色',
-            'section' => 'heading_style',
-            'settings' => $color_name,
-            'priority' => $args['priority'],
-        ]));
+    //見出し
+    foreach( $this->heading_array as $key => $value ) {
+      $wp_customize->add_setting( $key, [ 'default' => $value['color'] ] );
+      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
+          'label' => $value['label'],
+          'section' => 'heading_style',
+          'settings' => $key,
+          'priority' => $value['priority'],
+      ]));
     }
 
-    //SNSセクション
-    $wp_customize->add_setting( 'fb_like_background_color', ['default' => '#2b2b2b'] );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'fb_like_background_color', [
-        'label' => 'バイラル風いいねボックスの背景色',
+    //SNS
+    foreach( $this->sns_array as $key => $value ) {
+      $wp_customize->add_setting( $key, ['default' => $value['color']] );
+      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
+        'label' => $value['label'],
         'section' => 'SNS',
-        'settings' => 'fb_like_background_color',
+        'settings' => $key,
         'priority' => 15,
-    ]));
-
-    $wp_customize->add_setting( 'fb_like_color', ['default' => '#ffffff'] );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'fb_like_color', [
-        'label' => 'バイラル風いいねボックスの文字色',
-        'section' => 'SNS',
-        'settings' => 'fb_like_color',
-        'priority' => 15,
-    ]));
+      ]));
+    }
 
     //吹き出しセクション
-    $list = [
-        'balloon_right_background_color' => [
-            'label' => '左吹き出しの背景色',
-            'priority' => 10,
-        ],
-        'balloon_right_font_color' => [
-            'label' => '左吹き出しの文字色',
-            'priority' => 10,
-        ],
-        'balloon_left_background_color' => [
-            'label' => '右吹き出しの背景色',
-            'priority' => 50,
-        ],
-        'balloon_left_font_color' => [
-            'label' => '右吹き出しの文字色',
-            'priority' => 50,
-        ],
-    ];
-    foreach($list as $name => $args) {
-        $wp_customize->add_setting( $name, ['default' => ''] );
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $name, [
-            'label' => $args['label'],
-            'section' => 'balloon',
-            'settings' => $name,
-            'priority' => $args['priority'],
-        ]));
+    foreach( $this->balloon_array as $key => $value ) {
+      $wp_customize->add_setting( $key, ['default' => $value['color']] );
+      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
+          'label' => $value['label'],
+          'section' => 'balloon',
+          'settings' => $key,
+          'priority' => $value['priority'],
+      ]));
     }
 
-});
+  }
 
-add_filter( 'inline_style_4536', function( $css ) {
+  function add_style( $css ) {
 
-    //デフォルトカラー
-    $link_color = get_theme_mod( 'link_color', '#00a0e9' );
-    $header_background_color = get_theme_mod( 'header_background_color', '#000000');
-    $header_color = get_theme_mod( 'header_color', '#ffffff');
-    $description_color = get_theme_mod( 'description_color', '');
-    $post_backround_color = get_theme_mod( 'post_background_color', '#ffffff');
-    $post_color = get_theme_mod( 'post_color', '#333333');
-    $h1_key_color = get_theme_mod( 'h1_key_color', '#f2f2f2');
-    $h1_color = get_theme_mod( 'h1_color', '');
-    $h2_key_color = get_theme_mod( 'h2_key_color', '#f2f2f2');
-    $h2_color = get_theme_mod( 'h2_color', '');
-    $h3_key_color = get_theme_mod( 'h3_key_color', '#f2f2f2');
-    $h3_color = get_theme_mod( 'h3_color', '');
-    $h4_key_color = get_theme_mod( 'h4_key_color', '#f2f2f2');
-    $h4_color = get_theme_mod( 'h4_color', '');
-    $table_background_color_2_line = get_theme_mod( 'table_background_color_2_line', '');
-    $fb_like_background_color = get_theme_mod( 'fb_like_background_color', '#2b2b2b');
-    $fb_like_color = get_theme_mod( 'fb_like_color', '#ffffff');
-    $related_post_title_key_color = get_theme_mod( 'related_post_title_key_color', '#f2f2f2');
-    $related_post_title_color = get_theme_mod( 'related_post_title_color', '');
-    $main_title_key_color = get_theme_mod( 'main_title_key_color', '#f2f2f2');
-    $main_title_color = get_theme_mod( 'main_title_color', '');
-    $media_section_background_color = get_theme_mod( 'media_section_background_color', '#222222');
-    $media_section_title_color = get_theme_mod( 'media_section_title_color', '#ffffff');
-    $footer_background_color = get_theme_mod( 'footer_background_color', '#000000');
-    $footer_color = get_theme_mod( 'footer_color', '#ffffff');
-    $balloon_left_background_color = get_theme_mod( 'balloon_left_background_color', '');
-    $balloon_right_background_color = get_theme_mod( 'balloon_right_background_color', '');
-    $balloon_left_font_color = get_theme_mod( 'balloon_left_font_color', '');
-    $balloon_right_font_color = get_theme_mod( 'balloon_right_font_color', '');
+    $array = [];
+    $color = [];
+    $array += $this->main_array;
+    $array += $this->heading_array;
+    $array += $this->sns_array;
+    $array += $this->balloon_array;
+
+    foreach( $array as $key => $value ) {
+      $color[$key] = get_theme_mod( $key, $value['color'] );
+    }
+
+    extract( $color );
 
     if( !empty($link_color) ) { //リンクカラー
-        $css[] = 'a{color:'.$link_color.'}';
+      $css[] = 'a{color:'.$link_color.'}';
     }
 
     if( !empty($header_background_color) ) { //ヘッダー背景色
-        $css[] = '.header-section,.sub-menu{background-color:'.$header_background_color.'}';
+      $css[] = '.header-section,.sub-menu{background-color:'.$header_background_color.'}';
     }
 
     if( !empty($header_color) ) { //ヘッダー文字色
-//        $css[] = '#header,#header button,.nav-menu,.nav-menu li a,#sitename a{color:'.$header_color.'}';
-        $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
+      $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
     }
 
     if( !empty($description_color) ) { //ディスクリプションの文字色
-        $css[] = '#description{color:'.$description_color.'}';
+      $css[] = '#description{color:'.$description_color.'}';
     }
 
     global $pagenow;
@@ -222,14 +253,14 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     if( !empty($fb_like_background_color) ) { //いいねボックス背景色
-        $css[] = '#follow-section-cover{background-color:'.$fb_like_background_color.'}';
+      $css[] = '#follow-section-cover{background-color:'.$fb_like_background_color.'}';
     }
 
     if( !empty($fb_like_color) ) { //いいねボックス文字色
-        $css[] = '#follow-section-right{color:'.$fb_like_color.'}';
+      $css[] = '#follow-section-right{color:'.$fb_like_color.'}';
     }
 
-    $list = [
+    $array = [
       'h1_style' => [
         'tag' => '#post-h1',
         'key_color' => $h1_key_color,
@@ -255,20 +286,19 @@ add_filter( 'inline_style_4536', function( $css ) {
         'key_color' => $related_post_title_key_color,
         'font_color' => $related_post_title_color,
       ],
-      'main_widget_title_style' => [
-        'tag' => '.main-widget-title',
-        'key_color' => $main_title_key_color,
-        'font_color' => $main_title_color,
+      'widget_title_style' => [
+        'tag' => '.widget-title',
+        'key_color' => $widget_title_key_color,
+        'font_color' => $widget_title_color,
       ],
     ];
 
     //キーカラー
-    foreach ( $list as $key => $val ) {
+    foreach ( $array as $key => $val ) {
 
       $key_color = $val['key_color'];
       $font_color = $val['font_color'];
       $tag = $val['tag'];
-      // if ( is_admin() ) $tag = str_replace( 'article-body', 'edit-post-visual-editor', $tag );
 
       //キーカラーとスタイル
       switch ( heading_style_4536($key) ) {
@@ -310,43 +340,46 @@ add_filter( 'inline_style_4536', function( $css ) {
     }
 
     if( !empty($table_background_color_2_line) ) { //テーブル偶数番目背景色
-        $css[] = '.post table tr:nth-child(even){background-color:'.$table_background_color_2_line.'}';
+      $css[] = '.post table tr:nth-child(even){background-color:'.$table_background_color_2_line.'}';
     }
 
     if( !empty($media_section_background_color) ) { //メディアセクション背景色
-        $css[] = '.media-section{background-color:'.$media_section_background_color.'}';
+      $css[] = '.media-section{background-color:'.$media_section_background_color.'}';
     }
 
     if( !empty($media_section_title_color) ) { //メディアセクションタイトル色
-        $css[] = '#main .media-section-title,#main .media-content .post-info,.media-section-title,.media-content .post-info{color:'.$media_section_title_color.'}';
+      $css[] = '#main .media-section-title,#main .media-content .post-info,.media-section-title,.media-content .post-info{color:'.$media_section_title_color.'}';
     }
 
     if( !empty($footer_background_color) ) { //フッター背景色
-        $css[] = '#footer,#fixed-footer-menu{background-color:'.$footer_background_color.'}';
+      $css[] = '#footer,#fixed-footer-menu{background-color:'.$footer_background_color.'}';
     }
 
     if( !empty($footer_color) ) { //フッター文字色
-        $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer a{color:'.$footer_color.'}';
+      $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer a{color:'.$footer_color.'}';
     }
 
     if( !empty($balloon_right_background_color) ) { //左吹き出し背景色
-        $css[] = '.balloon .balloon-text-right,.think.balloon .balloon-text-right,.think.balloon .balloon-text-right::before,.think.balloon .balloon-text-right::after{background-color:'.$balloon_right_background_color.';border-color:'.$balloon_right_background_color.'}';
-        $css[] = '.balloon .balloon-text-right::before,.balloon .balloon-text-right::after{border-right-color:'.$balloon_right_background_color.'}';
+      $css[] = '.balloon .balloon-text-right,.think.balloon .balloon-text-right,.think.balloon .balloon-text-right::before,.think.balloon .balloon-text-right::after{background-color:'.$balloon_right_background_color.';border-color:'.$balloon_right_background_color.'}';
+      $css[] = '.balloon .balloon-text-right::before,.balloon .balloon-text-right::after{border-right-color:'.$balloon_right_background_color.'}';
     }
 
     if( !empty($balloon_right_font_color) ) { //左吹き出し文字
-        $css[] = '.balloon .balloon-text-right{color:'.$balloon_right_font_color.'}';
+      $css[] = '.balloon .balloon-text-right{color:'.$balloon_right_font_color.'}';
     }
 
     if( !empty($balloon_left_background_color) ) { //右吹き出し背景色
-        $css[] = '.balloon .balloon-text-left,.think.balloon .balloon-text-left,.think.balloon .balloon-text-left::before,.think.balloon .balloon-text-left::after{background-color:'.$balloon_left_background_color.';border-color:'.$balloon_left_background_color.'}';
-        $css[] = '.balloon .balloon-text-left::before,.balloon .balloon-text-left::after{border-left-color:'.$balloon_left_background_color.'}';
+      $css[] = '.balloon .balloon-text-left,.think.balloon .balloon-text-left,.think.balloon .balloon-text-left::before,.think.balloon .balloon-text-left::after{background-color:'.$balloon_left_background_color.';border-color:'.$balloon_left_background_color.'}';
+      $css[] = '.balloon .balloon-text-left::before,.balloon .balloon-text-left::after{border-left-color:'.$balloon_left_background_color.'}';
     }
 
     if( !empty($balloon_left_font_color) ) { //右吹き出し文字
-        $css[] = '.balloon .balloon-text-left{color:'.$balloon_left_font_color.'}';
+      $css[] = '.balloon .balloon-text-left{color:'.$balloon_left_font_color.'}';
     }
 
     return $css;
 
-});
+  }
+
+}
+new CustomizerColorSettings_4536();

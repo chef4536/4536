@@ -43,6 +43,18 @@ class EasySettings_4536 {
     set_theme_mod( 'header_color', $font_color );
     set_theme_mod( 'post_background_color', $key_color );
     set_theme_mod( 'post_color', $font_color );
+    set_theme_mod( 'footer_background_color', $key_color );
+    set_theme_mod( 'footer_color', $font_color );
+    $array = [
+      'h2',
+      'h3',
+      'h4',
+      'related_post_title',
+      'widget_title',
+    ];
+    foreach( $array as $key ) {
+      set_theme_mod( $key . '_color', $font_color );
+    }
   }
 
   function form() { ?>
@@ -58,12 +70,12 @@ class EasySettings_4536 {
         <!-- テーマカラー  -->
         <div class="metabox-holder">
           <div class="postbox" >
-            <h3 class="hndle">テーマカラー</h3>
+            <h3 class="hndle">デザインテーマ</h3>
             <div class="inside">
               <?php
               $theme_color = [
                 'default' => 'デフォルト',
-                'dark' => 'ダークモード',
+                'dark' => 'ダーク',
               ];
               foreach( $theme_color as $key => $value ) { ?>
                 <p><label><input type="radio" name="theme_color_4536" value="<?php echo $key; ?>" <?php checked(get_option('theme_color_4536'), $key);?> /><?php echo $value; ?></label></p>
