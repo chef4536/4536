@@ -11,16 +11,16 @@ Version: 1.0.7
 ---------------------------------------------------------*/
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select,textarea {
-    position: relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 1px;
-    padding: 0.5rem;
-    border: 2px solid #ddd;
-    background-color: #fff;
-    color: #555;
-    max-width: 100%;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 1px;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  color: #555;
+  max-width: 100%;
 }
 pre {
     margin-bottom: 1.5em;
@@ -777,13 +777,13 @@ ul.children {
     margin: 10px 0;
     padding: 10px 0;
 }
-.main-widget-title {
+.widget-title {
     position: relative;
     font-size: 18px;
     line-height: 1.4;
     margin-bottom: 1em;
 }
-.widget-title,.ad-title,.post .widget-title,.post .ad-title {
+.ad-title,.post .ad-title {
     margin-bottom: .2em;
     font-size: 12px;
     text-align: center;

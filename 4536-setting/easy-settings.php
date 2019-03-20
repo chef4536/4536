@@ -19,42 +19,37 @@ class EasySettings_4536 {
       add_submenu_page( '4536-setting', 'かんたん設定', 'かんたん設定', 'manage_options', 'easy-settings', [$this, 'form'] );
     });
 
-    if( isset($_POST['theme_color_submit_4536']) ) {
+    if( isset($_POST['design_theme_submit_4536']) ) {
       update_option_4536( 'theme_color_4536' );
       switch( get_option('theme_color_4536') ) {
+        case 'white':
+          $name = 'white';
+          break;
         case 'dark':
-          $this->theme_color_change( '#1a263d', '333333', '#ffffff' );
+          $name = 'dark';
           break;
         default:
-          $this->theme_color_change( '#ffffff', 'e6ecf0', '#333333' );
+          $name = '_default';
           break;
       }
+      ob_start();
+      require_once( 'design-theme/' . $name . '.json' );
+      $json = ob_get_clean();
+      $array = json_decode( $json );
+      foreach( $array as $key => $value ) {
+        set_theme_mod( $key, $value );
+      }
+      set_theme_mod( 'h1_style', null );
+      set_theme_mod( 'h2_style', 'simple1' );
+      set_theme_mod( 'h3_style', 'simple2' );
+      set_theme_mod( 'h4_style', 'simple3' );
+      set_theme_mod( 'related_post_title_style', 'simple1' );
+      set_theme_mod( 'sidebar_widget_title_style', 'simple1' );
       add_action( 'admin_notices', function() {
         echo '<div class="updated"><p>変更を保存しました。</p></div>';
       });
     }
 
-  }
-
-  function theme_color_change( $key_color, $bgc_color, $font_color, $sub_color = null ) {
-    // if( $sub_color === null ) $sub_color = $key_color;
-    set_theme_mod( 'background_color', $bgc_color );
-    set_theme_mod( 'header_background_color', $key_color );
-    set_theme_mod( 'header_color', $font_color );
-    set_theme_mod( 'post_background_color', $key_color );
-    set_theme_mod( 'post_color', $font_color );
-    set_theme_mod( 'footer_background_color', $key_color );
-    set_theme_mod( 'footer_color', $font_color );
-    $array = [
-      'h2',
-      'h3',
-      'h4',
-      'related_post_title',
-      'widget_title',
-    ];
-    foreach( $array as $key ) {
-      set_theme_mod( $key . '_color', $font_color );
-    }
   }
 
   function form() { ?>
@@ -67,7 +62,7 @@ class EasySettings_4536 {
 
         <?php settings_fields( 'easy_settings_group' ); do_settings_sections( 'easy_settings_group' ); ?>
 
-        <!-- テーマカラー  -->
+        <!-- デザインテーマ  -->
         <div class="metabox-holder">
           <div class="postbox" >
             <h3 class="hndle">デザインテーマ</h3>
@@ -75,16 +70,16 @@ class EasySettings_4536 {
               <?php
               $theme_color = [
                 'default' => 'デフォルト',
+                'white' => 'ホワイト',
                 'dark' => 'ダーク',
               ];
               foreach( $theme_color as $key => $value ) { ?>
                 <p><label><input type="radio" name="theme_color_4536" value="<?php echo $key; ?>" <?php checked(get_option('theme_color_4536'), $key);?> /><?php echo $value; ?></label></p>
               <?php } ?>
+              <p><?php submit_button( 'デザインテーマを変更する', 'primary large', 'design_theme_submit_4536', $wrap, $other_attributes ); ?></p>
             </div>
           </div>
         </div>
-
-        <p><?php submit_button( '変更を保存する', 'primary large', 'theme_color_submit_4536', $wrap, $other_attributes ); ?></p>
 
       </form>
 

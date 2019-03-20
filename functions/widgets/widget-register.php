@@ -4,7 +4,7 @@ register_sidebar([
     'id' => 'sidebar',
     'before_widget' => '<div class="widget-4536 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title main-widget-title">',
+    'before_title' => '<h3 class="sidebar-title widget-title">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -13,7 +13,7 @@ register_sidebar([
     'description' => 'PC表示時スクロール',
     'before_widget' => '<div class="widget-4536 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title main-widget-title">',
+    'before_title' => '<h3 class="sidebar-title widget-title">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -22,7 +22,7 @@ register_sidebar([
     'description' => 'Googleアドセンス禁止',
     'before_widget' => '<div class="widget-4536 %1$s %2$s slide-widget">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="slide-widget-title main-widget-title">',
+    'before_title' => '<h3 class="slide-widget-title widget-title">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -173,7 +173,7 @@ register_sidebar([
     'description' => '投稿本文中の最初のH2タグの手前に表示されます。※アドセンスは外観→カスタマイズにて設定。AMPに対応してないタグを使うとエラーになります。',
     'before_widget' => '<div class="widget-4536 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title main-widget-title">',
+    'before_title' => '<h3 class="sidebar-title widget-title">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -182,7 +182,7 @@ register_sidebar([
     'description' => 'Googleアドセンス禁止',
     'before_widget' => '<div class="widget-4536 %1$s %2$s slide-widget">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="slide-widget-title main-widget-title">',
+    'before_title' => '<h3 class="slide-widget-title widget-title">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([

@@ -1,10 +1,19 @@
 <?php
 
-//テーマカスタマイザー
-require_once('customizer.php');
+//テーマカスタマイザー関連
+require_once('customizer/_init.php');
 
-//テーマカスタマイザー関数化
-require_once('customizer-function.php');
+//新エディタGutenberg関連
+require_once('gutenberg/_init.php');
+
+//埋め込み関連
+require_once('embed/_init.php');
+
+//ウィジェット関連
+require_once('widgets/_init.php');
+
+//旧エディタTinyMCE関連
+require_once('tinymce/_init.php');
 
 //独自のカスタムフィールド
 require_once('custom-fields.php');
@@ -62,15 +71,3 @@ require_once('user-profile.php');
 
 //SNSボタン
 require_once('sns-button.php');
-
-//新エディタGutenberg関連
-require_once('gutenberg/_init.php');
-
-//埋め込み関連
-require_once('embed/_init.php');
-
-//ウィジェット関連
-require_once('widgets/_init.php');
-
-//旧エディタTinyMCE関連
-require_once('tinymce/_init.php');

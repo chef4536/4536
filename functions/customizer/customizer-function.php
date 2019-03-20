@@ -107,35 +107,6 @@ function post_prev_next_4536() {
     return get_theme_mod( 'post_prev_next', true );
 }
 ////////////////////////////////////
-// 見出し
-////////////////////////////////////
-function heading_style_4536( $tag ) {
-
-  switch ( $tag ) {
-    case 'h1_style':
-      $default = null;
-      break;
-    case 'h2_style':
-      $default = 'simple1';
-      break;
-    case 'h3_style':
-      $default = 'simple2';
-      break;
-    case 'h4_style':
-      $default = 'simple3';
-      break;
-    case 'related_post_title_style':
-      $default = 'simple1';
-      break;
-    case 'main_widget_title_style':
-      $default = 'simple1';
-      break;
-  }
-
-  return get_theme_mod( $tag, $default );
-
-}
-////////////////////////////////////
 // メディア関連
 ////////////////////////////////////
 //サムネイルの比率

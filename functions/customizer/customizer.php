@@ -544,12 +544,12 @@ $wp_customize->add_section( 'heading_style', [
         'choices' => $h_style_list,
     ]);
     //ウィジェットタイトル
-    $wp_customize->add_setting( 'main_widget_title_style', [
+    $wp_customize->add_setting( 'sidebar_widget_title_style', [
         'default' => 'simple1',
     ]);
-    $wp_customize->add_control( 'main_widget_title_style', [
+    $wp_customize->add_control( 'sidebar_widget_title_style', [
         'section' => 'heading_style',
-        'settings' => 'main_widget_title_style',
+        'settings' => 'sidebar_widget_title_style',
         'label' => 'ウィジェットのタイトル（本文内以外）',
         'priority' => 60,
         'type' => 'select',

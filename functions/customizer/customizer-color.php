@@ -105,12 +105,12 @@ class CustomizerColorSettings_4536 {
       'color' => '',
       'priority' => 50,
     ],
-    'widget_title_key_color' => [
+    'sidebar_widget_title_key_color' => [
       'label' => 'ウィジェットのキーカラー',
       'color' => '#f2f2f2',
       'priority' => 60,
     ],
-    'widget_title_color' => [
+    'sidebar_widget_title_color' => [
       'label' => 'ウィジェットの文字色',
       'color' => '',
       'priority' => 60,
@@ -229,6 +229,7 @@ class CustomizerColorSettings_4536 {
 
     if( !empty($header_color) ) { //ヘッダー文字色
       $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
+      $css[] = '#site-top{border-bottom:1px solid rgba('.hex_to_rgb($header_color).',0.25)}';
     }
 
     if( !empty($description_color) ) { //ディスクリプションの文字色
@@ -237,14 +238,14 @@ class CustomizerColorSettings_4536 {
 
     global $pagenow;
     $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
-    if( !empty($post_backround_color) ) { //記事背景色
+    if( !empty($post_background_color) ) { //記事背景色
       $post_bgc_class = '.post-bg-color';
       $post_bgc_class .= ',.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after';
       if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
-      $css[] = $post_bgc_class.'{background-color:'.$post_backround_color.$option.'}';
-      $css[] = '.balloon-text-right:after{border-right-color:'.$post_backround_color.'}';
-      $css[] = '.balloon-text-left:after{border-left-color:'.$post_backround_color.'}';
-      $css[] = '.pagination span, .pagination a{color:'.$post_backround_color.'}';
+      $css[] = $post_bgc_class.'{background-color:'.$post_background_color.$option.'}';
+      $css[] = '.balloon-text-right:after{border-right-color:'.$post_background_color.'}';
+      $css[] = '.balloon-text-left:after{border-left-color:'.$post_background_color.'}';
+      $css[] = '.pagination span, .pagination a{color:'.$post_background_color.'}';
     }
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
@@ -286,10 +287,10 @@ class CustomizerColorSettings_4536 {
         'key_color' => $related_post_title_key_color,
         'font_color' => $related_post_title_color,
       ],
-      'widget_title_style' => [
+      'sidebar_widget_title_style' => [
         'tag' => '.widget-title',
-        'key_color' => $widget_title_key_color,
-        'font_color' => $widget_title_color,
+        'key_color' => $sidebar_widget_title_key_color,
+        'font_color' => $sidebar_widget_title_color,
       ],
     ];
 
@@ -301,7 +302,7 @@ class CustomizerColorSettings_4536 {
       $tag = $val['tag'];
 
       //キーカラーとスタイル
-      switch ( heading_style_4536($key) ) {
+      switch ( $this->heading_style_4536($key) ) {
         case 'simple1':
           $key_color_css = ( !empty($key_color) ) ? 'background-color:'.$key_color : '';
           $css[] = '.simple1 '.$tag.'{border-radius:2px;padding:.8em;'.$key_color_css.'}';
@@ -357,6 +358,7 @@ class CustomizerColorSettings_4536 {
 
     if( !empty($footer_color) ) { //フッター文字色
       $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer a{color:'.$footer_color.'}';
+      $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',0.25)}';
     }
 
     if( !empty($balloon_right_background_color) ) { //左吹き出し背景色
@@ -379,6 +381,30 @@ class CustomizerColorSettings_4536 {
 
     return $css;
 
+  }
+
+  function heading_style_4536( $tag ) {
+    switch ( $tag ) {
+      case 'h1_style':
+        $default = null;
+        break;
+      case 'h2_style':
+        $default = 'simple1';
+        break;
+      case 'h3_style':
+        $default = 'simple2';
+        break;
+      case 'h4_style':
+        $default = 'simple3';
+        break;
+      case 'related_post_title_style':
+        $default = 'simple1';
+        break;
+      case 'sidebar_widget_title_style':
+        $default = 'simple1';
+        break;
+    }
+    return get_theme_mod( $tag, $default );
   }
 
 }

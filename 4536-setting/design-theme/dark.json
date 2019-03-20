@@ -1,0 +1,21 @@
+{
+  "background_color": "333333",
+  "header_background_color": "#1a263d",
+  "header_color": "#ffffff",
+  "post_background_color": "#1a263d",
+  "post_color": "#ffffff",
+  "h1_key_color": "#f2f2f2",
+  "h1_color": "",
+  "h2_key_color": "#f2f2f2",
+  "h2_color": "",
+  "h3_key_color": "#f2f2f2",
+  "h3_color": "",
+  "h4_key_color": "#f2f2f2",
+  "h4_color": "",
+  "related_post_title_key_color": "#f2f2f2",
+  "related_post_title_color": "",
+  "sidebar_widget_title_key_color": "#f2f2f2",
+  "sidebar_widget_title_color": "",
+  "footer_background_color": "#1a263d",
+  "footer_color": "#ffffff"
+}

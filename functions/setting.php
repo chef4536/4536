@@ -103,15 +103,18 @@ add_filter( 'wp_list_categories', function( $list ) {
   return str_replace( '<a', '<a class="post-color"', $list );
 });
 
-//クエリバー追加
-//add_filter('query_vars', function( $vars ) {
-//    $vars[] = 'list_style';
-//    return $vars;
-//});
-
-//add_action( 'admin_enqueue_scripts', function() {
-//    wp_enqueue_style( 'my_admin_style', get_template_directory_uri().'/css/admin.min.css' );
-//});
+////////////////////////////////////
+// HEX to RGB
+////////////////////////////////////
+function hex_to_rgb( $hex ) {
+  $hex = str_replace( '#', '', $hex );
+  if ( strlen($hex) !== 6 ) return;
+  $rgb = [];
+  $rgb[] = hexdec( substr($hex, 1, 2) );
+  $rgb[] = hexdec( substr($hex, 3, 2) );
+  $rgb[] = hexdec( substr($hex, 5, 2) );
+  return implode( ',', $rgb );
+}
 
 ////////////////////////////////////
 // moreリンク

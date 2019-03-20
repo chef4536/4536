@@ -59,9 +59,9 @@ add_filter( 'inline_style_4536', function( $css ) {
         $classes = [];
         $classes[] = $class;
         $classes[] = $class.' a';
-        $classes[] = $class.' .main-widget-title';
-        $classes[] = $class.' .main-widget-title::before';
-        $classes[] = $class.' .main-widget-title::after';
+        $classes[] = $class.' .widget-title';
+        $classes[] = $class.' .widget-title::before';
+        $classes[] = $class.' .widget-title::after';
         $classes = implode( ',', $classes );
         $css[] = $classes.'{'.$font_color.'}';
       }

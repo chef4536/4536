@@ -1,7 +1,6 @@
 <?php
 
 require_once('dynamic-css.php'); //動的CSS
-require_once('customizer-color.php'); //色関連のテーマカスタマイザー
 require_once('preload-css.php'); //非同期読み込み
 
 //スタイルシート読み込み

@@ -914,14 +914,14 @@ ul.children {
   padding: 10px 0;
 }
 
-.main-widget-title {
+.widget-title {
   position: relative;
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 1em;
 }
 
-.widget-title, .ad-title, .post .widget-title, .post .ad-title {
+.ad-title, .post .ad-title {
   margin-bottom: .2em;
   font-size: 12px;
   text-align: center;
