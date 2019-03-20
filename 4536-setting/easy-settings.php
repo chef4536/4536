@@ -10,6 +10,8 @@ class EasySettings_4536 {
     'white' => 'ホワイト',
     'darkblack' => 'ダークブラック',
     'seagreen' => 'シーグリーン',
+    'cyan-blue' => 'シアンブルー',
+    'shocking-pink' => 'ショッキングピンク',
   ];
 
   function __construct() {
