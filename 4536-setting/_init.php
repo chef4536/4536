@@ -97,7 +97,7 @@ add_action( 'init', function() {
     'sub_media_slug' => 'movie',
     'sub_media_name' => 'Movie',
     'embed_cache_delete' => 'all',
-    'theme_color_4536' => 'default',
+    'theme_color_4536' => '_default',
   ];
   foreach($list as $name => $val) {
     if( get_option($name) === false ) update_option($name, $val);

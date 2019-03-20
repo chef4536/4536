@@ -5,13 +5,16 @@
  */
 class EasySettings_4536 {
 
+  public $design_theme = [
+    '_default' => 'デフォルト',
+    'white' => 'ホワイト',
+    'darkblack' => 'ダークブラック',
+    'seagreen' => 'シーグリーン',
+  ];
+
   function __construct() {
 
     add_action( 'admin_init', function() {
-      // $array_master = [];
-      // foreach( $array_master as $key => $value ) {
-      //   register_setting( 'easy_settings_group', $key );
-      // }
       register_setting( 'easy_settings_group', 'theme_color_4536' );
     });
 
@@ -21,19 +24,16 @@ class EasySettings_4536 {
 
     if( isset($_POST['design_theme_submit_4536']) ) {
       update_option_4536( 'theme_color_4536' );
-      switch( get_option('theme_color_4536') ) {
-        case 'white':
-          $name = 'white';
-          break;
-        case 'dark':
-          $name = 'dark';
-          break;
-        default:
-          $name = '_default';
-          break;
+      $name = get_option('theme_color_4536');
+      $path = __DIR__ . '/design-theme/' . $name . '.json';
+      if( !file_exists($path) ) {
+        add_action( 'admin_notices', function() {
+          echo '<div class="error"><p>デザインテーマが見つかりませんでした。エラーを開発者に報告してください。</p></div>';
+        });
+        return;
       }
       ob_start();
-      require_once( 'design-theme/' . $name . '.json' );
+      require_once( $path );
       $json = ob_get_clean();
       $array = json_decode( $json );
       foreach( $array as $key => $value ) {
@@ -68,12 +68,7 @@ class EasySettings_4536 {
             <h3 class="hndle">デザインテーマ</h3>
             <div class="inside">
               <?php
-              $theme_color = [
-                'default' => 'デフォルト',
-                'white' => 'ホワイト',
-                'dark' => 'ダーク',
-              ];
-              foreach( $theme_color as $key => $value ) { ?>
+              foreach( $this->design_theme as $key => $value ) { ?>
                 <p><label><input type="radio" name="theme_color_4536" value="<?php echo $key; ?>" <?php checked(get_option('theme_color_4536'), $key);?> /><?php echo $value; ?></label></p>
               <?php } ?>
               <p><?php submit_button( 'デザインテーマを変更する', 'primary large', 'design_theme_submit_4536', $wrap, $other_attributes ); ?></p>
