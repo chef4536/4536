@@ -97,6 +97,7 @@ add_action( 'init', function() {
     'sub_media_slug' => 'movie',
     'sub_media_name' => 'Movie',
     'embed_cache_delete' => 'all',
+    'design_theme_4536' => '_default',
   ];
   foreach($list as $name => $val) {
     if( get_option($name) === false ) update_option($name, $val);
@@ -110,6 +111,7 @@ function update_option_4536( $option ) {
 
 //ファイル読み込み
 require_once('4536-manual.php');
+require_once('design-theme.php');
 require_once('seo-setting-form.php');
 require_once('media-setting-form.php');
 require_once('amp-setting-form.php');

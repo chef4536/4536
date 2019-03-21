@@ -17,7 +17,7 @@ add_action('customize_register', function( $wp_customize ) {
 	endif;
 
 	//既存のセクションに追加
-  //ロゴ画像
+	//ロゴ画像
   $wp_customize->add_setting( 'header_logo_url' );
   $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_url', [
     'section' => 'header_image',
