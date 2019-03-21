@@ -72,6 +72,8 @@ class EasySettings_4536 {
           </div>
         </div>
 
+        <p><small>※デザインテーマは随時追加していきます。ご要望などは<a href="https://4536.jp/forums" target="_blank">フォーラム</a>までどうぞ。</small></p>
+
       </form>
 
       <style>

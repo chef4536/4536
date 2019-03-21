@@ -4,13 +4,29 @@ function admin_4536_setting_manual() { ?>
 
   <div class="wrap">
 
-      <h2>4536マニュアル</h2>
+    <h2>4536マニュアル</h2>
+
+    <div class="metabox-holder">
+      <div class="postbox" >
+        <h3 class="hndle">デザインテーマ</h3>
+        <div class="inside">
+          <p>ボタンをクリックするだけで主要な部分のデザイン（主に色）がすべて変わる4536のオリジナル機能です。</p>
+          <ul style="list-style-type:disc;padding-left:1em">
+            <li>デザインを変更するのが面倒</li>
+            <li>どんなデザインにすればいいかわからない</li>
+            <li>いつもと違うデザインを試してみたい</li>
+          </ul>
+          <p>という方にぴったりです。</p>
+          <p><i class="far fa-arrow-alt-circle-right"></i><a href="admin.php?page=design-theme">デザインテーマへ</a></p>
+        </div>
+      </div>
+    </div>
 
       <div class="metabox-holder">
       <div class="postbox" >
           <h3 class="hndle">外観（色やデザイン）の設定</h3>
           <div class="inside">
-              <p>見出しの色を変えたり、サイトのレイアウトを変えたり、サイトの見た目に関する設定は「<a href="customize.php">テーマカスタマイザー</a>」で行います。</p>
+              <p>見出しの色を変えたり、サイトのレイアウトを変えたり、サイトの見た目に関する細かい設定は「<a href="customize.php">テーマカスタマイザー</a>」で行います。</p>
               <p><small>（※管理画面からアクセスする場合は「外観→カスタマイズ」と進みます）</small></p>
               <p>設定を変えることで自分のサイトがどのように変化するかをリアルタイムで確認できますので、ぜひご活用ください。</p>
               <p>画面上部の「公開」ボタンをクリックするまでは実際のサイトには設定は反映されません。</p>
