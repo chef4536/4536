@@ -49,7 +49,7 @@ register_sidebar([
     'description' => '本文中の最初のh2タグの手前に表示されます。広告掲載に最適な位置です。',
     'before_widget' => '<div class="widget-4536 %1$s %2$s ad text-align-center post-h2-widget margin-1_5em-auto clearfix">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="ad-title">',
+    'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
 ]);
 register_sidebar([
@@ -58,7 +58,7 @@ register_sidebar([
     'description' => '本文の真下に表示されます。広告掲載に最適な位置です。',
     'before_widget' => '<div class="widget-4536 %1$s %2$s ad text-align-center post-bottom-ad-widget margin-1_5em-auto clearfix">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="ad-title">',
+    'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
 ]);
 register_sidebar([
@@ -119,7 +119,7 @@ register_sidebar([
     'description' => '一覧記事中でランダムに表示されます。サイトのデザインに合わせた広告を掲載してください。',
     'before_widget' => '',
     'after_widget' => '',
-    'before_title' => '<p class="ad-title">',
+    'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
 ]);
 register_sidebar([
@@ -146,7 +146,7 @@ register_sidebar([
     'description' => '投稿本文中の最初のH2タグの手前に表示されます。※アドセンスは外観→カスタマイズにて設定。AMPに対応してないタグを使うとエラーになります。',
     'before_widget' => '<div class="widget-4536 %1$s %2$s ad text-align-center post-h2-widget margin-1_5em-auto">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="ad-title">',
+    'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
 ]);
 register_sidebar([
@@ -155,7 +155,7 @@ register_sidebar([
     'description' => '※アドセンスは外観→カスタマイズにて設定。AMPに対応してないタグを使うとエラーになります。',
     'before_widget' => '<div class="widget-4536 %1$s %2$s ad text-align-center post-bottom-ad-widget margin-1_5em-auto">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="ad-title">',
+    'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
 ]);
 register_sidebar([

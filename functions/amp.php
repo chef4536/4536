@@ -188,7 +188,7 @@ add_filter('widget_item_new','convert_content_to_amp', 99999);
 //AMP用アドセンス広告生成
 //////////////////////////////
 function amp_adsense_code( $size = 'rectangle' ) {
-  $ad_title = ( !empty(amp_ad_title()) ) ? '<p class="ad-title">'.amp_ad_title().'</p>' : '';
+  $ad_title = ( !empty(amp_ad_title()) ) ? '<p class="small-title">'.amp_ad_title().'</p>' : '';
   $ad = get_amp_adsense_code();
   preg_match('/data-ad-client="(ca-pub-[^"]+?)"/i', $ad, $match);
   if( empty($match[1]) ) return;

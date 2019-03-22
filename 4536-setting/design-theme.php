@@ -37,12 +37,10 @@ class EasySettings_4536 {
       foreach( $array as $key => $value ) {
         set_theme_mod( $key, $value );
       }
-      set_theme_mod( 'h1_style', null );
-      set_theme_mod( 'h2_style', 'simple1' );
-      set_theme_mod( 'h3_style', 'simple2' );
-      set_theme_mod( 'h4_style', 'simple3' );
-      set_theme_mod( 'related_post_title_style', 'simple1' );
-      set_theme_mod( 'sidebar_widget_title_style', 'simple1' );
+      $styles = [ 'h1', 'h2', 'h3', 'h4', 'related_post_title', 'sidebar_widget_title' ];
+      foreach( $styles as $style ) {
+        remove_theme_mod( "{$style}_style" );
+      }
       add_action( 'admin_notices', function() {
         echo '<div class="updated"><p>変更を保存しました。</p></div>';
       });

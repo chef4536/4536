@@ -921,7 +921,7 @@ ul.children {
   margin-bottom: 1em;
 }
 
-.ad-title, .post .ad-title {
+.small-title {
   margin-bottom: .2em;
   font-size: 12px;
   text-align: center;
@@ -1235,6 +1235,10 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
 /*
  * スライドメニュー
 */
+#slide-menu .post-color {
+  color: #333333;
+}
+
 #slide-toggle:checked ~ #slide-menu {
   -webkit-transform: translateX(0);
   transform: translateX(0);
