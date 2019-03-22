@@ -70,6 +70,32 @@ class EasySettings_4536 {
           </div>
         </div>
 
+        <div id="column-2-section">
+          <div class="metabox-holder column-2">
+            <div class="postbox" >
+              <h3 class="hndle">現在のサイトデザイン（トップページ）</h3>
+              <div class="inside">
+                <iframe sandbox src="<?php echo site_url(); ?>"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="metabox-holder column-2">
+            <div class="postbox" >
+              <h3 class="hndle">現在のサイトデザイン（投稿記事をランダムで表示）</h3>
+              <div class="inside">
+                <?php
+                $myposts = get_posts( [ 'posts_per_page' => 1, 'orderby' => 'rand' ] );
+                foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+                  <iframe sandbox src="<?php the_permalink( $post->ID ); ?>"></iframe>
+                <?php
+                endforeach;
+                wp_reset_postdata();
+                ?>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <p><small>※デザインテーマは随時追加していきます。ご要望などは<a href="https://4536.jp/forums" target="_blank">フォーラム</a>までどうぞ。</small></p>
 
       </form>
@@ -77,6 +103,21 @@ class EasySettings_4536 {
       <style>
         .far,.fas {
           margin-right: 5px;
+        }
+        .column-2 iframe {
+          width:100%;
+          height:300px;
+        }
+        @media screen and (min-width: 768px) {
+          #column-2-section {
+            display: flex;
+          }
+          .column-2 {
+            flex:1;
+          }
+          .column-2 iframe {
+            height: 500px;
+          }
         }
       </style>
 
