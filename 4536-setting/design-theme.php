@@ -11,6 +11,7 @@ class EasySettings_4536 {
     'sea-green' => 'シーグリーン',
     'cyan-blue' => 'シアンブルー',
     'deep-pink' => 'ディープピンク',
+    'crimson-red' => 'クリムゾンレッド',
   ];
 
   function __construct() {
