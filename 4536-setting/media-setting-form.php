@@ -11,6 +11,32 @@ class AdminMediaSetting_4536 {
       add_submenu_page( '4536-setting', 'メディア', 'メディア', 'manage_options', 'media', [$this, 'form'] );
     });
 
+    if ( isset( $_POST['admin_media_setting_submit_4536'] ) ) {
+      $array = [
+        'admin_main_media',
+        'main_media_slug',
+        'main_media_name',
+        'admin_sub_media',
+        'sub_media_slug',
+        'sub_media_name',
+      ];
+      $main_slug = $_POST['main_media_slug'];
+      $sub_slug = $_POST['sub_media_slug'];
+      if( !ctype_lower( $main_slug ) || !ctype_lower( $sub_slug ) ) {
+        add_action( 'admin_notices', function() {
+          echo '<div class="error"><p>スラッグが無効な値のため保存できませんでした。半角英字で入力してください。</p></div>';
+        });
+        return;
+      }
+      foreach ( $array as $key ) {
+        update_option_4536( $key );
+      }
+      flush_rewrite_rules( false );
+      add_action( 'admin_notices', function() {
+        echo '<div class="updated"><p>変更を保存しました。</p></div>';
+      });
+    }
+
   }
 
 
@@ -34,7 +60,7 @@ class AdminMediaSetting_4536 {
 
         <p><small>この機能を使わない場合はメディア名を空欄にしてください</small></p>
 
-        <form method="post" action="options.php">
+        <form method="post" action="">
 
             <?php settings_fields( 'media_group' ); do_settings_sections( 'media_group' ); ?>
 
@@ -68,14 +94,14 @@ class AdminMediaSetting_4536 {
             </div>
             </div>
 
-            <?php submit_button(); ?>
+            <?php submit_button($text, 'primary large', 'admin_media_setting_submit_4536', $wrap, $other_attributes); ?>
 
         </form>
 
         <style>
-            .far {
-                margin-right: 5px;
-            }
+          .far {
+            margin-right: 5px;
+          }
         </style>
 
     </div>
