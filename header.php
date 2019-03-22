@@ -66,7 +66,7 @@ if(is_amp()) {
       <?php
       if(is_amp()) {
         dynamic_sidebar('amp-header');
-        if(is_amp_header()) echo '<div class="amp-adsense-header padding-0-10px margin-1em-auto">'.amp_adsense_code( 'horizon' ).'</div>';
+        if( is_amp_header() ) echo amp_adsense_code( 'horizon' );
       } else {
         dynamic_sidebar('header-widget');
       }

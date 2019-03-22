@@ -201,15 +201,17 @@ function amp_adsense_code( $size = 'rectangle' ) {
       $layout = 'responsive';
       $width = ' width="336"';
       $height = '280';
+      $class = 'amp-adsense ad text-align-center margin-1_5em-auto clearfix';
       break;
     case 'horizon':
       $layout = 'fixed-height';
       $width = '';
       $height = '100';
+      $class = 'amp-adsense ad text-align-center padding-0-10px margin-1em-auto clearfix';
       break;
   }
   $amp_adsense_code = '<amp-ad layout="'.$layout.'"'.$width.' height="'.$height.'" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
-  $amp_adsense = $ad_title.$amp_adsense_code;
+  $amp_adsense = '<div class="'.$class.'">'.$ad_title.$amp_adsense_code.'</div>';
   if(
     ( get_option('amp_adsense_post')==='' && is_singular('post') ) ||
     ( get_option('amp_adsense_page')==='' && is_page() ) ||
