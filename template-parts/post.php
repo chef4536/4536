@@ -71,19 +71,41 @@ echo '</div>';
 
 echo '<footer>';
 
-    if(is_amp() && is_amp_post_bottom() ) echo amp_adsense_code();
+  if( is_amp() && is_amp_post_bottom() ) echo amp_adsense_code();
 
-    //記事下広告枠
-    $ad = '';
-    if(is_amp()) {
-        if(is_active_sidebar('amp-post-ad')) $ad = 'amp-post-ad';
-    } else {
-        if(is_active_sidebar('ad')) $ad = 'ad';
+  //記事下広告枠
+  if(is_amp()) {
+    if(is_active_sidebar('amp-post-ad')) $ad = 'amp-post-ad';
+  } else {
+    if(is_active_sidebar('ad')) $ad = 'ad';
+  }
+  if( isset( $ad ) && !empty( $ad ) ) dynamic_sidebar( $ad );
+
+  $term = [];
+  if( has_category() ) {
+    $categories = get_the_category();
+    if( !empty($categories) ) {
+      foreach( $categories as $category ) {
+        $term[] = '<a class="post-category post-term" href="' . get_category_link( $category->term_id ) . '"><i class="far fa-folder"></i>' . $category->cat_name . '</a>';
+      }
     }
-    if(!empty($ad)) dynamic_sidebar($ad);
+  }
+  if( has_tag() ) {
+    $tags = get_the_tags();
+    if( !empty($tags) ) {
+      foreach( $tags as $tag ) {
+        $term[] = '<a class="post-tag post-term" href="' . get_tag_link( $tag->term_id ) . '"><i class="fas fa-hashtag"></i>' . $tag->name . '</a>';
+      }
+    }
+  }
 
-    if( $is_sns_bottom === true ) sns_button_4536('post_bottom');
-    if( $is_profile === true ) get_template_part('template-parts/profile');
+  if( !empty($term) ) {
+    $term = implode( '', $term );
+    echo '<div id="post-term-section" class="margin-1_5em-auto">' . $term . '</div>';
+  }
+
+  if( $is_sns_bottom === true ) sns_button_4536('post_bottom');
+  if( $is_profile === true ) get_template_part('template-parts/profile');
 
 echo '</footer>';
 

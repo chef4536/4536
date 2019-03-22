@@ -41,21 +41,24 @@ function post_list_template_4536($page_4536) {
 
     $thumbnail_size = $page_4536;
 
-    if($page_4536==='new-post') {
-        $post_list_style_mobile = new_post_list_style_mobile();
-        $post_list_style_pc = new_post_list_style_pc();
-        $thumbnail_size = new_post_list_style_pc();
-        if(new_post_list_style_mobile()==='big') $thumbnail_size = 'big';
+    if( $page_4536 === 'new-post' ) {
+      $post_list_style_mobile = new_post_list_style_mobile();
+      $post_list_style_pc = new_post_list_style_pc();
+      $thumbnail_size = new_post_list_style_pc();
+      if( new_post_list_style_mobile() === 'big' ) $thumbnail_size = 'big';
     } else {
-        $post_list_style_mobile = archive_post_list_style_mobile();
-        $post_list_style_pc = archive_post_list_style_pc();
-        $thumbnail_size = archive_post_list_style_pc();
-        if(archive_post_list_style_mobile()==='big') $thumbnail_size = 'big';
+      $post_list_style_mobile = archive_post_list_style_mobile();
+      $post_list_style_pc = archive_post_list_style_pc();
+      $thumbnail_size = archive_post_list_style_pc();
+      if( archive_post_list_style_mobile() === 'big' ) $thumbnail_size = 'big';
     }
 
-    $post_list_style_mobile = ($post_list_style_mobile==='') ? '' : 'list-'.$post_list_style_mobile;
-    $post_list_style_pc = ($post_list_style_pc==='') ? ' post-list-pc' : ' list-'.$post_list_style_pc;
-    if($post_list_style_mobile===$post_list_style_pc) $post_list_style_pc = '';
+    $display = 'display-none-mobile';
+    if( !empty( $post_list_style_mobile ) ) $post_list_style_mobile = ' list-'.$post_list_style_mobile;
+    if( !empty( $post_list_style_pc ) ) {
+      $post_list_style_pc = ' list-'.$post_list_style_pc;
+      $display = 'display-none';
+    }
     $style = $post_list_style_mobile.$post_list_style_pc;
 
     $count = '';
@@ -66,13 +69,13 @@ function post_list_template_4536($page_4536) {
 
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
-        <article class="post-list <?php echo $style; ?>">
+        <article class="post-list<?php echo $style; ?>">
             <a class="clearfix post-color display-block padding-bottom-1em" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
                 <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
                 <div class="post-info">
                     <h2 class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></h2>
                     <div class="post-meta">
-                        <div class="excerpt display-none">
+                        <div class="excerpt <?php echo $display; ?>">
                             <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
                         </div>
                         <?php echo ($ptime) ? '<div class="posted-date"><i class="far fa-calendar-check"></i><span>'.$ptime.'</span></div>' : ''; ?>

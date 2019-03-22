@@ -721,16 +721,6 @@ $wp_customize->add_section( 'search', [
         'label' =>'Googleカスタム検索の結果を表示するページのスラッグを入力してください。',
         'type' => 'text',
     ]);
-//    //検索窓
-//    $wp_customize->add_setting( 'search_page_searchform', array (
-//        'default' => true,
-//    ));
-//    $wp_customize->add_control( 'search_page_searchform', array(
-//        'section' => 'search',
-//        'settings' => 'search_page_searchform',
-//        'label' =>'検索ページに検索フォームを表示する',
-//        'type' => 'checkbox',
-//    ));
 
 //SNS関連
 $wp_customize->add_section( 'SNS', [

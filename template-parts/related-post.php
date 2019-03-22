@@ -2,9 +2,13 @@
 
 if(empty(related_post_count())) return;
 
+$display = 'display-none-mobile';
 $post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
-$post_list_style_pc = (related_post_list_style_pc()==='') ? ' post-list-pc' : ' list-'.related_post_list_style_pc();
-if($post_list_style_mobile===$post_list_style_pc) $post_list_style_pc = '';
+$post_list_style_pc = '';
+if( !empty( related_post_list_style_pc() ) ) {
+  $post_list_style_pc = ' list-'.related_post_list_style_pc();
+  $display = 'display-none';
+}
 $style = $post_list_style_mobile.$post_list_style_pc;
 
 $thumbnail_size = related_post_list_style_pc();
@@ -40,7 +44,7 @@ if(!$related_posts) return;
                 <div class="post-info">
                     <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
                     <div class="post-meta">
-                        <p class="excerpt display-none">
+                        <p class="excerpt <?php echo $display; ?>">
                             <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
                         </p>
                     </div>
