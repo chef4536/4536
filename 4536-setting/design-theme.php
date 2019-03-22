@@ -52,6 +52,8 @@ class EasySettings_4536 {
 
       <h2>デザインテーマ</h2>
 
+      <p><i class="fas fa-info-circle"></i><a href="https://4536.jp/design-theme" target="_blank" >デザインテーマについて</a></p>
+
       <form method="post" action="">
 
         <?php settings_fields( 'design_theme_group' ); do_settings_sections( 'design_theme_group' ); ?>
