@@ -85,6 +85,9 @@ add_action( 'init', function() {
     'is_enable_jquery_lib',
     'is_enable_child_stylesheet',
     'first_tinymce_active_editor',
+    'amp_adsense_post',
+    'amp_adsense_page',
+    'amp_adsense_media',
   ];
   foreach($list as $name) {
     if( get_option($name) === false ) update_option($name, 1);
@@ -112,9 +115,9 @@ function update_option_4536( $option ) {
 //ファイル読み込み
 require_once('4536-manual.php');
 require_once('design-theme.php');
-require_once('seo-setting-form.php');
-require_once('media-setting-form.php');
-require_once('amp-setting-form.php');
+require_once('seo-setting.php');
+require_once('media-setting.php');
+require_once('amp-setting.php');
 require_once('database-setting.php');
 require_once('htaccess-setting.php');
-require_once('etc-setting-form.php');
+require_once('etc-setting.php');

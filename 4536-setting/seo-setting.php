@@ -6,7 +6,7 @@
 class AdminSeoSetting_4536 {
 
   function __construct() {
-    
+
     add_action( 'admin_menu', function() {
       add_submenu_page( '4536-setting', 'SEO', 'SEO', 'manage_options', 'seo', [$this, 'form'] );
     });
