@@ -82,7 +82,7 @@ echo '<footer>';
   if( isset( $ad ) && !empty( $ad ) ) dynamic_sidebar( $ad );
 
   $term = [];
-  if( has_category() ) {
+  if( has_category() && is_single() ) {
     $categories = get_the_category();
     if( !empty($categories) ) {
       foreach( $categories as $category ) {

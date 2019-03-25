@@ -87,7 +87,12 @@ class EasySettings_4536 {
               <h3 class="hndle">現在のサイトデザイン（投稿記事をランダムで表示）</h3>
               <div class="inside">
                 <?php
-                $myposts = get_posts( [ 'posts_per_page' => 1, 'orderby' => 'rand' ] );
+                $myposts = get_posts([
+                  'posts_per_page' => 1,
+                  'orderby' => 'rand',
+                  'post_type' => 'post',
+                  'post_status' => 'publish',
+                ]);
                 foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
                   <iframe sandbox src="<?php the_permalink( $post->ID ); ?>"></iframe>
                 <?php
