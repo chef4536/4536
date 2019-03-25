@@ -75,7 +75,7 @@ class ConvertEmbedContentFrom_url_4536 {
     <a data-embed-content="true" class="wp-embed post-color" href="{$url}"{$external_link}>
       {$title}
       <span class="blogcard-image-info-wrap">
-        <span class="wp-embed-featured-image post-list-thumbnail'.$image_size.'">
+        <span class="wp-embed-featured-image post-list-thumbnail{$image_size}">
           {$thumbnail}
         </span>
         <span class="blogcard-info">
