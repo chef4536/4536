@@ -81,7 +81,11 @@ if(is_amp()) {
 
     }
 
-    if( is_user_logged_in() ) echo '<pre class="inner">';apply_filters( 'dev', $code );echo '</pre>';
+    if( is_user_logged_in() ) {
+      echo '<pre class="inner">';
+      apply_filters( 'dev', $code );
+      echo '</pre>';
+    }
 
     ?>
 
