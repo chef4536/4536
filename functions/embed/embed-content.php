@@ -40,6 +40,7 @@ class ConvertEmbedContentFrom_url_4536 {
     $title = $data['title'];
 
     $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
+    $excerpt = wp_strip_all_tags( $excerpt );
 
     $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more">'.$data['more_text'].'</span></span>' : '';
 
@@ -144,7 +145,7 @@ EOM;
     if ( $id !== 0 ) {
       $data = get_post($id);
       $title = $data->post_title;
-      $content = $data->post_content;
+      $content = apply_filters( 'the_content', $data->post_content );
       $comment = $data->comment_count;
       $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
       $more_text = '続きを見る';
