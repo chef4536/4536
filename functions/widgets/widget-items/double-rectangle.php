@@ -1,7 +1,7 @@
 <?php
 
 class DoubleRectangleWidgetItem extends WP_Widget {
-    
+
     function __construct() {
 		parent::__construct(
 			'ad_widget',
@@ -9,7 +9,7 @@ class DoubleRectangleWidgetItem extends WP_Widget {
 			[ 'description' => __( 'ダブルレクタングル対応/バナー広告に便利なオプション付き', '4536' ), ]
 		);
 	}
-    
+
     function form($instance) {
         $list = [
             'rectangle_left' => 'PC画面では左に表示されます。スマホ画面で非表示にする場合は上のチェックボックスにチェックを入れてください。アドセンス広告はスマホ画面では縦に続けて掲載することはできないのでご注意ください。',
@@ -43,31 +43,31 @@ class DoubleRectangleWidgetItem extends WP_Widget {
         $display_none_mobile_rectangle_left = apply_filters( 'display_none_mobile_rectangle_left', $instance['display_none_mobile_rectangle_left'] );
         $display_none_mobile_rectangle_right = apply_filters( 'display_none_mobile_rectangle_right', $instance['display_none_mobile_rectangle_right'] );
         $is_double_rectangle = apply_filters( 'is_double_rectangle', $instance['is_double_rectangle'] );
-        
+
         if(empty($rectangle_left) && empty($rectangle_right)) return;
-        
+
         if(!empty($display_none_mobile_rectangle_left) && !empty($display_none_mobile_rectangle_right)) {
             $title = '<div class="display-none-mobile">'.$title.'</div>';
         }
-        
+
         echo $args['before_widget'].$title;
-        
+
         if(!empty($is_double_rectangle)) $class = ' double-rectangle-wrapper flexbox-row-wrap justify-content-center';
-        
+
         echo '<div class="ad-wrapper'.$class.'">';
-        
+
         $ad = '';
-        
+
         if(!empty($rectangle_left)) {
             if(!empty($display_none_mobile_rectangle_left)) $left_class = ' display-none-mobile';
-            $ad .= '<div class="ad ad-left'.$left_class.'">'.$rectangle_left.'</div>';
+            $ad .= '<div class="ad-left'.$left_class.'">'.$rectangle_left.'</div>';
         }
-        
+
         if(!empty($rectangle_right)) {
             if(!empty($display_none_mobile_rectangle_right)) $right_class = ' display-none-mobile';
-            $ad .= '<div class="ad ad-right'.$right_class.'">'.$rectangle_right.'</div>';
+            $ad .= '<div class="ad-right'.$right_class.'">'.$rectangle_right.'</div>';
         }
-        
+
         if(!empty($is_double_rectangle)) {
             preg_match('/<ins class="adsbygoogle/i', $ad, $match);
             if(!empty($match)) {
@@ -75,14 +75,14 @@ class DoubleRectangleWidgetItem extends WP_Widget {
                 $ad = preg_replace('/data-ad-format=".+?"/i', 'data-ad-format="rectangle"', $ad);
             }
         }
-        
+
         echo $ad;
-        
+
         echo '</div>';
-        
+
         echo $args['after_widget'];
     }
-    
+
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $list = [
