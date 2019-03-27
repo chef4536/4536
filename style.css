@@ -1494,7 +1494,6 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
 .wp-embed-featured-image {
   float: left;
   max-width: 150px;
-  height: auto;
   margin: 0 1em 1em 0;
 }
 
