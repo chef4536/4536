@@ -60,12 +60,12 @@ class DoubleRectangleWidgetItem extends WP_Widget {
 
         if(!empty($rectangle_left)) {
             if(!empty($display_none_mobile_rectangle_left)) $left_class = ' display-none-mobile';
-            $ad .= '<div class="ad-left'.$left_class.'">'.$rectangle_left.'</div>';
+            $ad .= '<div class="ad ad-left'.$left_class.'">'.$rectangle_left.'</div>';
         }
 
         if(!empty($rectangle_right)) {
             if(!empty($display_none_mobile_rectangle_right)) $right_class = ' display-none-mobile';
-            $ad .= '<div class="ad-right'.$right_class.'">'.$rectangle_right.'</div>';
+            $ad .= '<div class="ad ad-right'.$right_class.'">'.$rectangle_right.'</div>';
         }
 
         if(!empty($is_double_rectangle)) {

@@ -37,7 +37,7 @@ class ConvertEmbedContentFrom_url_4536 {
       $sitename = $data['host'];
     }
 
-    $title = $data['title'];
+    $title = wp_strip_all_tags( $data['title'] );
 
     $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
     $excerpt = wp_strip_all_tags( $excerpt );
@@ -145,7 +145,7 @@ EOM;
     if ( $id !== 0 ) {
       $data = get_post($id);
       $title = $data->post_title;
-      $content = $data->post_content;
+      $content = do_shortcode( $data->post_content );
       $comment = $data->comment_count;
       $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
       $more_text = '続きを見る';

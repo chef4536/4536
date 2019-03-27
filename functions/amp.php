@@ -199,7 +199,7 @@ function amp_adsense_code( $size = 'rectangle' ) {
   switch( $size ) {
     case 'rectangle':
       $layout = 'responsive';
-      $width = ' width="336"';
+      $width = ' width="100vw"';
       $height = '280';
       $class = 'amp-adsense ad text-align-center margin-1_5em-auto clearfix';
       break;
