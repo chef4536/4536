@@ -198,19 +198,23 @@ function amp_adsense_code( $size = 'rectangle' ) {
   $data_ad_slot = $match[1];
   switch( $size ) {
     case 'rectangle':
-      $layout = 'responsive';
+      $layout = '';
       $width = ' width="100vw"';
-      $height = '280';
+      $height = '320';
       $class = 'amp-adsense ad text-align-center margin-1_5em-auto clearfix';
+      $option = ' data-auto-format="rspv" data-full-width';
+      $overflow = '<div overflow></div>';
       break;
     case 'horizon':
-      $layout = 'fixed-height';
+      $layout = ' layout="fixed-height"';
       $width = '';
       $height = '100';
-      $class = 'amp-adsense ad text-align-center padding-0-10px margin-1em-auto clearfix';
+      $class = 'amp-adsense ad text-align-center margin-1em-auto clearfix';
+      $option = '';
+      $overflow = '';
       break;
   }
-  $amp_adsense_code = '<amp-ad layout="'.$layout.'"'.$width.' height="'.$height.'" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"></amp-ad>';
+  $amp_adsense_code = '<amp-ad'.$layout.$width.' height="'.$height.'" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"'.$option.'>'.$overflow.'</amp-ad>';
   $amp_adsense = '<div class="'.$class.'">'.$ad_title.$amp_adsense_code.'</div>';
   if(
     ( get_option('amp_adsense_post')==='' && is_singular('post') ) ||
