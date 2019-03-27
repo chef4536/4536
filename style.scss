@@ -752,11 +752,19 @@ ul.children {
 /*
  * Widget
 */
-.widget-4536 ul li a {
+.widget-4536 {
+  ul li a {
     display: block;
-}
-.widget-4536 ul {
+  }
+  ul {
     list-style-type: none;
+  }
+  .small-title {
+    margin-bottom: .2em;
+    font-size: 12px;
+    text-align: center;
+    opacity: .5;
+  }
 }
 .slide-widget {
     margin: 10px;
@@ -770,12 +778,6 @@ ul.children {
     font-size: 18px;
     line-height: 1.4;
     margin-bottom: 1em;
-}
-.ad .small-title {
-    margin-bottom: .2em;
-    font-size: 12px;
-    text-align: center;
-    opacity: .5;
 }
 .widget_categories li ul {
     margin-left: 15px;

@@ -227,12 +227,16 @@ body {
 }
 /* ウィジェット */
 .widget-4536 {
-    position: relative;
-}
-.widget-4536 iframe, .widget-4536 img {
+  position: relative;
+  iframe, img {
     display: block;
     margin: 0 auto;
+  }
+  &:not(.widget-style-box-4536) .ad {
+    width: 100%;
+  }
 }
+
 /*
  * header周り
 */
@@ -571,7 +575,6 @@ a.simple-sns-button-2 {
     .ad {
         -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
-        width: 100%;
     }
     .ad:nth-child(2) {
         margin-top: 1em;

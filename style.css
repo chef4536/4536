@@ -891,6 +891,13 @@ ul.children {
   list-style-type: none;
 }
 
+.widget-4536 .small-title {
+  margin-bottom: .2em;
+  font-size: 12px;
+  text-align: center;
+  opacity: .5;
+}
+
 .slide-widget {
   margin: 10px;
 }
@@ -905,13 +912,6 @@ ul.children {
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 1em;
-}
-
-.ad .small-title {
-  margin-bottom: .2em;
-  font-size: 12px;
-  text-align: center;
-  opacity: .5;
 }
 
 .widget_categories li ul {
