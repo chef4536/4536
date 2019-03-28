@@ -21,9 +21,9 @@ function is_amp() {
 }
 
 //AMP用にコンテンツを変換する
-function convert_content_to_amp($the_content) {
+function convert_content_to_amp( $the_content ) {
 
-    if(!is_amp()) return $the_content;
+    if( !is_amp() ) return $the_content;
 
     //C2A0文字コード（UTF-8の半角スペース）を通常の半角スペースに置換
     $the_content = str_replace('\xc2\xa0', ' ', $the_content);
@@ -179,10 +179,10 @@ function convert_content_to_amp($the_content) {
     return $the_content;
 
 }
-add_filter('the_content','convert_content_to_amp', 99999);
-add_filter('post_thumbnail_html','convert_content_to_amp', 99999);
-add_filter('widget_text','convert_content_to_amp', 99999);
-add_filter('widget_item_new','convert_content_to_amp', 99999);
+add_filter( 'the_content','convert_content_to_amp', 99999 );
+add_filter( 'post_thumbnail_html','convert_content_to_amp', 999 );
+add_filter( 'widget_text','convert_content_to_amp', 99999 );
+add_filter( 'widget_item_new','convert_content_to_amp', 99999 );
 
 //////////////////////////////
 //AMP用アドセンス広告生成
