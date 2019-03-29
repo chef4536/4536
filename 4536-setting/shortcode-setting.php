@@ -114,7 +114,7 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 
 }
 
-class Shortcode_Manage_4536 {
+class Shortcode_Setting_4536 {
 
 	var $wp_list_table;
 
@@ -148,7 +148,7 @@ class Shortcode_Manage_4536 {
 	<?php }
 
 }
-new Shortcode_Manage_4536();
+new Shortcode_Setting_4536();
 
 //-------------------リファレンス----------------------------//
 // https://elearn.jp/wpman/column/c20170823_01.html
