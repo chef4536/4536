@@ -139,13 +139,12 @@ class Shortcode_Setting_4536 {
 	}
 
 	public function admin_menu() {
-		// if ( isset( $_GET['page'] ) && $_GET['page']==='shortcode' ) {
-		// 	add_action( 'admin_init', function() {
-		// 		$this->wp_list_table = new Shortcode_List_Table_4536();
-		// 	});
-		// }
-		$menu = add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'properties'] );
-		add_action( "load-$menu", [ $this, 'screen_option' ] );
+		$menu = add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'management_page'] );
+		add_action( "load-$menu", [$this, 'screen_option'] );
+		if ( isset( $_GET['action'] ) && $_GET['action']==='new' ) {
+			//新規ページ
+			add_submenu_page( '4536-setting', '新規追加', '新規追加', 'manage_options', 'shortcode-new', [$this, 'add_new'] );
+		}
 	}
 
 	public function screen_option() {
@@ -153,16 +152,26 @@ class Shortcode_Setting_4536 {
 		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
 
-	public function properties() { ?>
-		<div class="wrap" id="wpcf7-contact-form-list-table">
+	public function management_page() { ?>
+		<div class="wrap" id="">
 			<h1 class="wp-heading-inline">ショートコード設定</h1>
-			<a href="http://localhost/wordpress/wp-admin/admin.php?page=shortcode-new" class="page-title-action">新規追加</a>
+			<a href="http://localhost/wordpress/wp-admin/admin.php?page=shortcode&action=new" class="page-title-action">新規追加</a>
 			<hr class="wp-header-end">
 			<form method="post" id="bulk-action-form">
 				<?php
 				$this->wp_list_table->prepare_items( $msgs );
 				$this->wp_list_table->display();
 				?>
+			</form>
+		</div>
+	<?php }
+
+	public function add_new() { ?>
+		<div class="wrap" id="">
+			<h1 class="wp-heading-inline">ショートコードを新規追加</h1>
+			<hr class="wp-header-end">
+			<form method="post" action="">
+
 			</form>
 		</div>
 	<?php }
