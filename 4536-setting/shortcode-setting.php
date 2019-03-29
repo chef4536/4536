@@ -15,7 +15,16 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 	 	parent::__construct([
  			'plural' => 'msgs',
  			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+			'ajax' => false,
 	 	]);
+	}
+
+	/**
+	* ショートコードがない場合
+	* @param string
+	*/
+	public function no_items() {
+  	_e( 'ショートコードが設定されていません' );
 	}
 
 	/**
@@ -116,26 +125,37 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 
 class Shortcode_Setting_4536 {
 
-	var $wp_list_table;
+	static $instance;
+	public $wp_list_table;
 
 	public function __construct() {
-		add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
+		add_action( 'admin_menu', [$this, 'admin_menu'] );
+		add_action( 'plugins_loaded', [$this, 'get_instance'] );
 	}
 
-	public function load() {
-		$this->wp_list_table = new Shortcode_List_Table_4536();
+	public static function set_screen( $status, $option, $value ) {
+		return $value;
 	}
 
 	public function admin_menu() {
-		if ( isset( $_GET['page'] ) && $_GET['page']==='shortcode' ) {
-			add_action( 'admin_init', [$this, 'load'] );
-		}
-		add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'properties'] );
+		// if ( isset( $_GET['page'] ) && $_GET['page']==='shortcode' ) {
+		// 	add_action( 'admin_init', function() {
+		// 		$this->wp_list_table = new Shortcode_List_Table_4536();
+		// 	});
+		// }
+		$menu = add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'properties'] );
+		add_action( "load-$menu", [ $this, 'screen_option' ] );
+	}
+
+	public function screen_option() {
+		add_screen_option( $option, $args );
+		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
 
 	public function properties() { ?>
 		<div class="wrap" id="wpcf7-contact-form-list-table">
-			<h1 class="wp-heading-inline">ショートコード管理</h1>
+			<h1 class="wp-heading-inline">ショートコード設定</h1>
 			<a href="http://localhost/wordpress/wp-admin/admin.php?page=shortcode-new" class="page-title-action">新規追加</a>
 			<hr class="wp-header-end">
 			<form method="post" id="bulk-action-form">
@@ -147,10 +167,18 @@ class Shortcode_Setting_4536 {
 		</div>
 	<?php }
 
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
 }
 new Shortcode_Setting_4536();
 
 //-------------------リファレンス----------------------------//
 // https://elearn.jp/wpman/column/c20170823_01.html
 // https://elearn.jp/wpman/column/c20170926_01.html
+// https://www.sitepoint.com/using-wp_list_table-to-create-wordpress-admin-tables/
 //--------------------------------------------------------//
