@@ -113,11 +113,12 @@ function update_option_4536( $option ) {
 }
 
 //ファイル読み込み
-require_once('4536-manual.php');
-require_once('design-theme.php');
-require_once('seo-setting.php');
-require_once('media-setting.php');
-require_once('amp-setting.php');
-require_once('database-setting.php');
-require_once('htaccess-setting.php');
-require_once('etc-setting.php');
+require_once( '4536-manual.php' );
+require_once( 'design-theme.php' );
+require_once( 'seo-setting.php' );
+require_once( 'media-setting.php' );
+require_once( 'amp-setting.php' );
+require_once( 'create-shortcode.php' );
+require_once( 'database-setting.php' );
+require_once( 'htaccess-setting.php' );
+require_once( 'etc-setting.php' );
