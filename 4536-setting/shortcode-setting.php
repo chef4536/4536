@@ -139,12 +139,8 @@ class Shortcode_Setting_4536 {
 	}
 
 	public function admin_menu() {
-		$menu = add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'management_page'] );
+		$menu = add_submenu_page( '4536-setting', 'ショートコード', 'ショートコード', 'manage_options', 'shortcode', [$this, 'form'] );
 		add_action( "load-$menu", [$this, 'screen_option'] );
-		if ( isset( $_GET['action'] ) && $_GET['action']==='new' ) {
-			//新規ページ
-			add_submenu_page( '4536-setting', '新規追加', '新規追加', 'manage_options', 'shortcode-new', [$this, 'add_new'] );
-		}
 	}
 
 	public function screen_option() {
@@ -152,26 +148,28 @@ class Shortcode_Setting_4536 {
 		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
 
-	public function management_page() { ?>
+	public function form() {
+    if ( isset( $_GET['action'] ) && $_GET['action']==='new' ) {
+      $title = 'ショートコードを新規追加';
+      $link = menu_page_url( 'shortcode', false );
+      $link_text = '一覧';
+      $form_inner = '';
+		} else {
+      $title = 'ショートコード設定';
+      $link = add_query_arg( 'action', 'new' );
+      $link_text = '新規追加';
+      ob_start();
+      $this->wp_list_table->prepare_items( $msgs );
+      $this->wp_list_table->display();
+      $form_inner = ob_get_clean();
+    }
+    ?>
 		<div class="wrap" id="">
-			<h1 class="wp-heading-inline">ショートコード設定</h1>
-			<a href="http://localhost/wordpress/wp-admin/admin.php?page=shortcode&action=new" class="page-title-action">新規追加</a>
+			<h1 class="wp-heading-inline"><?php echo $title; ?></h1>
+			<a href="<?php echo $link; ?>" class="page-title-action"><?php echo $link_text; ?></a>
 			<hr class="wp-header-end">
-			<form method="post" id="bulk-action-form">
-				<?php
-				$this->wp_list_table->prepare_items( $msgs );
-				$this->wp_list_table->display();
-				?>
-			</form>
-		</div>
-	<?php }
-
-	public function add_new() { ?>
-		<div class="wrap" id="">
-			<h1 class="wp-heading-inline">ショートコードを新規追加</h1>
-			<hr class="wp-header-end">
-			<form method="post" action="">
-
+			<form method="post" id="">
+				<?php echo $form_inner; ?>
 			</form>
 		</div>
 	<?php }
