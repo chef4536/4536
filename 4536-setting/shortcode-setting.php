@@ -149,11 +149,36 @@ class Shortcode_Setting_4536 {
 	}
 
 	public function form() {
-    if ( isset( $_GET['action'] ) && $_GET['action']==='new' ) {
-      $title = 'ショートコードを新規追加';
-      $link = menu_page_url( 'shortcode', false );
-      $link_text = '一覧';
-      $form_inner = '';
+    if ( isset( $_GET['action'] ) ) {
+      if( $_GET['action']==='new' ) {
+        $title = 'ショートコードを新規追加';
+        $link = menu_page_url( 'shortcode', false );
+        $link_text = '一覧';
+      } elseif( $_GET['action']==='edit' ) {
+
+      }
+      ob_start(); ?>
+      <div id="poststuff">
+        <div id="post-body-content">
+          <div id="titlediv">
+            <div id="titlewrap">
+              <input type="text" value="" name="post_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
+            </div>
+          </div>
+          <div class="metabox-holder">
+            <div class="postbox">
+              <h3 class="hndle">共通</h3>
+              <div class="inside">
+                <textarea>
+                </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+      $form_inner = ob_get_clean();
+      $submit = get_submit_button( '保存', 'primary large', 'save_shortcode_setting_submit_4536', $wrap, $other_attributes );
 		} else {
       $title = 'ショートコード設定';
       $link = add_query_arg( 'action', 'new' );
@@ -169,7 +194,10 @@ class Shortcode_Setting_4536 {
 			<a href="<?php echo $link; ?>" class="page-title-action"><?php echo $link_text; ?></a>
 			<hr class="wp-header-end">
 			<form method="post" id="">
-				<?php echo $form_inner; ?>
+				<?php
+        echo $form_inner;
+        if( isset( $submit ) ) echo $submit;
+        ?>
 			</form>
 		</div>
 	<?php }
