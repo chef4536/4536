@@ -167,15 +167,66 @@ class Shortcode_Setting_4536 {
           </div>
           <div class="metabox-holder">
             <div class="postbox">
-              <h3 class="hndle">共通</h3>
-              <div class="inside">
-                <textarea>
-                </textarea>
+              <div class="tabs">
+                <input id="common" type="radio" name="tab_item" checked>
+                <label class="tab_item" for="common">共通</label>
+                <input id="amp" type="radio" name="tab_item">
+                <label class="tab_item" for="amp">AMP用</label>
+                <fieldset class="tab_content" id="common_content">
+                  <textarea name="" rows="15" cols="100" class="code" style="width:100%"></textarea>
+                </fieldset>
+                <fieldset class="tab_content" id="amp_content">
+                  <textarea name="" rows="15" cols="100" class="code" style="width:100%"></textarea>
+                </fieldset>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <style>
+        .tabs {
+          width: 100%;
+        }
+        .tab_item {
+          box-sizing: border-box;
+          width: calc(100%/2);
+          line-height: 1.6;
+          padding: .5em;
+          border-bottom: 3px solid #5ab4bd;
+          background-color: #d9d9d9;
+          font-size: 16px;
+          text-align: center;
+          color: #565656;
+          display: block;
+          float: left;
+          text-align: center;
+          font-weight: bold;
+          transition: all 0.2s ease;
+        }
+        .tab_item:hover {
+          opacity: 0.75;
+        }
+        input[name="tab_item"] {
+          display: none;
+        }
+        /*タブ切り替えの中身のスタイル*/
+        .tab_content {
+          display: none;
+          padding: 1.5em;
+          clear: both;
+          overflow: hidden;
+        }
+        /*選択されているタブのコンテンツのみを表示*/
+        #common:checked ~ #common_content,
+        #amp:checked ~ #amp_content {
+          display: block;
+        }
+        /*選択されているタブのスタイルを変える*/
+        .tabs input:checked + .tab_item {
+          background-color: #5ab4bd;
+          color: #fff;
+        }
+      </style>
       <?php
       $form_inner = ob_get_clean();
       $submit = get_submit_button( '保存', 'primary large', 'save_shortcode_setting_submit_4536', $wrap, $other_attributes );
