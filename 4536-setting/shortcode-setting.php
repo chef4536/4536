@@ -186,7 +186,7 @@ class Shortcode_Setting_4536 {
 
 	public function form() {
     if ( isset( $_GET['action'] ) ) {
-      if( isset( $_GET['id'] ) && !empty( $_GET['id'] ) ) {
+      if( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) {
         $id = $_GET['id'];
         $h1 = 'ショートコードの編集';
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
