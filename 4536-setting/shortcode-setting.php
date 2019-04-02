@@ -132,6 +132,9 @@ class Shortcode_Setting_4536 {
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
 		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
     add_action( 'admin_init', [$this, 'create_table'] );
+    if( isset( $_POST['save_shortcode_setting_submit_4536'] ) ) {
+      
+    }
 	}
 
 	public static function set_screen( $status, $option, $value ) {
@@ -150,28 +153,35 @@ class Shortcode_Setting_4536 {
 
   function create_table() {
     global $wpdb;
-    $jal_db_version = '1.0';
     $table_name = $wpdb->prefix . '4536_shortcode';
-    if( !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) ) return;
+    $db_version = '1.0';
+    $installed_ver = get_option( '4536_shortcode_db_version' );
+    if(
+      !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) &&
+      ( $db_version === $installed_ver )
+      ) return;
     $charset_collate = $wpdb->get_charset_collate();
     $sql = "CREATE TABLE $table_name (
       id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-      title text NOT NULL,
+      author bigint(20) UNSIGNED DEFAULT '0' NOT NULL,
+      title varchar(50) NOT NULL,
       text text NOT NULL,
-      url varchar(55) DEFAULT '' NOT NULL,
+      date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+      modified datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       UNIQUE KEY id (id)
     ) $charset_collate;";
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
-    add_option( 'jal_db_version', $jal_db_version );
+    update_option( '4536_shortcode_db_version', $db_version );
   }
 
 	public function form() {
     if ( isset( $_GET['action'] ) ) {
       if( $_GET['action']==='new' ) {
-        $title = 'ショートコードを新規追加';
+        $h1 = 'ショートコードを新規追加';
         $link = menu_page_url( 'shortcode', false );
         $link_text = '一覧';
+        // $title = $_POST['title'];
       } elseif( $_GET['action']==='edit' ) {
 
       }
@@ -227,14 +237,12 @@ class Shortcode_Setting_4536 {
         input[name="tab_item"] {
           display: none;
         }
-        /*タブ切り替えの中身のスタイル*/
         .tab_content {
           display: none;
           padding: 1.5em;
           clear: both;
           overflow: hidden;
         }
-        /*選択されているタブのコンテンツのみを表示*/
         #common:checked ~ #common_content,
         #amp:checked ~ #amp_content {
           display: block;
@@ -249,7 +257,7 @@ class Shortcode_Setting_4536 {
       $form_inner = ob_get_clean();
       $submit = get_submit_button( '保存', 'primary large', 'save_shortcode_setting_submit_4536', $wrap, $other_attributes );
 		} else {
-      $title = 'ショートコード設定';
+      $h1 = 'ショートコード設定';
       $link = add_query_arg( 'action', 'new' );
       $link_text = '新規追加';
       ob_start();
@@ -259,7 +267,7 @@ class Shortcode_Setting_4536 {
     }
     ?>
 		<div class="wrap" id="">
-			<h1 class="wp-heading-inline"><?php echo $title; ?></h1>
+			<h1 class="wp-heading-inline"><?php echo $h1; ?></h1>
 			<a href="<?php echo $link; ?>" class="page-title-action"><?php echo $link_text; ?></a>
 			<hr class="wp-header-end">
 			<form method="post" id="">
