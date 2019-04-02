@@ -132,8 +132,11 @@ class Shortcode_Setting_4536 {
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
 		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
     add_action( 'admin_init', [$this, 'create_table'] );
-    if( isset( $_POST['save_shortcode_setting_submit_4536'] ) ) {
-      
+    if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
+      $this->insert();
+    }
+    if( isset( $_POST['update_shortcode_setting_submit_4536'] ) ) {
+      $this->update();
     }
 	}
 
@@ -151,9 +154,15 @@ class Shortcode_Setting_4536 {
 		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
 
-  function create_table() {
+  function table_name() {
     global $wpdb;
     $table_name = $wpdb->prefix . '4536_shortcode';
+    return $table_name;
+  }
+
+  function create_table() {
+    global $wpdb;
+    $table_name = $this->table_name();
     $db_version = '1.0';
     $installed_ver = get_option( '4536_shortcode_db_version' );
     if(
@@ -181,9 +190,10 @@ class Shortcode_Setting_4536 {
         $h1 = 'ショートコードを新規追加';
         $link = menu_page_url( 'shortcode', false );
         $link_text = '一覧';
+        $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
         // $title = $_POST['title'];
       } elseif( $_GET['action']==='edit' ) {
-
+        $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
       }
       ob_start(); ?>
       <div id="poststuff">
@@ -255,7 +265,6 @@ class Shortcode_Setting_4536 {
       </style>
       <?php
       $form_inner = ob_get_clean();
-      $submit = get_submit_button( '保存', 'primary large', 'save_shortcode_setting_submit_4536', $wrap, $other_attributes );
 		} else {
       $h1 = 'ショートコード設定';
       $link = add_query_arg( 'action', 'new' );
@@ -278,6 +287,15 @@ class Shortcode_Setting_4536 {
 			</form>
 		</div>
 	<?php }
+
+  function insert() {
+    global $wpdb;
+    $table_name = $this->table_name();
+    $title = ( isset( $_POST['post_title'] ) ) ? $_POST['post_title'] : '(タイトルなし)' ;
+    // $common_text = ( isset( $_POST['title'] ) ) ? $_POST['title'] : '(タイトルなし)' ;
+    $master_arr = compact( 'title' );
+    $wpdb->insert( $table_name, $master_arr );
+  }
 
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
