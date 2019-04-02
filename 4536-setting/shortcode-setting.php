@@ -136,7 +136,7 @@ class Shortcode_Setting_4536 {
       $this->insert();
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) ) {
-      $this->update();
+      // $this->update();
     }
 	}
 
@@ -186,15 +186,17 @@ class Shortcode_Setting_4536 {
 
 	public function form() {
     if ( isset( $_GET['action'] ) ) {
-      if( $_GET['action']==='new' ) {
-        $h1 = 'ショートコードを新規追加';
-        $link = menu_page_url( 'shortcode', false );
-        $link_text = '一覧';
-        $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
-        // $title = $_POST['title'];
-      } elseif( $_GET['action']==='edit' ) {
+      if( isset( $_GET['id'] ) && !empty( $_GET['id'] ) ) {
+        $id = $_GET['id'];
+        $h1 = 'ショートコードの編集';
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
+      } else {
+        $h1 = 'ショートコードの新規追加';
+        $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
+        $id = '1'; //test
       }
+      $link = menu_page_url( 'shortcode', false );
+      $link_text = '一覧';
       ob_start(); ?>
       <div id="poststuff">
         <div id="post-body-content">
@@ -221,6 +223,7 @@ class Shortcode_Setting_4536 {
           </div>
         </div>
       </div>
+      <?php echo $submit; ?>
       <style>
         .tabs {
           width: 100%;
@@ -257,7 +260,6 @@ class Shortcode_Setting_4536 {
         #amp:checked ~ #amp_content {
           display: block;
         }
-        /*選択されているタブのスタイルを変える*/
         .tabs input:checked + .tab_item {
           background-color: #5ab4bd;
           color: #fff;
@@ -279,11 +281,8 @@ class Shortcode_Setting_4536 {
 			<h1 class="wp-heading-inline"><?php echo $h1; ?></h1>
 			<a href="<?php echo $link; ?>" class="page-title-action"><?php echo $link_text; ?></a>
 			<hr class="wp-header-end">
-			<form method="post" id="">
-				<?php
-        echo $form_inner;
-        if( isset( $submit ) ) echo $submit;
-        ?>
+			<form method="post" action="<?php echo add_query_arg([ 'id' => $id, 'action' => 'edit' ]); ?>">
+				<?php echo $form_inner; ?>
 			</form>
 		</div>
 	<?php }
