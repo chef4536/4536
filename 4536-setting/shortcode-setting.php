@@ -1,7 +1,6 @@
 <?php
 
 if( !class_exists( 'WP_List_Table' ) ) {
-	//動作がおかしくなるようであればWP_List_Table拡張ファイルを別にしてrequireする
   require_once( ABSPATH . 'wp-admin/includes/screen.php' );
   require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
@@ -131,7 +130,8 @@ class Shortcode_Setting_4536 {
 	public function __construct() {
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
-		add_action( 'plugins_loaded', [$this, 'get_instance'] );
+		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
+    add_action( 'admin_init', [$this, 'create_table'] );
 	}
 
 	public static function set_screen( $status, $option, $value ) {
@@ -147,6 +147,24 @@ class Shortcode_Setting_4536 {
 		add_screen_option( $option, $args );
 		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
+
+  function create_table() {
+    global $wpdb;
+    $jal_db_version = '1.0';
+    $table_name = $wpdb->prefix . '4536_shortcode';
+    if( !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) ) return;
+    $charset_collate = $wpdb->get_charset_collate();
+    $sql = "CREATE TABLE $table_name (
+      id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+      title text NOT NULL,
+      text text NOT NULL,
+      url varchar(55) DEFAULT '' NOT NULL,
+      UNIQUE KEY id (id)
+    ) $charset_collate;";
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+    add_option( 'jal_db_version', $jal_db_version );
+  }
 
 	public function form() {
     if ( isset( $_GET['action'] ) ) {
@@ -267,4 +285,5 @@ new Shortcode_Setting_4536();
 // https://elearn.jp/wpman/column/c20170823_01.html
 // https://elearn.jp/wpman/column/c20170926_01.html
 // https://www.sitepoint.com/using-wp_list_table-to-create-wordpress-admin-tables/
+// https://wpdocs.osdn.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E4%BD%9C%E3%82%8B
 //--------------------------------------------------------//
