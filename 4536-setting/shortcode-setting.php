@@ -194,6 +194,7 @@ class Shortcode_Setting_4536 {
       if( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) {
         $id = intval( $_GET['id'] );
         $h1 = 'ショートコードの編集';
+        $data = get_db_table_record( $this->table_name(), $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
       } else {
         $h1 = 'ショートコードの新規追加';
@@ -207,7 +208,7 @@ class Shortcode_Setting_4536 {
         <div id="post-body-content">
           <div id="titlediv">
             <div id="titlewrap">
-              <input type="text" value="" name="post_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
+              <input type="text" value="<?php if( isset( $data ) ) echo $data->title; ?>" name="post_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
             </div>
           </div>
           <div class="metabox-holder">
@@ -215,9 +216,9 @@ class Shortcode_Setting_4536 {
               <div class="tabs">
                 <?php
                 $arr = [
-                  'common' => '共通',
-                  'pc' => 'PC用',
-                  'amp' => 'AMP用',
+                  'common_text' => '共通',
+                  'pc_text' => 'PC用',
+                  'amp_text' => 'AMP用',
                 ];
                 $no = 0;
                 foreach( $arr as $key => $value ) {
@@ -229,7 +230,7 @@ class Shortcode_Setting_4536 {
                 <?php }
                 foreach( $arr as $key => $value ) { ?>
                   <fieldset class="tab_content" id="<?php echo $key; ?>_content">
-                    <textarea name="<?php echo $key; ?>_text" rows="15" cols="100" class="code" style="width:100%"></textarea>
+                    <textarea name="<?php echo $key; ?>" rows="15" cols="100" class="code" style="width:100%"><?php if( isset( $data ) ) echo $data->$key; ?></textarea>
                   </fieldset>
                 <?php } ?>
               </div>
@@ -270,9 +271,9 @@ class Shortcode_Setting_4536 {
           clear: both;
           overflow: hidden;
         }
-        #common:checked ~ #common_content,
-        #pc:checked ~ #pc_content,
-        #amp:checked ~ #amp_content {
+        #common_text:checked ~ #common_text_content,
+        #pc_text:checked ~ #pc_text_content,
+        #amp_text:checked ~ #amp_text_content {
           display: block;
         }
         .tabs input:checked + .tab_item {
