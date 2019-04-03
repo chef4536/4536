@@ -190,19 +190,22 @@ class Shortcode_Setting_4536 {
   }
 
 	public function form() {
+    $link_to_new = '<a href="' . add_query_arg( 'action', 'new' ) . '" class="page-title-action">新規追加</a>';
     if ( isset( $_GET['action'] ) ) {
       if( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) {
         $id = intval( $_GET['id'] );
+        $link_to_new = remove_query_arg( 'id' );
+        $link_to_new = '<a href="' . add_query_arg( 'action', 'new', $link_to_new ) . '" class="page-title-action">新規追加</a>';
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( $this->table_name(), $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
       } else {
+        $link_to_new = '';
         $h1 = 'ショートコードの新規追加';
         $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
         $id = get_option( '4536_shortcode_last_id', 1 );
       }
-      $link = menu_page_url( 'shortcode', false );
-      $link_text = '一覧';
+      $link_to_list = '<a href="' . menu_page_url( 'shortcode', false ) . '" class="page-title-action">一覧</a>';
       ob_start(); ?>
       <div id="poststuff">
         <div id="post-body-content">
@@ -285,8 +288,6 @@ class Shortcode_Setting_4536 {
       $form_inner = ob_get_clean();
 		} else {
       $h1 = 'ショートコード設定';
-      $link = add_query_arg( 'action', 'new' );
-      $link_text = '新規追加';
       ob_start();
       $this->wp_list_table->prepare_items( $msgs );
       $this->wp_list_table->display();
@@ -295,7 +296,10 @@ class Shortcode_Setting_4536 {
     ?>
 		<div class="wrap" id="">
 			<h1 class="wp-heading-inline"><?php echo $h1; ?></h1>
-			<a href="<?php echo $link; ?>" class="page-title-action"><?php echo $link_text; ?></a>
+      <?php
+      if( isset( $link_to_list ) ) echo $link_to_list;
+      if( !empty( $link_to_new ) ) echo $link_to_new;
+      ?>
 			<hr class="wp-header-end">
 			<form method="post" action="<?php echo add_query_arg([ 'id' => $id, 'action' => 'edit' ]); ?>">
 				<?php echo $form_inner; ?>
