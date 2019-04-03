@@ -176,8 +176,10 @@ class Shortcode_Setting_4536 {
     $sql = "CREATE TABLE $table_name (
       id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
       author bigint(20) UNSIGNED DEFAULT '0' NOT NULL,
-      title varchar(50) NOT NULL,
-      text text NOT NULL,
+      title varchar(60) NOT NULL,
+      common_text text NULL,
+      pc_text text NULL,
+      amp_text text NULL,
       date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       modified datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       UNIQUE KEY id (id)
@@ -190,7 +192,7 @@ class Shortcode_Setting_4536 {
 	public function form() {
     if ( isset( $_GET['action'] ) ) {
       if( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) {
-        $id = $_GET['id'];
+        $id = intval( $_GET['id'] );
         $h1 = 'ショートコードの編集';
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
       } else {
@@ -211,16 +213,25 @@ class Shortcode_Setting_4536 {
           <div class="metabox-holder">
             <div class="postbox">
               <div class="tabs">
-                <input id="common" type="radio" name="tab_item" checked>
-                <label class="tab_item" for="common">共通</label>
-                <input id="amp" type="radio" name="tab_item">
-                <label class="tab_item" for="amp">AMP用</label>
-                <fieldset class="tab_content" id="common_content">
-                  <textarea name="" rows="15" cols="100" class="code" style="width:100%"></textarea>
-                </fieldset>
-                <fieldset class="tab_content" id="amp_content">
-                  <textarea name="" rows="15" cols="100" class="code" style="width:100%"></textarea>
-                </fieldset>
+                <?php
+                $arr = [
+                  'common' => '共通',
+                  'pc' => 'PC用',
+                  'amp' => 'AMP用',
+                ];
+                $no = 0;
+                foreach( $arr as $key => $value ) {
+                  $checked = ( $no === 0 ) ? ' checked' : '';
+                  $no++;
+                  ?>
+                  <input id="<?php echo $key; ?>" type="radio" name="tab_item"<?php echo $checked; ?>>
+                  <label class="tab_item" for="<?php echo $key; ?>"><?php echo $value; ?></label>
+                <?php }
+                foreach( $arr as $key => $value ) { ?>
+                  <fieldset class="tab_content" id="<?php echo $key; ?>_content">
+                    <textarea name="<?php echo $key; ?>_text" rows="15" cols="100" class="code" style="width:100%"></textarea>
+                  </fieldset>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -233,7 +244,7 @@ class Shortcode_Setting_4536 {
         }
         .tab_item {
           box-sizing: border-box;
-          width: calc(100%/2);
+          width: calc(100%/3);
           line-height: 1.6;
           padding: .5em;
           border-bottom: 3px solid #5ab4bd;
@@ -260,6 +271,7 @@ class Shortcode_Setting_4536 {
           overflow: hidden;
         }
         #common:checked ~ #common_content,
+        #pc:checked ~ #pc_content,
         #amp:checked ~ #amp_content {
           display: block;
         }
@@ -293,9 +305,17 @@ class Shortcode_Setting_4536 {
   function insert() {
     global $wpdb;
     $table_name = $this->table_name();
-    $title = ( isset( $_POST['post_title'] ) ) ? $_POST['post_title'] : '(タイトルなし)' ;
-    // $common_text = ( isset( $_POST['title'] ) ) ? $_POST['title'] : '(タイトルなし)' ;
-    $master_arr = compact( 'title' );
+    $master_arr = [];
+    $master_arr['title'] = ( isset( $_POST['post_title'] ) && !empty( $_POST['post_title'] ) ) ? $_POST['post_title'] : '(タイトルなし)' ;
+    $arr = [
+      'common_text',
+      'pc_text',
+      'amp_text',
+    ];
+    foreach( $arr as $key ) {
+      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? $_POST[$key] : NULL;
+    }
+    $master_arr['date'] = current_time( 'mysql' );
     $wpdb->insert( $table_name, $master_arr );
   }
 
