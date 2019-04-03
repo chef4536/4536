@@ -129,13 +129,14 @@ class Shortcode_Setting_4536 {
 
 	public function __construct() {
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
+    add_action( 'admin_init', [$this, 'create_table'] );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
 		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
-    add_action( 'admin_init', [$this, 'create_table'] );
+    // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
       $this->insert();
       global $wpdb;
-      update_option( 'shortcode_last_id_4536', $wpdb->insert_id );
+      update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) ) {
       // $this->update();
@@ -195,7 +196,7 @@ class Shortcode_Setting_4536 {
       } else {
         $h1 = 'ショートコードの新規追加';
         $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
-        $id = get_option( 'shortcode_last_id_4536', 1 );
+        $id = get_option( '4536_shortcode_last_id', 1 );
       }
       $link = menu_page_url( 'shortcode', false );
       $link_text = '一覧';
