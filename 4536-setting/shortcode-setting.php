@@ -134,12 +134,12 @@ class Shortcode_Setting_4536 {
 		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
     // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
-      $this->insert();
+      insert_db_table_record( $this->table_name(), $this->post_data() );
       global $wpdb;
       update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
     }
-    if( isset( $_POST['update_shortcode_setting_submit_4536'] ) ) {
-      // $this->update();
+    if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) ) {
+      update_db_table_record( $this->table_name(), $this->post_data( 'modified' ), ['id' => $_GET['id']], null, ['%d'] );
     }
 	}
 
@@ -303,9 +303,7 @@ class Shortcode_Setting_4536 {
 		</div>
 	<?php }
 
-  function insert() {
-    global $wpdb;
-    $table_name = $this->table_name();
+  function post_data( $time = 'date' ) {
     $master_arr = [];
     $master_arr['title'] = ( isset( $_POST['post_title'] ) && !empty( $_POST['post_title'] ) ) ? $_POST['post_title'] : '(タイトルなし)' ;
     $arr = [
@@ -316,8 +314,15 @@ class Shortcode_Setting_4536 {
     foreach( $arr as $key ) {
       $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? $_POST[$key] : NULL;
     }
-    $master_arr['date'] = current_time( 'mysql' );
-    $wpdb->insert( $table_name, $master_arr );
+    switch( $time ) {
+      case 'date':
+        $master_arr['date'] = current_time( 'mysql' );
+        break;
+      case 'modified':
+        $master_arr['modified'] = current_time( 'mysql' );
+        break;
+    }
+    return $master_arr;
   }
 
 	public static function get_instance() {
