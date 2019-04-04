@@ -10,7 +10,7 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 	/**
 	* 初期化時の設定を行う
 	*/
-	public function __construct( $args = [] ) {
+	function __construct( $args = [] ) {
 	 	parent::__construct([
  			'plural' => 'msgs',
  			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
@@ -18,19 +18,27 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 	 	]);
 	}
 
-	/**
-	* ショートコードがない場合
-	* @param string
-	*/
-	public function no_items() {
-  	_e( 'ショートコードが設定されていません' );
-	}
+  function column_title( $item ) {
+    $actions = [
+      'edit' => sprintf('<a href="?page=%s&action=%s&movie=%s">編集</a>',$_REQUEST['page'],'edit',$item['ID']),
+      'delete' => sprintf('<a href="?page=%s&action=%s&movie=%s">削除</a>',$_REQUEST['page'],'delete',$item['ID']),
+    ];
+    return sprintf('%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
+      /*$1%s*/ $item['title'],
+      /*$2%s*/ $item['ID'],
+      /*$3%s*/ $this->row_actions($actions)
+    );
+  }
 
-	/**
-	 * 表で使用されるカラム情報の連想配列を返す
-	 * @return array
-	 */
-	public function get_columns() {
+  function column_cb( $item ) {
+    return sprintf(
+      '<input type="checkbox" name="%1$s[]" value="%2$s" />',
+      /*$1%s*/ $this->_args['singular'],
+      /*$2%s*/ $item['ID']
+    );
+  }
+
+  function get_columns() {
 		return [
 			'cb'		=> '<input type="checkbox" />',
 			'title'		=> __( 'タイトル' ),
@@ -40,84 +48,52 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 		];
 	}
 
+  function get_bulk_actions() {
+    return [ 'delete' => '削除' ];
+  }
+
+  function process_bulk_action() {
+    if( $this->current_action() === 'delete' ) {
+      wp_die('項目が削除されました。');
+    }
+  }
+
+  function prepare_items( $data = null ) {
+    global $wpdb;
+    $per_page = 5;
+    $columns = $this->get_columns();
+    $hidden = [];
+    $sortable = $this->get_sortable_columns();
+    $this->_column_headers = [ $columns, $hidden, $sortable ];
+    $this->process_bulk_action();
+    function usort_reorder( $a, $b ) {
+      $orderby = ( !empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'title';
+      $order = ( !empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'asc';
+      $result = strcmp( $a[$orderby], $b[$orderby] );
+      return ( $order === 'asc' ) ? $result : -$result;
+    }
+    usort( $data, 'usort_reorder' );
+    $current_page = $this->get_pagenum();
+    $total_items = count( $data );
+    $data = array_slice( $data, ( ($current_page-1) * $per_page ), $per_page );
+    $this->items = $data;
+    $this->set_pagination_args([
+      'total_items' => $total_items,
+      'per_page' => $per_page,
+      'total_pages' => ceil($total_items/$per_page)
+    ]);
+  }
+
+	function no_items() {
+  	_e( 'ショートコードが設定されていません' );
+	}
+
 	/**
 	 * プライマリカラム名を返す
 	 * @return string
 	 */
-	protected function get_primary_column_name() {
+	function get_primary_column_name() {
 		return 'title';
-	}
-
-	/**
-	 * 表示するデータを準備する
-	 */
-	public function prepare_items( $items = null ) {
-		if ( !is_null( $items ) ) {
-			$this->items = $items;
-			$this->set_pagination_args([
-				'total_items' => count( $this->items ),
-				'per_page' => 999,
-			]);
-		}
-	}
-
-	/**
-	* 1行分のデータを表示する
-	* @param array $item
-	*/
-	public function single_row( $item ) {
-		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
-		?>
-			<tr>
-			 	<?php
-			 	foreach ( $columns as $column_name => $column_display_name ) {
-				 	$classes = "$column_name column-$column_name";
-				 	$extra_classes = '';
-				 	if ( in_array( $column_name, $hidden ) ) {
-						$extra_classes = ' hidden';
-				 	}
-				 	switch ( $column_name ) {
-					 	case 'cb':
-							$checkbox_id =  "checkbox_".$item->get( 'no' );
-							$checkbox = "<label class='screen-reader-text' for='" . $checkbox_id . "' >" . sprintf( __( 'Select %s' ), $item->msgid ) . "</label>"
-			 								. "<input type='checkbox' name='checked[]' value='" . $item->get( 'no' ). "' id='" . $checkbox_id . "' />";
-							echo "<th scope='row' class='check-column'>$checkbox</th>";
-			 				break;
-						case 'title':
-							echo '<td class="' .esc_attr( $classes.$extra_classes ). '">' . esc_html( $item->get( 'title' ) ) . '</td>';
-			 				break;
-						case 'shortcode':
-							echo '<td class="' . esc_attr( $classes.$extra_classes ) . '"><textarea id="msgid_' . esc_attr( $item->no ) . '" name="msgid[' . esc_attr( $item->no ) . ']" rows="2" class="fit-width">' . esc_html( $item->shortcode ) . '</textarea></td>';
-			 				break;
-			 			// 一部省略
-					}
-				} ?>
-			</tr>
-	<?php }
-
-	/**
-	* 「一括操作」のプルダウンメニューを指定
-	*
-	* @return array
-	*/
-	protected function get_bulk_actions() {
-		return [
-			'delete-selected' => __( 'Delete' )
-		];
-	}
-
-	/**
-	* カラムのソート
-	*
-	* @return array
-	*/
-	protected function get_sortable_columns() {
-		return [
-			// 'no'	=> [ 'no', true ],
-			'title'	=> 'title',
-			'date'	=> 'date',
-			'author'	=> 'author',
-		];
 	}
 
 }
@@ -288,8 +264,9 @@ class Shortcode_Setting_4536 {
       $form_inner = ob_get_clean();
 		} else {
       $h1 = 'ショートコード設定';
+      $data = [];
       ob_start();
-      $this->wp_list_table->prepare_items( $msgs );
+      $this->wp_list_table->prepare_items( $data );
       $this->wp_list_table->display();
       $form_inner = ob_get_clean();
     }
@@ -344,4 +321,5 @@ new Shortcode_Setting_4536();
 // https://elearn.jp/wpman/column/c20170926_01.html
 // https://www.sitepoint.com/using-wp_list_table-to-create-wordpress-admin-tables/
 // https://wpdocs.osdn.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E4%BD%9C%E3%82%8B
+// http://wpcj.net/1745 ※開発用プラグイン「Custom List Table Example」の中身を翻訳してくれているサイト。理解しやすい
 //--------------------------------------------------------//
