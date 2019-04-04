@@ -18,24 +18,28 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 	 	]);
 	}
 
-  function column_title( $item ) {
-    $actions = [
-      'edit' => sprintf('<a href="?page=%s&action=%s&movie=%s">編集</a>',$_REQUEST['page'],'edit',$item['ID']),
-      'delete' => sprintf('<a href="?page=%s&action=%s&movie=%s">削除</a>',$_REQUEST['page'],'delete',$item['ID']),
-    ];
-    return sprintf('%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
-      /*$1%s*/ $item['title'],
-      /*$2%s*/ $item['ID'],
-      /*$3%s*/ $this->row_actions($actions)
-    );
-  }
-
   function column_cb( $item ) {
     return sprintf(
       '<input type="checkbox" name="%1$s[]" value="%2$s" />',
       /*$1%s*/ $this->_args['singular'],
       /*$2%s*/ $item['ID']
     );
+  }
+
+  function column_title( $item ) {
+    $actions = [
+      'edit' => sprintf('<a href="?page=%s&action=%s&movie=%s">編集</a>',$_REQUEST['page'],'edit',$item['ID']),
+      'delete' => sprintf('<a href="?page=%s&action=%s&movie=%s">削除</a>',$_REQUEST['page'],'delete',$item['ID']),
+    ];
+    return sprintf( '%1$s %2$s', $item['title'], $this->row_actions($actions) );
+  }
+
+  function column_author( $item ) {
+    return get_the_author_meta( 'display_name', $item['author'] );
+  }
+
+  function column_date( $item ) {
+    return date( 'Y年n月j日', strtotime( $item['date'] ) );
   }
 
   function get_columns() {
@@ -60,7 +64,7 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 
   function prepare_items( $data = null ) {
     global $wpdb;
-    $per_page = 5;
+    $per_page = 10;
     $columns = $this->get_columns();
     $hidden = [];
     $sortable = $this->get_sortable_columns();
@@ -107,7 +111,6 @@ class Shortcode_Setting_4536 {
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
     add_action( 'admin_init', [$this, 'create_table'] );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
-		// add_action( 'plugins_loaded', [$this, 'get_instance'] );
     // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
       insert_db_table_record( $this->table_name(), $this->post_data() );
@@ -151,7 +154,7 @@ class Shortcode_Setting_4536 {
     $charset_collate = $wpdb->get_charset_collate();
     $sql = "CREATE TABLE $table_name (
       id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-      author bigint(20) UNSIGNED DEFAULT '0' NOT NULL,
+      author bigint(20) UNSIGNED DEFAULT '1' NOT NULL,
       title varchar(60) NOT NULL,
       common_text text NULL,
       pc_text text NULL,
@@ -296,6 +299,7 @@ class Shortcode_Setting_4536 {
     foreach( $arr as $key ) {
       $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? $_POST[$key] : NULL;
     }
+    $master_arr['author'] = wp_get_current_user()->ID;
     switch( $time ) {
       case 'date':
         $master_arr['date'] = current_time( 'mysql' );
@@ -306,13 +310,6 @@ class Shortcode_Setting_4536 {
     }
     return $master_arr;
   }
-
-	public static function get_instance() {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
 
 }
 new Shortcode_Setting_4536();
