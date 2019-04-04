@@ -264,7 +264,8 @@ class Shortcode_Setting_4536 {
       $form_inner = ob_get_clean();
 		} else {
       $h1 = 'ショートコード設定';
-      $data = [];
+      global $wpdb;
+      $data = $wpdb->get_results( "SELECT * FROM " . $this->table_name(), ARRAY_A );
       ob_start();
       $this->wp_list_table->prepare_items( $data );
       $this->wp_list_table->display();
