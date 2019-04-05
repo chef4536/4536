@@ -21,6 +21,11 @@ function update_db_table_record( $table, $data, $where, $format = null, $where_f
   $wpdb->update( $table, $data, $where, $format, $where_format );
 }
 
+function delete_db_table_record( $table, $where, $where_format = null ) {
+  global $wpdb;
+  $wpdb->delete( $table, $where, $where_format );
+}
+
 //-------------------リファレンス----------------------------//
 // https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/wpdb_Class
 //--------------------------------------------------------//

@@ -22,8 +22,8 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
   function column_cb( $item ) {
     return sprintf(
       '<input type="checkbox" name="%1$s[]" value="%2$s" />',
-      /*$1%s*/ $this->_args['singular'],
-      /*$2%s*/ $item['ID']
+      $this->_args['singular'],
+      $item['ID']
     );
   }
 
@@ -61,15 +61,23 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 		];
 	}
 
-  function get_bulk_actions() {
-    return [ 'delete' => '削除' ];
+  function get_sortable_columns() {
+    return [
+      'title' => [ 'title', false ],
+      'author'    => [ 'author', false ],
+      'date'  => [ 'date', false ]
+    ];
   }
 
-  function process_bulk_action() {
-    if( $this->current_action() === 'delete' ) {
-      wp_die('項目が削除されました。');
-    }
+  function get_bulk_actions() {
+    return [ 'bulk_delete_4536' => '削除' ];
   }
+
+  // function process_bulk_action() {
+  //   if( $this->current_action() === 'bulk_delete_4536' ) {
+  //     // wp_die('項目が削除されました。');
+  //   }
+  // }
 
   function prepare_items( $data = null ) {
     global $wpdb;
@@ -80,7 +88,7 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
     $this->_column_headers = [ $columns, $hidden, $sortable ];
     $this->process_bulk_action();
     function usort_reorder( $a, $b ) {
-      $orderby = ( !empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'title';
+      $orderby = ( !empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'date';
       $order = ( !empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'asc';
       $result = strcmp( $a[$orderby], $b[$orderby] );
       return ( $order === 'asc' ) ? $result : -$result;
@@ -120,6 +128,7 @@ class Shortcode_Setting_4536 {
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
     add_action( 'admin_init', [$this, 'create_table'] );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
+    add_action( 'admin_init', [$this, 'delete'] );
     // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
       insert_db_table_record( $this->table_name(), $this->post_data() );
@@ -128,6 +137,17 @@ class Shortcode_Setting_4536 {
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) ) {
       update_db_table_record( $this->table_name(), $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
+    }
+    if( isset( $_POST['action'] ) && $_POST['action'] === 'bulk_delete_4536' ) {
+      if( !isset( $_POST['shortcode'] ) ) {
+        add_action( 'admin_notices', function() {
+          echo '<div class="error"><p>削除する項目にチェックを入れてください。</p></div>';
+        });
+      } else {
+        $id = implode( ',', $_POST['shortcode'] );
+        global $wpdb;
+        delete_db_table_record( $wpdb->prefix . '4536_shortcode', ['ID' => $id], ['%d'] );
+      }
     }
 	}
 
@@ -188,12 +208,14 @@ class Shortcode_Setting_4536 {
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( $this->table_name(), $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
+        $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, ['style' => 'color:#a00;margin-left:1em;'] );
       } else {
         $link_to_new = '';
         $h1 = 'ショートコードの新規追加';
         $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
         $id = get_option( '4536_shortcode_last_id', 1 );
       }
+      $action = add_query_arg([ 'ID' => $id, 'action' => 'edit' ]);
       $link_to_list = '<a href="' . menu_page_url( 'shortcode', false ) . '" class="page-title-action">一覧</a>';
       ob_start(); ?>
       <div id="poststuff">
@@ -252,7 +274,7 @@ class Shortcode_Setting_4536 {
           </div>
         </div>
       </div>
-      <?php echo $submit; ?>
+      <?php echo $submit.$delete_submit; ?>
       <style>
         #shortcode_section input[type="text"] {
           display: block;
@@ -301,6 +323,7 @@ class Shortcode_Setting_4536 {
       <?php
       $form_inner = ob_get_clean();
 		} else {
+      $action = '';
       $h1 = 'ショートコード設定';
       global $wpdb;
       $data = $wpdb->get_results( "SELECT * FROM " . $this->table_name(), ARRAY_A );
@@ -317,7 +340,7 @@ class Shortcode_Setting_4536 {
       if( !empty( $link_to_new ) ) echo $link_to_new;
       ?>
 			<hr class="wp-header-end">
-			<form method="post" action="<?php echo add_query_arg([ 'ID' => $id, 'action' => 'edit' ]); ?>">
+			<form method="post" action="<?php echo $action; ?>">
 				<?php echo $form_inner; ?>
 			</form>
 		</div>
@@ -355,6 +378,17 @@ class Shortcode_Setting_4536 {
         break;
     }
     return $master_arr;
+  }
+
+  function delete() {
+    if( ( isset( $_GET['action'] ) && $_GET['action'] === 'delete' ) ||
+    ( isset( $_POST['delete_shortcode_setting_submit_4536'] ) ) &&
+    ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) )
+    ) {
+      delete_db_table_record( $this->table_name(), ['ID' => $_GET['ID']], ['%d'] );
+      wp_safe_redirect( menu_page_url( 'shortcode', false ) );
+      exit();
+    }
   }
 
 }
