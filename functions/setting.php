@@ -38,18 +38,13 @@ add_filter( 'body_class', function($classes) {
 });
 
 // 綺麗な抜粋を取得
-function custom_excerpt_4536($content, $length) {
-    $content = preg_replace('/<!--more-->.+/is', "", $content);
-    $content = wp_strip_all_tags($content, true);
-    // $content = strip_tags( $content );
-    // $content = str_replace( array( '\r\n', '\n', '\r', '&nbsp;' ), '', $content );
-    $length = mb_convert_kana(strip_tags($length), 'n') * 2;
-    $content = mb_strimwidth( $content, 0, $length, '...' );
-    // if(mb_strlen($content,'UTF-8') > $length) {
-    //     $content = mb_substr( $content, 0, $length, 'UTF-8' );
-    //     return $content.'...';
-    // }
-    return $content;
+function custom_excerpt_4536( $content, $length ) {
+  $content = do_shortcode( $content );
+  $content = preg_replace( '/<!--more-->.+/is', "", $content );
+  $content = wp_strip_all_tags( $content, true );
+  $length = mb_convert_kana( strip_tags($length), 'n' ) * 2;
+  $content = mb_strimwidth( $content, 0, $length, '...' );
+  return $content;
 }
 
 //自分のサイトかどうか調べる

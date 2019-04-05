@@ -397,7 +397,7 @@ class Shortcode_Setting_4536 {
     $tag = str_replace( [' ', '　'], '', $tag );
     $master_arr['tag'] = esc_html( trim( stripslashes_deep( $tag ) ) );
     foreach( $this->txt_arr as $key => $value ) {
-      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( trim( stripslashes_deep( $_POST[$key] ) ) ) : NULL;
+      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? trim( stripslashes_deep( $_POST[$key] ) ) : NULL;
     }
     $master_arr['wrap'] = isset( $_POST['shortcode_wrap'] ) ? true : false;
     $master_arr['author'] = wp_get_current_user()->ID;
