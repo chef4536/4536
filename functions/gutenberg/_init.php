@@ -23,19 +23,18 @@ add_action( 'enqueue_block_editor_assets', function() {
   if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
 
   $css = add_inline_style_4536();
-  // $css = str_replace('#contents-inner', 'body', $css );
-  // $css = str_replace('.article-body', '', $css );
   wp_register_style( 'custom-gutenberg', false );
 	wp_enqueue_style( 'custom-gutenberg' );
 	wp_add_inline_style( 'custom-gutenberg', $css );
 
-  //吹き出し用カスタムデータ
+});
+
+add_action( 'admin_print_styles', function() {
   $user = wp_get_current_user();
   $avatar = get_avatar_url($user->ID);
   $avatar_name = $user->display_name;
   echo '<div id="gutenberg-balloon-avatar" data-balloon-avatar="'.$avatar.'" style="display:none;"></div>'.
   '<div id="gutenberg-balloon-avatar-name" data-balloon-avatar-name="'.$avatar_name.'" style="display:none;"></div>';
-
 });
 
 //Gutenbergのデフォルトスタイルシートを違う場所で読み込む
@@ -57,7 +56,6 @@ class GutenbergEditorJS4536 {
 	function __construct() {
         $list = [
             'editor_custom',
-            'admin_menu_fix'
         ];
         foreach($list as $name) {
             add_action( 'admin_head-post.php', [$this, $name] );
@@ -85,24 +83,6 @@ class GutenbergEditorJS4536 {
             );
         });
     </script>
-  <?php }
-
-  function admin_menu_fix() { ?>
-    <style>
-      #wpwrap {
-        overflow: hidden;
-      }
-      #adminmenuwrap {
-        height: 100%;
-        overflow-y: scroll;
-        /* overflow: hidden; */
-      }
-      #adminmenu {
-        height: 100%;
-        /* margin: 0; */
-        margin: 10px 0;
-      }
-    </style>
   <?php }
 
 }
