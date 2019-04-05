@@ -294,12 +294,12 @@ class Shortcode_Setting_4536 {
               <div class="inside">
                 <div id="submitpost" class="submitbox">
                   <div id="major-publishing-actions">
-                    <div id="delete-action">
-                      <?php echo $delete_submit; ?>
-                    </div>
                     <div id="publishing-action">
                       <span class="spinner"></span>
                       <?php echo $submit; ?>
+                    </div>
+                    <div id="delete-action">
+                      <?php echo $delete_submit; ?>
                     </div>
                     <div style="clear:both"></div>
                   </div>
