@@ -144,9 +144,9 @@ class Shortcode_Setting_4536 {
           echo '<div class="error"><p>削除する項目にチェックを入れてください。</p></div>';
         });
       } else {
-        $id = implode( ',', $_POST['shortcode'] );
         global $wpdb;
-        delete_db_table_record( $wpdb->prefix . '4536_shortcode', ['ID' => $id], ['%d'] );
+        $ids = implode( ',', array_map( 'absint', $_POST['shortcode'] ) );
+        $wpdb->query( "DELETE FROM {$wpdb->prefix}4536_shortcode WHERE ID IN($ids)" );
       }
     }
 	}
@@ -174,7 +174,7 @@ class Shortcode_Setting_4536 {
   function create_table() {
     global $wpdb;
     $table_name = $this->table_name();
-    $db_version = '1.2';
+    $db_version = '1.0';
     $installed_ver = get_option( '4536_shortcode_db_version' );
     if(
       !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) &&
