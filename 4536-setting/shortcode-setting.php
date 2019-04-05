@@ -12,7 +12,8 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 	*/
 	function __construct( $args = [] ) {
 	 	parent::__construct([
- 			'plural' => 'msgs',
+ 			'singular' => 'shortcode',
+ 			// 'plural' => 'shortcode',
  			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
 			'ajax' => false,
 	 	]);
@@ -27,11 +28,19 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
   }
 
   function column_title( $item ) {
+    $title = sprintf( '<a href="?page=%s&action=%s&ID=%d">' . $item['title'] . '</a>', $_REQUEST['page'], 'edit', $item['ID'] );
     $actions = [
-      'edit' => sprintf('<a href="?page=%s&action=%s&movie=%s">編集</a>',$_REQUEST['page'],'edit',$item['ID']),
-      'delete' => sprintf('<a href="?page=%s&action=%s&movie=%s">削除</a>',$_REQUEST['page'],'delete',$item['ID']),
+      'edit' => sprintf( '<a href="?page=%s&action=%s&ID=%d">編集</a>', $_REQUEST['page'], 'edit', $item['ID'] ),
+      'delete' => sprintf( '<a href="?page=%s&action=%s&ID=%d">削除</a>', $_REQUEST['page'], 'delete', $item['ID'] ),
     ];
-    return sprintf( '%1$s %2$s', $item['title'], $this->row_actions($actions) );
+    return sprintf( '%1$s %2$s', $title, $this->row_actions($actions) );
+  }
+
+  function column_tag( $item ) {
+    return sprintf(
+      '<input type="text" readonly onfocus="this.select();" value="[%s]" />',
+      $item['tag']
+    );
   }
 
   function column_author( $item ) {
@@ -46,7 +55,7 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
 		return [
 			'cb'		=> '<input type="checkbox" />',
 			'title'		=> __( 'タイトル' ),
-			'shortcode'	=> __( 'ショートコード' ),
+			'tag'	=> __( 'ショートコード' ),
 			'author'		=> __( '作成者' ),
 			'date'	=> __( '日付' ),
 		];
