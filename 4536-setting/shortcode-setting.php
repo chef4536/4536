@@ -117,8 +117,8 @@ class Shortcode_Setting_4536 {
       global $wpdb;
       update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
     }
-    if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) ) {
-      update_db_table_record( $this->table_name(), $this->post_data( 'modified' ), ['id' => $_GET['id']], null, ['%d'] );
+    if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) ) {
+      update_db_table_record( $this->table_name(), $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
     }
 	}
 
@@ -145,7 +145,7 @@ class Shortcode_Setting_4536 {
   function create_table() {
     global $wpdb;
     $table_name = $this->table_name();
-    $db_version = '1.0';
+    $db_version = '1.2';
     $installed_ver = get_option( '4536_shortcode_db_version' );
     if(
       !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) &&
@@ -153,15 +153,16 @@ class Shortcode_Setting_4536 {
       ) return;
     $charset_collate = $wpdb->get_charset_collate();
     $sql = "CREATE TABLE $table_name (
-      id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+      ID bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
       author bigint(20) UNSIGNED DEFAULT '1' NOT NULL,
       title varchar(60) NOT NULL,
+      tag varchar(60) NOT NULL,
       common_text text NULL,
       pc_text text NULL,
       amp_text text NULL,
       date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       modified datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-      UNIQUE KEY id (id)
+      UNIQUE KEY id (ID)
     ) $charset_collate;";
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
@@ -171,9 +172,9 @@ class Shortcode_Setting_4536 {
 	public function form() {
     $link_to_new = '<a href="' . add_query_arg( 'action', 'new' ) . '" class="page-title-action">新規追加</a>';
     if ( isset( $_GET['action'] ) ) {
-      if( isset( $_GET['id'] ) && !is_null( $_GET['id'] ) ) {
-        $id = intval( $_GET['id'] );
-        $link_to_new = remove_query_arg( 'id' );
+      if( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) {
+        $id = intval( $_GET['ID'] );
+        $link_to_new = remove_query_arg( 'ID' );
         $link_to_new = '<a href="' . add_query_arg( 'action', 'new', $link_to_new ) . '" class="page-title-action">新規追加</a>';
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( $this->table_name(), $id );
@@ -190,9 +191,31 @@ class Shortcode_Setting_4536 {
         <div id="post-body-content">
           <div id="titlediv">
             <div id="titlewrap">
-              <input type="text" value="<?php if( isset( $data ) ) echo $data->title; ?>" name="post_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
+              <input type="text" value="<?php if( isset( $data ) ) echo $data->title; ?>" name="shortcode_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
             </div>
           </div>
+          <div class="metabox-holder">
+            <div class="postbox" >
+              <h3 class="hndle">ショートコード名</h3>
+              <div id="shortcode_section" class="inside">
+                <p class="description">
+                  <label for="shortcode_tag">使いやすいように自由に名前を設定できます。未入力の場合はタイトルの文字が使われます。タイトルが未入力の場合は自動生成します。</label>
+                  <input type="text" value="<?php if( isset( $data ) ) echo $data->tag; ?>" name="shortcode_tag" size="30" id="shortcode_tag" spellcheck="true" autocomplete="off" placeholder="ショートコード名" />
+                </p>
+                <p>
+                  <label for="shortcode">このショートコードをコピーして、本文またはウィジェット内にペーストしてください。</label>
+                  <input type="text" readonly onfocus="this.select();" value="[<?php if( isset( $data ) ) echo $data->tag; ?>]" size="30" id="shortcode" />
+                </p>
+              </div>
+            </div>
+          </div>
+          <script>
+          $(function() {
+            $('#shortcode_tag').on('keyup change',function() {
+            	$('#shortcode').val( '[' + $('#shortcode_tag').val() + ']' );
+            })
+          });
+        </script>
           <div class="metabox-holder">
             <div class="postbox">
               <div class="tabs">
@@ -222,6 +245,9 @@ class Shortcode_Setting_4536 {
       </div>
       <?php echo $submit; ?>
       <style>
+        #shortcode_section input[type="text"] {
+          display: block;
+        }
         .tabs {
           width: 100%;
         }
@@ -282,7 +308,7 @@ class Shortcode_Setting_4536 {
       if( !empty( $link_to_new ) ) echo $link_to_new;
       ?>
 			<hr class="wp-header-end">
-			<form method="post" action="<?php echo add_query_arg([ 'id' => $id, 'action' => 'edit' ]); ?>">
+			<form method="post" action="<?php echo add_query_arg([ 'ID' => $id, 'action' => 'edit' ]); ?>">
 				<?php echo $form_inner; ?>
 			</form>
 		</div>
@@ -290,14 +316,25 @@ class Shortcode_Setting_4536 {
 
   function post_data( $time = 'date' ) {
     $master_arr = [];
-    $master_arr['title'] = ( isset( $_POST['post_title'] ) && !empty( $_POST['post_title'] ) ) ? $_POST['post_title'] : '(タイトルなし)' ;
+    $master_arr['title'] = ( isset( $_POST['shortcode_title'] ) && !empty( $_POST['shortcode_title'] ) ) ? esc_html( stripslashes_deep( $_POST['shortcode_title'] ) ) : '(タイトルなし)' ;
+    if( isset( $_POST['shortcode_tag'] ) ) {
+      if( !empty( $_POST['shortcode_tag'] ) ) {
+        $tag = $_POST['shortcode_tag'];
+      } elseif( !empty( $_POST['shortcode_title'] ) ) {
+        $tag = $_POST['shortcode_title'];
+      } else {
+        $id = ( !empty( $_GET['ID'] ) ) ? $_GET['ID'] : get_option( '4536_shortcode_last_id', 1 );
+        $tag = '4536-shortcode-' . intval( $id );
+      }
+    }
+    $master_arr['tag'] = esc_html( stripslashes_deep( $tag ) );
     $arr = [
       'common_text',
       'pc_text',
       'amp_text',
     ];
     foreach( $arr as $key ) {
-      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? $_POST[$key] : NULL;
+      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( stripslashes_deep( $_POST[$key] ) ) : NULL;
     }
     $master_arr['author'] = wp_get_current_user()->ID;
     switch( $time ) {
