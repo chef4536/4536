@@ -124,6 +124,13 @@ class Shortcode_Setting_4536 {
 	static $instance;
 	public $wp_list_table;
 
+  public $txt_arr = [
+    'common_text' => '共通',
+    'mobile_text' => 'スマホ',
+    'pc_text' => 'PC',
+    'amp_text' => 'AMP',
+  ];
+
 	public function __construct() {
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
     add_action( 'admin_init', [$this, 'create_table'] );
@@ -187,6 +194,7 @@ class Shortcode_Setting_4536 {
       title varchar(60) NOT NULL,
       tag varchar(60) NOT NULL,
       common_text text NULL,
+      mobile_text text NULL,
       pc_text text NULL,
       amp_text text NULL,
       date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -237,6 +245,7 @@ class Shortcode_Setting_4536 {
                   <label for="shortcode">このショートコードをコピーして、本文またはウィジェット内にペーストしてください。</label>
                   <input type="text" readonly onfocus="this.select();" value="[<?php if( isset( $data ) ) echo $data->tag; ?>]" size="30" id="shortcode" />
                 </p>
+                <p class="button" id="copy"><i class="far fa-copy"></i> コピーする</p>
               </div>
             </div>
           </div>
@@ -246,25 +255,26 @@ class Shortcode_Setting_4536 {
             	$('#shortcode').val( '[' + $('#shortcode_tag').val() + ']' );
             })
           });
+          function copy() {
+            const copyText = document.querySelector("#shortcode");
+            copyText.select();
+            document.execCommand("copy");
+          }
+          document.querySelector("#copy").addEventListener("click", copy);
         </script>
           <div class="metabox-holder">
             <div class="postbox">
               <div class="tabs">
                 <?php
-                $arr = [
-                  'common_text' => '共通',
-                  'pc_text' => 'PC用',
-                  'amp_text' => 'AMP用',
-                ];
                 $no = 0;
-                foreach( $arr as $key => $value ) {
+                foreach( $this->txt_arr as $key => $value ) {
                   $checked = ( $no === 0 ) ? ' checked' : '';
                   $no++;
                   ?>
                   <input id="<?php echo $key; ?>" type="radio" name="tab_item"<?php echo $checked; ?>>
                   <label class="tab_item" for="<?php echo $key; ?>"><?php echo $value; ?></label>
                 <?php }
-                foreach( $arr as $key => $value ) { ?>
+                foreach( $this->txt_arr as $key => $value ) { ?>
                   <fieldset class="tab_content" id="<?php echo $key; ?>_content">
                     <textarea name="<?php echo $key; ?>" rows="15" cols="100" class="code" style="width:100%"><?php if( isset( $data ) ) echo $data->$key; ?></textarea>
                   </fieldset>
@@ -284,12 +294,12 @@ class Shortcode_Setting_4536 {
         }
         .tab_item {
           box-sizing: border-box;
-          width: calc(100%/3);
+          width: calc(100%/4);
           line-height: 1.6;
           padding: .5em;
           border-bottom: 3px solid #5ab4bd;
           background-color: #d9d9d9;
-          font-size: 16px;
+          font-size: 14px;
           text-align: center;
           color: #565656;
           display: block;
@@ -311,6 +321,7 @@ class Shortcode_Setting_4536 {
           overflow: hidden;
         }
         #common_text:checked ~ #common_text_content,
+        #mobile_text:checked ~ #mobile_text_content,
         #pc_text:checked ~ #pc_text_content,
         #amp_text:checked ~ #amp_text_content {
           display: block;
@@ -360,12 +371,7 @@ class Shortcode_Setting_4536 {
       }
     }
     $master_arr['tag'] = esc_html( stripslashes_deep( $tag ) );
-    $arr = [
-      'common_text',
-      'pc_text',
-      'amp_text',
-    ];
-    foreach( $arr as $key ) {
+    foreach( $this->txt_arr as $key => $value ) {
       $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( stripslashes_deep( $_POST[$key] ) ) : NULL;
     }
     $master_arr['author'] = wp_get_current_user()->ID;
