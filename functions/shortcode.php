@@ -43,6 +43,7 @@ if( !empty( $data ) ) {
       if( is_mobile() && !empty( $mobile = $arr['mobile_text'] ) ) $text = $mobile;
       if( !is_mobile() && !empty( $pc = $arr['pc_text'] ) ) $text = $pc;
       if( is_amp() && !empty( $amp = $arr['amp_text'] ) ) $text = $amp;
+      if( $arr['wrap'] === '1' ) $text = wpautop( $text );
       return $text;
     });
   }

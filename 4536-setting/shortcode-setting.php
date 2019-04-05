@@ -190,6 +190,7 @@ class Shortcode_Setting_4536 {
       mobile_text text NULL,
       pc_text text NULL,
       amp_text text NULL,
+      wrap bit(1) NOT NULL DEFAULT b'0',
       date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       modified datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
       UNIQUE KEY id (ID)
@@ -209,7 +210,7 @@ class Shortcode_Setting_4536 {
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( SHORTCODE_TABLE, $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
-        $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, ['style' => 'color:#a00;margin-left:1em;'] );
+        $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, ['style' => 'color:#a00'] );
       } else {
         $link_to_new = '';
         $h1 = 'ショートコードの新規追加';
@@ -220,64 +221,94 @@ class Shortcode_Setting_4536 {
       $link_to_list = '<a href="' . menu_page_url( 'shortcode', false ) . '" class="page-title-action">一覧</a>';
       ob_start(); ?>
       <div id="poststuff">
-        <div id="post-body-content">
-          <div id="titlediv">
-            <div id="titlewrap">
-              <input type="text" value="<?php if( isset( $data ) ) echo $data->title; ?>" name="shortcode_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
+        <div id="post-body" class="columns-2">
+          <div id="post-body-content">
+            <div id="titlediv">
+              <div id="titlewrap">
+                <input type="text" value="<?php if( isset( $data ) ) echo $data->title; ?>" name="shortcode_title" size="30" id="title" spellcheck="true" autocomplete="off" placeholder="タイトルを入力" />
+              </div>
             </div>
-          </div>
-          <div class="metabox-holder">
-            <div class="postbox" >
-              <h3 class="hndle">ショートコード名</h3>
-              <div id="shortcode_section" class="inside">
-                <p class="description">
-                  <label for="shortcode_tag">使いやすいように自由に名前を設定できます。未入力の場合はタイトルの文字が使われます。タイトルが未入力の場合は自動生成します。</label>
-                  <input type="text" value="<?php if( isset( $data ) ) echo $data->tag; ?>" name="shortcode_tag" pattern="\S+" size="30" id="shortcode_tag" spellcheck="true" autocomplete="off" placeholder="ショートコード名" />
-                </p>
-                <p>
-                  <label for="shortcode">このショートコードをコピーして、本文またはウィジェット内にペーストしてください。</label>
-                  <input type="text" readonly onfocus="this.select();" value="[<?php if( isset( $data ) ) echo $data->tag; ?>]" size="30" id="shortcode" />
-                </p>
-                <p class="button" id="copy"><i class="far fa-copy"></i> コピーする</p>
+            <div class="metabox-holder">
+              <div class="postbox" >
+                <h3 class="hndle">ショートコード名</h3>
+                <div id="shortcode_section" class="inside">
+                  <p class="description">
+                    <label for="shortcode_tag">使いやすいように自由に名前を設定できます。未入力の場合はタイトルの文字が使われます。タイトルが未入力の場合は自動生成します。</label>
+                    <input type="text" value="<?php if( isset( $data ) ) echo $data->tag; ?>" name="shortcode_tag" pattern="\S+" size="30" id="shortcode_tag" spellcheck="true" autocomplete="off" placeholder="ショートコード名" />
+                  </p>
+                  <p>
+                    <label for="shortcode">このショートコードをコピーして、本文またはウィジェット内にペーストしてください。</label>
+                    <input type="text" readonly onfocus="this.select();" value="[<?php if( isset( $data ) ) echo $data->tag; ?>]" size="30" id="shortcode" />
+                  </p>
+                  <p class="button" id="copy"><i class="far fa-copy"></i> コピーする</p>
+                </div>
+              </div>
+            </div>
+            <script>
+              $(function() {
+                $('#shortcode_tag').on('keyup change',function() {
+                	$('#shortcode').val( '[' + $('#shortcode_tag').val() + ']' );
+                })
+              });
+              function copy() {
+                const copyText = document.querySelector("#shortcode");
+                copyText.select();
+                document.execCommand("copy");
+              }
+              document.querySelector("#copy").addEventListener("click", copy);
+            </script>
+            <div class="metabox-holder">
+              <div class="postbox">
+                <div class="tabs">
+                  <?php
+                  $no = 0;
+                  foreach( $this->txt_arr as $key => $value ) {
+                    $checked = ( $no === 0 ) ? ' checked' : '';
+                    $no++;
+                    ?>
+                    <input id="<?php echo $key; ?>" type="radio" name="tab_item"<?php echo $checked; ?>>
+                    <label class="tab_item" for="<?php echo $key; ?>"><?php echo $value; ?></label>
+                  <?php }
+                  foreach( $this->txt_arr as $key => $value ) { ?>
+                    <fieldset class="tab_content" id="<?php echo $key; ?>_content">
+                      <textarea name="<?php echo $key; ?>" rows="15" cols="100" class="code" style="width:100%"><?php if( isset( $data ) ) echo $data->$key; ?></textarea>
+                    </fieldset>
+                  <?php } ?>
+                </div>
               </div>
             </div>
           </div>
-          <script>
-          $(function() {
-            $('#shortcode_tag').on('keyup change',function() {
-            	$('#shortcode').val( '[' + $('#shortcode_tag').val() + ']' );
-            })
-          });
-          function copy() {
-            const copyText = document.querySelector("#shortcode");
-            copyText.select();
-            document.execCommand("copy");
-          }
-          document.querySelector("#copy").addEventListener("click", copy);
-        </script>
-          <div class="metabox-holder">
-            <div class="postbox">
-              <div class="tabs">
-                <?php
-                $no = 0;
-                foreach( $this->txt_arr as $key => $value ) {
-                  $checked = ( $no === 0 ) ? ' checked' : '';
-                  $no++;
-                  ?>
-                  <input id="<?php echo $key; ?>" type="radio" name="tab_item"<?php echo $checked; ?>>
-                  <label class="tab_item" for="<?php echo $key; ?>"><?php echo $value; ?></label>
-                <?php }
-                foreach( $this->txt_arr as $key => $value ) { ?>
-                  <fieldset class="tab_content" id="<?php echo $key; ?>_content">
-                    <textarea name="<?php echo $key; ?>" rows="15" cols="100" class="code" style="width:100%"><?php if( isset( $data ) ) echo $data->$key; ?></textarea>
-                  </fieldset>
-                <?php } ?>
+          <div id="postbox-container-1">
+            <div class="postbox" >
+              <h3 class="hndle">タグ設定</h3>
+              <div id="shortcode_section" class="inside">
+                <p>
+                  <?php if( isset( $data ) ) $wrap = $data->wrap; ?>
+                  <label><input type="checkbox" value="1" name="shortcode_wrap" <?php checked( $wrap, 1 );?>/>Pタグで囲む</label>
+                </p>
+                <p class="description">※通常の本文のように自動整形したい場合はチェックを入れてください。</p>
+              </div>
+            </div>
+            <div id="submitdiv" class="postbox">
+              <h3 class="hndle">ステータス</h3>
+              <div class="inside">
+                <div id="submitpost" class="submitbox">
+                  <div id="major-publishing-actions">
+                    <div id="delete-action">
+                      <?php echo $delete_submit; ?>
+                    </div>
+                    <div id="publishing-action">
+                      <span class="spinner"></span>
+                      <?php echo $submit; ?>
+                    </div>
+                    <div style="clear:both"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <?php echo $submit.$delete_submit; ?>
       <style>
         #shortcode_section input[type="text"] {
           display: block;
@@ -368,6 +399,7 @@ class Shortcode_Setting_4536 {
     foreach( $this->txt_arr as $key => $value ) {
       $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( trim( stripslashes_deep( $_POST[$key] ) ) ) : NULL;
     }
+    $master_arr['wrap'] = isset( $_POST['shortcode_wrap'] ) ? true : false;
     $master_arr['author'] = wp_get_current_user()->ID;
     switch( $time ) {
       case 'date':
