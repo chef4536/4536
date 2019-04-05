@@ -28,6 +28,15 @@ add_shortcode('post-prev-next-4536', function() {
     return $page_nav;
 });
 
-//消さない
+//--------------------消さない-----------------------//
 add_filter( 'widget_text', 'shortcode_unautop' );
 add_filter( 'widget_text', 'do_shortcode' );
+//--------------------消さない-----------------------//
+
+//ショートコード
+$data = $wpdb->get_results( "SELECT * FROM " . SHORTCODE_TABLE, ARRAY_A );
+if( !empty( $data ) ) {
+  foreach( $data as $num => $arr ) {
+    //処理
+  }
+}

@@ -138,12 +138,12 @@ class Shortcode_Setting_4536 {
     add_action( 'admin_init', [$this, 'delete'] );
     // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
-      insert_db_table_record( $this->table_name(), $this->post_data() );
+      insert_db_table_record( SHORTCODE_TABLE, $this->post_data() );
       global $wpdb;
       update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) ) {
-      update_db_table_record( $this->table_name(), $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
+      update_db_table_record( SHORTCODE_TABLE, $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
     }
     if( isset( $_POST['action'] ) && $_POST['action'] === 'bulk_delete_4536' ) {
       if( !isset( $_POST['shortcode'] ) ) {
@@ -153,7 +153,7 @@ class Shortcode_Setting_4536 {
       } else {
         global $wpdb;
         $ids = implode( ',', array_map( 'absint', $_POST['shortcode'] ) );
-        $wpdb->query( "DELETE FROM {$wpdb->prefix}4536_shortcode WHERE ID IN($ids)" );
+        $wpdb->query( "DELETE FROM " . SHORTCODE_TABLE . " WHERE ID IN($ids)" );
       }
     }
 	}
@@ -172,23 +172,16 @@ class Shortcode_Setting_4536 {
 		$this->wp_list_table = new Shortcode_List_Table_4536();
 	}
 
-  function table_name() {
-    global $wpdb;
-    $table_name = $wpdb->prefix . '4536_shortcode';
-    return $table_name;
-  }
-
   function create_table() {
     global $wpdb;
-    $table_name = $this->table_name();
     $db_version = '1.0';
     $installed_ver = get_option( '4536_shortcode_db_version' );
     if(
-      !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . $table_name . "'") ) &&
+      !is_null( $wpdb->get_row("SHOW TABLES FROM " . DB_NAME . " LIKE '" . SHORTCODE_TABLE . "'") ) &&
       ( $db_version === $installed_ver )
       ) return;
     $charset_collate = $wpdb->get_charset_collate();
-    $sql = "CREATE TABLE $table_name (
+    $sql = "CREATE TABLE " . SHORTCODE_TABLE . " (
       ID bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
       author bigint(20) UNSIGNED DEFAULT '1' NOT NULL,
       title varchar(60) NOT NULL,
@@ -214,7 +207,7 @@ class Shortcode_Setting_4536 {
         $link_to_new = remove_query_arg( 'ID' );
         $link_to_new = '<a href="' . add_query_arg( 'action', 'new', $link_to_new ) . '" class="page-title-action">新規追加</a>';
         $h1 = 'ショートコードの編集';
-        $data = get_db_table_record( $this->table_name(), $id );
+        $data = get_db_table_record( SHORTCODE_TABLE, $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
         $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, ['style' => 'color:#a00;margin-left:1em;'] );
       } else {
@@ -337,7 +330,7 @@ class Shortcode_Setting_4536 {
       $action = '';
       $h1 = 'ショートコード設定';
       global $wpdb;
-      $data = $wpdb->get_results( "SELECT * FROM " . $this->table_name(), ARRAY_A );
+      $data = $wpdb->get_results( "SELECT * FROM " . SHORTCODE_TABLE, ARRAY_A );
       ob_start();
       $this->wp_list_table->prepare_items( $data );
       $this->wp_list_table->display();
@@ -391,7 +384,7 @@ class Shortcode_Setting_4536 {
     ( isset( $_POST['delete_shortcode_setting_submit_4536'] ) ) &&
     ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) )
     ) {
-      delete_db_table_record( $this->table_name(), ['ID' => $_GET['ID']], ['%d'] );
+      delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
       wp_safe_redirect( menu_page_url( 'shortcode', false ) );
       exit();
     }

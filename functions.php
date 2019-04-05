@@ -1,5 +1,8 @@
 <?php
 
+//定数関連
+require_once('functions/_define.php');
+
 //functionsフォルダのファイル読み込み
 require_once('functions/_init.php');
 
