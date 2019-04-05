@@ -232,7 +232,7 @@ class Shortcode_Setting_4536 {
               <div id="shortcode_section" class="inside">
                 <p class="description">
                   <label for="shortcode_tag">使いやすいように自由に名前を設定できます。未入力の場合はタイトルの文字が使われます。タイトルが未入力の場合は自動生成します。</label>
-                  <input type="text" value="<?php if( isset( $data ) ) echo $data->tag; ?>" name="shortcode_tag" size="30" id="shortcode_tag" spellcheck="true" autocomplete="off" placeholder="ショートコード名" />
+                  <input type="text" value="<?php if( isset( $data ) ) echo $data->tag; ?>" name="shortcode_tag" pattern="\S+" size="30" id="shortcode_tag" spellcheck="true" autocomplete="off" placeholder="ショートコード名" />
                 </p>
                 <p>
                   <label for="shortcode">このショートコードをコピーして、本文またはウィジェット内にペーストしてください。</label>
@@ -352,7 +352,7 @@ class Shortcode_Setting_4536 {
 
   function post_data( $time = 'date' ) {
     $master_arr = [];
-    $master_arr['title'] = ( isset( $_POST['shortcode_title'] ) && !empty( $_POST['shortcode_title'] ) ) ? esc_html( stripslashes_deep( $_POST['shortcode_title'] ) ) : '(タイトルなし)' ;
+    $master_arr['title'] = ( isset( $_POST['shortcode_title'] ) && !empty( $_POST['shortcode_title'] ) ) ? esc_html( trim( stripslashes_deep( $_POST['shortcode_title'] ) ) ) : '(タイトルなし)' ;
     if( isset( $_POST['shortcode_tag'] ) ) {
       if( !empty( $_POST['shortcode_tag'] ) ) {
         $tag = $_POST['shortcode_tag'];
@@ -363,9 +363,10 @@ class Shortcode_Setting_4536 {
         $tag = '4536-shortcode-' . intval( $id );
       }
     }
-    $master_arr['tag'] = esc_html( stripslashes_deep( $tag ) );
+    $tag = str_replace( [' ', '　'], '', $tag );
+    $master_arr['tag'] = esc_html( trim( stripslashes_deep( $tag ) ) );
     foreach( $this->txt_arr as $key => $value ) {
-      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( stripslashes_deep( $_POST[$key] ) ) : NULL;
+      $master_arr[$key] = isset( $_POST[$key] ) && !empty( $_POST[$key] ) ? esc_html( trim( stripslashes_deep( $_POST[$key] ) ) ) : NULL;
     }
     $master_arr['author'] = wp_get_current_user()->ID;
     switch( $time ) {

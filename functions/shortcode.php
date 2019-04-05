@@ -33,10 +33,17 @@ add_filter( 'widget_text', 'shortcode_unautop' );
 add_filter( 'widget_text', 'do_shortcode' );
 //--------------------消さない-----------------------//
 
-//ショートコード
+//ユーザー定義のショートコード
 $data = $wpdb->get_results( "SELECT * FROM " . SHORTCODE_TABLE, ARRAY_A );
 if( !empty( $data ) ) {
   foreach( $data as $num => $arr ) {
-    //処理
+    if( $arr['tag'] === '' ) continue;
+    add_shortcode( $arr['tag'], function() use( $arr ) {
+      $text = $arr['common_text'];
+      if( is_mobile() && !empty( $mobile = $arr['mobile_text'] ) ) $text = $mobile;
+      if( !is_mobile() && !empty( $pc = $arr['pc_text'] ) ) $text = $pc;
+      if( is_amp() && !empty( $amp = $arr['amp_text'] ) ) $text = $amp;
+      return $text;
+    });
   }
 }
