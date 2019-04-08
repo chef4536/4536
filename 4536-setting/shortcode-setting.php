@@ -141,9 +141,15 @@ class Shortcode_Setting_4536 {
       insert_db_table_record( SHORTCODE_TABLE, $this->post_data() );
       global $wpdb;
       update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
+      add_action( 'admin_notices', function() {
+        echo '<div class="updated"><p>新しいショートコードを追加しました。</p></div>';
+      });
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) ) {
       update_db_table_record( SHORTCODE_TABLE, $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
+      add_action( 'admin_notices', function() {
+        echo '<div class="updated"><p>変更を保存しました。</p></div>';
+      });
     }
     if( isset( $_POST['action'] ) && $_POST['action'] === 'bulk_delete_4536' ) {
       if( !isset( $_POST['shortcode'] ) ) {
@@ -153,7 +159,11 @@ class Shortcode_Setting_4536 {
       } else {
         global $wpdb;
         $ids = implode( ',', array_map( 'absint', $_POST['shortcode'] ) );
+        $count = $_POST['shortcode'];
         $wpdb->query( "DELETE FROM " . SHORTCODE_TABLE . " WHERE ID IN($ids)" );
+        add_action( 'admin_notices', function() use( $count ) {
+          echo '<div class="updated"><p>'. count( $count ) .'個の項目を削除しました。</p></div>';
+        });
       }
     }
 	}
@@ -280,13 +290,19 @@ class Shortcode_Setting_4536 {
           </div>
           <div id="postbox-container-1">
             <div class="postbox" >
-              <h3 class="hndle">タグ設定</h3>
+              <h3 class="hndle">ヘルプ</h3>
+              <div class="inside">
+                <p><i class="fas fa-info-circle"></i><a href="https://4536.jp/shortcode" target="_blank">ショートコード設定について</a></p>
+              </div>
+            </div>
+            <div class="postbox" >
+              <h3 class="hndle">自動整形</h3>
               <div id="shortcode_section" class="inside">
                 <p>
                   <?php if( isset( $data ) ) $wrap = $data->wrap; ?>
-                  <label><input type="checkbox" value="1" name="shortcode_wrap" <?php checked( $wrap, 1 );?>/>Pタグで囲む</label>
+                  <label><input type="checkbox" value="1" name="shortcode_wrap" <?php checked( $wrap, 1 );?>/>自動整形する</label>
                 </p>
-                <p class="description">※通常の本文のように自動整形したい場合はチェックを入れてください。</p>
+                <p class="description">※通常の本文のように自動整形機能をオンにする場合はチェックを入れてください。全体をPタグで囲み、改行はbrタグに変換されます。</p>
               </div>
             </div>
             <div id="submitdiv" class="postbox">
@@ -353,6 +369,9 @@ class Shortcode_Setting_4536 {
         .tabs input:checked + .tab_item {
           background-color: #5ab4bd;
           color: #fff;
+        }
+        .far,.fas {
+          margin-right: 5px;
         }
       </style>
       <?php
