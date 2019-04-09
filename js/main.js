@@ -3,11 +3,11 @@ require('intersection-observer');
 
 //Lazyload
 import lozad from 'lozad';
-const observer = lozad( '.lozad', {
-  rootMargin: '40px',
-  loaded: function( el ) {
-    el.classList.add( 'fade-in' );
-  }
+const observer = lozad('.lozad', {
+  rootMargin: '100px 40px',
+  // loaded: function(el) {
+  //   el.classList.add('fade-in');
+  // }
 });
 observer.observe();
 
