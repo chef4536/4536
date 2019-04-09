@@ -27,7 +27,13 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
   function column_title( $item ) {
     $title = sprintf( '<a href="?page=%s&action=%s&ID=%d">' . $item['title'] . '</a>', $_REQUEST['page'], 'edit', $item['ID'] );
     $actions = [
-      'edit' => sprintf( '<a href="?page=%s&action=%s&ID=%d">編集</a>', $_GET['page'], 'edit', $item['ID'] ),
+      'edit' => sprintf(
+        '<a href="?page=%s&action=%s&ID=%d&shortcode_nonce=%s">編集</a>',
+        $_GET['page'],
+        'edit',
+        $item['ID'],
+        wp_create_nonce( $item['ID'] )
+      ),
       'delete' => sprintf(
         '<a href="?page=%s&action=%s&ID=%d&shortcode_nonce=%s" onClick="%s">削除</a>',
         $_GET['page'],
@@ -215,10 +221,10 @@ class Shortcode_Setting_4536 {
 
 	public function form() {
     $link_to_new = '<a href="' . add_query_arg( 'action', 'new' ) . '" class="page-title-action">新規追加</a>';
-    if ( isset( $_GET['action'] ) ) {
+    if( filter_input( INPUT_GET, 'action' ) && $_GET['action'] === 'new' || $_GET['action'] === 'edit' ) {
       if( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) {
         $id = intval( $_GET['ID'] );
-        $link_to_new = remove_query_arg( 'ID' );
+        $link_to_new = remove_query_arg( ['ID', 'shortcode_nonce'] );
         $link_to_new = '<a href="' . add_query_arg( 'action', 'new', $link_to_new ) . '" class="page-title-action">新規追加</a>';
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( SHORTCODE_TABLE, $id );
@@ -227,14 +233,15 @@ class Shortcode_Setting_4536 {
           'onClick' => "if( confirm('このショートコードを削除してもいいですか？') ) {return true;} return false;",
           'style' => 'color:#a00',
         ];
+        $action = add_query_arg([ 'ID' => $id, 'action' => 'edit' ]);
         $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, $button_args );
       } else {
+        $id = get_option( '4536_shortcode_last_id', 1 );
         $link_to_new = '';
         $h1 = 'ショートコードの新規追加';
+        $action = add_query_arg([ 'ID' => $id, 'action' => 'edit', 'shortcode_nonce' => wp_create_nonce( $id ) ]);
         $submit = get_submit_button( '保存', 'primary large', 'add_new_shortcode_setting_submit_4536', $wrap, $other_attributes );
-        $id = get_option( '4536_shortcode_last_id', 1 );
       }
-      $action = add_query_arg([ 'ID' => $id, 'action' => 'edit' ]);
       $link_to_list = '<a href="' . menu_page_url( 'shortcode', false ) . '" class="page-title-action">一覧</a>';
       ob_start(); ?>
       <div id="poststuff">
@@ -399,9 +406,9 @@ class Shortcode_Setting_4536 {
         $msg = '<p>不正なリクエストが送信されました。初めからやり直してください。</p><p><a href="'. menu_page_url( 'shortcode', false ) .'">ショートコードメニューに戻る</a></p>';
         wp_die( $msg );
       };
-      // delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
-      // wp_safe_redirect( menu_page_url( 'shortcode', false ) );
-      // exit();
+      delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
+      wp_safe_redirect( menu_page_url( 'shortcode', false ) );
+      exit();
     }
   }
 
