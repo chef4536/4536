@@ -402,10 +402,7 @@ class Shortcode_Setting_4536 {
     ( isset( $_POST['delete_shortcode_setting_submit_4536'] ) ) &&
     ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) )
     ) {
-      if( wp_verify_nonce( $_GET['shortcode_nonce'], $_GET['ID'] ) !== 1 ) {
-        $msg = '<p>不正なリクエストが送信されました。初めからやり直してください。</p><p><a href="'. menu_page_url( 'shortcode', false ) .'">ショートコードメニューに戻る</a></p>';
-        wp_die( $msg );
-      };
+      $this->nonce_check();
       delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
       wp_safe_redirect( menu_page_url( 'shortcode', false ) );
       exit();
@@ -463,6 +460,13 @@ class Shortcode_Setting_4536 {
       }
     </style>
   <?php }
+
+  function nonce_check() {
+    if( wp_verify_nonce( $_GET['shortcode_nonce'], $_GET['ID'] ) !== 1 ) {
+      $msg = '<p>不正なリクエストが送信されました。初めからやり直してください。</p><p><a href="'. menu_page_url( 'shortcode', false ) .'">ショートコードメニューに戻る</a></p>';
+      wp_die( $msg );
+    };
+  }
 
 }
 new Shortcode_Setting_4536();
