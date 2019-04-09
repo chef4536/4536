@@ -147,6 +147,7 @@ class Shortcode_Setting_4536 {
     add_action( 'admin_init', [$this, 'delete'] );
     // delete_option( '4536_shortcode_last_id' );
     if( isset( $_POST['add_new_shortcode_setting_submit_4536'] ) ) {
+      $this->nonce_check();
       insert_db_table_record( SHORTCODE_TABLE, $this->post_data() );
       global $wpdb;
       update_option( '4536_shortcode_last_id', ++$wpdb->insert_id );
@@ -155,6 +156,7 @@ class Shortcode_Setting_4536 {
       });
     }
     if( isset( $_POST['update_shortcode_setting_submit_4536'] ) && ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) ) ) {
+      $this->nonce_check();
       update_db_table_record( SHORTCODE_TABLE, $this->post_data( 'modified' ), ['ID' => $_GET['ID']], null, ['%d'] );
       add_action( 'admin_notices', function() {
         echo '<div class="updated"><p>変更を保存しました。</p></div>';
@@ -166,6 +168,10 @@ class Shortcode_Setting_4536 {
           echo '<div class="error"><p>削除する項目にチェックを入れてください。</p></div>';
         });
       } else {
+        if( wp_verify_nonce( $_POST['hidden_delete_nonce'], 'hidden_delete_nonce' ) !== 1 ) {
+          $msg = '<p>不正なリクエストが送信されました。</p><p><a href="?page=shortcode">ショートコードメニューに戻る</a></p>';
+          wp_die( $msg );
+        };
         global $wpdb;
         $ids = implode( ',', array_map( 'absint', $_POST['shortcode'] ) );
         $count = $_POST['shortcode'];
@@ -351,6 +357,7 @@ class Shortcode_Setting_4536 {
       $this->wp_list_table->prepare_items( $data );
       $this->wp_list_table->display();
       $form_inner = ob_get_clean();
+      $hidden_delete_nonce = wp_nonce_field( 'hidden_delete_nonce', 'hidden_delete_nonce', false, false );
     }
     ?>
 		<div class="wrap" id="">
@@ -361,7 +368,10 @@ class Shortcode_Setting_4536 {
       ?>
 			<hr class="wp-header-end">
 			<form method="post" action="<?php echo $action; ?>">
-				<?php echo $form_inner; ?>
+				<?php
+        if( isset( $hidden_delete_nonce ) ) echo $hidden_delete_nonce;
+        echo $form_inner;
+        ?>
 			</form>
 		</div>
 	<?php }
@@ -463,7 +473,7 @@ class Shortcode_Setting_4536 {
 
   function nonce_check() {
     if( wp_verify_nonce( $_GET['shortcode_nonce'], $_GET['ID'] ) !== 1 ) {
-      $msg = '<p>不正なリクエストが送信されました。初めからやり直してください。</p><p><a href="'. menu_page_url( 'shortcode', false ) .'">ショートコードメニューに戻る</a></p>';
+      $msg = '<p>不正なリクエストが送信されました。</p><p><a href="?page=shortcode">ショートコードメニューに戻る</a></p>';
       wp_die( $msg );
     };
   }
