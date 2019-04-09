@@ -7,9 +7,6 @@ if( !class_exists( 'WP_List_Table' ) ) {
 
 class Shortcode_List_Table_4536 extends WP_List_Table {
 
-	/**
-	* 初期化時の設定を行う
-	*/
 	function __construct( $args = [] ) {
 	 	parent::__construct([
  			'singular' => 'shortcode',
@@ -30,8 +27,14 @@ class Shortcode_List_Table_4536 extends WP_List_Table {
   function column_title( $item ) {
     $title = sprintf( '<a href="?page=%s&action=%s&ID=%d">' . $item['title'] . '</a>', $_REQUEST['page'], 'edit', $item['ID'] );
     $actions = [
-      'edit' => sprintf( '<a href="?page=%s&action=%s&ID=%d">編集</a>', $_REQUEST['page'], 'edit', $item['ID'] ),
-      'delete' => sprintf( '<a href="?page=%s&action=%s&ID=%d">削除</a>', $_REQUEST['page'], 'delete', $item['ID'] ),
+      'edit' => sprintf( '<a href="?page=%s&action=%s&ID=%d">編集</a>', $_GET['page'], 'edit', $item['ID'] ),
+      'delete' => sprintf(
+        '<a href="?page=%s&action=%s&ID=%d&shortcode_nonce=%s" onClick="%s">削除</a>',
+        $_GET['page'],
+        'delete',
+        $item['ID'],
+        wp_create_nonce( $item['ID'] ),
+        "if( confirm('このショートコードを削除してもいいですか？') ) {return true;} return false;" ),
     ];
     return sprintf( '%1$s %2$s', $title, $this->row_actions($actions) );
   }
@@ -220,7 +223,11 @@ class Shortcode_Setting_4536 {
         $h1 = 'ショートコードの編集';
         $data = get_db_table_record( SHORTCODE_TABLE, $id );
         $submit = get_submit_button( '変更を保存', 'primary large', 'update_shortcode_setting_submit_4536', $wrap, $other_attributes );
-        $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, ['style' => 'color:#a00'] );
+        $button_args = [
+          'onClick' => "if( confirm('このショートコードを削除してもいいですか？') ) {return true;} return false;",
+          'style' => 'color:#a00',
+        ];
+        $delete_submit = get_submit_button( '削除', 'delete large', 'delete_shortcode_setting_submit_4536', $wrap, $button_args );
       } else {
         $link_to_new = '';
         $h1 = 'ショートコードの新規追加';
@@ -325,56 +332,8 @@ class Shortcode_Setting_4536 {
           </div>
         </div>
       </div>
-      <style>
-        #shortcode_section input[type="text"] {
-          display: block;
-        }
-        .tabs {
-          width: 100%;
-        }
-        .tab_item {
-          box-sizing: border-box;
-          width: calc(100%/4);
-          line-height: 1.6;
-          padding: .5em;
-          border-bottom: 3px solid #5ab4bd;
-          background-color: #d9d9d9;
-          font-size: 14px;
-          text-align: center;
-          color: #565656;
-          display: block;
-          float: left;
-          text-align: center;
-          font-weight: bold;
-          transition: all 0.2s ease;
-        }
-        .tab_item:hover {
-          opacity: 0.75;
-        }
-        input[name="tab_item"] {
-          display: none;
-        }
-        .tab_content {
-          display: none;
-          padding: 1.5em;
-          clear: both;
-          overflow: hidden;
-        }
-        #common_text:checked ~ #common_text_content,
-        #mobile_text:checked ~ #mobile_text_content,
-        #pc_text:checked ~ #pc_text_content,
-        #amp_text:checked ~ #amp_text_content {
-          display: block;
-        }
-        .tabs input:checked + .tab_item {
-          background-color: #5ab4bd;
-          color: #fff;
-        }
-        .far,.fas {
-          margin-right: 5px;
-        }
-      </style>
       <?php
+      $this->form_style();
       $form_inner = ob_get_clean();
 		} else {
       $action = '';
@@ -436,11 +395,67 @@ class Shortcode_Setting_4536 {
     ( isset( $_POST['delete_shortcode_setting_submit_4536'] ) ) &&
     ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) )
     ) {
-      delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
-      wp_safe_redirect( menu_page_url( 'shortcode', false ) );
-      exit();
+      if( wp_verify_nonce( $_GET['shortcode_nonce'], $_GET['ID'] ) !== 1 ) {
+        $msg = '<p>不正なリクエストが送信されました。初めからやり直してください。</p><p><a href="'. menu_page_url( 'shortcode', false ) .'">ショートコードメニューに戻る</a></p>';
+        wp_die( $msg );
+      };
+      // delete_db_table_record( SHORTCODE_TABLE, ['ID' => $_GET['ID']], ['%d'] );
+      // wp_safe_redirect( menu_page_url( 'shortcode', false ) );
+      // exit();
     }
   }
+
+  function form_style() { ?>
+    <style>
+      #shortcode_section input[type="text"] {
+        display: block;
+      }
+      .tabs {
+        width: 100%;
+      }
+      .tab_item {
+        box-sizing: border-box;
+        width: calc(100%/4);
+        line-height: 1.6;
+        padding: .5em;
+        border-bottom: 3px solid #5ab4bd;
+        background-color: #d9d9d9;
+        font-size: 14px;
+        text-align: center;
+        color: #565656;
+        display: block;
+        float: left;
+        text-align: center;
+        font-weight: bold;
+        transition: all 0.2s ease;
+      }
+      .tab_item:hover {
+        opacity: 0.75;
+      }
+      input[name="tab_item"] {
+        display: none;
+      }
+      .tab_content {
+        display: none;
+        padding: 1.5em;
+        clear: both;
+        overflow: hidden;
+      }
+      #common_text:checked ~ #common_text_content,
+      #mobile_text:checked ~ #mobile_text_content,
+      #pc_text:checked ~ #pc_text_content,
+      #amp_text:checked ~ #amp_text_content {
+        display: block;
+      }
+      .tabs input:checked + .tab_item {
+        background-color: #5ab4bd;
+        color: #fff;
+      }
+      .far,.fas {
+        margin-right: 5px;
+      }
+    </style>
+  <?php }
 
 }
 new Shortcode_Setting_4536();
