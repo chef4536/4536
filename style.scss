@@ -668,17 +668,8 @@ ul.children {
     z-index: 3;
 }
 .fixed-footer-menu-item {
-    padding: 5px 0;
-    border-right: 1px solid;
-    border-top: 1px solid
-}
-.fixed-footer-menu-item:last-child {
-    border-right: none;
-}
-.fixed-footer-menu-title {
-    display: block;
-    font-size: 10px;
-    line-height: 1;
+  padding: .5em 0;
+  line-height: 1.4;
 }
 .fixed-footer-menu-item a {
     border: none;

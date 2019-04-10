@@ -29,44 +29,44 @@ if( fixed_footer()==='menu' ) { ?>
             if(fixed_footer_menu_item($name) === true) {
                 if($name === 'home') {
                     if( is_home() || is_front_page() ) continue;
-                    $start_tag = '<a href="'.home_url().'">';
+                    $start_tag = '<a class="fixed-footer-menu-item display-block" href="'.home_url().'">';
                     $end_tag = '</a>';
                     $icon = 'home';
                     $title = 'ホーム';
                 } elseif($name === 'search') {
                     if(is_amp() && !is_ssl()) continue;
-                    $start_tag = '<label for="search-toggle">';
+                    $start_tag = '<label class="fixed-footer-menu-item display-block" for="search-toggle">';
                     $end_tag = '</label>';
                     $icon = 'search';
                     $title = '検索';
                     $class = ' search-button';
                 } elseif($name === 'share') {
-                    $start_tag = '<label for="share-menu-toggle">';
+                    $start_tag = '<label class="fixed-footer-menu-item display-block" for="share-menu-toggle">';
                     $end_tag = '</label>';
                     $icon = 'share-alt';
                     $title = 'シェア';
                     $class = ' fixed-share-toggle-button';
                 } elseif($name === 'slide-menu') {
-                    $start_tag = '<label for="slide-toggle">';
+                    $start_tag = '<label class="fixed-footer-menu-item display-block" for="slide-toggle">';
                     $end_tag = '</label>';
                     $icon = 'bars';
                     $class = ' slide-button';
                     $title = 'メニュー';
                 } elseif($name === 'top') {
-                    $start_tag = '<a id="fixed-page-top-button" href="#header">';
+                    $start_tag = '<a id="fixed-page-top-button" class="fixed-footer-menu-item display-block" href="#header">';
                     $end_tag = '</a>';
                     $icon = 'angle-double-up';
                     $class = ' fixed-page-top';
                     $title = 'トップ';
                 } elseif($name === 'prev') {
                     if( !get_previous_post($true) || !is_single() ) continue;
-                    $start_tag = '<a href="'.get_permalink(get_previous_post($true)->ID).'">';
+                    $start_tag = '<a class="fixed-footer-menu-item display-block" href="'.get_permalink(get_previous_post($true)->ID).'">';
                     $end_tag = '</a>';
                     $icon = 'angle-double-left';
                     $title = '前の記事';
                 } elseif($name === 'next') {
                     if( !get_next_post($true) || !is_single() ) continue;
-                    $start_tag = '<a href="'.get_permalink(get_next_post($true)->ID).'">';
+                    $start_tag = '<a class="fixed-footer-menu-item display-block" href="'.get_permalink(get_next_post($true)->ID).'">';
                     $end_tag = '</a>';
                     $icon = 'angle-double-right';
                     $title = '次の記事';
@@ -76,10 +76,10 @@ if( fixed_footer()==='menu' ) { ?>
             } else {
               continue;
             } ?>
-            <div class="fixed-footer-menu-item flex-1<?php echo $class; ?>">
+            <div class="flex-1<?php echo $class; ?>">
                 <?php echo $start_tag; ?>
-                <i class="fas fa-<?php echo $icon; ?>" aria-hidden="true"></i>
-                <span class="fixed-footer-menu-title"><?php echo $title; ?></span>
+                <i class="fas fa-<?php echo $icon; ?> font-size-22px" aria-hidden="true"></i>
+                <span class="display-block fixed-footer-menu-title font-size-10px"><?php echo $title; ?></span>
                 <?php echo $end_tag; ?>
             </div>
         <?php } ?>

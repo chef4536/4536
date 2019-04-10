@@ -351,13 +351,14 @@ class CustomizerColorSettings_4536 {
       $css[] = '#main .media-section-title,#main .media-content .post-info,.media-section-title,.media-content .post-info{color:'.$media_section_title_color.'}';
     }
 
-    if( !empty($footer_background_color) ) { //フッター背景色
+    if( !empty( $footer_background_color ) ) { //フッター背景色
       $css[] = '#footer,#fixed-footer-menu{background-color:'.$footer_background_color.'}';
     }
 
-    if( !empty($footer_color) ) { //フッター文字色
+    if( !empty( $footer_color ) ) { //フッター文字色
       $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer a{color:'.$footer_color.'}';
       $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',0.25)}';
+      if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',0.25)}';
     }
 
     if( !empty($balloon_right_background_color) ) { //左吹き出し背景色
