@@ -80,13 +80,7 @@ if(is_amp()) {
       <?php }
 
     }
-
-    if( is_user_logged_in() ) {
-      echo '<pre class="inner">';
-      apply_filters( 'dev', $code );
-      echo '</pre>';
-    }
-
+    
     ?>
 
     <div id="wrapper" class="wrapper">

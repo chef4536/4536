@@ -88,9 +88,9 @@ function the_post_thumbnail_4536() {
     if(!has_post_thumbnail()) return;
     if(is_post_thumbnail_4536()==='background_image') {
         $class = get_the_post_thumbnail_4536()['class'];
-        $thumbnail = '<div id="post-thumbnail-4536"><div class="background-thumbnail-4536 alignfull '.$class.'"></div></div>';
+        $thumbnail = '<div id="post-thumbnail-4536"><div class="background-thumbnail-4536 alignwide '.$class.'"></div></div>';
     } elseif(is_post_thumbnail_4536()==='image') {
-        $thumbnail = '<figure id="post-thumbnail-4536" class="alignfull">'.get_the_post_thumbnail().'</figure>';
+        $thumbnail = '<figure id="post-thumbnail-4536" class="alignwide">'.get_the_post_thumbnail().'</figure>';
     }
     if($thumbnail) echo $thumbnail;
 }

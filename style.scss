@@ -9,6 +9,21 @@ License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Version: 1.1.1
 ---------------------------------------------------------*/
+.alignwide {
+  margin-left: -10px;
+  width: calc(100% + 20px);
+  max-width: none;
+}
+.alignfull {
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  width: auto;
+  max-width: none;
+}
+.margin-padding-0 {
+  margin: 0;
+  padding: 0;
+}
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select,textarea,input[type="search"] {
   position: relative;
@@ -1326,6 +1341,10 @@ a[data-embed-content="false"] {
         display: block;
         margin: 0 1.2em 1.2em 0;
         float: left;
+    }
+    .alignwide {
+      margin-left: -20px;
+      width: calc(100% + 40px);
     }
     .double-rectangle-wrapper .ad-left {
         margin: 0 1em 0 0;

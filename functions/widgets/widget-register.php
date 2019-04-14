@@ -29,7 +29,7 @@ register_sidebar([
     'name' => 'ヘッダー下',
     'id' => 'header-widget',
     'description' => 'サイトタイトルやメニューの下部分に表示されます。',
-    'before_widget' => '<div class="header-widget amp-header-widget margin-1em-auto padding-0-10px"><div class="widget-4536 %1$s %2$s inner">',
+    'before_widget' => '<div class="%1$s header-widget margin-1em-auto padding-0-10px"><div class="widget-4536 %2$s inner">',
     'after_widget' => '</div></div>',
     'before_title' => '<p class="widget-title">',
     'after_title' => '</p>',
