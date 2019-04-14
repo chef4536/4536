@@ -355,7 +355,7 @@ add_filter( 'inline_style_4536', function( $css ) {
   if( copy_guard() ) $css[] = 'body{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}';
 
   //固定フッター
-  if( fixed_footer() ) $css[] = '.footer{padding-bottom:40px}';
+  if( fixed_footer() ) $css[] = '.footer{padding-bottom:60px}';
 
   //固定シェアボタン
   if( fixed_footer()==='share' ) $css[] = '#fixed-share-button-mask{position:absolute;top:0;left:0;right:0;bottom:0;opacity:.9;z-index:-1}';

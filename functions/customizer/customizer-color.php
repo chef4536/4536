@@ -356,7 +356,7 @@ class CustomizerColorSettings_4536 {
     }
 
     if( !empty( $footer_color ) ) { //フッター文字色
-      $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer a{color:'.$footer_color.'}';
+      $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer-menu-item{color:'.$footer_color.'}';
       $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',0.25)}';
       if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',0.25)}';
     }
