@@ -256,6 +256,15 @@ li {
   height: 0;
 }
 
+/* line-height関連 */
+.line-height-1_4 {
+  line-height: 1.4;
+}
+
+.line-height-1_6 {
+  line-height: 1.6;
+}
+
 /* padding関連 */
 .padding-10px {
   padding: 10px;
@@ -883,6 +892,20 @@ a.simple-sns-button-2 {
 /* min-768px BEGIN for tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 768px) {
+  .alignright {
+    display: block;
+    margin: 0 0 1.2em 1.2em;
+    float: right;
+  }
+  .alignleft {
+    display: block;
+    margin: 0 1.2em 1.2em 0;
+    float: left;
+  }
+  .alignwide {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+  }
   .display-none-pc {
     display: none;
   }
@@ -964,6 +987,9 @@ a.simple-sns-button-2 {
   .padding-wrap-main-4536 {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .max-width-half-pc {
+    max-width: 50%;
   }
   /* min-768px END */
 }

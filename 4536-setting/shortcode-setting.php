@@ -432,7 +432,8 @@ class Shortcode_Setting_4536 {
         width: calc(100%/4);
         line-height: 1.6;
         padding: .5em;
-        border-bottom: 3px solid #5ab4bd;
+        border-bottom: 3px solid #00acff;
+        border-right: 1px solid #00acff;
         background-color: #d9d9d9;
         font-size: 14px;
         text-align: center;
@@ -442,6 +443,9 @@ class Shortcode_Setting_4536 {
         text-align: center;
         font-weight: bold;
         transition: all 0.2s ease;
+      }
+      .tab_item:last-of-type {
+        border-right: none;
       }
       .tab_item:hover {
         opacity: 0.75;
@@ -462,7 +466,7 @@ class Shortcode_Setting_4536 {
         display: block;
       }
       .tabs input:checked + .tab_item {
-        background-color: #5ab4bd;
+        background-color: #00acff;
         color: #fff;
       }
       .far,.fas {

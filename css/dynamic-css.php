@@ -324,9 +324,6 @@ add_filter( 'inline_style_4536', function( $css ) {
       }
   }
 
-  //CTA,配列結合
-  if(cta_widget_thumbnail_4536()) $css = array_merge($css,cta_widget_thumbnail_4536());
-
   //メディアセクション使ってるかどうか
   if(!is_admin()) {
       ob_start();

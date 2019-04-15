@@ -923,18 +923,18 @@ ul.children {
     background-color: #25c04a;
 }
 .button-4536 {
-    overflow: hidden;
-    width: 90%;
-    max-width: 480px;
-    clear: both;
-    position: relative;
-	border-radius: 4px;
-    font-size: 16px;
-	line-height: 1.6;
-    text-align: center;
-    margin: 2rem auto;
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  overflow: hidden;
+  width: 90%;
+  max-width: 480px;
+  clear: both;
+  position: relative;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 3em auto 4em;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
 .button-4536 a {
     display: block;
@@ -1332,20 +1332,6 @@ a[data-embed-content="false"] {
 /* min-768px BEGIN for tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 768px) {
-    .alignright {
-        display: block;
-        margin: 0 0 1.2em 1.2em;
-        float: right;
-    }
-    .alignleft {
-        display: block;
-        margin: 0 1.2em 1.2em 0;
-        float: left;
-    }
-    .alignwide {
-      margin-left: -20px;
-      width: calc(100% + 40px);
-    }
     .double-rectangle-wrapper .ad-left {
         margin: 0 1em 0 0;
     }

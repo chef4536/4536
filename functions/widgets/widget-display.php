@@ -235,12 +235,12 @@ class Widget_Display_4536 {
           });
       </script>
       <style>
-          .category-all-check input,.post-type-all-check input {
-              display: none;
-          }
-          .category-all-check,.post-type-all-check {
-              margin-top: 1em;
-          }
+        .category-all-check input,.post-type-all-check input {
+          display: none;
+        }
+        .category-all-check,.post-type-all-check {
+          margin-top: 1em;
+        }
       </style>
   <?php }
 

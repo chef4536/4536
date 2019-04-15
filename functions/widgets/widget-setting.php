@@ -67,29 +67,6 @@ function widget_post_count_4536() {
 }
 
 ///////////////////////////////////
-// CTA
-///////////////////////////////////
-function cta_widget_thumbnail_4536() {
-  global $wp_registered_widgets;
-  foreach(wp_get_sidebars_widgets() as $int => $ids) {
-    foreach($ids as $int => $id) {
-      $widget_obj = $wp_registered_widgets[$id];
-      $num = preg_replace('/.*?-(\d)/', '$1', $id);
-      $widget_opt = get_option($widget_obj['callback'][0]->option_name);
-      $button_text = $widget_opt[$num]['cta_button_text'];
-      $button_url = $widget_opt[$num]['cta_button_url'];
-      $button_text_url = $widget_opt[$num]['cta_button_text_url'];
-      if(!$button_text && !$button_url && !$button_text_url) continue;
-      $pc = '';
-      $style = $widget_opt[$num]['cta_image_style'];
-      if(!empty($style)) $pc = '@media screen and (min-width: 768px) {.cta-image-left{float:left;width:calc(50% - -20px);margin-right:20px}.cta-image-right{float:right;width:calc(50% - 20px);margin-left:20px}}';
-      $css[] = '.cta{padding:2em 0 0.1px}.cta .cta-title{text-align:center;font-size:20px;font-weight:700}.cta p,.cta-title{line-height:1.6}.cta p,.cta-thumbnail,.cta-title{margin:0 20px 20px}'.$pc;
-    }
-  }
-  return $css;
-}
-
-///////////////////////////////////
 // カテゴリーにクラス名を付与
 ///////////////////////////////////
 add_filter( 'wp_list_categories', function( $output, $args ) {
@@ -138,8 +115,8 @@ add_action( 'admin_head-widgets.php', function() { ?>
   <style>
     .tab-item {
         width: 25%;
-        border-bottom: 3px solid #5ab4bd;
-        border-right: 1px solid #5ab4bd;
+        border-bottom: 3px solid #00acff;
+        border-right: 1px solid #00acff;
         background-color: #d9d9d9;
         color: #565656;
         font-size: 10px;
@@ -173,7 +150,7 @@ add_action( 'admin_head-widgets.php', function() { ?>
         border-bottom: 1px solid #ccc;
     }
     .tabs input:checked + .tab-item {
-        background-color: #5ab4bd;
+        background-color: #00acff;
         color: #fff;
     }
     .tab_content .category-list .children {
