@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const to_top = document.getElementById('page-top');
   const wrapper = document.getElementById('wrapper');
   const footer = document.getElementById('footer');
-  const fixed_footer = document.querySelector('.fixed-footer');
-  const fixed_header = header.classList.contains( 'fixed-header' );
+  const fixed_footer = document.querySelector( '.fixed-footer' );
+  const fixed_header = document.querySelector( '.fixed-header' );
   const scroll_sidebar = document.getElementById( 'scroll-sidebar' );
 
   let new_scroll_position = 0;
