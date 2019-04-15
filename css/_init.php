@@ -40,8 +40,8 @@ function add_inline_style_4536( $custom_css = true ) {
 add_action( 'wp_head', function() { ?>
   <style>
   <?php
-  echo add_inline_style_4536(false);
   require_once(get_template_directory() . '/css/inline.min.css');
+  echo add_inline_style_4536( false );
   ?>
   </style>
 <?php });

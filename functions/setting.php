@@ -105,9 +105,9 @@ function hex_to_rgb( $hex ) {
   $hex = str_replace( '#', '', $hex );
   if ( strlen($hex) !== 6 ) return;
   $rgb = [];
-  $rgb[] = hexdec( substr($hex, 1, 2) );
-  $rgb[] = hexdec( substr($hex, 3, 2) );
-  $rgb[] = hexdec( substr($hex, 5, 2) );
+  $rgb[] = hexdec( substr($hex, 0, 2) );
+  $rgb[] = hexdec( substr($hex, 2, 2) );
+  $rgb[] = hexdec( substr($hex, 4, 2) );
   return implode( ',', $rgb );
 }
 

@@ -228,7 +228,7 @@ class CustomizerColorSettings_4536 {
 
     if( !empty($header_color) ) { //ヘッダー文字色
       $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
-      $css[] = '#site-top{border-bottom:1px solid rgba('.hex_to_rgb($header_color).',0.25)}';
+      $css[] = '#site-top{border-bottom:1px solid rgba('.hex_to_rgb($header_color).',.25)}';
     }
 
     if( !empty($description_color) ) { //ディスクリプションの文字色
@@ -357,8 +357,8 @@ class CustomizerColorSettings_4536 {
 
     if( !empty( $footer_color ) ) { //フッター文字色
       $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer-menu-item{color:'.$footer_color.'}';
-      $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',0.25)}';
-      if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',0.25)}';
+      $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',.25)}';
+      if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',.25)}';
     }
 
     if( !empty($balloon_right_background_color) ) { //左吹き出し背景色
