@@ -5,6 +5,8 @@ class CtaWidgetItem extends WP_Widget {
   public $button_parts = [
     'title',
     'src',
+    'background_image',
+    'background_attachment',
     'image_style',
     'description',
     'button_text',
@@ -21,6 +23,7 @@ class CtaWidgetItem extends WP_Widget {
 
   function __construct() {
     add_action( 'admin_enqueue_scripts', [$this, 'scripts'] );
+    add_filter( 'inline_style_4536', [ $this, 'css' ] );
 		parent::__construct(
 			'cta',
 			__( '(4536)CTA', '4536' )
@@ -39,7 +42,9 @@ class CtaWidgetItem extends WP_Widget {
     }
     $button_args = implode( ' ', $button_args );
     if( empty($button_text) && empty($button_url) && empty($button_text_url) ) return;
-    echo $args['before_widget'].'<div class="cta clearfix">';
+    $wrap = preg_replace( '/class="/', 'class="cta clearfix display-flex ', $args['before_widget'], 1 );
+    $wrap = str_replace( 'widget-4536', 'widget-4536 flex-1', $wrap );
+    echo $wrap;
     if( !empty( $title ) ) echo '<p class="cta-title text-align-center margin-1_5em-auto bold-4536 font-size-24px line-height-1_6">'.$title.'</p>';
     if( !empty( $src ) ) {
       $image_margin = ( $image_style !== 'aligncenter' ) ? ' max-width-half-pc' : '';
@@ -55,7 +60,7 @@ class CtaWidgetItem extends WP_Widget {
     }
     if( !empty( $button_text_url ) ) $button = '<div class="' . $button_args . '">' . $button_text_url . '</div>';
     if( !empty( $button ) ) echo convert_content_to_amp( $button );
-    echo $args['after_widget'].'</div>';
+    echo $args['after_widget'];
   }
 
   function update( $new_instance, $old_instance ) {
@@ -100,6 +105,14 @@ class CtaWidgetItem extends WP_Widget {
       <textarea class="widefat" rows="5" id="<?php echo $this->get_field_id('description'); ?>" name="<?php echo $this->get_field_name('description'); ?>"><?php echo esc_textarea( $instance['description'] ); ?></textarea>
     </p>
     <p>
+      <label for="<?php echo $this->get_field_id( 'background_image' ); ?>"><?php _e( '背景画像' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'background_image' ); ?>" name="<?php echo $this->get_field_name( 'background_image' ); ?>" type="text" value="<?php echo esc_url( $instance['background_image'] ); ?>" />
+      <button class="upload-image-button button button-primary">選択</button>
+      <button class="delete-image-button button">削除</button>
+      <img class="widefat" src="<?php echo esc_url( $instance['background_image'] ); ?>" style="margin:1em 0;display:block">
+    </p>
+    <p><label><input class="widefat" name="<?php echo $this->get_field_name('background_attachment'); ?>" value="fixed" <?php checked($instance['background_attachment'], 'fixed');?> type="checkbox"><?php _e( '背景画像を固定する' ); ?></label></p>
+    <p>
       <label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'ボタンの文字' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" type="text" value="<?php echo esc_attr( $instance['button_text'] ); ?>" placeholder="例：詳細はこちら" />
     </p>
@@ -121,6 +134,7 @@ class CtaWidgetItem extends WP_Widget {
           'background-color-green' => '緑',
           'background-color-blue' => '青',
           'background-color-red' => '赤',
+          'background-color-black' => '黒',
         ];
         foreach( $arr as $key => $value ) {
           $selected = $instance['button_color'] === $key ? ' selected' : '';
@@ -146,25 +160,24 @@ class CtaWidgetItem extends WP_Widget {
     wp_enqueue_script( 'media-uploader', get_template_directory_uri() . '/functions/widgets/media-uploader.js', ['jquery'] );
   }
 
-  // function style() {
-  //   global $wp_registered_widgets;
-  //   foreach(wp_get_sidebars_widgets() as $int => $ids) {
-  //     foreach($ids as $int => $id) {
-  //       $widget_obj = $wp_registered_widgets[$id];
-  //       $num = preg_replace('/.*?-(\d)/', '$1', $id);
-  //       $widget_opt = get_option($widget_obj['callback'][0]->option_name);
-  //       $button_text = $widget_opt[$num]['cta_button_text'];
-  //       $button_url = $widget_opt[$num]['cta_button_url'];
-  //       $button_text_url = $widget_opt[$num]['cta_button_text_url'];
-  //       if(!$button_text && !$button_url && !$button_text_url) continue;
-  //       $pc = '';
-  //       $style = $widget_opt[$num]['cta_image_style'];
-  //       if(!empty($style)) $pc = '@media screen and (min-width: 768px) {.cta-image-left{float:left;width:calc(50% - -20px);margin-right:20px}.cta-image-right{float:right;width:calc(50% - 20px);margin-left:20px}}';
-  //       $css[] = '.cta{padding:2em 0 0.1px}.cta .cta-title{text-align:center;font-size:20px;font-weight:700}.cta p,.cta-title{line-height:1.6}.cta p,.cta-thumbnail,.cta-title{margin:0 20px 20px}'.$pc;
-  //     }
-  //   }
-  //   return $css;
-  // }
+  function css( $css ) {
+    global $wp_registered_widgets;
+    foreach( wp_get_sidebars_widgets() as $int => $ids ) {
+      foreach( $ids as $int => $id ) {
+        $widget_obj = $wp_registered_widgets[$id];
+        $num = preg_replace( '/.*?-(\d)/', '$1', $id );
+        $widget_opt = get_option($widget_obj['callback'][0]->option_name);
+        $src = $widget_opt[$num]['background_image'];
+        if( empty( $src ) ) continue;
+        $background_image = 'background-image:url(' . $src . ')';
+        $attachment = $widget_opt[$num]['background_attachment'];
+        if( !empty( $attachment ) ) $background_image .= ';background-attachment:' . $attachment;
+        $class = '.'.$id;
+        $css[] = $class.'{' . $background_image . '}';
+      }
+    }
+    return $css;
+  }
 
 }
 add_action( 'widgets_init', function() { register_widget( 'CtaWidgetItem' ); });
