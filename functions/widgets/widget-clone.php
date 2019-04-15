@@ -2,7 +2,7 @@
 
 class WidgetClone4536 {
 	function __construct() {
-		add_action('admin_head-widgets.php', [$this, 'widget_clone'], 999);
+		add_action( 'admin_head-widgets.php', [$this, 'widget_clone'] );
 	}
     function widget_clone() { ?>
         <script>
