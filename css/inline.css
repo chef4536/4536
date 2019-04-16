@@ -903,10 +903,6 @@ a.simple-sns-button-2 {
     margin: 0 1.2em 1.2em 0;
     float: left;
   }
-  .alignwide {
-    margin-left: -20px;
-    width: calc(100% + 40px);
-  }
   .display-none-pc {
     display: none;
   }
