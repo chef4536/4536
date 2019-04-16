@@ -1,7 +1,7 @@
 <?php
 
 function archive_template_4536($page_4536) { ?>
-    <div id="contents-wrapper">
+    <div id="contents-wrapper" class="flex-1">
         <div id="contents-inner">
             <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
                 <section id="post-search" class="clearfix">

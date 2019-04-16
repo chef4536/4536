@@ -1,40 +1,40 @@
 <?php
 
 //bodyタグにクラス追加
-add_filter( 'body_class', function($classes) {
-    global $post;
-    if(is_singular()) {
-        $layout = layout('layout_singular');
-        $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-        if($custom_layout) $layout = $custom_layout;
-        $body_width = body_width('body_width_singular');
-        $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
-        if($custom_body_width) $body_width = $custom_body_width;
-    } elseif(is_archive()||is_search()) {
-        $layout = layout('layout_archive');
-        $body_width = body_width('body_width_archive');
-    } else {
-        $layout = layout('layout_home');
-        $body_width = body_width('body_width_home');
-    }
-    $list = [
-        $layout,
-        $body_width,
-        'simple1',
-        'simple2',
-        'simple3',
-        'pop',
-        'cool',
-        'cool2',
-        'cool3',
-        'font-size-16px',
-        'display-flex',
-        'flex-direction-column',
-    ];
-    foreach($list as $class) {
-	   $classes[] = $class;
-    }
-	return $classes;
+add_filter( 'body_class', function( $classes ) {
+  global $post;
+  if( is_singular() ) {
+    $layout = layout('layout_singular');
+    $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
+    if($custom_layout) $layout = $custom_layout;
+    $body_width = body_width('body_width_singular');
+    $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
+    if($custom_body_width) $body_width = $custom_body_width;
+  } elseif( is_archive() || is_search() ) {
+    $layout = layout('layout_archive');
+    $body_width = body_width('body_width_archive');
+  } else {
+    $layout = layout('layout_home');
+    $body_width = body_width('body_width_home');
+  }
+  $list = [
+    $layout,
+    $body_width,
+    'simple1',
+    'simple2',
+    'simple3',
+    'pop',
+    'cool',
+    'cool2',
+    'cool3',
+    'font-size-16px',
+    'display-flex',
+    'flex-direction-column',
+  ];
+  foreach($list as $class) {
+   $classes[] = $class;
+  }
+return $classes;
 });
 
 // 綺麗な抜粋を取得

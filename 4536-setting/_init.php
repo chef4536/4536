@@ -1,10 +1,5 @@
 <?php
 
-add_action( 'admin_menu', function() {
-  add_menu_page( '4536設定', '4536設定', 'manage_options', '4536-setting', '', '', 4);
-  add_submenu_page( '4536-setting', 'マニュアル', 'マニュアル', 'manage_options', '4536-setting', 'admin_4536_setting_manual');
-});
-
 add_action( 'admin_init', function() {
     //メディア設定
     $list = [
