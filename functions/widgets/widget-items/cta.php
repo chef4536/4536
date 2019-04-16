@@ -42,15 +42,22 @@ class CtaWidgetItem extends WP_Widget {
     }
     $button_args = implode( ' ', $button_args );
     if( empty($button_text) && empty($button_url) && empty($button_text_url) ) return;
-    $wrap = preg_replace( '/class="/', 'class="cta clearfix display-flex ', $args['before_widget'], 1 );
-    $wrap = str_replace( 'widget-4536', 'widget-4536 flex-1', $wrap );
+    preg_match( '/header-widget/', $args['before_widget'], $match );
+    if( !empty( $match ) ) {
+      $wrap = str_replace( $match[0], $match[0] . ' display-flex', $args['before_widget'] );
+      $wrap_class = 'flex-1';
+    } else {
+      $wrap = $args['before_widget'];
+      $wrap_class = 'padding-10px';
+    }
+    $wrap = str_replace( 'widget-4536', 'widget-4536 ' . $wrap_class, $wrap );
     echo $wrap;
     if( !empty( $title ) ) echo '<p class="cta-title text-align-center margin-1_5em-auto bold-4536 font-size-24px line-height-1_6">'.$title.'</p>';
     if( !empty( $src ) ) {
       $image_margin = ( $image_style !== 'aligncenter' ) ? ' max-width-half-pc' : '';
       $size = get_image_width_and_height_4536( $src );
       if( !empty( $size['width'] ) ) $width = 'width="'.$size['width'].'"';
-      if( !empty( $size['height'] ) ) $height = ' height="'.$size['width'].'"';
+      if( !empty( $size['height'] ) ) $height = ' height="'.$size['height'].'"';
       $thumbnail = '<figure class="cta-image text-align-center '.$image_style.$image_margin. '"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
       echo convert_content_to_amp( $thumbnail );
     }
@@ -59,7 +66,8 @@ class CtaWidgetItem extends WP_Widget {
       echo '<p class="clearfix margin-1_5em-auto line-height-1_4' . $description_class . '">' . $description . '</p>';
     }
     if( !empty( $button_text ) && !empty( $button_url ) ) {
-      $button = '<div class="' . $button_args . '"><a href="'.$button_url.'" target="_blank" rel="noopener">'.$button_text.'</a></div>';
+      $target = is_my_website( $button_url ) ?  '' : ' target="_blank" rel="noopener"';
+      $button = '<div class="' . $button_args . '"><a href="'.$button_url.'"' . $target . '>'.$button_text.'</a></div>';
     }
     if( !empty( $button_text_url ) ) $button = '<div class="' . $button_args . '">' . $button_text_url . '</div>';
     if( !empty( $button ) ) echo convert_content_to_amp( $button );

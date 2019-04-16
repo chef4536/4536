@@ -422,6 +422,7 @@ body {
 #wrapper, .inner, #header-image {
   margin: 0 auto;
   clear: both;
+  width: 100%;
 }
 
 #contents-wrapper {
