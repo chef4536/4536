@@ -1304,10 +1304,6 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
 }
 
 /* ボタン装飾 */
-.is-reflection {
-  overflow: hidden;
-}
-
 .is-reflection::after {
   -moz-animation: is-reflection 4s ease-in-out infinite;
   -moz-transform: rotate(45deg);

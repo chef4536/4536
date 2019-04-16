@@ -34,7 +34,7 @@ add_filter( 'body_class', function( $classes ) {
   foreach($list as $class) {
    $classes[] = $class;
   }
-return $classes;
+  return $classes;
 });
 
 // 綺麗な抜粋を取得

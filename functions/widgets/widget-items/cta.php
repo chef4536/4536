@@ -54,7 +54,10 @@ class CtaWidgetItem extends WP_Widget {
       $thumbnail = '<figure class="cta-image text-align-center '.$image_style.$image_margin. '"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
       echo convert_content_to_amp( $thumbnail );
     }
-    if( !empty( $description ) ) echo '<p class="clearfix margin-1_5em-auto line-height-1_4">' . $description . '</p>';
+    if( !empty( $description ) ) {
+      $description_class = empty( $src ) ? ' text-align-center' : '';
+      echo '<p class="clearfix margin-1_5em-auto line-height-1_4' . $description_class . '">' . $description . '</p>';
+    }
     if( !empty( $button_text ) && !empty( $button_url ) ) {
       $button = '<div class="' . $button_args . '"><a href="'.$button_url.'" target="_blank" rel="noopener">'.$button_text.'</a></div>';
     }
