@@ -1361,72 +1361,77 @@ a[data-embed-content="false"] {
 /* min-1024px BEGIN for landscape tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
-    a:hover img {
-        opacity: .8;
-    }
-    #header.fixed .sub-menu {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: 1px solid;
-    }
-    /* フォント設定 */
-    .article-body {
-        font-size: 18px;
-    }
-    .article-body h2 {
-        font-size: 1.4em;
-    }
-    .article-body h3 {
-        font-size: 1.3em;
-    }
-    .article-body h4 {
-        font-size: 1.2em;
-    }
-    h2.post-title {
-        font-size: 1.1em;
-    }
-    /* nav */
-    #pc-nav-menu .menu-item-has-children:hover .sub-menu {
-        display:block;
-    }
-    #pc-nav-menu .sub-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1;
-        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
-        box-shadow: 0 0 3px rgba(0,0,0,.2);
-    }
-    .nav-menu .sub-menu li:after {
-        content: none;
-    }
-    #pc-nav-menu .sub-menu > li:not(:last-child) {
-        border-bottom: 1px solid;
-    }
-    #pc-nav-menu .sub-menu > li {
-        width: 100%;
-        text-align: left
-    }
-    #pc-nav-menu .sub-menu > li a {
-        display: block;
-        width: 100%;
-        padding: 5px;
-    }
-    #pc-nav-menu .menu-item-has-children > a:after {
-        font-family: "Font Awesome 5 Free";
-        content: "\f107";
-        margin-left: 5px;
-        font-weight: 900;
-    }
-    #pc-nav-menu .current-menu-item > .sub-menu a {
-        opacity: 1;
-    }
-    .page-top a {
-        width: 1.5em;
-        height: 1.5em;
-    }
-    .page-top a::before {
-        font-size: 1.5em;
-    }
+  #contents-wrapper {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  a:hover img {
+      opacity: .8;
+  }
+  #header.fixed .sub-menu {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 1px solid;
+  }
+  /* フォント設定 */
+  .article-body {
+      font-size: 18px;
+  }
+  .article-body h2 {
+      font-size: 1.4em;
+  }
+  .article-body h3 {
+      font-size: 1.3em;
+  }
+  .article-body h4 {
+      font-size: 1.2em;
+  }
+  h2.post-title {
+      font-size: 1.1em;
+  }
+  /* nav */
+  #pc-nav-menu .menu-item-has-children:hover .sub-menu {
+      display:block;
+  }
+  #pc-nav-menu .sub-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
+      box-shadow: 0 0 3px rgba(0,0,0,.2);
+  }
+  .nav-menu .sub-menu li:after {
+      content: none;
+  }
+  #pc-nav-menu .sub-menu > li:not(:last-child) {
+      border-bottom: 1px solid;
+  }
+  #pc-nav-menu .sub-menu > li {
+      width: 100%;
+      text-align: left
+  }
+  #pc-nav-menu .sub-menu > li a {
+      display: block;
+      width: 100%;
+      padding: 5px;
+  }
+  #pc-nav-menu .menu-item-has-children > a:after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f107";
+      margin-left: 5px;
+      font-weight: 900;
+  }
+  #pc-nav-menu .current-menu-item > .sub-menu a {
+      opacity: 1;
+  }
+  .page-top a {
+      width: 1.5em;
+      height: 1.5em;
+  }
+  .page-top a::before {
+      font-size: 1.5em;
+  }
 /* min-1024px END */
 }

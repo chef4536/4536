@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-    <div id="contents-wrapper" class="flex-1">
+    <div id="contents-wrapper">
         <div id="contents-inner">
             <main id="main" class="post-bg-color post-color" role="main">
                 <?php get_template_part('template-parts/music'); ?>
