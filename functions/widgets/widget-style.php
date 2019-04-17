@@ -17,6 +17,17 @@ class Widget_Style_Setting_4536 {
     'widget-style-box-4536' => 'ボックス',
   ];
 
+  public $background_image = [
+    'background_image' => '',
+    'background_attachment' => '',
+  ];
+
+  public $align = [
+    null => 'デフォルト',
+    'alignwide' => '幅広',
+    'alignfull' => '全幅',
+  ];
+
   public $margin_padding_setting = [
     'margin' => '',
     'padding' => '',
@@ -32,11 +43,9 @@ class Widget_Style_Setting_4536 {
   function form( $form, $widget, $return, $instance ) { ?>
     <p>
       <label for="<?php echo $widget->get_field_id('widget_style'); ?>"><?php _e('ウィジェットのスタイル'); ?></label>
-      <select class='widefat' id="<?php echo $widget->get_field_id('widget_style'); ?>" name="<?php echo $widget->get_field_name('widget_style'); ?>" type="text">
-        <?php
-        $widget_style = $this->widget_style;
-        foreach($widget_style as $display => $description) { ?>
-          <option value='<?php echo $display; ?>'<?php echo ($instance['widget_style']==$display)?'selected':''; ?>>
+      <select class="widefat" id="<?php echo $widget->get_field_id('widget_style'); ?>" name="<?php echo $widget->get_field_name('widget_style'); ?>" type="text">
+        <?php foreach( $this->widget_style as $display => $description ) { ?>
+          <option value="<?php echo $display; ?>"<?php echo ( $instance['widget_style'] === $display ) ? ' selected' : ''; ?>>
             <?php echo $description; ?>
           </option>
         <?php } ?>
@@ -54,13 +63,33 @@ class Widget_Style_Setting_4536 {
         <label for="<?php echo $widget->get_field_id( $key ); ?>"><?php _e( $key . '（余白）の設定' ); ?></label>
         <input pattern="^[0-9A-Za-z]+$" type="text" class="widefat" id="<?php echo $widget->get_field_id( $key ); ?>" name="<?php echo $widget->get_field_name( $key ); ?>" value="<?php echo $instance[$key]; ?>" placeholder="例：10px 1em 30px 2.6em" />
       </p>
-    <?php }
-  }
+    <?php } ?>
+    <p>
+      <label for="<?php echo $widget->get_field_id('align'); ?>"><?php _e('ウィジェットの幅'); ?></label>
+      <select class="widefat" id="<?php echo $widget->get_field_id('align'); ?>" name="<?php echo $widget->get_field_name('align'); ?>" type="text">
+        <?php foreach( $this->align as $display => $description ) { ?>
+          <option value="<?php echo $display; ?>"<?php echo ( $instance['align'] === $display ) ? ' selected' : ''; ?>>
+            <?php echo $description; ?>
+          </option>
+        <?php } ?>
+      </select>
+    </p>
+    <p>
+      <label for="<?php echo $widget->get_field_id( 'background_image' ); ?>"><?php _e( '背景画像' ); ?></label>
+      <input class="widefat" id="<?php echo $widget->get_field_id( 'background_image' ); ?>" name="<?php echo $widget->get_field_name( 'background_image' ); ?>" type="text" value="<?php echo esc_url( $instance['background_image'] ); ?>" />
+      <button class="upload-image-button button button-primary">選択</button>
+      <button class="delete-image-button button">削除</button>
+      <img class="widefat" src="<?php echo esc_url( $instance['background_image'] ); ?>" style="margin:1em 0;display:block">
+    </p>
+    <p><label><input class="widefat" name="<?php echo $widget->get_field_name('background_attachment'); ?>" value="fixed" <?php checked($instance['background_attachment'], 'fixed');?> type="checkbox"><?php _e( '背景画像を固定する' ); ?></label></p>
+  <?php }
 
   function save( $instance, $new_instance, $old_instance, $object ) {
     $list = $this->widget_color_list;
     $list += $this->is_widget_color;
+    $list += $this->background_image;
     $list['widget_style'] = '';
+    $list['align'] = '';
     foreach( $list as $type => $name ) {
       $instance[$type] = !empty($new_instance[$type]) ? $new_instance[$type] : '';
     }
@@ -74,6 +103,7 @@ class Widget_Style_Setting_4536 {
     global $wp_registered_widgets;
     foreach(wp_get_sidebars_widgets() as $int => $ids) {
       foreach($ids as $int => $id) {
+        $class = '.'.$id;
         $widget_obj = $wp_registered_widgets[$id];
         $num = preg_replace('/.*?-(\d)/', '$1', $id);
         $widget_opt = get_option($widget_obj['callback'][0]->option_name);
@@ -85,7 +115,13 @@ class Widget_Style_Setting_4536 {
         $margin = $widget_opt[$num]['margin'];
         $padding = $widget_opt[$num]['padding'];
         $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
-        $class = '.'.$id;
+        $src = $widget_opt[$num]['background_image'];
+        if( !empty( $src ) ) {
+          $background_image = 'background-image:url(' . $src . ')';
+          $attachment = $widget_opt[$num]['background_attachment'];
+          if( !empty( $attachment ) ) $background_image .= ';background-attachment:' . $attachment;
+          $css[] = $class.'{' . $background_image . '}';
+        }
         if( !empty( $background_color ) ) $css[] = $class.'{'.$background_color.'}';
         if( $margin !== '' && !is_null( $margin )  ) $css[] = $class.'{margin:'.$margin.'}';
         if( $padding !== '' && !is_null( $padding ) ) $css[] = $class.'{padding:'.$padding.'}';
@@ -111,8 +147,15 @@ class Widget_Style_Setting_4536 {
     $widget_obj = $wp_registered_widgets[$widget_id];
     $widget_opt = get_option($widget_obj['callback'][0]->option_name);
     $widget_num = $widget_obj['params'][0]['number'];
-    $widget_style = $widget_opt[$widget_num]['widget_style'];
-    if($widget_style) $params[0]['before_widget'] = preg_replace( '/class="(.*?)"/', 'class="$1 '.$widget_style.'"', $params[0]['before_widget'], 1 );
+    $arr = [
+      'widget_style',
+      'align',
+    ];
+    foreach( $arr as $key ) {
+      if( empty( $widget_opt[$widget_num][$key] ) ) continue;
+      $class .= $widget_opt[$widget_num][$key] . ' ';
+    }
+    if( !empty( $class ) ) $params[0]['before_widget'] = preg_replace( '/class="/', 'class="' . $class, $params[0]['before_widget'], 1 );
     return $params;
   }
 

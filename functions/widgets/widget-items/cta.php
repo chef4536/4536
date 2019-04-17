@@ -5,8 +5,6 @@ class CtaWidgetItem extends WP_Widget {
   public $button_parts = [
     'title',
     'src',
-    'background_image',
-    'background_attachment',
     'image_style',
     'description',
     'button_text',
@@ -23,7 +21,6 @@ class CtaWidgetItem extends WP_Widget {
 
   function __construct() {
     add_action( 'admin_enqueue_scripts', [$this, 'scripts'] );
-    add_filter( 'inline_style_4536', [ $this, 'css' ] );
 		parent::__construct(
 			'cta',
 			__( '(4536)CTA', '4536' )
@@ -116,14 +113,6 @@ class CtaWidgetItem extends WP_Widget {
       <textarea class="widefat" rows="5" id="<?php echo $this->get_field_id('description'); ?>" name="<?php echo $this->get_field_name('description'); ?>"><?php echo esc_textarea( $instance['description'] ); ?></textarea>
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id( 'background_image' ); ?>"><?php _e( '背景画像' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'background_image' ); ?>" name="<?php echo $this->get_field_name( 'background_image' ); ?>" type="text" value="<?php echo esc_url( $instance['background_image'] ); ?>" />
-      <button class="upload-image-button button button-primary">選択</button>
-      <button class="delete-image-button button">削除</button>
-      <img class="widefat" src="<?php echo esc_url( $instance['background_image'] ); ?>" style="margin:1em 0;display:block">
-    </p>
-    <p><label><input class="widefat" name="<?php echo $this->get_field_name('background_attachment'); ?>" value="fixed" <?php checked($instance['background_attachment'], 'fixed');?> type="checkbox"><?php _e( '背景画像を固定する' ); ?></label></p>
-    <p>
       <label for="<?php echo $this->get_field_id( 'button_text' ); ?>"><?php _e( 'ボタンの文字' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'button_text' ); ?>" name="<?php echo $this->get_field_name( 'button_text' ); ?>" type="text" value="<?php echo esc_attr( $instance['button_text'] ); ?>" placeholder="例：詳細はこちら" />
     </p>
@@ -169,25 +158,6 @@ class CtaWidgetItem extends WP_Widget {
     wp_enqueue_script( 'media-upload' );
     wp_enqueue_media();
     wp_enqueue_script( 'media-uploader', get_template_directory_uri() . '/functions/widgets/media-uploader.js', ['jquery'] );
-  }
-
-  function css( $css ) {
-    global $wp_registered_widgets;
-    foreach( wp_get_sidebars_widgets() as $int => $ids ) {
-      foreach( $ids as $int => $id ) {
-        $widget_obj = $wp_registered_widgets[$id];
-        $num = preg_replace( '/.*?-(\d)/', '$1', $id );
-        $widget_opt = get_option($widget_obj['callback'][0]->option_name);
-        $src = $widget_opt[$num]['background_image'];
-        if( empty( $src ) ) continue;
-        $background_image = 'background-image:url(' . $src . ')';
-        $attachment = $widget_opt[$num]['background_attachment'];
-        if( !empty( $attachment ) ) $background_image .= ';background-attachment:' . $attachment;
-        $class = '.'.$id;
-        $css[] = $class.'{' . $background_image . '}';
-      }
-    }
-    return $css;
   }
 
 }
