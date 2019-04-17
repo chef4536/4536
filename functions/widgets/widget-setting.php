@@ -20,7 +20,6 @@ add_filter('the_content', function($the_content) {
     }
   }
   if( is_single() && !empty($ad) ) {
-    $ad = '<div class="ad-wrapper text-align-center clearfix">'.$ad.'</div>';
     preg_match( '/<h2.*?>/i', $the_content, $h2 );
     $h2 = $h2[0];
     if($h2) $the_content = preg_replace('/<h2.*?>/i', $ad.$h2, $the_content, 1);

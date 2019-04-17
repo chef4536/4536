@@ -821,6 +821,19 @@ a.simple-sns-button-2 {
   }
 }
 
+.alignwide {
+  margin-left: -10px;
+  width: calc(100% + 20px);
+  max-width: none;
+}
+
+.alignfull {
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(50% - 50vw);
+  width: auto;
+  max-width: none;
+}
+
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
@@ -979,14 +992,19 @@ a.simple-sns-button-2 {
     -ms-flex-preferred-size: calc(50% - 1em);
     flex-basis: calc(50% - 1em);
     max-width: 336px;
+    min-height: 280px;
+    height: auto;
   }
-  /* 本文 */
   .padding-wrap-main-4536 {
     padding-left: 20px;
     padding-right: 20px;
   }
   .max-width-half-pc {
     max-width: 50%;
+  }
+  .alignwide {
+    margin-left: -20px;
+    width: calc(100% + 40px);
   }
   /* min-768px END */
 }

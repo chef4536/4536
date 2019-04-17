@@ -9,19 +9,6 @@ License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Version: 1.1.1
 ---------------------------------------------------------*/
-.alignwide {
-  margin-left: -10px;
-  width: calc(100% + 20px);
-  max-width: none;
-}
-
-.alignfull {
-  margin-right: calc(50% - 50vw);
-  margin-left: calc(50% - 50vw);
-  width: auto;
-  max-width: none;
-}
-
 .margin-padding-0 {
   margin: 0;
   padding: 0;
@@ -1608,10 +1595,6 @@ a[data-embed-content="false"] {
 /* min-768px BEGIN for tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 768px) {
-  .alignwide {
-    margin-left: -20px;
-    width: calc(100% + 40px);
-  }
   .double-rectangle-wrapper .ad-left {
     margin: 0 1em 0 0;
   }
