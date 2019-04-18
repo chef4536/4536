@@ -432,7 +432,6 @@ body {
 
 #main {
   width: 100%;
-  overflow: hidden;
 }
 
 #sidebar {
@@ -619,6 +618,8 @@ h2.post-title {
   margin: 1.4em auto;
   font-size: 1.4em;
   line-height: 1.4;
+  display: inline-block;
+  width: 100%;
 }
 
 #archive-title, #_404-title {

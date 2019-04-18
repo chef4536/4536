@@ -201,16 +201,16 @@ html {
   height: 100%;
 }
 body {
-    font-family: 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    position: relative;
-    left: 0;
-    overflow-x: hidden;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    background-color: #fcfcfc;
-    min-height: 100%;
-    padding-right: env(safe-area-inset-right);
-    padding-left: env(safe-area-inset-left);
+  font-family: 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  position: relative;
+  left: 0;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background-color: #fcfcfc;
+  min-height: 100%;
+  padding-right: env(safe-area-inset-right);
+  padding-left: env(safe-area-inset-left);
 }
 #wrapper,.inner,#header-image {
 	margin: 0 auto;
@@ -218,16 +218,15 @@ body {
   width: 100%;
 }
 #contents-wrapper {
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 #main {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
 }
 #sidebar {
-    margin-top: 20px;
-    padding: 0 10px;
+  margin-top: 20px;
+  padding: 0 10px;
 }
 /* ウィジェット */
 .widget-4536 {
@@ -374,13 +373,15 @@ h2.post-title { /* トップの新着記事 */
 }
 /* 見出し */
 #post-h1,#archive-title,#_404-title {
-    position: relative;
-    margin: 1.4em auto;
-    font-size: 1.4em;
-    line-height: 1.4;
+  position: relative;
+  margin: 1.4em auto;
+  font-size: 1.4em;
+  line-height: 1.4;
+  display: inline-block;
+  width: 100%;
 }
 #archive-title,#_404-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .article-body h2,
 .article-body h3,

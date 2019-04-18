@@ -320,7 +320,7 @@ class CustomizerColorSettings_4536 {
           break;
         case 'cool':
           $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.cool '.$tag.'{display:table;padding:0 55px}.cool '.$tag.'::before{left:0}.cool '.$tag.'::after{right:0}';
+          $css[] = '.cool '.$tag.'{padding:0 55px;text-align:center}.cool '.$tag.'::before{left:0}.cool '.$tag.'::after{right:0}';
           $css[] = '.cool '.$tag.'::before,.cool '.$tag.'::after{content:"";position:absolute;top:50%;display:inline-block;width:45px;border:.5px solid;'.$key_color_css.'}';
           break;
         case 'cool2':
@@ -330,7 +330,7 @@ class CustomizerColorSettings_4536 {
           break;
         case 'cool3':
           $key_color_css = ( !empty($key_color) ) ? 'border-color: '.$key_color : '';
-          $css[] = '.cool3 '.$tag.'{display:block;text-align:center}.cool3 '.$tag.'::before{content:"";position:absolute;bottom:-10px;display:block;width:60px;border:1.5px solid;left:50%;-moz-transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);border-radius:2px;'.$key_color_css.'}';
+          $css[] = '.cool3 '.$tag.'{text-align:center}.cool3 '.$tag.'::before{content:"";position:absolute;bottom:-10px;display:block;width:60px;border:1.5px solid;left:50%;-moz-transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);border-radius:2px;'.$key_color_css.'}';
           break;
       }
 
