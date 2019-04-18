@@ -18,7 +18,7 @@ class ConvertEmbedContentFrom_url_4536 {
     // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
     // add_filter( 'embed_oembed_html', [$this, 'create_embed_content_before'] ); //後
     add_filter('oembed_dataparse', [$this, 'create_embed_content_before'] ); //内部用
-    // add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
+    add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
   }
 
   function create_embed_content_from_url( $url ) {
