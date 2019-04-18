@@ -180,9 +180,14 @@ function convert_content_to_amp( $the_content ) {
 
 }
 add_filter( 'the_content','convert_content_to_amp', 99999 );
-add_filter( 'post_thumbnail_html','convert_content_to_amp', 999 );
 add_filter( 'widget_text','convert_content_to_amp', 99999 );
 add_filter( 'widget_item_new','convert_content_to_amp', 99999 );
+add_filter( 'post_thumbnail_html', function( $image ) {
+  preg_match( '/class="(.+?)"/i', $image, $class );
+  if( empty( $class ) ) return $image;
+  if( strpos( $class[1], 'blogcard-thumb-image' ) !== false ) return $image;
+  return convert_content_to_amp( $image );
+}, 999 );
 
 //////////////////////////////
 //AMP用アドセンス広告生成

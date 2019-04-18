@@ -46,7 +46,7 @@ function lazy_load_content_4536($html) {
 };
 
 //get_avatar
-add_filter('post_thumbnail_html', 'lazy_load_media_4536', 9999999999999);
+add_filter( 'post_thumbnail_html', 'lazy_load_media_4536', 9999999999999 );
 function lazy_load_media_4536( $image ) {
   if( is_amp() ) return $image;
   if( !is_lazy_load_4536() ) return $image;

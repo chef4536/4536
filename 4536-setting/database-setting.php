@@ -85,7 +85,7 @@ class AdminDatabaseSettings_4536 {
       DELETE FROM $wpdb->options
       WHERE option_name LIKE %s
       OR option_value LIKE %s
-    ", '_transient_ogp_cache_4536_%', '_transient_timeout_ogp_cache_4536_%' );
+    ", '_transient_blogcard_cache_4536_%', '_transient_timeout_ogp_cache_4536_%' );
 
     if( get_option('embed_cache_delete') === 'all' ) {
       $wpdb->query($all_cache);

@@ -16,14 +16,20 @@ class ConvertEmbedContentFrom_url_4536 {
 
   function __construct() {
     // add_filter('embed_html', [$this, 'create_embed_content_before']); //前
-    // add_filter('embed_oembed_html', [$this, 'create_embed_content_before']); //後
-    add_filter('oembed_dataparse', [$this, 'create_embed_content_before']); //内部用
-    add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
+    // add_filter( 'embed_oembed_html', [$this, 'create_embed_content_before'] ); //後
+    add_filter('oembed_dataparse', [$this, 'create_embed_content_before'] ); //内部用
+    // add_filter('the_content', [$this, 'create_embed_content_after']); //外部用
   }
 
-  function create_embed_content_from_url($url) {
+  function create_embed_content_from_url( $url ) {
 
-    $data = $this->get_data_from_internal_link($url);
+    $transient = 'blogcard_cache_4536_' . md5( $url );
+
+    $cache = get_transient( $transient );
+
+    if( $cache !== false ) return $cache;
+
+    $data = $this->get_data_from_internal_link( $url );
 
     if( $data !== false ) {
       $thumbnail = $data['thumbnail'];
@@ -94,6 +100,12 @@ class ConvertEmbedContentFrom_url_4536 {
     </a>
     {$blockquote_end}
 EOM;
+
+    set_transient(
+      $transient,
+      $output,
+      WEEK_IN_SECONDS //1週間
+    );
 
     return $output;
 
@@ -193,24 +205,11 @@ EOM;
     );
   }
 
-  function get_data_from_external_link($url) {
-
-    $transient = 'ogp_cache_4536_'.md5($url);
-
-    $data = $cache = get_transient($transient);
-
-    if ($cache === false) {
-      $data = [];
-      $data = OpenGraph::fetch($url);
-      if( !is_object($data) ) return false;
-      set_transient(
-        $transient,
-        $data,
-        WEEK_IN_SECONDS //1週間
-      );
-    }
-
-    if(!empty($data)) $data = [
+  function get_data_from_external_link( $url ) {
+    $data = [];
+    $data = OpenGraph::fetch( $url );
+    if( !is_object($data) ) return false;
+    if( !empty( $data ) ) $data = [
       'title' => $data->title,
       'excerpt' => custom_excerpt_4536( $data->description, custom_excerpt_length() ),
       'src' => $data->image,
