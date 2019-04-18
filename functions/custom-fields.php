@@ -86,6 +86,7 @@ class Custom_Field_4536 {
         $arr['singular_layout_select'] = '';
         $arr['singular_body_width_select'] = '';
         $arr['toc'] = '';
+        $arr['review_name'] = '';
         $arr['review_rating'] = '';
         foreach( $arr as $name => $val ) {
           if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
@@ -223,11 +224,14 @@ class Custom_Field_4536 {
 
   function review() {
     global $post;
+    $review_name = get_post_meta( $post->ID, 'review_name', true );
     $review_rating = get_post_meta( $post->ID, 'review_rating', true );
     ?>
     <p><small>この記事がレビュー記事の場合に「評価」と「レビュー対象の名前」を設定すると検索結果にレビュー項目が表示されることがあります。</small></p>
+    <p><label>レビュー対象<input type="text" name="review_name" value="<?php echo esc_html( $review_name ); ?>" size="60" class="input-4536" /></label></p>
+    <label>評価</label>
     <select name="review_rating" type="text">
-      <option value="">評価を選択してください</option>
+      <option value="">選択してください</option>
       <?php for( $i = 1; $i <= 10; $i++ ) {
         $selected = ( $i === intval( $review_rating ) ) ? ' selected' : '';
         echo '<option value="' . $i . '"' . $selected . '>' . $i . '</option>';
