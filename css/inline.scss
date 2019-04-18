@@ -200,7 +200,6 @@ li {
 html {
   min-height: 100%;
   height: 100%;
-  overflow-x: hidden;
 }
 body {
   font-family: 'Hiragino Kaku Gothic Pro W3', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
@@ -587,6 +586,9 @@ a.simple-sns-button-2 {
 /* max-767px BEGIN for mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 767px) {
+  html {
+    overflow-x: hidden;
+  }
   .display-none-mobile {
       display: none;
   }
