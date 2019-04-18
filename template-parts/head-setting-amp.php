@@ -24,12 +24,11 @@
     <script async custom-element="amp-soundcloud" src="https://cdn.ampproject.org/v0/amp-soundcloud-0.1.js"></script>
     <?php
     apply_filters( 'wp_head_4536', $meta );
-    get_template_part('template-parts/json-ld');
+    get_template_part('template-parts/json-ld-article');
     $amp_facebook = '<script async custom-element="amp-facebook-like" src="https://cdn.ampproject.org/v0/amp-facebook-like-0.1.js"></script>';
     if(is_page_template() || is_singular('lp')) $amp_facebook = null;
     $facebook_id = get_the_author_meta('facebook', 1);
     if(is_likebox() && $facebook_id) echo $amp_facebook;
-    custom_seo_meta_4536();
     ogp_setting_4536();
     ?>
     <style amp-boilerplate>

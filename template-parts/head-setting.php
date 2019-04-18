@@ -28,7 +28,7 @@
   foreach($list as $post_type => $d) {
       if(is_singular($post_type) && is_amp_post_type($d)) echo $amphtml;
   }
-  get_template_part('template-parts/json-ld');
+  get_template_part('template-parts/json-ld-article');
   ?>
   <!--[if lt IE 9]>
   <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
