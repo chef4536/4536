@@ -861,7 +861,7 @@ a.simple-sns-button-2 {
 /* max-767px BEGIN for mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 767px) {
-  html {
+  html, #main {
     overflow-x: hidden;
   }
   .display-none-mobile {
