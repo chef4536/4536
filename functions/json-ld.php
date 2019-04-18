@@ -70,8 +70,8 @@ add_action( 'wp_head_4536', function() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "<?php echo bloginfo( 'name' ); ?>",
-    },
+      "name": "<?php echo bloginfo( 'name' ); ?>"
+    }
   }
   </script>
 <?php });
