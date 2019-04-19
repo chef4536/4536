@@ -61,10 +61,10 @@ class Custom_Field_4536 {
       add_meta_box( $id, $title, [$this, $id], 'post', 'side', 'default');
       add_meta_box( $id, $title, [$this, $id], 'page', 'side', 'default');
       foreach ( $post_types as $post_type ) {
-        if( $post_type=='lp' && $title=='レイアウト' ) return;
         add_meta_box( $id, $title, [$this, $id], $post_type, 'side', 'default');
       }
     }
+    add_meta_box( 'none_header_footer', '出力制御（LP向け）', [$this, 'none_header_footer'], 'page', 'side', 'default' );
   }
 
   function save( $new_status, $old_status, $post ) {
@@ -88,6 +88,7 @@ class Custom_Field_4536 {
         $arr['toc'] = '';
         $arr['review_name'] = '';
         $arr['review_rating'] = '';
+        $arr['none_header_footer'] = '';
         foreach( $arr as $name => $val ) {
           if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
           if( isset($_POST['action']) && $_POST['action'] == 'inline-save' ) return $post_id;
@@ -162,15 +163,22 @@ class Custom_Field_4536 {
   function amp_custom_fields() {
     global $post;
     $amp = get_post_meta( $post->ID, 'amp', true );
-    $amp_check = ( $amp == 1 ) ? 'checked' : '/' ;
-    echo '<label class="select"><input type="checkbox" name="amp" id="amp" value="1" ' . $amp_check . '>AMP機能を無効にします</label>';
+    $check = ( $amp == 1 ) ? 'checked' : '/' ;
+    echo '<label class="select"><input type="checkbox" name="amp" id="amp" value="1" ' . $check . '>AMP機能を無効にします</label>';
   }
 
   function toc_custom_fields() {
     global $post;
     $toc = get_post_meta( $post->ID, 'toc', true );
-    $toc_check = ( $toc == 1 ) ? 'checked' : '/' ;
-    echo '<label class="select"><input type="checkbox" name="toc" id="toc" value="1" ' . $toc_check . '>目次機能をオフにします</label>';
+    $check = ( $toc == 1 ) ? 'checked' : '/' ;
+    echo '<label class="select"><input type="checkbox" name="toc" id="toc" value="1" ' . $check . '>目次機能をオフにします</label>';
+  }
+
+  function none_header_footer() {
+    global $post;
+    $none_header_footer = get_post_meta( $post->ID, 'none_header_footer', true );
+    $check = ( $none_header_footer == 1 ) ? 'checked' : '/' ;
+    echo '<label class="select"><input type="checkbox" name="none_header_footer" value="1" ' . $check . '>ヘッダーとフッターの出力を停止します</label>';
   }
 
   function add_redirect_form() {
@@ -304,17 +312,21 @@ add_action( 'wp_footer', function() {
   if( $html_js_body = get_post_meta($post->ID, 'html_js_body', true) && is_singular() ) echo $html_js_body;
 });
 
+function none_header_footer() {
+  if( !is_page() ) return;
+  global $post;
+  return !empty( $boolean = get_post_meta( $post->ID, 'none_header_footer', true ) ) ? $boolean : false;
+}
+
 function amp_exclude() {
   global $post;
-  $amp = get_post_meta( $post->ID, 'amp', true );
-  return !empty( $amp ) ? $amp : false;
+  return !empty( $amp = get_post_meta( $post->ID, 'amp', true ) ) ? $amp : false;
 }
 
 add_action( 'get_header', function() {
   global $post;
-  $url = get_post_meta( $post->ID, 'redirect', true );
   if( is_single() || is_page() ) {
-    if( !empty( $url ) ) {
+    if( !empty( $url = get_post_meta( $post->ID, 'redirect', true ) ) ) {
       wp_redirect( $url , 301 );
       exit;
     }

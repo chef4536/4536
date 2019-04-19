@@ -414,8 +414,7 @@ pre code {
   clear: both;
   position: relative;
   font-size: 16px;
-  margin: 2em auto 0;
-  padding-bottom: 2em;
+  margin: 2em auto;
 }
 
 .pagination span, .pagination a {

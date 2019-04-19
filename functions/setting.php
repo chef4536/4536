@@ -266,33 +266,30 @@ if(wordpress_translation_update_setting()) {
 ///////////////////////////////////////////
 // ページ分割
 ///////////////////////////////////////////
-function custom_page_links_4536() {
-    $args = [
-        'before'           => '<div id="page-links">' . __( '<span class="page-links-title">ページ</span>' ),
-        'after'            => '</div>',
-        'link_before'      => '<span class="page-link">',
-        'link_after'       => '</span>',
-        'next_or_number'   => 'number',
-        'separator'        => ' ',
-        'nextpagelink'     => __( 'Next page' ),
-        'previouspagelink' => __( 'Previous page' ),
-        'pagelink'         => '%',
-        'echo'             => 1
-    ];
-    return $args;
-}
-add_filter( 'wp_link_pages_args', 'custom_page_links_4536');
+add_filter( 'wp_link_pages_args', function() {
+  $args = [
+    'before'           => '<div id="page-links">' . __( '<span class="page-links-title">ページ</span>' ),
+    'after'            => '</div>',
+    'link_before'      => '<span class="page-link">',
+    'link_after'       => '</span>',
+    'next_or_number'   => 'number',
+    'separator'        => ' ',
+    'nextpagelink'     => __( 'Next page' ),
+    'previouspagelink' => __( 'Previous page' ),
+    'pagelink'         => '%',
+    'echo'             => 1
+  ];
+  return $args;
+});
 
 ///////////////////////////////////////////
 // 管理画面にオリジナルウィジェット表示
 ///////////////////////////////////////////
-function informatiton_widget_4536() {
-	echo '<iframe src="https://4536.jp/lp/notice" width="100%" height="300px"></iframe>';
-}
-function add_original_widget_4536() {
-	wp_add_dashboard_widget( 'informatiton_widget', '4536からのお知らせ', 'informatiton_widget_4536' );
-}
-add_action( 'wp_dashboard_setup', 'add_original_widget_4536' );
+add_action( 'wp_dashboard_setup', function() {
+  wp_add_dashboard_widget( 'informatiton_widget', '4536からのお知らせ', function() {
+    echo '<a class="twitter-timeline" data-height="600" data-theme="dark" href="https://twitter.com/4536jp?ref_src=twsrc%5Etfw">Tweets by 4536jp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
+  });
+});
 
 ///////////////////////////////////////////
 // デバイス判別

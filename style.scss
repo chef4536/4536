@@ -356,18 +356,17 @@ pre code {
 	clear: both;
 	position: relative;
 	font-size: 16px;
-	margin: 2em auto 0;
-  padding-bottom: 2em;
-}
-.pagination span, .pagination a {
+	margin: 2em auto;
+  span,a {
     margin-right: .4em;
     width: 35px;
     height: 35px;
     line-height: 35px;
     border-radius: 50%;
-}
-.pagination .current {
+  }
+  .current {
     opacity: .5;
+  }
 }
 /*
  *パンくず

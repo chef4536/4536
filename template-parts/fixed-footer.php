@@ -1,5 +1,4 @@
 <?php
-if(is_singular('lp')) return;
 if(is_amp()) {
     ob_start();
     dynamic_sidebar('amp-fixed-footer');

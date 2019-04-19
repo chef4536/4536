@@ -23,7 +23,6 @@
       'page' => 'page',
       'music' => 'media',
       'movie' => 'media',
-      'lp' => 'lp',
   ];
   foreach($list as $post_type => $d) {
       if(is_singular($post_type) && is_amp_post_type($d)) echo $amphtml;
