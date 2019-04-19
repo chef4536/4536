@@ -232,9 +232,10 @@ class Custom_Field_4536 {
     <label>評価</label>
     <select name="review_rating" type="text">
       <option value="">選択してください</option>
-      <?php for( $i = 1; $i <= 10; $i++ ) {
-        $selected = ( $i === intval( $review_rating ) ) ? ' selected' : '';
-        echo '<option value="' . $i . '"' . $selected . '>' . $i . '</option>';
+      <?php for( $i = 2; $i <= 20; $i++ ) {
+        $x = $i / 2;
+        $selected = ( $x === intval( $review_rating ) ) ? ' selected' : '';
+        echo '<option value="' . $x . '"' . $selected . '>' . $x . '</option>';
       } ?>
     </select>
   <?php }
