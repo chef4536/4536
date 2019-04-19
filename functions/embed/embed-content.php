@@ -206,9 +206,22 @@ EOM;
   }
 
   function get_data_from_external_link( $url ) {
-    $data = [];
-    $data = OpenGraph::fetch( $url );
-    if( !is_object($data) ) return false;
+
+    $transient = 'ogp_cache_4536_' . md5( $url );
+
+    $data = $cache = get_transient( $transient );
+
+    if( $cache === false ) {
+      $data = [];
+      $data = OpenGraph::fetch($url);
+      if( !is_object($data) ) return false;
+      set_transient(
+        $transient,
+        $data,
+        WEEK_IN_SECONDS //1週間
+      );
+    }
+
     if( !empty( $data ) ) $data = [
       'title' => $data->title,
       'excerpt' => custom_excerpt_4536( $data->description, custom_excerpt_length() ),
