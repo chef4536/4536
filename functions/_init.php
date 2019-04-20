@@ -24,6 +24,9 @@ require_once( 'custom-fields.php' );
 //OGP
 require_once( 'ogp.php' );
 
+//構造化データ
+require_once( 'json-ld.php' );
+
 //カスタムフィールドの値を記事一覧に表示する
 require_once( 'custom-fields-columns.php' );
 

@@ -9,7 +9,6 @@ class AdminAmpSetting_4536 {
     'admin_amp' => '記事ページ',
     'is_amp_page' => '固定ページ',
     'is_amp_media' => 'メディアページ',
-    'is_amp_lp' => 'ランディングページ',
   ];
   public $amp_adsense_location = [
     'admin_amp_adsense_header' => 'ヘッダー',

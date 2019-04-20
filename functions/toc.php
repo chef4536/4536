@@ -75,7 +75,7 @@ add_filter('the_content', 'table_of_contents_4536', 9999999999);
 
 function is_toc_4536() { // 目次条件分岐
     $toc = false;
-    $is_custom_post = is_singular(['music','movie','lp']);
+    $is_custom_post = is_singular(['music','movie']);
     if(
         ( is_toc()==='single' && is_single() && !$is_custom_post ) ||
         ( is_toc()==='page' && is_page() ) ||

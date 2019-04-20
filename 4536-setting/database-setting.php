@@ -81,19 +81,34 @@ class AdminDatabaseSettings_4536 {
       AND meta_value = %s
     ", '_oembed_%', '{{unknown}}' );
 
+    $blogcard_cache = $wpdb->prepare("
+      DELETE FROM $wpdb->options
+      WHERE option_name LIKE %s
+      OR option_value LIKE %s
+    ", '_transient_blogcard_cache_4536_%', '_transient_timeout_blogcard_cache_4536_%' );
+
     $ogp_cache = $wpdb->prepare("
       DELETE FROM $wpdb->options
       WHERE option_name LIKE %s
       OR option_value LIKE %s
-    ", '_transient_blogcard_cache_4536_%', '_transient_timeout_ogp_cache_4536_%' );
+    ", '_transient_ogp_cache_4536_%', '_transient_timeout_ogp_cache_4536_%' );
 
-    if( get_option('embed_cache_delete') === 'all' ) {
-      $wpdb->query($all_cache);
-      $wpdb->query($ogp_cache);
-    } elseif( get_option('embed_cache_delete') === 'unknown' ) {
-      $wpdb->query($unknown_cache);
-    } elseif( get_option('embed_cache_delete') === 'ogp' ) {
-      $wpdb->query($ogp_cache);
+    switch( get_option('embed_cache_delete') ) {
+      case 'all':
+        $wpdb->query( $all_cache );
+        $wpdb->query( $blogcard_cache );
+        $wpdb->query( $unknown_cache );
+        $wpdb->query( $ogp_cache );
+        break;
+      case 'blogcard':
+        $wpdb->query( $blogcard_cache );
+        break;
+      case 'ogp':
+        $wpdb->query( $ogp_cache );
+        break;
+      case 'unknown':
+        $wpdb->query( $unknown_cache );
+        break;
     }
 
   }
@@ -167,8 +182,9 @@ class AdminDatabaseSettings_4536 {
               <?php
               $cache_args = [
                 'all' => 'すべての埋め込みコンテンツ',
-                'unknown' => 'カスタムされたブログカード',
+                'blogcard' => '内部URLのブログカード',
                 'ogp' => '外部URLのブログカード',
+                'unknown' => '他のテーマなどでカスタムされたブログカード',
               ];
               foreach($cache_args as $val => $description) { ?>
                 <p>

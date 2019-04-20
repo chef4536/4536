@@ -22,7 +22,7 @@ if(is_amp()) {
 
     $header_class = (fixed_header() && !has_header_image()) ? ' fixed-header' : '';
 
-    if(!is_singular('lp')) { //ランディングページ以外 ?>
+    if( !none_header_footer() ) { ?>
 
       <div id="site-top">
         <header id="header" class="header header-section<?php echo $header_class; ?>" itemscope itemtype="http://schema.org/WPHeader" role="banner">
@@ -80,7 +80,7 @@ if(is_amp()) {
       <?php }
 
     }
-    
+
     ?>
 
     <div id="wrapper" class="wrapper">
