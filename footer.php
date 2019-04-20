@@ -53,7 +53,6 @@ echo '</div>'; //#main-column
 </footer>
 
 <?php
-apply_filters( 'wp_footer_4536', $meta = null );
 if( !none_header_footer() ) {
   get_template_part('template-parts/fixed-footer');
   get_template_part('template-parts/fixed-footer-share-button');
@@ -67,5 +66,7 @@ if( !none_header_footer() ) {
     if(add_html_js_body()) echo add_html_js_body();
     echo '<a id="page-top" class="page-top display-none" href="#header"><i class="fas fa-angle-up"></i></a>';
   }
+} else {
+  wp_footer();
 }
 echo '</body></html>';

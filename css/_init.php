@@ -4,7 +4,7 @@ require_once('dynamic-css.php'); //動的CSS
 require_once('preload-css.php'); //非同期読み込み
 
 //スタイルシート読み込み
-add_action( 'wp_footer_4536', function() {
+add_action( 'wp_footer', function() {
   if( is_amp() ) return;
   $ver = function_exists('theme_version_4536') ? theme_version_4536() : ''; ?>
   <script>
