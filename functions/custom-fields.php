@@ -241,8 +241,8 @@ class Custom_Field_4536 {
     <select name="review_rating" type="text">
       <option value="">選択してください</option>
       <?php for( $i = 2; $i <= 20; $i++ ) {
-        $x = $i / 2;
-        $selected = ( $x === intval( $review_rating ) ) ? ' selected' : '';
+        $x = strval( $i / 2 );
+        $selected = ( $x === strval( $review_rating ) ) ? ' selected' : '';
         echo '<option value="' . $x . '"' . $selected . '>' . $x . '</option>';
       } ?>
     </select>
