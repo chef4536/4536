@@ -444,10 +444,10 @@ h2.post-title { /* トップの新着記事 */
     border-collapse: collapse;
 }
 .article-body table td,.article-body table th {
-	padding: 5px;
-	border: 1px #999 solid;
-	font-size: 14px;
-	line-height: 1.4;
+  padding: 1em .5em;
+  border: 1px #999 solid;
+  font-size: 90%;
+  line-height: 1.6;
 }
 /*
  * SNS周り
