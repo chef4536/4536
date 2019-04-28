@@ -61,7 +61,7 @@ class Widget_Style_Setting_4536 {
     foreach( $this->margin_padding_setting as $key => $value ) { //ウィジェットの余白設定 ?>
       <p>
         <label for="<?php echo $widget->get_field_id( $key ); ?>"><?php _e( $key . '（余白）の設定' ); ?></label>
-        <input pattern="^[0-9A-Za-z\s]+$" type="text" class="widefat" id="<?php echo $widget->get_field_id( $key ); ?>" name="<?php echo $widget->get_field_name( $key ); ?>" value="<?php echo $instance[$key]; ?>" placeholder="例：10px 1em 30px 2.6em" />
+        <input pattern="^[0-9A-Za-z\s\.]+$" type="text" class="widefat" id="<?php echo $widget->get_field_id( $key ); ?>" name="<?php echo $widget->get_field_name( $key ); ?>" value="<?php echo $instance[$key]; ?>" placeholder="例：10px 1em 30px 2.6em" />
       </p>
     <?php } ?>
     <p>
