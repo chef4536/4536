@@ -9,7 +9,7 @@ class CustomizerColorSettings_4536 {
   public $main_array = [
     'link_color' => [
       'label' => 'リンク',
-      'color' => '#00a0e9',
+      'color' => '#1b95e0',
     ],
     'header_background_color' => [
       'label' => 'ヘッダー背景',

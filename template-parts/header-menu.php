@@ -44,8 +44,8 @@ if( has_header_image() ) { ?>
       </div>
     <?php }
     if( (!is_amp() && is_active_sidebar('slide-widget')) || (is_amp() && is_active_sidebar('amp-slide-menu')) ) { ?>
-      <label id="header-slide-button" for="slide-toggle" class="header-contents slide-button display-none-pc">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+      <label id="header-slide-button" for="slide-toggle" class="header-contents slide-button display-none-pc text-align-center">
+        <i class="fas fa-ellipsis-h"></i>
       </label>
     <?php } ?>
   </div>
