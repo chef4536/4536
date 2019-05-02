@@ -14,6 +14,7 @@ get_header(); ?>
           get_child_cat_4536( $cat_id );
       		echo '</li>';
       	}
+
         function get_child_cat_4536( $cat_id ) {
           $child_cat_id_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
           if( !empty( $child_cat_id_arr ) ) {
@@ -22,20 +23,24 @@ get_header(); ?>
               $child_cat_id = $child_cat->term_id;
               echo '<li>';
               echo '<a href="' . get_category_link( $child_cat_id ) . '">' . $child_cat->name . '</a>';
-              // $post_arr = get_posts( 'post_type=post&posts_per_page=-1&cat=' . $child_cat_id );
-              // echo '<ul class="children">';
-              // $post_id = [];
-              // foreach( $post_arr as $post ) {
-              //   $post_id[] = $post->ID;
-              //   echo '<li>' . $post->post_title . '</li>';
-              // }
-              // echo '</ul>';
+              $exclude_cat_id = '';
+              $exclude_cat_id_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$child_cat_id ]);
+              foreach( $exclude_cat_id_arr as $obj ) {
+                $exclude_cat_id .= ',-' . $obj->term_id;
+              }
+              $post_arr = get_posts( 'post_type=post&posts_per_page=-1&cat=' . $child_cat_id . $exclude_cat_id );
+              echo '<ul class="children">';
+              foreach( $post_arr as $post ) {
+                echo '<li>' . $post->post_title . '</li>';
+              }
+              echo '</ul>';
               get_child_cat_4536( $child_cat_id );
               echo '</li>';
             }
             echo '</ul>';
           }
         }
+        
         ?>
       </div>
     </main>
