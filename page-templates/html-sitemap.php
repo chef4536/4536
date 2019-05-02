@@ -7,18 +7,20 @@ get_header(); ?>
       <div id="html-sitemap" class="post article-body">
         <?php
       	$categories = get_categories( 'parent=0' );
+        echo '<ul>';
       	foreach( $categories as $category ) {
           $cat_id = $category->cat_ID;
       		echo '<li>';
       		echo '<a href="' . get_category_link( $cat_id ) . '">' . $category->name . '</a>';
-          get_child_cat_4536( $cat_id );
+          the_child_sitemap_4536( $cat_id );
       		echo '</li>';
       	}
+        echo '</ul>';
 
-        function get_child_cat_4536( $cat_id ) {
+        function the_child_sitemap_4536( $cat_id ) {
           $child_cat_id_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
           if( !empty( $child_cat_id_arr ) ) {
-            echo '<ul class="children">';
+            if( empty( get_ancestors( $cat_id, 'category' ) ) ) echo '<ul class="children">';
             foreach( $child_cat_id_arr as $child_cat ) {
               $child_cat_id = $child_cat->term_id;
               echo '<li>';
@@ -31,16 +33,16 @@ get_header(); ?>
               $post_arr = get_posts( 'post_type=post&posts_per_page=-1&cat=' . $child_cat_id . $exclude_cat_id );
               echo '<ul class="children">';
               foreach( $post_arr as $post ) {
-                echo '<li>' . $post->post_title . '</li>';
+                echo '<li><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></li>';
               }
+              the_child_sitemap_4536( $child_cat_id );
               echo '</ul>';
-              get_child_cat_4536( $child_cat_id );
               echo '</li>';
             }
-            echo '</ul>';
+            if( empty( get_ancestors( $cat_id, 'category' ) ) ) echo '</ul>';
           }
         }
-        
+
         ?>
       </div>
     </main>
