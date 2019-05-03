@@ -87,6 +87,16 @@ pre code {
 #all-categories ul:not(.children) {
     padding: 0;
 }
+#html-sitemap {
+  .post-list {
+    &:last-child {
+      border-bottom: none;
+    }
+    .fa-file-alt {
+      letter-spacing: 5px;
+    }
+  }
+}
 /* Gutenberg */
 .wp-block-image,.wp-block-file,.wp-block-media-text {
     margin-bottom: 1.5em;
