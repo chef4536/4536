@@ -11,9 +11,16 @@ get_header(); ?>
           echo '<section>';
           $cat_id = $category->cat_ID;
       		echo '<a href="' . get_category_link( $cat_id ) . '"><h2>' . $category->name . '</h2></a>';
-          $post_arr = get_posts( 'post_type=post&posts_per_page=1&category=' . $cat_id );
+          $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
+          foreach( $child_cat_arr as $child_cat ) {
+            $child_cat_id .= ',-' . $child_cat->term_id;
+          }
+          $post_arr = get_posts( 'post_type=post&posts_per_page=-1&category=' . $cat_id . $child_cat_id );
           if( has_post_thumbnail( $post_id = $post_arr[0]->ID ) ) {
             echo '<figure id="post-thumbnail-4536" class="alignwide">' . get_the_post_thumbnail( $post_id ) . '</figure>';
+          }
+          foreach( $post_arr as $post ) {
+            echo '<article class="post-list"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="fas fa-angle-right"></i>' . $post->post_title . '</a></article>';
           }
           the_child_sitemap_4536( $cat_id, 2 );
           echo '</section>';
