@@ -18,7 +18,7 @@ get_header(); ?>
             $exclude_cat_id_arr = [];
             $exclude_categories_id = '';
           }
-          $exclude_post_id_custom = get_post_meta( $post->ID, 'html_sitemap_exclude_post_id', true );
+          $exclude_post_id = get_post_meta( $post->ID, 'html_sitemap_exclude_post_id', true );
           echo apply_filters( 'the_content', $post->post_content );
         	$categories = get_categories( 'parent=0' . $exclude_categories_id );
         	foreach( $categories as $category ) {
@@ -34,15 +34,20 @@ get_header(); ?>
             foreach( $child_cat_arr as $child_cat ) {
               $exclude_cat_id .= ',-' . $child_cat->term_id;
             }
-            $post_arr = get_posts( 'post_type=post&posts_per_page=-1&category=' . $cat_id . $exclude_cat_id );
+            $post_arr = get_posts([
+              'post_type' => 'post',
+              'posts_per_page' => -1,
+              'category' => [ $cat_id . $exclude_cat_id ],
+              'exclude' => [ $exclude_post_id ],
+            ]);
             foreach( $post_arr as $post ) {
               echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
             }
-            the_child_sitemap_4536( $cat_id, 2, $exclude_cat_id_arr );
+            the_child_sitemap_4536( $cat_id, 2, $exclude_cat_id_arr, $exclude_post_id );
             echo '</section>';
         	}
 
-          function the_child_sitemap_4536( $cat_id, $i, $exclude_cat_id_arr = [] ) {
+          function the_child_sitemap_4536( $cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null ) {
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
             if( !empty( $child_cat_arr ) ) {
               $i++;
@@ -57,11 +62,16 @@ get_header(); ?>
                 foreach( $exclude_cat_arr as $obj ) {
                   $exclude_cat_id .= ',-' . $obj->term_id;
                 }
-                $post_arr = get_posts( 'post_type=post&posts_per_page=-1&cat=' . $child_cat_id . $exclude_cat_id );
+                $post_arr = get_posts([
+                  'post_type' => 'post',
+                  'posts_per_page' => -1,
+                  'category' => [ $child_cat_id . $exclude_cat_id ],
+                  'exclude' => [ $exclude_post_id ],
+                ]);
                 foreach( $post_arr as $post ) {
                   echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
                 }
-                the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr );
+                the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id );
                 echo '</section>';
               }
             }
