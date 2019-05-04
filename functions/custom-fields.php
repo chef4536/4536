@@ -30,6 +30,8 @@ class Custom_Field_4536 {
     add_action( 'wp_head_4536', [ $this, 'custom_seo_meta_4536' ] );
     add_action( 'admin_head-post.php', [ $this, 'text_counter' ] );
     add_action( 'admin_head-post-new.php', [ $this, 'text_counter' ] );
+    add_action( 'admin_head-post.php', [ $this, 'style' ] );
+    add_action( 'admin_head-post-new.php', [ $this, 'style' ] );
 	}
 
   function init() {
@@ -65,6 +67,7 @@ class Custom_Field_4536 {
       }
     }
     add_meta_box( 'none_header_footer', '出力制御（LP向け）', [$this, 'none_header_footer'], 'page', 'side', 'default' );
+    add_meta_box( 'html_sitemap_setting', 'HTMLサイトマップ設定', [$this, 'html_sitemap_setting'], 'page', 'side', 'default' );
   }
 
   function save( $new_status, $old_status, $post ) {
@@ -89,6 +92,9 @@ class Custom_Field_4536 {
         $arr['review_name'] = '';
         $arr['review_rating'] = '';
         $arr['none_header_footer'] = '';
+        $arr['html_sitemap_setting'] = '';
+        $arr['html_sitemap_exclude_cat_id'] = '';
+        $arr['html_sitemap_exclude_post_id'] = '';
         foreach( $arr as $name => $val ) {
           if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
           if( isset($_POST['action']) && $_POST['action'] == 'inline-save' ) return $post_id;
@@ -134,21 +140,8 @@ class Custom_Field_4536 {
         <input type="checkbox" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="1" <?php echo $check; ?> >
         <label for="<?php echo $name; ?>" class="label-4536"><?php echo $description; ?></label>
       </p>
-    <?php } ?>
-    <style>
-      .counter {
-        text-align: right;
-        width: 100%;
-      }
-      .title-counter-length-over {
-        color: #f00;
-        font-weight: bold;
-      }
-      input,textarea {
-        max-width: 100%;
-      }
-    </style>
-  <?php }
+    <?php }
+  }
 
   function add_html_js_css_form() {
     global $post;
@@ -248,6 +241,26 @@ class Custom_Field_4536 {
     </select>
   <?php }
 
+  function html_sitemap_setting() {
+    global $post;
+    $html_sitemap_thumbnail = get_post_meta( $post->ID, 'html_sitemap_thumbnail', true );
+    $html_sitemap_exclude_cat_id = get_post_meta( $post->ID, 'html_sitemap_exclude_cat_id', true );
+    $html_sitemap_exclude_post_id = get_post_meta( $post->ID, 'html_sitemap_exclude_post_id', true );
+    $check = ( $html_sitemap_thumbnail == 1 ) ? ' checked' : '' ;
+    ?>
+    <p><label><input type="checkbox" name="html_sitemap_thumbnail" id="html_sitemap_thumbnail" value="1"<?php echo $check; ?> />カテゴリー画像を表示する</label></p>
+    <p><label>除外記事ID（複数指定時はカンマ区切り）<br /><input type="text" name="html_sitemap_exclude_post_id" value="<?php echo $html_sitemap_exclude_post_id; ?>" size="60" class="input-4536" placeholder="例：11,222,3333" /></label></p>
+    <p style="margin-bottom:0;">除外カテゴリー</p>
+    <ul style="height:auto;max-height:150px;overflow-y:scroll;margin:0;background-color:#fcfcfc;padding:.5em;display:inline-block;box-sizing:border-box;">
+      <?php
+      $walker = new Walker_Category_Checklist_Widget (
+        'html_sitemap_exclude_cat_id'
+      );
+      wp_category_checklist( 0, 0, $html_sitemap_exclude_cat_id, false, $walker, false );
+      ?>
+    </ul>
+  <?php }
+
   ////////////////////////////////////
   // 設定の反映
   ////////////////////////////////////
@@ -301,6 +314,25 @@ class Custom_Field_4536 {
         });
       });
     </script>
+  <?php }
+
+  function style() { ?>
+    <style>
+      .counter {
+        text-align: right;
+        width: 100%;
+      }
+      .title-counter-length-over {
+        color: #f00;
+        font-weight: bold;
+      }
+      input,textarea {
+        max-width: 100%;
+      }
+      ul.children {
+        padding-left: 1.5em;
+      }
+    </style>
   <?php }
 
 }
