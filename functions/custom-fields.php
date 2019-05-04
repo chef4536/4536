@@ -92,7 +92,7 @@ class Custom_Field_4536 {
         $arr['review_name'] = '';
         $arr['review_rating'] = '';
         $arr['none_header_footer'] = '';
-        $arr['html_sitemap_setting'] = '';
+        $arr['html_sitemap_thumbnail'] = '';
         $arr['html_sitemap_exclude_cat_id'] = '';
         $arr['html_sitemap_exclude_post_id'] = '';
         foreach( $arr as $name => $val ) {

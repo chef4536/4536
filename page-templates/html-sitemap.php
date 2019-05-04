@@ -10,14 +10,23 @@ get_header(); ?>
         </header>
         <div class="article-body">
           <?php
+          $is_thumbnail = get_post_meta( $post->ID, 'html_sitemap_thumbnail', true );
+          $exclude_cat_id_arr = get_post_meta( $post->ID, 'html_sitemap_exclude_cat_id', true );
+          if( !empty( $exclude_cat_id_arr ) ) {
+            $exclude_categories_id = '&exclude_tree=' . implode( ',', $exclude_cat_id_arr );
+          } else {
+            $exclude_cat_id_arr = [];
+            $exclude_categories_id = '';
+          }
+          $exclude_post_id_custom = get_post_meta( $post->ID, 'html_sitemap_exclude_post_id', true );
           echo apply_filters( 'the_content', $post->post_content );
-        	$categories = get_categories( 'parent=0' );
+        	$categories = get_categories( 'parent=0' . $exclude_categories_id );
         	foreach( $categories as $category ) {
             echo '<section>';
             $cat_id = $category->cat_ID;
         		echo '<a href="' . get_category_link( $cat_id ) . '"><h2>' . $category->name . '</h2></a>';
             $thumbnail_arr = get_posts( 'post_type=post&posts_per_page=1&category=' . $cat_id );
-            if( has_post_thumbnail( $post_id = $thumbnail_arr[0]->ID ) ) {
+            if( has_post_thumbnail( $post_id = $thumbnail_arr[0]->ID ) && $is_thumbnail === '1' ) {
               echo '<figure class="alignwide margin-bottom-1_5em text-align-center">' . get_the_post_thumbnail( $post_id ) . '</figure>';
             }
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
@@ -29,18 +38,19 @@ get_header(); ?>
             foreach( $post_arr as $post ) {
               echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
             }
-            the_child_sitemap_4536( $cat_id, 2 );
+            the_child_sitemap_4536( $cat_id, 2, $exclude_cat_id_arr );
             echo '</section>';
         	}
 
-          function the_child_sitemap_4536( $cat_id, $i ) {
+          function the_child_sitemap_4536( $cat_id, $i, $exclude_cat_id_arr = [] ) {
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
             if( !empty( $child_cat_arr ) ) {
               $i++;
               if( $i > 6 ) $i = 6;
               foreach( $child_cat_arr as $child_cat ) {
-                echo '<section class="children">';
                 $child_cat_id = $child_cat->term_id;
+                if( in_array( (string)$child_cat_id, $exclude_cat_id_arr, true ) ) continue;
+                echo '<section class="children">';
                 echo '<a href="' . get_category_link( $child_cat_id ) . '"><h' . $i . '>' . $child_cat->name . '</h' . $i . '></a>';
                 $exclude_cat_id = '';
                 $exclude_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$child_cat_id ]);
@@ -51,7 +61,7 @@ get_header(); ?>
                 foreach( $post_arr as $post ) {
                   echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
                 }
-                the_child_sitemap_4536( $child_cat_id, $i );
+                the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr );
                 echo '</section>';
               }
             }
