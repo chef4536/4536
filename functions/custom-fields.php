@@ -99,9 +99,16 @@ class Custom_Field_4536 {
           if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
           if( isset($_POST['action']) && $_POST['action'] == 'inline-save' ) return $post_id;
           if( !empty($_POST[$name]) ) {
-            update_post_meta($post_id, $name, $_POST[$name] );
+            if( $name === 'html_sitemap_exclude_post_id' ) {
+              $data = mb_convert_kana(strip_tags( $_POST[$name] ), 'n');
+              $data = preg_replace( '/[^0-9,]/', '', $data );
+              $data = trim( $data, ',' );
+              update_post_meta( $post_id, $name, $data );
+              continue;
+            }
+            update_post_meta( $post_id, $name, $_POST[$name] );
           } else {
-            delete_post_meta($post_id, $name);
+            delete_post_meta( $post_id, $name );
           }
         }
       });
@@ -249,7 +256,11 @@ class Custom_Field_4536 {
     $check = ( $html_sitemap_thumbnail == 1 ) ? ' checked' : '' ;
     ?>
     <p><label><input type="checkbox" name="html_sitemap_thumbnail" id="html_sitemap_thumbnail" value="1"<?php echo $check; ?> />カテゴリー画像を表示する</label></p>
-    <p><label>除外記事ID（複数指定時はカンマ区切り）<br /><input type="text" name="html_sitemap_exclude_post_id" value="<?php echo $html_sitemap_exclude_post_id; ?>" size="60" class="input-4536" placeholder="例：11,222,3333" /></label></p>
+    <p>
+      <label>除外記事ID（複数指定時はカンマ区切り）<br />
+      <input type="text" name="html_sitemap_exclude_post_id" value="<?php echo $html_sitemap_exclude_post_id; ?>" size="60" class="input-4536" placeholder="例：11,222,3333" />
+      </label>
+    </p>
     <p style="margin-bottom:0;">除外カテゴリー</p>
     <ul style="height:auto;max-height:150px;overflow-y:scroll;margin:0;background-color:#fcfcfc;padding:.5em;display:inline-block;box-sizing:border-box;">
       <?php
