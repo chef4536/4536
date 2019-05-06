@@ -259,7 +259,11 @@ body {
     max-height: 48px;
 }
 #header-slide-button {
-    font-size: 24px;
+  border: 1px solid;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
 }
 #sitename {
     font-size: 24px;
@@ -375,12 +379,11 @@ h2.post-title { /* トップの新着記事 */
     margin-left: 10px;
 }
 /* 見出し */
-#post-h1,#archive-title,#_404-title {
+#post-h1,#archive-title,#_404-title,#h1 {
   position: relative;
   margin: 1.4em auto;
   font-size: 1.4em;
   line-height: 1.4;
-  display: inline-block;
   width: 100%;
 }
 #archive-title,#_404-title {
@@ -444,10 +447,10 @@ h2.post-title { /* トップの新着記事 */
     border-collapse: collapse;
 }
 .article-body table td,.article-body table th {
-	padding: 5px;
-	border: 1px #999 solid;
-	font-size: 14px;
-	line-height: 1.4;
+  padding: 1em .5em;
+  border: 1px #999 solid;
+  font-size: 90%;
+  line-height: 1.6;
 }
 /*
  * SNS周り
