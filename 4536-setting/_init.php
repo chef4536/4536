@@ -26,6 +26,7 @@ add_action( 'admin_init', function() {
         'admin_get_aio',
         'admin_canonical',
         'admin_next_prev',
+        'noindex_category_archive',
     ];
     foreach($list as $name) {
         register_setting( 'seo_group', $name );
