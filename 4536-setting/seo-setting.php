@@ -79,7 +79,7 @@ class AdminSeoSetting_4536 {
                 $walker = new Walker_Category_Checklist_Widget (
                   'noindex_category_archive'
                 );
-                wp_category_checklist( 0, 0, get_option( 'noindex_category_archive' ), false, $walker, true );
+                wp_category_checklist( 0, 0, get_option( 'noindex_category_archive' ), false, $walker, false );
                 ?>
               </ul>
             </div>
