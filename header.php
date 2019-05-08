@@ -50,7 +50,7 @@ if(is_amp()) {
           $button = (is_amp()) ? '' : '<div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>';
           ?>
           <nav id="below-header-nav-menu" class="nav-menu header-section icon text-align-center<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-            <div class="scroll-wrapper inner padding-0-10px">
+            <div class="scroll-wrapper inner padding-0_5em-10px">
               <div class="scroll-left">
                 <?php
                 wp_nav_menu($defaults);
