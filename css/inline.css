@@ -282,6 +282,14 @@ li {
   padding: 20px 10px;
 }
 
+.padding-0_5em-10px {
+  padding: .5em 10px;
+}
+
+.padding-1em-10px {
+  padding: 1em 10px;
+}
+
 .padding-1_5em-0 {
   padding: 1.5em 0;
 }
@@ -504,13 +512,12 @@ body {
   opacity: .5;
 }
 
-.nav-menu li:after {
-  content: "/";
-  margin: 0 10px;
+.nav-menu li {
+  margin-right: 1.5em;
 }
 
-.nav-menu li:last-child:after {
-  content: none;
+.nav-menu li:last-child {
+  margin: 0;
 }
 
 .sub-menu {

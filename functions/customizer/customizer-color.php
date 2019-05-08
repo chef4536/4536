@@ -19,6 +19,14 @@ class CustomizerColorSettings_4536 {
       'label' => 'ヘッダー文字',
       'color' => '#ffffff',
     ],
+    'below_header_nav_menu_background_color' => [
+      'label' => 'ヘッダー下ナビメニュー背景',
+      'color' => '#000000',
+    ],
+    'below_header_nav_menu_color' => [
+      'label' => 'ヘッダー下ナビメニュー文字',
+      'color' => '#ffffff',
+    ],
     'description_color' => [
       'label' => 'トップページのサイト説明',
       'color' => '',
@@ -218,21 +226,30 @@ class CustomizerColorSettings_4536 {
 
     extract( $color );
 
-    if( !empty($link_color) ) { //リンクカラー
-      $css[] = 'a{color:'.$link_color.'}';
+    if( !empty( $link_color ) ) { //リンクカラー
+      $css[] = 'a{color:' . $link_color . '}';
     }
 
-    if( !empty($header_background_color) ) { //ヘッダー背景色
-      $css[] = '.header-section,.sub-menu{background-color:'.$header_background_color.'}';
+    if( !empty( $header_background_color ) ) { //ヘッダー背景色
+      $css[] = '#header,.sub-menu{background-color:' . $header_background_color . '}';
     }
 
-    if( !empty($header_color) ) { //ヘッダー文字色
-      $css[] = '.header-section,.header-section a{color:'.$header_color.'}';
-      $css[] = '#site-top{border-bottom:1px solid rgba('.hex_to_rgb($header_color).',.25)}';
+    if( !empty( $header_color ) ) { //ヘッダー文字色
+      $css[] = '#header,#header a{color:'.$header_color.'}';
+      $css[ 'site_top_border_bottom' ] = '#site-top{border-bottom:1px solid rgba(' . hex_to_rgb( $header_color ) . ',.25)}';
     }
 
-    if( !empty($description_color) ) { //ディスクリプションの文字色
-      $css[] = '#description{color:'.$description_color.'}';
+    if( !empty( $below_header_nav_menu_background_color ) ) { //ヘッダーナビ背景色
+      $css[] = '#below-header-nav-menu{background-color:' . $below_header_nav_menu_background_color . '}';
+    }
+
+    if( !empty( $below_header_nav_menu_color ) ) { //ヘッダーナビ文字色
+      $css[] = '#below-header-nav-menu a{color:' . $below_header_nav_menu_color . '}';
+      $css[ 'site_top_border_bottom' ] = '#site-top{border-bottom:1px solid rgba(' . hex_to_rgb( $below_header_nav_menu_color ) . ',.25)}';
+    }
+
+    if( !empty( $description_color ) ) { //ディスクリプションの文字色
+      $css[] = '#description{color:' . $description_color . '}';
     }
 
     global $pagenow;

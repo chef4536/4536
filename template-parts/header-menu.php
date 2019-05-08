@@ -23,7 +23,7 @@ if( has_header_image() ) { ?>
   } else {
     $site_name = get_bloginfo('name');
   } ?>
-  <div class="inner display-flex align-items-center padding-10px clearfix">
+  <div class="inner display-flex align-items-center padding-1em-10px clearfix">
     <div class="header-contents header-title flex-1">
       <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
     </div>
