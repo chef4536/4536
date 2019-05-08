@@ -231,11 +231,11 @@ class CustomizerColorSettings_4536 {
     }
 
     if( !empty( $header_background_color ) ) { //ヘッダー背景色
-      $css[] = '#header,.sub-menu{background-color:' . $header_background_color . '}';
+      $css[] = '.header,.sub-menu{background-color:' . $header_background_color . '}';
     }
 
     if( !empty( $header_color ) ) { //ヘッダー文字色
-      $css[] = '#header,#header a{color:'.$header_color.'}';
+      $css[] = '.header,.header a{color:'.$header_color.'}';
       $css[ 'site_top_border_bottom' ] = '#site-top{border-bottom:1px solid rgba(' . hex_to_rgb( $header_color ) . ',.25)}';
     }
 
