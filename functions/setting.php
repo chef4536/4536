@@ -101,6 +101,33 @@ add_filter( 'wp_list_categories', function( $list ) {
 });
 
 ////////////////////////////////////
+// サイドバーあるかどうか
+////////////////////////////////////
+function my_sidebar( $is_boolean = false ) {
+  if( is_amp() ) {
+    ob_start();
+    dynamic_sidebar( 'amp-sidebar' );
+    $sidebar = ob_get_clean();
+  } else {
+    ob_start();
+    dynamic_sidebar( 'sidebar' );
+    $sidebar = ob_get_clean();
+    ob_start();
+    dynamic_sidebar( 'scroll-sidebar' );
+    $scroll_sidebar = ob_get_clean();
+  }
+  if( $is_boolean === false ) {
+    return compact( 'sidebar', 'scroll_sidebar' );
+  } elseif( $is_boolean === true ) {
+    if( empty( $sidebar ) && empty( $scroll_sidebar ) ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+////////////////////////////////////
 // HEX to RGB
 ////////////////////////////////////
 function hex_to_rgb( $hex ) {

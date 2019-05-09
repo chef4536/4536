@@ -525,6 +525,7 @@ body {
 }
 
 .scroll-content {
+  width: 100%;
   display: table;
   white-space: nowrap;
 }

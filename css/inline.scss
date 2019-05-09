@@ -301,8 +301,9 @@ body {
     display:none;
 }
 .scroll-content {
-    display: table;
-    white-space: nowrap;
+  width: 100%;
+  display: table;
+  white-space: nowrap;
 }
 /*
  * 記事一覧デフォルトテンプレート
