@@ -108,7 +108,6 @@ function my_sidebar( $is_boolean = false ) {
     ob_start();
     dynamic_sidebar( 'amp-sidebar' );
     $sidebar = ob_get_clean();
-    if( is_amp_sidebar_top() ) $sidebar = amp_adsense_code() . $sidebar;
     $scroll_sidebar = '';
   } else {
     ob_start();
