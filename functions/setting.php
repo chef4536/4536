@@ -108,6 +108,7 @@ function my_sidebar( $is_boolean = false ) {
     ob_start();
     dynamic_sidebar( 'amp-sidebar' );
     $sidebar = ob_get_clean();
+    $scroll_sidebar = '';
   } else {
     ob_start();
     dynamic_sidebar( 'sidebar' );

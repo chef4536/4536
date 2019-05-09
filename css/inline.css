@@ -916,6 +916,9 @@ a.simple-sns-button-2 {
     -webkit-transition: .2s ease-out;
     transition: .2s ease-out;
   }
+  #slide-menu ins.adsbygoogle, #slide-menu .widget_ad_widget {
+    display: none !important;
+  }
   /* max-767px END */
 }
 
