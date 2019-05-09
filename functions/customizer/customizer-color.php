@@ -356,6 +356,17 @@ class CustomizerColorSettings_4536 {
 
     }
 
+    $sidebar_widget_title_key_color = !empty( $sidebar_widget_title_key_color ) ? "background-color:$sidebar_widget_title_key_color;" : '';
+    $sidebar_widget_title_color = !empty( $sidebar_widget_title_color ) ? "color:$sidebar_widget_title_color" : '';
+
+    if( !empty( $sidebar_widget_title_key_color ) || !empty( $sidebar_widget_title_color ) ) { //スライドウィジェットのクローズボタン
+      $css[] = '.slide-widget-close-button{' . $sidebar_widget_title_key_color . $sidebar_widget_title_color . '}';
+    }
+
+    if( !empty( $slide_widget_bgc_color = get_background_color() ) ) {
+      $css[] = "#slide-menu{background-color:#$slide_widget_bgc_color}";
+    }
+
     if( !empty($table_background_color_2_line) ) { //テーブル偶数番目背景色
       $css[] = '.post table tr:nth-child(even){background-color:'.$table_background_color_2_line.'}';
     }

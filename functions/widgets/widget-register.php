@@ -17,15 +17,6 @@ register_sidebar([
     'after_title' => '</h3>',
 ]);
 register_sidebar([
-    'name' => 'スライドメニュー',
-    'id' => 'slide-widget',
-    'description' => 'Googleアドセンス禁止',
-    'before_widget' => '<div class="widget-4536 %1$s %2$s slide-widget">',
-    'after_widget' => '</div>',
-    'before_title' => '<h3 class="slide-widget-title widget-title">',
-    'after_title' => '</h3>',
-]);
-register_sidebar([
     'name' => 'ヘッダー下',
     'id' => 'header-widget',
     'description' => 'サイトタイトルやメニューの下部分に表示されます。',

@@ -25,21 +25,27 @@ if( is_amp() ) {
   $scroll_sidebar = ob_get_clean();
 }
 
-if( $amp_sidebar || $sidebar || $scroll_sidebar ) { ?>
-    <div id="sidebar">
-        <?php if( !empty($amp_sidebar) || !empty($sidebar) ) { ?>
-        <aside class="sidebar-inner" role="complementary">
-            <?php
-            if(is_amp() && !empty(is_amp_sidebar_top())) echo amp_adsense_code();
-            if(!empty($amp_sidebar)) echo $amp_sidebar;
-            if(!empty($sidebar)) echo $sidebar;
-            ?>
-        </aside>
-        <?php }
-        if(!empty($scroll_sidebar)) { ?>
-        <aside id="scroll-sidebar" class="sidebar-inner" role="complementary">
-            <?php echo $scroll_sidebar; ?>
-        </aside>
-        <?php } ?>
-    </div>
-<?php }
+if( empty($amp_sidebar) && empty($sidebar) && empty($scroll_sidebar) ) return;
+
+?>
+<div id="sidebar">
+  <input id="slide-toggle" type="checkbox" class="display-none">
+  <label id="slide-mask" for="slide-toggle" class="display-none mask"></label>
+  <div id="slide-menu">
+    <label for="slide-toggle" class="close-button display-none-pc slide-widget-close-button"><i class="fas fa-times"></i>CLOSE</label>
+    <?php if( !empty($amp_sidebar) || !empty($sidebar) ) { ?>
+    <aside class="sidebar-inner" role="complementary">
+      <?php
+      if(is_amp() && !empty(is_amp_sidebar_top())) echo amp_adsense_code();
+      if(!empty($amp_sidebar)) echo $amp_sidebar;
+      if(!empty($sidebar)) echo $sidebar;
+      ?>
+    </aside>
+    <?php }
+    if( !empty($scroll_sidebar) ) { ?>
+    <aside id="scroll-sidebar" class="sidebar-inner" role="complementary">
+      <?php echo $scroll_sidebar; ?>
+    </aside>
+    <?php } ?>
+  </div>
+</div>
