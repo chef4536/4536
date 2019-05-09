@@ -408,7 +408,7 @@ class Shortcode_Setting_4536 {
   }
 
   function delete() {
-    if( ( isset( $_GET['action'] ) && $_GET['action'] === 'delete' ) ||
+    if( ( filter_input( INPUT_GET, 'page' ) === 'shortcode' && filter_input( INPUT_GET, 'action' ) === 'delete' ) ||
     ( isset( $_POST['delete_shortcode_setting_submit_4536'] ) ) &&
     ( isset( $_GET['ID'] ) && !is_null( $_GET['ID'] ) )
     ) {
