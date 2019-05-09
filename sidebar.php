@@ -24,15 +24,6 @@ if( !has_header_image() || ( fixed_footer()==='menu' && fixed_footer_menu_item( 
   $is_slide_menu = false;
 }
 
-// if( $is_slide_menu ) {
-//   if( !empty( $sidebar ) ) {
-//     $sidebar = str_replace( 'class="adsbygoogle', 'class="adsbygoogle display-none-mobile', $sidebar );
-//   }
-//   if( !empty( $scroll_sidebar ) ) {
-//     $scroll_sidebar = str_replace( 'class="adsbygoogle', 'class="adsbygoogle display-none-mobile', $scroll_sidebar );
-//   }
-// }
-
 ?>
 <div id="sidebar">
   <?php if( $is_slide_menu ) { ?>
