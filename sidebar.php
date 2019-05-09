@@ -14,7 +14,6 @@ if( $layout === 'center-content' ) return;
 
 $my_sidebar = my_sidebar();
 $sidebar = $my_sidebar['sidebar'];
-if( is_amp() && is_amp_sidebar_top() ) $sidebar = amp_adsense_code() . $sidebar;
 $scroll_sidebar = $my_sidebar['scroll_sidebar'];
 
 if( empty($sidebar) && empty($scroll_sidebar) ) return;

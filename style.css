@@ -1510,6 +1510,10 @@ a[data-embed-content="false"] {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M5%202h9q.82%200%201.41.59T16%204v7q0%20.82-.59%201.41T14%2013h-2l-5%205v-5H5q-.82%200-1.41-.59T3%2011V4q0-.82.59-1.41T5%202z%27%20fill%3D%27%2382878c%27%2F%3E%3C%2Fsvg%3E");
 }
 
+#slide-menu {
+  height: 100%;
+}
+
 @media screen and (min-width: 480px) {
   .blogcard-image-info-wrap {
     display: -webkit-box;
