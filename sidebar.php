@@ -20,14 +20,14 @@ if( empty($sidebar) && empty($scroll_sidebar) ) return;
 
 if( !has_header_image() || ( fixed_footer()==='menu' && fixed_footer_menu_item( 'slide-menu' ) ) ) {
   $is_slide_menu = true;
-  $wrap_id = 'slide-sidebar';
+  $class = '';
 } else {
   $is_slide_menu = false;
-  $wrap_id = 'sidebar';
+  $class = ' margin-top-1_5em';
 }
 
 ?>
-<div id="<?php echo $wrap_id; ?>" class="padding-0-10px">
+<div id="sidebar" class="padding-0-10px<?php echo $class; ?>">
   <?php
   if( $is_slide_menu ) { ?>
     <input id="slide-toggle" type="checkbox" class="display-none">
