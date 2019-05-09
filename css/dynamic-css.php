@@ -9,17 +9,8 @@ add_filter( 'inline_style_4536', function( $css ) {
   if(add_google_fonts()) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'" !important}';
 
   //横幅とレイアウト
-  if(is_singular()) {
-      $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-      $body_width = body_width('body_width_singular');
-      $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
-      if($custom_body_width) $body_width = $custom_body_width;
-  } elseif(is_archive()||is_search()) {
-      $body_width = body_width('body_width_archive');
-  } else {
-      $body_width = body_width('body_width_home');
-  }
-  $width = str_replace('width-', '', $body_width);
+  $body_width = body_width_4536();
+  $width = str_replace( 'width-', '', $body_width );
   $body_width = '.'.$body_width.' ';
   $css[] = $body_width.'#header-image,'.$body_width.'#wrapper,'.$body_width.'.inner{max-width:'.$width.'px}';
 

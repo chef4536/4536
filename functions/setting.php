@@ -2,24 +2,9 @@
 
 //bodyタグにクラス追加
 add_filter( 'body_class', function( $classes ) {
-  global $post;
-  if( is_singular() ) {
-    $layout = layout('layout_singular');
-    $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-    if($custom_layout) $layout = $custom_layout;
-    $body_width = body_width('body_width_singular');
-    $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
-    if($custom_body_width) $body_width = $custom_body_width;
-  } elseif( is_archive() || is_search() ) {
-    $layout = layout('layout_archive');
-    $body_width = body_width('body_width_archive');
-  } else {
-    $layout = layout('layout_home');
-    $body_width = body_width('body_width_home');
-  }
   $list = [
-    $layout,
-    $body_width,
+    layout_4536(),
+    body_width_4536(),
     'simple1',
     'simple2',
     'simple3',
@@ -121,6 +106,8 @@ function my_sidebar( $is_boolean = false ) {
     return compact( 'sidebar', 'scroll_sidebar' );
   } elseif( $is_boolean === true ) {
     if( empty( $sidebar ) && empty( $scroll_sidebar ) ) {
+      return false;
+    } elseif( layout_4536() === 'center-content' ) {
       return false;
     } else {
       return true;

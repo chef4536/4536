@@ -1,16 +1,6 @@
 <?php
 
-if( is_singular() ) {
-  $layout = layout('layout_singular');
-  $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-  if( !empty( $custom_layout ) ) $layout = $custom_layout;
-} elseif( is_archive() ) {
-  $layout = layout( 'layout_archive' );
-} else {
-  $layout = layout( 'layout_home' );
-}
-
-if( $layout === 'center-content' ) return;
+if( layout_4536() === 'center-content' ) return;
 
 $my_sidebar = my_sidebar();
 $sidebar = $my_sidebar['sidebar'];
