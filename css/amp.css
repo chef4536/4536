@@ -14,7 +14,7 @@ amp-img img {
   margin: 0 0 1.5em;
 }
 
-#slide-menu amp-ad {
+#slide-menu amp-ad[type="adsense"] {
   display: none;
 }
 
