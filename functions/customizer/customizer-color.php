@@ -356,11 +356,8 @@ class CustomizerColorSettings_4536 {
 
     }
 
-    $sidebar_widget_title_key_color = !empty( $sidebar_widget_title_key_color ) ? "background-color:$sidebar_widget_title_key_color;" : '';
-    $sidebar_widget_title_color = !empty( $sidebar_widget_title_color ) ? "color:$sidebar_widget_title_color" : '';
-
-    if( !empty( $sidebar_widget_title_key_color ) || !empty( $sidebar_widget_title_color ) ) { //スライドウィジェットのクローズボタン
-      $css[] = '.slide-widget-close-button{' . $sidebar_widget_title_key_color . $sidebar_widget_title_color . '}';
+    if( !empty( $sidebar_widget_title_color ) ) { //スライドウィジェットのクローズボタン
+      $css[] = '.slide-widget-close-button{color:' . $sidebar_widget_title_color . '}';
     }
 
     if( !empty( $slide_widget_bgc_color = get_background_color() ) ) {
