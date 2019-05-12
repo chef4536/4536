@@ -3,6 +3,8 @@
   "link_color": "#0000cd",
   "header_background_color": "#ff0099",
   "header_color": "#ffffff",
+  "below_header_nav_menu_background_color": "#ff0099",
+  "below_header_nav_menu_color": "#ffffff",
   "post_background_color": "#ff0099",
   "post_color": "#ffffff",
   "h1_key_color": "#fed5d6",

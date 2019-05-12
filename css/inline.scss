@@ -18,45 +18,45 @@ img, video, object {
 	vertical-align: bottom;
 }
 a {
-    -webkit-transition: 0.3s ease-out;
-    transition: 0.3s ease-out;
-    text-decoration: none;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  text-decoration: none;
 }
 a:hover,
 a:focus,
 a:active {
-    opacity: 0.5;
-    -webkit-transition: 0s;
-    transition: 0s;
+  opacity: 0.5;
+  -webkit-transition: 0s;
+  transition: 0s;
 }
 iframe {
-    max-width: 100%;
-    vertical-align: bottom;
+  max-width: 100%;
+  vertical-align: bottom;
 }
 li {
-    line-height: 1.5;
-    margin: .5em 0;
+  line-height: 1.5;
+  margin: .5em 0;
 }
 /*
  * 使い回し用
  */
 .display-none {
-    display: none;
+  display: none;
 }
 .display-block {
-    display: block;
+  display: block;
 }
 .position-relative {
-    position: relative;
+  position: relative;
 }
 .text-align-center {
-    text-align: center;
+  text-align: center;
 }
 .text-align-right {
-    text-align: right;
+  text-align: right;
 }
 .text-align-left {
-    text-align: left;
+  text-align: left;
 }
 .aligncenter {
 	clear: both;
@@ -64,19 +64,19 @@ li {
 	margin: 0 auto;
 }
 .float-l {
-    float: left;
+  float: left;
 }
 .float-r {
-    float: right;
+  float: right;
 }
 .clearfix {
-    zoom: 1;
+  zoom: 1;
 }
 .clearfix:after {
-    clear: both;
-    content: "";
-    display: block;
-    height: 0;
+  clear: both;
+  content: "";
+  display: block;
+  height: 0;
 }
 /* line-height関連 */
 .line-height-1_4 {
@@ -87,32 +87,32 @@ li {
 }
 /* padding関連 */
 .padding-10px {
-    padding: 10px;
+  padding: 10px;
 }
 .padding-0-1em {
-    padding: 0 1em;
+  padding: 0 1em;
 }
 .padding-0-10px {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 .padding-20px-10px {
-    padding: 20px 10px;
+  padding: 20px 10px;
 }
 .padding-0_5em-10px {
-    padding: .5em 10px;
+  padding: .5em 10px;
 }
 .padding-1em-10px {
-    padding: 1em 10px;
+  padding: 1em 10px;
 }
 .padding-1_5em-0 {
-    padding: 1.5em 0;
+  padding: 1.5em 0;
 }
 .padding-bottom-1em {
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 /* margin関連 */
 .margin-auto {
-    margin: auto;
+  margin: auto;
 }
 .margin-1em {
     margin: 1em;
@@ -123,8 +123,8 @@ li {
 .margin-1em-0 {
     margin: 1em 0;
 }
-.margin-1_5em-auto {
-  margin: 1.5em auto;
+.margin-2em-auto {
+  margin: 2em auto;
 }
 .margin-top-1_5em {
     margin-top: 1.5em;
@@ -376,20 +376,21 @@ h2.post-title { /* トップの新着記事 */
 */
 /* 公開日 */
 .post-date {
-    margin: 1em 0;
-    font-size: 0.8em;
-    text-align: right;
-    opacity: .5;
+  letter-spacing: .2px;
+  margin: 1em 0;
+  font-size: 0.8em;
+  text-align: right;
+  opacity: .5;
 }
 /* 更新日 */
 .modified-date {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 /* 見出し */
 #post-h1,#archive-title,#_404-title,#h1 {
   position: relative;
-  margin: 1.4em auto;
-  font-size: 1.4em;
+  margin: 2em auto;
+  font-size: 1.8em;
   line-height: 1.4;
   width: 100%;
 }
@@ -400,58 +401,58 @@ h2.post-title { /* トップの新着記事 */
 .article-body h3,
 .article-body h4,
 .article-body h5 {
-    position: relative;
-    margin: 1.4em auto;
-    line-height: 1.4;
-    clear: both;
+  position: relative;
+  margin: 2em auto;
+  line-height: 1.4;
+  clear: both;
 }
 /* 本文 */
 .article-body p {
 	line-height: 1.6;
-	margin-bottom: 1.5em;
+	margin-bottom: 2em;
 }
 .article-body p a:not(.wp-embed) {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .article-body ol,.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {
-    padding-left: 1.5em;
-    margin-bottom: 1.5em;
+  padding-left: 1.5em;
+  margin-bottom: 2em;
 }
 .article-body blockquote:not(.external-website-embed-content) {
-    padding: 20px 20px 0 !important;
-    margin: 10px 0 1.5em;
-    position: relative;
-    border: 1px solid !important;
-    border-radius: 2px;
+  padding: 20px 20px 0 !important;
+  margin: 10px 0 2em;
+  position: relative;
+  border: 1px solid !important;
+  border-radius: 2px;
 }
 .article-body blockquote:not(.external-website-embed-content)::before,
 .article-body blockquote:not(.external-website-embed-content)::after {
-    position: absolute;
-    font-size: 18px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid;
-    border-radius: 50%;
-    text-align: center;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+  position: absolute;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid;
+  border-radius: 50%;
+  text-align: center;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 .article-body blockquote:not(.external-website-embed-content)::before {
-    left: -10px;
-    top: -10px;
-    content: '\f10d';
+  left: -10px;
+  top: -10px;
+  content: '\f10d';
 }
 .article-body blockquote:not(.external-website-embed-content)::after {
-    right: -10px;
-    bottom: -10px;
-    content: '\f10e';
+  right: -10px;
+  bottom: -10px;
+  content: '\f10e';
 }
 /* テーブル */
 .article-body table {
-	margin-bottom: 20px;
+	margin-bottom: 2em;
 	width: 100%;
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 .article-body table td,.article-body table th {
   padding: 1em .5em;

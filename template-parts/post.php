@@ -101,7 +101,7 @@ echo '<footer>';
 
   if( !empty($term) ) {
     $term = implode( '', $term );
-    echo '<div id="post-term-section" class="margin-1_5em-auto">' . $term . '</div>';
+    echo '<div id="post-term-section" class="margin-2em-auto">' . $term . '</div>';
   }
 
   if( $is_sns_bottom === true ) sns_button_4536('post_bottom');

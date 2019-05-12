@@ -64,9 +64,9 @@ function sns_button_4536($position) {
     $padding = ' padding-1_5em-0';
     $display = ( fixed_footer() === 'share' ) ? ' display-none-mobile' : '';
 
-    if( $position === 'post_top' ) $padding = $margin = ' margin-1_5em-auto';
+    if( $position === 'post_top' ) $padding = $margin = ' margin-2em-auto';
 
-    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px margin-1_5em-auto';
+    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px margin-2em-auto';
 
     if( $position === 'fixed_footer_share_button' ) {
       $padding = ' padding-10px';
