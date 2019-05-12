@@ -116,6 +116,17 @@ function my_sidebar( $is_boolean = false ) {
 }
 
 ////////////////////////////////////
+// スライドメニュー有効かどうか
+////////////////////////////////////
+function is_slide_menu() {
+  $boolean = false;
+  if( !my_sidebar( true ) ) return $boolean;
+  if( !has_header_image() ) $boolean = true;
+  if( fixed_footer()==='menu' && fixed_footer_menu_item( 'slide-menu' ) ) $boolean = true;
+  return $boolean;
+}
+
+////////////////////////////////////
 // HEX to RGB
 ////////////////////////////////////
 function hex_to_rgb( $hex ) {

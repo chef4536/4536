@@ -1,5 +1,7 @@
 <?php
 
+// var_dump(is_slide_menu());
+
 if( layout_4536() === 'center-content' ) return;
 
 $my_sidebar = my_sidebar();
@@ -8,13 +10,9 @@ $scroll_sidebar = $my_sidebar['scroll_sidebar'];
 
 if( empty($sidebar) && empty($scroll_sidebar) ) return;
 
-if( !has_header_image() || ( fixed_footer()==='menu' && fixed_footer_menu_item( 'slide-menu' ) ) ) {
-  $is_slide_menu = true;
-  $class = '';
-} else {
-  $is_slide_menu = false;
-  $class = ' margin-top-1_5em';
-}
+$is_slide_menu = is_slide_menu();
+
+$class = ( $is_slide_menu ) ? '' : ' margin-top-1_5em';
 
 ?>
 <div id="sidebar" class="padding-0-10px<?php echo $class; ?>">

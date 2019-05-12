@@ -15,7 +15,15 @@ add_filter( 'inline_style_4536', function( $css ) {
   $css[] = $body_width.'#header-image,'.$body_width.'#wrapper,'.$body_width.'.inner{max-width:'.$width.'px}';
 
   //タイトルの中央寄せ
-  // my_sidebar( true )
+  $is_slide_menu = is_slide_menu();
+  $has_pc_nav = has_nav_menu( 'navbar_pc' );
+  if( $is_slide_menu && !$has_pc_nav ) {
+    $css[] = '@media screen and (min-width: 768px){#sitename{text-align:center}}';
+  } elseif( !$is_slide_menu && $has_pc_nav ) {
+    $css[] = '@media screen and (max-width: 767px){#sitename{text-align:center}}';
+  } elseif( !$is_slide_menu && !$has_pc_nav ) {
+    $css[] = '#sitename{text-align:center}';
+  }
 
   //アイキャッチ画像
   if(is_likebox()||is_twitter_follow()||is_feedly_follow()||is_post_thumbnail_4536()==='background_image') {
