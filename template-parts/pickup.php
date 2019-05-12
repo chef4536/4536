@@ -1,13 +1,14 @@
 <?php
 $args = [
-    'post_type' => 'post',
-    'tag' => 'pickup',
-    'posts_per_page'=> -1,
-    'post__not_in' => [$post->ID],
+  'post_type' => 'post',
+  'tag' => 'pickup',
+  'posts_per_page'=> -1,
+  'post__not_in' => [$post->ID],
 ];
-$pickupPosts = get_posts($args);
+$pickupPosts = get_posts( $args );
+if( empty( $pickupPosts ) ) return;
 $thumbnail_style = '';
-if(!$pickupPosts) return; ?>
+?>
 
 <section id="pickup" class="clearfix padding-wrap-main-4536 media-section">
     <h2 class="media-section-title">Pickup</h2>
