@@ -131,6 +131,16 @@ class CustomizerLayoutSettings_4536 {
         'type' => 'select',
         'choices' => $post_style_list,
     ]);
+    //サイドバーをスライドメニューにする
+    $wp_customize->add_setting( 'sidebar_to_slidemenu', [
+      'default' => true,
+    ]);
+    $wp_customize->add_control( 'sidebar_to_slidemenu', [
+      'section' => 'design',
+      'settings' => 'sidebar_to_slidemenu',
+      'label' => 'スマホ画面でサイドバーをスライドメニューにする',
+      'type' => 'checkbox',
+    ]);
     //PC用
     $post_style_list += [
         '2-5' => '2列',

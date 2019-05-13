@@ -43,7 +43,7 @@ if( has_header_image() ) { ?>
         </nav>
       </div>
     <?php }
-    if( my_sidebar( true ) ) { ?>
+    if( is_slide_menu() ) { ?>
       <label id="header-slide-button" for="slide-toggle" class="header-contents slide-button display-none-pc text-align-center">
         <i class="fas fa-ellipsis-h"></i>
       </label>

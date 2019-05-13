@@ -45,7 +45,7 @@ if( fixed_footer()==='menu' ) { ?>
                 $icon = 'share-alt';
                 $title = 'シェア';
                 $class = ' fixed-share-toggle-button';
-            } elseif( $name === 'slide-menu' && my_sidebar( true ) ) {
+            } elseif( $name === 'slide-menu' && is_slide_menu() ) {
                 $start_tag = '<label class="fixed-footer-menu-item display-block" for="slide-toggle">';
                 $end_tag = '</label>';
                 $icon = 'bars';

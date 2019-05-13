@@ -120,6 +120,7 @@ function my_sidebar( $is_boolean = false ) {
 ////////////////////////////////////
 function is_slide_menu() {
   $boolean = false;
+  if( get_theme_mod( 'sidebar_to_slidemenu', true ) === false ) return $boolean;
   if( !my_sidebar( true ) ) return $boolean;
   if( !has_header_image() ) $boolean = true;
   if( fixed_footer()==='menu' && fixed_footer_menu_item( 'slide-menu' ) ) $boolean = true;
