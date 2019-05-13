@@ -1,8 +1,10 @@
 {
   "background_color": "",
-  "link_color": "#00a0e9",
+  "link_color": "#1b95e0",
   "header_background_color": "#000000",
   "header_color": "#ffffff",
+  "below_header_nav_menu_background_color": "#000000",
+  "below_header_nav_menu_color": "#ffffff",
   "post_background_color": "#ffffff",
   "post_color": "#333333",
   "h1_key_color": "#f2f2f2",

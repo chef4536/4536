@@ -49,7 +49,7 @@ class CtaWidgetItem extends WP_Widget {
     }
     $wrap = str_replace( 'widget-4536', 'widget-4536 ' . $wrap_class, $wrap );
     echo $wrap;
-    if( !empty( $title ) ) echo '<p class="cta-title text-align-center margin-1_5em-auto bold-4536 font-size-24px line-height-1_6">'.$title.'</p>';
+    if( !empty( $title ) ) echo '<p class="cta-title text-align-center margin-2em-auto bold-4536 font-size-24px line-height-1_6">'.$title.'</p>';
     if( !empty( $src ) ) {
       $image_margin = ( $image_style !== 'aligncenter' ) ? ' max-width-half-pc' : '';
       $size = get_image_width_and_height_4536( $src );
@@ -60,7 +60,7 @@ class CtaWidgetItem extends WP_Widget {
     }
     if( !empty( $description ) ) {
       $description_class = empty( $src ) ? ' text-align-center' : '';
-      echo '<p class="clearfix margin-1_5em-auto line-height-1_4' . $description_class . '">' . $description . '</p>';
+      echo '<p class="clearfix margin-2em-auto line-height-1_4' . $description_class . '">' . $description . '</p>';
     }
     if( !empty( $button_text ) && !empty( $button_url ) ) {
       $target = is_my_website( $button_url ) ?  '' : ' target="_blank" rel="noopener"';

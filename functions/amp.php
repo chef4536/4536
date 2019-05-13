@@ -205,7 +205,7 @@ function amp_adsense_code( $size = 'rectangle' ) {
       $layout = '';
       $width = ' width="100vw"';
       $height = '320';
-      $class = 'widget-4536 amp-adsense ad text-align-center margin-1_5em-auto clearfix';
+      $class = 'widget-4536 amp-adsense ad text-align-center margin-2em-auto clearfix';
       $option = ' data-auto-format="rspv" data-full-width';
       $overflow = '<div overflow></div>';
       break;

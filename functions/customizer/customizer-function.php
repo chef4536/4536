@@ -3,14 +3,6 @@
 ////////////////////////////////////
 // デザイン
 ////////////////////////////////////
-//サイトレイアウト
-function layout($page_4536) {
-    return get_theme_mod( $page_4536, 'left-content' );
-}
-//サイトの横幅
-function body_width($page_4536) {
-    return get_theme_mod( $page_4536, 'width-1080' );
-}
 //固定ヘッダー
 function fixed_header() {
     return get_theme_mod( 'fixed_header', false );

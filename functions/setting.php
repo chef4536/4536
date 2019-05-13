@@ -2,24 +2,9 @@
 
 //bodyタグにクラス追加
 add_filter( 'body_class', function( $classes ) {
-  global $post;
-  if( is_singular() ) {
-    $layout = layout('layout_singular');
-    $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-    if($custom_layout) $layout = $custom_layout;
-    $body_width = body_width('body_width_singular');
-    $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
-    if($custom_body_width) $body_width = $custom_body_width;
-  } elseif( is_archive() || is_search() ) {
-    $layout = layout('layout_archive');
-    $body_width = body_width('body_width_archive');
-  } else {
-    $layout = layout('layout_home');
-    $body_width = body_width('body_width_home');
-  }
   $list = [
-    $layout,
-    $body_width,
+    layout_4536(),
+    body_width_4536(),
     'simple1',
     'simple2',
     'simple3',
@@ -99,6 +84,48 @@ if(get_option('disenable_wp_emoji')) {
 add_filter( 'wp_list_categories', function( $list ) {
   return str_replace( '<a', '<a class="post-color"', $list );
 });
+
+////////////////////////////////////
+// サイドバーあるかどうか
+////////////////////////////////////
+function my_sidebar( $is_boolean = false ) {
+  if( is_amp() ) {
+    ob_start();
+    dynamic_sidebar( 'amp-sidebar' );
+    $sidebar = ob_get_clean();
+    $scroll_sidebar = '';
+  } else {
+    ob_start();
+    dynamic_sidebar( 'sidebar' );
+    $sidebar = ob_get_clean();
+    ob_start();
+    dynamic_sidebar( 'scroll-sidebar' );
+    $scroll_sidebar = ob_get_clean();
+  }
+  if( $is_boolean === false ) {
+    return compact( 'sidebar', 'scroll_sidebar' );
+  } elseif( $is_boolean === true ) {
+    if( empty( $sidebar ) && empty( $scroll_sidebar ) ) {
+      return false;
+    } elseif( layout_4536() === 'center-content' ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+////////////////////////////////////
+// スライドメニュー有効かどうか
+////////////////////////////////////
+function is_slide_menu() {
+  $boolean = false;
+  if( get_theme_mod( 'sidebar_to_slidemenu', true ) === false ) return $boolean;
+  if( !my_sidebar( true ) ) return $boolean;
+  if( !has_header_image() ) $boolean = true;
+  if( fixed_footer()==='menu' && fixed_footer_menu_item( 'slide-menu' ) ) $boolean = true;
+  return $boolean;
+}
 
 ////////////////////////////////////
 // HEX to RGB

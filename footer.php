@@ -57,7 +57,6 @@ if( !none_header_footer() ) {
   get_template_part('template-parts/fixed-footer');
   get_template_part('template-parts/fixed-footer-share-button');
   get_template_part('template-parts/fixed-footer-search');
-  get_template_part('template-parts/slide-menu');
   if( is_amp() ) {
     if(!fixed_footer()) echo '<a class="page-top" href="#header"><i class="fas fa-angle-up"></i></a>';
   } else {

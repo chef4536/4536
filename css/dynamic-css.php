@@ -3,39 +3,66 @@
 add_filter( 'inline_style_4536', function( $css ) {
 
   global $post;
-  $content = wpautop($post->post_content);
+  $content = wpautop( $post->post_content );
 
   //Googleフォント
-  if(add_google_fonts()) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'" !important}';
+  if( add_google_fonts() ) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'" !important}';
+
+  //吹き出し
+  if(balloon_image_style_option()==='border_border_radius') { //吹き出し画像を丸くする
+      $css[] = '.balloon figure img{border:1px solid #aaa;border-radius:50%}';
+  }
+  switch( balloon_image_size() ) {
+    case '60':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:60px}';
+      break;
+    case '80':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:80px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 140px);max-width:calc(100% - 140px)}';
+      break;
+    case '100':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:100px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 160px);max-width:calc(100% - 160px)}';
+      break;
+  }
+
+
+
+  ////////////////////////////////////
+  // ここから先は管理画面に不要
+  if( is_admin() ) return $css;
+  ////////////////////////////////////
+
+
 
   //横幅とレイアウト
-  if(is_singular()) {
-      $custom_layout = get_post_meta($post->ID,'singular_layout_select',true);
-      $body_width = body_width('body_width_singular');
-      $custom_body_width = get_post_meta($post->ID,'singular_body_width_select',true);
-      if($custom_body_width) $body_width = $custom_body_width;
-  } elseif(is_archive()||is_search()) {
-      $body_width = body_width('body_width_archive');
-  } else {
-      $body_width = body_width('body_width_home');
-  }
-  $width = str_replace('width-', '', $body_width);
+  $body_width = body_width_4536();
+  $width = str_replace( 'width-', '', $body_width );
   $body_width = '.'.$body_width.' ';
   $css[] = $body_width.'#header-image,'.$body_width.'#wrapper,'.$body_width.'.inner{max-width:'.$width.'px}';
 
+  //タイトルの中央寄せ
+  $is_slide_menu = is_slide_menu();
+  $has_pc_nav = has_nav_menu( 'navbar_pc' );
+  if( $is_slide_menu && !$has_pc_nav ) {
+    $css[] = '@media screen and (min-width: 768px){#sitename{text-align:center}}';
+  } elseif( !$is_slide_menu && $has_pc_nav ) {
+    $css[] = '@media screen and (max-width: 767px){#sitename{text-align:center}}';
+  } elseif( !$is_slide_menu && !$has_pc_nav ) {
+    $css[] = '#sitename{text-align:center}';
+  }
+
   //アイキャッチ画像
-  if(is_singular() && has_post_thumbnail()) {
+  if(is_likebox()||is_twitter_follow()||is_feedly_follow()||is_post_thumbnail_4536()==='background_image') {
+    if( is_singular() && has_post_thumbnail() ) {
       $src = get_the_post_thumbnail_4536()['src'];
       $class = get_the_post_thumbnail_4536()['class'];
       $padding = get_image_width_and_height_4536($src)['height'] / get_image_width_and_height_4536($src)['width'] * 100 . '%';
-      if(is_likebox()||is_twitter_follow()||is_feedly_follow()||is_post_thumbnail_4536()==='background_image') {
-          $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
-      }
-      if(is_post_thumbnail_4536()==='background_image') $css[] = '#post-thumbnail-4536{height:0;padding-top:'.$padding.'}';
+      $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
+    }
   }
+  if( is_post_thumbnail_4536()==='background_image' ) $css[] = '#post-thumbnail-4536{height:0;padding-top:'.$padding.'}';
 
   //ヘッダー背景画像
-  if(header_background_url()) {
+  if( header_background_url() ) {
       $height_mobile = header_background_height_mobile();
       $height_pc = header_background_height_pc();
       $height_mobile = mb_convert_kana(strip_tags($height_mobile), 'n');
@@ -48,7 +75,7 @@ add_filter( 'inline_style_4536', function( $css ) {
   }
 
   //ヘッダー画像があれば
-  if(has_header_image()) $css[] = '#header-image img{display:block;margin:0 auto}';
+  if( has_header_image() ) $css[] = '#header-image img{display:block;margin:0 auto}';
 
   //ディスクリプションがあったら
   if( (is_home() || is_front_page()) && !is_paged() && is_home_description() ) $css[] = '#top-description{font-style:italic;font-size:14px;text-align:center;line-height:1.4;margin:1em auto}';
@@ -56,18 +83,6 @@ add_filter( 'inline_style_4536', function( $css ) {
   //文字丸める
   if(line_clamp()=='2line') $css[] = '.line-clamp-2{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}';
   if(line_clamp()=='3line') $css[] = '.line-clamp-3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}';
-
-  //吹き出し
-  if(balloon_image_style_option()==='border_border_radius') { //吹き出し画像を丸くする
-      $css[] = '.balloon figure img{border:1px solid #aaa;border-radius:50%}';
-  }
-  if(balloon_image_size()==='60') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:60px}';
-  } elseif(balloon_image_size()==='80') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:80px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 140px);max-width:calc(100% - 140px)}';
-  } elseif(balloon_image_size()==='100') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:100px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 160px);max-width:calc(100% - 160px)}';
-  }
 
   //ブログカードの背景画像
   if(blogcard_thumbnail_display()==='background-image') {
@@ -84,7 +99,6 @@ add_filter( 'inline_style_4536', function( $css ) {
           }
       }
   }
-
 
   //カエレバの背景画像
   if((kaereba_convert()==='amp' && is_amp()) || kaereba_convert()==='singular_amp') {
@@ -106,8 +120,6 @@ add_filter( 'inline_style_4536', function( $css ) {
       '@media screen and (min-width: 768px) {.booklink-link2 div,.kaerebalink-link1 div{float:left;width:49%}.booklink-link2 div:nth-child(odd),.kaerebalink-link1 div:nth-child(odd){margin-right:2%!important}}';
   }
 
-  //if(is_admin()) echo $css;
-
   //Gutenberg
   if(is_amp()) {
       if(preg_match_all('/<div.+?class=".*?wp-block-cover.*?".*?>/i', $content, $matches)) {
@@ -120,45 +132,45 @@ add_filter( 'inline_style_4536', function( $css ) {
       }
   }
 
-  if(thumbnail_display()==='background-image') {
+  //メディアセクション使ってるかどうか
+  $music_custom_posts = get_posts([ 'post_type' => 'music', 'posts_per_page'=> -1 ]);
+  $movie_custom_posts = get_posts([ 'post_type' => 'movie', 'posts_per_page'=> -1 ]);
+  $pickup_custom_posts = get_posts([ 'post_type' => 'post', 'tag' => 'pickup', 'posts_per_page'=> -1, 'post__not_in' => [get_the_ID()] ]);
+  if( $movie_custom_posts || $music_custom_posts || $pickup_custom_posts ) {
+    $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
+  }
+  if( $movie_custom_posts ) $css[] = '#movie{border-bottom:1px solid #000}.movie-content{width:196px}.thumbnail-movie-4536{width:196px;height:110px}';
+  if( $music_custom_posts ) $css[] = '#music{border-bottom:1px solid #000}.music-content{width:150px}.thumbnail-music-4536{width:150px;height:150px}';
+  if( $pickup_custom_posts ) {
+    $height = (thumbnail_size()=='thumbnail') ? '150' : '113' ;
+    $background = '';
+    if(thumbnail_display()==='background-image') $background = '.pickup-content .thumbnail.background-thumbnail-4536{width:100%;height:0;padding-top:100%}.pickup-content .thumbnail-wide.background-thumbnail-4536{width:100%;height:0;padding-top:75%}';
+    $css[] = '.pickup-content{width:150px}.thumbnail-pickup-4536{width:150px;height:'.$height.'px}'.$background;
+  }
 
-      //Music
-      $media_args = [
-          'posts_per_page' => -1,
-          'post_type' => 'music',
-      ];
-      $media_custom_posts = get_posts($media_args);
-      //Movie
-      $media_args = [
-          'posts_per_page' => -1,
-          'post_type' => 'movie',
-      ];
-      $media_custom_posts = array_merge($media_custom_posts,get_posts($media_args));
-      //ループ
-      if($media_custom_posts && !is_admin()) {
-          foreach($media_custom_posts as $post) : setup_postdata( $post );
-          $src = thumbnail_4536($post->post_type)['src'];
-          $class = thumbnail_4536($post->post_type)['class'];
-          $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
-          endforeach;
-          wp_reset_postdata();
+  //背景画像
+  if( thumbnail_display() === 'background-image' ) {
+
+      //メディア
+      $media_custom_posts = $music_custom_posts;
+      $media_custom_posts = array_merge( $media_custom_posts, $movie_custom_posts );
+      if( $media_custom_posts ) {
+        foreach( $media_custom_posts as $post ) : setup_postdata( $post );
+        $src = thumbnail_4536($post->post_type)['src'];
+        $class = thumbnail_4536($post->post_type)['class'];
+        $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
+        endforeach;
+        wp_reset_postdata();
       }
 
       //Pickup
-      $pickup_args = [
-          'posts_per_page'=> -1,
-          'post__not_in' => [get_the_ID()],
-          'tag' => 'pickup',
-      ];
-      $pickup_custom_posts = get_posts($pickup_args);
-      //ループ
-      if($pickup_custom_posts && !is_admin()) {
-          foreach($pickup_custom_posts as $post) : setup_postdata( $post );
-          $src = thumbnail_4536('pickup')['src'];
-          $class = thumbnail_4536('pickup')['class'];
-          $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
-          endforeach;
-          wp_reset_postdata();
+      if( $pickup_custom_posts ) {
+        foreach( $pickup_custom_posts as $post) : setup_postdata( $post );
+        $src = thumbnail_4536('pickup')['src'];
+        $class = thumbnail_4536('pickup')['class'];
+        $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
+        endforeach;
+        wp_reset_postdata();
       }
 
       //投稿記事
@@ -322,30 +334,6 @@ add_filter( 'inline_style_4536', function( $css ) {
           $class = get_thumbnail_class_4536($src);
           if($src) $css[] = '.'.$class.'{background-image:url("'.$src.'")}';
       }
-  }
-
-  //メディアセクション使ってるかどうか
-  if(!is_admin()) {
-      ob_start();
-      get_template_part('template-parts/movie');
-      $movie = ob_get_clean();
-      ob_start();
-      get_template_part('template-parts/music');
-      $music = ob_get_clean();
-      ob_start();
-      get_template_part('template-parts/pickup');
-      $pickup = ob_get_clean();
-  }
-  if($movie||$music||$pickup) {
-      $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
-  }
-  if($movie) $css[] = '#movie{border-bottom:1px solid #000}.movie-content{width:196px}.thumbnail-movie-4536{width:196px;height:110px}';
-  if($music) $css[] = '#music{border-bottom:1px solid #000}.music-content{width:150px}.thumbnail-music-4536{width:150px;height:150px}';
-  if($pickup) {
-      $height = (thumbnail_size()=='thumbnail') ? '150' : '113' ;
-      $background = '';
-      if(thumbnail_display()==='background-image') $background = '.pickup-content .thumbnail.background-thumbnail-4536{width:100%;height:0;padding-top:100%}.pickup-content .thumbnail-wide.background-thumbnail-4536{width:100%;height:0;padding-top:75%}';
-      $css[] = '.pickup-content{width:150px}.thumbnail-pickup-4536{width:150px;height:'.$height.'px}'.$background;
   }
 
   //コピー禁止

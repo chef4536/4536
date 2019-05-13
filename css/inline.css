@@ -315,8 +315,12 @@ li {
   margin: 1em 0;
 }
 
-.margin-1_5em-auto {
-  margin: 1.5em auto;
+.margin-2em-auto {
+  margin: 2em auto;
+}
+
+.margin-top-1_5em {
+  margin-top: 1.5em;
 }
 
 .margin-bottom-1_5em {
@@ -445,11 +449,6 @@ body {
   padding-bottom: .1px;
 }
 
-#sidebar {
-  margin-top: 20px;
-  padding: 0 10px;
-}
-
 /* ウィジェット */
 .widget-4536 {
   position: relative;
@@ -525,6 +524,7 @@ body {
 }
 
 .scroll-content {
+  width: 100%;
   display: table;
   white-space: nowrap;
 }
@@ -615,6 +615,7 @@ h2.post-title {
 */
 /* 公開日 */
 .post-date {
+  letter-spacing: .2px;
   margin: 1em 0;
   font-size: 0.8em;
   text-align: right;
@@ -629,8 +630,8 @@ h2.post-title {
 /* 見出し */
 #post-h1, #archive-title, #_404-title, #h1 {
   position: relative;
-  margin: 1.4em auto;
-  font-size: 1.4em;
+  margin: 2em auto;
+  font-size: 1.8em;
   line-height: 1.4;
   width: 100%;
 }
@@ -644,7 +645,7 @@ h2.post-title {
 .article-body h4,
 .article-body h5 {
   position: relative;
-  margin: 1.4em auto;
+  margin: 2em auto;
   line-height: 1.4;
   clear: both;
 }
@@ -652,7 +653,7 @@ h2.post-title {
 /* 本文 */
 .article-body p {
   line-height: 1.6;
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
 }
 
 .article-body p a:not(.wp-embed) {
@@ -661,12 +662,12 @@ h2.post-title {
 
 .article-body ol, .article-body ul:not(.wp-block-gallery):not(.outline-wrap) {
   padding-left: 1.5em;
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
 }
 
 .article-body blockquote:not(.external-website-embed-content) {
   padding: 20px 20px 0 !important;
-  margin: 10px 0 1.5em;
+  margin: 10px 0 2em;
   position: relative;
   border: 1px solid !important;
   border-radius: 2px;
@@ -700,7 +701,7 @@ h2.post-title {
 
 /* テーブル */
 .article-body table {
-  margin-bottom: 20px;
+  margin-bottom: 2em;
   width: 100%;
   border-collapse: collapse;
 }
@@ -790,26 +791,6 @@ a.simple-sns-button-2 {
   font-size: 10px;
   bottom: 0;
   right: .5em;
-}
-
-#slide-menu {
-  top: 0;
-  right: 0;
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  position: fixed;
-  width: 85%;
-  height: 100%;
-  color: #000;
-  background: #fff;
-  z-index: 20;
-  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  font-size: 16px;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
 }
 
 .fade-in {
@@ -915,6 +896,27 @@ a.simple-sns-button-2 {
   #prev-post, #next-post {
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
+  }
+  #slide-menu {
+    top: 0;
+    right: 0;
+    padding: 10px 10px 60px 10px;
+    background-color: #fcfcfc;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    position: fixed;
+    width: 85%;
+    z-index: 20;
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: .2s ease-out;
+    transition: .2s ease-out;
+  }
+  #slide-menu ins.adsbygoogle, #slide-menu .widget_ad_widget, #slide-menu .amp-adsense, #slide-menu amp-ad[type="adsense"] {
+    display: none !important;
   }
   /* max-767px END */
 }
