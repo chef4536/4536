@@ -8,6 +8,31 @@ add_filter( 'inline_style_4536', function( $css ) {
   //Googleフォント
   if( add_google_fonts() ) $css[] = is_google_fonts().'{font-family:"'.add_google_fonts().'" !important}';
 
+  //吹き出し
+  if(balloon_image_style_option()==='border_border_radius') { //吹き出し画像を丸くする
+      $css[] = '.balloon figure img{border:1px solid #aaa;border-radius:50%}';
+  }
+  switch( balloon_image_size() ) {
+    case '60':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:60px}';
+      break;
+    case '80':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:80px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 140px);max-width:calc(100% - 140px)}';
+      break;
+    case '100':
+      $css[] = '.balloon-image-left,.balloon-image-right{width:100px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 160px);max-width:calc(100% - 160px)}';
+      break;
+  }
+
+
+
+  ////////////////////////////////////
+  // ここから先は管理画面に不要
+  if( is_admin() ) return $css;
+  ////////////////////////////////////
+
+
+
   //横幅とレイアウト
   $body_width = body_width_4536();
   $width = str_replace( 'width-', '', $body_width );
@@ -59,18 +84,6 @@ add_filter( 'inline_style_4536', function( $css ) {
   if(line_clamp()=='2line') $css[] = '.line-clamp-2{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}';
   if(line_clamp()=='3line') $css[] = '.line-clamp-3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}';
 
-  //吹き出し
-  if(balloon_image_style_option()==='border_border_radius') { //吹き出し画像を丸くする
-      $css[] = '.balloon figure img{border:1px solid #aaa;border-radius:50%}';
-  }
-  if(balloon_image_size()==='60') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:60px}';
-  } elseif(balloon_image_size()==='80') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:80px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 140px);max-width:calc(100% - 140px)}';
-  } elseif(balloon_image_size()==='100') {
-      $css[] = '.balloon-image-left,.balloon-image-right{width:100px}.balloon-text-right,.balloon-text-left{max-width:-webkit-calc(100% - 160px);max-width:calc(100% - 160px)}';
-  }
-
   //ブログカードの背景画像
   if(blogcard_thumbnail_display()==='background-image') {
       $res = preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/'.preg_quote(get_this_site_domain_4536()).'\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im', $content, $m);
@@ -86,7 +99,6 @@ add_filter( 'inline_style_4536', function( $css ) {
           }
       }
   }
-
 
   //カエレバの背景画像
   if((kaereba_convert()==='amp' && is_amp()) || kaereba_convert()==='singular_amp') {
@@ -107,8 +119,6 @@ add_filter( 'inline_style_4536', function( $css ) {
       $css[] = '.booklink-box,.kaerebalink-box{width:100%;margin:0 0 2em;padding:1em 1em 0 1em !important;border:1px solid;border-color:#eaeaea #ddd #d0d0d0;border-radius:2px;font-size:small;overflow: hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;flex-flow:row wrap}.booklink-box:after,.kaerebalink-box:after{content:"";display:block;visibility:hidden;height:0;clear:both}.booklink-image-4536,.kaerebalink-image-4536{width:30%;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 1em 1em 0 !important}.booklink-image-4536 a,.kaerebalink-image-4536 a{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex}.booklink-image-thumbnail,.kaerebalink-image-thumbnail{width:100%;background-repeat:no-repeat;background-position:center;background-size:contain}.booklink-info,.kaerebalink-info{margin:0 0 1em 0 !important;-webkit-box-flex:1;-ms-flex:1;flex:1}.booklink-name,.kaerebalink-name{font-weight:700;margin-bottom:10px}.booklink-name p,.kaerebalink-name p{margin-bottom:10px;line-height:1.4}.booklink-name a:hover,.kaerebalink-name a:hover{text-decoration:underline}.booklink-powered-date,.kaerebalink-powered-date{font-size:10px;font-weight:400}.booklink-detail{font-size:10px;margin-bottom:10px}.booklink-link2,.kaerebalink-link1{margin-top:10px;width:100%;text-align:center}.booklink-link2 div,.kaerebalink-link1 div{display:block !important;margin:5px 0 !important;line-height:1.4}.booklink-link2 div a,.kaerebalink-link1 div a{display:block;padding:10px;color:#fff}.shoplinkamazon a{background:#f90}.shoplinkkindle a{background:#1882c9}.shoplinkrakuten a{background:#bf0000}.shoplinkrakukobo a{background:#ff2626}.shoplinkyahoo a{background:#fc1d2f}.shoplinkyahooAuc a{color:#252525 !important;background:#ffdb00}.shoplinkwowma a{background:#f02d1f}.shoplinkseven a{background:#225093}.shoplinkbellemaison a{background:#83be00}.shoplinkcecile a{background:#6b053d}.shoplinkkakakucom a{background:#00138e}.shoplinkbk1 a{background:#0484d2}.shoplinkehon a{background:#00006a}.shoplinkkino a{background:#003e9d}.shoplinkjun a{color:#4b5854 !important;background:#d8c9b7}.shoplinktoshokan a{background:#29b6e9}'.
       '@media screen and (min-width: 768px) {.booklink-link2 div,.kaerebalink-link1 div{float:left;width:49%}.booklink-link2 div:nth-child(odd),.kaerebalink-link1 div:nth-child(odd){margin-right:2%!important}}';
   }
-
-  //if(is_admin()) echo $css;
 
   //Gutenberg
   if(is_amp()) {
