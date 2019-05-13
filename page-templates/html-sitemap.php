@@ -6,7 +6,7 @@ get_header(); ?>
       <article id="html-sitemap" class="post">
         <header>
           <h1 id="h1"><?php the_title(); ?></h1>
-          <?php the_post_thumbnail_4536(); ?>
+          <?php if( !get_post_meta( $post->ID, 'none_post_thumbnail', true ) ) the_post_thumbnail_4536(); ?>
         </header>
         <div class="article-body">
           <?php

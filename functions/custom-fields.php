@@ -56,6 +56,7 @@ class Custom_Field_4536 {
     $list = [
       'AMP' => 'amp_custom_fields',
       '目次' => 'toc_custom_fields',
+      'アイキャッチ画像の出力' => 'none_post_thumbnail_custom_fields',
       '横幅の最大値' => 'singular_body_width_custom_fields',
       'レイアウト' => 'singular_layout_custom_fields',
     ];
@@ -84,6 +85,7 @@ class Custom_Field_4536 {
         $arr += $this->noindex_nofollow_arr;
         $arr += $this->add_html_js_css_arr;
         $arr['amp'] = '';
+        $arr['none_post_thumbnail'] = '';
         $arr['description'] = '';
         $arr['redirect'] = '';
         $arr['singular_layout_select'] = '';
@@ -164,21 +166,29 @@ class Custom_Field_4536 {
     global $post;
     $amp = get_post_meta( $post->ID, 'amp', true );
     $check = ( $amp == 1 ) ? 'checked' : '/' ;
-    echo '<label class="select"><input type="checkbox" name="amp" id="amp" value="1" ' . $check . '>AMP機能を無効にします</label>';
+    echo '<label class="select"><input type="checkbox" name="amp" id="amp" value="1" ' . $check . '>AMP機能を無効にする</label>';
+  }
+
+  function none_post_thumbnail_custom_fields() {
+    global $post;
+    $amp = get_post_meta( $post->ID, 'none_post_thumbnail', true );
+    $check = ( $amp == 1 ) ? 'checked' : '/' ;
+    echo '<label><input type="checkbox" name="none_post_thumbnail" id="none_post_thumbnail" value="1" ' . $check . '>アイキャッチ画像を表示しない</label>';
+    echo '<p><small>※内部の構造化データにはアイキャッチ画像情報が記述されます。</small></p>';
   }
 
   function toc_custom_fields() {
     global $post;
     $toc = get_post_meta( $post->ID, 'toc', true );
     $check = ( $toc == 1 ) ? 'checked' : '/' ;
-    echo '<label class="select"><input type="checkbox" name="toc" id="toc" value="1" ' . $check . '>目次機能をオフにします</label>';
+    echo '<label class="select"><input type="checkbox" name="toc" id="toc" value="1" ' . $check . '>目次を出力しない</label>';
   }
 
   function none_header_footer() {
     global $post;
     $none_header_footer = get_post_meta( $post->ID, 'none_header_footer', true );
     $check = ( $none_header_footer == 1 ) ? 'checked' : '/' ;
-    echo '<label class="select"><input type="checkbox" name="none_header_footer" value="1" ' . $check . '>ヘッダーとフッターの出力を停止します</label>';
+    echo '<label class="select"><input type="checkbox" name="none_header_footer" value="1" ' . $check . '>ヘッダーとフッターの出力を停止する</label>';
   }
 
   function add_redirect_form() {
