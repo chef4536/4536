@@ -1251,7 +1251,13 @@ a[data-embed-content="false"] {
 #slide-menu {
   height: 100%;
 }
+.grecaptcha-badge {
+  bottom: 80px !important;
+}
 
+/* --------------------------------------------------
+/* min-480px BEGIN for portrait mobile phone
+--------------------------------------------------- */
 @media screen and (min-width: 480px) {
     .blogcard-image-info-wrap {
         display: -webkit-box;
