@@ -63,7 +63,7 @@ class ConvertEmbedContentFrom_url_4536 {
       $external_link = ' target="_blank" rel="noreferrer noopener"';
     }
 
-    $title = '<a href="' . $url . '" class="wp-embed-heading link-mask">' . $title . '</a>';
+    $title = '<a title="' . $title . '" href="' . $url . '" class="wp-embed-heading link-mask"' . $external_link . '>' . $title . '</a>';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
     if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'"'.$external_link.'>'.$data['title'].'</a>';

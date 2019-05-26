@@ -41,10 +41,10 @@ if(!$related_posts) return;
     <article class="position-relative z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
       <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
       <div class="post-info">
-        <h3 class="post-title<?php echo $line_clamp; ?>">
+        <h3 class="font-size-16px post-title<?php echo $line_clamp; ?>">
           <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
-        <div class="post-meta position-relative z-index--1">
+        <div class="post-meta position-relative z-index--1 margin-1em-auto">
           <p class="excerpt <?php echo $display; ?>">
             <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
           </p>
