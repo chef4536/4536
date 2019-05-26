@@ -650,14 +650,8 @@ ul.children {
 /*
  * 前後の記事リンク
 */
-#prev-next {
-    margin: 1.5em auto;
-}
 #prev-post, #next-post {
-    position: relative;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 .prev-next-thumbnail {
     width: 100px;
