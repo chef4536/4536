@@ -373,7 +373,7 @@ class CustomizerColorSettings_4536 {
     }
 
     if( !empty($media_section_title_color) ) { //メディアセクションタイトル色
-      $css[] = '#main .media-section-title,#main .media-content .post-info,.media-section-title,.media-content .post-info{color:'.$media_section_title_color.'}';
+      $css[] = '.media-section-title,.media-content-title{color:'.$media_section_title_color.'}';
     }
 
     if( !empty( $footer_background_color ) ) { //フッター背景色

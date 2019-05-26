@@ -82,9 +82,9 @@ get_header(); ?>
       </article>
     </main>
     <?php
-    get_template_part( 'template-parts/music' );
-    get_template_part( 'template-parts/movie' );
-    get_template_part( 'template-parts/pickup' );
+    media_section_4536( 'music' );
+    media_section_4536( 'movie' );
+    media_section_4536( 'pickup' );
     ?>
   </div>
 </div>

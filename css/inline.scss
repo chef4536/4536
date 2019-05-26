@@ -411,7 +411,7 @@ h2.post-title { /* トップの新着記事 */
 	line-height: 1.6;
 	margin-bottom: 2em;
 }
-.article-body p a:not(.wp-embed) {
+.article-body p a:not(.wp-embed-heading) {
   text-decoration: underline;
 }
 .article-body ol,.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {

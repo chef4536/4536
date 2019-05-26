@@ -29,9 +29,9 @@ function archive_template_4536($page_4536) { ?>
                 ?>
             </main>
             <?php
-            if($page_4536!=='music') get_template_part('template-parts/music');
-            if($page_4536!=='movie') get_template_part('template-parts/movie');
-            if(!is_tag('pickup')) get_template_part('template-parts/pickup');
+            if( $page_4536!=='music' ) media_section_4536( 'music' );
+            if( $page_4536!=='movie' ) media_section_4536( 'movie' );
+            if( !is_tag('pickup') ) media_section_4536( 'pickup' );
             ?>
         </div>
     </div>
@@ -69,19 +69,21 @@ function post_list_template_4536($page_4536) {
 
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
-        <article class="post-list<?php echo $style; ?>">
-            <a class="clearfix post-color display-block padding-bottom-1em" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-                <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
-                <div class="post-info">
-                    <h2 class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></h2>
-                    <div class="post-meta">
-                        <div class="excerpt <?php echo $display; ?>">
-                            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
-                        </div>
-                        <?php echo ($ptime) ? '<div class="posted-date"><i class="far fa-calendar-check"></i><span>'.$ptime.'</span></div>' : ''; ?>
-                    </div>
-                </div>
-            </a>
+        <article class="position-relative clearfix padding-bottom-1em z-index-1 post-list<?php echo $style; ?>">
+          <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
+          <div class="post-info">
+            <h2 class="post-title<?php echo $line_clamp; ?>">
+              <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </h2>
+            <div class="post-meta position-relative z-index--1">
+              <div class="excerpt <?php echo $display; ?>">
+                <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
+              </div>
+              <?php echo ($ptime) ? '<div class="posted-date"><i class="far fa-calendar-check"></i><span>'.$ptime.'</span></div>' : ''; ?>
+            </div>
+          </div>
         </article>
         <?php
         if( $count===$rand && $page_4536==='new-post' && is_active_sidebar('sp-infeed-ad') ) { //インフィード広告 ?>

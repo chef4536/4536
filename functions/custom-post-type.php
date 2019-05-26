@@ -55,3 +55,51 @@ add_action( 'init', function() {
     ]);
   }
 });
+
+function media_section_4536( $media, $args = [] ) {
+  global $post;
+  $args = [
+    'post_type' => $media,
+    'posts_per_page' => -1,
+    'post__not_in' => [$post->ID],
+  ];
+  switch( $media ) {
+    case 'music':
+      $is_media = get_option( 'admin_main_media' );
+      $section_title = get_option( 'main_media_name' );
+      break;
+    case 'movie':
+      $is_media = get_option( 'admin_sub_media' );
+      $section_title = get_option( 'sub_media_name' );
+      break;
+    case 'pickup':
+      $args['post_type'] = 'post';
+      $is_media = $section_title = $args['tag'] = 'Pickup';
+      break;
+  }
+  if( empty( $is_media ) ) return;
+  $customPosts = get_posts( $args );
+  if( empty( $customPosts ) ) return;
+  ?>
+  <div id="<?php echo $media ?>" class="clearfix padding-wrap-main-4536 media-section">
+    <p class="media-section-title"><?php echo esc_html( $section_title ); ?></p>
+    <div class="scroll-wrapper">
+      <div class="scroll-left">
+        <div class="scroll-content">
+          <?php foreach( $customPosts as $post ) : setup_postdata( $post ); ?>
+            <div class="media-content clearfix <?php echo $media; ?>-content position-relative">
+              <?php echo thumbnail_4536( $media )['thumbnail']; ?>
+              <div class="post-info">
+                <a class="media-content-title link-mask" title="<?php the_title();?>" href="<?php the_permalink();?>">
+                  <?php the_title(); ?>
+                </a>
+              </div>
+            </div>
+          <?php endforeach; ?>
+          <?php wp_reset_postdata(); ?>
+        </div>
+      </div>
+      <div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>
+    </div>
+  </div>
+<?php }

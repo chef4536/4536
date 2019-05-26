@@ -14,6 +14,14 @@ Version: 1.1.6
   padding: 0;
 }
 
+.z-index-1 {
+  z-index: 1;
+}
+
+.z-index--1 {
+  z-index: -1;
+}
+
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select, textarea, input[type="search"] {
   position: relative;
@@ -105,6 +113,15 @@ pre code {
 
 #html-sitemap .post-list .fa-file-alt {
   letter-spacing: 5px;
+}
+
+.link-mask::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
 }
 
 /* Gutenberg */
@@ -1400,13 +1417,13 @@ img[width|="0"], img[height|="0"], img[width|="1"], img[height|="1"] {
   width: 100%;
   max-width: 600px;
   line-height: 1.5;
-  display: block;
   border-radius: 2px;
   margin-bottom: 1.5em;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   zoom: 1;
   text-decoration: none;
+  z-index: 1;
 }
 
 .wp-embed::after {
