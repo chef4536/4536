@@ -24,7 +24,7 @@ get_header(); ?>
         	foreach( $categories as $category ) {
             echo '<section>';
             $cat_id = $category->cat_ID;
-        		echo '<a href="' . get_category_link( $cat_id ) . '"><h2>' . $category->name . '</h2></a>';
+        		echo '<h2><a href="' . get_category_link( $cat_id ) . '">' . $category->name . '</a></h2>';
             $thumbnail_arr = get_posts( 'post_type=post&posts_per_page=1&category=' . $cat_id );
             if( has_post_thumbnail( $post_id = $thumbnail_arr[0]->ID ) && $is_thumbnail === '1' ) {
               echo '<figure class="alignwide margin-bottom-1_5em text-align-center">' . get_the_post_thumbnail( $post_id, $thumbnail, [ 'class' => 'category_thumbnail' ] ) . '</figure>';
@@ -41,7 +41,7 @@ get_header(); ?>
               'exclude' => [ $exclude_post_id ],
             ]);
             foreach( $post_arr as $post ) {
-              echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
+              echo '<article class="post-list line-height-1_4 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
             }
             the_child_sitemap_4536( $cat_id, 2, $exclude_cat_id_arr, $exclude_post_id );
             echo '</section>';
@@ -56,7 +56,7 @@ get_header(); ?>
                 $child_cat_id = $child_cat->term_id;
                 if( in_array( (string)$child_cat_id, $exclude_cat_id_arr, true ) ) continue;
                 echo '<section class="children">';
-                echo '<a href="' . get_category_link( $child_cat_id ) . '"><h' . $i . '>' . $child_cat->name . '</h' . $i . '></a>';
+                echo '<h' . $i . '><a href="' . get_category_link( $child_cat_id ) . '">' . $child_cat->name . '</a></h' . $i . '>';
                 $exclude_cat_id = '';
                 $exclude_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$child_cat_id ]);
                 foreach( $exclude_cat_arr as $obj ) {
@@ -69,7 +69,7 @@ get_header(); ?>
                   'exclude' => [ $exclude_post_id ],
                 ]);
                 foreach( $post_arr as $post ) {
-                  echo '<article class="post-list line-height-1_4"><a class="display-block padding-bottom-1em" href="' . get_the_permalink( $post->ID ) . '"><i class="far fa-file-alt"></i>' . $post->post_title . '</a></article>';
+                  echo '<article class="post-list line-height-1_4 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
                 }
                 the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id );
                 echo '</section>';

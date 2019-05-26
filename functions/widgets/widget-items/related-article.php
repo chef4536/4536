@@ -39,19 +39,11 @@ class RelatedPostWidgetItem extends WP_Widget {
         $related_posts = get_posts($default);
         if(!$related_posts) return;
         echo $args['before_widget'];
-        if(!empty($title)) echo $args['before_title'].$title.$args['after_title'];
-
+        if( !empty($title) ) echo $args['before_title'].$title.$args['after_title'];
+        $thumbnail = $instance[$this->_style]==='thumbnail' ? null : '<i class="far fa-arrow-alt-circle-right"></i>';
         echo '<ul>';
-        foreach($related_posts as $post) : setup_postdata( $post ); ?>
-            <li class="post-list">
-                <a class="post-color clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
-                    <?php echo ($instance[$this->_style]==='thumbnail') ? thumbnail_4536('widget')['thumbnail'] : '<i class="far fa-arrow-alt-circle-right"></i>'; ?>
-                    <div class="post-info">
-                        <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
-                    </div>
-                </a>
-            </li>
-        <?php
+        foreach($related_posts as $post) : setup_postdata( $post );
+        widget_list_4536( $thumbnail );
         endforeach;
         wp_reset_postdata();
         echo '</ul>';

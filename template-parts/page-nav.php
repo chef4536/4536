@@ -34,16 +34,19 @@ if( empty($prevpost) && empty($nextpost) ) return;
     ?>
     <div id="prev-post" class="clearfix position-relative flexbox-row-wrap">
       <div class="prev-post-arrow flexbox-row-wrap align-items-center"><i class="fas fa-angle-left"></i></div>
-      <?php prev_next_post_thumbnail( $post_id ); ?>
-      <a class="prev-title post-color link-mask" href="<?php echo get_permalink( $post_id ); ?>"><?php echo get_the_title( $post_id ); ?></a>
+      <?php prev_next_post_thumbnail( $post_id );
+      echo '<a class="prev-title post-color link-mask" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
+      ?>
     </div>
   <?php }
   if( $nextpost ) {
     $post_id = $nextpost->ID;
     ?>
     <div id="next-post" class="clearfix position-relative flexbox-row-wrap">
-      <a class="next-title post-color link-mask" href="<?php echo get_permalink( $post_id ); ?>"><?php echo get_the_title( $post_id ); ?></a>
-      <?php prev_next_post_thumbnail( $post_id ); ?>
+      <?php
+      echo '<a class="next-title post-color link-mask" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
+      prev_next_post_thumbnail( $post_id );
+      ?>
       <div class="next-post-arrow flexbox-row-wrap align-items-center"><i class="fas fa-angle-right"></i></div>
     </div>
   <?php } ?>

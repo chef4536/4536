@@ -73,9 +73,7 @@ function post_list_template_4536($page_4536) {
           <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
           <div class="post-info">
             <h2 class="post-title<?php echo $line_clamp; ?>">
-              <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-              </a>
+              <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h2>
             <div class="post-meta position-relative z-index--1">
               <div class="excerpt <?php echo $display; ?>">
