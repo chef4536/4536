@@ -154,8 +154,8 @@ EOM;
     }
 
     if ( $id !== 0 ) {
-      $data = get_post($id);
-      $title = $data->post_title;
+      $data = get_post( $id );
+      $title = get_the_title( $id );
       $content = do_shortcode( $data->post_content );
       $comment = $data->comment_count;
       $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
