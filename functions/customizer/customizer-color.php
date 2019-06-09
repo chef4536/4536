@@ -227,7 +227,7 @@ class CustomizerColorSettings_4536 {
     extract( $color );
 
     if( !empty( $link_color ) ) { //リンクカラー
-      $css[] = 'a{color:' . $link_color . '}';
+      $css[] = 'a,.link-color{color:' . $link_color . '}';
     }
 
     if( !empty( $header_background_color ) ) { //ヘッダー背景色

@@ -48,7 +48,7 @@ class ConvertEmbedContentFrom_url_4536 {
     $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
     $excerpt = wp_strip_all_tags( $excerpt );
 
-    $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more">'.$data['more_text'].'</span></span>' : '';
+    $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more link-color">'.$data['more_text'].'</span></span>' : '';
 
     $icon = ( isset($icon)===true && !empty($icon) ) ? $icon : '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
