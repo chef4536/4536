@@ -390,7 +390,7 @@ h2.post-title { /* トップの新着記事 */
 #post-h1,#archive-title,#_404-title,#h1 {
   position: relative;
   margin: 2em auto;
-  font-size: 1.8em;
+  font-size: 1.6em;
   line-height: 1.4;
   width: 100%;
 }
@@ -411,7 +411,7 @@ h2.post-title { /* トップの新着記事 */
 	line-height: 1.6;
 	margin-bottom: 2em;
 }
-.article-body p a:not(.wp-embed) {
+.article-body p a:not(.wp-embed-heading) {
   text-decoration: underline;
 }
 .article-body ol,.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {

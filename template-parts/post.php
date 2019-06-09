@@ -50,7 +50,7 @@ echo '<header>';
         dynamic_sidebar('post-top-widget');
     }
 
-    the_post_thumbnail_4536(); //アイキャッチ
+    if( !get_post_meta( $post->ID, 'none_post_thumbnail', true ) ) the_post_thumbnail_4536(); //アイキャッチ
 
     if( $is_sns_top === true ) sns_button_4536('post_top');
 echo '</header>';

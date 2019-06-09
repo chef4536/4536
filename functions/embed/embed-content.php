@@ -48,16 +48,23 @@ class ConvertEmbedContentFrom_url_4536 {
     $excerpt = ( !empty($data['excerpt']) ) ? $data['excerpt'] : $title;
     $excerpt = wp_strip_all_tags( $excerpt );
 
-    $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more">'.$data['more_text'].'</span></span>' : '';
+    $more_text = ( isset($data['more_text']) === true ) ? '<span class="blogcard-more-wrap"><span class="blogcard-more link-color">'.$data['more_text'].'</span></span>' : '';
 
     $icon = ( isset($icon)===true && !empty($icon) ) ? $icon : '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
     $comment = ( isset($comment) && !empty($comment) ) ? '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$comment.'</span></span>' : '';
 
-    $title = ( !empty($title) ) ? '<span class="wp-embed-heading">'.$title.'</span>' : '';
-    $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
+    if ( is_my_website( $url ) === true ) {
+      $blockquote_begin = $blockquote_end = '';
+      $external_link = '';
+    } else {
+      $blockquote_begin = '<blockquote class="external-website-embed-content" cite="'.$url.'"><p>';
+      $blockquote_end = '</p></blockquote>';
+      $external_link = ' target="_blank" rel="noreferrer noopener"';
+    }
 
-    $external_link = ' target="_blank" rel="noreferrer noopener"';
+    $title = '<a title="' . $title . '" href="' . $url . '" class="wp-embed-heading link-mask"' . $external_link . '>' . $title . '</a>';
+    $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
     if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'"'.$external_link.'>'.$data['title'].'</a>';
 
@@ -69,19 +76,11 @@ class ConvertEmbedContentFrom_url_4536 {
       $thumbnail = '<span class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></span>';
     }
 
-    if ( is_my_website( $url ) === true ) {
-      $blockquote_begin = $blockquote_end = '';
-      $external_link = '';
-    } else {
-      $blockquote_begin = '<blockquote class="external-website-embed-content" cite="'.$url.'"><p>';
-      $blockquote_end = '</p></blockquote>';
-    }
-
     $output = <<< EOM
     {$blockquote_begin}
-    <a data-embed-content="true" class="wp-embed post-color" href="{$url}"{$external_link}>
+    <span data-embed-content="true" class="wp-embed post-color position-relative display-block">
       {$title}
-      <span class="blogcard-image-info-wrap">
+      <span class="blogcard-image-info-wrap position-relative z-index--1">
         <span class="wp-embed-featured-image post-list-thumbnail{$image_size}">
           {$thumbnail}
         </span>
@@ -97,7 +96,7 @@ class ConvertEmbedContentFrom_url_4536 {
         </span>
         {$comment}
       </span>
-    </a>
+    </span>
     {$blockquote_end}
 EOM;
 
@@ -155,8 +154,8 @@ EOM;
     }
 
     if ( $id !== 0 ) {
-      $data = get_post($id);
-      $title = $data->post_title;
+      $data = get_post( $id );
+      $title = get_the_title( $id );
       $content = do_shortcode( $data->post_content );
       $comment = $data->comment_count;
       $excerpt = custom_excerpt_4536($content, custom_excerpt_length());

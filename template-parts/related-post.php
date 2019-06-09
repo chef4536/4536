@@ -34,25 +34,25 @@ if(!$related_posts) return;
 
 ?>
 
-<div id="related-post">
-    <h3 id="related-post-title" class="position-relative">関連記事</h3>
-    <div class="related-post-wrap flexbox-row-wrap">
-        <?php foreach($related_posts as $post) : setup_postdata( $post ) ; ?>
-        <div class="post-list<?php echo $style; ?>">
-            <a class="clearfix post-color display-block padding-bottom-1em" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-            <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
-                <div class="post-info">
-                    <p class="post-title<?php echo $line_clamp; ?>"><?php the_title(); ?></p>
-                    <div class="post-meta">
-                        <p class="excerpt <?php echo $display; ?>">
-                            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
-                        </p>
-                    </div>
-                </div>
-            </a>
+<aside id="related-post">
+  <h2 id="related-post-title" class="position-relative">関連記事</h2>
+  <div class="related-post-wrap flexbox-row-wrap">
+    <?php foreach( $related_posts as $post ) : setup_postdata( $post ) ; ?>
+    <article class="position-relative z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
+      <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
+      <div class="post-info">
+        <h3 class="font-size-16px post-title<?php echo $line_clamp; ?>">
+          <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+        </h3>
+        <div class="post-meta position-relative z-index--1 margin-1em-auto">
+          <p class="excerpt <?php echo $display; ?>">
+            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
+          </p>
         </div>
-        <?php endforeach ?>
-    </div>
-</div>
+      </div>
+    </article>
+    <?php endforeach ?>
+  </div>
+</aside>
 
 <?php wp_reset_postdata();

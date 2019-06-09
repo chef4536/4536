@@ -1,18 +1,18 @@
-<div id="comments">
-<?php if(have_comments()): ?>
-  <p id="comments-title">コメント</p>
-  <ol class="comment-list">
-      <?php if(is_amp()) {
-        $args = [
-            'echo' => false
-        ];
-        $comments = wp_list_comments($args);
-        echo convert_content_to_amp($comments);
-    } else {
-        wp_list_comments();
-    } ?>
-  </ol>
-<?php endif;
+<aside id="comments">
+  <?php if(have_comments()): ?>
+    <h2 id="comments-title">コメント</h2>
+    <ol class="comment-list">
+        <?php if(is_amp()) {
+          $args = [
+              'echo' => false
+          ];
+          $comments = wp_list_comments($args);
+          echo convert_content_to_amp($comments);
+      } else {
+          wp_list_comments();
+      } ?>
+    </ol>
+  <?php endif;
     $args = [
         'title_reply' => 'コメントを残す',
         'lavel_submit' => ('Submit Comment'),
@@ -24,5 +24,5 @@
     } else {
         comment_form($args);
     }
-?>
-</div>
+  ?>
+</aside>

@@ -28,19 +28,12 @@ class NewEntryWidgetItem extends WP_Widget {
         if($title) echo $args['before_title'].$title.$args['after_title'];
         ?>
         <ul>
-            <?php foreach($new_posts as $post) : setup_postdata( $post ); ?>
-                <li class="post-list">
-                    <a class="post-color clearfix display-block padding-bottom-1em" href="<?php the_permalink(); ?>">
-                    <?php echo thumbnail_4536('widget')['thumbnail']; ?>
-                        <div class="post-info">
-                            <p class="post-title <?php echo $line_clamp; ?>"><?php the_title(); ?></p>
-                        </div>
-                    </a>
-                </li>
-            <?php
-            endforeach;
-            wp_reset_postdata();
-            ?>
+          <?php
+          foreach($new_posts as $post) : setup_postdata( $post );
+          widget_list_4536();
+          endforeach;
+          wp_reset_postdata();
+          ?>
         </ul>
         <?php
         echo $args['after_widget'];
