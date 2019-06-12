@@ -208,6 +208,18 @@ function header_logo_4536() {
     return $header_logo;
 }
 
+//前後の記事のサムネ
+function prev_next_post_thumbnail( $post_id ) {
+  if( !has_post_thumbnail( $post_id) ) return;
+  if( thumbnail_display()==='image' ) {
+    echo '<figure class="prev-next-thumbnail">'.get_the_post_thumbnail($post_id, $thumb).'</figure>';
+  } else {
+    $src = get_the_post_thumbnail_url( $post_id );
+    $class = get_thumbnail_class_4536( $src );
+    echo '<div class="'.thumbnail_size().'"><div class="prev-post-thumbnail '.$class.'"></div></div>';
+  }
+}
+
 /////////////////////////////////////////////
 //コピペ一発でWordpressの投稿時にアイキャッチを自動設定するカスタマイズ方法（YouTube対応版）
 //http://nelog.jp/auto-post-thumbnail-custum

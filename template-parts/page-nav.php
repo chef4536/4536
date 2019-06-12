@@ -19,16 +19,6 @@ if( empty($prevpost) && empty($nextpost) ) return;
       if( is_amp() ) $thumb = [500,500];
       break;
   }
-  function prev_next_post_thumbnail( $post_id ) {
-    if( !has_post_thumbnail( $post_id) ) return;
-    if( thumbnail_display()==='image' ) {
-      echo '<figure class="prev-next-thumbnail">'.get_the_post_thumbnail($post_id, $thumb).'</figure>';
-    } else {
-      $src = get_the_post_thumbnail_url( $post_id );
-      $class = get_thumbnail_class_4536( $src );
-      echo '<div class="'.thumbnail_size().'"><div class="prev-post-thumbnail '.$class.'"></div></div>';
-    }
-  }
   if( $prevpost ) {
     $post_id = $prevpost->ID;
     ?>
