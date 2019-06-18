@@ -6,7 +6,6 @@ add_filter('before_wp_tiny_mce', function($init) {
     require_once(get_template_directory() . '/css/inline.min.css');
     $admin_style_color = ob_get_clean();
     $css = $admin_style_color.add_inline_style_4536();
-    $css = str_replace('#contents-inner', 'body', $css );
     $css = str_replace('.article-body', '', $css );
     $css .= 'html{height:auto}';
     if( get_option('first_tinymce_active_editor') && !get_user_option('rich_editing') ) { ?>
