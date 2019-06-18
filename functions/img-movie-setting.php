@@ -84,15 +84,13 @@ function get_the_post_thumbnail_4536() {
 
 //アイキャッチ画像出力
 function the_post_thumbnail_4536() {
-    if(!is_post_thumbnail_4536()) return;
-    if(!has_post_thumbnail()) return;
-    if(is_post_thumbnail_4536()==='background_image') {
-        $class = get_the_post_thumbnail_4536()['class'];
-        $thumbnail = '<div id="post-thumbnail-4536"><div class="background-thumbnail-4536 alignwide '.$class.'"></div></div>';
-    } elseif(is_post_thumbnail_4536()==='image') {
-        $thumbnail = '<figure id="post-thumbnail-4536" class="alignwide">'.get_the_post_thumbnail().'</figure>';
-    }
-    if($thumbnail) echo $thumbnail;
+  if( !is_post_thumbnail_4536() ) return;
+  if( !has_post_thumbnail() ) return;
+  $attr = [
+    'class' => 'd-b w-100 my-0 mx-auto',
+  ];
+  $thumbnail = '<figure id="post-thumbnail-4536" class="alignwide my-4 p-r">' . get_the_post_thumbnail( $post_id, $size, $attr ) . '</figure>';
+  if($thumbnail) echo $thumbnail;
 }
 
 /////////////////////////////

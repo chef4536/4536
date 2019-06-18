@@ -1,7 +1,7 @@
 <?php
 
 $tag = ( is_home() ) ? 'h1' : 'p' ;
-$start_tag = '<'.$tag.' id="sitename" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
+$start_tag = '<'.$tag.' id="sitename" class="title ma-0" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
 $end_tag = '</'.$tag.'>';
 
 if( has_header_image() ) { ?>

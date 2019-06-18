@@ -85,7 +85,7 @@ function media_section_4536( $media, $args = [] ) {
     <p class="media-section-title"><?php echo esc_html( $section_title ); ?></p>
     <div class="scroll-wrapper">
       <div class="scroll-left">
-        <div class="scroll-content">
+        <div class="scroll-content d-t w-100">
           <?php foreach( $customPosts as $post ) : setup_postdata( $post ); ?>
             <div class="media-content clearfix <?php echo $media; ?>-content p-r">
               <?php echo thumbnail_4536( $media )['thumbnail']; ?>

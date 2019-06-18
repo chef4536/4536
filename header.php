@@ -45,7 +45,7 @@ if(is_amp()) {
             'container' => false,
             'fallback_cb' => false,
             'echo' => true,
-            'items_wrap' => '<ul class="scroll-content">%3$s</ul>'
+            'items_wrap' => '<ul class="scroll-content d-t w-100">%3$s</ul>'
           ];
           $button = (is_amp()) ? '' : '<div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>';
           ?>
