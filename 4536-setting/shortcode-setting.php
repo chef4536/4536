@@ -360,7 +360,7 @@ class Shortcode_Setting_4536 {
       $hidden_delete_nonce = wp_nonce_field( 'hidden_delete_nonce', 'hidden_delete_nonce', false, false );
     }
     ?>
-		<div class="wrap" id="">
+		<div class="wrap">
 			<h1 class="wp-heading-inline"><?php echo $h1; ?></h1>
       <?php
       if( isset( $link_to_list ) ) echo $link_to_list;

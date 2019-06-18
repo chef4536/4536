@@ -5,7 +5,7 @@ get_header(); ?>
     <main id="main" class="w-100 post-bg-color post-color" role="main">
       <article id="html-sitemap" class="post">
         <header>
-          <h1 id="h1"><?php the_title(); ?></h1>
+          <h1 id="h1" class="headline"><?php the_title(); ?></h1>
           <?php if( !get_post_meta( $post->ID, 'none_post_thumbnail', true ) ) the_post_thumbnail_4536(); ?>
         </header>
         <div class="article-body">

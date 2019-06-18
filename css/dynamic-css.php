@@ -37,7 +37,7 @@ add_filter( 'inline_style_4536', function( $css ) {
   $body_width = body_width_4536();
   $width = str_replace( 'width-', '', $body_width );
   $body_width = '.'.$body_width.' ';
-  $css[] = $body_width.'#header-image,'.$body_width.'#wrapper,'.$body_width.'.inner{max-width:'.$width.'px}';
+  $css[] = $body_width.'#header-image,'.$body_width.'.container,'.$body_width.'.inner{max-width:'.$width.'px}';
 
   //タイトルの中央寄せ
   $is_slide_menu = is_slide_menu();

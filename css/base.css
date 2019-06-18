@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -158,7 +157,6 @@ li {
   line-height: 1.6;
 }
 
-/* padding関連 */
 .pa-0 {
   padding: 0px;
 }
@@ -279,7 +277,6 @@ li {
   padding-left: 48px;
 }
 
-/* margin関連 */
 .ma-auto {
   margin: auto;
 }

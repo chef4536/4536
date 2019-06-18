@@ -1,40 +1,38 @@
 <?php
 
 function archive_template_4536($page_4536) { ?>
-    <div id="contents-wrapper" class="w-100 max-w-100">
-        <div id="contents-inner">
-            <main id="main" class="w-100 post-bg-color post-color" role="main">
-                <section id="post-search" class="clearfix">
-                    <?php
-                    if(is_category()||is_tag()||is_tax()) $title = single_term_title("", false);
-                    if(is_day()) $title = get_the_time('Y年m月d日');
-                    if(is_month()) $title = get_the_time('Y年m月');
-                    if(is_year()) $title = get_the_time('Y年');
-                    if(is_author()) $title = esc_html(get_queried_object()->display_name);
-                    if(isset($_GET['paged']) && !empty($_GET['paged'])) $title = 'ブログアーカイブ';
-                    $title = '<h1 id="archive-title">「'.$title.'」の記事一覧</h1>';
-                    global $s;
-                    global $wp_query;
-                    if(is_search()) $title = '<h1 id="archive-title">「'.esc_html($s).'」の検索結果 '.$wp_query->found_posts.' 件</h1>';
-                    if($page_4536==='movie') $title = '<h1 id="archive-title">「'.esc_html(get_option('sub_media_name')).'」一覧</h1>';
-                    if($page_4536==='music') $title = '<h1 id="archive-title">「'.esc_html(get_option('main_media_name')).'」一覧</h1>';
-                    echo $title; ?>
-                    <div class="archive-wrap d-f">
-                        <?php post_list_template_4536($page_4536); ?>
-                    </div>
-                </section>
-                <?php
-                pagination($wp_query->max_num_pages);
-                echo breadcrumb( 'html' );
-                ?>
-            </main>
-            <?php
-            if( $page_4536!=='music' ) media_section_4536( 'music' );
-            if( $page_4536!=='movie' ) media_section_4536( 'movie' );
-            if( !is_tag('pickup') ) media_section_4536( 'pickup' );
-            ?>
-        </div>
-    </div>
+  <div id="contents-wrapper" class="w-100 max-w-100">
+    <main id="main" class="w-100 post-bg-color post-color" role="main">
+      <section id="post-search" class="clearfix">
+          <?php
+          if(is_category()||is_tag()||is_tax()) $title = single_term_title("", false);
+          if(is_day()) $title = get_the_time('Y年m月d日');
+          if(is_month()) $title = get_the_time('Y年m月');
+          if(is_year()) $title = get_the_time('Y年');
+          if(is_author()) $title = esc_html(get_queried_object()->display_name);
+          if(isset($_GET['paged']) && !empty($_GET['paged'])) $title = 'ブログアーカイブ';
+          $title = '<h1 id="h1" class="headline">「'.$title.'」の記事一覧</h1>';
+          global $s;
+          global $wp_query;
+          if(is_search()) $title = '<h1 id="h1" class="headline">「'.esc_html($s).'」の検索結果 '.$wp_query->found_posts.' 件</h1>';
+          if($page_4536==='movie') $title = '<h1 id="h1" class="headline">「'.esc_html(get_option('sub_media_name')).'」一覧</h1>';
+          if($page_4536==='music') $title = '<h1 id="h1" class="headline">「'.esc_html(get_option('main_media_name')).'」一覧</h1>';
+          echo $title; ?>
+          <div class="archive-wrap d-f">
+              <?php post_list_template_4536($page_4536); ?>
+          </div>
+      </section>
+      <?php
+      pagination($wp_query->max_num_pages);
+      echo breadcrumb( 'html' );
+      ?>
+    </main>
+    <?php
+    if( $page_4536!=='music' ) media_section_4536( 'music' );
+    if( $page_4536!=='movie' ) media_section_4536( 'movie' );
+    if( !is_tag('pickup') ) media_section_4536( 'pickup' );
+    ?>
+  </div>
 <?php }
 
 function post_list_template_4536($page_4536) {

@@ -109,6 +109,7 @@
   z-index: 5;
   transition: 0.5s ease;
 }
+
 /////////////////////////////////
 //////////// meta ////////////
 ////////////////////////////////
@@ -416,9 +417,12 @@
 --------------------------------------------------- */
 @media screen and (max-width: 1024px) {
   #header-image,
-  #wrapper,
+  .container,
   .inner {
     max-width: 980px !important;
+  }
+  .container {
+    flex-direction: column;
   }
   /* max-1024px END */
 }
@@ -426,10 +430,7 @@
 /* min-1024px BEGIN for landscape tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
-  #wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  .container {
     margin: 1.5em auto;
   }
 
@@ -454,10 +455,7 @@
     width: calc(100% - 320px);
   }
 
-  .right-content #wrapper {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    -ms-flex-flow: row-reverse;
+  .right-content .container {
     flex-flow: row-reverse;
   }
   /* min-1024px END */
