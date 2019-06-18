@@ -11,7 +11,7 @@ if (is_amp()) {
 }
 ?>
 <body <?php body_class(); ?>>
-  <div id="main-column" class="f-1">
+  <div id="main-column" class="flex">
 
     <?php
 
@@ -35,7 +35,7 @@ if (is_amp()) {
         $location = '';
         if (has_nav_menu('navbar')) {
             $location = 'navbar';
-            $display = ' d-n-pc';
+            $display = ' d-n-md';
         };
         if (has_nav_menu('below_header_nav_menu_common')) {
             $location = 'below_header_nav_menu_common';

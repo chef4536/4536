@@ -23,19 +23,19 @@ function archive_template_4536($page_4536) { ?>
           if (isset($_GET['paged']) && !empty($_GET['paged'])) {
               $title = 'ブログアーカイブ';
           }
-          $title = '<h1 id="h1" class="headline">「'.$title.'」の記事一覧</h1>';
+          $title = '「'.$title.'」の記事一覧';
           global $s;
           global $wp_query;
           if (is_search()) {
-              $title = '<h1 id="h1" class="headline">「'.esc_html($s).'」の検索結果 '.$wp_query->found_posts.' 件</h1>';
+              $title = '「'.esc_html($s).'」の検索結果 '.$wp_query->found_posts.' 件';
           }
           if ($page_4536==='movie') {
-              $title = '<h1 id="h1" class="headline">「'.esc_html(get_option('sub_media_name')).'」一覧</h1>';
+              $title = '「'.esc_html(get_option('sub_media_name')).'」一覧';
           }
           if ($page_4536==='music') {
-              $title = '<h1 id="h1" class="headline">「'.esc_html(get_option('main_media_name')).'」一覧</h1>';
+              $title = '「'.esc_html(get_option('main_media_name')).'」一覧';
           }
-          echo $title; ?>
+          echo '<h1 id="h1" class="headline">' . $title . '</h1>'; ?>
           <div class="archive-wrap d-f">
               <?php post_list_template_4536($page_4536); ?>
           </div>
@@ -79,7 +79,7 @@ function post_list_template_4536($page_4536)
         }
     }
 
-    $display = 'd-n-mobile';
+    $display = 'd-n-sm';
     if (!empty($post_list_style_mobile)) {
         $post_list_style_mobile = ' list-'.$post_list_style_mobile;
     }
@@ -91,18 +91,11 @@ function post_list_template_4536($page_4536)
 
     $count = '';
     $rand = rand(4, 9);
-    $line_clamp = '';
-    if (line_clamp()==='2line') {
-        $line_clamp = ' line-clamp-2';
-    }
-    if (line_clamp()==='3line') {
-        $line_clamp = ' line-clamp-3';
-    }
 
     if (have_posts()) : while (have_posts()) : the_post();
     $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
-        <article class="p-r clearfix padding-bottom-1em z-index-1 post-list<?php echo $style; ?>">
+        <article class="md6 p-r pb-3 z-index-1 card post-list<?php echo $style; ?>">
           <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
           <div class="post-info">
             <h2 class="post-title<?php echo $line_clamp; ?>">

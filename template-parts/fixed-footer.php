@@ -10,7 +10,7 @@ if(is_amp()) {
 }
 
 if( fixed_footer()==='menu' ) { ?>
-    <div id="fixed-footer-menu" class="fixed-footer d-n-pc d-f t-a-c">
+    <div id="fixed-footer-menu" class="fixed-footer d-n-md d-f t-a-c">
         <?php
         $list = [
             'home',
@@ -75,7 +75,7 @@ if( fixed_footer()==='menu' ) { ?>
           } else {
             continue;
           } ?>
-          <div class="f-1<?php echo $class; ?>">
+          <div class="flex<?php echo $class; ?>">
               <?php echo $start_tag; ?>
               <i class="fas fa-<?php echo $icon; ?> font-size-22px" aria-hidden="true"></i>
               <span class="d-b fixed-footer-menu-title font-size-10px"><?php echo $title; ?></span>
@@ -84,7 +84,7 @@ if( fixed_footer()==='menu' ) { ?>
         <?php } ?>
     </div>
 <?php } elseif( fixed_footer()==='share' && is_singular() ) { ?>
-  <div id="fixed-footer-share-button" class="fixed-footer d-n-pc">
+  <div id="fixed-footer-share-button" class="fixed-footer d-n-md">
     <?php sns_button_4536('fixed_footer_share_button'); ?>
     <div id="fixed-share-button-mask" class="post-bg-color"></div>
   </div>

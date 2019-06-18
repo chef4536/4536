@@ -42,7 +42,7 @@ class CtaWidgetItem extends WP_Widget {
     preg_match( '/header-widget/', $args['before_widget'], $match );
     if( !empty( $match ) ) {
       $wrap = str_replace( $match[0], $match[0] . ' d-f', $args['before_widget'] );
-      $wrap_class = 'f-1';
+      $wrap_class = 'flex';
     } else {
       $wrap = $args['before_widget'];
       $wrap_class = 'padding-10px';

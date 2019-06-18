@@ -24,7 +24,7 @@ if( has_header_image() ) { ?>
     $site_name = get_bloginfo('name');
   } ?>
   <div class="inner p-r w-100 ma-auto d-f a-i-c pa-3">
-    <div class="header-contents header-title f-1">
+    <div class="header-contents header-title flex">
       <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
     </div>
     <?php
@@ -37,14 +37,14 @@ if( has_header_image() ) { ?>
         'items_wrap' => '<ul>%3$s</ul>'
       ];
       ?>
-      <div class="d-n-mobile">
+      <div class="d-n-sm">
         <nav id="pc-nav-menu" class="nav-menu icon" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
           <?php wp_nav_menu($defaults); ?>
         </nav>
       </div>
     <?php }
     if( is_slide_menu() ) { ?>
-      <label id="header-slide-button" for="slide-toggle" class="f-button header-contents slide-button d-n-pc t-a-c">
+      <label id="header-slide-button" for="slide-toggle" class="f-button header-contents slide-button d-n-md t-a-c">
         <i class="fas fa-ellipsis-h"></i>
       </label>
     <?php } ?>

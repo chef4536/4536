@@ -2,7 +2,7 @@
 
 if(empty(related_post_count())) return;
 
-$display = 'd-n-mobile';
+$display = 'd-n-sm';
 $post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
 $post_list_style_pc = '';
 if( !empty( related_post_list_style_pc() ) ) {

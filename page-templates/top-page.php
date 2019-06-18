@@ -2,7 +2,7 @@
   <div id="contents-wrapper" class="w-100 max-w-100">
     <main id="main" class="w-100 post-bg-color post-color" role="main">
       <?php media_section_4536('music'); ?>
-      <div id="new-post" class="d-f clearfix padding-wrap-main-4536">
+      <div id="new-post" class="d-f pr-3 pl-3">
         <?php post_list_template_4536('new-post'); ?>
       </div>
       <?php

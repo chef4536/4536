@@ -29,13 +29,13 @@ function sns_button_4536($position) {
     }
 
     if(!sns_style()) {
-        $sns_class = 'default-sns-button colorful-sns-button f-1';
+        $sns_class = 'default-sns-button colorful-sns-button flex';
     } elseif(sns_style()==='simple1') {
         $sns_class = 'simple-sns-button colorful-sns-button';
     } elseif(sns_style()==='simple2') {
         $sns_class = 'simple-sns-button simple-sns-button-2';
     } elseif(sns_style()==='rich') {
-        $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button f-1';
+        $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button flex';
     }
 
     if( $position === 'fixed_footer_share_button' ) $sns_class = 'simple-sns-button colorful-sns-button';
@@ -62,7 +62,7 @@ function sns_button_4536($position) {
     $style = (sns_style()) ? ' simple-sns' : '';
     $flex_option = 'j-c-c';
     $padding = ' padding-1_5em-0';
-    $display = ( fixed_footer() === 'share' ) ? ' d-n-mobile' : '';
+    $display = ( fixed_footer() === 'share' ) ? ' d-n-sm' : '';
 
     if( $position === 'post_top' ) $padding = $margin = ' margin-2em-auto';
 
