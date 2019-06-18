@@ -17,6 +17,7 @@ add_filter( 'body_class', function( $classes ) {
     'f-d-c',
     'l-0',
     'p-r',
+    'min-h-100',
   ];
   foreach($list as $class) {
    $classes[] = $class;

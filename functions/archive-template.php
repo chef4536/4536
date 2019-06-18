@@ -1,7 +1,7 @@
 <?php
 
 function archive_template_4536($page_4536) { ?>
-    <div id="contents-wrapper" class="w-100 m-w-100">
+    <div id="contents-wrapper" class="w-100 max-w-100">
         <div id="contents-inner">
             <main id="main" class="w-100 post-bg-color post-color" role="main">
                 <section id="post-search" class="clearfix">

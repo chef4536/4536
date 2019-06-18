@@ -47,7 +47,7 @@ add_action( 'wp_head', function() { ?>
   <?php
   require_once( TEMPLATEPATH . '/css/_normalize.css' );
   require_once( TEMPLATEPATH . '/css/base.min.css' );
-  // require_once(get_template_directory() . '/css/inline.min.css');
+  require_once(get_template_directory() . '/css/inline.min.css');
   echo add_inline_style_4536( false );
   ?>
   </style>

@@ -2,7 +2,7 @@
 
 get_header(); ?>
 
-<div id="contents-wrapper" class="w-100 m-w-100">
+<div id="contents-wrapper" class="w-100 max-w-100">
     <div id="contents-inner">
         <main id="main" class="w-100 post-bg-color post-color" role="main">
             <h1 id="h1"><?php the_title(); ?></h1>

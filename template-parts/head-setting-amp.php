@@ -1,4 +1,4 @@
-<html amp>
+<html amp class="min-h-100 h-100">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,viewport-fit=cover">
