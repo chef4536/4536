@@ -2,12 +2,12 @@
 
 if(empty(related_post_count())) return;
 
-$display = 'display-none-mobile';
+$display = 'd-n-mobile';
 $post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
 $post_list_style_pc = '';
 if( !empty( related_post_list_style_pc() ) ) {
   $post_list_style_pc = ' list-'.related_post_list_style_pc();
-  $display = 'display-none';
+  $display = 'd-n';
 }
 $style = $post_list_style_mobile.$post_list_style_pc;
 
@@ -35,16 +35,16 @@ if(!$related_posts) return;
 ?>
 
 <aside id="related-post">
-  <h2 id="related-post-title" class="position-relative">関連記事</h2>
-  <div class="related-post-wrap flexbox-row-wrap">
+  <h2 id="related-post-title" class="p-r">関連記事</h2>
+  <div class="related-post-wrap d-f">
     <?php foreach( $related_posts as $post ) : setup_postdata( $post ) ; ?>
-    <article class="position-relative z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
+    <article class="p-r z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
       <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
       <div class="post-info">
         <h3 class="font-size-16px post-title<?php echo $line_clamp; ?>">
           <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
-        <div class="post-meta position-relative z-index--1 margin-1em-auto">
+        <div class="post-meta p-r z-index--1 margin-1em-auto">
           <p class="excerpt <?php echo $display; ?>">
             <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
           </p>

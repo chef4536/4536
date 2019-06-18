@@ -78,9 +78,9 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $output = <<< EOM
     {$blockquote_begin}
-    <span data-embed-content="true" class="wp-embed post-color position-relative display-block">
+    <span data-embed-content="true" class="wp-embed post-color p-r d-b">
       {$title}
-      <span class="blogcard-image-info-wrap position-relative z-index--1">
+      <span class="blogcard-image-info-wrap p-r z-index--1">
         <span class="wp-embed-featured-image post-list-thumbnail{$image_size}">
           {$thumbnail}
         </span>

@@ -13,8 +13,10 @@ add_filter( 'body_class', function( $classes ) {
     'cool2',
     'cool3',
     'font-size-16px',
-    'display-flex',
-    'flex-direction-column',
+    'd-f',
+    'f-d-c',
+    'l-0',
+    'p-r',
   ];
   foreach($list as $class) {
    $classes[] = $class;

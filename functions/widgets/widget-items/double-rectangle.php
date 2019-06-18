@@ -47,24 +47,24 @@ class DoubleRectangleWidgetItem extends WP_Widget {
         if(empty($rectangle_left) && empty($rectangle_right)) return;
 
         if(!empty($display_none_mobile_rectangle_left) && !empty($display_none_mobile_rectangle_right)) {
-            $title = '<div class="display-none-mobile">'.$title.'</div>';
+            $title = '<div class="d-n-mobile">'.$title.'</div>';
         }
 
         echo $args['before_widget'].$title;
 
-        if(!empty($is_double_rectangle)) $class = ' double-rectangle-wrapper flexbox-row-wrap justify-content-center';
+        if(!empty($is_double_rectangle)) $class = ' double-rectangle-wrapper d-f j-c-c';
 
         echo '<div class="ad-wrapper'.$class.'">';
 
         $ad = '';
 
         if(!empty($rectangle_left)) {
-            if(!empty($display_none_mobile_rectangle_left)) $left_class = ' display-none-mobile';
+            if(!empty($display_none_mobile_rectangle_left)) $left_class = ' d-n-mobile';
             $ad .= '<div class="ad ad-left'.$left_class.'">'.$rectangle_left.'</div>';
         }
 
         if(!empty($rectangle_right)) {
-            if(!empty($display_none_mobile_rectangle_right)) $right_class = ' display-none-mobile';
+            if(!empty($display_none_mobile_rectangle_right)) $right_class = ' d-n-mobile';
             $ad .= '<div class="ad ad-right'.$right_class.'">'.$rectangle_right.'</div>';
         }
 

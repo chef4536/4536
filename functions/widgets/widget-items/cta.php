@@ -41,26 +41,26 @@ class CtaWidgetItem extends WP_Widget {
     if( empty($button_text) && empty($button_url) && empty($button_text_url) ) return;
     preg_match( '/header-widget/', $args['before_widget'], $match );
     if( !empty( $match ) ) {
-      $wrap = str_replace( $match[0], $match[0] . ' display-flex', $args['before_widget'] );
-      $wrap_class = 'flex-1';
+      $wrap = str_replace( $match[0], $match[0] . ' d-f', $args['before_widget'] );
+      $wrap_class = 'f-1';
     } else {
       $wrap = $args['before_widget'];
       $wrap_class = 'padding-10px';
     }
     $wrap = str_replace( 'widget-4536', 'widget-4536 ' . $wrap_class, $wrap );
     echo $wrap;
-    if( !empty( $title ) ) echo '<p class="cta-title text-align-center margin-2em-auto bold-4536 font-size-24px line-height-1_6">'.$title.'</p>';
+    if( !empty( $title ) ) echo '<p class="cta-title t-a-c margin-2em-auto bold-4536 font-size-24px l-h-160">'.$title.'</p>';
     if( !empty( $src ) ) {
       $image_margin = ( $image_style !== 'aligncenter' ) ? ' max-width-half-pc' : '';
       $size = get_image_width_and_height_4536( $src );
       if( !empty( $size['width'] ) ) $width = 'width="'.$size['width'].'"';
       if( !empty( $size['height'] ) ) $height = ' height="'.$size['height'].'"';
-      $thumbnail = '<figure class="cta-image text-align-center '.$image_style.$image_margin. '"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
+      $thumbnail = '<figure class="cta-image t-a-c '.$image_style.$image_margin. '"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
       echo convert_content_to_amp( $thumbnail );
     }
     if( !empty( $description ) ) {
-      $description_class = empty( $src ) ? ' text-align-center' : '';
-      echo '<p class="clearfix margin-2em-auto line-height-1_4' . $description_class . '">' . $description . '</p>';
+      $description_class = empty( $src ) ? ' t-a-c' : '';
+      echo '<p class="clearfix margin-2em-auto l-h-140' . $description_class . '">' . $description . '</p>';
     }
     if( !empty( $button_text ) && !empty( $button_url ) ) {
       $target = is_my_website( $button_url ) ?  '' : ' target="_blank" rel="noopener"';

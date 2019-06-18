@@ -12,7 +12,7 @@
   <div id="profile-info" class="clearfix">
     <p><?php the_author_meta('user_description'); ?></p>
   </div>
-  <div id="writter-follow" class="justify-content-flex-end display-flex">
+  <div id="writter-follow" class="j-c-f-e d-f">
     <?php
 
     $list = [

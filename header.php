@@ -11,7 +11,7 @@ if(is_amp()) {
 }
 ?>
 <body <?php body_class(); ?>>
-  <div id="main-column" class="flex-1">
+  <div id="main-column" class="f-1">
 
     <?php
 
@@ -33,7 +33,7 @@ if(is_amp()) {
         $location = '';
         if(has_nav_menu('navbar')) {
           $location = 'navbar';
-          $display = ' display-none-pc';
+          $display = ' d-n-pc';
         };
         if(has_nav_menu('below_header_nav_menu_common')) {
           $location = 'below_header_nav_menu_common';
@@ -47,10 +47,10 @@ if(is_amp()) {
             'echo' => true,
             'items_wrap' => '<ul class="scroll-content">%3$s</ul>'
           ];
-          $button = (is_amp()) ? '' : '<div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>';
+          $button = (is_amp()) ? '' : '<div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>';
           ?>
-          <nav id="below-header-nav-menu" class="nav-menu header-section icon text-align-center<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-            <div class="scroll-wrapper inner padding-0_5em-10px">
+          <nav id="below-header-nav-menu" class="nav-menu header-section icon t-a-c<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+            <div class="scroll-wrapper inner p-r w-100 ma-auto pa-2">
               <div class="scroll-left">
                 <?php
                 wp_nav_menu($defaults);
@@ -73,7 +73,7 @@ if(is_amp()) {
 
       if ( (is_home() || is_front_page()) && !is_paged() && is_home_description() ) { //ディスクリプション ?>
         <div id="top-description">
-          <div class="inner padding-0-10px">
+          <div class="w-100 ma-auto py-0 px-3">
             <p><?php bloginfo('description'); ?></p>
           </div>
         </div>
@@ -83,4 +83,4 @@ if(is_amp()) {
 
     ?>
 
-    <div id="wrapper" class="wrapper">
+    <div id="wrapper" class="wrapper w-100 ma-auto">

@@ -5,7 +5,7 @@ $start_tag = '<'.$tag.' id="sitename" itemscope itemtype="http://schema.org/Orga
 $end_tag = '</'.$tag.'>';
 
 if( has_header_image() ) { ?>
-  <div id="header-image">
+  <div id="header-image" class="w-100 ma-auto">
     <?php echo $start_tag; ?>
       <a href="<?php echo home_url(); ?>/">
         <?php
@@ -23,8 +23,8 @@ if( has_header_image() ) { ?>
   } else {
     $site_name = get_bloginfo('name');
   } ?>
-  <div class="inner display-flex align-items-center padding-1em-10px clearfix">
-    <div class="header-contents header-title flex-1">
+  <div class="inner p-r w-100 ma-auto d-f a-i-c pa-3">
+    <div class="header-contents header-title f-1">
       <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
     </div>
     <?php
@@ -37,14 +37,14 @@ if( has_header_image() ) { ?>
         'items_wrap' => '<ul>%3$s</ul>'
       ];
       ?>
-      <div class="display-none-mobile">
+      <div class="d-n-mobile">
         <nav id="pc-nav-menu" class="nav-menu icon" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
           <?php wp_nav_menu($defaults); ?>
         </nav>
       </div>
     <?php }
     if( is_slide_menu() ) { ?>
-      <label id="header-slide-button" for="slide-toggle" class="header-contents slide-button display-none-pc text-align-center">
+      <label id="header-slide-button" for="slide-toggle" class="f-button header-contents slide-button d-n-pc t-a-c">
         <i class="fas fa-ellipsis-h"></i>
       </label>
     <?php } ?>

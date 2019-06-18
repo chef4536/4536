@@ -5,6 +5,10 @@ require_once('preload-css.php'); //非同期読み込み
 
 //スタイルシート読み込み
 add_action( 'wp_footer', function() {
+  ////////////////////////
+   ////////// dev /////////
+            return;
+    ////////////////////////
   if( is_amp() ) return;
   $ver = function_exists('theme_version_4536') ? theme_version_4536() : ''; ?>
   <script>
@@ -41,7 +45,9 @@ function add_inline_style_4536( $custom_css = true ) {
 add_action( 'wp_head', function() { ?>
   <style>
   <?php
-  require_once(get_template_directory() . '/css/inline.min.css');
+  require_once( TEMPLATEPATH . '/css/_normalize.css' );
+  require_once( TEMPLATEPATH . '/css/base.min.css' );
+  // require_once(get_template_directory() . '/css/inline.min.css');
   echo add_inline_style_4536( false );
   ?>
   </style>
@@ -50,8 +56,10 @@ add_action( 'wp_head', function() { ?>
 //AMP用のCSS生成
 function amp_css() {
   ob_start();
-  require_once(get_template_directory() . '/css/inline.min.css');
-  require_once(get_template_directory() . '/style.min.css');
+  require_once( TEMPLATEPATH . '/css/_normalize.css' );
+  require_once( TEMPLATEPATH . '/css/base.min.css' );
+  require_once( TEMPLATEPATH . '/css/inline.min.css');
+  require_once( TEMPLATEPATH . '/style.min.css');
 //    require_once(ABSPATH . '/wp-includes/css/dist/block-library/style.min.css');
   $styles = ob_get_clean();
   $custom_bgc = 'body.custom-background{background-color:#'.get_background_color().'}';

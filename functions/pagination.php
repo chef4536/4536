@@ -10,7 +10,7 @@ function pagination($pages = '', $range = 1) {
         if(!$pages) $pages = 1;
     }
     if($pages!==1) {
-        echo '<div class="pagination clearfix padding-0-1em display-flex justify-content-center text-align-center">';
+        echo '<div class="pagination clearfix padding-0-1em d-f j-c-c t-a-c">';
         if ($paged > 2 && $paged > $range+1 && $showitems < $pages) echo '<a href="'.get_pagenum_link (1).'">1</a>';
         if($paged > 1 && $showitems < $pages) echo '<a href="'.get_pagenum_link($paged - 1).'">&lt;</a>';
         for($i=1; $i <= $pages; $i++) {

@@ -1,9 +1,9 @@
 <?php get_header(); ?>
-    <div id="contents-wrapper">
+    <div id="contents-wrapper" class="w-100 m-w-100">
         <div id="contents-inner">
-            <main id="main" class="post-bg-color post-color" role="main">
+            <main id="main" class="w-100 post-bg-color post-color" role="main">
                 <?php media_section_4536( 'music' ); ?>
-                <div id="new-post" class="flexbox-row-wrap clearfix padding-wrap-main-4536">
+                <div id="new-post" class="d-f clearfix padding-wrap-main-4536">
                     <?php post_list_template_4536('new-post'); ?>
                 </div>
                 <?php

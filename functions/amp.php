@@ -205,7 +205,7 @@ function amp_adsense_code( $size = 'rectangle' ) {
       $layout = '';
       $width = ' width="100vw"';
       $height = '320';
-      $class = 'widget-4536 amp-adsense ad text-align-center margin-2em-auto clearfix';
+      $class = 'widget-4536 w-100 amp-adsense ad t-a-c my-4 mx-auto';
       $option = ' data-auto-format="rspv" data-full-width';
       $overflow = '<div overflow></div>';
       break;
@@ -213,7 +213,7 @@ function amp_adsense_code( $size = 'rectangle' ) {
       $layout = ' layout="fixed-height"';
       $width = '';
       $height = '100';
-      $class = 'widget-4536 amp-adsense ad text-align-center margin-1em-auto clearfix';
+      $class = 'widget-4536 w-100 amp-adsense ad t-a-c my-2 mx-auto';
       $option = '';
       $overflow = '';
       break;

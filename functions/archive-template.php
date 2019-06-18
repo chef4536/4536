@@ -1,9 +1,9 @@
 <?php
 
 function archive_template_4536($page_4536) { ?>
-    <div id="contents-wrapper">
+    <div id="contents-wrapper" class="w-100 m-w-100">
         <div id="contents-inner">
-            <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
+            <main id="main" class="w-100 post-bg-color post-color" role="main">
                 <section id="post-search" class="clearfix">
                     <?php
                     if(is_category()||is_tag()||is_tax()) $title = single_term_title("", false);
@@ -19,7 +19,7 @@ function archive_template_4536($page_4536) { ?>
                     if($page_4536==='movie') $title = '<h1 id="archive-title">「'.esc_html(get_option('sub_media_name')).'」一覧</h1>';
                     if($page_4536==='music') $title = '<h1 id="archive-title">「'.esc_html(get_option('main_media_name')).'」一覧</h1>';
                     echo $title; ?>
-                    <div class="archive-wrap flexbox-row-wrap">
+                    <div class="archive-wrap d-f">
                         <?php post_list_template_4536($page_4536); ?>
                     </div>
                 </section>
@@ -53,11 +53,11 @@ function post_list_template_4536($page_4536) {
       if( archive_post_list_style_mobile() === 'big' ) $thumbnail_size = 'big';
     }
 
-    $display = 'display-none-mobile';
+    $display = 'd-n-mobile';
     if( !empty( $post_list_style_mobile ) ) $post_list_style_mobile = ' list-'.$post_list_style_mobile;
     if( !empty( $post_list_style_pc ) ) {
       $post_list_style_pc = ' list-'.$post_list_style_pc;
-      $display = 'display-none';
+      $display = 'd-n';
     }
     $style = $post_list_style_mobile.$post_list_style_pc;
 
@@ -69,13 +69,13 @@ function post_list_template_4536($page_4536) {
 
     if ( have_posts() ) : while ( have_posts() ) : the_post(); $count++;
     $ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time(); ?>
-        <article class="position-relative clearfix padding-bottom-1em z-index-1 post-list<?php echo $style; ?>">
+        <article class="p-r clearfix padding-bottom-1em z-index-1 post-list<?php echo $style; ?>">
           <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
           <div class="post-info">
             <h2 class="post-title<?php echo $line_clamp; ?>">
               <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </h2>
-            <div class="post-meta position-relative z-index--1">
+            <div class="post-meta p-r z-index--1">
               <div class="excerpt <?php echo $display; ?>">
                 <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
               </div>
@@ -85,7 +85,7 @@ function post_list_template_4536($page_4536) {
         </article>
         <?php
         if( $count===$rand && $page_4536==='new-post' && is_active_sidebar('sp-infeed-ad') ) { //インフィード広告 ?>
-            <div class="post-list clearfix infeed-ad display-block padding-bottom-1em <?php echo $style; ?>">
+            <div class="post-list clearfix infeed-ad d-b padding-bottom-1em <?php echo $style; ?>">
                 <?php dynamic_sidebar('sp-infeed-ad'); ?>
             </div>
         <?php }

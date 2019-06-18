@@ -227,7 +227,7 @@ add_filter('tiny_mce_before_init', function($init_array) {
                 [
                     'title' => '文字の中央寄せ',
                     'block' => 'p',
-                    'classes' => 'text-align-center'
+                    'classes' => 't-a-c'
                 ],                
                 [
                     'title' => '「参考」や「関連」などの文字装飾に',

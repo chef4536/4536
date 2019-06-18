@@ -29,13 +29,13 @@ function sns_button_4536($position) {
     }
 
     if(!sns_style()) {
-        $sns_class = 'default-sns-button colorful-sns-button flex-1';
+        $sns_class = 'default-sns-button colorful-sns-button f-1';
     } elseif(sns_style()==='simple1') {
         $sns_class = 'simple-sns-button colorful-sns-button';
     } elseif(sns_style()==='simple2') {
         $sns_class = 'simple-sns-button simple-sns-button-2';
     } elseif(sns_style()==='rich') {
-        $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button flex-1';
+        $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button f-1';
     }
 
     if( $position === 'fixed_footer_share_button' ) $sns_class = 'simple-sns-button colorful-sns-button';
@@ -60,9 +60,9 @@ function sns_button_4536($position) {
     $line = '<a class="line '.$sns_class.'" href="http://line.me/R/msg/text/?'.$title.'%0A'.$url.'"'.$target.'><i class="fab fa-line"></i></a>';
 
     $style = (sns_style()) ? ' simple-sns' : '';
-    $flex_option = 'justify-content-center';
+    $flex_option = 'j-c-c';
     $padding = ' padding-1_5em-0';
-    $display = ( fixed_footer() === 'share' ) ? ' display-none-mobile' : '';
+    $display = ( fixed_footer() === 'share' ) ? ' d-n-mobile' : '';
 
     if( $position === 'post_top' ) $padding = $margin = ' margin-2em-auto';
 
@@ -70,7 +70,7 @@ function sns_button_4536($position) {
 
     if( $position === 'fixed_footer_share_button' ) {
       $padding = ' padding-10px';
-      $flex_option = 'justify-content-flex-end flex-direction-row-reverse';
+      $flex_option = 'j-c-f-e f-d-r-r';
       $display = '';
     }
 
@@ -78,9 +78,9 @@ function sns_button_4536($position) {
 
     ?>
 
-    <div class="share sns text-align-center<?php echo $class; ?>">
+    <div class="share sns t-a-c<?php echo $class; ?>">
         <?php if($position==='post_bottom' && sns_share_text()) echo '<p class="sns-title">'.sns_share_text().'</p>'; ?>
-        <div class="display-flex <?php echo $flex_option; ?>">
+        <div class="d-f <?php echo $flex_option; ?>">
             <?php echo $twitter.$facebook.$hatebu.$pocket.$line; ?>
         </div>
     </div>

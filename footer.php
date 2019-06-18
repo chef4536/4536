@@ -4,7 +4,7 @@ echo '</div>'; //#wrapper
 
 if( !is_amp() && is_active_sidebar('footer-top') ) { //フッター上 ?>
   <div id="footer-top-widget-area">
-    <div class="inner padding-20px-10px">
+    <div class="inner p-r w-100 ma-auto py-4 px-2">
       <?php dynamic_sidebar('footer-top') ?>
     </div>
   </div>
@@ -15,7 +15,7 @@ echo '</div>'; //#main-column
 ?>
 
 <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
-  <div class="inner padding-20px-10px">
+  <div class="inner p-r w-100 ma-auto py-4 px-2">
     <?php
     if( !none_header_footer() ) {
       if( !is_amp() ) {
@@ -63,7 +63,7 @@ if( !none_header_footer() ) {
     wp_footer();
     if(is_likebox() && is_singular()) get_template_part('template-parts/likebox');
     if(add_html_js_body()) echo add_html_js_body();
-    echo '<a id="page-top" class="page-top display-none" href="#header"><i class="fas fa-angle-up"></i></a>';
+    echo '<a id="page-top" class="page-top d-n" href="#header"><i class="fas fa-angle-up"></i></a>';
   }
 } else {
   if( !is_amp() ) wp_footer();

@@ -1,8 +1,8 @@
 <?php /* Template Name: すべてのカテゴリと記事（HTMLサイトマップ） */
 get_header(); ?>
-<div id="contents-wrapper">
+<div id="contents-wrapper" class="w-100 m-w-100">
   <div id="contents-inner">
-    <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
+    <main id="main" class="w-100 post-bg-color post-color" role="main">
       <article id="html-sitemap" class="post">
         <header>
           <h1 id="h1"><?php the_title(); ?></h1>
@@ -27,7 +27,7 @@ get_header(); ?>
         		echo '<h2><a href="' . get_category_link( $cat_id ) . '">' . $category->name . '</a></h2>';
             $thumbnail_arr = get_posts( 'post_type=post&posts_per_page=1&category=' . $cat_id );
             if( has_post_thumbnail( $post_id = $thumbnail_arr[0]->ID ) && $is_thumbnail === '1' ) {
-              echo '<figure class="alignwide margin-bottom-1_5em text-align-center">' . get_the_post_thumbnail( $post_id, $thumbnail, [ 'class' => 'category_thumbnail' ] ) . '</figure>';
+              echo '<figure class="alignwide margin-bottom-1_5em t-a-c">' . get_the_post_thumbnail( $post_id, $thumbnail, [ 'class' => 'category_thumbnail' ] ) . '</figure>';
             }
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
             $exclude_cat_id = '';
@@ -41,7 +41,7 @@ get_header(); ?>
               'exclude' => [ $exclude_post_id ],
             ]);
             foreach( $post_arr as $post ) {
-              echo '<article class="post-list line-height-1_4 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
+              echo '<article class="post-list l-h-140 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
             }
             the_child_sitemap_4536( $cat_id, 2, $exclude_cat_id_arr, $exclude_post_id );
             echo '</section>';
@@ -69,7 +69,7 @@ get_header(); ?>
                   'exclude' => [ $exclude_post_id ],
                 ]);
                 foreach( $post_arr as $post ) {
-                  echo '<article class="post-list line-height-1_4 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
+                  echo '<article class="post-list l-h-140 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink( $post->ID ) . '">' . $post->post_title . '</a></article>';
                 }
                 the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id );
                 echo '</section>';

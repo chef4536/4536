@@ -87,7 +87,7 @@ function media_section_4536( $media, $args = [] ) {
       <div class="scroll-left">
         <div class="scroll-content">
           <?php foreach( $customPosts as $post ) : setup_postdata( $post ); ?>
-            <div class="media-content clearfix <?php echo $media; ?>-content position-relative">
+            <div class="media-content clearfix <?php echo $media; ?>-content p-r">
               <?php echo thumbnail_4536( $media )['thumbnail']; ?>
               <div class="post-info">
                 <a class="media-content-title link-mask" title="<?php the_title();?>" href="<?php the_permalink();?>">
@@ -99,7 +99,7 @@ function media_section_4536( $media, $args = [] ) {
           <?php wp_reset_postdata(); ?>
         </div>
       </div>
-      <div class="leftbutton display-none"><i class="fas fa-angle-left"></i></div><div class="rightbutton display-none"><i class="fas fa-angle-right"></i></div>
+      <div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>
     </div>
   </div>
 <?php }

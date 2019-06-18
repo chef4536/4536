@@ -203,8 +203,9 @@ function header_logo_4536() {
     $alt = 'alt="'.get_bloginfo( 'name' ).'" ';
     $width = 'width="238" ';
     $height = 'height="48" ';
+    $class = 'class="header-logo" ';
     $url = 'src="'.header_logo_url().'" ';
-    $header_logo = '<div class="header-logo">'.$start_tag.$url.$alt.$width.$height.$end_tag.'</div>';
+    $header_logo = '<div class="header-logo-wrap">'.$start_tag.$url.$alt.$class.$width.$height.$end_tag.'</div>';
     return $header_logo;
 }
 

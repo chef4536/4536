@@ -24,7 +24,7 @@ function fixed_footer_overlay_4536() {
         const last_scroll_position = window.scrollY;
         if(new_scroll_position < last_scroll_position && last_scroll_position > 100) {
             menu.classList.add('fade-in');
-            menu.classList.remove('display-none');
+            menu.classList.remove('d-n');
         }
         new_scroll_position = last_scroll_position;
     });
@@ -58,7 +58,7 @@ function scroll_content_4536() {
         const scroll_inner_width = scroll_inner.clientWidth;
 
         if(scroll_inner_width > scroll_wrap_width) {
-            rightButton.classList.remove('display-none');
+            rightButton.classList.remove('d-n');
             rightButton.classList.add('fade-in');
         }
 
@@ -98,15 +98,15 @@ function scroll_content_4536() {
             e.preventDefault();
 
             if(scroll_inner.getBoundingClientRect().left < scroll_wrap.getBoundingClientRect().left) {
-                leftButton.classList.remove('display-none');
+                leftButton.classList.remove('d-n');
                 leftButton.classList.add('fade-in');
             } else {
-                leftButton.classList.add('display-none');
+                leftButton.classList.add('d-n');
             }
             if(scroll_inner.getBoundingClientRect().right === scroll_wrap.getBoundingClientRect().right) {
-                rightButton.classList.add('display-none');
+                rightButton.classList.add('d-n');
             } else {
-                rightButton.classList.remove('display-none');
+                rightButton.classList.remove('d-n');
             }
 
         });
@@ -189,9 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if( to_top !== null ) {
       if(new_scroll_position < last_scroll_position && last_scroll_position > 400) {
         to_top.classList.add('fade-in');
-        to_top.classList.remove('display-none');
+        to_top.classList.remove('d-n');
       } else if(last_scroll_position < 200) {
-        to_top.classList.add('display-none');
+        to_top.classList.add('d-n');
       }
     }
 

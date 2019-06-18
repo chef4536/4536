@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-<div id="contents-wrapper">
+<div id="contents-wrapper" class="w-100 m-w-100">
   <div id="contents-inner">
-    <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
+    <main id="main" class="w-100 post-bg-color post-color" role="main">
       <?php get_template_part('template-parts/post');
       if(is_amp()) {
         if(is_active_sidebar('amp-post-bottom')) dynamic_sidebar('amp-post-bottom');

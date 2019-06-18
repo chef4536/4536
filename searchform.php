@@ -7,7 +7,7 @@ if(search_style()==="google_custom_search") {
     $query = 'q';
 }
 if( is_amp() && is_ssl() ) $target = 'target="_top"';
-$search_form = '<form id="searchform" class="display-flex" role="search" method="get" action="'.home_url().'/'.$slug.'" '.$target.'>'.
+$search_form = '<form id="searchform" class="d-f" role="search" method="get" action="'.home_url().'/'.$slug.'" '.$target.'>'.
     '<input type="search" value="'.get_search_query().'" name="'.$query.'" id="'.$query.'" placeholder="キーワード" />'.
     '<button type="submit" id="searchsubmit"><i class="fas fa-search" aria-hidden="true"></i></button>'.
     '</form>';
