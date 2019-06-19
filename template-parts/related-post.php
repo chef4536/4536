@@ -20,8 +20,6 @@ foreach($categories as $category) {
     $category_ID[] = $category->cat_ID;
 }
 
-if(line_clamp()=='2line') $line_clamp = ' line-clamp-2';
-if(line_clamp()=='3line') $line_clamp = ' line-clamp-3';
 $args = [
     'post__not_in' => [get_the_ID()],
     'posts_per_page'=> related_post_count(),
@@ -41,7 +39,7 @@ if(!$related_posts) return;
     <article class="p-r z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
       <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
       <div class="post-info">
-        <h3 class="font-size-16px post-title<?php echo $line_clamp; ?>">
+        <h3 class="font-size-16px post-title">
           <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
         <div class="post-meta p-r z-index--1 margin-1em-auto">

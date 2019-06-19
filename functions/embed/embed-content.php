@@ -70,12 +70,6 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $image_size = (thumbnail_size()=='thumbnail') ? ' thumbnail' : ' thumbnail-wide' ;
 
-    if( blogcard_thumbnail_display()==='background-image' ) {
-      $src = (has_post_thumbnail()) ? get_the_post_thumbnail_url($id) : get_some_image_url_4536($content);
-      $class = get_thumbnail_class_4536($src);
-      $thumbnail = '<span class="background-thumbnail-4536 blogcard-thumbnail '.$class.'"></span>';
-    }
-
     $output = <<< EOM
     {$blockquote_begin}
     <span data-embed-content="true" class="wp-embed post-color p-r d-b">

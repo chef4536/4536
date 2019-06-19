@@ -19,9 +19,6 @@ class NewEntryWidgetItem extends WP_Widget {
         $count = apply_filters( 'widget_entry_count', $instance[$this->_count] );
         if(empty($count)) $count = 5;
         $new_posts = get_posts('posts_per_page='.$count);
-        $line_clamp = '';
-        if(line_clamp()=='2line') $line_clamp = 'line-clamp-2';
-        if(line_clamp()=='3line') $line_clamp = 'line-clamp-3';
         if(!$new_posts) return;
         global $post;
         echo $args['before_widget'];

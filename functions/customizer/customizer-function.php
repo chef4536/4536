@@ -43,10 +43,6 @@ function custom_excerpt_length() {
   if (empty($content)) $content = 0;
   return $content;
 }
-//文字を丸める
-function line_clamp() {
-    return get_theme_mod( 'line_clamp', null );
-}
 //固定フッター
 function fixed_footer() {
     return get_theme_mod( 'fixed_footer', null );
@@ -70,25 +66,9 @@ function is_google_fonts() {
 function next_prev_in_same_term() {
     return get_theme_mod( 'next_prev_in_same_term', null );
 }
-//タイトルと日付の順番
-function post_title_date() {
-    return get_theme_mod( 'post_title_date', 'title_date' );
-}
 //検索エンジンに伝える記事の日時
 function post_datetime() {
     return get_theme_mod( 'post_datetime', null );
-}
-//投稿日 or 投稿日時
-function posted_date_datetime() {
-    return get_theme_mod( 'posted_date_datetime', 'date' );
-}
-//更新日 or 更新日時
-function modified_date_datetime() {
-    return get_theme_mod( 'modified_date_datetime', 'date' );
-}
-//固定ページの投稿日・更新日の表示
-function is_page_time_mtime() {
-    return get_theme_mod( 'is_page_time_mtime', null );
 }
 //この記事を書いた人、記事ページ
 function is_profile_4536($post_type) {
@@ -105,10 +85,6 @@ function post_prev_next_4536() {
 function thumbnail_size() {
     return get_theme_mod( 'thumbnail_size', 'thumbnail-wide' );
 }
-//サムネイルの表示方法
-function thumbnail_display() {
-    return get_theme_mod( 'thumbnail_display', 'image' );
-}
 //サムネイルの画質
 function thumbnail_quality() {
     return get_theme_mod( 'thumbnail_quality', null );
@@ -119,10 +95,6 @@ function new_icon_date() {
   if (empty($date)) $date = 0;
   return $date;
 }
-//アイキャッチ画像の表示切り替え
-function is_post_thumbnail_4536() {
-    return get_theme_mod( 'is_post_thumbnail', 'image' );
-}
 //サムネの表示方法
 function get_post_first_image() {
     return get_theme_mod( 'get_post_first_image', 'get_save' );
@@ -130,10 +102,6 @@ function get_post_first_image() {
 //オリジナルのアイキャッチ画像
 function original_thumbnail_url(){
     return esc_url( get_theme_mod( 'original_thumbnail' ) );
-}
-//ブログカード表示方法
-function blogcard_thumbnail_display() {
-    return get_theme_mod( 'blogcard_thumbnail_display', 'image' );
 }
 //レイジーロード
 function is_lazy_load_4536() {

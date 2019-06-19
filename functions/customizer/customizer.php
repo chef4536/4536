@@ -149,20 +149,6 @@ $wp_customize->add_section( 'page_setting', [
             'true' => '同じカテゴリだけ',
         ],
     ]);
-    //タイトルと日付の順番
-    $wp_customize->add_setting( 'post_title_date', [
-        'default' => 'title_date',
-    ]);
-    $wp_customize->add_control( 'post_title_date', [
-        'section' => 'page_setting',
-        'settings' => 'post_title_date',
-        'label' =>'日付とタイトルの順番',
-        'type' => 'radio',
-        'choices'    => [
-            null => '日付→タイトル',
-            'title_date' => 'タイトル→日付',
-        ],
-    ]);
     //検索エンジンに伝える記事の日時
     $wp_customize->add_setting( 'post_datetime', [
         'default' => null,
@@ -176,45 +162,6 @@ $wp_customize->add_section( 'page_setting', [
             null => '公開日',
             'update' => '更新日',
         ],
-    ]);
-    //投稿日 or 投稿日時
-    $wp_customize->add_setting( 'posted_date_datetime', [
-        'default' => 'date',
-    ]);
-    $wp_customize->add_control( 'posted_date_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'posted_date_datetime',
-        'label' =>'投稿日 or 投稿日時',
-        'type' => 'radio',
-        'choices' => [
-            'date' => '投稿日',
-            'datetime' => '投稿日時',
-        ],
-    ]);
-    //更新日 or 更新日時
-    $wp_customize->add_setting( 'modified_date_datetime', [
-        'default' => 'date',
-    ]);
-    $wp_customize->add_control( 'modified_date_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'modified_date_datetime',
-        'label' =>'更新日 or 更新日時',
-        'type' => 'radio',
-        'choices' => [
-            'date' => '更新日',
-            'datetime' => '更新日時',
-            null => '非表示',
-        ],
-    ]);
-    //固定ページの投稿日時・更新日時の表示
-    $wp_customize->add_setting( 'is_page_time_mtime', [
-        'default' => false,
-    ]);
-    $wp_customize->add_control( 'is_page_time_mtime', [
-        'section' => 'page_setting',
-        'settings' => 'is_page_time_mtime',
-        'label' =>'固定ページに投稿日と更新日を表示する',
-        'type' => 'checkbox',
     ]);
     //この記事を書いた人
     $list = [
@@ -367,22 +314,6 @@ $wp_customize->add_section( 'media', [
         'description' => '数字のみ入力してください（例：1日→1、1週間→7、非表示→未入力）',
         'type' => 'number',
     ]);
-    //アイキャッチ画像の表示
-    $wp_customize->add_setting( 'is_post_thumbnail', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'is_post_thumbnail', [
-        'section' => 'media',
-        'settings' => 'is_post_thumbnail',
-        'label' => 'アイキャッチ画像の表示',
-        'description' => '主にフリー素材を使っている場合や本文中で同じ画像を使うことが多い場合は「背景画像」を、それ以外の場合は「通常の画像（imgタグ）」を選択してください。',
-        'type' => 'radio',
-        'choices' => [
-            'image' => 'imgタグ（デフォルト）',
-            'background_image' => '背景画像として表示する',
-            null => '表示しない',
-        ],
-    ]);
     //アイキャッチ画像の取得方法
     $wp_customize->add_setting( 'get_post_first_image', [
         'default' => 'get_save',
@@ -406,20 +337,6 @@ $wp_customize->add_section( 'media', [
         'settings' => 'original_thumbnail',
         'label' => 'オリジナルのサムネイル',
     ]));
-    //カスタムブログカード
-    $wp_customize->add_setting( 'blogcard_thumbnail_display', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'blogcard_thumbnail_display', [
-        'section' => 'media',
-        'settings' => 'blogcard_thumbnail_display',
-        'label' =>'オリジナルブログカードの画像の表示方法',
-        'type' => 'radio',
-        'choices'    => [
-            'image' => 'imgタグ（デフォルト）',
-            'background-image' => '背景画像',
-        ],
-    ]);
     //レイジーロード
     $wp_customize->add_setting( 'is_lazy_load', [
         'default' => false,

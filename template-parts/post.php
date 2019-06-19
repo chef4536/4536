@@ -24,7 +24,7 @@ if( have_posts() ) : while ( have_posts() ) : the_post();
 
 echo '<article class="post">';
 
-$ptime = (posted_date_datetime()==='date') ? get_the_date() : get_the_date().get_the_time();
+$ptime = get_the_date();
 $mtime = get_mtime();
 if(!post_datetime() || !$mtime) {
     $posted_datetime = '<time datetime="'.get_the_time('c').'">'.$ptime.'</time>';
@@ -36,11 +36,10 @@ if(!post_datetime() || !$mtime) {
 $ptime = ($ptime) ? '<span class="posted-date"><i class="far fa-calendar-check"></i>'.$posted_datetime.'</span>' : '' ;
 $mtime = ($mtime) ? '<span class="modified-date"><i class="fas fa-redo"></i>'.$modified_datetime.'</span>' : '' ;
 $post_date = '<div class="post-date post-data">'.$ptime.$mtime.'</div>';
-if(is_page() && !is_page_time_mtime()) $post_date = '';
 $title = '<h1 id="h1" class="headline">'.get_the_title().'</h1>';
 
 echo '<header>';
-    echo (!post_title_date()) ? $post_date.$title : $title.$post_date;
+    echo $post_date . $title;
 
     if(is_amp() && is_amp_post_top()) echo amp_adsense_code( 'horizon' );
 

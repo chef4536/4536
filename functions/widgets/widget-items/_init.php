@@ -12,6 +12,6 @@ function widget_list_4536( $thumbnail = null ) {
   ?>
   <li class="post-list p-r clearfix padding-bottom-1em">
     <?php echo $thumbnail; ?>
-    <a class="post-info post-color link-mask post-title<?php echo $line_clamp; ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+    <a class="post-info post-color link-mask post-title" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
   </li>
 <?php }

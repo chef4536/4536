@@ -169,10 +169,10 @@ function get_mtime() {
     $ptime = get_the_time('Ymd');
     if($ptime > $mtime) {
         return get_the_time();
-    } elseif($ptime === $mtime || !modified_date_datetime()) {
+    } elseif($ptime === $mtime) {
         return null;
     } else {
-        $m_time = (modified_date_datetime()==='date') ? get_the_modified_date() : get_the_modified_date().get_the_modified_time();
+        $m_time = get_the_modified_date();
         return $m_time;
     }
 }

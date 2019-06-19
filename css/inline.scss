@@ -10,16 +10,6 @@
   white-space: nowrap;
 }
 
-.thumbnail {
-  width: 100px;
-  height: 100px;
-}
-
-.thumbnail-wide {
-  width: 100px;
-  height: 75px;
-}
-
 .alignwide {
   margin-left: -10px;
   width: calc(100% + 20px);
@@ -124,6 +114,13 @@
   font-size: 0.8em;
   text-align: right;
   opacity: 0.5;
+}
+
+/////////////////////////////////
+////////// thumbnail ///////////
+////////////////////////////////
+.post-thumbnail-image {
+  object-fit: cover;
 }
 
 /////////////////////////////////

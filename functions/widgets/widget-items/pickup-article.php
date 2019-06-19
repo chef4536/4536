@@ -29,9 +29,6 @@ class PickupPostWidgetItem extends WP_Widget {
             'post__not_in' => [$post->ID],
             'tag' => $tag,
         ];
-        $line_clamp = '';
-        if(line_clamp()=='2line') $line_clamp = ' line-clamp-2';
-        if(line_clamp()=='3line') $line_clamp = ' line-clamp-3';
         $pickupPosts = get_posts($default);
         if(!$pickupPosts) return;
         echo $args['before_widget'];

@@ -203,21 +203,6 @@ class CustomizerLayoutSettings_4536 {
         'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
         'type' => 'number',
     ]);
-    //文字を丸める
-    $wp_customize->add_setting( 'line_clamp', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'line_clamp', [
-        'section' => 'design',
-        'settings' => 'line_clamp',
-        'label' => '記事一覧のタイトルが指定行より長い場合に文字を省略する',
-        'type' => 'radio',
-        'choices'    => [
-            null => '文字を省略しない',
-            '2line' => '2行で省略',
-            '3line' => '3行で省略',
-        ],
-    ]);
     //固定ヘッダー
     $wp_customize->add_setting( 'fixed_header', array (
         'default' => false,
