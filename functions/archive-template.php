@@ -7,7 +7,7 @@ function archive_template_4536($page_4536) { ?>
         media_section_4536('music');
     } ?>
     <main id="main" class="w-100 post-bg-color post-color" role="main">
-      <section id="post-search" class="clearfix">
+      <section id="archive-section">
           <?php
           if (is_category()||is_tag()||is_tax()) {
               $title = single_term_title("", false);
@@ -45,7 +45,7 @@ function archive_template_4536($page_4536) { ?>
               echo '<h1 id="h1" class="headline">' . $title . '</h1>';
           }
           ?>
-          <div class="archive-wrap d-f f-w-w">
+          <div class="archive-wrap d-f f-w-w j-c-c pl-3 pr-3">
               <?php post_list_template_4536($page_4536); ?>
           </div>
       </section>
@@ -88,33 +88,40 @@ function post_list_template_4536($page_4536)
         }
     }
 
-    $display = 'd-n-sm';
     if (!empty($post_list_style_mobile)) {
         $post_list_style_mobile = ' list-'.$post_list_style_mobile;
     }
     if (!empty($post_list_style_pc)) {
         $post_list_style_pc = ' list-'.$post_list_style_pc;
-        $display = 'd-n';
     }
     $style = $post_list_style_mobile.$post_list_style_pc;
 
     $count = '';
     $rand = rand(4, 9);
 
-    if (have_posts()) : while (have_posts()) : the_post();
-    $count++;
-    $ptime = get_the_date(); ?>
-        <article class="md6 d-f p-r pb-3 z-index-1 card post-list<?php echo $style; ?>">
-          <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
-          <div class="post-info">
-            <h2 class="post-title">
-              <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h2>
-            <div class="post-meta p-r z-index--1">
-              <div class="excerpt <?php echo $display; ?>">
-                <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
-              </div>
-              <?php echo ($ptime) ? '<div class="posted-date"><i class="far fa-calendar-check"></i><span>'.$ptime.'</span></div>' : ''; ?>
+    if (have_posts()) : while (have_posts()) : the_post(); $count++; ?>
+        <article class="pa-3 md6 p-r pb-3 z-index-1 post-list<?php echo $style; ?>">
+          <div class="card h-100 f-d-c d-f p-r">
+            <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
+            <div class="card-content flex pl-3 pr-3 pt-4 pb-4">
+              <?php
+              $cat = get_the_category();
+              $cat_name = $cat[0]->name;
+              $cat_slug = $cat[0]->slug;
+              if (is_home()) {
+                  $category = '<p class="t-a-c mb-3"><span class="'.$cat_slug.'">'.$cat_name.'</span></p>';
+              }
+              if ($thumbnail_style==='music' || $thumbnail_style==='movie') {
+                  $category = '';
+              }
+              echo $category;
+              ?>
+              <h2 class="card-title title">
+                <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+              </h2>
+            </div>
+            <div class="card-meta t-a-r meta pa-3 z-index--1">
+              <a class="primary_bg_color pt-2 pb-2 pr-3 pl-3 d-i-b ripple button-base" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">続きを読む</a>
             </div>
           </div>
         </article>

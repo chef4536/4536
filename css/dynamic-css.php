@@ -30,16 +30,26 @@ add_filter('inline_style_4536', function ($css) {
     ////////////////////////////////////
     /////// ここから先は管理画面に不要 /////
     ////////////////////////////////////
-          if (is_admin()) {
-              return $css;
-          }
+    if (is_admin()) {
+        return $css;
+    }
     ////////////////////////////////////
 
+    //プライマリーカラー
+    $primary_color = '#4facfe';
+    $css[] = ".primary_bg_color{background-color:$primary_color}";
+    $css[] = ".primary_color{color:$primary_color}";
+    $css[] = ".outline{border:1px solid;background:0 0;box-shadow:none}";
+
+    //セカンダリーカラー
+    $secondary_color = '#00f2fe';
+
+    //グラデーション
+    $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
+
+    //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '75' ;
-
     $css[] = ".post-list-thumbnail{padding-top:$height%}";
-
-
 
     //横幅とレイアウト
     $body_width = body_width_4536();

@@ -31,12 +31,6 @@ a {
   text-decoration: none;
 }
 
-a:active, a:focus, a:hover {
-  opacity: 0.5;
-  -webkit-transition: 0s;
-  transition: 0s;
-}
-
 iframe {
   max-width: 100%;
   vertical-align: bottom;
@@ -454,7 +448,6 @@ li {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

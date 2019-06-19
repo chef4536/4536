@@ -6,7 +6,12 @@ function thumbnail_4536($thumbnail_style)
     $today = date_i18n('U');
     $entry = get_the_time('U');
     $elapsed = date('U', ($today - $entry)) / 86400;
-    $new_icon = ($days > $elapsed) ? '<div class="icon-area"><span class="new-icon"></span></div>' : '';
+    // $year = '<div class="year meta">' . get_the_time('Y') . '</div>';
+    $month_day = '<div class="month-day">' . get_the_time('n/') . get_the_time('j') . '</div>';
+    $date = '<div class="d-f f-d-c">' . $month_day . '</div>';
+    $date = '<div class="f-button l-f-button gradation date p-a t-a-c">' . $date . '</div>';
+    // $new_icon = '<div class="icon-area"><span class="new-icon"></span></div>';
+    // $date = ($days > $elapsed) ? $new_icon : $date;
     $thumbnail = '';
     $src = '';
     $class = '';
@@ -60,21 +65,10 @@ function thumbnail_4536($thumbnail_style)
 
     $post_thumbnail = get_the_post_thumbnail($post->ID, $size, ['class' => $class]);
 
-    //カテゴリー
-    $cat = get_the_category();
-    $cat_name = $cat[0]->name;
-    $cat_slug = $cat[0]->slug;
-    if (is_home()) {
-        $category = '<span class="post-list-category '.$cat_slug.'">'.$cat_name.'</span>';
-    }
-    if ($thumbnail_style==='music' || $thumbnail_style==='movie') {
-        $category = '';
-    }
-
     //サムネイル
     $start_tag = '<figure class="p-r post-list-thumbnail w-100 '.$thumbnail_class.'">';
     $thumbnail = (has_post_thumbnail()) ? $post_thumbnail : get_some_image_4536($content);
-    $end_tag = $new_icon.$category.'</figure>';
+    $end_tag = $date.$category.'</figure>';
     $thumbnail = $start_tag.$thumbnail.$end_tag;
     $thumbnail = convert_content_to_amp($thumbnail);
     return [
