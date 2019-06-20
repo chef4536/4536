@@ -144,6 +144,11 @@
   border-radius: 5px 5px 50% 50%;
 }
 
+.post-thumbnail-shape {
+  transform: scale(1.1);
+  opacity: .5;
+}
+
 .article-body h2, .article-body h3, .article-body h4, .article-body h5 {
   position: relative;
   margin: 2em auto;

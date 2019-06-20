@@ -95,13 +95,13 @@ function get_the_post_thumbnail_4536()
 //アイキャッチ画像出力
 function the_post_thumbnail_4536()
 {
-    if (!has_post_thumbnail()) {
+    if (!has_post_thumbnail() || get_post_meta($post->ID, 'none_post_thumbnail', true)) {
         return;
     }
     $attr = [
     'class' => 'd-b w-100 my-0 mx-auto',
   ];
-    $thumbnail = '<figure id="post-thumbnail-4536" class="alignwide my-4 p-r">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
+    $thumbnail = '<figure id="post-thumbnail-4536" class="p-r">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
     if ($thumbnail) {
         echo $thumbnail;
     }
