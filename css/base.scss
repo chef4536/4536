@@ -638,9 +638,6 @@ li {
   .inner {
     max-width: 980px !important;
   }
-  .container {
-    flex-direction: column;
-  }
   /* max-1024px END */
 }
 /* --------------------------------------------------
@@ -660,6 +657,7 @@ li {
     width: 320px;
     margin: 0 0 0 20px;
     padding: 0;
+    flex: 1;
   }
 
   #scroll-sidebar {

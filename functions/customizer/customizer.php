@@ -149,20 +149,6 @@ $wp_customize->add_section( 'page_setting', [
             'true' => '同じカテゴリだけ',
         ],
     ]);
-    //検索エンジンに伝える記事の日時
-    $wp_customize->add_setting( 'post_datetime', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'post_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'post_datetime',
-        'label' =>'検索エンジンに伝える記事の日時',
-        'type' => 'radio',
-        'choices'    => [
-            null => '公開日',
-            'update' => '更新日',
-        ],
-    ]);
     //この記事を書いた人
     $list = [
         'single' => '記事ページ',

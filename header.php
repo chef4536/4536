@@ -26,7 +26,7 @@ if (is_amp()) {
 
     if (!none_header_footer()) { ?>
 
-      <div id="site-top">
+      <div id="site-top" class="gradation">
         <header id="header" class="header header-section<?php echo $header_class; ?>" itemscope itemtype="http://schema.org/WPHeader" role="banner">
           <?php get_template_part('template-parts/header-menu'); ?>
         </header>
@@ -62,6 +62,24 @@ if (is_amp()) {
         <?php
         } ?>
 
+
+        <svg class="d-b w-100 h-100 p-r l-0" version="1.1" viewbox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" id="header-outer-4536">
+              <feOffset dx="0" dy="-6" in="SourceAlpha" result="shadowOffsetOuter" />
+              <feGaussianBlur stdDeviation="0" in="shadowOffsetOuter" result="shadowBlurOuter" />
+              <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.056 0" in="shadowBlurOuter" type="matrix" result="shadowMatrixOuter" />
+              <feMerge>
+                <feMergeNode in="shadowMatrixOuter" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <?php
+          $bg_color = ($bg_color = get_background_color()) ? '#' . get_background_color() : '#fcfcfc';
+          ?>
+          <path d="M0,200 C0,200 300,0 720,100 C1100,180 1200,50 1200,50 L0,0 L0,200 L0,0 L1200,50 L1200,200 L0,200 Z" fill="<?php echo $bg_color; ?>" filter="url(#header-outer-4536)" />
+        </svg>
       </div>
 
       <?php
@@ -84,6 +102,10 @@ if (is_amp()) {
 
     }
 
+    if (is_singular()) {
+        get_template_part('template-parts/post-title');
+    }
+
     ?>
 
-    <div id="container" class="container w-100 ma-auto d-f">
+    <div id="container" class="container w-100 ma-auto d-f f-w-w">

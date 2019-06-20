@@ -236,7 +236,6 @@ class CustomizerColorSettings_4536 {
 
     if( !empty( $header_color ) ) { //ヘッダー文字色
       $css[] = '.header,.header a{color:'.$header_color.'}';
-      $css[ 'site_top_border_bottom' ] = '#site-top{border-bottom:1px solid rgba(' . hex_to_rgb( $header_color ) . ',.25)}';
     }
 
     if( !empty( $below_header_nav_menu_background_color ) ) { //ヘッダーナビ背景色
@@ -245,7 +244,6 @@ class CustomizerColorSettings_4536 {
 
     if( !empty( $below_header_nav_menu_color ) ) { //ヘッダーナビ文字色
       $css[] = '#below-header-nav-menu a{color:' . $below_header_nav_menu_color . '}';
-      $css[ 'site_top_border_bottom' ] = '#site-top{border-bottom:1px solid rgba(' . hex_to_rgb( $below_header_nav_menu_color ) . ',.25)}';
     }
 
     if( !empty( $description_color ) ) { //ディスクリプションの文字色
@@ -382,7 +380,6 @@ class CustomizerColorSettings_4536 {
 
     if( !empty( $footer_color ) ) { //フッター文字色
       $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer-menu-item{color:'.$footer_color.'}';
-      $css[] = '#footer{border-top:1px solid rgba('.hex_to_rgb($footer_color).',.25)}';
       if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',.25)}';
     }
 

@@ -66,10 +66,6 @@ function is_google_fonts() {
 function next_prev_in_same_term() {
     return get_theme_mod( 'next_prev_in_same_term', null );
 }
-//検索エンジンに伝える記事の日時
-function post_datetime() {
-    return get_theme_mod( 'post_datetime', null );
-}
 //この記事を書いた人、記事ページ
 function is_profile_4536($post_type) {
     return get_theme_mod( $post_type, true );
