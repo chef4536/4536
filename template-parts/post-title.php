@@ -16,7 +16,7 @@ $post_date = '<div class="post-date post-data">' . $mtime . '</div>';
 ?>
 
 <div class="container mx-auto mb-4 d-f a-i-c f-w-w">
-  <h1 id="h1" class="headline xs12 sm12 md6 pr-3 pl-3 mt-5 mb-4"><?php the_title(); ?></h1>
+  <h1 id="h1" class="headline xs12 sm12 md6 pr-3 pl-3 mt-5"><?php the_title(); ?></h1>
   <div class="xs12 sm12 md6 pr-3 pl-3 mt-5 mb-5 p-r">
     <svg class="b-0 post-thumbnail-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.67 418.44">
       <path d="M258.19,191.19c28.37,22.36,60.25,39.57,76.71,67.14s17.52,65.54-2.66,89.67-61.58,34.49-101.87,47.23S150.85,423.16,115.54,417s-66.76-33.39-88.41-65.79-33.42-70-23.68-101.74,41.12-57.7,74.12-79.33,67.68-39.08,97.46-34S229.74,168.84,258.19,191.19Z" fill="#4facfe" />
