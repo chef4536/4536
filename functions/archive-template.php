@@ -100,28 +100,33 @@ function post_list_template_4536($page_4536)
     $rand = rand(4, 9);
 
     if (have_posts()) : while (have_posts()) : the_post(); $count++; ?>
-        <article class="pa-3 md6 p-r pb-3 z-index-1 post-list<?php echo $style; ?>">
+        <article class="pa-3 md6 p-r pb-3 post-list<?php echo $style; ?>">
           <div class="card h-100 f-d-c d-f p-r">
             <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
             <div class="card-content flex pl-3 pr-3 pt-4 pb-4">
+              <div class="meta mb-3 t-a-c">
+                <span><?php the_date() ?></span>
+              </div>
+              <h2 class="card-title title">
+                <a class="post-color" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+              </h2>
+            </div>
+            <div class="card-meta a-i-c d-f pa-3">
               <?php
               $cat = get_the_category();
               $cat_name = $cat[0]->name;
               $cat_slug = $cat[0]->slug;
-              if (is_home()) {
-                  $category = '<p class="t-a-c mb-3"><span class="'.$cat_slug.'">'.$cat_name.'</span></p>';
-              }
-              if ($thumbnail_style==='music' || $thumbnail_style==='movie') {
-                  $category = '';
-              }
-              echo $category;
+              $cat_link = esc_url ( get_category_link($cat[0]->cat_ID) );
+              if (is_home()) { ?>
+                  <div class="flex">
+                    <i class="fas fa-tag"></i>
+                    <a class="post-color <?php echo $cat_slug; ?>" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>">
+                      <?php echo $cat_name; ?>
+                    </a>
+                  </div>
+              <?php }
               ?>
-              <h2 class="card-title title">
-                <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-              </h2>
-            </div>
-            <div class="card-meta t-a-r meta pa-3 z-index--1">
-              <a class="primary_bg_color pt-2 pb-2 pr-3 pl-3 d-i-b ripple button-base" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">続きを読む</a>
+              <a data-button="submit" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">もっと見る</a>
             </div>
           </div>
         </article>

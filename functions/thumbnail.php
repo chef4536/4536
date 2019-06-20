@@ -6,12 +6,8 @@ function thumbnail_4536($thumbnail_style)
     $today = date_i18n('U');
     $entry = get_the_time('U');
     $elapsed = date('U', ($today - $entry)) / 86400;
-    // $year = '<div class="year meta">' . get_the_time('Y') . '</div>';
-    $month_day = '<div class="month-day">' . get_the_time('n/') . get_the_time('j') . '</div>';
-    $date = '<div class="d-f f-d-c">' . $month_day . '</div>';
-    $date = '<div class="f-button l-f-button gradation date p-a t-a-c">' . $date . '</div>';
     // $new_icon = '<div class="icon-area"><span class="new-icon"></span></div>';
-    // $date = ($days > $elapsed) ? $new_icon : $date;
+    // $date = ($days > $elapsed) ? $new_icon : '';
     $thumbnail = '';
     $src = '';
     $class = '';

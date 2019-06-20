@@ -5,10 +5,6 @@ require_once('preload-css.php'); //非同期読み込み
 
 //スタイルシート読み込み
 add_action( 'wp_footer', function() {
-  ////////////////////////
-   ////////// dev /////////
-            return;
-    ////////////////////////
   if( is_amp() ) return;
   $ver = function_exists('theme_version_4536') ? theme_version_4536() : ''; ?>
   <script>

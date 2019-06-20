@@ -47,6 +47,10 @@ add_filter('inline_style_4536', function ($css) {
     //グラデーション
     $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
 
+    //ボタン
+    $button_color = '#4facfe';
+    $css[] = '[data-button="submit"]{background-color:' . $button_color . '}';
+
     //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '75' ;
     $css[] = ".post-list-thumbnail{padding-top:$height%}";
