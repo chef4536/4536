@@ -108,9 +108,10 @@ function post_list_template_4536($page_4536)
                 <span><?php the_date() ?></span>
               </div>
               <h2 class="card-title title">
-                <a class="post-color" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h2>
             </div>
+            <div class="flex"></div>
             <div class="card-meta a-i-c d-f pa-3">
               <?php
               $cat = get_the_category();
@@ -118,14 +119,13 @@ function post_list_template_4536($page_4536)
               $cat_slug = $cat[0]->slug;
               $cat_link = esc_url ( get_category_link($cat[0]->cat_ID) );
               if (is_home()) { ?>
-                  <div class="flex">
+                  <div class="z-index-1">
                     <i class="fas fa-tag"></i>
-                    <a class="post-color <?php echo $cat_slug; ?>" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>">
-                      <?php echo $cat_name; ?>
-                    </a>
+                    <a class="post-color <?php echo $cat_slug; ?>" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
                   </div>
               <?php }
               ?>
+              <div class="flex"></div>
               <a data-button="submit" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">もっと見る</a>
             </div>
           </div>
