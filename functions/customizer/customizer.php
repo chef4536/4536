@@ -411,23 +411,6 @@ $wp_customize->add_section( 'SNS', [
             'priority' => 5,
         ));
     }
-    //SNSデザイン
-    $wp_customize->add_setting( 'sns_style', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'sns_style', [
-        'section' => 'SNS',
-        'settings' => 'sns_style',
-        'label' => 'シェアボタンのデザイン',
-        'type' => 'select',
-        'choices' => [
-            null => 'オリジナル',
-            'simple1' => 'シンプル1',
-            'simple2' => 'シンプル2',
-            'rich' => 'リッチ',
-        ],
-        'priority' => 5,
-    ]);
     //シェアタイトル
     $wp_customize->add_setting( 'sns_share_text', array (
         'default' => 'この記事をシェアする',

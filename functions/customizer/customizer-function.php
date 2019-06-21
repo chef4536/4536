@@ -129,10 +129,6 @@ function is_sns_top_4536($post_type) {
 function is_sns_bottom_4536($post_type) {
     return get_theme_mod( $post_type, true );
 }
-//SNSデザイン
-function sns_style() {
-    return get_theme_mod( 'sns_style', null );
-}
 //フォロータイトル
 function follow_section_title() {
     return esc_html(get_theme_mod( 'follow_section_title', '最新情報をお届けします' ));

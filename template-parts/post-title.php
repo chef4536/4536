@@ -43,6 +43,9 @@
         <a class="flex-1" title="<?php echo $author . 'の記事一覧'; ?>" href="<?php echo get_author_posts_url($post_author); ?>"><?php echo $author; ?></a>
       </span>
     </div>
+    <div id="share-button-post-top">
+      <?php sns_button_4536('post-top'); ?>
+    </div>
   </div>
   <div class="xs12 sm12 md6 pr-3 pl-3 mt-5 mb-5 p-r">
     <svg class="b-0 post-thumbnail-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.67 418.44">
