@@ -60,26 +60,12 @@ if (is_amp()) {
             </div>
           </nav>
         <?php
-        } ?>
+        }
 
+        //////////////////////////////////////////////
+        ///////////////// SVG ///////////////////////
+        //////////////////////////////////////////////
 
-        <!-- <svg class="d-b w-100 h-100 p-r l-0" version="1.1" viewbox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox" id="header-outer-4536">
-              <feOffset dx="0" dy="-6" in="SourceAlpha" result="shadowOffsetOuter" />
-              <feGaussianBlur stdDeviation="0" in="shadowOffsetOuter" result="shadowBlurOuter" />
-              <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.056 0" in="shadowBlurOuter" type="matrix" result="shadowMatrixOuter" />
-              <feMerge>
-                <feMergeNode in="shadowMatrixOuter" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          <path d="M0,200 C0,200 300,0 720,100 C1100,180 1200,50 1200,50 L0,0 L0,200 L0,0 L1200,50 L1200,200 L0,200 Z" fill="<?php echo $bg_color; ?>" filter="url(#header-outer-4536)" />
-        </svg> -->
-
-        <?php
         $bg_color = ($bg_color = get_background_color()) ? '#' . get_background_color() : '#fcfcfc';
         $primary_color = '#4facfe';
         $secandary_color = '#00f2fe';
