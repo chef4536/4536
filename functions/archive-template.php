@@ -117,7 +117,7 @@ function post_list_template_4536($page_4536)
               $cat = get_the_category();
               $cat_name = $cat[0]->name;
               $cat_slug = $cat[0]->slug;
-              $cat_link = esc_url ( get_category_link($cat[0]->cat_ID) );
+              $cat_link = esc_url( get_category_link($cat[0]->cat_ID) );
               if (is_home()) { ?>
                   <div class="z-index-1">
                     <i class="fas fa-tag"></i>

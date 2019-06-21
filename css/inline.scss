@@ -1,7 +1,6 @@
 /////////////////////////////////
 //////////// layout ////////////
 ////////////////////////////////
-
 /////////////////////////////////
 //////////// init ////////////
 ////////////////////////////////
@@ -32,12 +31,10 @@
   line-height: 1.4;
   font-weight: 500;
 }
-
 //////////////////////////////////////////////////////////////////
 /////// button    ///////////////////////////////////////////////
 /////// reference: https://materializecss.com/buttons.html ///////
 /////////////////////////////////////////////////////////////////
-
 $button_base_size: 56px;
 
 .f-button {
@@ -57,9 +54,7 @@ $button_base_size: 56px;
   width: $button_base_size * 1.5;
   height: $button_base_size * 1.5;
 }
-
 //参考： https://codepen.io/john052/pen/qdRapO
-
 [data-button="submit"] {
   position: relative;
   overflow: hidden;
@@ -67,7 +62,7 @@ $button_base_size: 56px;
   padding: 10px 20px;
   display: inline-block;
   border-radius: 2px;
-  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12);
 
   &::before {
     border-radius: 50%;
@@ -88,9 +83,7 @@ $button_base_size: 56px;
     margin-top: -80px;
     margin-left: -80px;
   }
-
 }
-
 /////////////////////////////////
 //////////// widget ////////////
 ////////////////////////////////
@@ -151,27 +144,26 @@ $button_base_size: 56px;
   z-index: 5;
   transition: 0.5s ease;
 }
-
 /////////////////////////////////
 //////////// meta ////////////
 ////////////////////////////////
 
 .meta {
-  letter-spacing: 0.2px;
+  letter-spacing: 0.5px;
   font-size: 0.8em;
   opacity: 0.5;
 }
-
 /////////////////////////////////
 ////////// thumbnail ///////////
 ////////////////////////////////
+
 .post-thumbnail-image {
   object-fit: cover;
 }
-
 /////////////////////////////////
 //////////// card ////////////
 ////////////////////////////////
+
 .card {
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
@@ -189,26 +181,26 @@ $button_base_size: 56px;
   .post-thumbnail-image {
     border-radius: 5px 5px 50% 50%;
   }
-
 }
-
-
 /////////////////////////////////
 /////////// article ////////////
 ////////////////////////////////
 
 .post-thumbnail-shape {
   transform: scale(1.1);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 #post-thumbnail-4536 {
-  transform: perspective(500px) rotateY(350deg) translate(-20px, 0);
+  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   box-shadow: 0 0 20px #ccc;
 }
 
-.article-body{
-  h2,h3,h4,h5 {
+.article-body {
+  h2,
+  h3,
+  h4,
+  h5 {
     position: relative;
     margin: 2em auto;
     line-height: 1.4;
@@ -224,7 +216,8 @@ $button_base_size: 56px;
     }
   }
 
-  ol,ul:not(.wp-block-gallery):not(.outline-wrap) {
+  ol,
+  ul:not(.wp-block-gallery):not(.outline-wrap) {
     padding-left: 1.5em;
     margin-bottom: 2em;
   }
@@ -238,16 +231,16 @@ $button_base_size: 56px;
     margin-bottom: 2em;
     width: 100%;
     border-collapse: collapse;
-    td, th {
+
+    td,
+    th {
       padding: 1em 0.5em;
       border: 1px #999 solid;
       font-size: 90%;
       line-height: 1.6;
     }
   }
-
 }
-
 /////////////////////////////////
 //////////// define ////////////
 ////////////////////////////////

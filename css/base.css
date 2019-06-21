@@ -439,6 +439,10 @@ li {
   flex: 1 1 auto;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .headline {
   font-size: 24px;
   font-weight: bold;
