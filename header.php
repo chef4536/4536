@@ -75,28 +75,32 @@ if (is_amp()) {
               </feMerge>
             </filter>
           </defs>
-          <?php
-          $bg_color = ($bg_color = get_background_color()) ? '#' . get_background_color() : '#fcfcfc';
-          ?>
+
           <path d="M0,200 C0,200 300,0 720,100 C1100,180 1200,50 1200,50 L0,0 L0,200 L0,0 L1200,50 L1200,200 L0,200 Z" fill="<?php echo $bg_color; ?>" filter="url(#header-outer-4536)" />
         </svg> -->
+
+        <?php
+        $bg_color = ($bg_color = get_background_color()) ? '#' . get_background_color() : '#fcfcfc';
+        $primary_color = '#4facfe';
+        $secandary_color = '#00f2fe';
+        ?>
 
         <svg class="d-b w-100 h-100 p-r l-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
           <defs>
             <linearGradient id="g1" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#4facfe" stop-opacity=".1" />
-              <stop offset=".8" stop-color="#fcfcfc" stop-opacity=".3" />
-              <stop offset="1" stop-color="#00f2fe" stop-opacity=".5" />
+              <stop offset="0" stop-color="<?php echo $primary_color; ?>" stop-opacity=".1" />
+              <stop offset=".8" stop-color="<?php echo $bg_color; ?>" stop-opacity=".3" />
+              <stop offset="1" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".5" />
             </linearGradient>
             <linearGradient id="g2" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#00f2fe" stop-opacity=".1" />
-              <stop offset=".8" stop-color="#fcfcfc" stop-opacity=".3" />
-              <stop offset="1" stop-color="#00f2fe" stop-opacity=".5" />
+              <stop offset="0" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".1" />
+              <stop offset=".8" stop-color="<?php echo $bg_color; ?>" stop-opacity=".3" />
+              <stop offset="1" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".5" />
             </linearGradient>
           </defs>
           <path d="M0,200S300,0,720,100c380,80,480-50,480-50L0,0V0L1200,50V200Z" fill="url(#g1)" />
           <path d="M0,200C331.42,-10,530.66,59.45,654,108c10.65,4.19,205.3,81.3,342,54,73.39-14.66,132-52,132-52a370,370,0,0,0,72-60L0,0V0L1200,50V200Z" fill="url(#g2)" />
-          <path d="M0,200C225.9,89.57,392.93,88.5,507,111c93.31,18.4,238.49,69.79,421,72,45,.54,118.86-1.6,189-48,41.63-27.54,67.77-61.39,83-85L0,0V0L1200,50V200Z" fill="#fcfcfc" />
+          <path d="M0,200C225.9,89.57,392.93,88.5,507,111c93.31,18.4,238.49,69.79,421,72,45,.54,118.86-1.6,189-48,41.63-27.54,67.77-61.39,83-85L0,0V0L1200,50V200Z" fill="<?php echo $bg_color; ?>" />
         </svg>
 
       </div>
