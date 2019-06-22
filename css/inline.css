@@ -25,6 +25,10 @@
   font-weight: 500;
 }
 
+.section-break {
+  opacity: .2;
+}
+
 .f-button {
   width: 56px;
   height: 56px;

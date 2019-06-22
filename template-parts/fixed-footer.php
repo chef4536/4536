@@ -83,11 +83,6 @@ if( fixed_footer()==='menu' ) { ?>
           </div>
         <?php } ?>
     </div>
-<?php } elseif( fixed_footer()==='share' && is_singular() ) { ?>
-  <div id="fixed-footer-share-button" class="fixed-footer d-n-md">
-    <?php sns_button_4536('fixed_footer_share_button'); ?>
-    <div id="fixed-share-button-mask" class="post-bg-color"></div>
-  </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
     <div id="fixed-footer-overlay" class="fixed-footer d-n t-a-c">
         <?php echo $fixed_footer; ?>

@@ -1,6 +1,6 @@
 <div class="container mx-auto mb-4 d-f a-i-c f-w-w">
   <div class="xs12 sm12 md6 pr-3 pl-3 mt-5">
-    <h1 id="h1" class="headline mb-3"><?php the_title(); ?></h1>
+    <h1 id="h1" class="t-a-c mb-3"><?php the_title(); ?></h1>
     <div class="d-f meta j-c-c a-i-c f-w-w">
       <?php
       //date
@@ -22,11 +22,10 @@
       $cat = get_the_category();
       $cat_name = $cat[0]->name;
       $cat_link = esc_url(get_category_link($cat[0]->cat_ID));
-      $folder_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>';
       ?>
       <span class="d-f a-i-c pa-2">
-        <?php echo $folder_icon; ?>
-        <a class="flex-1" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
+        <?php echo I_FOLDER; ?>
+        <a class="flex-1 post-color" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
       </span>
       <!-- author -->
       <span class="d-f a-i-c pa-2">
@@ -40,11 +39,11 @@
         }
         echo $avatar;
         ?>
-        <a class="flex-1" title="<?php echo $author . 'の記事一覧'; ?>" href="<?php echo get_author_posts_url($post_author); ?>"><?php echo $author; ?></a>
+        <a class="flex-1 post-color" title="<?php echo $author . 'の記事一覧'; ?>" href="<?php echo get_author_posts_url($post_author); ?>"><?php echo $author; ?></a>
       </span>
     </div>
     <div id="share-button-post-top">
-      <?php sns_button_4536('post-top'); ?>
+      <?php sns_button_4536(); ?>
     </div>
   </div>
   <div class="xs12 sm12 md6 pr-3 pl-3 mt-5 mb-5 p-r">
@@ -68,8 +67,4 @@ if (is_amp()) {
     dynamic_sidebar('amp-post-top');
 } else {
     dynamic_sidebar('post-top-widget');
-}
-
-if ($is_sns_top === true) {
-    sns_button_4536('post_top');
 }

@@ -145,6 +145,10 @@ li {
   height: 0;
 }
 
+.l-h-100 {
+  line-height: 1;
+}
+
 .l-h-140 {
   line-height: 1.4;
 }
@@ -409,10 +413,6 @@ li {
 
 .a-i-c {
   align-items: center;
-}
-
-.j-c-s-b {
-  justify-content: space-between;
 }
 
 .j-c-c {
