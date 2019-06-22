@@ -32,6 +32,17 @@
 .section-break {
   opacity: 0.2;
 }
+
+[data-text="ellipsis"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.children {
+  padding-left: 30px;
+  width: 100%;
+}
 //////////////////////////////////////////////////////////////////
 /////// button    ///////////////////////////////////////////////
 /////// reference: https://materializecss.com/buttons.html ///////
@@ -101,6 +112,7 @@ $button_base_size: 56px;
     width: 100%;
   }
 }
+
 /////////////////////////////////
 //////////// header ////////////
 ////////////////////////////////
@@ -353,7 +365,7 @@ $button_base_size: 56px;
 
   #sidebar {
     width: 320px;
-    margin: 0 0 0 20px;
+    border-left: .5px solid;
     padding: 0;
     flex: 1;
   }
@@ -365,7 +377,7 @@ $button_base_size: 56px;
   }
 
   .right-content #sidebar {
-    margin: 0 20px 0 0;
+    border-right: .5px solid;
   }
 
   .left-content #contents-wrapper,

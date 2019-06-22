@@ -29,6 +29,17 @@
   opacity: 0.2;
 }
 
+[data-text="ellipsis"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.children {
+  padding-left: 30px;
+  width: 100%;
+}
+
 .f-button {
   width: 56px;
   height: 56px;
@@ -311,7 +322,7 @@
   }
   #sidebar {
     width: 320px;
-    margin: 0 0 0 20px;
+    border-left: .5px solid;
     padding: 0;
     flex: 1;
   }
@@ -321,7 +332,7 @@
     position: sticky;
   }
   .right-content #sidebar {
-    margin: 0 20px 0 0;
+    border-right: .5px solid;
   }
   .left-content #contents-wrapper,
   .right-content #contents-wrapper {
