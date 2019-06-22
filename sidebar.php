@@ -12,10 +12,8 @@ if( empty($sidebar) && empty($scroll_sidebar) ) return;
 
 $is_slide_menu = is_slide_menu();
 
-$class = ( $is_slide_menu ) ? '' : ' margin-top-1_5em';
-
 ?>
-<div id="sidebar" class="padding-0-10px<?php echo $class; ?>">
+<div id="sidebar" class="pt-5 pb-5 pr-4 pl-4">
   <?php
   if( $is_slide_menu ) { ?>
     <input id="slide-toggle" type="checkbox" class="d-n">

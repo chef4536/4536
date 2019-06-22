@@ -1,3 +1,7 @@
+#contents-wrapper {
+  padding: 48px 24px 48px 24px;
+}
+
 .alignwide {
   margin-left: -10px;
   width: calc(100% + 20px);
@@ -319,11 +323,11 @@
 @media screen and (min-width: 1024px) {
   #main-container {
     border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
   }
   #sidebar {
     width: 320px;
     border-left: .5px solid;
-    padding: 0;
     flex: 1;
   }
   #scroll-sidebar {

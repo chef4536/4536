@@ -116,6 +116,11 @@ li {
 .d-f {
   display: flex;
 }
+
+[data-display="flex"] {
+  display: flex;
+}
+
 ///////////////////////////
 //////// position /////////
 ///////////////////////////
@@ -478,6 +483,10 @@ li {
 }
 
 .f-w-w {
+  flex-wrap: wrap;
+}
+
+[data-flex-wrap="wrap"] {
   flex-wrap: wrap;
 }
 

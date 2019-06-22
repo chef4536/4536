@@ -265,6 +265,7 @@ class CustomizerColorSettings_4536 {
       $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
       $css[] = $post_color_class.'{color:'.$post_color.$option.'}';
       $css[] = '.pagination span, .pagination a{background-color:'.$post_color.'}';
+      $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25)}';
     }
 
     if( !empty($fb_like_background_color) ) { //いいねボックス背景色

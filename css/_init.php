@@ -22,7 +22,7 @@ add_action( 'wp_footer', function() {
   </script>
   <noscript id="deferred-styles-4536">
     <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
+    <link rel="stylesheet" href="<?php echo TEMPLATEPATH . '/style.min.css?'.$ver; ?>" />
   </noscript>
 <?php });
 
@@ -43,7 +43,7 @@ add_action( 'wp_head', function() { ?>
   <?php
   require_once( TEMPLATEPATH . '/css/_normalize.css' );
   require_once( TEMPLATEPATH . '/css/base.min.css' );
-  require_once(get_template_directory() . '/css/inline.min.css');
+  require_once( TEMPLATEPATH . '/css/inline.min.css');
   echo add_inline_style_4536( false );
   ?>
   </style>
