@@ -6,7 +6,7 @@ function archive_template_4536($page_4536) { ?>
     if ($page_4536==='new') {
         media_section_4536('music');
     } ?>
-    <main id="main" class="w-100 post-bg-color post-color" role="main">
+    <main id="main" class="w-100" role="main">
       <section id="archive-section">
           <?php
           if (is_category()||is_tag()||is_tax()) {

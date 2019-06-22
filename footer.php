@@ -1,6 +1,6 @@
 <?php
 
-echo '</div>'; //#container
+echo '</div>'; //#main-container
 
 if( !is_amp() && is_active_sidebar('footer-top') ) { //フッター上 ?>
   <div id="footer-top-widget-area">

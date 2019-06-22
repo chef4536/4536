@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div id="contents-wrapper" class="w-100 max-w-100">
-  <main id="main" class="w-100 post-bg-color post-color" role="main">
+  <main id="main" class="w-100" role="main">
     <article>
       <div class="post">
         <h1 id="h1" class="headline">ページが見つかりませんでした！</h1>

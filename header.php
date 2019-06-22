@@ -117,4 +117,4 @@ if (is_amp()) {
 
     ?>
 
-    <div id="container" class="container w-100 ma-auto d-f f-w-w">
+    <div id="main-container" class="container w-100 ma-auto d-f f-w-w post-bg-color post-color">

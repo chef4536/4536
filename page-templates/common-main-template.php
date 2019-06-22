@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div id="contents-wrapper" class="w-100 max-w-100">
-  <main id="main" class="w-100 post-bg-color post-color" role="main">
+  <main id="main" class="w-100" role="main">
     <?php get_template_part('template-parts/post');
     if (is_amp()) {
         if (is_active_sidebar('amp-post-bottom')) {
