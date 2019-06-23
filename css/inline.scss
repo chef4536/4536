@@ -187,7 +187,7 @@ $button_base_size: 56px;
 
 .card {
   border-radius: 5px;
-  box-shadow: 0 2px 5px #ccc;
+  box-shadow: 0 0 10px #ccc;
 
   .date {
     top: 5%;
@@ -200,7 +200,7 @@ $button_base_size: 56px;
   }
 
   .post-thumbnail-image {
-    border-radius: 5px 5px 50% 50%;
+    border-radius: 5px 5px 0 0;
   }
 }
 /////////////////////////////////
@@ -371,8 +371,8 @@ $button_base_size: 56px;
   ////////////////////////////
 
   #main-container {
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 10px 5px #ccc;
   }
 
   /////////////////////////////

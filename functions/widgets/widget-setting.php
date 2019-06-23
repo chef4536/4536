@@ -76,6 +76,11 @@ function posted_count_in_textlink_4536($output) {
     return $output;
 }
 
+// add_filter( 'widget_display_callback', function( $instance, $widget, $args ) {
+//     if( $widget->id_base === 'categories' ) $instance = false;
+//     return $instance;
+// }, 10, 3);
+
 ///////////////////////////////////
 // ウィジェットページにCSS追加
 ///////////////////////////////////

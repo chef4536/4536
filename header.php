@@ -66,7 +66,7 @@ if (is_amp()) {
         ///////////////// SVG ///////////////////////
         //////////////////////////////////////////////
 
-        $bg_color = ($bg_color = get_background_color()) ? '#' . get_background_color() : '#fcfcfc';
+        $bg_color = get_bg_color_4536();
         $primary_color = '#4facfe';
         $secandary_color = '#00f2fe';
         ?>

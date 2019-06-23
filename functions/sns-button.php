@@ -1,6 +1,6 @@
 <?php
 
-function sns_button_4536( $justify_content = 'j-c-c' )
+function sns_button_4536($justify_content = 'j-c-c')
 {
     if (is_amp() || is_singular()) {
         $url = esc_url(get_permalink());
@@ -16,19 +16,6 @@ function sns_button_4536( $justify_content = 'j-c-c' )
     }
 
     $via = (twitter_via() && get_the_author_meta('twitter')) ? '&via='.get_the_author_meta('twitter') : '';
-
-    if (function_exists('scc_get_share_twitter') && scc_get_share_twitter()!==0) {
-        $twitter_count = '<span class="sns-count">'.scc_get_share_twitter().'</span>';
-    }
-    if (function_exists('scc_get_share_facebook') && scc_get_share_facebook()!==0) {
-        $facebook_count = '<span class="sns-count">'.scc_get_share_facebook().'</span>';
-    }
-    if (function_exists('scc_get_share_hatebu') && scc_get_share_hatebu()!==0) {
-        $hatebu_count = '<span class="sns-count">'.scc_get_share_hatebu().'</span>';
-    }
-    if (function_exists('scc_get_share_pocket') && scc_get_share_pocket()!==0) {
-        $pocket_count = '<span class="sns-count">'.scc_get_share_pocket().'</span>';
-    }
 
     $target = (is_amp()) ? ' rel="nofollow"' : ' target="blank" rel="nofollow"';
 
@@ -46,25 +33,37 @@ function sns_button_4536( $justify_content = 'j-c-c' )
 
     //text
 
-    $arr['twitter']['text'] = I_TWITTER . $twitter_count;
+    $arr['twitter']['text'] = I_TWITTER;
 
-    $arr['facebook']['text'] = I_FACEBOOK . $facebook_count;
+    $arr['facebook']['text'] = I_FACEBOOK;
 
-    $arr['hatebu']['text'] = I_HATEBU . $hatebu_count;
+    $arr['hatebu']['text'] = I_HATEBU;
 
-    // $arr['pocket']['text'] = '<i class="fab fa-get-pocket"></i>' . $pocket_count;
+    // $arr['pocket']['text'] = '<i class="fab fa-get-pocket"></i>';
 
     $arr['line']['text'] = I_LINE;
 
-    ?>
+    //count
+
+    if (function_exists('scc_get_share_twitter') && scc_get_share_twitter()!==0) {
+        $arr['twitter']['count'] = '<span class="meta pl-1">'.scc_get_share_twitter().'</span>';
+    }
+    if (function_exists('scc_get_share_facebook') && scc_get_share_facebook()!==0) {
+        $arr['facebook']['count'] = '<span class="meta pl-1">'.scc_get_share_facebook().'</span>';
+    }
+    if (function_exists('scc_get_share_hatebu') && scc_get_share_hatebu()!==0) {
+        $arr['hatebu']['count'] = '<span class="meta pl-1">'.scc_get_share_hatebu().'</span>';
+    }
+    // if (function_exists('scc_get_share_pocket') && scc_get_share_pocket()!==0) {
+    //     $arr['pocket']['count'] = '<span class="sns-count">'.scc_get_share_pocket().'</span>';
+    // } ?>
 
     <div class="d-f flex <?php echo $justify_content; ?>">
         <?php
         foreach ($arr as $key => $value) {
-          echo '<span class="pa-2"><a class="d-b l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a></span>';
+            echo '<span class="pt-2 pb-2 pr-3 pl-3"><a class="l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a>' . $value['count'] . '</span>';
         }
-        echo $twitter.$facebook.$hatebu.$line;
-        ?>
+    echo $twitter.$facebook.$hatebu.$line; ?>
     </div>
 
 <?php

@@ -42,10 +42,10 @@ function archive_template_4536($page_4536) { ?>
           if ($page_4536==='new') {
               echo '<h2 class="headline">最新記事</h2>';
           } else {
-              echo '<h1 id="h1" class="headline">' . $title . '</h1>';
+              echo '<h1 id="h1" data-text-align="center" class="mb-4">' . $title . '</h1>';
           }
           ?>
-          <div class="archive-wrap d-f f-w-w j-c-c pl-3 pr-3">
+          <div class="archive-wrap d-f f-w-w j-c-c">
               <?php post_list_template_4536($page_4536); ?>
           </div>
       </section>
@@ -100,7 +100,7 @@ function post_list_template_4536($page_4536)
     $rand = rand(4, 9);
 
     if (have_posts()) : while (have_posts()) : the_post(); $count++; ?>
-        <article class="pa-3 md6 p-r pb-3 post-list<?php echo $style; ?>">
+        <article class="xs12 sm12 md6 p-r pb-3 pa-2 post-list<?php echo $style; ?>">
           <div class="card h-100 f-d-c d-f p-r">
             <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
             <div class="card-content flex pl-3 pr-3 pt-4 pb-4">

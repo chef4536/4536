@@ -250,17 +250,19 @@ class CustomizerColorSettings_4536 {
       $css[] = '#description{color:' . $description_color . '}';
     }
 
-    global $pagenow;
-    $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
-    if( !empty($post_background_color) ) { //記事背景色
-      $post_bgc_class = '.post-bg-color';
-      $post_bgc_class .= ',.article-body blockquote:not(.external-website-embed-content)::before,.article-body blockquote:not(.external-website-embed-content)::after';
-      if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
-      $css[] = $post_bgc_class.'{background-color:'.$post_background_color.$option.'}';
-      $css[] = '.balloon-text-right:after{border-right-color:'.$post_background_color.'}';
-      $css[] = '.balloon-text-left:after{border-left-color:'.$post_background_color.'}';
-      $css[] = '.pagination span, .pagination a{color:'.$post_background_color.'}';
-    }
+    // global $pagenow;
+    // $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
+    // if( !empty($post_background_color) ) { //記事背景色
+    //   $post_bgc_class = '.post-bg-color';
+    //   if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
+    //   $css[] = $post_bgc_class.'{background:linear-gradient(to bottom, ' . get_bg_color_4536() . ', ' . $post_background_color . ' 20%)' . $option . '}';
+    //   $css[] = '.balloon-text-right:after{border-right-color:'.$post_background_color.'}';
+    //   $css[] = '.balloon-text-left:after{border-left-color:'.$post_background_color.'}';
+    //   $css[] = '.pagination span, .pagination a{color:'.$post_background_color.'}';
+    // }
+
+    $css[] = '.post-bg-color{background-color:' . get_bg_color_4536() . '}';
+
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
       $css[] = $post_color_class.'{color:'.$post_color.$option.'}';
@@ -359,8 +361,8 @@ class CustomizerColorSettings_4536 {
       $css[] = '.slide-widget-close-button{color:' . $sidebar_widget_title_color . '}';
     }
 
-    if( !empty( $slide_widget_bgc_color = get_background_color() ) ) {
-      $css[] = "#slide-menu{background-color:#$slide_widget_bgc_color}";
+    if( !empty( $slide_widget_bgc_color = get_bg_color_4536() ) ) {
+      $css[] = "#slide-menu{background-color:$slide_widget_bgc_color}";
     }
 
     if( !empty($table_background_color_2_line) ) { //テーブル偶数番目背景色

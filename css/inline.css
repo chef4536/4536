@@ -152,7 +152,7 @@
 
 .card {
   border-radius: 5px;
-  box-shadow: 0 2px 5px #ccc;
+  box-shadow: 0 0 10px #ccc;
 }
 
 .card .date {
@@ -166,7 +166,7 @@
 }
 
 .card .post-thumbnail-image {
-  border-radius: 5px 5px 50% 50%;
+  border-radius: 5px 5px 0 0;
 }
 
 .post-thumbnail-shape {
@@ -322,8 +322,8 @@
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
   #main-container {
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 10px 5px #ccc;
   }
   #sidebar {
     width: 320px;

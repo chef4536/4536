@@ -3,6 +3,11 @@
 require_once('dynamic-css.php'); //動的CSS
 require_once('preload-css.php'); //非同期読み込み
 
+//背景色
+function get_bg_color_4536() {
+  return ( !empty(get_background_color()) ) ? '#' . get_background_color() : '#ffffff';
+}
+
 //スタイルシート読み込み
 add_action( 'wp_footer', function() {
   if( is_amp() ) return;
@@ -58,7 +63,7 @@ function amp_css() {
   require_once( TEMPLATEPATH . '/style.min.css');
 //    require_once(ABSPATH . '/wp-includes/css/dist/block-library/style.min.css');
   $styles = ob_get_clean();
-  $custom_bgc = 'body.custom-background{background-color:#'.get_background_color().'}';
+  $custom_bgc = 'body.custom-background{background-color:'. get_bg_color_4536() .'}';
   $css = $styles.$custom_bgc.add_inline_style_4536();
   echo '<style amp-custom>';
   $css = str_replace('@charset "UTF-8";', '', $css);

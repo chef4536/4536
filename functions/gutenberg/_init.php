@@ -78,7 +78,7 @@ class GutenbergEditorJS4536 {
               document.querySelectorAll( 'textarea.editor-post-title__input' ),
               e => [
                 e.classList.add( 'post-color' ),
-                e.id = 'post-h1'
+                e.id = 'h1'
               ]
             );
         });
