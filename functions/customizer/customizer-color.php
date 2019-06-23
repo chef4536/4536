@@ -261,7 +261,7 @@ class CustomizerColorSettings_4536 {
     //   $css[] = '.pagination span, .pagination a{color:'.$post_background_color.'}';
     // }
 
-    $css[] = '.post-bg-color{background-color:' . get_bg_color_4536() . '}';
+    $css[] = '.post-bg-color{background-color:' . get_bg_color_4536() . '}'; //背景色
 
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top,.fixed-top a' : '.post-color';
