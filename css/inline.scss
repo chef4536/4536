@@ -26,10 +26,6 @@
   white-space: nowrap;
 }
 
-.fa-tag {
-  transform: scale(-1, 1);
-}
-
 #h1 {
   font-size: 30px;
   line-height: 1.4;
@@ -365,15 +361,6 @@ $button_base_size: 56px;
 /* min-1024px BEGIN for landscape tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
-
-  /////////////////////////////
-  /////////// dev ////////////
-  ////////////////////////////
-
-  #main-container {
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 1px 1px #ccc;
-  }
 
   /////////////////////////////
   //////// devここまで ////////
