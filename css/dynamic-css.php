@@ -49,7 +49,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //ボタン
     $button_color = '#4facfe';
-    $css[] = '[data-button="submit"]{background-color:' . $button_color . '}';
+    $css[] = '[data-button="submit"],#submit{background-color:' . $button_color . '}';
 
     //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '50' ;
