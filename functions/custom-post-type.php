@@ -81,7 +81,7 @@ function media_section_4536( $media, $args = [] ) {
   $customPosts = get_posts( $args );
   if( empty( $customPosts ) ) return;
   ?>
-  <div id="<?php echo $media ?>" class="clearfix padding-wrap-main-4536 media-section">
+  <div id="<?php echo $media ?>" class="clearfix gradation media-section t-a-c">
     <p class="media-section-title"><?php echo esc_html( $section_title ); ?></p>
     <div class="scroll-wrapper">
       <div class="scroll-left">

@@ -102,11 +102,11 @@ if (is_amp()) {
       }
 
       if ((is_home() || is_front_page()) && !is_paged() && is_home_description()) { //ディスクリプション?>
-        <div id="top-description">
+        <!-- <div id="top-description">
           <div class="w-100 ma-auto py-0 px-3">
             <p><?php bloginfo('description'); ?></p>
           </div>
-        </div>
+        </div> -->
       <?php }
 
     }
@@ -116,5 +116,7 @@ if (is_amp()) {
     }
 
     ?>
+
+    <?php media_section_4536('music'); ?>
 
     <div id="main-container" class="container w-100 ma-auto d-f f-w-w post-bg-color post-color">

@@ -2,10 +2,6 @@
 
 function archive_template_4536($page_4536) { ?>
   <div id="contents-wrapper" class="w-100 max-w-100">
-    <?php
-    if ($page_4536==='new') {
-        media_section_4536('music');
-    } ?>
     <main id="main" class="w-100" role="main">
       <section id="archive-section">
           <?php
