@@ -29,3 +29,80 @@ Version: 1.1.7
   left: 0;
   content: "";
 }
+
+/////////////////////////////////
+/////////// article ////////////
+////////////////////////////////
+
+.post-thumbnail-shape {
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+#post-thumbnail-4536 {
+  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
+  box-shadow: 0 0 20px #ccc;
+}
+
+.article-body {
+  h2,
+  h3,
+  h4,
+  h5 {
+    position: relative;
+    margin: 2em auto;
+    line-height: 1.4;
+    clear: both;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 2em;
+
+    a:not(.wp-embed-heading) {
+      text-decoration: underline;
+    }
+  }
+
+  ol,
+  ul:not(.wp-block-gallery):not(.outline-wrap) {
+    padding-left: 1.5em;
+    margin-bottom: 2em;
+  }
+
+  blockquote:not(.external-website-embed-content) {
+    border-left: 3px solid;
+    background-color: #fcfcfc;
+  }
+
+  table {
+    margin-bottom: 2em;
+    width: 100%;
+    border-collapse: collapse;
+
+    td,
+    th {
+      padding: 1em 0.5em;
+      border: 1px #999 solid;
+      font-size: 90%;
+      line-height: 1.6;
+    }
+  }
+}
+/////////////////////////////////
+//////////// define ////////////
+////////////////////////////////
+
+.fade-in {
+  -webkit-animation: fadeIn 0.8s ease 0s 1 normal;
+  animation: fadeIn 0.8s ease 0s 1 normal;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

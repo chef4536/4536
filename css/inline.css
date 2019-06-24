@@ -169,74 +169,6 @@
   border-radius: 5px 5px 0 0;
 }
 
-.post-thumbnail-shape {
-  transform: scale(1.1);
-  opacity: 0.5;
-}
-
-#post-thumbnail-4536 {
-  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-  box-shadow: 0 0 20px #ccc;
-}
-
-.article-body h2,
-.article-body h3,
-.article-body h4,
-.article-body h5 {
-  position: relative;
-  margin: 2em auto;
-  line-height: 1.4;
-  clear: both;
-}
-
-.article-body p {
-  line-height: 1.6;
-  margin-bottom: 2em;
-}
-
-.article-body p a:not(.wp-embed-heading) {
-  text-decoration: underline;
-}
-
-.article-body ol,
-.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {
-  padding-left: 1.5em;
-  margin-bottom: 2em;
-}
-
-.article-body blockquote:not(.external-website-embed-content) {
-  border-left: 3px solid;
-  background-color: #fcfcfc;
-}
-
-.article-body table {
-  margin-bottom: 2em;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.article-body table td,
-.article-body table th {
-  padding: 1em 0.5em;
-  border: 1px #999 solid;
-  font-size: 90%;
-  line-height: 1.6;
-}
-
-.fade-in {
-  -webkit-animation: fadeIn 0.8s ease 0s 1 normal;
-  animation: fadeIn 0.8s ease 0s 1 normal;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
@@ -326,20 +258,18 @@
     border-left: .5px solid;
     flex: 1;
   }
-  #scroll-sidebar {
+  #sidebar #scroll-sidebar {
     position: -webkit-sticky;
     top: 20px;
     position: sticky;
   }
   .right-content #sidebar {
     border-right: .5px solid;
+    border-left: none;
   }
   .left-content #contents-wrapper,
   .right-content #contents-wrapper {
     width: calc(100% - 320px);
-  }
-  .right-content .container {
-    flex-flow: row-reverse;
   }
   /* min-1024px END */
 }

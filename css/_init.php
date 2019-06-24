@@ -27,7 +27,7 @@ add_action( 'wp_footer', function() {
   </script>
   <noscript id="deferred-styles-4536">
     <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
-    <link rel="stylesheet" href="<?php echo TEMPLATEPATH . '/style.min.css?'.$ver; ?>" />
+    <link rel="stylesheet" href="<?php echo get_parent_theme_file_uri( '/style.min.css?'.$ver ); ?>" />
   </noscript>
 <?php });
 
