@@ -49,7 +49,7 @@ function archive_template_4536($page_4536) { ?>
       </section>
       <?php
       pagination($wp_query->max_num_pages);
-      echo breadcrumb('html');
+      // echo breadcrumb('html');
       ?>
     </main>
     <?php

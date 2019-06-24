@@ -17,7 +17,7 @@
             comments_template();
         }
         get_template_part('template-parts/page-nav');
-        echo breadcrumb('html');
+        // echo breadcrumb('html');
     } elseif (is_singular(['music', 'movie'])) {
         if (is_comments('is_comments_media') && (comments_open() || get_comments_number())) {
             comments_template();
@@ -27,7 +27,7 @@
             comments_template();
         }
     }
-    get_template_part('template-parts/follow-box');
+    // get_template_part('template-parts/follow-box');
     ?>
   </main>
   <?php

@@ -1,4 +1,4 @@
-<aside id="comments" class="pt-5 pb-5">
+<aside id="comments" class="pt-5">
   <?php if(have_comments()): ?>
     <h2 data-text-align="center" class="mb-3">コメント</h2>
     <ol class="comment-list">
