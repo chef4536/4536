@@ -146,9 +146,13 @@
   object-fit: cover;
 }
 
+.card-wrap {
+  max-width: 400px;
+}
+
 .card {
   border-radius: 5px;
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 5px #ccc;
 }
 
 .card .date {

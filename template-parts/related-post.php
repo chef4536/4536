@@ -2,17 +2,15 @@
 
 if(empty(related_post_count())) return;
 
-$display = 'd-n-sm';
-$post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
-$post_list_style_pc = '';
-if( !empty( related_post_list_style_pc() ) ) {
-  $post_list_style_pc = ' list-'.related_post_list_style_pc();
-  $display = 'd-n';
-}
-$style = $post_list_style_mobile.$post_list_style_pc;
-
-$thumbnail_size = related_post_list_style_pc();
-if(related_post_list_style_mobile()==='big') $thumbnail_size = 'big';
+// $post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
+// $post_list_style_pc = '';
+// if( !empty( related_post_list_style_pc() ) ) {
+//   $post_list_style_pc = ' list-'.related_post_list_style_pc();
+// }
+// $style = $post_list_style_mobile.$post_list_style_pc;
+//
+// $thumbnail_size = related_post_list_style_pc();
+// if(related_post_list_style_mobile()==='big') $thumbnail_size = 'big';
 
 $categories = get_the_category($post->ID);
 $category_ID = [];
@@ -33,24 +31,13 @@ if(!$related_posts) return;
 ?>
 
 <aside id="related-post">
-  <h2 id="related-post-title" class="p-r">関連記事</h2>
-  <div class="related-post-wrap d-f">
-    <?php foreach( $related_posts as $post ) : setup_postdata( $post ) ; ?>
-    <article class="p-r z-index-1 clearfix padding-bottom-1em post-list<?php echo $style; ?>">
-      <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
-      <div class="post-info">
-        <h3 class="font-size-16px post-title">
-          <a class="post-color link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-        </h3>
-        <div class="post-meta p-r z-index--1 margin-1em-auto">
-          <p class="excerpt <?php echo $display; ?>">
-            <?php echo custom_excerpt_4536(get_the_content(), custom_excerpt_length()); ?>
-          </p>
-        </div>
-      </div>
-    </article>
-    <?php endforeach ?>
+  <h2 data-text-align="center" class="mb-3 headline">関連記事</h2>
+  <div class="d-f f-w-w j-c-c">
+    <?php
+    foreach( $related_posts as $post ) : setup_postdata( $post );
+    post_list_card_4536('h3');
+    endforeach;
+    wp_reset_postdata();
+    ?>
   </div>
 </aside>
-
-<?php wp_reset_postdata();

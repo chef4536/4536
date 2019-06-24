@@ -97,6 +97,7 @@ if (has_tag()) {
   sns_button_4536('j-c-f-e');
   ?>
 </div>
+<hr class="section-break mb-5" />
 
 <?php
 
