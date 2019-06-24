@@ -245,7 +245,8 @@ function prev_next_post_thumbnail($post_id)
     if (!has_post_thumbnail($post_id)) {
         return;
     }
-    echo '<figure class="prev-next-thumbnail">'.get_the_post_thumbnail($post_id, $thumb).'</figure>';
+
+    echo '<figure class="prev-post-thumbnail w-100 h-100">'.get_the_post_thumbnail($post_id, $thumb, ['class' => 'post-thumbnail-image p-a t-0 b-0 r-0 l-0 w-100 max-w-100 min-w-100 h-100']).'</figure><div class="mask p-a t-0 b-0 r-0 l-0 w-100 h-100"></div>';
 }
 
 /////////////////////////////////////////////

@@ -40,7 +40,7 @@
   width: 100%;
 }
 
-.f-button {
+[data-button="floating"], .f-button {
   width: 56px;
   height: 56px;
   padding: 0;

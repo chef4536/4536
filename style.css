@@ -25,6 +25,17 @@ Version: 1.1.7
   content: "";
 }
 
+.mask {
+  background-color: #000;
+  opacity: .8;
+  visibility: visible;
+  overflow: hidden;
+}
+
+.mask-on-text {
+  color: #fff;
+}
+
 .post-thumbnail-shape {
   transform: scale(1.1);
   opacity: 0.5;
@@ -125,6 +136,10 @@ Version: 1.1.7
   font-size: 12px;
   border: 2px solid;
   border-radius: 20px;
+}
+
+.prev-post-thumbnail {
+  padding-top: 70%;
 }
 
 .fade-in {

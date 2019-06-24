@@ -44,7 +44,7 @@ if( has_header_image() ) { ?>
       </div>
     <?php }
     if( is_slide_menu() ) { ?>
-      <label id="header-slide-button" for="slide-toggle" class="f-button header-contents slide-button d-n-md t-a-c">
+      <label data-button="floating" id="header-slide-button" for="slide-toggle" class="header-contents slide-button d-n-md t-a-c">
         <i class="fas fa-ellipsis-h"></i>
       </label>
     <?php } ?>

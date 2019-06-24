@@ -40,11 +40,20 @@ li {
   margin: 0.5em 0;
 }
 
-.fa,
-.fab,
-.far,
-.fas {
-  letter-spacing: 2px;
+[data-color="white"] {
+  color: #fff;
+}
+
+[data-color="black"] {
+  color: #000;
+}
+
+[data-bg-color="white"] {
+  background-color: #fff;
+}
+
+[data-bg-color="black"] {
+  background-color: #000;
 }
 
 .w-100 {
@@ -93,6 +102,10 @@ li {
 
 [data-display="flex"] {
   display: flex;
+}
+
+[data-overflow="hidden"] {
+  overflow: hidden;
 }
 
 .p-r {
