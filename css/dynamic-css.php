@@ -36,20 +36,20 @@ add_filter('inline_style_4536', function ($css) {
     ////////////////////////////////////
 
     //プライマリーカラー
-    $primary_color = '#4facfe';
-    $css[] = ".primary_bg_color{background-color:$primary_color}";
-    $css[] = ".primary_color{color:$primary_color}";
+    $primary_color = primary_color();
+    // $css[] = ".primary_bg_color{background-color:$primary_color}";
+    // $css[] = ".primary_color{color:$primary_color}";
     $css[] = ".outline{border:1px solid;background:0 0;box-shadow:none}";
 
     //セカンダリーカラー
-    $secondary_color = '#00f2fe';
+    $secondary_color = secandary_color();
 
     //グラデーション
     $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
+    $css[] = ".gradation a{color:#ffffff}";
 
     //ボタン
-    $button_color = '#4facfe';
-    $css[] = '[data-button="submit"],#submit{background-color:' . $button_color . '}';
+    $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';
 
     //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '50' ;
@@ -134,13 +134,13 @@ add_filter('inline_style_4536', function ($css) {
     $movie_custom_posts = get_posts([ 'post_type' => 'movie', 'posts_per_page'=> -1 ]);
     $pickup_custom_posts = get_posts([ 'post_type' => 'post', 'tag' => 'pickup', 'posts_per_page'=> -1, 'post__not_in' => [get_the_ID()] ]);
     if ($movie_custom_posts || $music_custom_posts || $pickup_custom_posts) {
-        $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
+        // $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
     }
     if ($movie_custom_posts) {
-        $css[] = '#movie{border-bottom:1px solid #000}.movie-content{width:196px}.thumbnail-movie-4536{width:196px;height:110px}';
+        $css[] = '.movie-content{width:196px}.thumbnail-movie-4536{width:196px;height:110px}';
     }
     if ($music_custom_posts) {
-        $css[] = '#music{border-bottom:1px solid #000}.music-content{width:150px}.thumbnail-music-4536{width:150px;height:150px}';
+        $css[] = '.music-content{width:150px;white-space:normal;vertical-align:top}.thumbnail-music-4536{padding-top:100%}';
     }
     if ($pickup_custom_posts) {
         $height = (thumbnail_size()==='thumbnail') ? '150' : '113' ;

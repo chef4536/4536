@@ -6,6 +6,15 @@
 }
 
 ////////////////////////////
+///////// scroll ///////////
+////////////////////////////
+.scroll-wrapper {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+////////////////////////////
 ////////// init ////////////
 ////////////////////////////
 
@@ -20,10 +29,6 @@
   margin-left: calc(50% - 50vw);
   width: auto;
   max-width: none;
-}
-
-.scroll-content {
-  white-space: nowrap;
 }
 
 #h1 {

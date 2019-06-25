@@ -7,33 +7,17 @@ class CustomizerColorSettings_4536 {
 
   //色セクション
   public $main_array = [
+    'primary_color' => [
+      'label' => 'プライマリー（メイン）',
+      'color' => PRIMARY_COLOR,
+    ],
+    'secandary_color' => [
+      'label' => 'セカンダリー（サブ）',
+      'color' => SECANDARY_COLOR,
+    ],
     'link_color' => [
       'label' => 'リンク',
       'color' => '#1b95e0',
-    ],
-    'header_background_color' => [
-      'label' => 'ヘッダー背景',
-      'color' => '#000000',
-    ],
-    'header_color' => [
-      'label' => 'ヘッダー文字',
-      'color' => '#ffffff',
-    ],
-    'below_header_nav_menu_background_color' => [
-      'label' => 'ヘッダー下ナビメニュー背景',
-      'color' => '#000000',
-    ],
-    'below_header_nav_menu_color' => [
-      'label' => 'ヘッダー下ナビメニュー文字',
-      'color' => '#ffffff',
-    ],
-    'description_color' => [
-      'label' => 'トップページのサイト説明',
-      'color' => '',
-    ],
-    'post_background_color' => [
-      'label' => '記事（一覧含む）背景',
-      'color' => '#ffffff',
     ],
     'post_color' => [
       'label' => '記事（一覧含む）文字',
@@ -42,22 +26,6 @@ class CustomizerColorSettings_4536 {
     'table_background_color_2_line' => [
       'label' => 'テーブルの偶数番目の背景',
       'color' => '',
-    ],
-    'media_section_background_color' => [
-      'label' => 'メディアセクション（Music,Movie,Pickup）の背景',
-      'color' => '#222222',
-    ],
-    'media_section_title_color' => [
-      'label' => 'メディアセクション（Music,Movie,Pickup）の文字',
-      'color' => '#ffffff',
-    ],
-    'footer_background_color' => [
-      'label' => 'フッター背景',
-      'color' => '#000000',
-    ],
-    'footer_color' => [
-      'label' => 'フッター文字',
-      'color' => '#ffffff',
     ],
   ];
 
@@ -125,17 +93,6 @@ class CustomizerColorSettings_4536 {
     ],
   ];
 
-  public $sns_array = [
-    'fb_like_background_color' => [
-      'label' => 'バイラル風いいねボックスの背景色',
-      'color' => '#2b2b2b',
-    ],
-    'fb_like_color' => [
-      'label' => 'バイラル風いいねボックスの文字色',
-      'color' => '#ffffff',
-    ],
-  ];
-
   public $balloon_array = [
     'balloon_right_background_color' => [
       'label' => '左吹き出しの背景色',
@@ -187,17 +144,6 @@ class CustomizerColorSettings_4536 {
       ]));
     }
 
-    //SNS
-    foreach( $this->sns_array as $key => $value ) {
-      $wp_customize->add_setting( $key, ['default' => $value['color']] );
-      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
-        'label' => $value['label'],
-        'section' => 'SNS',
-        'settings' => $key,
-        'priority' => 15,
-      ]));
-    }
-
     //吹き出しセクション
     foreach( $this->balloon_array as $key => $value ) {
       $wp_customize->add_setting( $key, ['default' => $value['color']] );
@@ -217,7 +163,6 @@ class CustomizerColorSettings_4536 {
     $color = [];
     $array += $this->main_array;
     $array += $this->heading_array;
-    $array += $this->sns_array;
     $array += $this->balloon_array;
 
     foreach( $array as $key => $value ) {
@@ -230,37 +175,6 @@ class CustomizerColorSettings_4536 {
       $css[] = 'a,.link-color{color:' . $link_color . '}';
     }
 
-    if( !empty( $header_background_color ) ) { //ヘッダー背景色
-      $css[] = '.header,.sub-menu{background-color:' . $header_background_color . '}';
-    }
-
-    if( !empty( $header_color ) ) { //ヘッダー文字色
-      $css[] = '.header,.header a{color:'.$header_color.'}';
-    }
-
-    if( !empty( $below_header_nav_menu_background_color ) ) { //ヘッダーナビ背景色
-      $css[] = '#below-header-nav-menu{background-color:' . $below_header_nav_menu_background_color . '}';
-    }
-
-    if( !empty( $below_header_nav_menu_color ) ) { //ヘッダーナビ文字色
-      $css[] = '#below-header-nav-menu a{color:' . $below_header_nav_menu_color . '}';
-    }
-
-    if( !empty( $description_color ) ) { //ディスクリプションの文字色
-      $css[] = '#description{color:' . $description_color . '}';
-    }
-
-    // global $pagenow;
-    // $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
-    // if( !empty($post_background_color) ) { //記事背景色
-    //   $post_bgc_class = '.post-bg-color';
-    //   if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
-    //   $css[] = $post_bgc_class.'{background:linear-gradient(to bottom, ' . get_bg_color_4536() . ', ' . $post_background_color . ' 20%)' . $option . '}';
-    //   $css[] = '.balloon-text-right:after{border-right-color:'.$post_background_color.'}';
-    //   $css[] = '.balloon-text-left:after{border-left-color:'.$post_background_color.'}';
-    //   $css[] = '.pagination span, .pagination a{color:'.$post_background_color.'}';
-    // }
-
     $css[] = '.post-bg-color{background-color:' . get_bg_color_4536() . '}'; //背景色
 
     if( !empty($post_color) ) { //記事文字色
@@ -268,14 +182,6 @@ class CustomizerColorSettings_4536 {
       $css[] = $post_color_class.'{color:'.$post_color.$option.'}';
       $css[] = '.pagination span, .pagination a{background-color:'.$post_color.'}';
       $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25) !important}';
-    }
-
-    if( !empty($fb_like_background_color) ) { //いいねボックス背景色
-      $css[] = '#follow-section-cover{background-color:'.$fb_like_background_color.'}';
-    }
-
-    if( !empty($fb_like_color) ) { //いいねボックス文字色
-      $css[] = '#follow-section-right{color:'.$fb_like_color.'}';
     }
 
     $array = [
@@ -369,23 +275,6 @@ class CustomizerColorSettings_4536 {
       $css[] = '.post table tr:nth-child(even){background-color:'.$table_background_color_2_line.'}';
     }
 
-    if( !empty($media_section_background_color) ) { //メディアセクション背景色
-      $css[] = '.media-section{background-color:'.$media_section_background_color.'}';
-    }
-
-    if( !empty($media_section_title_color) ) { //メディアセクションタイトル色
-      $css[] = '.media-section-title,.media-content-title{color:'.$media_section_title_color.'}';
-    }
-
-    if( !empty( $footer_background_color ) ) { //フッター背景色
-      $css[] = '#footer,#fixed-footer-menu{background-color:'.$footer_background_color.'}';
-    }
-
-    if( !empty( $footer_color ) ) { //フッター文字色
-      $css[] = '#footer,#footer a,.fixed-footer,.fixed-footer-menu-item{color:'.$footer_color.'}';
-      if( fixed_footer() === 'menu' ) $css[] = '#fixed-footer-menu{box-shadow:0 -1px 3px rgba('.hex_to_rgb($footer_color).',.25)}';
-    }
-
     if( !empty($balloon_right_background_color) ) { //左吹き出し背景色
       $css[] = '.balloon .balloon-text-right,.think.balloon .balloon-text-right,.think.balloon .balloon-text-right::before,.think.balloon .balloon-text-right::after{background-color:'.$balloon_right_background_color.';border-color:'.$balloon_right_background_color.'}';
       $css[] = '.balloon .balloon-text-right::before,.balloon .balloon-text-right::after{border-right-color:'.$balloon_right_background_color.'}';
@@ -434,3 +323,11 @@ class CustomizerColorSettings_4536 {
 
 }
 new CustomizerColorSettings_4536();
+
+function primary_color() {
+  return get_theme_mod( 'primary_color', PRIMARY_COLOR );
+}
+
+function secandary_color() {
+  return get_theme_mod( 'secandary_color', SECANDARY_COLOR );
+}

@@ -92,6 +92,10 @@ li {
   display: inline-block;
 }
 
+[data-display="inline-block"] {
+  display: inline-block;
+}
+
 .d-t {
   display: table;
 }
@@ -145,6 +149,10 @@ li {
 }
 
 .t-a-l {
+  text-align: left;
+}
+
+[data-text-align="left"] {
   text-align: left;
 }
 
