@@ -101,10 +101,10 @@ function media_section_4536($media, $args = [])
   <?php } else { ?>
     <div id="<?php echo $media ?>" class="gradation mt-5 mb-5">
       <?php wave_shape('media_top'); ?>
-      <div class="pa-4">
+      <div data-position="relative" class="pa-4">
         <p class="headline t-a-c mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
         <div data-text-align="center" class="scroll-wrapper">
-          <!-- <div class="scroll-left"> -->
+          <div class="scroll-left">
             <div data-display="inline-block" class="scroll-content container">
               <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
                 <div data-display="inline-block" data-text-align="left" class="p-r music-content">
@@ -115,8 +115,11 @@ function media_section_4536($media, $args = [])
               <?php endforeach; ?>
               <?php wp_reset_postdata(); ?>
             </div>
-          <!-- </div> -->
-          <div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>
+          </div>
+          <div data-button="floating" data-bg-color="white" data-position="absolute" class="rightbutton d-n mr-1 r-0">
+            <?php echo I_ARROW_RIGHT; ?>
+          </div>
+          <div class="leftbutton d-n"><i class="fas fa-angle-right"></i></div>
         </div>
       </div>
       <?php wave_shape('media_bottom'); ?>

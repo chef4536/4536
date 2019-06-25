@@ -120,7 +120,15 @@ li {
   position: relative;
 }
 
+[data-position="relative"] {
+  position: relative;
+}
+
 .p-a {
+  position: absolute;
+}
+
+[data-position="absolute"] {
   position: absolute;
 }
 

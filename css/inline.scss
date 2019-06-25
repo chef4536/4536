@@ -12,6 +12,10 @@
   white-space: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+
+  .rightbutton {
+    top: 50%;
+  }
 }
 
 ////////////////////////////
@@ -75,6 +79,7 @@ $button_base_size: 56px;
   width: $button_base_size * 1.5;
   height: $button_base_size * 1.5;
 }
+
 //参考： https://codepen.io/john052/pen/qdRapO
 
 [data-button="submit"],#submit {
