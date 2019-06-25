@@ -51,8 +51,8 @@ if (is_amp()) {
           ];
             $button = (is_amp()) ? '' : '<div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>'; ?>
           <nav id="below-header-nav-menu" class="nav-menu header-section icon t-a-c<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-            <div class="scroll-wrapper inner p-r w-100 ma-auto pa-3">
-              <div class="scroll-left">
+            <div class="scroll-container inner p-r w-100 ma-auto pa-3">
+              <div data-display="inline-block" class="scroll-content">
                 <?php
                 wp_nav_menu($defaults);
             echo $button; ?>

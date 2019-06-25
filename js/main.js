@@ -52,13 +52,13 @@ function scroll_content_4536() {
         if( parent === null ) return;
         const rightButton = parent.querySelector('.rightbutton');
         const leftButton = parent.querySelector('.leftbutton');
-        const scroll_wrap = parent.querySelector('.scroll-left');
-        const scroll_wrap_width = scroll_wrap.clientWidth;
+        const scroll_container = parent.querySelector('.scroll-container');
+        const scroll_container_width = scroll_container.clientWidth;
         const scroll_inner = parent.querySelector('.scroll-content');
         const scroll_inner_width = scroll_inner.clientWidth;
 
-        if(scroll_inner_width > scroll_wrap_width) {
-            rightButton.classList.remove('d-n');
+        if(scroll_inner_width > scroll_container_width) {
+            rightButton.removeAttribute('data-display');
             rightButton.classList.add('fade-in');
         }
 
@@ -70,10 +70,10 @@ function scroll_content_4536() {
             let i = 10;
             let t = 0;
             const right_int = setInterval(function() {
-                scroll_wrap.scrollBy(i, 0);
+                scroll_container.scrollBy(i, 0);
                 i = 10;
                 t += 10;
-                if( (t >= scroll_wrap_width) || (scroll_inner.getBoundingClientRect().right === scroll_wrap.getBoundingClientRect().right) ) clearInterval(right_int);
+                if( (t >= scroll_container_width) || (scroll_inner.getBoundingClientRect().right === scroll_container.getBoundingClientRect().right) ) clearInterval(right_int);
             }, 1);
 
         });
@@ -85,28 +85,28 @@ function scroll_content_4536() {
             let i = -10;
             let t = 0;
             const left_int = setInterval(function() {
-                scroll_wrap.scrollBy(i, 0);
+                scroll_container.scrollBy(i, 0);
                 i = -10;
                 t += 10;
-                if( (t >= scroll_wrap_width) || (scroll_inner.getBoundingClientRect().left === scroll_wrap.getBoundingClientRect().left) ) clearInterval(left_int);
+                if( (t >= scroll_container_width) || (scroll_inner.getBoundingClientRect().left === scroll_container.getBoundingClientRect().left) ) clearInterval(left_int);
             }, 1);
 
         });
         //ボタンの表示・非表示
-        scroll_wrap.addEventListener('scroll', function(e) {
+        scroll_container.addEventListener('scroll', function(e) {
 
             e.preventDefault();
 
-            if(scroll_inner.getBoundingClientRect().left < scroll_wrap.getBoundingClientRect().left) {
-                leftButton.classList.remove('d-n');
+            if(scroll_inner.getBoundingClientRect().left < scroll_container.getBoundingClientRect().left) {
+                leftButton.removeAttribute('data-display');
                 leftButton.classList.add('fade-in');
             } else {
-                leftButton.classList.add('d-n');
+                leftButton.setAttribute('data-display', 'none');
             }
-            if(scroll_inner.getBoundingClientRect().right === scroll_wrap.getBoundingClientRect().right) {
-                rightButton.classList.add('d-n');
+            if(scroll_inner.getBoundingClientRect().right === scroll_container.getBoundingClientRect().right) {
+                rightButton.setAttribute('data-display', 'none');
             } else {
-                rightButton.classList.remove('d-n');
+                rightButton.removeAttribute('data-display');
             }
 
         });

@@ -103,23 +103,23 @@ function media_section_4536($media, $args = [])
       <?php wave_shape('media_top'); ?>
       <div data-position="relative" class="pa-4">
         <p class="headline t-a-c mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
-        <div data-text-align="center" class="scroll-wrapper">
-          <div class="scroll-left">
-            <div data-display="inline-block" class="scroll-content container">
-              <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
-                <div data-display="inline-block" data-text-align="left" class="p-r music-content">
-                  <?php echo thumbnail_4536($media)['thumbnail']; ?>
-                  <span data-display="block" class="mt-2"></span>
-                  <a class="link-mask mt-2" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </div>
-              <?php endforeach; ?>
-              <?php wp_reset_postdata(); ?>
-            </div>
+        <div data-text-align="center" class="scroll-container">
+          <div data-display="table" class="scroll-content">
+            <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
+              <div class="<?php echo $media; ?>-content mr-2" data-display="inline-block" data-text-align="left" data-position="relative">
+                <?php echo thumbnail_4536($media)['thumbnail']; ?>
+                <span data-display="block" class="mt-2"></span>
+                <a class="link-mask mt-2" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+              </div>
+            <?php endforeach; ?>
+            <?php wp_reset_postdata(); ?>
           </div>
-          <div data-button="floating" data-bg-color="white" data-position="absolute" class="rightbutton d-n mr-1 r-0">
-            <?php echo I_ARROW_RIGHT; ?>
-          </div>
-          <div class="leftbutton d-n"><i class="fas fa-angle-right"></i></div>
+        </div>
+        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="rightbutton mr-1 r-0">
+          <?php echo I_ARROW_RIGHT; ?>
+        </div>
+        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="leftbutton ml-1 l-0">
+          <?php echo I_ARROW_LEFT; ?>
         </div>
       </div>
       <?php wave_shape('media_bottom'); ?>

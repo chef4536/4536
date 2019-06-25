@@ -84,6 +84,10 @@ li {
   display: none;
 }
 
+[data-display="none"] {
+  display: none !important;
+}
+
 .d-b {
   display: block;
 }
@@ -101,6 +105,10 @@ li {
 }
 
 .d-t {
+  display: table;
+}
+
+[data-display="table"] {
   display: table;
 }
 
