@@ -52,9 +52,7 @@ function get_this_site_domain_4536() {
 
 // カスタムメニュー
 register_nav_menus([
-    'navbar' => 'ヘッダー下ナビ（モバイル）',
-    'navbar_pc' => 'ヘッダーナビ（PC）',
-    'below_header_nav_menu_common' => 'ヘッダー下ナビ（全デバイス共通）',
+    'header_nav' => 'ヘッダーナビ',
     'navbar_footer' => 'フッターナビ（全デバイス共通）',
 ]);
 

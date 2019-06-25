@@ -12,7 +12,7 @@
   white-space: nowrap;
 }
 
-.leftbutton, .rightbutton {
+.t-50 {
   top: 50%;
 }
 
@@ -118,32 +118,27 @@
   max-height: 48px;
 }
 
-.nav-menu li {
-  margin-right: 1.5em;
-  list-style-type: none;
-  display: inline-table;
-  margin: 0;
-  position: relative;
+#header-nav .menu-item {
+  margin-right: 16px;
 }
 
-.nav-menu li:last-child {
-  margin: 0;
+#header-nav .menu-item a {
+  opacity: .8;
 }
 
-.nav-menu #below-header-nav-menu li {
-  padding: 5px 0;
+#header-nav .menu-item a[aria-current="page"] {
+  opacity: 1;
+  font-size: 110%;
+  border-bottom: 4px solid;
+  padding-bottom: 8px;
 }
 
-.nav-menu .nav-menu .current-menu-item a {
-  opacity: 0.5;
-}
-
-.nav-menu .sub-menu {
+#header-nav .sub-menu {
   display: none;
 }
 
 #header,
-.nav-menu {
+#header-nav {
   z-index: 5;
   transition: 0.5s ease;
 }

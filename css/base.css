@@ -35,6 +35,10 @@ iframe {
   vertical-align: bottom;
 }
 
+ul, ol {
+  list-style: none;
+}
+
 li {
   line-height: 1.5;
   margin: 0.5em 0;
@@ -463,7 +467,15 @@ li {
   align-items: center;
 }
 
+[data-align-items="center"] {
+  align-items: center;
+}
+
 .j-c-c {
+  justify-content: center;
+}
+
+[data-justify-content="center"] {
   justify-content: center;
 }
 
@@ -509,6 +521,9 @@ li {
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 479px) {
+  .xs0 {
+    flex: 0 1 0;
+  }
   .xs6 {
     flex: 0 1 50%;
   }
@@ -541,6 +556,9 @@ li {
   .d-n-sm {
     display: none;
   }
+  [data-display="none-sm"] {
+    display: none !important;
+  }
   /* max-767px END */
 }
 
@@ -569,6 +587,9 @@ li {
   }
   .d-n-md {
     display: none;
+  }
+  [data-display="none-md"] {
+    display: none !important;
   }
   .alignwide {
     margin-left: -20px;

@@ -104,7 +104,7 @@ function media_section_4536($media, $args = [])
       <div data-position="relative" class="pa-4">
         <p class="headline t-a-c mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
         <div data-text-align="center" class="scroll-container">
-          <div data-display="table" class="scroll-content">
+          <div data-display="table" class="scroll-content mx-auto">
             <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
               <div class="<?php echo $media; ?>-content mr-2" data-display="inline-block" data-text-align="left" data-position="relative">
                 <?php echo thumbnail_4536($media)['thumbnail']; ?>
@@ -115,10 +115,10 @@ function media_section_4536($media, $args = [])
             <?php wp_reset_postdata(); ?>
           </div>
         </div>
-        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="rightbutton mr-1 r-0">
+        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="rightbutton mr-1 t-50 r-0">
           <?php echo I_ARROW_RIGHT; ?>
         </div>
-        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="leftbutton ml-1 l-0">
+        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="leftbutton ml-1 t-50 l-0">
           <?php echo I_ARROW_LEFT; ?>
         </div>
       </div>

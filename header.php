@@ -31,36 +31,6 @@ if (is_amp()) {
           <?php get_template_part('template-parts/header-menu'); ?>
         </header>
         <?php
-        //navigation
-        $location = '';
-        if (has_nav_menu('navbar')) {
-            $location = 'navbar';
-            $display = ' d-n-md';
-        };
-        if (has_nav_menu('below_header_nav_menu_common')) {
-            $location = 'below_header_nav_menu_common';
-            $display = '';
-        }
-        if (!empty($location)) {
-            $defaults = [
-            'theme_location'  => $location,
-            'container' => false,
-            'fallback_cb' => false,
-            'echo' => true,
-            'items_wrap' => '<ul class="scroll-content d-t w-100">%3$s</ul>'
-          ];
-            $button = (is_amp()) ? '' : '<div class="leftbutton d-n"><i class="fas fa-angle-left"></i></div><div class="rightbutton d-n"><i class="fas fa-angle-right"></i></div>'; ?>
-          <nav id="below-header-nav-menu" class="nav-menu header-section icon t-a-c<?php echo $display; ?>" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-            <div class="scroll-container inner p-r w-100 ma-auto pa-3">
-              <div data-display="inline-block" class="scroll-content">
-                <?php
-                wp_nav_menu($defaults);
-            echo $button; ?>
-              </div>
-            </div>
-          </nav>
-        <?php
-        }
 
         //SVG
         wave_shape('header');

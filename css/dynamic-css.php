@@ -63,7 +63,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //タイトルの中央寄せ
     $is_slide_menu = is_slide_menu();
-    $has_pc_nav = has_nav_menu('navbar_pc');
+    $has_pc_nav = has_nav_menu('header_nav');
     if ($is_slide_menu && !$has_pc_nav) {
         $css[] = '@media screen and (min-width: 768px){#sitename{text-align:center}}';
     } elseif (!$is_slide_menu && $has_pc_nav) {

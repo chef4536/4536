@@ -235,7 +235,7 @@ function header_logo_4536()
     $height = 'height="48" ';
     $class = 'class="header-logo" ';
     $url = 'src="'.header_logo_url().'" ';
-    $header_logo = '<div class="header-logo-wrap">'.$start_tag.$url.$alt.$class.$width.$height.$end_tag.'</div>';
+    $header_logo = $start_tag.$url.$alt.$class.$width.$height.$end_tag;
     return $header_logo;
 }
 

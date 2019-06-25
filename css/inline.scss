@@ -16,7 +16,7 @@
 .sctoll-content {
   white-space: nowrap;
 }
-.leftbutton,.rightbutton {
+.t-50 {
   top: 50%;
 }
 
@@ -145,25 +145,21 @@ $button_base_size: 56px;
   }
 }
 
-.nav-menu {
-  li {
-    margin-right: 1.5em;
-    list-style-type: none;
-    display: inline-table;
-    margin: 0;
-    position: relative;
+#header-nav {
+  .menu-item {
+    margin-right: 16px;
 
-    &:last-child {
-      margin: 0;
+    a {
+      opacity: .8;
+
+      &[aria-current="page"] {
+        opacity: 1;
+        font-size: 110%;
+        border-bottom: 4px solid;
+        padding-bottom: 8px;
+      }
     }
-  }
 
-  #below-header-nav-menu li {
-    padding: 5px 0;
-  }
-
-  .nav-menu .current-menu-item a {
-    opacity: 0.5;
   }
 
   .sub-menu {
@@ -172,7 +168,7 @@ $button_base_size: 56px;
 }
 
 #header,
-.nav-menu {
+#header-nav {
   z-index: 5;
   transition: 0.5s ease;
 }
