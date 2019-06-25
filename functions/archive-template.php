@@ -48,17 +48,6 @@ function archive_template_4536($page_4536) { ?>
       // echo breadcrumb('html');
       ?>
     </main>
-    <?php
-    if ($page_4536!=='music' && $page_4536!=='new') {
-        media_section_4536('music');
-    }
-    if ($page_4536!=='movie') {
-        media_section_4536('movie');
-    }
-    if (!is_tag('pickup')) {
-        media_section_4536('pickup');
-    }
-    ?>
   </div>
 <?php }
 

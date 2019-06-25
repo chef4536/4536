@@ -11,11 +11,6 @@
       </div>
     </article>
     </main>
-    <?php
-    media_section_4536('music');
-    media_section_4536('movie');
-    media_section_4536('pickup');
-    ?>
 </div>
 
 <?php

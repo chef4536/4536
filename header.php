@@ -91,10 +91,10 @@ if (is_amp()) {
 
     if (is_singular()) {
         get_template_part('template-parts/post-title');
+    } else {
+      media_section_4536('music');
     }
 
     ?>
-
-    <?php media_section_4536('music'); ?>
 
     <div id="main-container" class="container w-100 ma-auto d-f f-w-w post-bg-color post-color">

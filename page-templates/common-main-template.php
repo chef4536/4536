@@ -30,16 +30,6 @@
     // get_template_part('template-parts/follow-box');
     ?>
   </main>
-  <?php
-  if (is_singular('movie')) {
-      media_section_4536('movie');
-      media_section_4536('music');
-  } else {
-      media_section_4536('music');
-      media_section_4536('movie');
-  }
-  media_section_4536('pickup');
-  ?>
 </div>
 <?php
 get_sidebar();

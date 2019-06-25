@@ -15,18 +15,19 @@
       }
       $ptime = '<span class="posted-date">'.$posted_datetime.'</span>';
       $date = ($mtime) ? '<span class="modified-date">'.$modified_datetime.'</span>' : $ptime ;
-      $time_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>';
-      $post_date = '<span class="post-date post-data d-f a-i-c pa-2">' . $time_icon . $date . '</span>';
+      $post_date = '<span class="post-date post-data d-f a-i-c pa-2">' . I_CLOCK . $date . '</span>';
       echo $post_date;
       //category
-      $cat = get_the_category();
-      $cat_name = $cat[0]->name;
-      $cat_link = esc_url(get_category_link($cat[0]->cat_ID));
-      ?>
-      <span class="d-f a-i-c pa-2">
-        <?php echo I_FOLDER; ?>
-        <a class="flex-1 post-color" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
-      </span>
+      if(has_category()) {
+        $cat = get_the_category();
+        $cat_name = $cat[0]->name;
+        $cat_link = esc_url(get_category_link($cat[0]->cat_ID));
+        ?>
+        <span class="d-f a-i-c pa-2">
+          <?php echo I_FOLDER; ?>
+          <a class="flex-1 post-color" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
+        </span>
+      <?php } ?>
       <!-- author -->
       <span class="d-f a-i-c pa-2">
         <span>By</span>
