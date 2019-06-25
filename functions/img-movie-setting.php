@@ -243,6 +243,7 @@ function header_logo_4536()
 function prev_next_post_thumbnail($post_id)
 {
     if (!has_post_thumbnail($post_id)) {
+        echo '<div class="prev-post-thumbnail w-100 h-100"></div>';
         return;
     }
 

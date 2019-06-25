@@ -28,6 +28,7 @@
         }
     }
     // get_template_part('template-parts/follow-box');
+    media_section_4536('pickup');
     ?>
   </main>
 </div>
