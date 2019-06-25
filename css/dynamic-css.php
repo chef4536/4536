@@ -137,14 +137,14 @@ add_filter('inline_style_4536', function ($css) {
         // $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
     }
     if ($movie_custom_posts) {
-        $css[] = '.movie-content{width:196px}.thumbnail-movie-4536{width:196px;height:110px}';
+        $css[] = '.movie-content{width:196pxwhite-space:normal;vertical-align:top}.thumbnail-movie-4536{padding-top:56%}';
     }
     if ($music_custom_posts) {
         $css[] = '.music-content{width:150px;white-space:normal;vertical-align:top}.thumbnail-music-4536{padding-top:100%}';
     }
     if ($pickup_custom_posts) {
         $height = (thumbnail_size()==='thumbnail') ? '150' : '113' ;
-        $css[] = '.pickup-content{width:150px}.thumbnail-pickup-4536{width:150px;height:'.$height.'px}'.$background;
+        $css[] = '.pickup-content{width:150px}';
     }
 
     //コピー禁止

@@ -88,15 +88,16 @@ function media_section_4536($media, $args = [])
 
   <div id="<?php echo $media ?>" class="gradation mt-5 mb-5">
     <?php wave_shape('media_top'); ?>
-    <div class="pl-3 pr-3">
-      <p class="headline t-a-c mt-5"><?php echo esc_html($section_title); ?></p>
-      <div data-text-align="center" class="scroll-wrapper pt-4 pb-4">
+    <div class="pa-4">
+      <p class="headline t-a-c mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
+      <div data-text-align="center" class="scroll-wrapper">
         <!-- <div class="scroll-left"> -->
           <div data-display="inline-block" class="scroll-content container">
             <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
               <div data-display="inline-block" data-text-align="left" class="p-r music-content">
                 <?php echo thumbnail_4536($media)['thumbnail']; ?>
-                <a class="link-mask" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                <span data-display="block" class="mt-2"></span>
+                <a class="link-mask mt-2" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </div>
             <?php endforeach; ?>
             <?php wp_reset_postdata(); ?>
