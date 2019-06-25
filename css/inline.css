@@ -110,16 +110,18 @@
   width: 100%;
 }
 
-#header .inner {
-  overflow: visible;
+.header-logo {
+  max-height: 48px;
 }
 
-#header .header-logo {
-  max-height: 48px;
+#header-nav {
+  z-index: 5;
+  transition: 0.5s ease;
 }
 
 #header-nav .menu-item {
   margin-right: 16px;
+  position: relative;
 }
 
 #header-nav .menu-item a {
@@ -135,12 +137,6 @@
 
 #header-nav .sub-menu {
   display: none;
-}
-
-#header,
-#header-nav {
-  z-index: 5;
-  transition: 0.5s ease;
 }
 
 .meta {
@@ -260,6 +256,26 @@
 /* min-1024px BEGIN for landscape tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
+  #header-nav {
+    overflow-x: inherit;
+  }
+  #header-nav .menu-item-has-children:hover .sub-menu {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    white-space: normal;
+  }
+  #header-nav .menu-item-has-children:hover .sub-menu .menu-item {
+    width: 100%;
+  }
+  #header-nav .menu-item-has-children:hover .sub-menu a {
+    display: block;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+  }
   #sidebar {
     width: 320px;
     border-left: .5px solid;

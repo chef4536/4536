@@ -9,16 +9,6 @@ License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Version: 1.1.7
 ---------------------------------------------------------*/
-.margin-padding-0 {
-  margin: 0;
-  padding: 0;
-}
-.z-index-1 {
-  z-index: 1;
-}
-.z-index--1 {
-  z-index: -1;
-}
 input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
 select,textarea,input[type="search"] {
   position: relative;
@@ -32,64 +22,6 @@ select,textarea,input[type="search"] {
   color: #555;
   max-width: 100%;
 }
-pre {
-    margin-bottom: 1.5em;
-}
-code {
-    display: inline;
-    padding: .1em .2em;
-    border-radius: 2px;
-    color: #c5c8c6;
-    background-color: #1d1f21;
-    word-wrap: break-word;
-}
-pre code {
-    display: block;
-    padding: 0.5em;
-    color: #c5c8c6;
-    background-color: #1d1f21;
-    white-space: pre;
-    overflow-x: auto;
-    word-wrap: normal;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
-}
-/* ビデオ */
-.wp-video {
-    margin-bottom: 1.5rem;
-}
-/* scroll */
-.scroll-wrapper {
-    position: relative;
-}
-.scroll-left {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    overflow:-moz-scrollbars-none;
-}
-.scroll-left::-webkit-scrollbar {
-    display:none;
-}
-.post-list-category {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: #000;
-    color: #fff;
-    opacity: .8;
-    padding: .4em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 90%;
-    font-size: small;
-}
-#all-categories ul {
-    list-style: none;
-}
 #all-categories ul:not(.children) {
     padding: 0;
 }
@@ -102,15 +34,6 @@ pre code {
       letter-spacing: 5px;
     }
   }
-}
-// クリッカブルエリア広げる
-.link-mask::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  content: "";
 }
 /* Gutenberg */
 .wp-block-image,.wp-block-file,.wp-block-media-text {
@@ -289,83 +212,6 @@ pre code {
     float:left;
 }
 
-/* キャプション */
-.wp-caption {
-    height: auto;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-}
-.post .wp-caption-text,.wp-block-image figcaption {
-	text-align: center;
-    font-size: 12px;
-    font-style: italic;
-    padding: 5px;
-    margin: 0;
-    color: inherit;
-}
-/* NEWアイコン */
-.icon-area {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 55px;
-    height: 55px;
-    overflow: hidden;
-}
-.new-icon {
-    display: inline-block;
-    position: absolute;
-    padding: 4px 0;
-    left: -5px;
-    top: 5px;
-    width: 90px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 12px;
-    background: #ff0000;
-    color: #fff;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    letter-spacing: 0.05em;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    z-index: 2;
-}
-.new-icon::before {
-    content: "NEW";
-}
-/* youtubeのレスポンシブ */
-.responsive-wrapper {
-	position: relative;
-	padding-bottom: 56.25%;
-	height: 0;
-	overflow: hidden;
-}
-.responsive-wrapper iframe {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-}
-/* ドロップダウンの幅 */
-#searchform input,.widget_archive select,.widget_categories select,.dropdown-list select {
-    width: 100%;
-}
-/* ドロップダウンメニューのテキスト削除 */
-.screen-reader-text {
-    border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	-webkit-clip-path: inset(50%);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute !important;
-	width: 1px;
-	word-wrap: normal !important;
-}
 /* ヘッダー縮小 */
 .fixed-top {
     position: fixed;

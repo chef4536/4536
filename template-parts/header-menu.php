@@ -44,7 +44,7 @@ if( has_header_image() ) { ?>
         'items_wrap' => '<ul data-text-align="center" data-display="flex" class="scroll-content">%3$s</ul>'
       ];
       ?>
-      <div class="flex xs12 max-w-100 pt-2">
+      <div class="xs12 max-w-100 pt-2 pb-2">
         <nav id="header-nav" class="scroll-container" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
           <?php wp_nav_menu($defaults); ?>
         </nav>

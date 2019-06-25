@@ -32,22 +32,21 @@ Version: 1.1.7
 }
 
 .mask {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // z-index: 5;
-    // width: 100%;
-    // height: 100%;
-    background-color: #000;
-    opacity: .8;
-    visibility: visible;
-    overflow: hidden;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 5;
+  // width: 100%;
+  // height: 100%;
+  background-color: #000;
+  opacity: 0.8;
+  visibility: visible;
+  overflow: hidden;
 }
 
 .mask-on-text {
   color: #fff;
 }
-
 /////////////////////////////////
 /////////// article ////////////
 ////////////////////////////////
@@ -60,6 +59,21 @@ Version: 1.1.7
 #post-thumbnail-4536 {
   transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   box-shadow: 0 0 20px #ccc;
+}
+/* youtubeのレスポンシブ */
+.responsive-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-wrapper iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .article-body {
@@ -106,6 +120,52 @@ Version: 1.1.7
       line-height: 1.6;
     }
   }
+
+  pre {
+    margin-bottom: 1.5em;
+  }
+
+  code {
+    display: inline;
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+    color: #c5c8c6;
+    background-color: #1d1f21;
+    word-wrap: break-word;
+  }
+
+  pre code {
+    display: block;
+    padding: 0.5em;
+    color: #c5c8c6;
+    background-color: #1d1f21;
+    white-space: pre;
+    overflow-x: auto;
+    word-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+  /* ビデオ */
+  .wp-video {
+    margin-bottom: 1.5rem;
+  }
+  /* キャプション */
+  .wp-caption {
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .wp-block-image figcaption,
+  .wp-caption-text {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    padding: 5px;
+    margin: 0;
+    color: inherit;
+  }
 }
 /////////////////////////////////
 /////////// comment ////////////
@@ -124,7 +184,11 @@ Version: 1.1.7
     margin-bottom: 1.5em;
   }
 
-  #comment,#author,#email,#url,#siteguard_captcha {
+  #author,
+  #comment,
+  #email,
+  #siteguard_captcha,
+  #url {
     width: 100%;
     border: 0.5px solid #ccc;
     padding: 0.5em;
@@ -136,7 +200,8 @@ Version: 1.1.7
     .comment-body {
       padding-bottom: 2em;
       margin-bottom: 1.5em;
-      border-bottom: .5px solid #eee;
+      border-bottom: 0.5px solid #eee;
+
       .avatar {
         border-radius: 50%;
       }
@@ -145,6 +210,7 @@ Version: 1.1.7
     .commentmetadata {
       font-size: 10px;
       padding: 1em 0;
+
       a {
         color: #808080;
       }
@@ -156,18 +222,39 @@ Version: 1.1.7
       border: 2px solid;
       border-radius: 20px;
     }
-
   }
-
 }
-
 /////////////////////////////////
 ///////// next prev ////////////
 ////////////////////////////////
+
 .prev-post-thumbnail {
   padding-top: 70%;
 }
-
+/////////////////////////////////
+//////////// widget ////////////
+////////////////////////////////
+// ドロップダウンの幅
+#searchform input,
+.dropdown-list select,
+.widget_archive select,
+.widget_categories select {
+  width: 100%;
+}
+//ドロップダウンメニューのテキスト削除
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
 /////////////////////////////////
 //////////// define ////////////
 ////////////////////////////////
@@ -176,7 +263,6 @@ Version: 1.1.7
   -webkit-animation: fadeIn 0.8s ease 0s 1 normal;
   animation: fadeIn 0.8s ease 0s 1 normal;
 }
-
 @keyframes fadeIn {
   0% {
     opacity: 0;

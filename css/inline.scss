@@ -134,20 +134,17 @@ $button_base_size: 56px;
 /////////////////////////////////
 //////////// header ////////////
 ////////////////////////////////
-
-#header {
-  .inner {
-    overflow: visible;
-  }
-
-  .header-logo {
-    max-height: 48px;
-  }
+.header-logo {
+  max-height: 48px;
 }
 
 #header-nav {
+  z-index: 5;
+  transition: 0.5s ease;
+
   .menu-item {
     margin-right: 16px;
+    position: relative;
 
     a {
       opacity: .8;
@@ -165,13 +162,9 @@ $button_base_size: 56px;
   .sub-menu {
     display: none;
   }
+
 }
 
-#header,
-#header-nav {
-  z-index: 5;
-  transition: 0.5s ease;
-}
 /////////////////////////////////
 //////////// meta ////////////
 ////////////////////////////////
@@ -299,6 +292,34 @@ $button_base_size: 56px;
 /* min-1024px BEGIN for landscape tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
+
+  #header-nav {
+    overflow-x: inherit;
+    .menu-item-has-children:hover {
+
+      .sub-menu {
+        width: 100%;
+        display:block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        white-space: normal;
+
+        .menu-item {
+          width: 100%;
+        }
+
+        a {
+          display: block;
+          box-shadow: 0 0 3px rgba(0,0,0,0.2);
+          padding: 8px;
+        }
+
+      }
+
+    }
+  }
 
   #sidebar {
     width: 320px;

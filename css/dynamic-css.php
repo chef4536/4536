@@ -43,6 +43,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //セカンダリーカラー
     $secondary_color = secandary_color();
+    $css[] = ".sub-menu .menu-item{background-color:$secondary_color}";
 
     //グラデーション
     $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
