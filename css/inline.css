@@ -300,7 +300,7 @@
     border-left: .5px solid;
     flex: 1;
   }
-  #sidebar #scroll-sidebar {
+  #scroll-sidebar {
     position: -webkit-sticky;
     top: 20px;
     position: sticky;

@@ -89,7 +89,7 @@ function media_section_4536($media, $args = [])
   if( $media==='pickup' ) { ?>
     <div id="pickup" class="pt-5">
       <p data-text-align="center" class="headline mt-5 mb-3">Pickup</p>
-      <div data-display="flex">
+      <div data-display="flex" data-justify-content="center">
         <?php
         foreach ($customPosts as $post) : setup_postdata($post);
         post_list_card_4536();
@@ -102,11 +102,11 @@ function media_section_4536($media, $args = [])
     <div id="<?php echo $media ?>" class="gradation mt-5 mb-5">
       <?php wave_shape('media_top'); ?>
       <div data-position="relative" class="pa-4">
-        <p class="headline t-a-c mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
+        <p data-text-align="center" class="headline mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
         <div data-text-align="center" class="scroll-container">
           <div data-display="table" class="scroll-content mx-auto">
             <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
-              <div class="<?php echo $media; ?>-content mr-2" data-display="inline-block" data-text-align="left" data-position="relative">
+              <div class="<?php echo $media; ?>-content mr-4" data-display="inline-block" data-text-align="left" data-position="relative">
                 <?php echo thumbnail_4536($media)['thumbnail']; ?>
                 <span data-display="block" class="mt-2"></span>
                 <a class="link-mask mt-2" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

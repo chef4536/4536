@@ -130,22 +130,12 @@ add_filter('inline_style_4536', function ($css) {
         }
     }
 
-    //メディアセクション使ってるかどうか
-    $music_custom_posts = get_posts([ 'post_type' => 'music', 'posts_per_page'=> -1 ]);
-    $movie_custom_posts = get_posts([ 'post_type' => 'movie', 'posts_per_page'=> -1 ]);
-    $pickup_custom_posts = get_posts([ 'post_type' => 'post', 'tag' => 'pickup', 'posts_per_page'=> -1, 'post__not_in' => [get_the_ID()] ]);
-    if ($movie_custom_posts || $music_custom_posts || $pickup_custom_posts) {
-        // $css[] = '.media-section{position:relative;overflow:auto;clear:both;padding-bottom:1.5em}.media-section-title{margin:1em auto;font-size:20px;text-align:center}.media-content{display:inline-table;margin-right:10px;vertical-align:top}.media-content a{display:block}.media-content:last-child{margin-right:0}.media-content .post-info{margin-top:10px}.media-content .post-info .media-content-title{white-space:normal;font-size:9pt}';
+    //メディアセクション
+    if ( get_posts([ 'post_type' => 'music', 'posts_per_page'=> -1 ]) ) {
+        $css[] = '.movie-content{width:196px;white-space:normal;vertical-align:top}.thumbnail-movie-4536{padding-top:56%}.thumbnail-movie-4536 img{border-radius:4px}';
     }
-    if ($movie_custom_posts) {
-        $css[] = '.movie-content{width:196px;white-space:normal;vertical-align:top}.thumbnail-movie-4536{padding-top:56%}';
-    }
-    if ($music_custom_posts) {
-        $css[] = '.music-content{width:150px;white-space:normal;vertical-align:top}.thumbnail-music-4536{padding-top:100%}';
-    }
-    if ($pickup_custom_posts) {
-        $height = (thumbnail_size()==='thumbnail') ? '150' : '113' ;
-        $css[] = '.pickup-content{width:150px}';
+    if (get_posts([ 'post_type' => 'movie', 'posts_per_page'=> -1 ])) {
+        $css[] = '.music-content{width:200px;white-space:normal;vertical-align:top}.thumbnail-music-4536{padding-top:100%}.thumbnail-music-4536 img{border-radius:4px}';
     }
 
     //コピー禁止
