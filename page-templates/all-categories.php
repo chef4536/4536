@@ -3,12 +3,6 @@ get_header(); ?>
 <div id="contents-wrapper" class="w-100 max-w-100">
   <main id="main" class="w-100" role="main">
     <article id="all-categories" class="post">
-      <header>
-        <h1 id="h1" class="headline"><?php the_title(); ?></h1>
-        <?php if (!get_post_meta($post->ID, 'none_post_thumbnail', true)) {
-    the_post_thumbnail_4536();
-} ?>
-      </header>
       <div class="article-body">
         <?php
         $args = [

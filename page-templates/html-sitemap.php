@@ -3,12 +3,6 @@ get_header(); ?>
 <div id="contents-wrapper" class="w-100 max-w-100">
   <main id="main" class="w-100" role="main">
     <article id="html-sitemap" class="post">
-      <header>
-        <h1 id="h1" class="headline"><?php the_title(); ?></h1>
-        <?php if (!get_post_meta($post->ID, 'none_post_thumbnail', true)) {
-    the_post_thumbnail_4536();
-} ?>
-      </header>
       <div class="article-body">
         <?php
         $is_thumbnail = get_post_meta($post->ID, 'html_sitemap_thumbnail', true);
@@ -42,7 +36,7 @@ get_header(); ?>
             'exclude' => [ $exclude_post_id ],
           ]);
               foreach ($post_arr as $post) {
-                  echo '<article class="post-list l-h-140 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                  echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . I_NOTE . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
               }
               the_child_sitemap_4536($cat_id, 2, $exclude_cat_id_arr, $exclude_post_id);
               echo '</section>';
@@ -75,7 +69,7 @@ get_header(); ?>
                 'exclude' => [ $exclude_post_id ],
               ]);
                     foreach ($post_arr as $post) {
-                        echo '<article class="post-list l-h-140 padding-bottom-1em"><i class="far fa-file-alt"></i><a href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                        echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . I_NOTE . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
                     }
                     the_child_sitemap_4536($child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id);
                     echo '</section>';

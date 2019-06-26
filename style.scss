@@ -96,15 +96,10 @@ Version: 1.1.7
     }
   }
 
-  ol,
-  ul:not(.wp-block-gallery):not(.outline-wrap) {
-    padding-left: 1.5em;
-    margin-bottom: 2em;
-  }
-
   blockquote:not(.external-website-embed-content) {
     border-left: 3px solid;
-    background-color: #fcfcfc;
+    background-color: #808080;
+    padding: 1.5em;
   }
 
   table {
@@ -167,6 +162,110 @@ Version: 1.1.7
     color: inherit;
   }
 }
+
+// 吹き出し
+.balloon {
+  display: flex;
+  margin-bottom: 2em;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+}
+.balloon-image-left {
+  margin-right: 1em;
+  flex: 0 0 auto;
+}
+.balloon-image-right{
+  margin-left: 1em;
+  flex: 0 0 auto;
+}
+.balloon-image-description{
+  font-size: 10px;
+  text-align:center;
+}
+.balloon-image-right {
+  order: 1;
+}
+.balloon-text-right,.balloon-text-left {
+  position: relative;
+  padding: 1em;
+  border: 1px solid #aaa;
+  border-radius:10px;
+}
+
+.balloon-text-left {
+  margin-left: auto;
+}
+
+// .balloon-text-right:before{
+//     border-right:10px solid #aaa;
+//     left:-20px;
+// }
+// .balloon-text-right:after,.balloon-text-right:before {
+//     position:absolute;
+//     content:"";
+//     border-top:10px solid transparent;
+//     border-left:10px solid transparent;
+//     border-bottom:10px solid transparent;
+//     top:15px;
+// }
+// .balloon-text-right:after {
+//     border-right-style: solid;
+//     border-right-width: 10px;
+//     left:-19px;
+// }
+// .balloon-text-left:before {
+//     border-left:10px solid #aaa;
+//     right:-20px;
+// }
+// .balloon-text-left:after,.balloon-text-left:before {
+//     position:absolute;
+//     content:"";
+//     border-top:10px solid transparent;
+//     border-right:10px solid transparent;
+//     border-bottom:10px solid transparent;
+//     top:15px;
+// }
+// .balloon-text-left:after {
+//     border-left-style: solid;
+//     border-left-width: 10px;
+//     right: -19px;
+// }
+// .think .balloon-text-left,.think .balloon-text-right {
+//     border-radius:30px;
+// }
+// .think .balloon-text-right:before {
+//     left:-9pt;
+// }
+// .think .balloon-text-right:after {
+//     border:1px solid #aaa;
+//     border-radius:50%;
+//     width:4px;
+//     height:4px;
+//     top:20px;
+//     left:-19px;
+// }
+// .think .balloon-text-left:before,.think .balloon-text-right:before {
+//     border:1px solid #aaa;
+//     border-radius:50%;
+//     width:8px;
+//     height:8px;
+//     top:15px;
+// }
+// .think .balloon-text-left:before {
+//     right:-9pt;
+// }
+// .think .balloon-text-left:after {
+//     border:1px solid #aaa;
+//     border-radius:50%;
+//     width:4px;
+//     height:4px;
+//     top:20px;
+//     right:-19px;
+// }
+
 /////////////////////////////////
 /////////// comment ////////////
 ////////////////////////////////

@@ -87,15 +87,10 @@ Version: 1.1.7
   text-decoration: underline;
 }
 
-.article-body ol,
-.article-body ul:not(.wp-block-gallery):not(.outline-wrap) {
-  padding-left: 1.5em;
-  margin-bottom: 2em;
-}
-
 .article-body blockquote:not(.external-website-embed-content) {
   border-left: 3px solid;
-  background-color: #fcfcfc;
+  background-color: #808080;
+  padding: 1.5em;
 }
 
 .article-body table {
@@ -156,6 +151,45 @@ Version: 1.1.7
   padding: 5px;
   margin: 0;
   color: inherit;
+}
+
+.balloon {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.balloon p:last-child {
+  margin-bottom: 0;
+}
+
+.balloon-image-left {
+  margin-right: 1em;
+  flex: 0 0 auto;
+}
+
+.balloon-image-right {
+  margin-left: 1em;
+  flex: 0 0 auto;
+}
+
+.balloon-image-description {
+  font-size: 10px;
+  text-align: center;
+}
+
+.balloon-image-right {
+  order: 1;
+}
+
+.balloon-text-right, .balloon-text-left {
+  position: relative;
+  padding: 1em;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+
+.balloon-text-left {
+  margin-left: auto;
 }
 
 #comments #reply-title {
