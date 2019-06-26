@@ -295,29 +295,39 @@ $button_base_size: 56px;
 
   #header-nav {
     overflow-x: inherit;
-    .menu-item-has-children:hover {
 
-      .sub-menu {
-        width: 100%;
-        display:block;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1;
-        white-space: normal;
+    .menu-item-has-children {
 
-        .menu-item {
+      display: flex;
+
+      &::after {
+        content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTcgMTBsNSA1IDUtNXoiLz48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+');
+      }
+
+      &:hover {
+
+        .sub-menu {
           width: 100%;
-        }
+          display:block;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1;
+          white-space: normal;
 
-        a {
-          display: block;
-          box-shadow: 0 0 3px rgba(0,0,0,0.2);
-          padding: 8px;
+          .menu-item {
+            width: 100%;
+          }
+
+          a {
+            display: block;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            padding: 8px;
+          }
+
         }
 
       }
-
     }
   }
 

@@ -259,6 +259,12 @@
   #header-nav {
     overflow-x: inherit;
   }
+  #header-nav .menu-item-has-children {
+    display: flex;
+  }
+  #header-nav .menu-item-has-children::after {
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTcgMTBsNSA1IDUtNXoiLz48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PC9zdmc+");
+  }
   #header-nav .menu-item-has-children:hover .sub-menu {
     width: 100%;
     display: block;
