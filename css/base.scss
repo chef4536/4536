@@ -1,5 +1,4 @@
-$space: 16px;
-////////////////////////////
+$space: 16px; ////////////////////////////
 //////// element //////////
 ///////////////////////////
 
@@ -40,7 +39,8 @@ iframe {
   vertical-align: bottom;
 }
 
-ul,ol {
+ol,
+ul {
   list-style: none;
 }
 
@@ -48,10 +48,10 @@ li {
   line-height: 1.5;
   margin: 0.5em 0;
 }
-
 //////////////////////////
 //////// color  /////////
 /////////////////////////
+
 [data-color="white"] {
   color: #fff;
 }
@@ -67,7 +67,6 @@ li {
 [data-bg-color="black"] {
   background-color: #000;
 }
-
 ////////////////////////////
 //////// width ////////////
 ///////////////////////////
@@ -142,7 +141,6 @@ li {
   display: flex;
   flex-wrap: wrap;
 }
-
 ////////////////////////////
 //////// overflow /////////
 ///////////////////////////
@@ -150,7 +148,6 @@ li {
 [data-overflow="hidden"] {
   overflow: hidden;
 }
-
 ///////////////////////////
 //////// position /////////
 ///////////////////////////
@@ -209,8 +206,6 @@ li {
 [data-text-align="left"] {
   text-align: left;
 }
-
-
 ////////////////////////////
 //////// float ////////////
 ///////////////////////////
@@ -220,7 +215,6 @@ li {
   display: block;
   margin: 0 auto;
 }
-
 ////////////////////////////
 ////// line-height /////////
 ///////////////////////////
@@ -547,7 +541,6 @@ li {
 .flex-1 {
   flex: 1;
 }
-
 ////////////////////////////
 ///////// font ////////////
 ///////////////////////////
@@ -561,7 +554,6 @@ li {
   font-size: 20px;
   font-weight: 500;
 }
-
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
@@ -569,9 +561,11 @@ li {
   .xs0 {
     flex: 0 1 0;
   }
+
   .xs6 {
     flex: 0 1 50%;
   }
+
   .xs12 {
     flex: 0 1 100%;
   }
@@ -580,13 +574,15 @@ li {
 /* --------------------------------------------------
 /* min-480px BEGIN for tablet and pc
 --------------------------------------------------- */
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) and (max-width: 767px) {
   .sm3 {
     flex: 0 1 25%;
   }
+
   .sm6 {
     flex: 0 1 50%;
   }
+
   .sm12 {
     flex: 0 1 100%;
   }
@@ -599,6 +595,7 @@ li {
   .d-n-sm {
     display: none;
   }
+
   [data-display="none-sm"] {
     display: none !important;
   }
@@ -611,15 +608,19 @@ li {
   .md3 {
     flex: 0 1 25%;
   }
+
   .md6 {
     flex: 0 1 50%;
   }
+
   .md9 {
     flex: 0 1 75%;
   }
+
   .md12 {
     flex: 0 1 100%;
   }
+
   .alignright {
     display: block;
     margin: 0 0 1.2em 1.2em;
@@ -659,9 +660,11 @@ li {
   .lg3 {
     flex: 0 1 25%;
   }
+
   .lg6 {
     flex: 0 1 50%;
   }
+
   .lg12 {
     flex: 0 1 100%;
   }

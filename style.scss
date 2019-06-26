@@ -143,8 +143,13 @@ Version: 1.1.7
 
   blockquote:not(.external-website-embed-content) {
     border-left: 3px solid;
-    background-color: #808080;
+    background-color: #eeeeee;
     padding: 1.5em;
+    margin-bottom: 1.5em;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   table {

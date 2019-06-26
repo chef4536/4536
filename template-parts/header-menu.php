@@ -29,6 +29,12 @@ if( has_header_image() ) { ?>
     </div>
     <div class="flex xs0"></div>
     <?php
+    //slidemenu
+    if( is_slide_menu() ) { ?>
+      <label data-display="none-md" id="header-slide-button" for="slide-toggle">
+        <?php echo I_MORE; ?>
+      </label>
+    <?php }
     if(has_nav_menu('header_nav')) {
       $defaults = [
         'theme_location'  => 'header_nav',
@@ -38,17 +44,9 @@ if( has_header_image() ) { ?>
         'items_wrap' => '<ul data-text-align="center" data-display="flex" data-flex-wrap="nowrap" class="scroll-content">%3$s</ul>'
       ];
       ?>
-      <div class="xs12 max-w-100 pt-2 pb-2">
-        <nav id="header-nav" class="scroll-container" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-          <?php wp_nav_menu($defaults); ?>
-        </nav>
-      </div>
-    <?php }
-    //slidemenu
-    if( is_slide_menu() ) { ?>
-      <label data-button="floating" data-bg-color="white" data-display="none-md" id="header-slide-button" for="slide-toggle">
-        <?php echo I_MORE; ?>
-      </label>
+      <nav id="header-nav" class="scroll-container xs12 sm12 max-w-100 pt-2 pb-2" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <?php wp_nav_menu($defaults); ?>
+      </nav>
     <?php } ?>
   </div>
 <?php }
