@@ -489,8 +489,8 @@ li {
   flex-wrap: wrap;
 }
 
-[data-flex-wrap="wrap"] {
-  flex-wrap: wrap;
+[data-flex-wrap="nowrap"] {
+  flex-wrap: nowrap;
 }
 
 .flex {

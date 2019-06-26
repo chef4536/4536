@@ -166,6 +166,10 @@ $button_base_size: 56px;
 
 }
 
+#header-slide-button {
+  margin-left: auto;
+}
+
 /////////////////////////////////
 //////////// meta ////////////
 ////////////////////////////////
@@ -253,7 +257,6 @@ $button_base_size: 56px;
     top: 0;
     right: 0;
     padding: 10px 10px 60px;
-    background-color: #fcfcfc;
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     position: fixed;
@@ -261,7 +264,6 @@ $button_base_size: 56px;
     z-index: 20;
     -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    font-size: 16px;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
     -webkit-transition: 0.2s ease-out;
@@ -286,6 +288,10 @@ $button_base_size: 56px;
     max-width: 336px;
     min-height: 280px;
     height: auto;
+  }
+
+  .double-rectangle-wrapper .ad-left {
+      margin: 0 1em 0 0;
   }
 
   /* min-768px END */

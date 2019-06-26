@@ -23,25 +23,19 @@ if( has_header_image() ) { ?>
   } else {
     $site_name = get_bloginfo('name');
   } ?>
-  <div data-position="relative" data-display="flex" data-align-items="center" data-flex-wrap="wrap" class="container w-100 ma-auto pa-3">
+  <div data-position="relative" data-display="flex" data-align-items="center" class="container w-100 ma-auto pa-3">
     <div class="title flex">
       <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
     </div>
     <div class="flex xs0"></div>
-    <?php if( is_slide_menu() ) { ?>
-      <div data-display="none-md">
-        <label data-button="floating" data-bg-color="white" id="header-slide-button" for="slide-toggle">
-          <?php echo I_MORE; ?>
-        </label>
-      </div>
-    <?php }
+    <?php
     if(has_nav_menu('header_nav')) {
       $defaults = [
         'theme_location'  => 'header_nav',
         'container' => false,
         'fallback_cb' => false,
         'echo' => true,
-        'items_wrap' => '<ul data-text-align="center" data-display="flex" class="scroll-content">%3$s</ul>'
+        'items_wrap' => '<ul data-text-align="center" data-display="flex" data-flex-wrap="nowrap" class="scroll-content">%3$s</ul>'
       ];
       ?>
       <div class="xs12 max-w-100 pt-2 pb-2">
@@ -49,6 +43,12 @@ if( has_header_image() ) { ?>
           <?php wp_nav_menu($defaults); ?>
         </nav>
       </div>
+    <?php }
+    //slidemenu
+    if( is_slide_menu() ) { ?>
+      <label data-button="floating" data-bg-color="white" data-display="none-md" id="header-slide-button" for="slide-toggle">
+        <?php echo I_MORE; ?>
+      </label>
     <?php } ?>
   </div>
 <?php }

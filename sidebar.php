@@ -16,10 +16,10 @@ $is_slide_menu = is_slide_menu();
 <div id="sidebar" class="pa-4">
   <?php
   if( $is_slide_menu ) { ?>
-    <input id="slide-toggle" type="checkbox" class="d-n">
-    <label id="slide-mask" for="slide-toggle" class="d-n mask"></label>
-    <div id="slide-menu">
-      <label for="slide-toggle" class="close-button d-n-md slide-widget-close-button"><i class="fas fa-times"></i>CLOSE</label>
+    <input id="slide-toggle" type="checkbox" data-display="none">
+    <label id="slide-mask" for="slide-toggle" class="mask" data-display="none"></label>
+    <div id="slide-menu" class="t-0 r-0">
+      <label for="slide-toggle" data-display="none-md" class="close-button d-n-md slide-widget-close-button"><i class="fas fa-times"></i>CLOSE</label>
   <?php }
   if( is_amp() && is_amp_sidebar_top() ) echo amp_adsense_code();
   if( !empty($sidebar) ) echo '<aside class="sidebar-inner" role="complementary">' . $sidebar . '</aside>';

@@ -89,7 +89,7 @@ function media_section_4536($media, $args = [])
   if( $media==='pickup' ) { ?>
     <div id="pickup" class="pt-5">
       <p data-text-align="center" class="headline mt-5 mb-3">Pickup</p>
-      <div data-display="flex" data-flex-wrap="wrap">
+      <div data-display="flex">
         <?php
         foreach ($customPosts as $post) : setup_postdata($post);
         post_list_card_4536();

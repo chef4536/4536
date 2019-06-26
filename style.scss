@@ -75,6 +75,45 @@ Version: 1.1.7
   width: 100%;
   height: 100%;
 }
+//目次
+
+.toc-4536 {
+  .dot {
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    align-self: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+
+  .dot_inner {
+    height: 30px;
+    margin: 4px;
+    width: 30px;
+    border-radius: 50%;
+  }
+
+  ul {
+    flex: 0 0 95%;
+    margin-left: auto;
+  }
+
+  .indent-2 {
+    padding: 0;
+    position: relative;
+
+    &::before {
+      background: rgba(0,0,0,.12);
+      left: 18px;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 2px;
+    }
+  }
+}
 
 .article-body {
   h2,
@@ -293,95 +332,6 @@ Version: 1.1.7
     right: -19px;
   }
 }
-//目次
-.toc-4536 {
-  .dot {
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-    align-self: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-  }
-
-  .dot_inner {
-    height: 30px;
-    margin: 4px;
-    width: 30px;
-    border-radius: 50%;
-  }
-
-  ul {
-    flex: 0 0 95%;
-    margin-left: auto;
-  }
-
-  .indent-2 {
-    padding: 0;
-    position: relative;
-
-    &::before {
-      background: rgba(0,0,0,.12);
-      left: 18px;
-      bottom: 0;
-      content: "";
-      height: 100%;
-      position: absolute;
-      top: 0;
-      width: 2px;
-    }
-  }
-}
-// .toc-4536:not(.toc-sidebar) {
-//   border: 1px solid #e5e5e5;
-//   border-radius: 2px;
-//   padding: 1em;
-//   margin: 1em 0;
-// }
-//
-// .toc-title-4536 {
-//   font-size: 1.2em;
-//   font-weight: 700;
-//   margin-bottom: 1em;
-//   text-align: center;
-// }
-//
-// .toc-title-4536 a {
-//   font-size: 14px;
-//   font-weight: 400;
-// }
-//
-// .toc-outline {
-//   overflow: hidden;
-// }
-//
-// .toc-4536 ul {
-//   counter-reset: a;
-//   list-style-type: none;
-// }
-//
-// .toc-4536 ul ul {
-//   margin-left: 1.5em;
-// }
-//
-// .toc-4536 ul a {
-//   display: block;
-//   border-bottom: 1px solid;
-//   padding: 0;
-//   margin: 0.8em 0;
-//   font-size: small;
-// }
-//
-// .toc-4536 li {
-//   margin: 0;
-// }
-//
-// .toc-4536 li a:before {
-//   counter-increment: a;
-//   content: counters(a,".") "";
-//   margin-right: 0.5em;
-//   display: block;
-//   float: left;
-// }
 /////////////////////////////////
 /////////// comment ////////////
 ////////////////////////////////
@@ -473,6 +423,68 @@ Version: 1.1.7
   word-wrap: normal !important;
 }
 /////////////////////////////////
+////////// slide-menu //////////
+////////////////////////////////
+#slide-menu {
+  height: 100%;
+}
+
+#slide-toggle:checked ~ #slide-menu {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+#fixed-footer-menu-sns,
+#fixed-search {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #fff;
+}
+
+#fixed-search-form {
+  margin: 2em 10px 1.5em;
+}
+
+#search-toggle:checked ~ #fixed-search,
+#search-toggle:checked ~ #search-mask,
+#share-menu-toggle:checked ~ #fixed-footer-menu-sns,
+#share-menu-toggle:checked ~ #share-menu-mask,
+#slide-toggle:checked ~ #slide-mask {
+  display: block;
+}
+
+.close-button:not(.fixed-footer-close-button) {
+  display: block;
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+/////////////////////////////
+//////////// etc ////////////
+/////////////////////////////
+// 計測タグ
+img[width|="0"],
+img[height|="0"],
+img[width|="1"],
+img[height|="1"] {
+  display: inline-block;
+  position: absolute;
+}
+//recaptha
+.grecaptcha-badge {
+  bottom: 80px !important;
+}
+/* Googleカスタム検索 */
+.cse .gsc-control-cse,
+.gsc-control-cse {
+  padding: 0 !important;
+}
+/////////////////////////////////
 //////////// define ////////////
 ////////////////////////////////
 
@@ -488,4 +500,126 @@ Version: 1.1.7
   100% {
     opacity: 1;
   }
+}
+/* ボタン装飾 */
+.is-reflection::after {
+  -moz-animation: is-reflection 4s ease-in-out infinite;
+  -moz-transform: rotate(45deg);
+  -ms-animation: is-reflection 4s ease-in-out infinite;
+  -ms-transform: rotate(45deg);
+  -o-animation: is-reflection 4s ease-in-out infinite;
+  -o-transform: rotate(45deg);
+  -webkit-animation: is-reflection 4s ease-in-out infinite;
+  -webkit-transform: rotate(45deg);
+  animation: is-reflection 4s ease-in-out infinite;
+  background-color: #fff;
+  content: " ";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: -180px;
+  transform: rotate(45deg);
+  width: 30px;
+}
+
+.is-reflection + .is-reflection:after {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+@keyframes is-reflection {
+  0% {
+    -webkit-transform: scale(0) rotate(45deg);
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+
+  80% {
+    -webkit-transform: scale(0) rotate(45deg);
+    transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+
+  81% {
+    -webkit-transform: scale(4) rotate(45deg);
+    transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(50) rotate(45deg);
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes is-reflection {
+  0% {
+    -webkit-transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+
+  80% {
+    -webkit-transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+
+  81% {
+    -webkit-transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.is-bounce {
+  animation: bounce 4s infinite;
+  -moz-animation: bounce 4s infinite;
+  -webkit-animation: bounce 4s infinite;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+@-webkit-keyframes bounce {
+  0%,
+  10%,
+  100%,
+  18%,
+  4% {
+    -webkit-transform: translateY(0);
+  }
+
+  5% {
+    -webkit-transform: translateY(-6px);
+  }
+
+  12% {
+    -webkit-transform: translateY(-4px);
+  }
+}
+@keyframes bounce {
+  100%,
+  20%,
+  24%,
+  30%,
+  34% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  25% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+
+  32% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+}
+
+.is-bounce + .is-bounce {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }

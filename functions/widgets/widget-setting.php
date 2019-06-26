@@ -71,7 +71,7 @@ function widget_post_count_4536() {
 add_filter( 'wp_list_categories', 'posted_count_in_textlink_4536'); //カテゴリ
 add_filter( 'get_archives_link', 'posted_count_in_textlink_4536'); //アーカイブ
 function posted_count_in_textlink_4536($output) {
-    $output = str_replace( '<li', '<li data-display="flex" data-flex-wrap="wrap"', $output );
+    $output = str_replace( '<li', '<li data-display="flex"', $output );
     $output = str_replace( '<a', '<a data-text="ellipsis" class="flex-1 post-color"', $output );
     return $output;
 }
