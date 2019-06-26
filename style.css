@@ -83,7 +83,7 @@ Version: 1.1.7
   margin-bottom: 2em;
 }
 
-.article-body p a:not(.wp-embed-heading) {
+.article-body p > a {
   text-decoration: underline;
 }
 

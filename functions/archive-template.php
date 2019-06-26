@@ -98,7 +98,7 @@ function post_list_template_4536($page_4536)
 function post_list_card_4536( $title_tag = 'h2' )
 { ?>
   <article class="xs12 sm12 md6 p-r pa-2 card-wrap">
-    <div class="card h-100 f-d-c d-f p-r">
+    <div data-display="flex" data-position="relative" data-flex-direction="column" class="card h-100">
       <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
       <div class="card-content flex pl-3 pr-3 pt-4 pb-4">
         <?php if (is_home()) {
@@ -115,7 +115,7 @@ function post_list_card_4536( $title_tag = 'h2' )
         <?php echo '</' . $title_tag . ' >'; ?>
       </div>
       <div class="flex"></div>
-      <div class="card-meta a-i-c d-f pa-3">
+      <div data-display="flex" data-align-items="center" class="card-meta pa-3">
         <div class="meta">
           <span><?php the_date() ?></span>
         </div>

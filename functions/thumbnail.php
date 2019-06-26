@@ -49,7 +49,6 @@ function thumbnail_4536($thumbnail_style)
         $size = [196, 110];
         break;
       default:
-        $thumbnail_class = $thumb150;
         break;
     }
 
@@ -57,12 +56,10 @@ function thumbnail_4536($thumbnail_style)
         $size = $thumb500;
     }
 
-    $class = "post-thumbnail-image p-a t-0 r-0 b-0 l-0 w-100 max-w-100 min-w-100 h-100";
-
-    $post_thumbnail = get_the_post_thumbnail($post->ID, $size, ['class' => $class]);
+    $post_thumbnail = get_the_post_thumbnail($post->ID, $size);
 
     //サムネイル
-    $start_tag = '<figure class="p-r post-list-thumbnail w-100 '.$thumbnail_class.'">';
+    $start_tag = '<figure data-position="relative" class="post-list-thumbnail w-100 ' . $thumbnail_class . '">';
     $thumbnail = (has_post_thumbnail()) ? $post_thumbnail : get_some_image_4536($content);
     $end_tag = $date.$category.'</figure>';
     $thumbnail = $start_tag.$thumbnail.$end_tag;

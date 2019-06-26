@@ -537,6 +537,10 @@ li {
   flex-direction: column;
 }
 
+[data-flex-direction="column"] {
+  flex-direction: column;
+}
+
 .f-w-w {
   flex-wrap: wrap;
 }

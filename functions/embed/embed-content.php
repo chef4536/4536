@@ -52,7 +52,7 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $icon = ( isset($icon)===true && !empty($icon) ) ? $icon : '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
-    $comment = ( isset($comment) && !empty($comment) ) ? '<span class="wp-embed-comments"><i class="dashicons dashicons-admin-comments"></i><span>'.$comment.'</span></span>' : '';
+    $comment = ( isset($comment) && !empty($comment) ) ? '<span data-display="flex" class="wp-embed-comments">' . I_COMMENT . '<span>'.$comment.'</span></span>' : '';
 
     if ( is_my_website( $url ) === true ) {
       $blockquote_begin = $blockquote_end = '';
@@ -63,7 +63,7 @@ class ConvertEmbedContentFrom_url_4536 {
       $external_link = ' target="_blank" rel="noreferrer noopener"';
     }
 
-    $title = '<a title="' . $title . '" href="' . $url . '" class="wp-embed-heading link-mask"' . $external_link . '>' . $title . '</a>';
+    $link_text = '<a title="' . $title . '" href="' . $url . '" class="post-color title wp-embed-heading link-mask"' . $external_link . '>' . $title . '</a>';
     $excerpt = ( !empty($excerpt) ) ? '<span class="wp-embed-excerpt">'.$excerpt.'</span>' : '';
 
     if ( empty($thumbnail) ) return '<a data-embed-content="false" href="'.$url.'"'.$external_link.'>'.$data['title'].'</a>';
@@ -72,23 +72,21 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $output = <<< EOM
     {$blockquote_begin}
-    <span data-embed-content="true" class="wp-embed post-color p-r d-b">
-      {$title}
-      <span class="blogcard-image-info-wrap p-r z-index--1">
-        <span class="wp-embed-featured-image post-list-thumbnail{$image_size}">
+    <span data-display="block" class="card-wrap pa-2">
+      <span data-embed-content="true" data-display="flex" data-position="relative" data-flex-direction="column" class="wp-embed card h-100">
+        <span data-position="relative" class="wp-embed-featured-image post-list-thumbnail w-100">
           {$thumbnail}
         </span>
-        <span class="blogcard-info">
-          {$excerpt}
-          {$more_text}
+        <span class="card-content flex pl-3 pr-3 pt-4 pb-4">
+          {$link_text}
         </span>
-      </span>
-      <span class="wp-embed-footer">
-        <span class="blogcard-siteinfo">
+        <span data-display="flex" data-align-items="center" class="card-meta pa-3 l-h-100 wp-embed-footer">
           <span class="site_icon">{$icon}</span>
-          <span class="wp-embed-site-title">{$sitename}</span>
+          <span class="wp-embed-site-title ml-2 mr-2">{$sitename}</span>
+          {$comment}
+          <span class="flex"></span>
+          <span><a data-button="submit" title="{$title}" href="{$url}">もっと見る</a></span>
         </span>
-        {$comment}
       </span>
     </span>
     {$blockquote_end}

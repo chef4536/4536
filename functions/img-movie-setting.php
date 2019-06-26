@@ -50,7 +50,7 @@ function get_some_image_4536($content)
     $w_px = get_image_width_and_height_4536(get_some_image_url_4536($content))['width'];
     $h_px = get_image_width_and_height_4536(get_some_image_url_4536($content))['height'];
     $sizes = ' sizes="(max-width:'.$w_px.'px) 100vw, '.$w_px.'px"';
-    $thumbnail = '<img class="post-thumbnail-image p-a t-0 r-0 b-0 l-0 w-100 max-w-100 min-w-100 h-100" src="'.get_some_image_url_4536($content).'" alt="'.get_the_title().'" width="'.$w_px.'" height="'.$h_px.'"'.$sizes.'>';
+    $thumbnail = '<img src="'.get_some_image_url_4536($content).'" alt="'.get_the_title().'" width="'.$w_px.'" height="'.$h_px.'"'.$sizes.'>';
     return $thumbnail;
 }
 
@@ -243,11 +243,11 @@ function header_logo_4536()
 function prev_next_post_thumbnail($post_id)
 {
     if (!has_post_thumbnail($post_id)) {
-        echo '<div class="prev-post-thumbnail w-100 h-100"></div>';
+        echo '<div class="post-list-thumbnail prev-post-thumbnail w-100 h-100"></div>';
         return;
     }
 
-    echo '<figure class="prev-post-thumbnail w-100 h-100">'.get_the_post_thumbnail($post_id, $thumb, ['class' => 'post-thumbnail-image p-a t-0 b-0 r-0 l-0 w-100 max-w-100 min-w-100 h-100']).'</figure>';
+    echo '<figure class="post-list-thumbnail prev-post-thumbnail w-100 h-100">'.get_the_post_thumbnail($post_id).'</figure>';
 }
 
 /////////////////////////////////////////////
