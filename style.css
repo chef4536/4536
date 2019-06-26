@@ -87,6 +87,12 @@ Version: 1.1.7
   text-decoration: underline;
 }
 
+.article-body ol,
+.article-body ul {
+  list-style: initial;
+  padding-left: 1.5em;
+}
+
 .article-body blockquote:not(.external-website-embed-content) {
   border-left: 3px solid;
   background-color: #808080;
@@ -156,6 +162,7 @@ Version: 1.1.7
 .balloon {
   display: flex;
   margin-bottom: 2em;
+  align-items: flex-start;
 }
 
 .balloon p:last-child {
@@ -170,6 +177,7 @@ Version: 1.1.7
 .balloon-image-right {
   margin-left: 1em;
   flex: 0 0 auto;
+  order: 1;
 }
 
 .balloon-image-description {
@@ -177,11 +185,8 @@ Version: 1.1.7
   text-align: center;
 }
 
-.balloon-image-right {
-  order: 1;
-}
-
-.balloon-text-right, .balloon-text-left {
+.balloon-text-left,
+.balloon-text-right {
   position: relative;
   padding: 1em;
   border: 1px solid #aaa;
@@ -190,6 +195,86 @@ Version: 1.1.7
 
 .balloon-text-left {
   margin-left: auto;
+}
+
+.balloon-text-left::before {
+  border-left: 10px solid #aaa;
+  right: -20px;
+}
+
+.balloon-text-left::after {
+  border-left-style: solid;
+  border-left-width: 10px;
+  right: -19px;
+}
+
+.balloon-text-left::after, .balloon-text-left::before {
+  position: absolute;
+  content: "";
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  top: 15px;
+}
+
+.balloon-text-right::before {
+  border-right: 10px solid #aaa;
+  left: -20px;
+}
+
+.balloon-text-right::after {
+  border-right-style: solid;
+  border-right-width: 10px;
+  left: -19px;
+}
+
+.balloon-text-right::after, .balloon-text-right::before {
+  position: absolute;
+  content: "";
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  top: 15px;
+}
+
+.think .balloon-text-left,
+.think .balloon-text-right {
+  border-radius: 30px;
+}
+
+.think .balloon-text-right::before {
+  left: -9pt;
+}
+
+.think .balloon-text-right::after {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  top: 20px;
+  left: -19px;
+}
+
+.think .balloon-text-left::before,
+.think .balloon-text-right::before {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  top: 15px;
+}
+
+.think .balloon-text-left::before {
+  right: -9pt;
+}
+
+.think .balloon-text-left::after {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  top: 20px;
+  right: -19px;
 }
 
 #comments #reply-title {

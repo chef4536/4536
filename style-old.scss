@@ -42,56 +42,6 @@ select,textarea,input[type="search"] {
     margin-bottom: 1.5em;
 }
 
-
-
-/* 目次 */
-.toc-4536:not(.toc-sidebar) {
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-    padding: 1em;
-    margin: 1em 0;
-}
-.toc-4536 a {
-    text-decoration: none
-}
-.toc-title-4536 {
-    font-size: 1.2em;
-    font-weight: 700;
-    margin-bottom: 1em;
-    text-align: center;
-}
-.toc-title-4536 a {
-    font-size: 14px;
-    font-weight: 400;
-}
-.toc-outline {
-    overflow:hidden;
-}
-.toc-4536 ul {
-    counter-reset: a;
-    list-style-type: none;
-}
-.toc-4536 ul ul {
-    margin-left: 1.5em;
-}
-.toc-4536 ul a {
-    display: block;
-	border-bottom: 1px solid;
-	padding: 0;
-	margin: .8em 0;
-    font-size: small;
-}
-.toc-4536 li {
-    margin: 0;
-}
-.toc-4536 li a:before {
-    counter-increment: a;
-    content: counters(a,".") "";
-    margin-right: .5em;
-    display: block;
-    float:left;
-}
-
 /* ヘッダー縮小 */
 .fixed-top {
     position: fixed;
