@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //固定ヘッダー
     if( fixed_header !== null ) {
       if(new_scroll_position < last_scroll_position && last_scroll_position > header_h) {
-        header.classList.add('fixed-top', 'post-bg-color');
+        header.classList.add('fixed-top', 'body-bg-color');
         header.style.top = - header_h + 'px';
         body.style.paddingTop = header_h + 'px';
       }
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         header.style.webkitTransform = '';
       }
       if(last_scroll_position < header_h) {
-        header.classList.remove('fixed-top', 'post-bg-color');
+        header.classList.remove('fixed-top', 'body-bg-color');
         body.style.paddingTop = '0';
       }
     }

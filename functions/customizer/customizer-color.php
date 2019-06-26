@@ -178,7 +178,7 @@ class CustomizerColorSettings_4536 {
     //背景色
     global $pagenow;
     $option = ( is_admin() && ( $pagenow==='post.php' || $pagenow==='post-new.php' ) ) ? ' !important;' : ';' ;
-    $post_bg_class = '.post-bg-color';
+    $post_bg_class = '.body-bg-color';
     $post_bg_color = get_bg_color_4536() . $option;
     if( fixed_header() === true ) $post_bgc_class .= ',.fixed-top .sub-menu';
     $css[] = "$post_bg_class{background-color:$post_bg_color$option}"; //背景色

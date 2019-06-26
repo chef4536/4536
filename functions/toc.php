@@ -34,11 +34,11 @@ function get_outline_info_4536($content)
                 $outline .= '</li></ul>';
             }
             if ($current_level == $level) {
-                $outline .= '</li><li>';
+                $outline .= '</li><li data-position="relative" data-display="flex" data-align-items="center">';
             } else {
                 while ($current_level < $level) {
                     $current_level++;
-                    $outline .= sprintf('<ul class="outline-wrap indent-%s"><li>', $current_level);
+                    $outline .= sprintf('<ul class="indent-%s"><li data-position="relative" data-display="flex" data-align-items="center">', $current_level);
                 }
                 for ($idx = $current_level + 0; $idx < count($sub_levels); $idx++) {
                     $sub_levels[$idx] = 0;
@@ -53,9 +53,9 @@ function get_outline_info_4536($content)
             $depth_num = implode('-', $level_fullpath);
             $target_anchor_toc = '#outline-' . $depth_num;
             $target_anchor_content = 'outline-' . $depth_num;
-            $dot = ( ctype_digit($depth_num) ) ? '<div class="dot">' . $depth_num . '</div>' : '';
+            $dot = ( ctype_digit($depth_num) ) ? '<div class="dot body-bg-color mr-2"><div data-display="flex" data-justify-content="center" data-align-items="center" class="dot_inner gradation">' . $depth_num . '</div></div>' : '';
             $outline .= $dot;
-            $outline .= sprintf('<a href="%s" class="clearfix post-color"><div class="toc-outline">%s</div></a>', $target_anchor_toc, $text);
+            $outline .= sprintf('<a data-display="flex" href="%s" class="flex-1">%s</a>', $target_anchor_toc, $text);
             $content = preg_replace('/<h(['.$search_level.'])>/', '<h\1 id="' . $target_anchor_content . '">', $content, 1);
         }
         $search = '/<h(['.$search_level.'])\s(.*?)>(.*?)<\/h\1>/';
@@ -86,7 +86,7 @@ function table_of_contents_4536($content)
     if (!$outline) {
         return $content;
     }
-    $outline = '<div class="toc-4536"><p class="toc-title-4536">'.toc_title().'</p>'.$outline.'</div>';
+    $outline = '<hr class="section-break mt-5 mb-5" /><div data-display="flex" data-justify-content="center"><div class="toc-4536 md9"><div data-text-align="center" class="headline mb-3">'.toc_title().'</div>'.$outline.'</div></div><hr class="section-break mt-5 mb-5" />';
     $match = preg_match('/<h[1-6].*>/', $content, $matches, PREG_OFFSET_CAPTURE);
     if ($outline && $match) {
         $pos = $matches[0][1];

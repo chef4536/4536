@@ -122,6 +122,7 @@ li {
 
 [data-display="flex"] {
   display: flex;
+  flex-wrap: wrap;
 }
 
 [data-overflow="hidden"] {
@@ -184,17 +185,6 @@ li {
   clear: both;
   display: block;
   margin: 0 auto;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
-.clearfix:after {
-  clear: both;
-  content: "";
-  display: block;
-  height: 0;
 }
 
 .l-h-100 {
@@ -575,6 +565,9 @@ li {
   }
   .md6 {
     flex: 0 1 50%;
+  }
+  .md9 {
+    flex: 0 1 75%;
   }
   .md12 {
     flex: 0 1 100%;
