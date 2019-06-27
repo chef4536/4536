@@ -115,11 +115,15 @@ function media_section_4536($media, $args = [])
             <?php wp_reset_postdata(); ?>
           </div>
         </div>
-        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="rightbutton mr-1 t-50 r-0">
-          <?php echo I_ARROW_RIGHT; ?>
+        <div class="rightbutton" data-display="none">
+          <div data-button="floating" data-bg-color="white" data-position="absolute" class="mr-1 t-50 r-0">
+            <?php echo I_ARROW_RIGHT; ?>
+          </div>
         </div>
-        <div data-button="floating" data-bg-color="white" data-position="absolute" data-display="none" class="leftbutton ml-1 t-50 l-0">
-          <?php echo I_ARROW_LEFT; ?>
+        <div class="leftbutton" data-display="none">
+          <div data-button="floating" data-bg-color="white" data-position="absolute" class="ml-1 t-50 l-0">
+            <?php echo I_ARROW_LEFT; ?>
+          </div>
         </div>
       </div>
       <?php wave_shape('media_bottom'); ?>

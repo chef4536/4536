@@ -1,7 +1,5 @@
 <?php
 
-// var_dump(is_slide_menu());
-
 if( layout_4536() === 'center-content' ) return;
 
 $my_sidebar = my_sidebar();
@@ -17,7 +15,7 @@ $is_slide_menu = is_slide_menu();
   <?php
   if( $is_slide_menu ) { ?>
     <input id="slide-toggle" type="checkbox" data-display="none">
-    <label id="slide-mask" for="slide-toggle" class="mask" data-display="none"></label>
+    <label id="slide-mask" for="slide-toggle" class="mask t-0 l-0 r-0 b-0" data-display="none" data-position="absolute"></label>
     <div id="slide-menu" class="t-0 r-0">
       <label for="slide-toggle" data-display="none-md" class="close-button d-n-md slide-widget-close-button"><i class="fas fa-times"></i>CLOSE</label>
   <?php }

@@ -90,7 +90,7 @@ li {
 }
 
 [data-display="none"] {
-  display: none !important;
+  display: none;
 }
 
 .d-b {
@@ -552,7 +552,7 @@ li {
     display: none;
   }
   [data-display="none-sm"] {
-    display: none !important;
+    display: none;
   }
   /* max-767px END */
 }
@@ -587,7 +587,7 @@ li {
     display: none;
   }
   [data-display="none-md"] {
-    display: none !important;
+    display: none;
   }
   .alignwide {
     margin-left: -20px;
