@@ -20,8 +20,6 @@ define( 'I_ARROW_LEFT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" heig
 
 define( 'I_ARROW_LEFT_ALT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 56 56"><path fill="none" d="M0 0h24v24H0z"/><path fill="none" d="M0,0H56V56H0Z" /><path d="M18.64,18.67,9.33,28l9.31,9.33v-7h28V25.67h-28Z"/></svg>' );
 
-define( 'I_MORE', '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>' );
-
 define( 'I_COMMENT', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/><path d="M0 0h24v24H0z" fill="none"/></svg>' );
 
 define( 'I_NOTE', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 4H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99h16c1.1 0 2-.9 2-2v-8l-6-6zM4 18.01V6h11v5h5v7.01H4z"/></svg>' );

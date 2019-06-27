@@ -47,7 +47,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //グラデーション
     $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
-    $css[] = ".gradation a{color:#ffffff}";
+    $css[] = ".gradation a{color:#ffffff}.header-slide-icon{fill:#ffffff}";
 
     //ボタン
     $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';
