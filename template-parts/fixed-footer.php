@@ -62,13 +62,13 @@ if( fixed_footer()==='menu' ) { ?>
                 if( !get_previous_post($true) || !is_single() ) continue;
                 $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_previous_post($true)->ID).'">';
                 $end_tag = '</a>';
-                $icon = 'angle-double-left';
+                $icon = 'arrow_left';
                 $title = '前の記事';
             } elseif($name === 'next') {
                 if( !get_next_post($true) || !is_single() ) continue;
                 $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_next_post($true)->ID).'">';
                 $end_tag = '</a>';
-                $icon = 'angle-double-right';
+                $icon = 'arrow_right';
                 $title = '次の記事';
             } else {
               continue;
@@ -77,7 +77,7 @@ if( fixed_footer()==='menu' ) { ?>
             continue;
           } ?>
           <div class="flex<?php echo $class; ?>">
-              <?php echo $start_tag . icon_4536($icon); ?>
+              <?php echo $start_tag . icon_4536($icon, '', 24); ?>
               <span data-display="block" class="meta"><?php echo $title; ?></span>
               <?php echo $end_tag; ?>
           </div>
