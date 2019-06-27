@@ -83,7 +83,6 @@ class ConvertEmbedContentFrom_url_4536 {
         <span data-display="flex" data-align-items="center" class="card-meta pa-3 l-h-100 wp-embed-footer">
           <span class="site_icon">{$icon}</span>
           <span class="wp-embed-site-title ml-2 mr-2">{$sitename}</span>
-          {$comment}
           <span class="flex"></span>
           <span><a data-button="submit" title="{$title}" href="{$url}">もっと見る</a></span>
         </span>
