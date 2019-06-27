@@ -9,20 +9,6 @@ License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Version: 1.1.7
 ---------------------------------------------------------*/
-input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
-select, textarea, input[type="search"] {
-  position: relative;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 1px;
-  padding: 0.5rem;
-  border: 2px solid #ddd;
-  background-color: #fff;
-  color: #555;
-  max-width: 100%;
-}
-
 /* Gutenberg */
 .wp-block-image, .wp-block-file, .wp-block-media-text {
   margin-bottom: 1.5em;

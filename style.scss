@@ -36,20 +36,19 @@ Version: 1.1.7
   visibility: visible;
   overflow: hidden;
 }
-
 /////////////////////////////////
 /////////// article ////////////
 ////////////////////////////////
 
 .post-thumbnail-shape {
   -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
   opacity: 0.5;
 }
 
 #post-thumbnail-4536 {
   -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-          transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
+  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   box-shadow: 0 0 20px #ccc;
 }
 /* youtubeのレスポンシブ */
@@ -87,7 +86,7 @@ Version: 1.1.7
 
   ul {
     -webkit-box-flex: 0;
-            flex: 0 0 95%;
+    flex: 0 0 95%;
     margin-left: auto;
   }
 
@@ -212,7 +211,7 @@ Version: 1.1.7
   display: flex;
   margin-bottom: 2em;
   -webkit-box-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 
   p:last-child {
     margin-bottom: 0;
@@ -222,15 +221,15 @@ Version: 1.1.7
 .balloon-image-left {
   margin-right: 1em;
   -webkit-box-flex: 0;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .balloon-image-right {
   margin-left: 1em;
   -webkit-box-flex: 0;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
   -webkit-box-ordinal-group: 2;
-          order: 1;
+  order: 1;
 }
 
 .balloon-image-description {
@@ -402,6 +401,7 @@ Version: 1.1.7
 /////////////////////////////////
 ///////// page-links ///////////
 ////////////////////////////////
+
 #page-links {
   :not(.current) {
     .gradation {
@@ -410,10 +410,23 @@ Version: 1.1.7
     }
   }
 }
-
 /////////////////////////////////
 //////////// widget ////////////
 ////////////////////////////////
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
+select,
+textarea,
+input[type="search"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 2px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #555;
+  max-width: 100%;
+}
 //ドロップダウンメニューのテキスト削除
 
 .screen-reader-text {
@@ -432,6 +445,7 @@ Version: 1.1.7
 /////////////////////////////////
 ////////// slide-menu //////////
 ////////////////////////////////
+
 #slide-mask {
   z-index: 5;
 }
@@ -444,11 +458,7 @@ Version: 1.1.7
 #fixed-footer-sns,
 #fixed-search {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: 10;
-  background-color: #fff;
 }
 
 #search-toggle:checked ~ #fixed-search,
@@ -458,11 +468,11 @@ Version: 1.1.7
 #slide-toggle:checked ~ #slide-mask {
   display: block;
 }
-
 /////////////////////////////
 //////////// etc ////////////
 /////////////////////////////
 // 計測タグ
+
 img[width|="0"],
 img[height|="0"],
 img[width|="1"],
@@ -471,6 +481,7 @@ img[height|="1"] {
   position: absolute;
 }
 //recaptha
+
 .grecaptcha-badge {
   bottom: 80px !important;
 }

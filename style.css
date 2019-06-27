@@ -382,6 +382,21 @@ Version: 1.1.7
   color: inherit;
 }
 
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="hidden"]):not([type="button"]),
+select,
+textarea,
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 2px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #555;
+  max-width: 100%;
+}
+
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -408,11 +423,7 @@ Version: 1.1.7
 #fixed-footer-sns,
 #fixed-search {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: 10;
-  background-color: #fff;
 }
 
 #search-toggle:checked ~ #fixed-search,
