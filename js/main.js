@@ -40,7 +40,6 @@ function fixed_footer_overlay_4536() {
 function scroll_content_4536() {
 
   const list = [
-    'below-header-nav-menu',
     'music',
     'movie',
     'pickup',

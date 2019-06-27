@@ -135,33 +135,33 @@
   max-height: 48px;
 }
 
-#header-nav {
+.global-nav {
   z-index: 5;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
 
-#header-nav .menu-item {
+.global-nav .menu-item {
   margin-right: 16px;
   position: relative;
 }
 
-#header-nav .menu-item:last-child {
+.global-nav .menu-item:last-child {
   margin-right: 0;
 }
 
-#header-nav .menu-item a {
+.global-nav .menu-item a {
   opacity: 0.8;
 }
 
-#header-nav .menu-item a[aria-current="page"] {
+.global-nav .menu-item a[aria-current="page"] {
   opacity: 1;
   font-size: 110%;
   border-bottom: 4px solid;
   padding-bottom: 8px;
 }
 
-#header-nav .sub-menu {
+.global-nav .sub-menu {
   display: none;
 }
 
