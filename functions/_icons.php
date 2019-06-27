@@ -34,6 +34,9 @@ function icon_4536( $icon, $fill = '', $size = 24 ) {
     case 'arrow_left':
       $path = '<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/>';
       break;
+    case 'arrow_left_alt':
+      $path = '<path fill="none" d="M0,0H24V24H0Z"/><path d="M8,8,4,12l4,4V13H20V11H8Z"/>';
+      break;
     case 'arrow_right':
       $path = '<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/>';
       break;

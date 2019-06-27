@@ -25,7 +25,7 @@ if( empty($prevpost) && empty($nextpost) ) return;
     <div class="p-r xs12 sm12 md6">
       <?php prev_next_post_thumbnail( $post_id ); ?>
       <div data-bg-color="black" class="mask p-a t-0 b-0 r-0 l-0 w-100 h-100"></div>
-      <div data-button="floating" data-bg-color="white" class="p-a b-0 l-0 ml-2 mb-2"><?php echo I_ARROW_LEFT_ALT; ?></div>
+      <div data-button="floating" data-bg-color="white" class="p-a b-0 l-0 ml-2 mb-2"><?php echo icon_4536('arrow_left_alt', '', 36); ?></div>
       <?php
       echo '<a data-color="white" data-overflow="hidden" class="p-a t-0 b-0 l-0 r-0 pa-5 link-mask headline" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
       ?>
