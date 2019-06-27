@@ -27,14 +27,9 @@ Version: 1.1.7
 }
 
 .mask {
-  background-color: #000;
   opacity: 0.8;
   visibility: visible;
   overflow: hidden;
-}
-
-.mask-on-text {
-  color: #fff;
 }
 
 .post-thumbnail-shape {
