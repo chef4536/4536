@@ -12,14 +12,43 @@ define( 'I_HATEBU', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="
 
 define( 'I_LINE', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 120 120"><rect width="120" height="120" rx="26" fill="#00b900" /><path d="M103.5,54.72c0-19.55-19.6-35.45-43.7-35.45S16.11,35.17,16.11,54.72c0,17.53,15.55,32.21,36.54,35,1.43.31,3.36.94,3.85,2.16a8.93,8.93,0,0,1,.14,4L56,99.55c-.19,1.1-.88,4.32,3.78,2.35S85,87.09,94.13,76.54h0c6.33-7,9.37-14,9.37-21.82" fill="#fff" /><path d="M50.93,45.28H47.86a.85.85,0,0,0-.85.85v19a.85.85,0,0,0,.85.85h3.07a.85.85,0,0,0,.85-.85v-19a.85.85,0,0,0-.85-.85" fill="#00b900" /><path d="M72,45.28H69a.85.85,0,0,0-.85.85V57.44L59.38,45.65l-.06-.08h0l-.05-.05h0l0,0,0,0,0,0,0,0,0,0h0l-.05,0h0l-.05,0h-3.3a.85.85,0,0,0-.85.85v19a.85.85,0,0,0,.85.85h3.06a.86.86,0,0,0,.86-.85V53.86l8.73,11.79a.63.63,0,0,0,.22.21h0l.05,0h0l0,0,0,0h0l.06,0h0A.78.78,0,0,0,69,66H72a.85.85,0,0,0,.85-.85v-19a.85.85,0,0,0-.85-.85" fill="#00b900" /><path d="M43.54,61.25H35.21V46.13a.85.85,0,0,0-.85-.85H31.3a.85.85,0,0,0-.85.85v19h0a.87.87,0,0,0,.23.59h0v0a.87.87,0,0,0,.59.23H43.54a.85.85,0,0,0,.85-.85V62.1a.85.85,0,0,0-.85-.85" fill="#00b900" /><path d="M89,50a.85.85,0,0,0,.85-.85V46.13a.85.85,0,0,0-.85-.85H76.7a.85.85,0,0,0-.59.24h0v0a.83.83,0,0,0-.24.59h0v19h0a.83.83,0,0,0,.24.59h0a.85.85,0,0,0,.59.24H89a.85.85,0,0,0,.85-.85V62.1a.85.85,0,0,0-.85-.85H80.62V58H89a.85.85,0,0,0,.85-.85V54.11a.85.85,0,0,0-.85-.85H80.62V50Z" fill="#00b900" /></svg>' );
 
-define( 'I_ARROW_RIGHT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>' );
-
-define( 'I_ARROW_RIGHT_ALT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/></svg>' );
-
-define( 'I_ARROW_LEFT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>' );
-
 define( 'I_ARROW_LEFT_ALT', '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 56 56"><path fill="none" d="M0 0h24v24H0z"/><path fill="none" d="M0,0H56V56H0Z" /><path d="M18.64,18.67,9.33,28l9.31,9.33v-7h28V25.67h-28Z"/></svg>' );
 
-define( 'I_COMMENT', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/><path d="M0 0h24v24H0z" fill="none"/></svg>' );
+function icon_4536( $icon, $fill = '', $size = 24 ) {
+  switch ($icon) {
+    case 'home':
+      $path = '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/><path d="M0 0h24v24H0z" fill="none" />';
+      break;
+    case 'arrow_up':
+      $path = '<path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/>';
+      break;
+    case 'menu':
+      $path = '<path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>';
+      break;
+    case 'search':
+      $path = '<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/>';
+      break;
+    case 'share':
+      $path = '<path d="M0 0h24v24H0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>';
+      break;
+    case 'arrow_left':
+      $path = '<path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/>';
+      break;
+    case 'arrow_right':
+      $path = '<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/>';
+      break;
+    case 'arrow_right_alt':
+      $path = '<path fill="none" d="M0 0h24v24H0z"/><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"/>';
+      break;
+    case 'comment':
+      $path = '<path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/><path d="M0 0h24v24H0z" fill="none"/>';
+      break;
+    case 'note':
+      $path = '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 4H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99h16c1.1 0 2-.9 2-2v-8l-6-6zM4 18.01V6h11v5h5v7.01H4z"/>';
+      break;
 
-define( 'I_NOTE', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 4H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99h16c1.1 0 2-.9 2-2v-8l-6-6zM4 18.01V6h11v5h5v7.01H4z"/></svg>' );
+    default:
+      break;
+  }
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="' . $size . '" height="' . $size . '" viewBox="0 0 24 24" fill="' . $fill . '">' . $path . '</svg>';
+}

@@ -117,12 +117,12 @@ function media_section_4536($media, $args = [])
         </div>
         <div class="rightbutton" data-display="none">
           <div data-button="floating" data-bg-color="white" data-position="absolute" class="mr-1 t-50 r-0">
-            <?php echo I_ARROW_RIGHT; ?>
+            <?php echo icon_4536('arrow_right', '', 36); ?>
           </div>
         </div>
         <div class="leftbutton" data-display="none">
           <div data-button="floating" data-bg-color="white" data-position="absolute" class="ml-1 t-50 l-0">
-            <?php echo I_ARROW_LEFT; ?>
+            <?php echo icon_4536('arrow_left', '', 36); ?>
           </div>
         </div>
       </div>

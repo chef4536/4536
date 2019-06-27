@@ -52,7 +52,7 @@ class ConvertEmbedContentFrom_url_4536 {
 
     $icon = ( isset($icon)===true && !empty($icon) ) ? $icon : '<img width="16" height="16" src="https://www.google.com/s2/favicons?domain='.$url.'" />';
 
-    $comment = ( isset($comment) && !empty($comment) ) ? '<span data-display="flex" class="wp-embed-comments">' . I_COMMENT . '<span>'.$comment.'</span></span>' : '';
+    $comment = ( isset($comment) && !empty($comment) ) ? '<span data-display="flex" class="wp-embed-comments">' . icon_4536('comment', '', 16) . '<span>'.$comment.'</span></span>' : '';
 
     if ( is_my_website( $url ) === true ) {
       $blockquote_begin = $blockquote_end = '';

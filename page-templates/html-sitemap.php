@@ -5,6 +5,7 @@ get_header(); ?>
     <article id="html-sitemap" class="post">
       <div class="article-body">
         <?php
+        $icon_note = icon_4536('note', '', 16);
         $is_thumbnail = get_post_meta($post->ID, 'html_sitemap_thumbnail', true);
         $exclude_cat_id_arr = get_post_meta($post->ID, 'html_sitemap_exclude_cat_id', true);
         if (!empty($exclude_cat_id_arr)) {
@@ -36,7 +37,7 @@ get_header(); ?>
             'exclude' => [ $exclude_post_id ],
           ]);
               foreach ($post_arr as $post) {
-                  echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . I_NOTE . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                  echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
               }
               the_child_sitemap_4536($cat_id, 2, $exclude_cat_id_arr, $exclude_post_id);
               echo '</section>';
@@ -44,6 +45,7 @@ get_header(); ?>
 
         function the_child_sitemap_4536($cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null)
         {
+          $icon_note = icon_4536('note', '', 16);
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
             if (!empty($child_cat_arr)) {
                 $i++;
@@ -69,7 +71,7 @@ get_header(); ?>
                 'exclude' => [ $exclude_post_id ],
               ]);
                     foreach ($post_arr as $post) {
-                        echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . I_NOTE . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                        echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
                     }
                     the_child_sitemap_4536($child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id);
                     echo '</section>';

@@ -43,19 +43,19 @@ if( fixed_footer()==='menu' ) { ?>
             } elseif($name === 'share') {
                 $start_tag = '<label data-display="block" class="fixed-footer-menu-item' . $common_class . '" for="share-menu-toggle">';
                 $end_tag = '</label>';
-                $icon = 'share-alt';
+                $icon = 'share';
                 $title = 'シェア';
                 $class = ' fixed-share-toggle-button';
             } elseif( $name === 'slide-menu' && is_slide_menu() ) {
                 $start_tag = '<label data-display="block" class="fixed-footer-menu-item' . $common_class . '" for="slide-toggle">';
                 $end_tag = '</label>';
-                $icon = 'bars';
+                $icon = 'menu';
                 $class = ' slide-button';
                 $title = 'メニュー';
             } elseif($name === 'top') {
                 $start_tag = '<a data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#header">';
                 $end_tag = '</a>';
-                $icon = 'angle-double-up';
+                $icon = 'arrow_up';
                 $class = ' fixed-page-top';
                 $title = 'トップ';
             } elseif($name === 'prev') {
@@ -77,8 +77,7 @@ if( fixed_footer()==='menu' ) { ?>
             continue;
           } ?>
           <div class="flex<?php echo $class; ?>">
-              <?php echo $start_tag; ?>
-              <i class="fas fa-<?php echo $icon; ?>" aria-hidden="true"></i>
+              <?php echo $start_tag . icon_4536($icon); ?>
               <span data-display="block" class="meta"><?php echo $title; ?></span>
               <?php echo $end_tag; ?>
           </div>
