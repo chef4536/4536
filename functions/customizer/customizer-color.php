@@ -187,7 +187,8 @@ class CustomizerColorSettings_4536 {
     // $css[] = ".pagination span, .pagination a{color:$post_bg_color}";
 
     if( !empty($post_color) ) { //記事文字色
-      $post_color_class = ( fixed_header() === true ) ? '.post-color,.fixed-top a' : '.post-color';
+      $post_color_class = '.post-color,#main-container .archive-list';
+      if( fixed_header() === true ) $post_color_class .= ',.fixed-top a';
       $css[] = "$post_color_class{color:$post_color !important}";
       // $css[] = '.pagination span, .pagination a{background-color:'.$post_color.'}';
       $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25) !important}';

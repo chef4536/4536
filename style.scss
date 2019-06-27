@@ -414,14 +414,6 @@ Version: 1.1.7
 /////////////////////////////////
 //////////// widget ////////////
 ////////////////////////////////
-// ドロップダウンの幅
-
-#searchform input,
-.dropdown-list select,
-.widget_archive select,
-.widget_categories select {
-  width: 100%;
-}
 //ドロップダウンメニューのテキスト削除
 
 .screen-reader-text {
@@ -471,14 +463,6 @@ Version: 1.1.7
   display: block;
 }
 
-.close-button:not(.fixed-footer-close-button) {
-  display: block;
-  padding: 30px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
 /////////////////////////////
 //////////// etc ////////////
 /////////////////////////////

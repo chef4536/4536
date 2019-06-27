@@ -72,7 +72,7 @@ add_filter( 'wp_list_categories', 'posted_count_in_textlink_4536'); //カテゴ�
 add_filter( 'get_archives_link', 'posted_count_in_textlink_4536'); //アーカイブ
 function posted_count_in_textlink_4536($output) {
     $output = str_replace( '<li', '<li data-display="flex"', $output );
-    $output = str_replace( '<a', '<a data-text="ellipsis" class="flex-1 post-color"', $output );
+    $output = str_replace( '<a', '<a data-text="ellipsis" class="flex-1 archive-list"', $output );
     return $output;
 }
 

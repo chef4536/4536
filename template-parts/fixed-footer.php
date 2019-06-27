@@ -10,7 +10,7 @@ if(is_amp()) {
 }
 
 if( fixed_footer()==='menu' ) { ?>
-    <div id="fixed-footer-menu" class="fixed-footer d-n-md d-f t-a-c">
+    <div id="fixed-footer-menu" data-display="none-md" data-text-align="center" class="body-bg-color w-100 b-0 l-0 fixed-footer">
         <?php
         $list = [
             'home',
@@ -21,6 +21,7 @@ if( fixed_footer()==='menu' ) { ?>
             'prev',
             'next',
         ];
+        $common_class = ' pt-2 pb-2 l-h-140 post-color';
         $true = next_prev_in_same_term();
         foreach ($list as $name) {
           $class = '';
@@ -28,44 +29,44 @@ if( fixed_footer()==='menu' ) { ?>
           if(fixed_footer_menu_item($name) === true) {
             if($name === 'home') {
                 if( is_home() || is_front_page() ) continue;
-                $start_tag = '<a class="fixed-footer-menu-item d-b" href="'.home_url().'">';
+                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.home_url().'">';
                 $end_tag = '</a>';
                 $icon = 'home';
                 $title = 'ホーム';
             } elseif($name === 'search') {
                 if(is_amp() && !is_ssl()) continue;
-                $start_tag = '<label class="fixed-footer-menu-item d-b" for="search-toggle">';
+                $start_tag = '<label data-display="block" class="fixed-footer-menu-item' . $common_class . '" for="search-toggle">';
                 $end_tag = '</label>';
                 $icon = 'search';
                 $title = '検索';
                 $class = ' search-button';
             } elseif($name === 'share') {
-                $start_tag = '<label class="fixed-footer-menu-item d-b" for="share-menu-toggle">';
+                $start_tag = '<label data-display="block" class="fixed-footer-menu-item' . $common_class . '" for="share-menu-toggle">';
                 $end_tag = '</label>';
                 $icon = 'share-alt';
                 $title = 'シェア';
                 $class = ' fixed-share-toggle-button';
             } elseif( $name === 'slide-menu' && is_slide_menu() ) {
-                $start_tag = '<label class="fixed-footer-menu-item d-b" for="slide-toggle">';
+                $start_tag = '<label data-display="block" class="fixed-footer-menu-item' . $common_class . '" for="slide-toggle">';
                 $end_tag = '</label>';
                 $icon = 'bars';
                 $class = ' slide-button';
                 $title = 'メニュー';
             } elseif($name === 'top') {
-                $start_tag = '<a id="fixed-page-top-button" class="fixed-footer-menu-item d-b" href="#header">';
+                $start_tag = '<a data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#header">';
                 $end_tag = '</a>';
                 $icon = 'angle-double-up';
                 $class = ' fixed-page-top';
                 $title = 'トップ';
             } elseif($name === 'prev') {
                 if( !get_previous_post($true) || !is_single() ) continue;
-                $start_tag = '<a class="fixed-footer-menu-item d-b" href="'.get_permalink(get_previous_post($true)->ID).'">';
+                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_previous_post($true)->ID).'">';
                 $end_tag = '</a>';
                 $icon = 'angle-double-left';
                 $title = '前の記事';
             } elseif($name === 'next') {
                 if( !get_next_post($true) || !is_single() ) continue;
-                $start_tag = '<a class="fixed-footer-menu-item d-b" href="'.get_permalink(get_next_post($true)->ID).'">';
+                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_next_post($true)->ID).'">';
                 $end_tag = '</a>';
                 $icon = 'angle-double-right';
                 $title = '次の記事';
@@ -77,14 +78,14 @@ if( fixed_footer()==='menu' ) { ?>
           } ?>
           <div class="flex<?php echo $class; ?>">
               <?php echo $start_tag; ?>
-              <i class="fas fa-<?php echo $icon; ?> font-size-22px" aria-hidden="true"></i>
-              <span class="d-b fixed-footer-menu-title font-size-10px"><?php echo $title; ?></span>
+              <i class="fas fa-<?php echo $icon; ?>" aria-hidden="true"></i>
+              <span data-display="block" class="meta"><?php echo $title; ?></span>
               <?php echo $end_tag; ?>
           </div>
         <?php } ?>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
-    <div id="fixed-footer-overlay" class="fixed-footer d-n t-a-c">
+    <div id="fixed-footer-overlay" data-display="none" data-text-align="center" class="fixed-footer">
         <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button"><i class="fas fa-times"></i></div>
     </div>

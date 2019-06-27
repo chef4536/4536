@@ -23,38 +23,26 @@ echo '</div>'; //#main-column
 <div id="site-bottom" class="gradation">
   <?php wave_shape('footer'); ?>
   <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
-    <div class="container ma-auto pa-3">
-      <div>
-        <?php
-        if (!none_header_footer()) {
-            if (!is_amp()) {
-                if (is_active_sidebar('footer-left') || is_active_sidebar('footer-center') || is_active_sidebar('footer-right')) { ?>
-            <div id="footer-contents-wrapper">
-              <div class="footer-contents footer-left clearfix">
-                <?php dynamic_sidebar('footer-left'); ?>
-              </div>
-              <div class="footer-contents footer-center clearfix">
-                <?php dynamic_sidebar('footer-center'); ?>
-              </div>
-              <div class="footer-contents footer-right clearfix">
-                <?php dynamic_sidebar('footer-right'); ?>
-              </div>
-            </div>
-            <?php }
-            }
-            $defaults = [
-            'theme_location'  => 'navbar_footer',
-            'container' => false,
-            'fallback_cb' => false,
-            'echo' => false,
-            'items_wrap' => '<ul data-display="flex" data-justify-content="center">%3$s</ul>',
-          ];
-            if (has_nav_menu('navbar_footer')) {
-                echo '<div class="global-nav">' . wp_nav_menu($defaults) . '</div>';
-            }
-        } ?>
-      </div>
-      <div id="copyright" data-text-align="center" class="meta mt-4 mb-4">
+    <div class="container ma-auto">
+      <?php
+      if (!none_header_footer()) {
+          if (!is_amp() && is_active_sidebar('footer')) {
+            echo '<div data-display="flex" data-justify-content="center">';
+            dynamic_sidebar('footer');
+            echo '</div>';
+          }
+          $defaults = [
+          'theme_location'  => 'navbar_footer',
+          'container' => false,
+          'fallback_cb' => false,
+          'echo' => false,
+          'items_wrap' => '<ul data-display="flex" data-justify-content="center">%3$s</ul>',
+        ];
+          if (has_nav_menu('navbar_footer')) {
+              echo '<div class="global-nav pa-3">' . wp_nav_menu($defaults) . '</div>';
+          }
+      } ?>
+      <div id="copyright" data-text-align="center" class="meta pa-3">
         <?php
         $name = (site_title()) ? site_title() : get_bloginfo('name');
         $link = '<a href="'.home_url().'">'.$name.'</a>';
@@ -63,7 +51,7 @@ echo '</div>'; //#main-column
       </div>
       <?php
       if (fixed_footer() && !none_header_footer()) {
-        echo '<div data-display="none-md" class="pb-5"></div>';
+          echo '<div data-display="none-md" class="pb-5"></div>';
       } ?>
     </div>
   </footer>

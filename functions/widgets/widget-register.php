@@ -71,28 +71,10 @@ register_sidebar([
     'after_title' => '</h4>',
 ]);
 register_sidebar([
-    'name' => 'フッター左',
-    'id' => 'footer-left',
-    'description' => 'サイト下部に表示されます。パソコン表示時は左に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-widget margin-bottom-2em">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4>',
-    'after_title' => '</h4>',
-]);
-register_sidebar([
-    'name' => 'フッター中央',
-    'id' => 'footer-center',
-    'description' => 'サイト下部に表示されます。フッター左がないと左にずれます。パソコン表示時は中央に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-widget margin-bottom-2em">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4>',
-    'after_title' => '</h4>',
-]);
-register_sidebar([
-    'name' => 'フッター右',
-    'id' => 'footer-right',
-    'description' => 'サイト下部に表示されます。フッター左・中央がないと左にずれます。パソコン表示時は右に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-widget margin-bottom-2em">',
+    'name' => 'フッター',
+    'id' => 'footer',
+    'description' => 'サイト最下部に表示されます。PC表示時は上から順に横並び',
+    'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3">',
     'after_widget' => '</div>',
     'before_title' => '<h4>',
     'after_title' => '</h4>',

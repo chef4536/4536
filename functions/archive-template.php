@@ -85,7 +85,7 @@ function post_list_template_4536($page_4536)
     if (have_posts()) : while (have_posts()) : the_post(); $count++;
       post_list_card_4536(); //記事一覧
       if ($count===$rand && $page_4536==='new-post' && is_active_sidebar('sp-infeed-ad')) { //インフィード広告?>
-          <div class="post-list clearfix infeed-ad d-b padding-bottom-1em <?php echo $style; ?>">
+          <div class="infeed-ad d-b padding-bottom-1em <?php echo $style; ?>">
               <?php dynamic_sidebar('sp-infeed-ad'); ?>
           </div>
       <?php }

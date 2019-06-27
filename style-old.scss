@@ -93,27 +93,6 @@ select,textarea,input[type="search"] {
 /*
  * フッター
 */
-#footer,
-.fixed-footer {
-    clear: both;
-}
-.fixed-footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding-bottom: calc(env(safe-area-inset-bottom) - 1em); /* for iphone x */
-    z-index: 3;
-}
-.fixed-footer-menu-item {
-  padding: .8em 0 .5em;
-  line-height: 1.4;
-}
-.fixed-footer-menu-item a {
-    border: none;
-    display: block;
-    text-decoration: none
-}
 #fixed-footer-overlay {
     height: 54px;
     background-color: #fff;
@@ -133,32 +112,6 @@ select,textarea,input[type="search"] {
     border: 0;
     border-top-left-radius: 9pt;
     padding: 3px 5px;
-}
-#footer h4 {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    border-bottom: 1px solid;
-    padding-bottom: .5em;
-    margin-bottom: 1.5em;
-}
-#footer-nav,#copyright {
-    clear: both;
-    margin-bottom: 1em;
-    text-align: center;
-    line-height: 1.6;
-    font-size: 80%;
-}
-#footer-nav ul li {
-    display: inline;
-}
-#footer-nav ul li::after {
-    content: "/";
-    margin: 0 .5em;
-}
-#footer-nav ul li:last-child::after {
-    content: "";
-    margin: 0;
 }
 /*
  * Widget

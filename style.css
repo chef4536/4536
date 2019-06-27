@@ -382,13 +382,6 @@ Version: 1.1.7
   color: inherit;
 }
 
-#searchform input,
-.dropdown-list select,
-.widget_archive select,
-.widget_categories select {
-  width: 100%;
-}
-
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -432,15 +425,6 @@ Version: 1.1.7
 #share-menu-toggle:checked ~ #share-menu-mask,
 #slide-toggle:checked ~ #slide-mask {
   display: block;
-}
-
-.close-button:not(.fixed-footer-close-button) {
-  display: block;
-  padding: 30px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
 
 img[width|="0"],
