@@ -47,15 +47,6 @@ select, textarea, input[type="search"] {
   margin-bottom: 1.5em;
 }
 
-/* ヘッダー縮小 */
-.fixed-top {
-  position: fixed;
-  left: 0;
-  right: 0;
-  -webkit-box-shadow: 0px 1px 10px;
-  box-shadow: 0px 1px 10px;
-}
-
 /*
  * ページネーション
 */

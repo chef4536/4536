@@ -6,7 +6,7 @@ function wave_shape($location)
     $primary_color = primary_color();
     $secandary_color = secandary_color(); ?>
 
-  <svg class="d-b w-100 h-100 p-r l-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <svg id="<?php echo $location; ?>-wave" data-display="block" data-position="relative" class="w-100 h-100 l-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
     <defs>
       <linearGradient id="g1" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="<?php echo $primary_color; ?>" stop-opacity=".1" />

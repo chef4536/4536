@@ -50,7 +50,8 @@
   width: 100%;
 }
 
-[data-button="floating"], .f-button {
+[data-button="floating"],
+.f-button {
   width: 56px;
   height: 56px;
   padding: 0;
@@ -69,7 +70,8 @@
   height: 84px;
 }
 
-[data-button="submit"], #submit {
+[data-button="submit"],
+#submit {
   position: relative;
   overflow: hidden;
   color: #ffffff;
@@ -81,7 +83,8 @@
   text-decoration: none;
 }
 
-[data-button="submit"]::before, #submit::before {
+[data-button="submit"]::before,
+#submit::before {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.6);
   content: "";
@@ -92,7 +95,8 @@
   height: 0;
 }
 
-[data-button="submit"]:focus::before, #submit:focus::before {
+[data-button="submit"]:focus::before,
+#submit:focus::before {
   transition: all 0.5s ease-out;
   opacity: 0;
   width: 160px;
@@ -126,7 +130,7 @@
 }
 
 #header-nav .menu-item a {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #header-nav .menu-item a[aria-current="page"] {
@@ -142,6 +146,15 @@
 
 #header-slide-button {
   margin-left: auto;
+}
+
+.fixed-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  box-shadow: 0 1px 10px;
+  z-index: 5;
+  transition: 0.5s ease;
 }
 
 .meta {
@@ -297,7 +310,7 @@
   }
   #sidebar {
     width: 320px;
-    border-left: .5px solid;
+    border-left: 0.5px solid;
     flex: 1;
   }
   #scroll-sidebar {
@@ -306,7 +319,7 @@
     position: sticky;
   }
   .right-content #sidebar {
-    border-right: .5px solid;
+    border-right: 0.5px solid;
     border-left: none;
   }
   .right-content #main-container {
