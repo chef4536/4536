@@ -38,11 +38,13 @@ Version: 1.1.7
 }
 
 .post-thumbnail-shape {
+  -webkit-transform: scale(1.1);
   transform: scale(1.1);
   opacity: 0.5;
 }
 
 #post-thumbnail-4536 {
+  -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   box-shadow: 0 0 20px #ccc;
 }
@@ -79,6 +81,7 @@ Version: 1.1.7
 }
 
 .toc-4536 ul {
+  -webkit-box-flex: 0;
   flex: 0 0 95%;
   margin-left: auto;
 }
@@ -201,8 +204,10 @@ Version: 1.1.7
 }
 
 .balloon {
+  display: -webkit-box;
   display: flex;
   margin-bottom: 2em;
+  -webkit-box-align: start;
   align-items: flex-start;
 }
 
@@ -212,12 +217,15 @@ Version: 1.1.7
 
 .balloon-image-left {
   margin-right: 1em;
+  -webkit-box-flex: 0;
   flex: 0 0 auto;
 }
 
 .balloon-image-right {
   margin-left: 1em;
+  -webkit-box-flex: 0;
   flex: 0 0 auto;
+  -webkit-box-ordinal-group: 2;
   order: 1;
 }
 
@@ -399,10 +407,6 @@ Version: 1.1.7
   z-index: 5;
 }
 
-#slide-menu {
-  height: 100%;
-}
-
 #slide-toggle:checked ~ #slide-menu {
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -460,6 +464,15 @@ img[height|="1"] {
 .fade-in {
   -webkit-animation: fadeIn 0.8s ease 0s 1 normal;
   animation: fadeIn 0.8s ease 0s 1 normal;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {

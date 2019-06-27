@@ -30,6 +30,7 @@ video {
 }
 
 a {
+  -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
   text-decoration: none;
 }
@@ -134,10 +135,12 @@ li {
 }
 
 .d-f {
+  display: -webkit-box;
   display: flex;
 }
 
 [data-display="flex"] {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -495,34 +498,45 @@ li {
 ///////////////////////////
 
 .a-i-c {
+  -webkit-box-align: center;
   align-items: center;
 }
 
 [data-align-items="center"] {
+  -webkit-box-align: center;
   align-items: center;
 }
 
 .j-c-c {
+  -webkit-box-pack: center;
   justify-content: center;
 }
 
 [data-justify-content="center"] {
+  -webkit-box-pack: center;
   justify-content: center;
 }
 
 .j-c-f-e {
+  -webkit-box-pack: end;
   justify-content: flex-end;
 }
 
 .f-d-r-r {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
   flex-direction: row-reverse;
 }
 
 .f-d-c {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
   flex-direction: column;
 }
 
 [data-flex-direction="column"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
   flex-direction: column;
 }
 
@@ -535,10 +549,12 @@ li {
 }
 
 .flex {
+  -webkit-box-flex: 1;
   flex: 1 1 auto;
 }
 
 .flex-1 {
+  -webkit-box-flex: 1;
   flex: 1;
 }
 ////////////////////////////
@@ -559,14 +575,17 @@ li {
 --------------------------------------------------- */
 @media screen and (max-width: 479px) {
   .xs0 {
+    -webkit-box-flex: 0;
     flex: 0 1 0;
   }
 
   .xs6 {
+    -webkit-box-flex: 0;
     flex: 0 1 50%;
   }
 
   .xs12 {
+    -webkit-box-flex: 0;
     flex: 0 1 100%;
   }
   /* max-480px END */
@@ -576,14 +595,17 @@ li {
 --------------------------------------------------- */
 @media screen and (min-width: 480px) and (max-width: 767px) {
   .sm3 {
+    -webkit-box-flex: 0;
     flex: 0 1 25%;
   }
 
   .sm6 {
+    -webkit-box-flex: 0;
     flex: 0 1 50%;
   }
 
   .sm12 {
+    -webkit-box-flex: 0;
     flex: 0 1 100%;
   }
   /* min-480px END */
@@ -606,18 +628,22 @@ li {
 --------------------------------------------------- */
 @media screen and (min-width: 768px) {
   .md3 {
+    -webkit-box-flex: 0;
     flex: 0 1 25%;
   }
 
   .md6 {
+    -webkit-box-flex: 0;
     flex: 0 1 50%;
   }
 
   .md9 {
+    -webkit-box-flex: 0;
     flex: 0 1 75%;
   }
 
   .md12 {
+    -webkit-box-flex: 0;
     flex: 0 1 100%;
   }
 
@@ -658,14 +684,17 @@ li {
 --------------------------------------------------- */
 @media screen and (min-width: 1024px) {
   .lg3 {
+    -webkit-box-flex: 0;
     flex: 0 1 25%;
   }
 
   .lg6 {
+    -webkit-box-flex: 0;
     flex: 0 1 50%;
   }
 
   .lg12 {
+    -webkit-box-flex: 0;
     flex: 0 1 100%;
   }
   /* min-1024px END */

@@ -46,7 +46,7 @@ add_filter('inline_style_4536', function ($css) {
     $css[] = ".sub-menu .menu-item{background-color:$secondary_color}";
 
     //グラデーション
-    $css[] = ".gradation{background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
+    $css[] = ".gradation{background:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
     $css[] = ".gradation a{color:#ffffff}.header-slide-icon{fill:#ffffff}";
 
     //ボタン

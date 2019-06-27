@@ -16,7 +16,7 @@ $is_slide_menu = is_slide_menu();
   if( $is_slide_menu ) { ?>
     <input id="slide-toggle" type="checkbox" data-display="none">
     <label id="slide-mask" for="slide-toggle" class="mask t-0 l-0 r-0 b-0" data-display="none" data-position="absolute"></label>
-    <div id="slide-menu" class="t-0 r-0">
+    <div id="slide-menu" class="t-0 r-0 h-100">
       <label for="slide-toggle" data-display="none-md" class="close-button d-n-md slide-widget-close-button"><i class="fas fa-times"></i>CLOSE</label>
   <?php }
   if( is_amp() && is_amp_sidebar_top() ) echo amp_adsense_code();
