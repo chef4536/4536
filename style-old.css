@@ -47,29 +47,6 @@ select, textarea, input[type="search"] {
   margin-bottom: 1.5em;
 }
 
-/* ページ分割 */
-#page-links {
-  margin: 3em auto;
-}
-
-#page-links span {
-  margin: 2px 2px 2px 0;
-  padding: 6px 9px 5px 9px;
-  text-decoration: none;
-  width: auto;
-  color: #fff;
-  background-color: #aaa;
-  border-radius: 2px;
-}
-
-#page-links a {
-  text-decoration: none;
-}
-
-#page-links .page-links-title, #page-links a span {
-  background-color: #000;
-}
-
 /*
  * プロフィール
 */

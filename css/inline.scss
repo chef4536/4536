@@ -306,12 +306,13 @@ $button_base_size: 56px;
     }
   }
 
-  #pagination {
+  #pagination, #page-links {
     [data-button="floating"] {
       width: 46px;
       height: 46px;
     }
   }
+
   /* max-767px END */
 }
 /* --------------------------------------------------

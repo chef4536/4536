@@ -377,6 +377,11 @@ Version: 1.1.7
   padding-top: 70%;
 }
 
+#page-links :not(.current) .gradation {
+  background: 0 0;
+  color: inherit;
+}
+
 #searchform input,
 .dropdown-list select,
 .widget_archive select,

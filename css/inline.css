@@ -267,7 +267,7 @@
   #slide-menu ins.adsbygoogle {
     display: none !important;
   }
-  #pagination [data-button="floating"] {
+  #pagination [data-button="floating"], #page-links [data-button="floating"] {
     width: 46px;
     height: 46px;
   }
