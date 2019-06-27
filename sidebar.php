@@ -17,7 +17,7 @@ $is_slide_menu = is_slide_menu();
     <input id="slide-toggle" type="checkbox" data-display="none">
     <label id="slide-mask" for="slide-toggle" class="mask t-0 l-0 r-0 b-0" data-display="none" data-position="absolute" data-bg-color="black"></label>
     <div id="slide-menu" class="t-0 r-0 h-100">
-      <label for="slide-toggle" data-display="none-md" data-text-align="center" class="close-button pa-4 mb-4"><i class="fas fa-times"></i>CLOSE</label>
+      <label for="slide-toggle" data-display="none-md" data-justify-content="center" data-align-items="center" class="flex close-button pa-4 mb-4"><?php echo icon_4536('close', '', 24); ?>CLOSE</label>
   <?php }
   if( is_amp() && is_amp_sidebar_top() ) echo amp_adsense_code();
   if( !empty($sidebar) ) echo '<aside class="sidebar-inner" role="complementary">' . $sidebar . '</aside>';

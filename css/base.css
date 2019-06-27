@@ -482,6 +482,11 @@ li {
   justify-content: flex-end;
 }
 
+[data-justify-content="flex-end"] {
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
 .f-d-r-r {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;

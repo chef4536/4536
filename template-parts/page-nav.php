@@ -3,11 +3,11 @@ if(!post_prev_next_4536()) return;
 $true = next_prev_in_same_term();
 $prevpost = get_previous_post($true);
 $nextpost = get_next_post($true);
-$flex_end = ($prevpost) ? '' : ' j-c-f-e';
+$flex_end = ($prevpost) ? '' : ' data-justify-content="flex-end"';
 if( empty($prevpost) && empty($nextpost) ) return;
 ?>
 
-<div id="prev-next" class="d-f f-w-w pt-5<?php echo $flex_end; ?>">
+<div id="prev-next" class="d-f f-w-w pt-5"<?php echo $flex_end; ?>>
   <?php
   switch( thumbnail_size() ) {
     case 'thumbnail-wide':

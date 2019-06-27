@@ -1,6 +1,6 @@
 <?php
 
-function sns_button_4536($justify_content = 'j-c-c')
+function sns_button_4536($justify_content = 'center')
 {
     if (is_amp() || is_singular()) {
         $url = esc_url(get_permalink());
@@ -58,7 +58,7 @@ function sns_button_4536($justify_content = 'j-c-c')
     //     $arr['pocket']['count'] = '<span class="sns-count">'.scc_get_share_pocket().'</span>';
     // } ?>
 
-    <div class="d-f flex <?php echo $justify_content; ?>">
+    <div data-display="flex" data-justify-content="<?php echo $justify_content; ?>" class="flex">
         <?php
         foreach ($arr as $key => $value) {
             echo '<span class="pt-2 pb-2 pr-3 pl-3"><a class="l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a>' . $value['count'] . '</span>';

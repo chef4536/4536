@@ -47,6 +47,9 @@ function icon_4536( $icon, $fill = '', $size = 24 ) {
     case 'note':
       $path = '<path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 4H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99h16c1.1 0 2-.9 2-2v-8l-6-6zM4 18.01V6h11v5h5v7.01H4z"/>';
       break;
+    case 'close':
+      $path = '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/>';
+      break;
 
     default:
       break;

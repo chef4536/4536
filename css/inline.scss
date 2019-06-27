@@ -247,7 +247,7 @@ $button_base_size: 56px;
     right: 5%;
   }
 
-  img {
+  .post-list-thumbnail img {
     border-radius: 5px 5px 0 0;
   }
 
@@ -315,7 +315,8 @@ $button_base_size: 56px;
   }
 
   .close-button:not(.fixed-footer-close-button) {
-    display: block;
+    display: -webkit-box;
+    display: flex;
   }
 
   .fixed-footer {

@@ -212,7 +212,7 @@
   right: 5%;
 }
 
-.card img {
+.card .post-list-thumbnail img {
   border-radius: 5px 5px 0 0;
 }
 
@@ -274,7 +274,8 @@
     height: 46px;
   }
   .close-button:not(.fixed-footer-close-button) {
-    display: block;
+    display: -webkit-box;
+    display: flex;
   }
   .fixed-footer {
     display: -webkit-box;

@@ -94,7 +94,7 @@ if (has_tag()) {
     echo '<div id="post-term-section" class="meta d-f f-d-c mt-4 mb-4">' . $category . $tag . '</div>';
   }
   echo '<div class="flex"></div>';
-  sns_button_4536('j-c-f-e');
+  sns_button_4536('flex-end');
   ?>
 </div>
 <hr class="section-break mb-5" />

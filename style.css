@@ -405,7 +405,7 @@ Version: 1.1.7
   transform: translateX(0);
 }
 
-#fixed-footer-menu-sns,
+#fixed-footer-sns,
 #fixed-search {
   position: fixed;
   right: 0;
@@ -415,13 +415,9 @@ Version: 1.1.7
   background-color: #fff;
 }
 
-#fixed-search-form {
-  margin: 2em 10px 1.5em;
-}
-
 #search-toggle:checked ~ #fixed-search,
 #search-toggle:checked ~ #search-mask,
-#share-menu-toggle:checked ~ #fixed-footer-menu-sns,
+#share-menu-toggle:checked ~ #fixed-footer-sns,
 #share-menu-toggle:checked ~ #share-menu-mask,
 #slide-toggle:checked ~ #slide-mask {
   display: block;

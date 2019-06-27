@@ -86,7 +86,7 @@ if( fixed_footer()==='menu' ) { ?>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
     <div id="fixed-footer-overlay" data-display="none" data-text-align="center" class="fixed-footer">
         <?php echo $fixed_footer; ?>
-        <div class="close-button fixed-footer-close-button"><i class="fas fa-times"></i></div>
+        <div class="close-button fixed-footer-close-button"><?php echo icon_4536('close', '', 24); ?></div>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($amp_fixed_footer) ) { ?>
     <amp-sticky-ad layout="nodisplay">

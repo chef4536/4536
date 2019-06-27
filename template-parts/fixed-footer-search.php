@@ -4,11 +4,11 @@ if(empty(fixed_footer_menu_item('search'))) return;
 ?>
 <div id="fixed-search-contents">
     <input id="search-toggle" type="checkbox" class="d-n">
-    <label id="search-mask" for="search-toggle" class="d-n mask"></label>
-    <div id="fixed-search" class="d-n">
+    <label id="search-mask" for="search-toggle" class="mask t-0 b-0 r-0 l-0" data-position="absolute" data-bg-color="black" data-display="none"></label>
+    <div id="fixed-search" data-display="none" class="pa-4 b-0 r-0 l-0" data-bg-color="white">
         <div id="fixed-search-form">
             <?php get_search_form(); ?>
         </div>
-        <label for="search-toggle" class="close-button"><i class="fas fa-times"></i>CLOSE</label>
+        <label for="search-toggle" data-display="flex" data-justify-content="center" data-align-items="center" class="flex close-button pt-4"><?php echo icon_4536('close', '', 24); ?>CLOSE</label>
     </div>
 </div>
