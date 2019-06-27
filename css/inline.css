@@ -132,6 +132,10 @@
   width: 100%;
 }
 
+#header-container {
+  max-width: 2048px;
+}
+
 .header-logo {
   max-height: 48px;
 }

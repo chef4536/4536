@@ -155,7 +155,9 @@ $button_base_size: 56px;
 /////////////////////////////////
 //////////// header ////////////
 ////////////////////////////////
-
+#header-container {
+  max-width: 2048px;
+}
 .header-logo {
   max-height: 48px;
 }
