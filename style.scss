@@ -442,6 +442,22 @@ input[type="search"] {
   width: 1px;
   word-wrap: normal !important;
 }
+
+//オーバーレイ広告
+#fixed-footer-overlay {
+    height: 54px;
+    border-top: 4px solid;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.2);
+}
+.fixed-footer-close-button {
+    width: 28px;
+    height: 28px;
+    top: -28px;
+    font-size:18px;
+    box-shadow: 0 -3px 5px 0 rgba(0,0,0,.1);
+    border: 0;
+    border-top-left-radius: 9pt;
+}
 /////////////////////////////////
 ////////// slide-menu //////////
 ////////////////////////////////

@@ -10,7 +10,7 @@ if(is_amp()) {
 }
 
 if( fixed_footer()==='menu' ) { ?>
-    <div id="fixed-footer-menu" data-display="none-md" data-text-align="center" class="body-bg-color w-100 b-0 l-0 fixed-footer">
+    <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" class="w-100 b-0 l-0 fixed-footer">
         <?php
         $list = [
             'home',
@@ -84,9 +84,11 @@ if( fixed_footer()==='menu' ) { ?>
         <?php } ?>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
-    <div id="fixed-footer-overlay" data-display="none" data-text-align="center" class="fixed-footer">
+    <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-bg-color="white" data-color="white" class="fixed-footer w-100 b-0 l-0">
         <?php echo $fixed_footer; ?>
-        <div class="close-button fixed-footer-close-button"><?php echo icon_4536('close', '', 24); ?></div>
+        <div class="close-button fixed-footer-close-button r-0 pa-1" data-position="absolute" data-bg-color="white">
+          <?php echo icon_4536('close', '', 24); ?>
+        </div>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($amp_fixed_footer) ) { ?>
     <amp-sticky-ad layout="nodisplay">

@@ -316,17 +316,10 @@ $button_base_size: 56px;
     }
   }
 
-  .close-button:not(.fixed-footer-close-button) {
-    display: -webkit-box;
-    display: flex;
-  }
-
   .fixed-footer {
     display: -webkit-box;
     display: flex;
     position: fixed;
-    bottom: 0;
-    left: 0;
     padding-bottom: calc(env(safe-area-inset-bottom) - 1em);
     z-index: 3;
   }
