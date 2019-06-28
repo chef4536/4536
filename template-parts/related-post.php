@@ -2,16 +2,6 @@
 
 if(empty(related_post_count())) return;
 
-// $post_list_style_mobile = (related_post_list_style_mobile()==='') ? '' : ' list-'.related_post_list_style_mobile();
-// $post_list_style_pc = '';
-// if( !empty( related_post_list_style_pc() ) ) {
-//   $post_list_style_pc = ' list-'.related_post_list_style_pc();
-// }
-// $style = $post_list_style_mobile.$post_list_style_pc;
-//
-// $thumbnail_size = related_post_list_style_pc();
-// if(related_post_list_style_mobile()==='big') $thumbnail_size = 'big';
-
 $categories = get_the_category($post->ID);
 $category_ID = [];
 foreach($categories as $category) {

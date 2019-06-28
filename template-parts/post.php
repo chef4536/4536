@@ -12,20 +12,12 @@ if (is_amp()) {
 
 if (is_singular('post')) {
     $is_profile = is_profile_4536('profile_single');
-    $is_sns_top = is_sns_top_4536('is_sns_top_single');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_single');
 } elseif (is_page()) {
     $is_profile = is_profile_4536('profile_page');
-    $is_sns_top = is_sns_top_4536('is_sns_top_page');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_page');
 } elseif (is_singular(['music', 'movie'])) {
     $is_profile = is_profile_4536('profile_media');
-    $is_sns_top = is_sns_top_4536('is_sns_top_media');
-    $is_sns_bottom = is_sns_bottom_4536('is_sns_bottom_media');
 } else {
     $is_profile = false;
-    $is_sns_top = false;
-    $is_sns_bottom = false;
 }
 
 if (have_posts()) : while (have_posts()) : the_post();

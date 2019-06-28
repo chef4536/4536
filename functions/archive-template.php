@@ -53,32 +53,7 @@ function archive_template_4536($page_4536) { ?>
 
 function post_list_template_4536($page_4536)
 {
-    // $thumbnail_size = $page_4536;
-    //
-    // if ($page_4536 === 'new-post') {
-    //     $post_list_style_mobile = new_post_list_style_mobile();
-    //     $post_list_style_pc = new_post_list_style_pc();
-    //     $thumbnail_size = new_post_list_style_pc();
-    //     if (new_post_list_style_mobile() === 'big') {
-    //         $thumbnail_size = 'big';
-    //     }
-    // } else {
-    //     $post_list_style_mobile = archive_post_list_style_mobile();
-    //     $post_list_style_pc = archive_post_list_style_pc();
-    //     $thumbnail_size = archive_post_list_style_pc();
-    //     if (archive_post_list_style_mobile() === 'big') {
-    //         $thumbnail_size = 'big';
-    //     }
-    // }
-
-    // if (!empty($post_list_style_mobile)) {
-    //     $post_list_style_mobile = ' list-'.$post_list_style_mobile;
-    // }
-    // if (!empty($post_list_style_pc)) {
-    //     $post_list_style_pc = ' list-'.$post_list_style_pc;
-    // }
-    // $style = $post_list_style_mobile.$post_list_style_pc;
-
+  
     $count = '';
     $rand = rand(4, 9);
 

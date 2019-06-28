@@ -7,30 +7,6 @@
 function fixed_header() {
     return get_theme_mod( 'fixed_header', false );
 }
-//トップページ一覧モバイル
-function new_post_list_style_mobile() {
-    return get_theme_mod( 'new_post_list_style_mobile', null );
-}
-//アーカイブページ一覧モバイル
-function archive_post_list_style_mobile() {
-    return get_theme_mod( 'archive_post_list_style_mobile', null );
-}
-//関連記事一覧モバイル
-function related_post_list_style_mobile() {
-    return get_theme_mod( 'related_post_list_style_mobile', null );
-}
-//トップページ一覧PC
-function new_post_list_style_pc() {
-    return get_theme_mod( 'new_post_list_style_pc', null );
-}
-//アーカイブページ一覧PC
-function archive_post_list_style_pc() {
-    return get_theme_mod( 'archive_post_list_style_pc', null );
-}
-//関連記事一覧PC
-function related_post_list_style_pc() {
-    return get_theme_mod( 'related_post_list_style_pc', null );
-}
 //関連記事の表示数
 function related_post_count() {
     $count = get_theme_mod( 'related_post_count', 10 );
@@ -121,34 +97,6 @@ function google_custom_search_slug() {
 ////////////////////////////////////
 // SNS
 ////////////////////////////////////
-//記事上SNS表示切り替え
-function is_sns_top_4536($post_type) {
-    return get_theme_mod( $post_type, true );
-}
-//記事下SNS表示切り替え
-function is_sns_bottom_4536($post_type) {
-    return get_theme_mod( $post_type, true );
-}
-//フォロータイトル
-function follow_section_title() {
-    return esc_html(get_theme_mod( 'follow_section_title', '最新情報をお届けします' ));
-}
-//いいねボタン
-function is_likebox() {
-    return get_theme_mod( 'is_likebox', false );
-}
-//Twitterフォロー
-function is_twitter_follow() {
-    return get_theme_mod( 'is_twitter_follow', false );
-}
-//feedlyフォロー
-function is_feedly_follow() {
-    return get_theme_mod( 'is_feedly_follow', true );
-}
-//SNSシェアタイトル
-function sns_share_text() {
-    return esc_html(get_theme_mod( 'sns_share_text', 'この記事をシェアする' ));
-}
 //Twitterカード
 function twitter_card() {
     return get_theme_mod( 'twitter_card', 'summary' );

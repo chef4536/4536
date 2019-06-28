@@ -380,48 +380,6 @@ $wp_customize->add_section( 'SNS', [
     'title' => 'SNS',
     'priority' => 30,
 ]);
-    //記事上SNSの表示切り替え
-    $list = [
-        'single' => '記事ページ',
-        'page' => '固定ページ',
-        'media' => 'メディアページ',
-    ];
-    foreach($list as $post_type => $label) {
-        $wp_customize->add_setting( 'is_sns_top_'.$post_type, [
-            'default' => true,
-        ]);
-        $wp_customize->add_control( 'is_sns_top_'.$post_type, [
-            'section' => 'SNS',
-            'settings' => 'is_sns_top_'.$post_type,
-            'label' =>'記事上にシェアボタンを表示する（'.$label.'）',
-            'type' => 'checkbox',
-            'priority' => 5,
-        ]);
-    }
-    //記事下SNSの表示切り替え
-    foreach($list as $post_type => $label) {
-        $wp_customize->add_setting( 'is_sns_bottom_'.$post_type, array (
-            'default' => true,
-        ));
-        $wp_customize->add_control( 'is_sns_bottom_'.$post_type, array(
-            'section' => 'SNS',
-            'settings' => 'is_sns_bottom_'.$post_type,
-            'label' =>'記事下にシェアボタンを表示する（'.$label.'）',
-            'type' => 'checkbox',
-            'priority' => 5,
-        ));
-    }
-    //シェアタイトル
-    $wp_customize->add_setting( 'sns_share_text', array (
-        'default' => 'この記事をシェアする',
-    ));
-    $wp_customize->add_control( 'sns_share_text', array(
-        'section' => 'SNS',
-        'settings' => 'sns_share_text',
-        'label' =>'SNSシェアタイトル',
-        'type' => 'text',
-        'priority' => 5,
-    ));
     //Twitterカード
     $wp_customize->add_setting( 'twitter_card', array (
         'default' => 'summary',
@@ -448,52 +406,6 @@ $wp_customize->add_section( 'SNS', [
         'description' => '記事がTweetされた時の「@〇〇」を表示します。',
         'type' => 'checkbox',
         'priority' => 20,
-    ));
-    //フォロータイトル
-    $wp_customize->add_setting( 'follow_section_title', array (
-        'default' => '最新情報をお届けします',
-    ));
-    $wp_customize->add_control( 'follow_section_title', array(
-        'section' => 'SNS',
-        'settings' => 'follow_section_title',
-        'label' =>'フォロー',
-        'type' => 'text',
-        'priority' => 40,
-    ));
-    //いいねボタン
-    $wp_customize->add_setting( 'is_likebox', array (
-        'default' => false,
-    ));
-    $wp_customize->add_control( 'is_likebox', array(
-        'section' => 'SNS',
-        'settings' => 'is_likebox',
-        'label' =>'いいねボックスを表示する',
-        'description' => 'サイト管理者がプロフィール画面でFacebook（ページ）のIDを入力する必要があります。',
-        'type' => 'checkbox',
-        'priority' => 50,
-    ));
-    //Twitterフォローボタン
-    $wp_customize->add_setting( 'is_twitter_follow', array (
-        'default' => false,
-    ));
-    $wp_customize->add_control( 'is_twitter_follow', array(
-        'section' => 'SNS',
-        'settings' => 'is_twitter_follow',
-        'label' =>'Twitterフォローボタンを表示する',
-        'description' => 'サイト管理者がプロフィール画面でTwitterのIDを入力する必要があります。',
-        'type' => 'checkbox',
-        'priority' => 60,
-    ));
-    //Twitterフォローボタン
-    $wp_customize->add_setting( 'is_feedly_follow', array (
-        'default' => true,
-    ));
-    $wp_customize->add_control( 'is_feedly_follow', array(
-        'section' => 'SNS',
-        'settings' => 'is_feedly_follow',
-        'label' =>'feedlyフォローボタンを表示する',
-        'type' => 'checkbox',
-        'priority' => 70,
     ));
 
 //コメント欄

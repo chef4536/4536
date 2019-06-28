@@ -10,37 +10,10 @@ amp-img img {
 }
 
 /* amp-sidebar */
-#sidebar .amp-adsense {
-  margin: 0 0 1.5em;
-}
-
 /* AMPページのコメントボタン */
 .comments-from-amp {
-  text-align: center;
-  display: block;
-  color: #fff;
-  background-color: #000;
-  padding: 10px;
-  margin: 1rem auto;
   border-radius: 4px;
   border: 1px #f2f2f2 solid;
-}
-
-/* AMPページを生成できなかった場合 */
-.to-mobile-page {
-  margin: 2em auto;
-}
-
-/* いいね */
-.fb-like {
-  margin-bottom: 0;
-}
-
-amp-facebook-like {
-  min-width: 90px;
-  height: 30px;
-  max-height: 30px;
-  display: inline-block;
 }
 
 /* 旧アプリーチ */
@@ -95,13 +68,10 @@ amp-facebook-like {
   width: 100%;
   margin: 0 0 1.5em 0;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   overflow: hidden;
 }
@@ -130,7 +100,6 @@ amp-facebook-like {
 }
 
 .wp-block-file a.wp-block-file__button:active, .wp-block-file a.wp-block-file__button:focus, .wp-block-file a.wp-block-file__button:hover, .wp-block-file a.wp-block-file__button:visited {
-  -webkit-box-shadow: none;
   box-shadow: none;
   color: #fff;
   opacity: .85;
@@ -149,7 +118,6 @@ amp-facebook-like {
   display: grid;
   grid-template-rows: auto;
   -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   grid-template-areas: "media-text-media media-text-content";
   grid-template-columns: 50% auto;
@@ -176,9 +144,7 @@ amp-facebook-like {
 
 .wp-block-gallery {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
@@ -195,30 +161,23 @@ amp-facebook-like {
 .wp-block-gallery .blocks-gallery-image, .wp-block-gallery .blocks-gallery-item {
   margin: 0 16px 16px 0;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   position: relative;
 }
 
 .wp-block-gallery .blocks-gallery-image figure, .wp-block-gallery .blocks-gallery-item figure {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: end;
-  -ms-flex-align: end;
   align-items: flex-end;
   -webkit-box-pack: start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
@@ -230,7 +189,6 @@ amp-facebook-like {
 .wp-block-gallery.is-cropped .blocks-gallery-image a, .wp-block-gallery.is-cropped .blocks-gallery-image amp-img, .wp-block-gallery.is-cropped .blocks-gallery-item a, .wp-block-gallery.is-cropped .blocks-gallery-item amp-img {
   height: 100%;
   -webkit-box-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   -o-object-fit: cover;
   object-fit: cover;

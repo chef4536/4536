@@ -59,16 +59,12 @@ echo '</div>'; //#main-column
 <?php
 if (!none_header_footer()) {
           get_template_part('template-parts/fixed-footer');
-          get_template_part('template-parts/fixed-footer-share-button');
           get_template_part('template-parts/fixed-footer-search');
           if (!is_amp()) {
-            wp_footer();
-            if (is_likebox() && is_singular()) {
-                get_template_part('template-parts/likebox');
-            }
-            if (add_html_js_body()) {
-                echo add_html_js_body();
-            }
+              wp_footer();
+              if (add_html_js_body()) {
+                  echo add_html_js_body();
+              }
           }
       } else {
           if (!is_amp()) {

@@ -98,39 +98,6 @@ class CustomizerLayoutSettings_4536 {
         null => 'シンプル（デフォルト）',
         'big' => 'ビッグ（1列）',
     ];
-    //トップページモバイル
-    $wp_customize->add_setting( 'new_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_mobile',
-        'label' => '新着記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページモバイル
-    $wp_customize->add_setting( 'archive_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_mobile',
-        'label' => 'アーカイブ記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事モバイル
-    $wp_customize->add_setting( 'related_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_mobile',
-        'label' => '関連記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
     //サイドバーをスライドメニューにする
     $wp_customize->add_setting( 'sidebar_to_slidemenu', [
       'default' => true,
@@ -140,46 +107,6 @@ class CustomizerLayoutSettings_4536 {
       'settings' => 'sidebar_to_slidemenu',
       'label' => 'スマホ画面でサイドバーをスライドメニューにする',
       'type' => 'checkbox',
-    ]);
-    //PC用
-    $post_style_list += [
-        '2-5' => '2列',
-        '3-3' => '3列',
-        '4-2' => '4列',
-    ];
-    unset($post_style_list['big']);
-    //トップページPC
-    $wp_customize->add_setting( 'new_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_pc',
-        'label' => '新着記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページPC
-    $wp_customize->add_setting( 'archive_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_pc',
-        'label' => 'アーカイブ記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事PC
-    $wp_customize->add_setting( 'related_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_pc',
-        'label' => '関連記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
     ]);
     //関連記事の表示数
     $wp_customize->add_setting( 'related_post_count', [
@@ -225,7 +152,6 @@ class CustomizerLayoutSettings_4536 {
         'choices' => [
           null => '非表示（デフォルト）',
           'menu' => 'メニューを表示',
-  				'share' => 'シェアボタン',
           'overlay' => 'オーバーレイ広告',
         ],
     ]);

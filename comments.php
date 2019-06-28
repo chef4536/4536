@@ -18,11 +18,11 @@
         'lavel_submit' => ('Submit Comment'),
         'id_submit' => 'submit',
     ];
-    if(is_amp()) {
-        echo '<div id="respond" class="comment-respond">'.
-                '<a class="comments-from-amp" href="'.get_the_permalink().'#respond">コメントを書く</a>'.
-            '</div>';
-    } else {
+    if(is_amp()) { ?>
+        <div id="respond" class="comment-respond">
+          <a class="comments-from-amp pa-3 mt-4 mb-4" href="<?php the_permalink();?>#respond" data-text-align="center" data-display="block" data-bg-color="black" data-color="white">コメントを書く</a>
+        </div>
+    <?php } else {
         comment_form($args);
     }
   ?>
