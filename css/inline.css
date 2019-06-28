@@ -227,6 +227,18 @@
   font-size: 12px;
 }
 
+.author-content {
+  border-radius: 5px;
+}
+
+.author-avatar {
+  left: 50%;
+  box-shadow: 0 2px 5px;
+  margin: -40px 0 0 -40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */

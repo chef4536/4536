@@ -79,13 +79,8 @@ if (has_tag()) {
     }
 }
 
-// if( $is_profile === true ) get_template_part('template-parts/profile');
-
 ?>
 
-<!-- <svg viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0,10 Q40,0 50 5 T 100 0" fill="none" stroke="black" stroke-width="1" />
-</svg> -->
 <hr class="section-break mt-5" />
 <div id="post-bottom-section" class="d-f a-i-c l-h-160 f-w-w">
   <?php
@@ -108,3 +103,5 @@ echo '<p>記事がありません</p>';
 endif;
 
 wp_reset_postdata();
+
+if( $is_profile === true ) get_template_part('template-parts/profile');

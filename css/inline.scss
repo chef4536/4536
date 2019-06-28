@@ -155,9 +155,11 @@ $button_base_size: 56px;
 /////////////////////////////////
 //////////// header ////////////
 ////////////////////////////////
+
 #header-container {
   max-width: 2048px;
 }
+
 .header-logo {
   max-height: 48px;
 }
@@ -234,9 +236,9 @@ $button_base_size: 56px;
     height: 100%;
   }
 }
-/////////////////////////////////
+//////////////////////////////
 //////////// card ////////////
-////////////////////////////////
+//////////////////////////////
 
 .card-wrap {
   max-width: 400px;
@@ -259,6 +261,20 @@ $button_base_size: 56px;
     border-top: 1px solid #ccc;
     font-size: 12px;
   }
+}
+/////////////////////////////
+////////// author ///////////
+/////////////////////////////
+
+.author-content {
+  border-radius: 5px;
+}
+.author-avatar {
+  left: 50%;
+  box-shadow: 0 2px 5px;
+  margin: -40px 0 0 -40px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
@@ -309,7 +325,7 @@ $button_base_size: 56px;
       display: none !important;
     }
   }
-  
+
   .close-button {
     display: -webkit-box;
     display: flex;
