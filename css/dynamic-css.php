@@ -73,27 +73,9 @@ add_filter('inline_style_4536', function ($css) {
         $css[] = '#sitename{text-align:center}';
     }
 
-    //ヘッダー背景画像
-    if (header_background_url()) {
-        $height_mobile = header_background_height_mobile();
-        $height_pc = header_background_height_pc();
-        $height_mobile = mb_convert_kana(strip_tags($height_mobile), 'n');
-        $height_pc = mb_convert_kana(strip_tags($height_pc), 'n');
-        $height_mobile = ($height_mobile && ctype_digit($height_mobile)) ? ';height:'.$height_mobile.'px' : '';
-        $css[] = '#header{background-image:url("'.header_background_url().'");background-size:'.header_background_size().';background-position:'.header_background_position().';background-repeat:'.header_background_repeat().$height_mobile.'}';
-        if ($height_pc && ctype_digit($height_pc)) {
-            $css[] = '@media screen and (min-width: 768px) {#header{height:'.$height_pc.'px}}';
-        }
-    }
-
     //ヘッダー画像があれば
     if (has_header_image()) {
         $css[] = '#header-image img{display:block;margin:0 auto}';
-    }
-
-    //ディスクリプションがあったら
-    if ((is_home() || is_front_page()) && !is_paged() && is_home_description()) {
-        $css[] = '#top-description{font-style:italic;font-size:14px;text-align:center;line-height:1.4;margin:1em auto}';
     }
 
     //カエレバの背景画像

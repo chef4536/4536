@@ -341,35 +341,7 @@ function wordpress_translation_update_setting() {
 function header_logo_url() {
     return esc_url(get_theme_mod('header_logo_url'));
 }
-//ヘッダー背景画像
-function header_background_url() {
-    return esc_url(get_theme_mod('header_background_url'));
-}
-//ヘッダー背景画像のサイズ
-function header_background_size() {
-    return get_theme_mod('header_background_size','cover');
-}
-//ヘッダー背景画像の位置
-function header_background_position() {
-    return get_theme_mod('header_background_position','center center');
-}
-//ヘッダー背景画像の繰り返し
-function header_background_repeat() {
-    return get_theme_mod('header_background_repeat','no-repeat');
-}
-//ヘッダー背景画像の高さ
-function header_background_height_mobile() {
-    return get_theme_mod('header_background_height_mobile',null);
-}
-//ヘッダー背景画像の高さ
-function header_background_height_pc() {
-    return get_theme_mod('header_background_height_pc',null);
-}
 //サイトタイトルの変更
 function site_title() {
     return esc_html(get_theme_mod( 'site_title', null ));
-}
-//トップページのディスクリプション表示切り替え
-function is_home_description() {
-    return get_theme_mod( 'is_home_description', true );
 }

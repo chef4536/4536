@@ -25,83 +25,6 @@ add_action('customize_register', function( $wp_customize ) {
     'label' => 'ロゴ画像',
     'description' => '（横幅238px・高さ48px）',
   ]));
-  //ヘッダー背景画像
-  $wp_customize->add_setting( 'header_background_url' );
-  $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_background_url', [
-	  'section' => 'header_image',
-	  'settings' => 'header_background_url',
-	  'label' => 'ヘッダー背景画像',
-  ]));
-  //ヘッダー背景画像の大きさ
-  $wp_customize->add_setting( 'header_background_size', [
-    'default' => 'cover',
-  ]);
-  $list = [
-    'cover' => 'フルスクリーン',
-    'auto' => '元の大きさ',
-    'contain' => '画面に合わせる',
-  ];
-  $wp_customize->add_control( 'header_background_size', [
-    'section' => 'header_image',
-    'settings' => 'header_background_size',
-    'label' => '画像のサイズ',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の位置
-  $wp_customize->add_setting( 'header_background_position', [
-    'default' => 'center center',
-  ]);
-  $list = [
-    'left top' => '左上',
-    'center top' => '上',
-    'right top' => '右上',
-    'left center' => '左',
-    'center center' => '中央',
-    'right center' => '右',
-    'left bottom' => '左下',
-    'center bottom' => '下',
-    'right bottom' => '右下',
-  ];
-  $wp_customize->add_control( 'header_background_position', [
-    'section' => 'header_image',
-    'settings' => 'header_background_position',
-    'label' => '画像の位置',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の繰り返し
-  $wp_customize->add_setting( 'header_background_repeat', [
-    'default' => 'no-repeat',
-  ]);
-  $list = [
-    'no-repeat' => '繰り返さない',
-    'repeat' => '繰り返す',
-  ];
-  $wp_customize->add_control( 'header_background_repeat', [
-    'section' => 'header_image',
-    'settings' => 'header_background_repeat',
-    'label' => '画像の繰り返し',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の高さ
-  $list = [
-    'mobile' => 'スマホ',
-    'pc' => 'PC',
-  ];
-  foreach($list as $device => $desc) {
-    $wp_customize->add_setting( 'header_background_height_'.$device, [
-      'default' => null,
-    ]);
-    $wp_customize->add_control( 'header_background_height_'.$device, [
-      'section' => 'header_image',
-      'settings' => 'header_background_height_'.$device,
-      'label' => '画像の高さ（'.$desc.'）',
-      'description' => '背景画像の高さを明確に指定したい場合だけ数値を入力。未入力の場合は中の要素分の高さになります。',
-      'type' => 'text',
-    ]);
-  }
 
 //ページ設定
 $wp_customize->add_section( 'page_setting', [
@@ -258,20 +181,6 @@ $wp_customize->add_section( 'media', [
         'choices' => [
             'thumbnail-wide' => '横長（デフォルト）',
             'thumbnail' => '正方形',
-        ],
-    ]);
-    //サムネイルの表示方法
-    $wp_customize->add_setting( 'thumbnail_display', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'thumbnail_display', [
-        'section' => 'media',
-        'settings' => 'thumbnail_display',
-        'label' => 'サムネイルの表示方法',
-        'type' => 'radio',
-        'choices' => [
-            'image' => 'imgタグ（デフォルト）',
-            'background-image' => '背景画像',
         ],
     ]);
     //サムネイルの画質
@@ -586,16 +495,6 @@ $wp_customize->add_section( 'code_highlight', array (
         'label' =>'サイト上に表示するタイトル。',
         'description' => 'サイト上に表示するタイトルを変更できます（入力しない場合は、一般→「サイトタイトル」の文字が表示されます）。検索結果のサイトタイトルには、一般→「サイトタイトル」で入力した文字が使われます。',
         'type' => 'text',
-    ));
-    //トップページのディスクリプション表示切り替え
-    $wp_customize->add_setting( 'is_home_description', array (
-        'default' => true,
-    ));
-    $wp_customize->add_control( 'is_home_description', array(
-        'section' => 'title_tagline',
-        'settings' => 'is_home_description',
-        'label' =>'トップにキャッチフレーズを表示する',
-        'type' => 'checkbox',
     ));
 
 //吹き出し

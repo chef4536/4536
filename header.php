@@ -49,14 +49,6 @@ if (is_amp()) {
           dynamic_sidebar('header-widget');
       }
 
-      if ((is_home() || is_front_page()) && !is_paged() && is_home_description()) { //ディスクリプション?>
-        <!-- <div id="top-description">
-          <div class="w-100 ma-auto py-0 px-3">
-            <p><?php bloginfo('description'); ?></p>
-          </div>
-        </div> -->
-      <?php }
-
     }
 
     if (is_singular()) {

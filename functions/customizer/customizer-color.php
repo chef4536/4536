@@ -20,7 +20,7 @@ class CustomizerColorSettings_4536 {
       'color' => '#1b95e0',
     ],
     'post_color' => [
-      'label' => '記事（一覧含む）文字',
+      'label' => '文字',
       'color' => '#333333',
     ],
     'table_background_color_2_line' => [

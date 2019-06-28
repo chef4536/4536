@@ -93,11 +93,6 @@ class CustomizerLayoutSettings_4536 {
         'type' => 'select',
         'choices'    => $width_list,
     ));
-    //記事一覧のデザインスマホ
-    $post_style_list = [
-        null => 'シンプル（デフォルト）',
-        'big' => 'ビッグ（1列）',
-    ];
     //サイドバーをスライドメニューにする
     $wp_customize->add_setting( 'sidebar_to_slidemenu', [
       'default' => true,
