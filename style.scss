@@ -503,6 +503,255 @@ img[height|="1"] {
 .gsc-control-cse {
   padding: 0 !important;
 }
+
+/* Gutenberg */
+.wp-block-image,.wp-block-file,.wp-block-media-text {
+    margin-bottom: 1.5em;
+}
+.wp-block-quote cite {
+    display: inline-block;
+    margin-bottom: 1.5em;
+    font-size: 80%;
+    opacity: .5;
+}
+.wp-block-quote cite::before {
+    content: '引用元：';
+}
+.wp-block-separator {
+    margin-bottom: 1.5em;
+}
+.wp-block-embed {
+    margin-bottom: 1.5em;
+}
+
+//オリジナルのフレーム
+.frame {
+    margin: 1.5em auto;
+    padding: 2em 1em 0;
+    border: 2px solid #aaa;
+    position: relative;
+    border-radius: 2px;
+}
+.frame-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: .1em;
+    font-style: italic;
+    padding: .3em .5em;
+    font-size: .8em;
+    line-height: 1;
+}
+.caution {
+    background-color: #ff4500;
+    color: #fff;
+}
+.one-point {
+    background-color: #0000ff;
+    color: #fff;
+}
+// オリジナルボタン
+.bold-4536 {
+    font-weight: bold;
+}
+.underline-4536 {
+    text-decoration: underline;
+}
+.line-through-4536 {
+    text-decoration: line-through;
+}
+.text-shadow-4536 {
+    text-shadow: 0 0 10px rgba(255,255,255,.8), 1px 1px 1px rgba(0,0,0,1);
+}
+.color-red-4536,.color-red-4536 a {
+    color: #ff0000;
+}
+.color-blue-4536,.color-blue-4536 a {
+    color: #0000ff;
+}
+.color-orange-4536,.color-orange-4536 a {
+    color: #ef5214;
+}
+.color-green-4536,.color-green-4536 a {
+    color: #00ff00;
+}
+.color-white-4536,.color-white-4536 a {
+    color: #fff;
+}
+.font-size-10px {
+    font-size: 10px;
+}
+.font-size-12px {
+    font-size: 12px;
+}
+.font-size-14px {
+    font-size: 14px;
+}
+.font-size-16px {
+    font-size: 16px;
+}
+.font-size-18px {
+    font-size: 18px;
+}
+.font-size-20px {
+    font-size: 20px;
+}
+.font-size-22px {
+    font-size: 22px;
+}
+.font-size-24px {
+    font-size: 24px;
+}
+.box-4536 {
+    border-radius: 2px;
+    position: relative;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.border-4536 {
+    border: 2px solid;
+}
+.border-red,.frame-red {
+    border-color: #ff4500;
+}
+.border-blue,.frame-blue {
+    border-color: #0000ff;
+}
+.border-orange {
+    border-color: #ef5214;
+}
+.border-green,.frame-green {
+    border-color: #25c04a;
+}
+.border-yellow,.frame-yellow {
+  border-color: #ff8c00;
+}
+.border-brown,.frame-brown {
+  border-color: #5d310c;
+}
+.background-color-gray {
+    background-color: #ccc;
+}
+.background-color-red {
+    background-color: #ff0000;
+}
+.background-color-blue {
+    background-color: #0000ff;
+}
+.background-color-orange {
+    background-color: #ef5214;
+}
+.background-color-green {
+    background-color: #25c04a;
+}
+.background-color-black {
+    background-color: #000000;
+}
+.button-4536 {
+  overflow: hidden;
+  width: 90%;
+  max-width: 480px;
+  clear: both;
+  position: relative;
+  border-radius: 28px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 3em auto 4em;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+.button-4536 a {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1em;
+    color: #fff;
+}
+.reference {
+    position: relative;
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 3px;
+    border-radius: 2px;
+}
+.reference,
+.info {
+    background-color: #ff8c00;
+    color: #fff;
+}
+// 新アプリーチ
+.appreach {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #7C7C7C;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.appreach:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.appreach p {
+    margin: 0;
+}
+.appreach a:after {
+    display: none;
+}
+.appreach__icon {
+    float: left;
+    border-radius: 10%;
+    overflow: hidden;
+    margin: 0 3% 0 0 !important;
+    width: 25% !important;
+    height: auto !important;
+    max-width: 120px !important;
+}
+.appreach__detail {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1.5;
+    width: 72%;
+    max-width: 72%;
+}
+.appreach__detail:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.appreach__name {
+    font-size: 16px;
+    line-height: 1.5em !important;
+    max-height: 3em;
+    overflow: hidden;
+}
+.post .appreach__info {
+    font-size: 12px !important;
+}
+.appreach__developper, .appreach__price {
+    margin-right: 0.5em;
+}
+.appreach__posted a {
+    margin-left: 0.5em;
+}
+.appreach__links {
+    float: left;
+    height: 40px;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+.appreach__aslink img {
+    margin-right: 10px;
+    height: 40px;
+    width: 135px;
+}
+.appreach__gplink img {
+    height: 40px;
+    width: 134.5px;
+}
+
 /////////////////////////////////
 //////////// define ////////////
 ////////////////////////////////
