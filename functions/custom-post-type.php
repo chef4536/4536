@@ -58,6 +58,7 @@ add_action('init', function () {
 
 function media_section_4536($media, $args = [])
 {
+  if(is_page_template('page-templates/simple-page.php')) return;
     global $post;
     $args = [
     'post_type' => $media,

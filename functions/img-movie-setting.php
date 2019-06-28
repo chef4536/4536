@@ -101,7 +101,7 @@ function the_post_thumbnail_4536()
     $attr = [
     'class' => '',
   ];
-    $thumbnail = '<figure id="post-thumbnail-4536" class="post-thumbnail h-100" data-position="relative">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
+    $thumbnail = '<figure class="post-thumbnail h-100" data-position="relative">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
     if ($thumbnail) {
         echo $thumbnail;
     }
