@@ -53,7 +53,7 @@ function archive_template_4536($page_4536) { ?>
 
 function post_list_template_4536($page_4536)
 {
-  
+
     $count = '';
     $rand = rand(4, 9);
 
@@ -92,7 +92,7 @@ function post_list_card_4536( $title_tag = 'h2' )
       <div class="flex"></div>
       <div data-display="flex" data-align-items="center" class="card-meta pa-3">
         <div class="meta">
-          <span><?php the_date() ?></span>
+          <span><?php the_time(get_option('date_format')) ?></span>
         </div>
         <div class="flex"></div>
         <a data-button="submit" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">もっと見る</a>

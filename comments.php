@@ -1,6 +1,6 @@
 <aside id="comments" class="pt-5">
+  <h2 data-text-align="center" class="mb-3"><?php comments_number( 'コメント', '1件のコメント', '%件のコメント' ); ?></h2>
   <?php if(have_comments()): ?>
-    <h2 data-text-align="center" class="mb-3">コメント</h2>
     <ol class="comment-list">
         <?php if(is_amp()) {
           $args = [
