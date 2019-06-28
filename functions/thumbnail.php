@@ -59,7 +59,7 @@ function thumbnail_4536($thumbnail_style)
     $post_thumbnail = get_the_post_thumbnail($post->ID, $size);
 
     //サムネイル
-    $start_tag = '<figure data-position="relative" class="post-list-thumbnail w-100 ' . $thumbnail_class . '">';
+    $start_tag = '<figure data-position="relative" class="post-thumbnail w-100 ' . $thumbnail_class . '">';
     $thumbnail = (has_post_thumbnail()) ? $post_thumbnail : get_some_image_4536($content);
     $end_tag = $date.$category.'</figure>';
     $thumbnail = $start_tag.$thumbnail.$end_tag;

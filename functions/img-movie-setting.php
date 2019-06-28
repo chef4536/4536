@@ -99,9 +99,9 @@ function the_post_thumbnail_4536()
         return;
     }
     $attr = [
-    'class' => 'd-b w-100 my-0 mx-auto',
+    'class' => '',
   ];
-    $thumbnail = '<figure id="post-thumbnail-4536" class="p-r">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
+    $thumbnail = '<figure id="post-thumbnail-4536" class="post-thumbnail h-100" data-position="relative">' . get_the_post_thumbnail($post_id, $size, $attr) . '</figure>';
     if ($thumbnail) {
         echo $thumbnail;
     }
@@ -243,11 +243,11 @@ function header_logo_4536()
 function prev_next_post_thumbnail($post_id)
 {
     if (!has_post_thumbnail($post_id)) {
-        echo '<div class="post-list-thumbnail prev-post-thumbnail w-100 h-100"></div>';
+        echo '<div class="post-thumbnail prev-post-thumbnail w-100 h-100"></div>';
         return;
     }
 
-    echo '<figure class="post-list-thumbnail prev-post-thumbnail w-100 h-100">'.get_the_post_thumbnail($post_id).'</figure>';
+    echo '<figure class="post-thumbnail prev-post-thumbnail w-100 h-100">'.get_the_post_thumbnail($post_id).'</figure>';
 }
 
 /////////////////////////////////////////////

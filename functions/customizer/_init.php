@@ -11,4 +11,4 @@ foreach( $arr as $key ) {
   require_once( "$key.php" );
 }
 //カスタム背景
-add_theme_support( 'custom-background' );
+add_theme_support( 'custom-background', ['default-color' => 'ffffff',] );

@@ -32,18 +32,6 @@ Version: 1.1.7
   overflow: hidden;
 }
 
-.post-thumbnail-shape {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  opacity: 0.5;
-}
-
-#post-thumbnail-4536 {
-  -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-  box-shadow: 0 0 20px #ccc;
-}
-
 /* youtubeのレスポンシブ */
 .responsive-wrapper {
   position: relative;
@@ -373,8 +361,12 @@ Version: 1.1.7
   border-radius: 20px;
 }
 
-.post-list-thumbnail.prev-post-thumbnail {
+.post-thumbnail.prev-post-thumbnail {
   padding-top: 70%;
+}
+
+#prev-next .mask {
+  z-index: 0;
 }
 
 #page-links :not(.current) .gradation {

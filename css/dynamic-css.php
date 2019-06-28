@@ -54,7 +54,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '50' ;
-    $css[] = ".post-list-thumbnail{padding-top:$height%}";
+    $css[] = ".post-thumbnail{padding-top:$height%}";
 
     //横幅とレイアウト
     $body_width = body_width_4536();

@@ -216,7 +216,7 @@ $button_base_size: 56px;
 ////////// thumbnail ///////////
 ////////////////////////////////
 
-.post-list-thumbnail {
+.post-thumbnail {
   img {
     -o-object-fit: cover;
     object-fit: cover;
@@ -230,6 +230,19 @@ $button_base_size: 56px;
     min-height: 100%;
     height: 100%;
   }
+}
+
+//アイキャッチ
+.post-thumbnail-shape {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+#post-thumbnail-4536 {
+  -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
+  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
+  box-shadow: 0 0 20px #ccc;
 }
 //////////////////////////////
 //////////// card ////////////
@@ -248,7 +261,7 @@ $button_base_size: 56px;
     right: 5%;
   }
 
-  .post-list-thumbnail img {
+  .post-thumbnail img {
     border-radius: 5px 5px 0 0;
   }
 

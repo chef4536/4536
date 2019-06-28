@@ -74,7 +74,7 @@ class ConvertEmbedContentFrom_url_4536 {
     {$blockquote_begin}
     <span data-display="block" class="card-wrap pa-2">
       <span data-embed-content="true" data-display="flex" data-position="relative" data-flex-direction="column" class="wp-embed card h-100">
-        <span data-position="relative" class="wp-embed-featured-image post-list-thumbnail w-100">
+        <span data-position="relative" class="wp-embed-featured-image post-thumbnail w-100">
           {$thumbnail}
         </span>
         <span class="card-content flex pl-3 pr-3 pt-4 pb-4">
