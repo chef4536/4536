@@ -394,6 +394,11 @@ input[type="search"] {
   background-color: #fff;
   color: #555;
   max-width: 100%;
+  padding: .5em;
+}
+
+.widget-post-title {
+  font-weight: 700;
 }
 
 .screen-reader-text {

@@ -10,8 +10,8 @@ require_once('related-article.php'); //関連記事
 function widget_list_4536( $thumbnail = null ) {
   if( is_null($thumbnail) ) $thumbnail = thumbnail_4536('widget')['thumbnail'];
   ?>
-  <li class="post-list p-r clearfix padding-bottom-1em">
+  <li data-position="relative" class="mb-4">
     <?php echo $thumbnail; ?>
-    <a class="post-info post-color link-mask post-title" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+    <a class="post-color link-mask widget-post-title" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
   </li>
 <?php }
