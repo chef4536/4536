@@ -8,13 +8,14 @@ if (is_singular()) {
 
 media_section_4536('movie'); //サブメディア
 
-if (!is_amp() && is_active_sidebar('footer-top')) { //フッター上?>
-  <div id="footer-top-widget-area">
-    <div class="inner p-r w-100 ma-auto py-4 px-2">
-      <?php dynamic_sidebar('footer-top') ?>
+if (!is_amp() && is_active_sidebar('footer') && !none_header_footer()) { ?>
+  <div class="container ma-auto">
+    <div data-display="flex" data-justify-content="center">
+      <?php dynamic_sidebar('footer'); ?>
     </div>
   </div>
 <?php }
+
 
 echo '</div>'; //#main-column
 
@@ -25,24 +26,17 @@ echo '</div>'; //#main-column
   <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
     <div class="container ma-auto">
       <?php
-      if (!none_header_footer()) {
-          if (!is_amp() && is_active_sidebar('footer')) {
-            echo '<div data-display="flex" data-justify-content="center">';
-            dynamic_sidebar('footer');
-            echo '</div>';
-          }
-          $defaults = [
-          'theme_location'  => 'navbar_footer',
-          'container' => false,
-          'fallback_cb' => false,
-          'echo' => false,
-          'items_wrap' => '<ul data-display="flex" data-justify-content="center">%3$s</ul>',
-        ];
-          if (has_nav_menu('navbar_footer')) {
-              echo '<div class="global-nav pa-3">' . wp_nav_menu($defaults) . '</div>';
-          }
-      } ?>
-      <div id="copyright" data-text-align="center" class="meta pa-3">
+      $defaults = [
+        'theme_location'  => 'navbar_footer',
+        'container' => false,
+        'fallback_cb' => false,
+        'echo' => false,
+        'items_wrap' => '<ul data-display="flex" data-justify-content="center">%3$s</ul>',
+      ];
+      if (has_nav_menu('navbar_footer')) {
+          echo '<div class="global-nav pa-3">' . wp_nav_menu($defaults) . '</div>';
+      }?>
+      <div id="copyright" data-text-align="center" class="meta pt-5 pb-5 pr-3 pl-3">
         <?php
         $name = (site_title()) ? site_title() : get_bloginfo('name');
         $link = '<a href="'.home_url().'">'.$name.'</a>';

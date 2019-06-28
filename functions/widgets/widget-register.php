@@ -61,15 +61,15 @@ register_sidebar([
     'before_title' => '<p class="widget-title">',
     'after_title' => '</p>',
 ]);
-register_sidebar([
-    'name' => 'フッター上',
-    'id' => 'footer-top',
-    'description' => 'サイト下部に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-top-widget">',
-    'after_widget' => '</div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
-]);
+// register_sidebar([
+//     'name' => 'フッター上',
+//     'id' => 'footer',
+//     'description' => 'サイト下部に表示されます。「設定」から幅を変更できます。',
+//     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-widget">',
+//     'after_widget' => '</div>',
+//     'before_title' => '<p class="widget-title">',
+//     'after_title' => '</p>',
+// ]);
 register_sidebar([
     'name' => 'フッター',
     'id' => 'footer',

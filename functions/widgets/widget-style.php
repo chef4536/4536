@@ -24,8 +24,9 @@ class Widget_Style_Setting_4536 {
 
   public $align = [
     null => 'デフォルト',
-    'alignwide min-w-100' => '幅広',
-    'alignfull min-w-100' => '全幅',
+    'alignwide' => '幅広',
+    'alignfull' => '全幅（全体幅を無視して広げる）',
+    'min-w-100' => '全幅（全体幅を考慮して広げる）',
   ];
 
   public $margin_padding_setting = [
