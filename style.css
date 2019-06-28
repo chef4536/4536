@@ -418,7 +418,6 @@ input[type="search"] {
 #fixed-footer-overlay {
   height: 54px;
   border-top: 4px solid;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .fixed-footer-close-button {

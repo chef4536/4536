@@ -345,6 +345,7 @@ $button_base_size: 56px;
     position: fixed;
     padding-bottom: calc(env(safe-area-inset-bottom) - 1em);
     z-index: 3;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.2);
   }
   /* max-767px END */
 }

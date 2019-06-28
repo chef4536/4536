@@ -22,7 +22,12 @@ echo '</div>'; //#main-column
 ?>
 
 <div id="site-bottom" class="gradation">
-  <?php wave_shape('footer'); ?>
+  <div data-position="relative">
+    <?php wave_shape('footer'); ?>
+    <a class="page-top t-50 r-0" href="#" data-button="floating" data-bg-color="white" data-position="absolute">
+      <?php echo icon_4536('arrow_up', '', 36); ?>
+    </a>
+  </div>
   <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
     <div class="container ma-auto">
       <?php
@@ -56,19 +61,14 @@ if (!none_header_footer()) {
           get_template_part('template-parts/fixed-footer');
           get_template_part('template-parts/fixed-footer-share-button');
           get_template_part('template-parts/fixed-footer-search');
-          if (is_amp()) {
-              if (!fixed_footer()) {
-                  echo '<a class="page-top" href="#header"><i class="fas fa-angle-up"></i></a>';
-              }
-          } else {
-              wp_footer();
-              if (is_likebox() && is_singular()) {
-                  get_template_part('template-parts/likebox');
-              }
-              if (add_html_js_body()) {
-                  echo add_html_js_body();
-              }
-              echo '<a id="page-top" class="page-top d-n" href="#header"><i class="fas fa-angle-up"></i></a>';
+          if (!is_amp()) {
+            wp_footer();
+            if (is_likebox() && is_singular()) {
+                get_template_part('template-parts/likebox');
+            }
+            if (add_html_js_body()) {
+                echo add_html_js_body();
+            }
           }
       } else {
           if (!is_amp()) {

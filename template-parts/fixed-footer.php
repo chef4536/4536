@@ -10,7 +10,7 @@ if(is_amp()) {
 }
 
 if( fixed_footer()==='menu' ) { ?>
-    <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" class="w-100 b-0 l-0 fixed-footer">
+    <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" data-text-align="center" class="body-bg-color w-100 b-0 l-0 fixed-footer">
         <?php
         $list = [
             'home',
@@ -21,7 +21,7 @@ if( fixed_footer()==='menu' ) { ?>
             'prev',
             'next',
         ];
-        $common_class = ' pt-2 pb-2 l-h-140 post-color';
+        $common_class = ' pt-3 pb-2 l-h-140 post-color';
         $true = next_prev_in_same_term();
         foreach ($list as $name) {
           $class = '';
@@ -53,7 +53,7 @@ if( fixed_footer()==='menu' ) { ?>
                 $class = ' slide-button';
                 $title = 'メニュー';
             } elseif($name === 'top') {
-                $start_tag = '<a data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#header">';
+                $start_tag = '<a data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#">';
                 $end_tag = '</a>';
                 $icon = 'arrow_up';
                 $class = ' fixed-page-top';
