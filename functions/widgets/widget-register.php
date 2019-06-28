@@ -88,7 +88,7 @@ register_sidebar([
 ]);
 register_sidebar([
     'name' => '一覧記事インフィード広告',
-    'id' => 'sp-infeed-ad',
+    'id' => 'infeed-ad',
     'description' => '一覧記事中でランダムに表示されます。サイトのデザインに合わせた広告を掲載してください。',
     'before_widget' => '',
     'after_widget' => '',
