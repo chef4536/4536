@@ -59,6 +59,7 @@ echo '</div>'; //#main-column
 <?php
 if (!none_header_footer()) {
           get_template_part('template-parts/fixed-footer');
+          get_template_part('template-parts/fixed-footer-share-button');
           get_template_part('template-parts/fixed-footer-search');
           if (!is_amp()) {
               wp_footer();

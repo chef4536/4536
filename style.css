@@ -430,7 +430,7 @@ input[type="search"] {
   border-top-left-radius: 9pt;
 }
 
-#slide-mask {
+.mask {
   z-index: 5;
 }
 
@@ -439,7 +439,7 @@ input[type="search"] {
   transform: translateX(0);
 }
 
-#fixed-footer-sns,
+#fixed-footer-menu-sns,
 #fixed-search {
   position: fixed;
   z-index: 10;
@@ -447,7 +447,7 @@ input[type="search"] {
 
 #search-toggle:checked ~ #fixed-search,
 #search-toggle:checked ~ #search-mask,
-#share-menu-toggle:checked ~ #fixed-footer-sns,
+#share-menu-toggle:checked ~ #fixed-footer-menu-sns,
 #share-menu-toggle:checked ~ #share-menu-mask,
 #slide-toggle:checked ~ #slide-mask {
   display: block;
