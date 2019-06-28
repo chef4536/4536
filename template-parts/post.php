@@ -1,5 +1,15 @@
 <?php
 
+if (is_amp() && is_amp_post_top()) {
+    echo amp_adsense_code('horizon');
+}
+
+if (is_amp()) {
+    dynamic_sidebar('amp-post-top');
+} else {
+    dynamic_sidebar('post-top-widget');
+}
+
 if (is_singular('post')) {
     $is_profile = is_profile_4536('profile_single');
     $is_sns_top = is_sns_top_4536('is_sns_top_single');

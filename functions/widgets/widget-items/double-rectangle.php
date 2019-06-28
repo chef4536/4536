@@ -52,20 +52,26 @@ class DoubleRectangleWidgetItem extends WP_Widget {
 
         echo $args['before_widget'].$title;
 
-        if(!empty($is_double_rectangle)) $class = ' double-rectangle-wrapper d-f j-c-c';
+        if(!empty($is_double_rectangle)) {
+          $class = ' double-rectangle-wrapper';
+          $data = ' data-display="flex" data-justify-content="center"';
+        } else {
+          $class = '';
+          $data = '';
+        }
 
-        echo '<div class="ad-wrapper'.$class.'">';
+        echo '<div class="ad-wrapper'.$class.'"'. $data .'>';
 
         $ad = '';
 
         if(!empty($rectangle_left)) {
-            if(!empty($display_none_mobile_rectangle_left)) $left_class = ' d-n-sm';
-            $ad .= '<div class="ad ad-left'.$left_class.'">'.$rectangle_left.'</div>';
+            $left_data = (!empty($display_none_mobile_rectangle_left)) ? ' data-display="none-sm"' : '';
+            $ad .= '<div class="ad ad-left"' . $left_data . '>'.$rectangle_left.'</div>';
         }
 
         if(!empty($rectangle_right)) {
-            if(!empty($display_none_mobile_rectangle_right)) $right_class = ' d-n-sm';
-            $ad .= '<div class="ad ad-right'.$right_class.'">'.$rectangle_right.'</div>';
+            $right_data = (!empty($display_none_mobile_rectangle_right)) ? ' data-display="none-sm"' : '';
+            $ad .= '<div class="ad ad-right"' . $right_data . '>'.$rectangle_right.'</div>';
         }
 
         if(!empty($is_double_rectangle)) {
@@ -76,7 +82,7 @@ class DoubleRectangleWidgetItem extends WP_Widget {
             }
         }
 
-        echo $ad;
+        echo (is_amp()) ? convert_content_to_amp($ad) : $ad;
 
         echo '</div>';
 

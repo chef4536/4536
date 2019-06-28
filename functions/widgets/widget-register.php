@@ -2,64 +2,64 @@
 register_sidebar([
     'name' => 'サイドバー',
     'id' => 'sidebar',
-    'before_widget' => '<div class="widget-4536 w-100 w-100 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title widget-title">',
+    'before_title' => '<h3 class="widget-title headline mb-3">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
     'name' => 'スクロール',
     'id' => 'scroll-sidebar',
     'description' => 'PC表示時スクロール',
-    'before_widget' => '<div class="widget-4536 w-100 w-100 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title widget-title">',
+    'before_title' => '<h3 class="widget-title headline mb-3">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
-    'name' => 'ヘッダー下',
+    'name' => 'ヘッダー',
     'id' => 'header-widget',
     'description' => 'サイトタイトルやメニューの下部分に表示されます。',
-    'before_widget' => '<div class="%1$s header-widget margin-1em-auto padding-0-10px"><div class="widget-4536 inner p-r w-100 w-100 %2$s w-100 ma-auto">',
+    'before_widget' => '<div class="%1$s header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 w-100 %2$s">',
     'after_widget' => '</div></div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => '記事上',
     'id' => 'post-top-widget',
     'description' => '本文上に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget margin-1em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => '記事中',
     'id' => 'sp-first-h2-ad',
     'description' => '本文中の最初のh2タグの手前に表示されます。広告掲載に最適な位置です。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="small-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => '記事下広告枠',
     'id' => 'ad',
     'description' => '本文の真下に表示されます。広告掲載に最適な位置です。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget mt-4">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="small-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => '記事下',
     'id' => 'post-bottom',
     'description' => '本文下のカテゴリーの後ろに表示されます。CTAや関連コンテンツユニットの掲載におすすめです。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget mt-5">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 // register_sidebar([
 //     'name' => 'フッター上',
@@ -67,8 +67,8 @@ register_sidebar([
 //     'description' => 'サイト下部に表示されます。「設定」から幅を変更できます。',
 //     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-widget">',
 //     'after_widget' => '</div>',
-//     'before_title' => '<p class="widget-title">',
-//     'after_title' => '</p>',
+//     'before_title' => '<div class="widget-title">',
+//     'after_title' => '</div>',
 // ]);
 register_sidebar([
     'name' => 'フッター',
@@ -76,8 +76,8 @@ register_sidebar([
     'description' => 'サイト最下部に表示されます。PC表示時は上から順に横並び',
     'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="headline mb-3">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="headline mb-3">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => '固定フッター',
@@ -92,61 +92,61 @@ register_sidebar([
     'description' => '一覧記事中でランダムに表示されます。サイトのデザインに合わせた広告を掲載してください。',
     'before_widget' => '',
     'after_widget' => '',
-    'before_title' => '<p class="small-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMPヘッダー',
     'id' => 'amp-header',
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="%1$s header-widget amp-header-widget margin-1em-auto padding-0-10px"><div class="widget-4536 inner p-r w-100 w-100 ma-auto %2$s">',
+    'before_widget' => '<div class="%1$s header-widget amp-header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 w-100 %2$s">',
     'after_widget' => '</div></div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMP記事上',
     'id' => 'amp-post-top',
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget margin-1em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget amp-post-top-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMP記事中',
     'id' => 'amp-first-h2-ad',
     'description' => '投稿本文中の最初のH2タグの手前に表示されます。※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="small-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMP記事下広告枠',
     'id' => 'amp-post-ad',
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget mt-4">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="small-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="meta mb-2">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMP記事下',
     'id' => 'amp-post-bottom',
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget margin-2em-auto">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget mt-5">',
     'after_widget' => '</div>',
-    'before_title' => '<p class="widget-title">',
-    'after_title' => '</p>',
+    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'after_title' => '</div>',
 ]);
 register_sidebar([
     'name' => 'AMPサイドバー',
     'id' => 'amp-sidebar',
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget margin-bottom-1_5em">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="sidebar-title widget-title">',
+    'before_title' => '<h3 class="widget-title headline mb-3">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([

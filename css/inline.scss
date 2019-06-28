@@ -4,6 +4,8 @@
 
 #contents-wrapper {
   padding: 24px;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
 }
 ////////////////////////////
 ///////// scroll ///////////
@@ -419,8 +421,6 @@ $button_base_size: 56px;
   #sidebar {
     width: 320px;
     border-left: 0.5px solid;
-    -webkit-box-flex: 1;
-    flex: 1;
   }
 
   #scroll-sidebar {

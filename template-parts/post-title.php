@@ -57,15 +57,3 @@
     </div>
   </div>
 </div>
-
-<?php
-
-if (is_amp() && is_amp_post_top()) {
-    echo amp_adsense_code('horizon');
-}
-
-if (is_amp()) {
-    dynamic_sidebar('amp-post-top');
-} else {
-    dynamic_sidebar('post-top-widget');
-}
