@@ -38,7 +38,7 @@ register_sidebar([
     'name' => '記事中',
     'id' => 'sp-first-h2-ad',
     'description' => '本文中の最初のh2タグの手前に表示されます。広告掲載に最適な位置です。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget margin-2em-auto clearfix">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget margin-2em-auto">',
     'after_widget' => '</div>',
     'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
@@ -47,7 +47,7 @@ register_sidebar([
     'name' => '記事下広告枠',
     'id' => 'ad',
     'description' => '本文の真下に表示されます。広告掲載に最適な位置です。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget margin-2em-auto clearfix">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget margin-2em-auto">',
     'after_widget' => '</div>',
     'before_title' => '<p class="small-title">',
     'after_title' => '</p>',
@@ -65,10 +65,10 @@ register_sidebar([
     'name' => 'フッター上',
     'id' => 'footer-top',
     'description' => 'サイト下部に表示されます。',
-    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-top-widget clearfix">',
+    'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s footer-top-widget">',
     'after_widget' => '</div>',
-    'before_title' => '<h4 class="footer-top-widget-title widget-title">',
-    'after_title' => '</h4>',
+    'before_title' => '<p class="widget-title">',
+    'after_title' => '</p>',
 ]);
 register_sidebar([
     'name' => 'フッター',
@@ -76,8 +76,8 @@ register_sidebar([
     'description' => 'サイト最下部に表示されます。PC表示時は上から順に横並び',
     'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3">',
     'after_widget' => '</div>',
-    'before_title' => '<h4>',
-    'after_title' => '</h4>',
+    'before_title' => '<p class="headline mb-3">',
+    'after_title' => '</p>',
 ]);
 register_sidebar([
     'name' => '固定フッター',

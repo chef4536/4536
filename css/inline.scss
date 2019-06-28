@@ -38,13 +38,6 @@
 ////////////////////////////
 ////////// init ////////////
 ////////////////////////////
-
-.alignwide {
-  margin-left: -10px;
-  width: calc(100% + 20px);
-  max-width: none;
-}
-
 .alignfull {
   margin-right: calc(50% - 50vw);
   margin-left: calc(50% - 50vw);
@@ -292,6 +285,11 @@ $button_base_size: 56px;
 /* max-767px BEGIN for mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 767px) {
+  .alignwide {
+    margin-left: -10px;
+    width: calc(100% + 20px);
+    max-width: none;
+  }
   #main,
   html {
     overflow-x: hidden;
@@ -352,6 +350,10 @@ $button_base_size: 56px;
 /* min-768px BEGIN for tablet and pc
 --------------------------------------------------- */
 @media screen and (min-width: 768px) {
+  .alignwide {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+  }
   .double-rectangle-wrapper .ad {
     flex-basis: calc(50% - 1em);
     max-width: 336px;
