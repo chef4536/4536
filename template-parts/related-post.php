@@ -30,9 +30,9 @@ if(!$related_posts) return;
 
 ?>
 
-<aside id="related-post">
-  <h2 data-text-align="center" class="mb-3 headline">関連記事</h2>
-  <div class="d-f f-w-w j-c-c">
+<aside id="related-post" class="pt-5">
+  <h2 data-text-align="center" class="mt-3 mb-3 headline">関連記事</h2>
+  <div data-display="flex" data-justify-content="center">
     <?php
     foreach( $related_posts as $post ) : setup_postdata( $post );
     post_list_card_4536('h3');
