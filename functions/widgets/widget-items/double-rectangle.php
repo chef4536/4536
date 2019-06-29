@@ -47,7 +47,7 @@ class DoubleRectangleWidgetItem extends WP_Widget {
         if(empty($rectangle_left) && empty($rectangle_right)) return;
 
         if(!empty($display_none_mobile_rectangle_left) && !empty($display_none_mobile_rectangle_right)) {
-            $title = '<div class="d-n-sm">'.$title.'</div>';
+            $title = '<div data-display="none-sm">'.$title.'</div>';
         }
 
         echo $args['before_widget'].$title;

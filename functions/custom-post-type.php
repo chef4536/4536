@@ -89,7 +89,7 @@ function media_section_4536($media, $args = [])
 
   if( $media==='pickup' ) { ?>
     <div id="pickup" class="pt-5">
-      <p data-text-align="center" class="headline mt-5 mb-3">Pickup</p>
+      <p data-text-align="center" class="headline mb-3">Pickup</p>
       <div data-display="flex" data-justify-content="center">
         <?php
         foreach ($customPosts as $post) : setup_postdata($post);

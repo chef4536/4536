@@ -205,16 +205,16 @@ function amp_adsense_code( $size = 'rectangle' ) {
       $layout = '';
       $width = ' width="100vw"';
       $height = '320';
-      $class = 'widget-4536 w-100 amp-adsense ad t-a-c my-4 mx-auto';
-      $option = ' data-auto-format="rspv" data-full-width';
+      $class = 'widget-4536 w-100 amp-adsense ad my-4 mx-auto';
+      $option = ' data-auto-format="rspv" data-full-width data-text-align="center"';
       $overflow = '<div overflow></div>';
       break;
     case 'horizon':
       $layout = ' layout="fixed-height"';
       $width = '';
       $height = '100';
-      $class = 'widget-4536 w-100 amp-adsense ad t-a-c my-2 mx-auto';
-      $option = '';
+      $class = 'widget-4536 w-100 amp-adsense ad my-2 mx-auto';
+      $option = ' data-text-align="center"';
       $overflow = '';
       break;
   }

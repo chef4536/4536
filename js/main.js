@@ -24,7 +24,7 @@ function fixed_footer_overlay_4536() {
     const last_scroll_position = window.scrollY;
     if (new_scroll_position < last_scroll_position && last_scroll_position > 100) {
       menu.classList.add('fade-in');
-      menu.classList.remove('d-n');
+      menu.removeAttribute('data-display');
     }
     new_scroll_position = last_scroll_position;
   });
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (to_top !== null) {
       if (new_scroll_position < last_scroll_position && last_scroll_position > 400) {
         to_top.classList.add('fade-in');
-        to_top.classList.remove('d-n');
+        to_top.removeAttribute('data-display');
       } else if (last_scroll_position < 200) {
         to_top.classList.add('d-n');
       }

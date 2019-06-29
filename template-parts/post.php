@@ -64,7 +64,7 @@ if (has_category() && is_single()) {
         foreach ($categories as $category) {
             $term_cat[] = '<a class="post-color" href="' . get_category_link($category->term_id) . '">' . $category->cat_name . '</a>';
         }
-        $category = '<div id="post-bottom-category" class="d-f f-w-w"><span>カテゴリー：</span>' . implode('<span class="mr-1">,</span>', $term_cat) . '</div>';
+        $category = '<div id="post-bottom-category" data-display="flex"><span>カテゴリー：</span>' . implode('<span class="mr-1">,</span>', $term_cat) . '</div>';
     } else {
         $category = '';
     }
@@ -75,7 +75,7 @@ if (has_tag()) {
         foreach ($tags as $tag) {
             $term_tag[] = '<a class="post-color" href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a>';
         }
-        $tag = '<div id="post-bottom-tag" class="d-f f-w-w"><span>タグ：</span>' . implode('<span class="mr-1">,</span>', $term_tag) . '</div>';
+        $tag = '<div id="post-bottom-tag" data-display="flex"><span>タグ：</span>' . implode('<span class="mr-1">,</span>', $term_tag) . '</div>';
     } else {
         $tag = '';
     }
@@ -84,11 +84,11 @@ if (has_tag()) {
 ?>
 
 <hr class="section-break mt-5" />
-<div id="post-bottom-section" class="d-f a-i-c l-h-160 f-w-w">
+<div id="post-bottom-section" class="l-h-160" data-display="flex" data-align-items="center">
   <?php
   if (!empty($category) || !empty($tag)) { ?>
     <?php
-    echo '<div id="post-term-section" class="meta d-f f-d-c mt-4 mb-4">' . $category . $tag . '</div>';
+    echo '<div id="post-term-section" class="meta mt-4 mb-4" data-display="flex" data-flex-direction="column">' . $category . $tag . '</div>';
   }
   echo '<div class="flex"></div>';
   sns_button_4536('flex-end');

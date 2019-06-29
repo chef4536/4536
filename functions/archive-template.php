@@ -39,7 +39,7 @@ function archive_template_4536($page_4536) { ?>
               echo '<h1 id="h1" data-text-align="center" class="mb-4">' . $title . '</h1>';
           }
           ?>
-          <div class="archive-wrap d-f f-w-w j-c-c">
+          <div class="archive-wrap" data-display="flex" data-justify-content="center">
               <?php post_list_template_4536($page_4536); ?>
           </div>
       </section>
@@ -72,7 +72,7 @@ function post_list_template_4536($page_4536)
 
 function post_list_card_4536( $title_tag = 'h2' )
 { ?>
-  <article class="xs12 sm12 md6 p-r pa-2 card-wrap">
+  <article class="xs12 sm12 md6 pa-2 card-wrap" data-position="relative">
     <div data-display="flex" data-position="relative" data-flex-direction="column" class="card h-100">
       <?php echo thumbnail_4536($thumbnail_size)['thumbnail']; ?>
       <div class="card-content flex pl-3 pr-3 pt-4 pb-4">
@@ -81,7 +81,7 @@ function post_list_card_4536( $title_tag = 'h2' )
     $cat_name = $cat[0]->name;
     $cat_slug = $cat[0]->slug;
     $cat_link = esc_url(get_category_link($cat[0]->cat_ID)); ?>
-          <div class="z-index-1 d-f a-i-c meta mb-3 j-c-c">
+          <div class="z-index-1 meta mb-3" data-display="flex" data-justify-content="center" data-align-items="center">
             <a class="post-color <?php echo $cat_slug; ?>" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
           </div>
         <?php }

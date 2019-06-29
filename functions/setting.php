@@ -13,10 +13,7 @@ add_filter('body_class', function ($classes) {
     'cool2',
     'cool3',
     'font-size-16px',
-    'd-f',
-    'f-d-c',
     'l-0',
-    'p-r',
     'min-h-100',
   ];
     foreach ($list as $class) {

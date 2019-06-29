@@ -10,7 +10,7 @@ if (is_amp()) {
     get_template_part('template-parts/head-setting');
 }
 ?>
-<body <?php body_class(); ?>>
+<body data-display="flex" data-flex-direction="column" data-flex-wrap="nowrap" data-position="relative" <?php body_class(); ?>>
   <div id="main-column" class="flex">
 
     <?php

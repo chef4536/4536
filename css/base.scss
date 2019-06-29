@@ -102,41 +102,20 @@ li {
 //////// display //////////
 ///////////////////////////
 
-.d-n {
-  display: none;
-}
-
 [data-display="none"] {
   display: none;
-}
-
-.d-b {
-  display: block;
 }
 
 [data-display="block"] {
   display: block;
 }
 
-.d-i-b {
-  display: inline-block;
-}
-
 [data-display="inline-block"] {
   display: inline-block;
 }
 
-.d-t {
-  display: table;
-}
-
 [data-display="table"] {
   display: table;
-}
-
-.d-f {
-  display: -webkit-box;
-  display: flex;
 }
 
 [data-display="flex"] {
@@ -155,16 +134,8 @@ li {
 //////// position /////////
 ///////////////////////////
 
-.p-r {
-  position: relative;
-}
-
 [data-position="relative"] {
   position: relative;
-}
-
-.p-a {
-  position: absolute;
 }
 
 [data-position="absolute"] {
@@ -190,25 +161,14 @@ li {
 ////// text-align /////////
 ///////////////////////////
 
-.t-a-c {
-  text-align: center;
-}
-
 [data-text-align="center"] {
   text-align: center;
-}
-
-.t-a-r {
-  text-align: right;
-}
-
-.t-a-l {
-  text-align: left;
 }
 
 [data-text-align="left"] {
   text-align: left;
 }
+
 ////////////////////////////
 //////// float ////////////
 ///////////////////////////
@@ -497,19 +457,9 @@ li {
 //////// flex /////////////
 ///////////////////////////
 
-.a-i-c {
-  -webkit-box-align: center;
-  align-items: center;
-}
-
 [data-align-items="center"] {
   -webkit-box-align: center;
   align-items: center;
-}
-
-.j-c-c {
-  -webkit-box-pack: center;
-  justify-content: center;
 }
 
 [data-justify-content="center"] {
@@ -517,36 +467,15 @@ li {
   justify-content: center;
 }
 
-.j-c-f-e {
-  -webkit-box-pack: end;
-  justify-content: flex-end;
-}
-
 [data-justify-content="flex-end"] {
   -webkit-box-pack: end;
   justify-content: flex-end;
-}
-
-.f-d-r-r {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  flex-direction: row-reverse;
-}
-
-.f-d-c {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
 }
 
 [data-flex-direction="column"] {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-}
-
-.f-w-w {
-  flex-wrap: wrap;
 }
 
 [data-flex-wrap="nowrap"] {
@@ -619,10 +548,6 @@ li {
 /* max-767px BEGIN for mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 767px) {
-  .d-n-sm {
-    display: none;
-  }
-
   [data-display="none-sm"] {
     display: none;
   }
@@ -662,10 +587,6 @@ li {
     display: block;
     margin: 0 1.2em 1.2em 0;
     float: left;
-  }
-
-  .d-n-md {
-    display: none;
   }
 
   [data-display="none-md"] {
