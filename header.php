@@ -26,7 +26,7 @@ if (is_amp()) {
 
     if (!none_header_footer()) { ?>
 
-      <div id="site-top" class="gradation" data-position="relative">
+      <div id="site-top" class="gradation wave-shape-outline" data-position="relative">
         <header id="header" class="header header-section<?php echo $header_class; ?>" itemscope itemtype="http://schema.org/WPHeader" role="banner">
           <?php get_template_part('template-parts/header-menu'); ?>
         </header>

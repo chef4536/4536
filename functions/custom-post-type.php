@@ -100,7 +100,7 @@ function media_section_4536($media, $args = [])
       </div>
     </div>
   <?php } else { ?>
-    <div id="<?php echo $media ?>" class="media-section gradation mt-5 mb-5" data-position="relative">
+    <div id="<?php echo $media ?>" class="media-section wave-shape-outline gradation mt-5 mb-5" data-position="relative">
       <?php wave_shape('media_top'); ?>
       <div data-position="relative" class="pa-4">
         <p data-text-align="center" class="headline mt-5 mb-3"><?php echo esc_html($section_title); ?></p>

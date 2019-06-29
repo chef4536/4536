@@ -77,7 +77,7 @@ if( fixed_footer()==='menu' ) { ?>
             continue;
           } ?>
           <div class="flex<?php echo $class; ?>">
-              <?php echo $start_tag . icon_4536($icon, '', 24); ?>
+              <?php echo $start_tag . icon_4536($icon, get_theme_mod('post_color'), 24); ?>
               <span data-display="block" class="meta"><?php echo $title; ?></span>
               <?php echo $end_tag; ?>
           </div>
@@ -87,7 +87,7 @@ if( fixed_footer()==='menu' ) { ?>
     <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-bg-color="white" data-color="white" class="fixed-footer w-100 b-0 l-0">
         <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button r-0 pa-1" data-position="absolute" data-bg-color="white">
-          <?php echo icon_4536('close', '', 24); ?>
+          <?php echo icon_4536('close', get_theme_mod('post_color'), 24); ?>
         </div>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($amp_fixed_footer) ) { ?>

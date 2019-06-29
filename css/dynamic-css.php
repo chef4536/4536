@@ -49,6 +49,10 @@ add_filter('inline_style_4536', function ($css) {
     $css[] = ".gradation{background:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff}";
     $css[] = ".gradation a{color:#ffffff}.header-slide-icon{fill:#ffffff}";
 
+    //背景色
+    $bg_color = get_bg_color_4536();
+    $css[] = ".wave-shape-outline::before,.wave-shape-outline::after{border:2px solid $bg_color;}";
+
     //ボタン
     $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';
 

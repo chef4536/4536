@@ -4,7 +4,7 @@ register_sidebar([
     'id' => 'sidebar',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -13,7 +13,7 @@ register_sidebar([
     'description' => 'PC表示時スクロール',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -22,7 +22,7 @@ register_sidebar([
     'description' => 'サイトタイトルやメニューの下部分に表示されます。',
     'before_widget' => '<div class="%1$s header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 w-100 %2$s">',
     'after_widget' => '</div></div>',
-    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'before_title' => '<div class="headline mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -31,7 +31,7 @@ register_sidebar([
     'description' => '本文上に表示されます。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2" data-text-align="center">',
+    'before_title' => '<div class="meta mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -40,7 +40,7 @@ register_sidebar([
     'description' => '本文中の最初のh2タグの手前に表示されます。広告掲載に最適な位置です。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2">',
+    'before_title' => '<div class="meta mb-2 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -49,7 +49,7 @@ register_sidebar([
     'description' => '本文の真下に表示されます。広告掲載に最適な位置です。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget mt-4">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2">',
+    'before_title' => '<div class="meta mb-2 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -58,7 +58,7 @@ register_sidebar([
     'description' => '本文下のカテゴリーの後ろに表示されます。CTAや関連コンテンツユニットの掲載におすすめです。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget mt-5">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'before_title' => '<div class="headline mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 // register_sidebar([
@@ -76,7 +76,7 @@ register_sidebar([
     'description' => 'サイト最下部に表示されます。PC表示時は上から順に横並び',
     'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="headline mb-3">',
+    'before_title' => '<div class="headline mb-3 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -92,7 +92,7 @@ register_sidebar([
     'description' => '一覧記事中でランダムに表示されます。サイトのデザインに合わせた広告を掲載してください。',
     'before_widget' => '',
     'after_widget' => '',
-    'before_title' => '<div class="meta mb-2">',
+    'before_title' => '<div class="meta mb-2 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -101,7 +101,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="%1$s header-widget amp-header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 w-100 %2$s">',
     'after_widget' => '</div></div>',
-    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'before_title' => '<div class="headline mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -110,7 +110,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-top-widget amp-post-top-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2" data-text-align="center">',
+    'before_title' => '<div class="meta mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -119,7 +119,7 @@ register_sidebar([
     'description' => '投稿本文中の最初のH2タグの手前に表示されます。※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-h2-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2">',
+    'before_title' => '<div class="meta mb-2 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -128,7 +128,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s t-a-c post-bottom-ad-widget mt-4">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="meta mb-2">',
+    'before_title' => '<div class="meta mb-2 post-color">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -137,7 +137,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s post-bottom-widget mt-5">',
     'after_widget' => '</div>',
-    'before_title' => '<div class="headline mb-2" data-text-align="center">',
+    'before_title' => '<div class="headline mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',
 ]);
 register_sidebar([
@@ -146,7 +146,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-4">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
