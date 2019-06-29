@@ -130,14 +130,11 @@ EOM;
 
     $icon = wp_get_attachment_image( get_option('site_icon'), [16,16] );
 
-    if(thumbnail_size()==='thumbnail') {
-        $thumb150 = [150,150];
-        $thumb300 = [300,300];
-    } else {
-        $thumb150 = [150,113];
-        $thumb300 = [300,225];
-    }
-    $thumb = (thumbnail_quality()==='high') ? $thumb300 : $thumb150;
+    // if(thumbnail_size()==='thumbnail') {
+    //     $thumb500 = [500,500];
+    // } else {
+    //     $thumb500 = [500,375];
+    // }
     if(has_post_thumbnail($id)) {
       $thumbnail = get_the_post_thumbnail($id, $thumb, ['class' => 'blogcard-thumb-image'] );
     } else {

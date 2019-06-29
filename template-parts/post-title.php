@@ -9,12 +9,14 @@ $none_thumbnail = get_post_meta($post->ID, 'none_post_thumbnail', true);
 if( $none_thumbnail ) {
   $md_flex = ' md12';
   $bg_color = ' gradation';
+  $margin = ' mt-5 mb-5';
 } else {
   $md_flex = ' md6';
   $bg_color = '';
+  $margin = '';
 }
 ?>
-<div class="container mx-auto pb-4<?php echo $bg_color; ?>" data-display="flex" data-align-items="center" data-justify-content="center">
+<div class="container mx-auto pb-4<?php echo $bg_color . $margin; ?>" data-display="flex" data-align-items="center" data-justify-content="center">
   <div class="xs12 sm12 pr-3 pl-3 mt-5<?php echo $md_flex; ?>">
     <h1 id="h1" class="t-a-c mb-3"><?php the_title(); ?></h1>
     <div class="meta" data-display="flex" data-align-items="center" data-justify-content="center">
