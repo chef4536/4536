@@ -4,18 +4,35 @@
   flex: 1 1 auto;
 }
 
-#site-top::after, .media-section::after {
+#site-top::after,
+.media-section::after {
   content: "";
   position: absolute;
   bottom: -3px;
   width: 100%;
 }
 
-#site-bottom::before, .media-section::before {
+#site-bottom::before,
+.media-section::before {
   content: "";
   position: absolute;
   top: -3px;
   width: 100%;
+}
+
+.gradation-object::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+
+#post-title::after {
+  width: 800px;
+  height: 800px;
+  border-radius: 2000px;
+  right: -140px;
+  top: -210px;
 }
 
 .scroll-container {

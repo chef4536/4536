@@ -5,10 +5,11 @@
 #contents-wrapper {
   padding: 24px;
   -webkit-box-flex: 1;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-#site-top,.media-section {
+#site-top,
+.media-section {
   &::after {
     content: "";
     position: absolute;
@@ -16,7 +17,9 @@
     width: 100%;
   }
 }
-#site-bottom,.media-section {
+
+#site-bottom,
+.media-section {
   &::before {
     content: "";
     position: absolute;
@@ -25,6 +28,19 @@
   }
 }
 
+.gradation-object::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+#post-title::after {
+  width: 800px;
+  height: 800px;
+  border-radius: 2000px;
+  right: -140px;
+  top: -210px;
+}
 ////////////////////////////
 ///////// scroll ///////////
 ////////////////////////////
@@ -58,6 +74,7 @@
 ////////////////////////////
 ////////// init ////////////
 ////////////////////////////
+
 .alignfull {
   margin-right: calc(50% - 50vw);
   margin-left: calc(50% - 50vw);
@@ -249,7 +266,6 @@ $button_base_size: 56px;
     height: 100%;
   }
 }
-
 //アイキャッチ
 .post-thumbnail-shape {
   -webkit-transform: scale(1.1);
@@ -260,11 +276,11 @@ $button_base_size: 56px;
 #post-thumbnail-4536 {
   -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
   transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
+
   .post-thumbnail {
     box-shadow: 0 0 20px #ccc;
   }
 }
-
 //////////////////////////////
 //////////// card ////////////
 //////////////////////////////
@@ -298,6 +314,7 @@ $button_base_size: 56px;
 .author-content {
   border-radius: 5px;
 }
+
 .author-avatar {
   left: 50%;
   box-shadow: 0 2px 5px;
@@ -326,6 +343,7 @@ $button_base_size: 56px;
     width: calc(100% + 20px);
     max-width: none;
   }
+
   #main,
   html {
     overflow-x: hidden;
@@ -391,6 +409,7 @@ $button_base_size: 56px;
     margin-left: -20px;
     width: calc(100% + 40px);
   }
+
   .double-rectangle-wrapper .ad {
     flex-basis: calc(50% - 1em);
     max-width: 336px;

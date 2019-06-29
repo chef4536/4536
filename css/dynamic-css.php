@@ -53,6 +53,10 @@ add_filter('inline_style_4536', function ($css) {
     $bg_color = get_bg_color_4536();
     $css[] = ".wave-shape-outline::before,.wave-shape-outline::after{border:2px solid $bg_color;}";
 
+    //シェイプグラデーション
+    $light_color = 'rgba(' . hex_to_rgb($secondary_color) . ',0.25)';
+    $css[] = ".gradation-object::after{background:linear-gradient(120deg,$bg_color 45%,$light_color 100%)}";
+
     //ボタン
     $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';
 
