@@ -4,6 +4,22 @@
   flex: 1 1 auto;
 }
 
+#site-top::after, .media-section::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  border: 2px solid;
+  width: 100%;
+}
+
+#site-bottom::before, .media-section::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  border: 2px solid;
+  width: 100%;
+}
+
 .scroll-container {
   white-space: nowrap;
   overflow-x: auto;
