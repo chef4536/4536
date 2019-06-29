@@ -55,7 +55,8 @@ add_filter('inline_style_4536', function ($css) {
 
     //シェイプグラデーション
     $light_color = 'rgba(' . hex_to_rgb($secondary_color) . ',0.25)';
-    $css[] = ".gradation-object::after{background:linear-gradient(120deg,$bg_color 45%,$light_color 100%)}";
+    $css[] = "#post-title::after{background:linear-gradient(240deg,$bg_color 50%,$light_color 100%)}";
+    $css[] = "#main-container::after{background:$light_color}";
 
     //ボタン
     $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';

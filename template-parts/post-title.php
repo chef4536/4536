@@ -10,17 +10,15 @@ if( $none_thumbnail ) {
   $md_flex = ' md12';
   $bg_color = ' gradation';
   $margin = ' mt-5';
-  $object = ' gradation-object';
 } else {
   $md_flex = ' md6';
   $bg_color = '';
   $margin = '';
-  $object = '';
 }
 ?>
 <div class="container mx-auto pb-4<?php echo $bg_color . $margin; ?>" data-display="flex" data-align-items="center" data-justify-content="center" data-position="relative">
-  <div id="post-title" class="xs12 sm12 pr-3 pl-3 mt-5<?php echo $md_flex . $object; ?>" data-position="relative">
-    <h1 id="h1" class="t-a-c mb-3"><?php the_title(); ?></h1>
+  <div id="post-title" class="xs12 sm12 pr-3 pl-3 mt-5 gradation-object gradation-object-right<?php echo $md_flex; ?>" data-position="relative">
+    <h1 id="h1" class="mb-3" data-text-align="center"><?php the_title(); ?></h1>
     <div class="meta" data-display="flex" data-align-items="center" data-justify-content="center">
       <?php
       //date

@@ -20,21 +20,6 @@
   width: 100%;
 }
 
-.gradation-object::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-}
-
-#post-title::after {
-  width: 800px;
-  height: 800px;
-  border-radius: 2000px;
-  right: -140px;
-  top: -210px;
-}
-
 .scroll-container {
   white-space: nowrap;
   overflow-x: auto;
@@ -369,6 +354,23 @@
   }
   .double-rectangle-wrapper .ad-left {
     margin: 0 1em 0 0;
+  }
+  .gradation-object::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 800px;
+    height: 800px;
+    border-radius: 2000px;
+  }
+  #post-title::after {
+    left: -140px;
+    top: -210px;
+  }
+  #main-container::after {
+    right: -140px;
+    bottom: -24px;
   }
   /* min-768px END */
 }
