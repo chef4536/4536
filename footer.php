@@ -2,7 +2,7 @@
 
 echo '</div>'; //#main-container
 
-if (is_singular()) {
+if (!is_home() || !is_front_page()) {
     media_section_4536('music');
 }
 

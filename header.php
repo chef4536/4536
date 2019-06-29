@@ -53,8 +53,8 @@ if (is_amp()) {
 
     if (is_singular()) {
         get_template_part('template-parts/post-title');
-    } else {
-      media_section_4536('music');
+    } elseif(is_home() || is_front_page()) {
+        media_section_4536('music');
     }
 
     ?>
