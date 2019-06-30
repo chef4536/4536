@@ -6,6 +6,8 @@ add_action( 'wp_head_4536', function() {
   $author = get_userdata( $post->post_author )->display_name;
   $posted_date = get_the_date('c');
   $modified_date = get_the_modified_date('c');
+  $image_id = get_post_thumbnail_id();
+  $image_url = wp_get_attachment_image_src($image_id, true);
   ?>
   <script type="application/ld+json">
   {
@@ -18,16 +20,7 @@ add_action( 'wp_head_4536', function() {
     "headline": "<?php the_title();?>",
     "datePublished": "<?php echo $posted_date; ?>",
     "dateModified": "<?php echo $modified_date; ?>",
-    "image": {
-      "@type": "ImageObject",
-        <?php
-        $image_id = get_post_thumbnail_id();
-        $image_url = wp_get_attachment_image_src($image_id, true);
-        ?>
-      "url": "<?php echo $image_url[0]; ?>",
-      "width": 800,
-      "height": 533
-    },
+    "image": [ "<?php echo $image_url[0]; ?>" ],
     "author": {
       "@type": "Person",
       "name": "<?php echo $author; ?>"

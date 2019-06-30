@@ -327,10 +327,11 @@
     width: 46px;
     height: 46px;
   }
-  .fixed-footer {
+  #fixed-footer-menu {
     display: -webkit-box;
     display: flex;
-    position: fixed;
+  }
+  .fixed-footer {
     padding-bottom: calc(env(safe-area-inset-bottom) - 1em);
     z-index: 3;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);

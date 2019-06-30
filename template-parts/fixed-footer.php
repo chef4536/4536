@@ -10,7 +10,7 @@ if(is_amp()) {
 }
 
 if( fixed_footer()==='menu' ) { ?>
-    <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" data-text-align="center" class="body-bg-color w-100 b-0 l-0 fixed-footer">
+    <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" data-text-align="center" data-position="fixed" class="body-bg-color w-100 b-0 l-0 fixed-footer">
         <?php
         $list = [
             'home',
@@ -84,7 +84,7 @@ if( fixed_footer()==='menu' ) { ?>
         <?php } ?>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
-    <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-bg-color="white" data-color="white" class="fixed-footer w-100 b-0 l-0">
+    <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-bg-color="white" data-color="white" data-position="fixed" class="fixed-footer w-100 b-0 l-0">
         <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button r-0 pa-1" data-position="absolute" data-bg-color="white">
           <?php echo icon_4536('close', get_theme_mod('post_color'), 24); ?>
