@@ -16,6 +16,7 @@ add_filter('body_class', function ($classes) {
     'l-0',
     'min-h-100',
     'post-color',
+    'post-bg-color',
   ];
     foreach ($list as $class) {
         $classes[] = $class;
