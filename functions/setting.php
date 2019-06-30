@@ -15,6 +15,7 @@ add_filter('body_class', function ($classes) {
     'font-size-16px',
     'l-0',
     'min-h-100',
+    'post-color',
   ];
     foreach ($list as $class) {
         $classes[] = $class;

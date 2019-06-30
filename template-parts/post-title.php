@@ -19,6 +19,7 @@ if( $none_thumbnail ) {
     <h1 id="h1" class="mb-3" data-text-align="center"><?php the_title(); ?></h1>
     <div class="meta" data-display="flex" data-align-items="center" data-justify-content="center">
       <?php
+      $post_color = get_theme_mod('post_color');
       //date
       $ptime = get_the_date();
       $mtime = get_mtime();
@@ -31,7 +32,7 @@ if( $none_thumbnail ) {
       }
       $ptime = '<span class="posted-date">'.$posted_datetime.'</span>';
       $date = ($mtime) ? '<span class="modified-date">'.$modified_datetime.'</span>' : $ptime ;
-      $post_date = '<span class="post-date post-data pa-2" data-display="flex" data-align-items="center">' . I_CLOCK . $date . '</span>';
+      $post_date = '<span class="post-date post-data pa-2" data-display="flex" data-align-items="center">' . icon_4536('clock', $post_color, 16) . $date . '</span>';
       echo $post_date;
       //category
       if (has_category()) {
@@ -39,7 +40,7 @@ if( $none_thumbnail ) {
           $cat_name = $cat[0]->name;
           $cat_link = esc_url(get_category_link($cat[0]->cat_ID)); ?>
         <span class="pa-2" data-display="flex" data-align-items="center">
-          <?php echo I_FOLDER; ?>
+          <?php echo icon_4536('folder', $post_color, 16); ?>
           <a class="flex-1 post-color" title="<?php echo $cat_name; ?>" href="<?php echo $cat_link; ?>"><?php echo $cat_name; ?></a>
         </span>
       <?php
