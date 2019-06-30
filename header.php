@@ -59,4 +59,4 @@ if (is_amp()) {
 
     ?>
 
-    <div id="main-container" class="container w-100 ma-auto body-bg-color post-color gradation-object gradation-object-left" data-display="flex" data-position="relative">
+    <div id="main-container" class="container w-100 ma-auto body-bg-color" data-display="flex" data-position="relative">

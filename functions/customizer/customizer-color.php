@@ -184,13 +184,11 @@ class CustomizerColorSettings_4536 {
     $css[] = "$post_bg_class{background-color:$post_bg_color$option}"; //背景色
     $css[] = ".balloon-text-right:after{border-right-color:$post_bg_color}";
     $css[] = ".balloon-text-left:after{border-left-color:$post_bg_color}";
-    // $css[] = ".pagination span, .pagination a{color:$post_bg_color}";
 
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = '.post-color,#main-container .archive-list';
       if( fixed_header() === true ) $post_color_class .= ',#header.fixed-top a';
       $css[] = "$post_color_class{color:$post_color}";
-      // $css[] = '.pagination span, .pagination a{background-color:'.$post_color.'}';
       $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25) !important}';
     }
 
@@ -214,11 +212,6 @@ class CustomizerColorSettings_4536 {
         'tag' => '.article-body h4',
         'key_color' => $h4_key_color,
         'font_color' => $h4_color,
-      ],
-      'related_post_title_style' => [
-        'tag' => '#related-post-title',
-        'key_color' => $related_post_title_key_color,
-        'font_color' => $related_post_title_color,
       ],
       'sidebar_widget_title_style' => [
         'tag' => '.widget-title',
@@ -320,9 +313,6 @@ class CustomizerColorSettings_4536 {
         break;
       case 'h4_style':
         $default = 'simple3';
-        break;
-      case 'related_post_title_style':
-        $default = 'simple1';
         break;
       case 'sidebar_widget_title_style':
         $default = 'simple1';
