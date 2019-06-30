@@ -120,6 +120,10 @@ li {
   position: absolute;
 }
 
+[data-position="fixed"] {
+  position: fixed;
+}
+
 .t-0 {
   top: 0;
 }

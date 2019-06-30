@@ -71,7 +71,7 @@ function amp_css() {
   $css = str_replace('img', 'amp-img', $css);
   $css = str_replace('iframe', 'amp-iframe', $css);
   echo strip_tags($css);
-  require_once(get_template_directory() . '/css/amp.min.css');
+  require_once( TEMPLATEPATH . '/css/amp.min.css');
   echo '</style>';
 }
 

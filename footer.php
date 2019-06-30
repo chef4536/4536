@@ -41,7 +41,7 @@ echo '</div>'; //#main-column
       if (has_nav_menu('navbar_footer')) {
           echo '<div class="global-nav pa-3">' . wp_nav_menu($defaults) . '</div>';
       }?>
-      <div id="copyright" data-text-align="center" class="meta pt-5 pb-5 pr-3 pl-3">
+      <div id="copyright" data-text-align="center" class="meta pt-3 pb-5 pr-3 pl-3">
         <?php
         $name = (site_title()) ? site_title() : get_bloginfo('name');
         $link = '<a href="'.home_url().'">'.$name.'</a>';

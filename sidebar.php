@@ -15,7 +15,7 @@ $is_slide_menu = is_slide_menu();
   <?php
   if( $is_slide_menu ) { ?>
     <input id="slide-toggle" type="checkbox" data-display="none">
-    <label id="slide-mask" for="slide-toggle" class="mask t-0 l-0 r-0 b-0" data-display="none" data-position="absolute" data-bg-color="black"></label>
+    <label id="slide-mask" for="slide-toggle" class="mask t-0 l-0 r-0 b-0" data-display="none" data-position="fixed" data-bg-color="black"></label>
     <div id="slide-menu" class="t-0 r-0 h-100">
       <label for="slide-toggle" data-display="none-md" data-justify-content="center" data-align-items="center" class="flex close-button pa-4 mb-4"><?php echo icon_4536('close', '', 24); ?>CLOSE</label>
   <?php }
