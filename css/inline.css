@@ -1,9 +1,3 @@
-#contents-wrapper {
-  padding: 24px;
-  -webkit-box-flex: 1;
-  flex: 1;
-}
-
 #site-top::after,
 .media-section::after {
   content: "";

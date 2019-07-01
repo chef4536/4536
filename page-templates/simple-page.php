@@ -1,6 +1,6 @@
 <?php /* Template Name: シンプルなデザイン */
 get_header(); ?>
-<div id="contents-wrapper" class="w-100 max-w-100">
+<div id="contents-wrapper" class="w-100 max-w-100 pa-4">
   <main id="main" class="w-100" role="main">
     <article class="post">
       <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

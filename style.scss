@@ -13,6 +13,11 @@ Version: 1.1.7
 //////// init /////////////
 ///////////////////////////
 
+#contents-wrapper {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
 .z-index-1 {
   z-index: 1;
 }

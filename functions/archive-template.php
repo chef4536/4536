@@ -1,7 +1,7 @@
 <?php
 
 function archive_template_4536($page_4536) { ?>
-  <div id="contents-wrapper" class="w-100 max-w-100">
+  <div id="contents-wrapper" class="w-100 max-w-100 pa-4">
     <main id="main" class="w-100" role="main">
       <section id="archive-section">
           <?php

@@ -9,6 +9,11 @@ License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Version: 1.1.7
 ---------------------------------------------------------*/
+#contents-wrapper {
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+
 .z-index-1 {
   z-index: 1;
 }
