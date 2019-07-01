@@ -288,7 +288,7 @@
     width: calc(100% + 20px);
     max-width: none;
   }
-  body {
+  html {
     overflow-x: hidden;
   }
   .ad {
