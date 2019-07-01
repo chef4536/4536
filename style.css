@@ -11,7 +11,7 @@ Version: 1.1.7
 ---------------------------------------------------------*/
 #contents-wrapper {
   -webkit-box-flex: 1;
-  flex: 1;
+  flex: auto;
 }
 
 .z-index-1 {

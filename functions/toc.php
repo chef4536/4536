@@ -55,7 +55,7 @@ function get_outline_info_4536($content)
             $target_anchor_content = 'outline-' . $depth_num;
             $dot = ( ctype_digit($depth_num) ) ? '<div class="dot body-bg-color mr-2"><div data-display="flex" data-justify-content="center" data-align-items="center" class="dot_inner gradation">' . $depth_num . '</div></div>' : '';
             $outline .= $dot;
-            $outline .= sprintf('<a data-display="flex" href="%s" class="flex">%s</a>', $target_anchor_toc, $text);
+            $outline .= sprintf('<a data-display="flex" href="%s" class="flex-1">%s</a>', $target_anchor_toc, $text);
             $content = preg_replace('/<h(['.$search_level.'])>/', '<h\1 id="' . $target_anchor_content . '">', $content, 1);
         }
         $search = '/<h(['.$search_level.'])\s(.*?)>(.*?)<\/h\1>/';
