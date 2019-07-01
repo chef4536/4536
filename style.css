@@ -118,6 +118,7 @@ Version: 1.1.7
 .article-body blockquote:not(.external-website-embed-content) {
   border-left: 3px solid;
   background-color: #eeeeee;
+  color: #666666;
   padding: 1.5em;
   margin-bottom: 1.5em;
 }
