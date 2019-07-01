@@ -218,11 +218,6 @@
   opacity: 0.5;
 }
 
-#post-thumbnail-4536 {
-  -webkit-transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-  transform: perspective(500px) rotateY(350deg) translate(-10px, 0);
-}
-
 #post-thumbnail-4536 .post-thumbnail {
   box-shadow: 0 0 20px #ccc;
 }
