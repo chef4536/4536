@@ -76,7 +76,7 @@ if( fixed_footer()==='menu' ) { ?>
           } else {
             continue;
           } ?>
-          <div class="flex<?php echo $class; ?>">
+          <div class="flex-1<?php echo $class; ?>">
               <?php echo $start_tag . icon_4536($icon, get_theme_mod('post_color'), 24); ?>
               <span data-display="block" class="meta"><?php echo $title; ?></span>
               <?php echo $end_tag; ?>
