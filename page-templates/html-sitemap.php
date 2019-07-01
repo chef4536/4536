@@ -5,7 +5,7 @@ get_header(); ?>
     <article id="html-sitemap" class="post">
       <div class="article-body">
         <?php
-        $icon_note = icon_4536('note', '', 16);
+        $icon_note = icon_4536('note', get_theme_mod('post_color'), 16);
         $is_thumbnail = get_post_meta($post->ID, 'html_sitemap_thumbnail', true);
         $exclude_cat_id_arr = get_post_meta($post->ID, 'html_sitemap_exclude_cat_id', true);
         if (!empty($exclude_cat_id_arr)) {
@@ -45,7 +45,7 @@ get_header(); ?>
 
         function the_child_sitemap_4536($cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null)
         {
-          $icon_note = icon_4536('note', '', 16);
+          $icon_note = icon_4536('note', get_theme_mod('post_color'), 16);
             $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
             if (!empty($child_cat_arr)) {
                 $i++;
