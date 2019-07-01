@@ -20,7 +20,7 @@ register_sidebar([
     'name' => 'ヘッダー',
     'id' => 'header-widget',
     'description' => 'サイトタイトルやメニューの下部分に表示されます。',
-    'before_widget' => '<div class="%1$s header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 w-100 %2$s">',
+    'before_widget' => '<div class="%1$s header-widget mt-5 mb-5 pa-3"><div data-position="relative" class="widget-4536 container ma-auto w-100 %2$s">',
     'after_widget' => '</div></div>',
     'before_title' => '<div class="headline mb-2 post-color" data-text-align="center">',
     'after_title' => '</div>',

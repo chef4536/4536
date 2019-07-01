@@ -43,7 +43,7 @@ if (is_amp()) {
       if (is_amp()) {
           dynamic_sidebar('amp-header');
           if (is_amp_header()) {
-              echo amp_adsense_code('horizon');
+              echo amp_adsense_code('header');
           }
       } else {
           dynamic_sidebar('header-widget');

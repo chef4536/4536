@@ -19,7 +19,7 @@ $is_slide_menu = is_slide_menu();
     <div id="slide-menu" class="t-0 r-0 h-100">
       <label for="slide-toggle" data-display="none-md" data-justify-content="center" data-align-items="center" class="flex close-button pa-4 mb-4"><?php echo icon_4536('close', get_theme_mod('post_color'), 24); ?>CLOSE</label>
   <?php }
-  if( is_amp() && is_amp_sidebar_top() ) echo amp_adsense_code();
+  if( is_amp() && is_amp_sidebar_top() ) echo amp_adsense_code('sidebar');
   if( !empty($sidebar) ) echo '<aside class="sidebar-inner" role="complementary">' . $sidebar . '</aside>';
   if( !empty($scroll_sidebar) ) echo '<aside id="scroll-sidebar" class="sidebar-inner" role="complementary">' . $scroll_sidebar . '</aside>';
   if( $is_slide_menu ) echo '</div>';

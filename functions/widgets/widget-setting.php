@@ -5,8 +5,8 @@
 ///////////////////////////////////
 add_filter('the_content', function($the_content) {
   if(is_amp()) {
-    if(!empty(amp_adsense_code()) && is_amp_before_1st_h2()) {
-      $ad = amp_adsense_code();
+    if(!empty(amp_adsense_code('before_h2')) && is_amp_before_1st_h2()) {
+      $ad = amp_adsense_code('before_h2');
     } elseif(is_active_sidebar('amp-first-h2-ad')) {
       ob_start();
       dynamic_sidebar('amp-first-h2-ad');

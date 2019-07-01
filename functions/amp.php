@@ -191,8 +191,7 @@ add_filter( 'post_thumbnail_html', function( $image ) {
 //////////////////////////////
 //AMP用アドセンス広告生成
 //////////////////////////////
-function amp_adsense_code( $size = 'rectangle' ) {
-  $ad_title = ( !empty(amp_ad_title()) ) ? '<p class="small-title">'.amp_ad_title().'</p>' : '';
+function amp_adsense_code( $locate ) {
   $ad = get_amp_adsense_code();
   preg_match('/data-ad-client="(ca-pub-[^"]+?)"/i', $ad, $match);
   if( empty($match[1]) ) return;
@@ -200,26 +199,65 @@ function amp_adsense_code( $size = 'rectangle' ) {
   preg_match('/data-ad-slot="([^"]+?)"/i', $ad, $match);
   if( empty($match[1]) ) return;
   $data_ad_slot = $match[1];
-  switch( $size ) {
-    case 'rectangle':
+
+  //size
+  switch( $locate ) {
+    case 'before_h2':
+    case 'post_bottom':
+    case 'sidebar':
       $layout = '';
       $width = ' width="100vw"';
       $height = '320';
-      $class = 'widget-4536 w-100 amp-adsense ad my-4 mx-auto';
-      $option = ' data-auto-format="rspv" data-full-width data-text-align="center"';
+      $option = ' data-auto-format="rspv" data-full-width';
       $overflow = '<div overflow></div>';
       break;
-    case 'horizon':
+    case 'header':
+    case 'post_top':
       $layout = ' layout="fixed-height"';
       $width = '';
       $height = '100';
-      $class = 'widget-4536 w-100 amp-adsense ad my-2 mx-auto';
-      $option = ' data-text-align="center"';
+      $option = '';
       $overflow = '';
       break;
+    default:
+      return;
+      break;
   }
-  $amp_adsense_code = '<amp-ad'.$layout.$width.' height="'.$height.'" type="adsense" data-ad-client="'.$data_ad_client.'" data-ad-slot="'.$data_ad_slot.'"'.$option.'>'.$overflow.'</amp-ad>';
-  $amp_adsense = '<div class="'.$class.'">'.$ad_title.$amp_adsense_code.'</div>';
+
+  switch ( $locate ) {
+    case 'header':
+      $container_class = 'mt-5 mb-5 pa-3 container mx-auto';
+      break;
+    case 'post_top':
+      $container_class = 'mb-4';
+      break;
+    case 'before_h2':
+      $container_class = 'mt-5 mb-5';
+      break;
+    case 'post_bottom':
+      $container_class = 'mt-5';
+      break;
+    case 'sidebar':
+      $container_class = 'mb-5';
+      break;
+  }
+
+  //title
+  $ad_title = ( !empty(amp_ad_title()) ) ? '<div class="meta mb-2 post-color" data-text-align="center">' . amp_ad_title() . '</div>' : '';
+
+  //for mobile phone
+  $amp_adsense_code = '<amp-ad media="(max-width: 479px)" height="' . $height . '" type="adsense" data-ad-client="' . $data_ad_client . '" data-ad-slot="' . $data_ad_slot . '"'. $layout . $width . $option . '>' . $overflow . '</amp-ad>';
+
+  if( $locate === 'sidebar' ) { //only sidebar
+    //for tablet and pc
+    $amp_adsense_code .= '<amp-ad media="(min-width: 480px)" width=300 height=250 type="adsense" data-ad-client="' . $data_ad_client . '" data-ad-slot="' . $data_ad_slot . '"></amp-ad>';
+  } else {
+    //for tablet and pc
+    $amp_adsense_code .= '<amp-ad media="(min-width: 480px)" layout="fixed-height" height=200 type="adsense" data-ad-client="' . $data_ad_client . '" data-ad-slot="' . $data_ad_slot . '"></amp-ad>';
+  }
+
+  $amp_adsense = '<div class="w-100 amp-adsense ' . $container_class . '">' . $ad_title . $amp_adsense_code . '</div>';
+
   if(
     ( get_option('amp_adsense_post')==='' && is_singular('post') ) ||
     ( get_option('amp_adsense_page')==='' && is_page() ) ||

@@ -1,7 +1,7 @@
 <?php
 
 if (is_amp() && is_amp_post_top()) {
-    echo amp_adsense_code('horizon');
+    echo amp_adsense_code('post_top');
 }
 
 if (is_amp()) {
@@ -38,7 +38,7 @@ if (is_amp() && empty($content)) {
 echo '</article>';
 
 if (is_amp() && is_amp_post_bottom()) {
-    echo amp_adsense_code();
+    echo amp_adsense_code('post_bottom');
 }
 
 //記事下広告枠
