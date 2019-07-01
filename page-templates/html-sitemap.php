@@ -37,7 +37,7 @@ get_header(); ?>
             'exclude' => [ $exclude_post_id ],
           ]);
               foreach ($post_arr as $post) {
-                  echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                  echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1 flex-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
               }
               the_child_sitemap_4536($cat_id, 2, $exclude_cat_id_arr, $exclude_post_id);
               echo '</section>';
@@ -71,7 +71,7 @@ get_header(); ?>
                 'exclude' => [ $exclude_post_id ],
               ]);
                     foreach ($post_arr as $post) {
-                        echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
+                        echo '<article data-display="flex" data-align-items="center" class="l-h-140 pb-2">' . $icon_note . '<a class="ml-1 flex-1" href="' . get_the_permalink($post->ID) . '">' . $post->post_title . '</a></article>';
                     }
                     the_child_sitemap_4536($child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id);
                     echo '</section>';
