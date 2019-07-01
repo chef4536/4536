@@ -27,8 +27,11 @@ if( has_header_image() ) { ?>
     <div class="title flex">
       <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
     </div>
-    <div class="flex xs0"></div>
     <?php
+    //spacer
+    if(has_nav_menu('header_nav')) {
+      echo '<div class="flex xs0"></div>';
+    }
     //slidemenu
     if( is_slide_menu() ) { ?>
       <label data-display="none-md" id="header-slide-button" for="slide-toggle">

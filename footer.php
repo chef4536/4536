@@ -9,7 +9,7 @@ if (!is_home() || !is_front_page()) {
 media_section_4536('movie'); //サブメディア
 
 if (!is_amp() && is_active_sidebar('footer') && !none_header_footer()) { ?>
-  <div class="container ma-auto">
+  <div id="footer-widget-container" class="container ma-auto mt-5">
     <div data-display="flex" data-justify-content="center">
       <?php dynamic_sidebar('footer'); ?>
     </div>

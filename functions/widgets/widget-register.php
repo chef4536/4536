@@ -74,7 +74,7 @@ register_sidebar([
     'name' => 'フッター',
     'id' => 'footer',
     'description' => 'サイト最下部に表示されます。PC表示時は上から順に横並び',
-    'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3">',
+    'before_widget' => '<div class="widget-4536 flex-1 xs12 sm12 %1$s %2$s footer-widget pa-3 mb-4">',
     'after_widget' => '</div>',
     'before_title' => '<div class="headline mb-3 post-color">',
     'after_title' => '</div>',
