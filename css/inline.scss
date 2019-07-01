@@ -180,7 +180,8 @@ $button_base_size: 56px;
   transition: 0.5s ease;
 
   .menu-item {
-    margin-right: 16px;
+    font-size: 14px;
+    margin-right: 14px;
     position: relative;
 
     &:last-child {
@@ -189,6 +190,7 @@ $button_base_size: 56px;
 
     a {
       opacity: 0.8;
+      display: block;
 
       &[aria-current="page"] {
         opacity: 1;
@@ -306,6 +308,9 @@ $button_base_size: 56px;
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 479px) {
+  #contents-wrapper,#sidebar {
+    padding: 16px;
+  }
   /* max-480px END */
 }
 /* --------------------------------------------------

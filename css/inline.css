@@ -153,7 +153,8 @@
 }
 
 .global-nav .menu-item {
-  margin-right: 16px;
+  font-size: 14px;
+  margin-right: 14px;
   position: relative;
 }
 
@@ -163,6 +164,7 @@
 
 .global-nav .menu-item a {
   opacity: 0.8;
+  display: block;
 }
 
 .global-nav .menu-item a[aria-current="page"] {
@@ -264,6 +266,9 @@
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */
 @media screen and (max-width: 479px) {
+  #contents-wrapper, #sidebar {
+    padding: 16px;
+  }
   /* max-480px END */
 }
 
