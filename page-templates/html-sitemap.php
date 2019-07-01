@@ -23,7 +23,7 @@ get_header(); ?>
               echo '<h2><a href="' . get_category_link($cat_id) . '">' . $category->name . '</a></h2>';
               $thumbnail_arr = get_posts('post_type=post&posts_per_page=1&category=' . $cat_id);
               if (has_post_thumbnail($post_id = $thumbnail_arr[0]->ID) && $is_thumbnail === '1') {
-                  echo '<figure class="alignwide mb-4" data-text-align="center">' . get_the_post_thumbnail($post_id, $thumbnail, [ 'class' => 'category_thumbnail' ]) . '</figure>';
+                  echo '<figure class="mb-4" data-text-align="center">' . get_the_post_thumbnail($post_id, $thumbnail, [ 'class' => 'category_thumbnail' ]) . '</figure>';
               }
               $child_cat_arr = get_terms([ 'taxonomy'=>'category', 'parent'=>$cat_id ]);
               $exclude_cat_id = '';
