@@ -288,8 +288,7 @@
     width: calc(100% + 20px);
     max-width: none;
   }
-  #main,
-  html {
+  body {
     overflow-x: hidden;
   }
   .ad {
