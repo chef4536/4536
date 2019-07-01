@@ -426,6 +426,11 @@ input[type="search"] {
   max-width: 100%;
   padding: .5em;
 }
+button[type="submit"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
 //widget_post
 .widget-post-title {
   font-weight: 700;

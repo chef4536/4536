@@ -59,7 +59,7 @@ add_filter('inline_style_4536', function ($css) {
     // $css[] = "#main::after{background:$light_color}";
 
     //ボタン
-    $css[] = '[data-button="submit"],#submit{background-color:' . $primary_color . '}';
+    $css[] = '[data-button="submit"],#submit,.primay-bg-color{background-color:' . $primary_color . '}';
 
     //画像の比率
     $height = (thumbnail_size()==='thumbnail') ? '100' : '50' ;
