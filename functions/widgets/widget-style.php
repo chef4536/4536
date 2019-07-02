@@ -3,19 +3,19 @@
 class Widget_Style_Setting_4536 {
 
   public $widget_color_list = [
-    'widget_background_color' => '背景色',
+    // 'widget_background_color' => '背景色',
     'widget_font_color' => '文字の色',
   ];
 
   public $is_widget_color = [
-    'is_widget_background_color' => '',
+    // 'is_widget_background_color' => '',
     'is_widget_font_color' => '',
   ];
 
-  public $background_image = [
-    'background_image' => '',
-    'background_attachment' => '',
-  ];
+  // public $background_image = [
+  //   'background_image' => '',
+  //   'background_attachment' => '',
+  // ];
 
   public $align = [
     null => 'デフォルト',
@@ -49,20 +49,20 @@ class Widget_Style_Setting_4536 {
         <?php } ?>
       </select>
     </p>
-    <p>
+    <!-- <p>
       <label for="<?php echo $widget->get_field_id( 'background_image' ); ?>"><?php _e( '背景画像' ); ?></label>
       <input class="widefat" id="<?php echo $widget->get_field_id( 'background_image' ); ?>" name="<?php echo $widget->get_field_name( 'background_image' ); ?>" type="text" value="<?php echo esc_url( $instance['background_image'] ); ?>" />
       <button class="upload-image-button button button-primary">選択</button>
       <button class="delete-image-button button">削除</button>
       <img class="widefat" src="<?php echo esc_url( $instance['background_image'] ); ?>" style="margin:1em 0;display:block">
-    </p>
-    <p><label><input class="widefat" name="<?php echo $widget->get_field_name('background_attachment'); ?>" value="fixed" <?php checked($instance['background_attachment'], 'fixed');?> type="checkbox"><?php _e( '背景画像を固定する' ); ?></label></p>
+    </p> -->
+    <!-- <p><label><input class="widefat" name="<?php echo $widget->get_field_name('background_attachment'); ?>" value="fixed" <?php checked($instance['background_attachment'], 'fixed');?> type="checkbox"><?php _e( '背景画像を固定する' ); ?></label></p> -->
   <?php }
 
   function save( $instance, $new_instance, $old_instance, $object ) {
     $list = $this->widget_color_list;
     $list += $this->is_widget_color;
-    $list += $this->background_image;
+    // $list += $this->background_image;
     $list['align'] = '';
     foreach( $list as $type => $name ) {
       $instance[$type] = !empty($new_instance[$type]) ? $new_instance[$type] : '';
@@ -81,21 +81,21 @@ class Widget_Style_Setting_4536 {
         $widget_font_color = $widget_opt[$num]['widget_font_color'];
         $is_widget_font_color = $widget_opt[$num]['is_widget_font_color'];
         $font_color = ($is_widget_font_color && $widget_font_color) ? 'color:'.$widget_font_color.';border-color:'.$widget_font_color : '';
-        $widget_background_color = $widget_opt[$num]['widget_background_color'];
-        $is_widget_background_color = $widget_opt[$num]['is_widget_background_color'];
-        $margin = $widget_opt[$num]['margin'];
-        $padding = $widget_opt[$num]['padding'];
-        $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
-        $src = $widget_opt[$num]['background_image'];
-        if( !empty( $src ) ) {
-          $background_image = 'background-image:url(' . $src . ')';
-          $attachment = $widget_opt[$num]['background_attachment'];
-          if( !empty( $attachment ) ) $background_image .= ';background-attachment:' . $attachment;
-          $css[] = $class.'{' . $background_image . '}';
-        }
-        if( !empty( $background_color ) ) $css[] = $class.'{'.$background_color.'}';
-        if( $margin !== '' && !is_null( $margin )  ) $css[] = $class.'{margin:'.$margin.'}';
-        if( $padding !== '' && !is_null( $padding ) ) $css[] = $class.'{padding:'.$padding.'}';
+        // $widget_background_color = $widget_opt[$num]['widget_background_color'];
+        // $is_widget_background_color = $widget_opt[$num]['is_widget_background_color'];
+        // $margin = $widget_opt[$num]['margin'];
+        // $padding = $widget_opt[$num]['padding'];
+        // $background_color = ($is_widget_background_color && $widget_background_color) ? 'background-color:'.$widget_background_color : '';
+        // $src = $widget_opt[$num]['background_image'];
+        // if( !empty( $src ) ) {
+        //   $background_image = 'background-image:url(' . $src . ')';
+        //   $attachment = $widget_opt[$num]['background_attachment'];
+        //   if( !empty( $attachment ) ) $background_image .= ';background-attachment:' . $attachment;
+        //   $css[] = $class.'{' . $background_image . '}';
+        // }
+        // if( !empty( $background_color ) ) $css[] = $class.'{'.$background_color.'}';
+        // if( $margin !== '' && !is_null( $margin )  ) $css[] = $class.'{margin:'.$margin.'}';
+        // if( $padding !== '' && !is_null( $padding ) ) $css[] = $class.'{padding:'.$padding.'}';
         if( !empty( $font_color ) ) {
           $classes = [];
           $classes[] = $class . ' :not(.widget-title)';
