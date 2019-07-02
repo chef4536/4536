@@ -15,7 +15,6 @@ add_filter('body_class', function ($classes) {
     'cool',
     'cool2',
     'cool3',
-    'font-size-16px',
     'l-0',
     'min-h-100',
     'post-color',

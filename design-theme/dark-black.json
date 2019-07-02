@@ -1,16 +1,7 @@
 {
   "background_color": "333333",
+  "primary_color": "#4286f4",
+  "secandary_color": "#000000",
   "link_color": "#1b95e0",
-  "post_background_color": "#1a263d",
-  "post_color": "#ffffff",
-  "h1_key_color": "#f2f2f2",
-  "h1_color": "",
-  "h2_key_color": "#333333",
-  "h2_color": "",
-  "h3_key_color": "#f2f2f2",
-  "h3_color": "",
-  "h4_key_color": "#f2f2f2",
-  "h4_color": "",
-  "sidebar_widget_title_key_color": "#1a263d",
-  "sidebar_widget_title_color": "#ffffff",
+  "post_color": "#ffffff"
 }

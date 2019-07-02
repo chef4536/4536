@@ -25,7 +25,7 @@ add_filter('before_wp_tiny_mce', function($init) {
 //クラスやIDを追加
 add_filter( 'tiny_mce_before_init', function($initArray) {
 	$initArray['body_id'] = 'primary'; // id
-	$initArray['body_class'] = 'edit-post-visual-editor post simple1 simple2 simple3 pop cool cool2 cool3'; // class
+	$initArray['body_class'] = 'edit-post-visual-editor post simple_bg_color gradation_bg_color simple_border_bottom gradation_border_bottom gradation_border_bottom2 simple_border_left pop cool cool2 cool3'; // class
 	return $initArray;
 });
 
