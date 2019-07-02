@@ -1,7 +1,7 @@
 <?php
 
 $tag = ( is_home() ) ? 'h1' : 'p' ;
-$start_tag = '<'.$tag.' id="sitename" class="title ma-0" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
+$start_tag = '<'.$tag.' id="sitename" class="title flex max-w-100" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
 $end_tag = '</'.$tag.'>';
 
 if( has_header_image() ) { ?>
@@ -24,10 +24,9 @@ if( has_header_image() ) { ?>
     $site_name = get_bloginfo('name');
   } ?>
   <div id="header-container" data-position="relative" data-display="flex" data-align-items="center" class="w-100 mx-auto pa-3">
-    <div class="title flex">
-      <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
-    </div>
     <?php
+    //title
+    echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag;
     //spacer
     if(has_nav_menu('header_nav')) {
       echo '<div class="flex xs0"></div>';
