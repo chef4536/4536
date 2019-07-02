@@ -38,7 +38,8 @@ function get_outline_info_4536($content)
             } else {
                 while ($current_level < $level) {
                     $current_level++;
-                    $outline .= sprintf('<ul class="indent-%s"><li data-position="relative" data-display="flex" data-align-items="center">', $current_level);
+                    if( $current_level > 2 ) $children = 'children ';
+                    $outline .= sprintf('<ul class="' . $children . 'indent-%s"><li data-position="relative" data-display="flex" data-align-items="center">', $current_level);
                 }
                 for ($idx = $current_level + 0; $idx < count($sub_levels); $idx++) {
                     $sub_levels[$idx] = 0;
