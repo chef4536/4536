@@ -21,7 +21,7 @@ function custom_excerpt_length() {
 }
 //固定フッター
 function fixed_footer() {
-    return get_theme_mod( 'fixed_footer', null );
+    return get_theme_mod( 'fixed_footer', 'floating_menu' );
 }
 //固定フッターメニュー
 function fixed_footer_menu_item($name) {
