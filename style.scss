@@ -416,12 +416,15 @@ input[type="search"] {
   max-width: 100%;
   padding: .5em;
 }
-button[type="submit"] {
+#searchsubmit {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   background: none;
   border: none;
+}
+button[type="submit"] {
+  padding: 8px;
 }
 //widget_post
 .widget-post-title {

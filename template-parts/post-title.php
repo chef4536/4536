@@ -6,7 +6,7 @@ if (is_page_template('page-templates/simple-page.php')
 }
 
 $none_thumbnail = get_post_meta($post->ID, 'none_post_thumbnail', true);
-if( $none_thumbnail ) {
+if( $none_thumbnail || !has_post_thumbnail() ) {
   $md_flex = ' md12';
   $margin = ' mt-5';
 } else {
