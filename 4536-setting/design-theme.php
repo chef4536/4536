@@ -38,7 +38,7 @@ class EasySettings_4536 {
       foreach( $array as $key => $value ) {
         set_theme_mod( $key, $value );
       }
-      $styles = [ 'h1', 'h2', 'h3', 'h4', 'related_post_title', 'sidebar_widget_title' ];
+      $styles = [ 'h2', 'h3', 'h4' ];
       foreach( $styles as $style ) {
         remove_theme_mod( "{$style}_style" );
       }

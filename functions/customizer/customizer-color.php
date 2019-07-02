@@ -30,68 +30,68 @@ class CustomizerColorSettings_4536 {
   ];
 
   //見出しセクション
-  public $heading_array = [
-    'h1_key_color' => [
-      'label' => '見出し1（h1）のキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 10,
-    ],
-    'h1_color' => [
-      'label' => '見出し1（h1）の文字色',
-      'color' => '',
-      'priority' => 10,
-    ],
-    'h2_key_color' => [
-      'label' => '見出し2（h2）のキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 20,
-    ],
-    'h2_color' => [
-      'label' => '見出し2（h2）の文字色',
-      'color' => '',
-      'priority' => 20,
-    ],
-    'h3_key_color' => [
-      'label' => '見出し3（h3）のキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 30,
-    ],
-    'h3_color' => [
-      'label' => '見出し3（h3）の文字色',
-      'color' => '',
-      'priority' => 30,
-    ],
-    'h4_key_color' => [
-      'label' => '見出し4（h4）のキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 40,
-    ],
-    'h4_color' => [
-      'label' => '見出し4（h4）の文字色',
-      'color' => '',
-      'priority' => 40,
-    ],
-    'related_post_title_key_color' => [
-      'label' => '関連記事タイトルのキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 50,
-    ],
-    'related_post_title_color' => [
-      'label' => '関連記事タイトルの文字色',
-      'color' => '',
-      'priority' => 50,
-    ],
-    'sidebar_widget_title_key_color' => [
-      'label' => 'ウィジェットのキーカラー',
-      'color' => '#f2f2f2',
-      'priority' => 60,
-    ],
-    'sidebar_widget_title_color' => [
-      'label' => 'ウィジェットの文字色',
-      'color' => '',
-      'priority' => 60,
-    ],
-  ];
+  // public $heading_array = [
+  //   'h1_key_color' => [
+  //     'label' => '見出し1（h1）のキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 10,
+  //   ],
+  //   'h1_color' => [
+  //     'label' => '見出し1（h1）の文字色',
+  //     'color' => '',
+  //     'priority' => 10,
+  //   ],
+  //   'h2_key_color' => [
+  //     'label' => '見出し2（h2）のキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 20,
+  //   ],
+  //   'h2_color' => [
+  //     'label' => '見出し2（h2）の文字色',
+  //     'color' => '',
+  //     'priority' => 20,
+  //   ],
+  //   'h3_key_color' => [
+  //     'label' => '見出し3（h3）のキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 30,
+  //   ],
+  //   'h3_color' => [
+  //     'label' => '見出し3（h3）の文字色',
+  //     'color' => '',
+  //     'priority' => 30,
+  //   ],
+  //   'h4_key_color' => [
+  //     'label' => '見出し4（h4）のキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 40,
+  //   ],
+  //   'h4_color' => [
+  //     'label' => '見出し4（h4）の文字色',
+  //     'color' => '',
+  //     'priority' => 40,
+  //   ],
+  //   'related_post_title_key_color' => [
+  //     'label' => '関連記事タイトルのキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 50,
+  //   ],
+  //   'related_post_title_color' => [
+  //     'label' => '関連記事タイトルの文字色',
+  //     'color' => '',
+  //     'priority' => 50,
+  //   ],
+  //   'sidebar_widget_title_key_color' => [
+  //     'label' => 'ウィジェットのキーカラー',
+  //     'color' => '#f2f2f2',
+  //     'priority' => 60,
+  //   ],
+  //   'sidebar_widget_title_color' => [
+  //     'label' => 'ウィジェットの文字色',
+  //     'color' => '',
+  //     'priority' => 60,
+  //   ],
+  // ];
 
   public $balloon_array = [
     'balloon_right_background_color' => [
@@ -134,15 +134,15 @@ class CustomizerColorSettings_4536 {
     }
 
     //見出し
-    foreach( $this->heading_array as $key => $value ) {
-      $wp_customize->add_setting( $key, [ 'default' => $value['color'] ] );
-      $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
-          'label' => $value['label'],
-          'section' => 'heading_style',
-          'settings' => $key,
-          'priority' => $value['priority'],
-      ]));
-    }
+    // foreach( $this->heading_array as $key => $value ) {
+    //   $wp_customize->add_setting( $key, [ 'default' => $value['color'] ] );
+    //   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, [
+    //       'label' => $value['label'],
+    //       'section' => 'heading_style',
+    //       'settings' => $key,
+    //       'priority' => $value['priority'],
+    //   ]));
+    // }
 
     //吹き出しセクション
     foreach( $this->balloon_array as $key => $value ) {
@@ -162,7 +162,7 @@ class CustomizerColorSettings_4536 {
     $array = [];
     $color = [];
     $array += $this->main_array;
-    $array += $this->heading_array;
+    // $array += $this->heading_array;
     $array += $this->balloon_array;
 
     foreach( $array as $key => $value ) {
@@ -193,11 +193,11 @@ class CustomizerColorSettings_4536 {
     }
 
     $array = [
-      'h1_style' => [
-        'tag' => '#post-h1',
-        'key_color' => $h1_key_color,
-        'font_color' => $h1_color,
-      ],
+      // 'h1_style' => [
+      //   'tag' => '#post-h1',
+      //   'key_color' => $h1_key_color,
+      //   'font_color' => $h1_color,
+      // ],
       'h2_style' => [
         'tag' => '.article-body h2',
         'key_color' => $h2_key_color,
@@ -213,33 +213,41 @@ class CustomizerColorSettings_4536 {
         'key_color' => $h4_key_color,
         'font_color' => $h4_color,
       ],
-      'sidebar_widget_title_style' => [
-        'tag' => '.widget-title',
-        'key_color' => $sidebar_widget_title_key_color,
-        'font_color' => $sidebar_widget_title_color,
-      ],
+      // 'sidebar_widget_title_style' => [
+      //   'tag' => '.widget-title',
+      //   'key_color' => $sidebar_widget_title_key_color,
+      //   'font_color' => $sidebar_widget_title_color,
+      // ],
     ];
+
+    $primary_color = primary_color();
+    $gradation = gradation_color();
+    if( empty( $post_color ) ) $post_color = '#333333';
 
     //キーカラー
     foreach ( $array as $key => $val ) {
 
-      $key_color = $val['key_color'];
-      $font_color = $val['font_color'];
+      // $key_color = $val['key_color'];
+      // $font_color = $val['font_color'];
       $tag = $val['tag'];
 
       //キーカラーとスタイル
       switch ( $this->heading_style_4536($key) ) {
         case 'simple1':
-          $key_color_css = ( !empty($key_color) ) ? 'background-color:'.$key_color : '';
-          $css[] = '.simple1 '.$tag.'{border-radius:2px;padding:.8em;'.$key_color_css.'}';
+          $rgb = hex_to_rgb( $post_color );
+          $css[] = ".simple1 $tag{border-radius:2px;padding:.8em;background:rgba($rgb,0.1)}";
           break;
         case 'simple2':
-          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.simple2 '.$tag.'{border-bottom:solid 3px;padding: 0 0 .4em .4em;'.$key_color_css.'}';
+          $css[] = ".simple1 $tag{border-radius:2px;padding:.8em;$gradation}";
           break;
         case 'simple3':
-          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.simple3 '.$tag.'{border-left:5px solid;padding-left:.4em;'.$key_color_css.'}';
+          $css[] = ".simple2 $tag::after{margin-top:4px;content:\"\";display:block;height:4px;$gradation}";
+          break;
+        case 'simple4':
+          $css[] = ".simple3 $tag{border-left:4px solid $primary_color;padding-left:.4em}";
+          break;
+        case 'simple3':
+          $css[] = ".simple3 $tag{border-left:4px solid $primary_color;padding-left:.4em}";
           break;
         case 'pop':
           $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
@@ -262,7 +270,7 @@ class CustomizerColorSettings_4536 {
       }
 
       //文字色
-      if ( !empty( $font_color ) ) $css[] = $tag.'{color:'.$font_color.$option.'}';
+      // if ( !empty( $font_color ) ) $css[] = $tag.'{color:'.$font_color.$option.'}';
 
     }
 
@@ -302,9 +310,6 @@ class CustomizerColorSettings_4536 {
 
   function heading_style_4536( $tag ) {
     switch ( $tag ) {
-      case 'h1_style':
-        $default = null;
-        break;
       case 'h2_style':
         $default = 'simple1';
         break;
@@ -313,9 +318,6 @@ class CustomizerColorSettings_4536 {
         break;
       case 'h4_style':
         $default = 'simple3';
-        break;
-      case 'sidebar_widget_title_style':
-        $default = 'simple1';
         break;
     }
     return get_theme_mod( $tag, $default );
@@ -330,4 +332,10 @@ function primary_color() {
 
 function secandary_color() {
   return get_theme_mod( 'secandary_color', SECANDARY_COLOR );
+}
+
+function gradation_color() {
+  $primary_color = primary_color();
+  $secondary_color = secandary_color();
+  return "background:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff";
 }

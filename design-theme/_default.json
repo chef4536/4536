@@ -1,16 +1,11 @@
 {
   "background_color": "",
   "link_color": "#1b95e0",
-  "post_background_color": "#ffffff",
   "post_color": "#333333",
-  "h1_key_color": "#f2f2f2",
-  "h1_color": "",
   "h2_key_color": "#f2f2f2",
   "h2_color": "",
   "h3_key_color": "#f2f2f2",
   "h3_color": "",
   "h4_key_color": "#f2f2f2",
-  "h4_color": "",
-  "sidebar_widget_title_key_color": "#f2f2f2",
-  "sidebar_widget_title_color": "",
+  "h4_color": ""
 }
