@@ -188,7 +188,7 @@ class CustomizerColorSettings_4536 {
     if( !empty($post_color) ) { //記事文字色
       $post_color_class = '.post-color,#main-container .archive-list';
       if( fixed_header() === true ) $post_color_class .= ',#header.fixed-top a';
-      $css[] = "$post_color_class{color:$post_color}";
+      $css[] = "$post_color_class{color:$post_color$option}";
       $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25) !important}';
     }
 
