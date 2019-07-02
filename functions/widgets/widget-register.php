@@ -4,7 +4,7 @@ register_sidebar([
     'id' => 'sidebar',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color" data-text-align="center">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -13,7 +13,7 @@ register_sidebar([
     'description' => 'PC表示時スクロール',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color" data-text-align="center">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([
@@ -146,7 +146,7 @@ register_sidebar([
     'description' => '※コードを貼り付ける場合はAMP対応のタグをお使いください。',
     'before_widget' => '<div class="widget-4536 w-100 %1$s %2$s sidebar-widget mb-5">',
     'after_widget' => '</div>',
-    'before_title' => '<h3 class="widget-title headline mb-3 post-color">',
+    'before_title' => '<h3 class="widget-title headline mb-3 post-color" data-text-align="center">',
     'after_title' => '</h3>',
 ]);
 register_sidebar([

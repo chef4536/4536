@@ -109,20 +109,22 @@ $wp_customize->add_section( 'heading_style', [
     //見出しスタイル
     $h_style_list = [
       null => '装飾なし',
-      'simple1' => 'シンプル1',
-      'simple2' => 'シンプル2',
-      'simple3' => 'シンプル3',
+      'simple_bg_color' => '単色背景',
+      'gradation_bg_color' => 'グラデーション背景',
+      'simple_border_bottom' => '単色下線',
+      'gradation_border_bottom' => 'グラデーション下線1',
+      'gradation_border_bottom2' => 'グラデーション下線2',
+      'simple_border_left' => '単色左線',
       'pop' => 'ポップ',
-      'cool' => 'クール',
+      'cool' => 'クール1',
       'cool2' => 'クール2',
       'cool3' => 'クール3',
     ];
     //見出しリスト
     $menu_list = [
-        null => '1',
-        'simple1' => '2',
-        'simple2' => '3',
-        'simple3' => '4'
+        'gradation_bg_color' => '2',
+        'gradation_border_bottom' => '3',
+        'simple_border_left' => '4'
     ];
     foreach ($menu_list as $default => $number) {
         $wp_customize->add_setting( 'h'.$number.'_style', [
@@ -137,30 +139,6 @@ $wp_customize->add_section( 'heading_style', [
             'choices' => $h_style_list,
         ]);
     }
-    //関連記事タイトル
-    $wp_customize->add_setting( 'related_post_title_style', [
-        'default' => 'simple1',
-    ]);
-    $wp_customize->add_control( 'related_post_title_style', [
-        'section' => 'heading_style',
-        'settings' => 'related_post_title_style',
-        'label' => '関連記事のタイトル',
-        'priority' => 50,
-        'type' => 'select',
-        'choices' => $h_style_list,
-    ]);
-    //ウィジェットタイトル
-    $wp_customize->add_setting( 'sidebar_widget_title_style', [
-        'default' => 'simple1',
-    ]);
-    $wp_customize->add_control( 'sidebar_widget_title_style', [
-        'section' => 'heading_style',
-        'settings' => 'sidebar_widget_title_style',
-        'label' => 'ウィジェットのタイトル（本文内以外）',
-        'priority' => 60,
-        'type' => 'select',
-        'choices' => $h_style_list,
-    ]);
 
 //メディア設定
 $wp_customize->add_section( 'media', [

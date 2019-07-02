@@ -95,16 +95,6 @@ Version: 1.1.7.5
   /* キャプション */
 }
 
-.article-body h2,
-.article-body h3,
-.article-body h4,
-.article-body h5 {
-  position: relative;
-  margin: 1.5em auto;
-  line-height: 1.4;
-  clear: both;
-}
-
 .article-body p {
   line-height: 1.6;
   margin-bottom: 2em;

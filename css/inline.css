@@ -222,6 +222,16 @@
   box-shadow: 0 0 20px #ccc;
 }
 
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5 {
+  position: relative;
+  margin: 1.5em auto;
+  line-height: 1.4;
+  clear: both;
+}
+
 .card-wrap {
   max-width: 400px;
 }

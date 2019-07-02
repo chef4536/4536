@@ -221,6 +221,7 @@ class CustomizerColorSettings_4536 {
     ];
 
     $primary_color = primary_color();
+    $secandary_color = secandary_color();
     $gradation = gradation_color();
     if( empty( $post_color ) ) $post_color = '#333333';
 
@@ -233,39 +234,42 @@ class CustomizerColorSettings_4536 {
 
       //キーカラーとスタイル
       switch ( $this->heading_style_4536($key) ) {
-        case 'simple1':
+        case 'simple_bg_color':
           $rgb = hex_to_rgb( $post_color );
-          $css[] = ".simple1 $tag{border-radius:2px;padding:.8em;background:rgba($rgb,0.1)}";
+          $css[] = ".simple_bg_color $tag{border-radius:2px;padding:.8em;background:rgba($rgb,0.1)}";
           break;
-        case 'simple2':
-          $css[] = ".simple1 $tag{border-radius:2px;padding:.8em;$gradation}";
+        case 'gradation_bg_color':
+          $css[] = ".gradation_bg_color $tag{border-radius:2px;padding:.8em;$gradation}";
           break;
-        case 'simple3':
-          $css[] = ".simple2 $tag::after{margin-top:4px;content:\"\";display:block;height:4px;$gradation}";
+        case 'simple_border_bottom':
+          $css[] = ".simple_border_bottom $tag{border-bottom:4px solid;padding-bottom:4px}";
           break;
-        case 'simple4':
-          $css[] = ".simple3 $tag{border-left:4px solid $primary_color;padding-left:.4em}";
+        case 'gradation_border_bottom':
+          $css[] = ".gradation_border_bottom $tag{border-image:linear-gradient(to right,$primary_color,$secandary_color)1/0 0 4px 0;border-style:solid;padding-bottom:4px}";
           break;
-        case 'simple3':
-          $css[] = ".simple3 $tag{border-left:4px solid $primary_color;padding-left:.4em}";
+        case 'gradation_border_bottom2':
+          $css[] = ".gradation_border_bottom2 $tag{border-image:linear-gradient(to right,$primary_color 40px,$secandary_color 40px)1/0 0 4px 0;border-style:solid;padding-bottom:4px}";
+          break;
+        case 'simple_border_left':
+          $css[] = ".simple_border_left $tag{border-left:4px solid $primary_color;padding-left:.4em}";
           break;
         case 'pop':
-          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.pop '.$tag.'{border-radius:2px;padding:.8em;border:dashed 2px;'.$key_color_css.'}';
+          $css[] = ".pop $tag{border-radius:2px;padding:.8em;border:dashed 2px;border-color:$primary_color}";
           break;
         case 'cool':
-          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.cool '.$tag.'{padding:0 55px;text-align:center}.cool '.$tag.'::before{left:0}.cool '.$tag.'::after{right:0}';
-          $css[] = '.cool '.$tag.'::before,.cool '.$tag.'::after{content:"";position:absolute;top:50%;display:inline-block;width:45px;border:.5px solid;'.$key_color_css.'}';
+          $css[] = ".cool $tag{padding:0 48px;text-align:center}.cool $tag::before{left:0}.cool $tag::after{right:0}";
+          $css[] = ".cool $tag::before,.cool $tag::after{content:\"\";position:absolute;top:50%;display:inline-block;width:36px;border:.5px solid;border-color:$primary_color}";
           break;
         case 'cool2':
-          $key_color_css = ( !empty($key_color) ) ? 'border-color:'.$key_color : '';
-          $css[] = '.cool2 '.$tag.'{padding:.8em 1em;border-top:solid 2px;border-bottom:solid 2px;'.$key_color_css.'}.cool2 '.$tag.'::before{left:7px}.cool2 '.$tag.'::after{right:7px}';
-          $css[] = '.cool2 '.$tag.'::before,.cool2 '.$tag.'::after{content:"";position:absolute;top:-7px;border:1px solid;height:-webkit-calc(100% + 14px);height:calc(100% + 14px);'.$key_color_css.'}';
+          $css[] = ".cool2 $tag{text-align:center;padding:.8em 1em;border-top:solid 2px;border-bottom:solid 2px;border-color:$primary_color}.cool2 $tag::before{left:7px}.cool2 $tag::after{right:7px}";
+          $css[] = ".cool2 $tag::before,.cool2 $tag::after{content:\"\";position:absolute;top:-7px;border:1px solid;height:-webkit-calc(100% + 14px);height:calc(100% + 14px);border-color:$secandary_color}";
           break;
         case 'cool3':
           $key_color_css = ( !empty($key_color) ) ? 'border-color: '.$key_color : '';
-          $css[] = '.cool3 '.$tag.'{text-align:center}.cool3 '.$tag.'::before{content:"";position:absolute;bottom:-10px;display:block;width:60px;border:1.5px solid;left:50%;-moz-transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);border-radius:2px;'.$key_color_css.'}';
+          $css[] = ".cool3 $tag{text-align:center}.cool3 $tag::before{content:\"\";position:absolute;bottom:-10px;display:block;width:60px;border:1.5px solid;left:50%;-moz-transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);border-radius:2px;border-color:$primary_color}";
+          break;
+        default:
+          $css[] = "$tag{text-align:center}";
           break;
       }
 
@@ -311,13 +315,13 @@ class CustomizerColorSettings_4536 {
   function heading_style_4536( $tag ) {
     switch ( $tag ) {
       case 'h2_style':
-        $default = 'simple1';
+        $default = 'simple_bg_color';
         break;
       case 'h3_style':
-        $default = 'simple2';
+        $default = 'gradation_border_bottom';
         break;
       case 'h4_style':
-        $default = 'simple3';
+        $default = 'simple_border_left';
         break;
     }
     return get_theme_mod( $tag, $default );
@@ -334,8 +338,8 @@ function secandary_color() {
   return get_theme_mod( 'secandary_color', SECANDARY_COLOR );
 }
 
-function gradation_color() {
+function gradation_color( $attributes = 'background' ) {
   $primary_color = primary_color();
   $secondary_color = secandary_color();
-  return "background:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));background:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff";
+  return "$attributes:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));$attributes:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff";
 }
