@@ -145,9 +145,10 @@ class CustomizerLayoutSettings_4536 {
         'label' =>'固定フッター',
         'type' => 'radio',
         'choices' => [
-          null => '非表示（デフォルト）',
-          'menu' => 'メニューを表示',
+          'floating_menu' => 'スライドメニューを開くボタン（デフォルト）',
+          'menu' => '横並びのメニュー',
           'overlay' => 'オーバーレイ広告',
+          null => '非表示',
         ],
     ]);
     //固定フッターメニューリスト

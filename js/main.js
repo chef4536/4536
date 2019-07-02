@@ -175,10 +175,10 @@ document.addEventListener('DOMContentLoaded', function() {
         body.style.paddingTop = header_h + 'px';
         if(header_nav !== null) header_nav.setAttribute('data-display', 'none-sm');
       }
-      if (new_scroll_position < last_scroll_position && last_scroll_position > site_top_h + 300) {
+      if (new_scroll_position > last_scroll_position && last_scroll_position > site_top_h + 300) {
         header.style.transform = 'translateY(' + header_h + 'px)';
         header.style.webkitTransform = 'translateY(' + header_h + 'px)';
-      } else if (new_scroll_position > last_scroll_position) {
+      } else if (new_scroll_position < last_scroll_position < site_top_h) {
         header.style.transform = '';
         header.style.webkitTransform = '';
       }

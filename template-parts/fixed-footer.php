@@ -9,7 +9,9 @@ if(is_amp()) {
     $fixed_footer = ob_get_clean();
 }
 
-if( fixed_footer()==='menu' ) { ?>
+if( fixed_footer()==='floating_menu' && is_slide_menu() ) {
+  echo '<div data-position="fixed" data-display="none-md" class="b-0 r-0 mr-3 mb-3"><label for="slide-toggle" data-button="floating" class="gradation">' .  icon_4536('menu', '#ffffff') . '</label></div>';
+} elseif( fixed_footer()==='menu' ) { ?>
     <div id="fixed-footer-menu" data-display="none-md" data-justify-content="center" data-text-align="center" data-position="fixed" class="body-bg-color w-100 b-0 l-0 fixed-footer">
         <?php
         $list = [
