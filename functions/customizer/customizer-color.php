@@ -321,7 +321,7 @@ class CustomizerColorSettings_4536 {
   function heading_style_4536( $tag ) {
     switch ( $tag ) {
       case 'h2_style':
-        $default = 'simple_bg_color';
+        $default = 'gradation_bg_color';
         break;
       case 'h3_style':
         $default = 'gradation_border_bottom';
