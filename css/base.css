@@ -441,6 +441,12 @@ li {
   flex-direction: column;
 }
 
+[data-flex-direction="row-reverse"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  flex-direction: row-reverse;
+}
+
 [data-flex-wrap="nowrap"] {
   flex-wrap: nowrap;
 }
@@ -464,6 +470,10 @@ li {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: .1em;
+}
+
+[data-font-size="large"] {
+  font-size: 32px;
 }
 
 /* --------------------------------------------------

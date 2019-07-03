@@ -1,4 +1,4 @@
-$space: 16px; ////////////////////////////
+$initial: 16px; ////////////////////////////
 //////// element //////////
 ///////////////////////////
 
@@ -202,123 +202,123 @@ li {
 ///////////////////////////
 
 .pa-0 {
-  padding: $space * 0;
+  padding: $initial * 0;
 }
 
 .pa-1 {
-  padding: $space * .25;
+  padding: $initial * .25;
 }
 
 .pa-2 {
-  padding: $space * .5;
+  padding: $initial * .5;
 }
 
 .pa-3 {
-  padding: $space;
+  padding: $initial;
 }
 
 .pa-4 {
-  padding: $space * 1.5;
+  padding: $initial * 1.5;
 }
 
 .pa-5 {
-  padding: $space * 3;
+  padding: $initial * 3;
 }
 
 .pt-0 {
-  padding-top: $space * 0;
+  padding-top: $initial * 0;
 }
 
 .pt-1 {
-  padding-top: $space * .25;
+  padding-top: $initial * .25;
 }
 
 .pt-2 {
-  padding-top: $space * .5;
+  padding-top: $initial * .5;
 }
 
 .pt-3 {
-  padding-top: $space;
+  padding-top: $initial;
 }
 
 .pt-4 {
-  padding-top: $space * 1.5;
+  padding-top: $initial * 1.5;
 }
 
 .pt-5 {
-  padding-top: $space * 3;
+  padding-top: $initial * 3;
 }
 
 .pr-0 {
-  padding-right: $space * 0;
+  padding-right: $initial * 0;
 }
 
 .pr-1 {
-  padding-right: $space * .25;
+  padding-right: $initial * .25;
 }
 
 .pr-2 {
-  padding-right: $space * .5;
+  padding-right: $initial * .5;
 }
 
 .pr-3 {
-  padding-right: $space;
+  padding-right: $initial;
 }
 
 .pr-4 {
-  padding-right: $space * 1.5;
+  padding-right: $initial * 1.5;
 }
 
 .pr-5 {
-  padding-right: $space * 3;
+  padding-right: $initial * 3;
 }
 
 .pb-0 {
-  padding-bottom: $space * 0;
+  padding-bottom: $initial * 0;
 }
 
 .pb-1 {
-  padding-bottom: $space * .25;
+  padding-bottom: $initial * .25;
 }
 
 .pb-2 {
-  padding-bottom: $space * .5;
+  padding-bottom: $initial * .5;
 }
 
 .pb-3 {
-  padding-bottom: $space;
+  padding-bottom: $initial;
 }
 
 .pb-4 {
-  padding-bottom: $space * 1.5;
+  padding-bottom: $initial * 1.5;
 }
 
 .pb-5 {
-  padding-bottom: $space * 3;
+  padding-bottom: $initial * 3;
 }
 
 .pl-0 {
-  padding-left: $space * 0;
+  padding-left: $initial * 0;
 }
 
 .pl-1 {
-  padding-left: $space * .25;
+  padding-left: $initial * .25;
 }
 
 .pl-2 {
-  padding-left: $space * .5;
+  padding-left: $initial * .5;
 }
 
 .pl-3 {
-  padding-left: $space;
+  padding-left: $initial;
 }
 
 .pl-4 {
-  padding-left: $space * 1.5;
+  padding-left: $initial * 1.5;
 }
 
 .pl-5 {
-  padding-left: $space * 3;
+  padding-left: $initial * 3;
 }
 ////////////////////////////
 //////// margin //////////
@@ -339,123 +339,123 @@ li {
 }
 
 .ma-0 {
-  margin: $space * 0;
+  margin: $initial * 0;
 }
 
 .ma-1 {
-  margin: $space * .25;
+  margin: $initial * .25;
 }
 
 .ma-2 {
-  margin: $space * .5;
+  margin: $initial * .5;
 }
 
 .ma-3 {
-  margin: $space;
+  margin: $initial;
 }
 
 .ma-4 {
-  margin: $space * 1.5;
+  margin: $initial * 1.5;
 }
 
 .ma-5 {
-  margin: $space * 3;
+  margin: $initial * 3;
 }
 
 .mt-0 {
-  margin-top: $space * 0;
+  margin-top: $initial * 0;
 }
 
 .mt-1 {
-  margin-top: $space * .25;
+  margin-top: $initial * .25;
 }
 
 .mt-2 {
-  margin-top: $space * .5;
+  margin-top: $initial * .5;
 }
 
 .mt-3 {
-  margin-top: $space;
+  margin-top: $initial;
 }
 
 .mt-4 {
-  margin-top: $space * 1.5;
+  margin-top: $initial * 1.5;
 }
 
 .mt-5 {
-  margin-top: $space * 3;
+  margin-top: $initial * 3;
 }
 
 .mr-0 {
-  margin-right: $space * 0;
+  margin-right: $initial * 0;
 }
 
 .mr-1 {
-  margin-right: $space * .25;
+  margin-right: $initial * .25;
 }
 
 .mr-2 {
-  margin-right: $space * .5;
+  margin-right: $initial * .5;
 }
 
 .mr-3 {
-  margin-right: $space;
+  margin-right: $initial;
 }
 
 .mr-4 {
-  margin-right: $space * 1.5;
+  margin-right: $initial * 1.5;
 }
 
 .mr-5 {
-  margin-right: $space * 3;
+  margin-right: $initial * 3;
 }
 
 .mb-0 {
-  margin-bottom: $space * 0;
+  margin-bottom: $initial * 0;
 }
 
 .mb-1 {
-  margin-bottom: $space * .25;
+  margin-bottom: $initial * .25;
 }
 
 .mb-2 {
-  margin-bottom: $space * .5;
+  margin-bottom: $initial * .5;
 }
 
 .mb-3 {
-  margin-bottom: $space;
+  margin-bottom: $initial;
 }
 
 .mb-4 {
-  margin-bottom: $space * 1.5;
+  margin-bottom: $initial * 1.5;
 }
 
 .mb-5 {
-  margin-bottom: $space * 3;
+  margin-bottom: $initial * 3;
 }
 
 .ml-0 {
-  margin-left: $space * 0;
+  margin-left: $initial * 0;
 }
 
 .ml-1 {
-  margin-left: $space * .25;
+  margin-left: $initial * .25;
 }
 
 .ml-2 {
-  margin-left: $space * .5;
+  margin-left: $initial * .5;
 }
 
 .ml-3 {
-  margin-left: $space;
+  margin-left: $initial;
 }
 
 .ml-4 {
-  margin-left: $space * 1.5;
+  margin-left: $initial * 1.5;
 }
 
 .ml-5 {
-  margin-left: $space * 3;
+  margin-left: $initial * 3;
 }
 ////////////////////////////
 //////// flex /////////////
@@ -480,6 +480,12 @@ li {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
+}
+
+[data-flex-direction="row-reverse"] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+          flex-direction: row-reverse;
 }
 
 [data-flex-wrap="nowrap"] {
@@ -508,6 +514,10 @@ li {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: .1em;
+}
+
+[data-font-size="large"] {
+  font-size: $initial * 2;
 }
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
