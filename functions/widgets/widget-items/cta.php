@@ -71,20 +71,21 @@ class CtaWidgetItem extends WP_Widget
         } ?>
       <div class="content xs12 sm12 md6 pt-5 pb-5 pr-4 pl-4">
         <?php if (!empty($title)) {
-            echo '<p class="cta-title headline mb-4 l-h-160" data-text-align="center" data-font-size="large">'.$title.'</p>';
+            echo '<div class="cta-title headline mb-4 l-h-160" data-text-align="center" data-font-size="large">'.$title.'</div>';
         }
 
         if (!empty($description)) {
-            echo '<p class="mb-4 l-h-140">' . $description . '</p>';
+            echo '<div class="mb-4 l-h-140">' . $description . '</div>';
         }
         if (!empty($button_text) && !empty($button_url)) {
             $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="noopener"';
-            $button = '<div class="mt-5' . $button_args . '" data-text-align="center"><a data-button="submit" class="outline" href="'.$button_url.'"' . $target . '>'.$button_text.'</a></div>';
+            $button = '<a href="'.$button_url.'"' . $target . '>'.$button_text.'</a>';
         }
         if (!empty($button_text_url)) {
-            $button = '<div class="mt-5' . $button_args . '">' . $button_text_url . '</div>';
+            $button = $button_text_url;
         }
         if (!empty($button)) {
+            $button = '<div data-text-align="center" class="mt-5 l-h-160' . $button_args . '"><div data-button="submit" class="outline">' . $button . '</div></div>';
             echo convert_content_to_amp($button);
         } ?>
       </div>
@@ -92,7 +93,6 @@ class CtaWidgetItem extends WP_Widget
 
   <?php
   echo $args['after_widget'];
-
     }
 
     public function update($new_instance, $old_instance)
@@ -139,6 +139,19 @@ class CtaWidgetItem extends WP_Widget
     </p>
     <p>
       <label for="<?php echo $this->get_field_id('button_text'); ?>"><?php _e('ボタンの文字'); ?></label>
+      <?php
+      // $content   = esc_attr($instance['button_text']);
+      // $editor_id = $this->get_field_id('button_text');
+      // $editor_id = str_replace( '-', '_', $editor_id );
+      // $settings = [
+      //   'media_buttons' => false,
+      //   'textarea_rows' => 3,
+      //   'teeny'         => true,
+      //   'tinymce'       => false,
+      //   'textarea_name' => $this->get_field_name('button_text'),
+      // ];
+      // wp_editor( $content, $editor_id, $settings );
+      ?>
       <input class="widefat" id="<?php echo $this->get_field_id('button_text'); ?>" name="<?php echo $this->get_field_name('button_text'); ?>" type="text" value="<?php echo esc_attr($instance['button_text']); ?>" placeholder="例：詳細はこちら" />
     </p>
     <p>

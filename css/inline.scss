@@ -346,8 +346,8 @@ $button_base_size: 56px;
 --------------------------------------------------- */
 @media screen and (max-width: 767px) {
   .alignwide {
-    margin-left: -10px;
-    width: calc(100% + 20px);
+    margin-left: -16px;
+    width: calc(100% + 32px);
     max-width: none;
   }
 
@@ -415,10 +415,11 @@ $button_base_size: 56px;
 @media screen and (min-width: 768px) {
   #sidebar .md6 {
     flex-basis: 100%;
+    max-width: 100%;
   }
   .alignwide {
-    margin-left: -20px;
-    width: calc(100% + 40px);
+    margin-left: -24px;
+    width: calc(100% + 48px);
   }
 
   .double-rectangle-wrapper .ad {
