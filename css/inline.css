@@ -222,11 +222,6 @@
 .post-thumbnail-shape {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-  opacity: 0.5;
-}
-
-#post-thumbnail-4536 .post-thumbnail {
-  box-shadow: 0 0 20px #ccc;
 }
 
 .article-body h2,

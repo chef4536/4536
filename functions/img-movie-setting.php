@@ -97,11 +97,20 @@ function the_post_thumbnail_4536()
 {
     if (!has_post_thumbnail()) {
         return;
-    } ?>
+    }
+    $primary_color = primary_color();
+    $secandary_color = secandary_color();
+    ?>
     <div class="xs12 sm12 md6 pr-3 pl-3 mt-5 mb-4" data-position="relative">
-      <svg class="b-0 post-thumbnail-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500.67 418.44">
-        <path d="M258.19,191.19c28.37,22.36,60.25,39.57,76.71,67.14s17.52,65.54-2.66,89.67-61.58,34.49-101.87,47.23S150.85,423.16,115.54,417s-66.76-33.39-88.41-65.79-33.42-70-23.68-101.74,41.12-57.7,74.12-79.33,67.68-39.08,97.46-34S229.74,168.84,258.19,191.19Z" fill="<?php echo primary_color(); ?>" />
-        <path class="cls-1" d="M435.11.38C457.59,4.43,467.92,44,461.46,75.69s-29.54,55.15-18.14,95.66,57.17,97.88,57.35,143.17S455.23,393,418.1,375.42s-65.72-85.66-100.44-118-75.41-28.62-108-46.2S152.75,155,148,111.15,158,18.28,193.83,8.73s92.63,20.41,138.32,19.65S412.61-3.78,435.11.38Z" fill="<?php echo secandary_color(); ?>" />
+      <svg class="post-thumbnail-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920.4 769.85">
+        <defs>
+          <linearGradient id="gradation1" class="drop-shadow-shape" x1="25.96" y1="394.65" x2="969.22" y2="394.65" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="<?php echo $primary_color; ?>" />
+            <stop offset="1" stop-color="<?php echo $secandary_color; ?>"/>
+          </linearGradient>
+        </defs>
+        <path d="M877.56,66c9,7.72,38.41,34,58,82,62.47,153.17-35.19,395.75-213,527-124.7,92-251.58,100.68-279,102-59.95,2.89-234.22,10.84-340-122C-.77,524,41.7,356.61,47.56,335c3.37-12.45,23.44-73.16,77-131,28.55-30.85,87.89-94.93,146-83,34.41,7.07,37.86,34.53,83,48,45.51,13.58,86.35-.48,96-4,60.24-22,60.57-68.83,109-109C640.11-11.66,793-6.33,877.56,66Z" transform="translate(-34.08 -8.35)" fill="url(#gradation1)" fill-opacity="0.4" />
+        <path d="M856.51,81a213,213,0,0,1,55.08,77.72c59.32,145.18-33.41,375.1-202.26,499.5-118.41,87.24-238.9,95.43-264.94,96.68C387.47,757.6,222,765.14,121.53,639.23,22.47,515.05,62.8,356.41,68.35,335.93c16.78-61.86,52.39-100.24,73.12-124.17C257.78,77.48,425.72,53.52,534,38.07,647.56,21.87,771,4.26,856.51,81Z" transform="translate(-34.08 -8.35)" fill="<?php echo $primary_color; ?>" fill-opacity="0.1" />
       </svg>
       <div id="post-thumbnail-4536" class="t-0 b-0 r-0 l-0 pa-3" data-position="absolute">
         <figure class="post-thumbnail h-100" data-position="relative">
