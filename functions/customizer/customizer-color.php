@@ -123,6 +123,12 @@ class CustomizerColorSettings_4536 {
 
   function init( $wp_customize ) {
 
+    $wp_customize->add_section( 'colors', [
+        'title' => '色',
+        'description' => '<span>※プライマリーカラーは主要な色（例：ボタンの色）として使われるため、明るい色や濃い色を設定してください。グラデーションの中の文字色が「白」のため、プライマリーやセカンダリーに白に近い色を設定すると見づらくなります。</span>',
+        'priority' => 20,
+    ]);
+
     //メイン
     foreach( $this->main_array as $key => $value ) {
       $wp_customize->add_setting( $key, [ 'default' => $value['color'] ] );

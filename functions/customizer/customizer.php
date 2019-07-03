@@ -104,7 +104,7 @@ $wp_customize->add_section( 'page_setting', [
 $wp_customize->add_section( 'heading_style', [
   'title' => '見出し',
   'priority' => 30,
-  'description' => '見出しのデザインと色を変更できます。',
+  'description' => '見出しのデザインを変更できます。',
 ]);
     //見出しスタイル
     $h_style_list = [
