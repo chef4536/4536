@@ -171,9 +171,6 @@ class CtaWidgetItem extends WP_Widget
       <label><input class="widefat" name="<?php echo $this->get_field_name('button_reflection'); ?>" value="is-reflection" <?php checked($instance['button_reflection'], 'is-reflection');?> type="checkbox"><?php _e('ボタンを光らせる'); ?></label>
     </p>
     <p>
-      <label><input class="widefat" name="<?php echo $this->get_field_name('button_reflection'); ?>" value="is-reflection" <?php checked($instance['button_reflection'], 'is-reflection');?> type="checkbox"><?php _e('ボタンを光らせる'); ?></label>
-    </p>
-    <p>
       <label><input class="widefat" name="<?php echo $this->get_field_name('button_bounce'); ?>" value="is-bounce" <?php checked($instance['button_bounce'], 'is-bounce');?> type="checkbox"><?php _e('ボタンをバウンドさせる'); ?></label>
     </p>
     <p>
