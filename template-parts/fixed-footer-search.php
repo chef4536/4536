@@ -9,6 +9,6 @@ if(empty(fixed_footer_menu_item('search'))) return;
         <div id="fixed-search-form">
             <?php get_search_form(); ?>
         </div>
-        <label for="search-toggle" data-display="flex" data-justify-content="center" data-align-items="center" class="flex close-button pt-4"><?php echo icon_4536('close', get_theme_mod('post_color'), 24); ?>CLOSE</label>
+        <label for="search-toggle" data-display="flex" data-justify-content="center" data-align-items="center" class="flex close-button pt-4"><?php echo icon_4536('close', font_color(), 24); ?>CLOSE</label>
     </div>
 </div>

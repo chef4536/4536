@@ -19,7 +19,7 @@ class CustomizerColorSettings_4536 {
       'label' => 'リンク',
       'color' => '#1b95e0',
     ],
-    'post_color' => [
+    'font_color' => [
       'label' => '文字',
       'color' => '#333333',
     ],
@@ -185,11 +185,11 @@ class CustomizerColorSettings_4536 {
     $css[] = ".balloon-text-right:after{border-right-color:$post_bg_color}";
     $css[] = ".balloon-text-left:after{border-left-color:$post_bg_color}";
 
-    if( !empty($post_color) ) { //記事文字色
-      $post_color_class = '.post-color,#main-container .archive-list';
-      if( fixed_header() === true ) $post_color_class .= ',#header.fixed-top a';
-      $css[] = "$post_color_class{color:$post_color$option}";
-      $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($post_color) . ',0.25) !important}';
+    if( !empty($font_color) ) { //記事文字色
+      $font_color_class = '.post-color,#main-container .archive-list';
+      if( fixed_header() === true ) $font_color_class .= ',#header.fixed-top a';
+      $css[] = "$font_color_class{color:$font_color$option}";
+      $css[] = '#sidebar{border-color:rgba(' . hex_to_rgb($font_color) . ',0.25) !important}';
     }
 
     $array = [
@@ -223,7 +223,7 @@ class CustomizerColorSettings_4536 {
     $primary_color = primary_color();
     $secandary_color = secandary_color();
     $gradation = gradation_color();
-    if( empty( $post_color ) ) $post_color = '#333333';
+    if( empty( $font_color ) ) $font_color = '#333333';
 
     //キーカラー
     foreach ( $array as $key => $val ) {
@@ -235,7 +235,7 @@ class CustomizerColorSettings_4536 {
       //キーカラーとスタイル
       switch ( $this->heading_style_4536($key) ) {
         case 'simple_bg_color':
-          $rgb = hex_to_rgb( $post_color );
+          $rgb = hex_to_rgb( $font_color );
           $css[] = ".simple_bg_color $tag{border-radius:2px;padding:.8em;background:rgba($rgb,0.1)}";
           break;
         case 'gradation_bg_color':
@@ -331,15 +331,22 @@ class CustomizerColorSettings_4536 {
 new CustomizerColorSettings_4536();
 
 function primary_color() {
-  return get_theme_mod( 'primary_color', PRIMARY_COLOR );
+  $primary_color = get_theme_mod( 'primary_color' );
+  return ( !empty($primary_color) ) ? $primary_color : PRIMARY_COLOR ;
 }
 
 function secandary_color() {
-  return get_theme_mod( 'secandary_color', SECANDARY_COLOR );
+  $secandary_color = get_theme_mod( 'secandary_color' );
+  return ( !empty($secandary_color) ) ? $secandary_color : SECANDARY_COLOR ;
 }
 
 function gradation_color( $attributes = 'background' ) {
   $primary_color = primary_color();
   $secondary_color = secandary_color();
   return "$attributes:-webkit-gradient(linear,left top, right top,from($primary_color),to($secondary_color));$attributes:linear-gradient(to right,$primary_color,$secondary_color);color:#ffffff";
+}
+
+function font_color() {
+  $font_color = get_theme_mod( 'font_color' );
+  return ( !empty($font_color) ) ? $font_color : FONT_COLOR ;
 }
