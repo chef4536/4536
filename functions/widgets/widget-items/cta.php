@@ -12,12 +12,12 @@ class CtaWidgetItem extends WP_Widget
     'button_text_url',
   ];
 
-    public $button_args = [
-    // 'button_color',
-    'button_reflection',
-    'button_bounce',
-    'button_text_shadow',
-  ];
+  //   public $button_args = [
+  //   'button_color',
+  //   'button_reflection',
+  //   'button_bounce',
+  //   'button_text_shadow',
+  // ];
 
     public function __construct()
     {
@@ -34,14 +34,14 @@ class CtaWidgetItem extends WP_Widget
             ${$key} = !empty($instance[$key]) ? $instance[$key] : '';
         }
         $title = apply_filters('widget_title', $title);
-        $button_args = [];
+        // $button_args = [];
         // $button_args[] = 'button-4536';
-        foreach ($this->button_args as $key) {
-            if (!empty($instance[$key])) {
-                $button_args[] = $instance[$key];
-            }
-        }
-        $button_args = implode(' ', $button_args);
+        // foreach ($this->button_args as $key) {
+        //     if (!empty($instance[$key])) {
+        //         $button_args[] = $instance[$key];
+        //     }
+        // }
+        // $button_args = implode(' ', $button_args);
         if (empty($button_text) && empty($button_url) && empty($button_text_url)) {
             return;
         }
@@ -71,21 +71,22 @@ class CtaWidgetItem extends WP_Widget
         } ?>
       <div class="content xs12 sm12 md6 pt-5 pb-5 pr-4 pl-4">
         <?php if (!empty($title)) {
-            echo '<div class="cta-title headline mb-4 l-h-160" data-text-align="center" data-font-size="large">'.$title.'</div>';
+            echo '<div class="cta-title headline mb-4 l-h-160" data-text-align="center" data-font-size="xx-large">'.$title.'</div>';
         }
 
         if (!empty($description)) {
             echo '<div class="mb-4 l-h-140">' . $description . '</div>';
         }
+        if (!empty($button_text_url)) {
+            $button = '<div data-button="submit" class="outline">' . $button_text_url . '</div>';
+        }
         if (!empty($button_text) && !empty($button_url)) {
             $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="noopener"';
-            $button = '<a href="'.$button_url.'"' . $target . '>'.$button_text.'</a>';
-        }
-        if (!empty($button_text_url)) {
-            $button = $button_text_url;
+            $attribute = ( !empty($button_text_url) ) ? 'data-font-size="small" data-text-decoration="underline" class="pa-3"' : ' data-button="submit" class="outline"';
+            $button .= '<a href="'.$button_url.'"' . $target . $attribute . '>'.$button_text.'</a>';
         }
         if (!empty($button)) {
-            $button = '<div data-text-align="center" class="mt-5 l-h-160' . $button_args . '"><div data-button="submit" class="outline">' . $button . '</div></div>';
+            $button = '<div data-display="flex" data-align-items="center" data-justify-content="center" data-flex-direction="row-reverse" class="mt-5 l-h-160">' . $button . '</div>';
             echo convert_content_to_amp($button);
         } ?>
       </div>
@@ -100,9 +101,9 @@ class CtaWidgetItem extends WP_Widget
         foreach ($this->button_parts as $key) {
             $instance[$key] = !empty($new_instance[$key]) ? $new_instance[$key] : '';
         }
-        foreach ($this->button_args as $key) {
-            $instance[$key] = !empty($new_instance[$key]) ? $new_instance[$key] : '';
-        }
+        // foreach ($this->button_args as $key) {
+        //     $instance[$key] = !empty($new_instance[$key]) ? $new_instance[$key] : '';
+        // }
         return $instance;
     }
 
@@ -180,7 +181,7 @@ class CtaWidgetItem extends WP_Widget
         } ?>
       </select>
     </p> -->
-    <p>
+    <!-- <p>
       <label><input class="widefat" name="<?php echo $this->get_field_name('button_reflection'); ?>" value="is-reflection" <?php checked($instance['button_reflection'], 'is-reflection');?> type="checkbox"><?php _e('ボタンを光らせる'); ?></label>
     </p>
     <p>
@@ -188,7 +189,7 @@ class CtaWidgetItem extends WP_Widget
     </p>
     <p>
       <label><input class="widefat" name="<?php echo $this->get_field_name('button_text_shadow'); ?>" value="text-shadow-4536" <?php checked($instance['button_text_shadow'], 'text-shadow-4536');?> type="checkbox"><?php _e('ボタンの文字に影をつける'); ?></label>
-    </p>
+    </p> -->
     <?php
   }
 

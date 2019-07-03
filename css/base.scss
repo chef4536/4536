@@ -516,9 +516,25 @@ li {
   letter-spacing: .1em;
 }
 
-[data-font-size="large"] {
+[data-font-size="small"] {
+  font-size: 13px;
+}
+
+[data-font-size="x-large"] {
+  font-size: $initial * 1.5;
+}
+
+[data-font-size="xx-large"] {
   font-size: $initial * 2;
 }
+
+////////////////////////////
+///////// link ////////////
+///////////////////////////
+[data-text-decoration="underline"] {
+  text-decoration: underline;
+}
+
 /* --------------------------------------------------
 /* max-480px BEGIN for portrait mobile phone
 --------------------------------------------------- */

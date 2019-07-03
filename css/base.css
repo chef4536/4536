@@ -472,8 +472,20 @@ li {
   letter-spacing: .1em;
 }
 
-[data-font-size="large"] {
+[data-font-size="small"] {
+  font-size: 13px;
+}
+
+[data-font-size="x-large"] {
+  font-size: 24px;
+}
+
+[data-font-size="xx-large"] {
   font-size: 32px;
+}
+
+[data-text-decoration="underline"] {
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------
