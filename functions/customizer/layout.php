@@ -137,7 +137,7 @@ class CustomizerLayoutSettings_4536 {
     ));
     //固定フッター
     $wp_customize->add_setting( 'fixed_footer', [
-        'default' => null,
+        'default' => 'floating_menu',
     ]);
     $wp_customize->add_control( 'fixed_footer', [
         'section' => 'design',

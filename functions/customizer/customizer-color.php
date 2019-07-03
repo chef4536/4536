@@ -206,17 +206,17 @@ class CustomizerColorSettings_4536 {
       // ],
       'h2_style' => [
         'tag' => '.article-body h2',
-        'key_color' => $h2_key_color,
+        // 'key_color' => $h2_key_color,
         'font_color' => $h2_color,
       ],
       'h3_style' => [
         'tag' => '.article-body h3',
-        'key_color' => $h3_key_color,
+        // 'key_color' => $h3_key_color,
         'font_color' => $h3_color,
       ],
       'h4_style' => [
         'tag' => '.article-body h4',
-        'key_color' => $h4_key_color,
+        // 'key_color' => $h4_key_color,
         'font_color' => $h4_color,
       ],
       // 'sidebar_widget_title_style' => [

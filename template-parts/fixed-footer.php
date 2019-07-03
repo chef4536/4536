@@ -86,7 +86,7 @@ if( fixed_footer()==='floating_menu' && is_slide_menu() ) {
         <?php } ?>
     </div>
 <?php } elseif( fixed_footer()==='overlay' && !empty($fixed_footer) ) { ?>
-    <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-bg-color="white" data-color="white" data-position="fixed" class="fixed-footer w-100 b-0 l-0">
+    <div id="fixed-footer-overlay" data-display="none" data-justify-content="center" data-text-align="center" data-bg-color="white" data-color="white" data-position="fixed" class="fixed-footer w-100 b-0 l-0">
         <?php echo $fixed_footer; ?>
         <div class="close-button fixed-footer-close-button r-0 pa-1" data-position="absolute" data-bg-color="white">
           <?php echo icon_4536('close', font_color(), 24); ?>
