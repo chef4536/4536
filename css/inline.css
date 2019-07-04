@@ -149,6 +149,10 @@
   max-width: 2048px;
 }
 
+#header-container .title {
+  letter-spacing: .1em;
+}
+
 .header-logo {
   max-height: 48px;
 }
