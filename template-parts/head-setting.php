@@ -1,6 +1,6 @@
-<!--[if lt IE 7]> <html class="ie6 min-h-100 h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
-<!--[if IE 7]> <html class="i7 min-h-100 h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
-<!--[if IE 8]> <html class="ie min-h-100 h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if lt IE 7]> <html class="ie6 min-h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7]> <html class="i7 min-h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8]> <html class="ie min-h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="min-h-100 h-100" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />

@@ -112,6 +112,10 @@ li {
   overflow: hidden;
 }
 
+[data-overflow-x="hidden"] {
+  overflow-x: hidden;
+}
+
 [data-overflow-y="hidden"] {
   overflow-y: hidden;
 }
