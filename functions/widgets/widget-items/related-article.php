@@ -19,9 +19,6 @@ class RelatedPostWidgetItem extends WP_Widget {
         extract( $args );
         $title = apply_filters( 'widget_title', empty($instance[$this->_title]) ? '関連記事' : $instance[$this->_title] );
         $count = apply_filters( 'widget_related_count', $instance[$this->_count] );
-        $line_clamp = '';
-        if(line_clamp()==='2line') $line_clamp = ' line-clamp-2';
-        if(line_clamp()==='3line') $line_clamp = ' line-clamp-3';
         global $post;
         $g_count = 5;
         if(empty($count)) $count = $g_count;

@@ -1,11 +1,11 @@
 <?php
 
 $tag = ( is_home() ) ? 'h1' : 'p' ;
-$start_tag = '<'.$tag.' id="sitename" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
+$start_tag = '<'.$tag.' id="sitename" class="title flex max-w-100" itemscope itemtype="http://schema.org/Organization" itemprop="publisher">';
 $end_tag = '</'.$tag.'>';
 
 if( has_header_image() ) { ?>
-  <div id="header-image">
+  <div id="header-image" class="w-100 ma-auto">
     <?php echo $start_tag; ?>
       <a href="<?php echo home_url(); ?>/">
         <?php
@@ -23,30 +23,32 @@ if( has_header_image() ) { ?>
   } else {
     $site_name = get_bloginfo('name');
   } ?>
-  <div class="inner display-flex align-items-center padding-1em-10px clearfix">
-    <div class="header-contents header-title flex-1">
-      <?php echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag; ?>
-    </div>
+  <div id="header-container" data-position="relative" data-display="flex" data-align-items="center" class="w-100 mx-auto pa-3">
     <?php
-    if(has_nav_menu('navbar_pc')) {
+    //title
+    echo $start_tag.'<a href="'.home_url().'">'.$site_name.'</a>'.$end_tag;
+    //spacer
+    if(has_nav_menu('header_nav')) {
+      echo '<div class="flex xs0"></div>';
+    }
+    //slidemenu
+    if( is_slide_menu() ) { ?>
+      <label data-display="none-md" id="header-slide-button" for="slide-toggle">
+        <svg id="header-slide-icon" class="header-slide-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="<?php echo font_color(); ?>"><path d="M0 0h24v24H0z" fill="none" /><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </label>
+    <?php }
+    if(has_nav_menu('header_nav')) {
       $defaults = [
-        'theme_location'  => 'navbar_pc',
+        'theme_location'  => 'header_nav',
         'container' => false,
         'fallback_cb' => false,
         'echo' => true,
-        'items_wrap' => '<ul>%3$s</ul>'
+        'items_wrap' => '<ul data-text-align="center" data-display="flex" data-flex-wrap="nowrap" class="scroll-content">%3$s</ul>'
       ];
       ?>
-      <div class="display-none-mobile">
-        <nav id="pc-nav-menu" class="nav-menu icon" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-          <?php wp_nav_menu($defaults); ?>
-        </nav>
-      </div>
-    <?php }
-    if( is_slide_menu() ) { ?>
-      <label id="header-slide-button" for="slide-toggle" class="header-contents slide-button display-none-pc text-align-center">
-        <i class="fas fa-ellipsis-h"></i>
-      </label>
+      <nav id="header-nav" class="global-nav scroll-container xs12 sm12 max-w-100" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <?php wp_nav_menu($defaults); ?>
+      </nav>
     <?php } ?>
   </div>
 <?php }

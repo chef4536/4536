@@ -1,24 +1,7 @@
 {
-  "background_color": "fcfcfc",
+  "background_color": "ffffff",
+  "primary_color": "#25c04a",
+  "secandary_color": "#11ffbd",
   "link_color": "#1b95e0",
-  "header_background_color": "#00ac97",
-  "header_color": "#ffffff",
-  "below_header_nav_menu_background_color": "#00ac97",
-  "below_header_nav_menu_color": "#ffffff",
-  "post_background_color": "#ffffff",
-  "post_color": "#333333",
-  "h1_key_color": "#00ac97",
-  "h1_color": "",
-  "h2_key_color": "#00ac97",
-  "h2_color": "#ffffff",
-  "h3_key_color": "#00ac97",
-  "h3_color": "",
-  "h4_key_color": "#00ac97",
-  "h4_color": "",
-  "related_post_title_key_color": "#00ac97",
-  "related_post_title_color": "#ffffff",
-  "sidebar_widget_title_key_color": "#00ac97",
-  "sidebar_widget_title_color": "#ffffff",
-  "footer_background_color": "#00ac97",
-  "footer_color": "#ffffff"
+  "font_color": "#333333"
 }

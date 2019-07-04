@@ -5,8 +5,8 @@
 ///////////////////////////////////
 add_filter('the_content', function($the_content) {
   if(is_amp()) {
-    if(!empty(amp_adsense_code()) && is_amp_before_1st_h2()) {
-      $ad = amp_adsense_code();
+    if(!empty(amp_adsense_code('before_h2')) && is_amp_before_1st_h2()) {
+      $ad = amp_adsense_code('before_h2');
     } elseif(is_active_sidebar('amp-first-h2-ad')) {
       ob_start();
       dynamic_sidebar('amp-first-h2-ad');
@@ -66,45 +66,20 @@ function widget_post_count_4536() {
 }
 
 ///////////////////////////////////
-// カテゴリーにクラス名を付与
-///////////////////////////////////
-add_filter( 'wp_list_categories', function( $output, $args ) {
-  $regex = '/<li class="cat-item cat-item-([\d]+)[^"]*">/';
-  $taxonomy = isset( $args['taxonomy'] ) && taxonomy_exists( $args['taxonomy'] ) ? $args['taxonomy'] : 'category';
-  preg_match_all( $regex, $output, $m );
-  if ( ! empty( $m[1] ) ) {
-    $replace = array();
-    foreach ( $m[1] as $term_id ) {
-      $term = get_term( $term_id, $taxonomy );
-      if( $term && ! is_wp_error( $term ) ) {
-        $replace['/<li class="cat-item cat-item-' . $term_id . '("| )/'] = '<li class="cat-item cat-item-' . $term_id . ' cat-item-' . esc_attr( $term->slug ) . '$1';
-      }
-    }
-    $output = preg_replace( array_keys( $replace ), $replace, $output );
-  }
-  return $output;
-}, 10, 2 );
-
-///////////////////////////////////
-// ウィジェットの投稿数をリンクタグに入れる
+// リスト
 ///////////////////////////////////
 add_filter( 'wp_list_categories', 'posted_count_in_textlink_4536'); //カテゴリ
 add_filter( 'get_archives_link', 'posted_count_in_textlink_4536'); //アーカイブ
 function posted_count_in_textlink_4536($output) {
-    $output = preg_replace('/<\/a>\s*( )\((\d+)\)/',' ($2)</a>',$output);
+    $output = str_replace( '<li', '<li data-display="flex"', $output );
+    $output = str_replace( '<a', '<a data-text="ellipsis" class="flex-1 archive-list"', $output );
     return $output;
 }
 
-///////////////////////////////////
-// ウィジェットのテキストリンクにアイコン追加
-///////////////////////////////////
-add_filter( 'wp_list_categories', 'widget_before_icon_4536'); //カテゴリ
-add_filter( 'get_archives_link', 'widget_before_icon_4536'); //アーカイブ
-add_filter( 'wp_list_pages', 'widget_before_icon_4536'); //固定ページ
-function widget_before_icon_4536($output) {
-    $output = preg_replace('/<a(.+?)>/', '<a$1><i class="fas fa-angle-right"></i>', $output);
-    return $output;
-}
+// add_filter( 'widget_display_callback', function( $instance, $widget, $args ) {
+//     if( $widget->id_base === 'categories' ) $instance = false;
+//     return $instance;
+// }, 10, 3);
 
 ///////////////////////////////////
 // ウィジェットページにCSS追加

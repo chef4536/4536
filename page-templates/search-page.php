@@ -2,18 +2,11 @@
 
 get_header(); ?>
 
-<div id="contents-wrapper">
-    <div id="contents-inner">
-        <main id="main" class="padding-wrap-main-4536 post-bg-color post-color" role="main">
-            <h1 id="h1"><?php the_title(); ?></h1>
-            <?php echo google_custom_search_result(); ?>
-        </main>
-        <?php
-        media_section_4536( 'music' );
-        media_section_4536( 'movie' );
-        media_section_4536( 'pickup' );
-        ?>
-    </div>
+<div id="contents-wrapper" class="w-100 max-w-100 pa-4">
+  <main id="main" class="w-100" role="main">
+    <h1 id="h1" class="headline mb-4" data-text-align="center"><?php the_title(); ?></h1>
+    <?php echo google_custom_search_result(); ?>
+  </main>
 </div>
 
 <?php

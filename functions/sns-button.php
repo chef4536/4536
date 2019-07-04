@@ -1,12 +1,14 @@
 <?php
 
-function sns_button_4536($position) {
-
-    if(is_amp() || is_singular()) {
+function sns_button_4536($justify_content = 'center')
+{
+    if (is_amp() || is_singular()) {
         $url = esc_url(get_permalink());
         $title = esc_html(get_the_title());
         $custom = get_post_custom();
-        if(!empty($custom['sns_title'][0])) $title = esc_html($custom['sns_title'][0]);
+        if (!empty($custom['sns_title'][0])) {
+            $title = esc_html($custom['sns_title'][0]);
+        }
     } else {
         $http = is_ssl() ? 'https://' : 'http://';
         $url = esc_url($http . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
@@ -15,74 +17,54 @@ function sns_button_4536($position) {
 
     $via = (twitter_via() && get_the_author_meta('twitter')) ? '&via='.get_the_author_meta('twitter') : '';
 
-    if(function_exists('scc_get_share_twitter') && scc_get_share_twitter()!==0) {
-        $twitter_count = '<span class="sns-count">'.scc_get_share_twitter().'</span>';
-    }
-    if(function_exists('scc_get_share_facebook') && scc_get_share_facebook()!==0) {
-        $facebook_count = '<span class="sns-count">'.scc_get_share_facebook().'</span>';
-    }
-    if(function_exists('scc_get_share_hatebu') && scc_get_share_hatebu()!==0) {
-        $hatebu_count = '<span class="sns-count">'.scc_get_share_hatebu().'</span>';
-    }
-    if(function_exists('scc_get_share_pocket') && scc_get_share_pocket()!==0) {
-        $pocket_count = '<span class="sns-count">'.scc_get_share_pocket().'</span>';
-    }
-
-    if(!sns_style()) {
-        $sns_class = 'default-sns-button colorful-sns-button flex-1';
-    } elseif(sns_style()==='simple1') {
-        $sns_class = 'simple-sns-button colorful-sns-button';
-    } elseif(sns_style()==='simple2') {
-        $sns_class = 'simple-sns-button simple-sns-button-2';
-    } elseif(sns_style()==='rich') {
-        $sns_class = 'simple-sns-button colorful-sns-button rich-sns-button flex-1';
-    }
-
-    if( $position === 'fixed_footer_share_button' ) $sns_class = 'simple-sns-button colorful-sns-button';
-
-    if( !empty(sns_style()) || $position==='fixed_footer_share_button' ) {
-        $twitter_count = '';
-        $facebook_count = '';
-        $hatebu_count = '';
-        $pocket_count = '';
-    }
-
     $target = (is_amp()) ? ' rel="nofollow"' : ' target="blank" rel="nofollow"';
 
-    $twitter = '<a class="twitter '.$sns_class.'" href="http://twitter.com/share?text='.$title.'&url='.$url.$via.'&tw_p=tweetbutton&related='.get_the_author_meta('twitter').'"'.$target.'><i class="fab fa-twitter"></i>'.$twitter_count.'</a>';
+    //url
 
-    $facebook = '<a class="facebook '.$sns_class.'" href="http://www.facebook.com/sharer.php?src=bm&u='.$url.'&t='.$title.'"'.$target.'><i class="fab fa-facebook"></i>'.$facebook_count.'</a>';
+    $arr['twitter']['url'] = 'http://twitter.com/share?text=' . $title . '&url=' . $url . $via . '&tw_p=tweetbutton&related=' . get_the_author_meta('twitter');
 
-    $hatebu = '<a class="hatebu '.$sns_class.'" href="http://b.hatena.ne.jp/add?mode=confirm&url='.$url.'"'.$target.'><i class="fab fa-hatena"></i>'.$hatebu_count.'</a>';
+    $arr['facebook']['url'] = 'http://www.facebook.com/sharer.php?src=bm&u=' . $url . '&t=' . $title;
 
-    $pocket = '<a class="pocket '.$sns_class.'" href="http://getpocket.com/edit?url='.$url.'&title='.$title.'"'.$target.'><i class="fab fa-get-pocket"></i>'.$pocket_count.'</a>';
+    $arr['hatebu']['url'] = 'http://b.hatena.ne.jp/add?mode=confirm&url=' . $url;
 
-    $line = '<a class="line '.$sns_class.'" href="http://line.me/R/msg/text/?'.$title.'%0A'.$url.'"'.$target.'><i class="fab fa-line"></i></a>';
+    // $arr['pocket']['url'] = 'http://getpocket.com/edit?url=' . $url . '&title=' . $title;
 
-    $style = (sns_style()) ? ' simple-sns' : '';
-    $flex_option = 'justify-content-center';
-    $padding = ' padding-1_5em-0';
-    $display = ( fixed_footer() === 'share' ) ? ' display-none-mobile' : '';
+    $arr['line']['url'] = 'http://line.me/R/msg/text/?' . $title . '%0A' . $url;
 
-    if( $position === 'post_top' ) $padding = $margin = ' margin-2em-auto';
+    //text
 
-    if( $position === 'fixed_footer_menu' ) $padding = ' padding-0-10px margin-2em-auto';
+    $arr['twitter']['text'] = I_TWITTER;
 
-    if( $position === 'fixed_footer_share_button' ) {
-      $padding = ' padding-10px';
-      $flex_option = 'justify-content-flex-end flex-direction-row-reverse';
-      $display = '';
+    $arr['facebook']['text'] = I_FACEBOOK;
+
+    $arr['hatebu']['text'] = I_HATEBU;
+
+    // $arr['pocket']['text'] = '<i class="fab fa-get-pocket"></i>';
+
+    $arr['line']['text'] = I_LINE;
+
+    //count
+
+    if (function_exists('scc_get_share_twitter') && scc_get_share_twitter()!==0) {
+        $arr['twitter']['count'] = '<span class="meta pl-1">'.scc_get_share_twitter().'</span>';
     }
+    if (function_exists('scc_get_share_facebook') && scc_get_share_facebook()!==0) {
+        $arr['facebook']['count'] = '<span class="meta pl-1">'.scc_get_share_facebook().'</span>';
+    }
+    if (function_exists('scc_get_share_hatebu') && scc_get_share_hatebu()!==0) {
+        $arr['hatebu']['count'] = '<span class="meta pl-1">'.scc_get_share_hatebu().'</span>';
+    }
+    // if (function_exists('scc_get_share_pocket') && scc_get_share_pocket()!==0) {
+    //     $arr['pocket']['count'] = '<span class="sns-count">'.scc_get_share_pocket().'</span>';
+    // } ?>
 
-    $class = $style.$padding.$display;
-
-    ?>
-
-    <div class="share sns text-align-center<?php echo $class; ?>">
-        <?php if($position==='post_bottom' && sns_share_text()) echo '<p class="sns-title">'.sns_share_text().'</p>'; ?>
-        <div class="display-flex <?php echo $flex_option; ?>">
-            <?php echo $twitter.$facebook.$hatebu.$pocket.$line; ?>
-        </div>
+    <div data-display="flex" data-justify-content="<?php echo $justify_content; ?>" class="flex">
+        <?php
+        foreach ($arr as $key => $value) {
+            echo '<span class="pt-2 pb-2 pr-3 pl-3"><a class="l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a>' . $value['count'] . '</span>';
+        }
+    echo $twitter.$facebook.$hatebu.$line; ?>
     </div>
 
-<?php } ?>
+<?php
+} ?>

@@ -77,3 +77,6 @@ require_once( 'user-profile.php' );
 
 //SNSボタン
 require_once( 'sns-button.php' );
+
+//SNSボタン
+require_once( 'wave-shape.php' );

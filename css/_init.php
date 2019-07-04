@@ -3,6 +3,11 @@
 require_once('dynamic-css.php'); //動的CSS
 require_once('preload-css.php'); //非同期読み込み
 
+//背景色
+function get_bg_color_4536() {
+  return ( !empty(get_background_color()) ) ? '#' . get_background_color() : '#ffffff';
+}
+
 //スタイルシート読み込み
 add_action( 'wp_footer', function() {
   if( is_amp() ) return;
@@ -22,7 +27,7 @@ add_action( 'wp_footer', function() {
   </script>
   <noscript id="deferred-styles-4536">
     <link rel="stylesheet" href="<?php echo wp_block_lib_stylesheet_url(); ?>" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri().'/style.min.css?'.$ver; ?>" />
+    <link rel="stylesheet" href="<?php echo get_parent_theme_file_uri( '/style.min.css?'.$ver ); ?>" />
   </noscript>
 <?php });
 
@@ -41,7 +46,9 @@ function add_inline_style_4536( $custom_css = true ) {
 add_action( 'wp_head', function() { ?>
   <style>
   <?php
-  require_once(get_template_directory() . '/css/inline.min.css');
+  require_once( TEMPLATEPATH . '/css/_normalize.css' );
+  require_once( TEMPLATEPATH . '/css/base.min.css' );
+  require_once( TEMPLATEPATH . '/css/inline.min.css');
   echo add_inline_style_4536( false );
   ?>
   </style>
@@ -50,11 +57,13 @@ add_action( 'wp_head', function() { ?>
 //AMP用のCSS生成
 function amp_css() {
   ob_start();
-  require_once(get_template_directory() . '/css/inline.min.css');
-  require_once(get_template_directory() . '/style.min.css');
+  require_once( TEMPLATEPATH . '/css/_normalize.css' );
+  require_once( TEMPLATEPATH . '/css/base.min.css' );
+  require_once( TEMPLATEPATH . '/css/inline.min.css');
+  require_once( TEMPLATEPATH . '/style.min.css');
 //    require_once(ABSPATH . '/wp-includes/css/dist/block-library/style.min.css');
   $styles = ob_get_clean();
-  $custom_bgc = 'body.custom-background{background-color:#'.get_background_color().'}';
+  $custom_bgc = 'body.custom-background{background-color:'. get_bg_color_4536() .'}';
   $css = $styles.$custom_bgc.add_inline_style_4536();
   echo '<style amp-custom>';
   $css = str_replace('@charset "UTF-8";', '', $css);
@@ -62,7 +71,7 @@ function amp_css() {
   $css = str_replace('img', 'amp-img', $css);
   $css = str_replace('iframe', 'amp-iframe', $css);
   echo strip_tags($css);
-  require_once(get_template_directory() . '/css/amp.min.css');
+  require_once( TEMPLATEPATH . '/css/amp.min.css');
   echo '</style>';
 }
 

@@ -5,13 +5,13 @@
 class EasySettings_4536 {
 
   public $design_theme = [
-    '_default' => 'デフォルト',
-    'white' => 'ホワイト',
+    '_default' => 'デフォルト（ブルー系）',
     'dark-black' => 'ダークブラック',
     'sea-green' => 'シーグリーン',
-    'cyan-blue' => 'シアンブルー',
     'deep-pink' => 'ディープピンク',
-    'crimson-red' => 'クリムゾンレッド',
+    'minimal-red' => 'ミニマルレッド',
+    'instagram' => '（ライク）インスタグラム',
+    'sound-cloud' => 'サウンドクラウド',
   ];
 
   function __construct() {
@@ -38,7 +38,7 @@ class EasySettings_4536 {
       foreach( $array as $key => $value ) {
         set_theme_mod( $key, $value );
       }
-      $styles = [ 'h1', 'h2', 'h3', 'h4', 'related_post_title', 'sidebar_widget_title' ];
+      $styles = [ 'h2', 'h3', 'h4' ];
       foreach( $styles as $style ) {
         remove_theme_mod( "{$style}_style" );
       }

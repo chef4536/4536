@@ -14,14 +14,16 @@ class NewEntryWidgetItem extends WP_Widget {
 	}
 
     function widget($args, $instance) {
+      global $post;
         extract( $args );
         $title = apply_filters( 'widget_title', empty($instance[$this->_title]) ? '新着記事' : $instance[$this->_title] );
         $count = apply_filters( 'widget_entry_count', $instance[$this->_count] );
         if(empty($count)) $count = 5;
-        $new_posts = get_posts('posts_per_page='.$count);
-        $line_clamp = '';
-        if(line_clamp()=='2line') $line_clamp = 'line-clamp-2';
-        if(line_clamp()=='3line') $line_clamp = 'line-clamp-3';
+        $default = [
+            'posts_per_page' => $count,
+            'post__not_in' => [$post->ID],
+        ];
+        $new_posts = get_posts($default);
         if(!$new_posts) return;
         global $post;
         echo $args['before_widget'];

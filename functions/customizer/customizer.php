@@ -25,83 +25,6 @@ add_action('customize_register', function( $wp_customize ) {
     'label' => 'ロゴ画像',
     'description' => '（横幅238px・高さ48px）',
   ]));
-  //ヘッダー背景画像
-  $wp_customize->add_setting( 'header_background_url' );
-  $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_background_url', [
-	  'section' => 'header_image',
-	  'settings' => 'header_background_url',
-	  'label' => 'ヘッダー背景画像',
-  ]));
-  //ヘッダー背景画像の大きさ
-  $wp_customize->add_setting( 'header_background_size', [
-    'default' => 'cover',
-  ]);
-  $list = [
-    'cover' => 'フルスクリーン',
-    'auto' => '元の大きさ',
-    'contain' => '画面に合わせる',
-  ];
-  $wp_customize->add_control( 'header_background_size', [
-    'section' => 'header_image',
-    'settings' => 'header_background_size',
-    'label' => '画像のサイズ',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の位置
-  $wp_customize->add_setting( 'header_background_position', [
-    'default' => 'center center',
-  ]);
-  $list = [
-    'left top' => '左上',
-    'center top' => '上',
-    'right top' => '右上',
-    'left center' => '左',
-    'center center' => '中央',
-    'right center' => '右',
-    'left bottom' => '左下',
-    'center bottom' => '下',
-    'right bottom' => '右下',
-  ];
-  $wp_customize->add_control( 'header_background_position', [
-    'section' => 'header_image',
-    'settings' => 'header_background_position',
-    'label' => '画像の位置',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の繰り返し
-  $wp_customize->add_setting( 'header_background_repeat', [
-    'default' => 'no-repeat',
-  ]);
-  $list = [
-    'no-repeat' => '繰り返さない',
-    'repeat' => '繰り返す',
-  ];
-  $wp_customize->add_control( 'header_background_repeat', [
-    'section' => 'header_image',
-    'settings' => 'header_background_repeat',
-    'label' => '画像の繰り返し',
-    'type' => 'select',
-    'choices' => $list,
-  ]);
-  //ヘッダー背景画像の高さ
-  $list = [
-    'mobile' => 'スマホ',
-    'pc' => 'PC',
-  ];
-  foreach($list as $device => $desc) {
-    $wp_customize->add_setting( 'header_background_height_'.$device, [
-      'default' => null,
-    ]);
-    $wp_customize->add_control( 'header_background_height_'.$device, [
-      'section' => 'header_image',
-      'settings' => 'header_background_height_'.$device,
-      'label' => '画像の高さ（'.$desc.'）',
-      'description' => '背景画像の高さを明確に指定したい場合だけ数値を入力。未入力の場合は中の要素分の高さになります。',
-      'type' => 'text',
-    ]);
-  }
 
 //ページ設定
 $wp_customize->add_section( 'page_setting', [
@@ -149,73 +72,6 @@ $wp_customize->add_section( 'page_setting', [
             'true' => '同じカテゴリだけ',
         ],
     ]);
-    //タイトルと日付の順番
-    $wp_customize->add_setting( 'post_title_date', [
-        'default' => 'title_date',
-    ]);
-    $wp_customize->add_control( 'post_title_date', [
-        'section' => 'page_setting',
-        'settings' => 'post_title_date',
-        'label' =>'日付とタイトルの順番',
-        'type' => 'radio',
-        'choices'    => [
-            null => '日付→タイトル',
-            'title_date' => 'タイトル→日付',
-        ],
-    ]);
-    //検索エンジンに伝える記事の日時
-    $wp_customize->add_setting( 'post_datetime', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'post_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'post_datetime',
-        'label' =>'検索エンジンに伝える記事の日時',
-        'type' => 'radio',
-        'choices'    => [
-            null => '公開日',
-            'update' => '更新日',
-        ],
-    ]);
-    //投稿日 or 投稿日時
-    $wp_customize->add_setting( 'posted_date_datetime', [
-        'default' => 'date',
-    ]);
-    $wp_customize->add_control( 'posted_date_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'posted_date_datetime',
-        'label' =>'投稿日 or 投稿日時',
-        'type' => 'radio',
-        'choices' => [
-            'date' => '投稿日',
-            'datetime' => '投稿日時',
-        ],
-    ]);
-    //更新日 or 更新日時
-    $wp_customize->add_setting( 'modified_date_datetime', [
-        'default' => 'date',
-    ]);
-    $wp_customize->add_control( 'modified_date_datetime', [
-        'section' => 'page_setting',
-        'settings' => 'modified_date_datetime',
-        'label' =>'更新日 or 更新日時',
-        'type' => 'radio',
-        'choices' => [
-            'date' => '更新日',
-            'datetime' => '更新日時',
-            null => '非表示',
-        ],
-    ]);
-    //固定ページの投稿日時・更新日時の表示
-    $wp_customize->add_setting( 'is_page_time_mtime', [
-        'default' => false,
-    ]);
-    $wp_customize->add_control( 'is_page_time_mtime', [
-        'section' => 'page_setting',
-        'settings' => 'is_page_time_mtime',
-        'label' =>'固定ページに投稿日と更新日を表示する',
-        'type' => 'checkbox',
-    ]);
     //この記事を書いた人
     $list = [
         'single' => '記事ページ',
@@ -248,25 +104,27 @@ $wp_customize->add_section( 'page_setting', [
 $wp_customize->add_section( 'heading_style', [
   'title' => '見出し',
   'priority' => 30,
-  'description' => '見出しのデザインと色を変更できます。',
+  'description' => '見出しのデザインを変更できます。',
 ]);
     //見出しスタイル
     $h_style_list = [
       null => '装飾なし',
-      'simple1' => 'シンプル1',
-      'simple2' => 'シンプル2',
-      'simple3' => 'シンプル3',
+      'simple_bg_color' => '単色背景',
+      'gradation_bg_color' => 'グラデーション背景',
+      'simple_border_bottom' => '単色下線',
+      'gradation_border_bottom' => 'グラデーション下線1',
+      'gradation_border_bottom2' => 'グラデーション下線2',
+      'simple_border_left' => '単色左線',
       'pop' => 'ポップ',
-      'cool' => 'クール',
+      'cool' => 'クール1',
       'cool2' => 'クール2',
       'cool3' => 'クール3',
     ];
     //見出しリスト
     $menu_list = [
-        null => '1',
-        'simple1' => '2',
-        'simple2' => '3',
-        'simple3' => '4'
+        'gradation_bg_color' => '2',
+        'gradation_border_bottom' => '3',
+        'simple_border_left' => '4'
     ];
     foreach ($menu_list as $default => $number) {
         $wp_customize->add_setting( 'h'.$number.'_style', [
@@ -281,30 +139,6 @@ $wp_customize->add_section( 'heading_style', [
             'choices' => $h_style_list,
         ]);
     }
-    //関連記事タイトル
-    $wp_customize->add_setting( 'related_post_title_style', [
-        'default' => 'simple1',
-    ]);
-    $wp_customize->add_control( 'related_post_title_style', [
-        'section' => 'heading_style',
-        'settings' => 'related_post_title_style',
-        'label' => '関連記事のタイトル',
-        'priority' => 50,
-        'type' => 'select',
-        'choices' => $h_style_list,
-    ]);
-    //ウィジェットタイトル
-    $wp_customize->add_setting( 'sidebar_widget_title_style', [
-        'default' => 'simple1',
-    ]);
-    $wp_customize->add_control( 'sidebar_widget_title_style', [
-        'section' => 'heading_style',
-        'settings' => 'sidebar_widget_title_style',
-        'label' => 'ウィジェットのタイトル（本文内以外）',
-        'priority' => 60,
-        'type' => 'select',
-        'choices' => $h_style_list,
-    ]);
 
 //メディア設定
 $wp_customize->add_section( 'media', [
@@ -325,20 +159,6 @@ $wp_customize->add_section( 'media', [
         'choices' => [
             'thumbnail-wide' => '横長（デフォルト）',
             'thumbnail' => '正方形',
-        ],
-    ]);
-    //サムネイルの表示方法
-    $wp_customize->add_setting( 'thumbnail_display', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'thumbnail_display', [
-        'section' => 'media',
-        'settings' => 'thumbnail_display',
-        'label' => 'サムネイルの表示方法',
-        'type' => 'radio',
-        'choices' => [
-            'image' => 'imgタグ（デフォルト）',
-            'background-image' => '背景画像',
         ],
     ]);
     //サムネイルの画質
@@ -367,22 +187,6 @@ $wp_customize->add_section( 'media', [
         'description' => '数字のみ入力してください（例：1日→1、1週間→7、非表示→未入力）',
         'type' => 'number',
     ]);
-    //アイキャッチ画像の表示
-    $wp_customize->add_setting( 'is_post_thumbnail', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'is_post_thumbnail', [
-        'section' => 'media',
-        'settings' => 'is_post_thumbnail',
-        'label' => 'アイキャッチ画像の表示',
-        'description' => '主にフリー素材を使っている場合や本文中で同じ画像を使うことが多い場合は「背景画像」を、それ以外の場合は「通常の画像（imgタグ）」を選択してください。',
-        'type' => 'radio',
-        'choices' => [
-            'image' => 'imgタグ（デフォルト）',
-            'background_image' => '背景画像として表示する',
-            null => '表示しない',
-        ],
-    ]);
     //アイキャッチ画像の取得方法
     $wp_customize->add_setting( 'get_post_first_image', [
         'default' => 'get_save',
@@ -406,20 +210,6 @@ $wp_customize->add_section( 'media', [
         'settings' => 'original_thumbnail',
         'label' => 'オリジナルのサムネイル',
     ]));
-    //カスタムブログカード
-    $wp_customize->add_setting( 'blogcard_thumbnail_display', [
-        'default' => 'image',
-    ]);
-    $wp_customize->add_control( 'blogcard_thumbnail_display', [
-        'section' => 'media',
-        'settings' => 'blogcard_thumbnail_display',
-        'label' =>'オリジナルブログカードの画像の表示方法',
-        'type' => 'radio',
-        'choices'    => [
-            'image' => 'imgタグ（デフォルト）',
-            'background-image' => '背景画像',
-        ],
-    ]);
     //レイジーロード
     $wp_customize->add_setting( 'is_lazy_load', [
         'default' => false,
@@ -477,65 +267,6 @@ $wp_customize->add_section( 'SNS', [
     'title' => 'SNS',
     'priority' => 30,
 ]);
-    //記事上SNSの表示切り替え
-    $list = [
-        'single' => '記事ページ',
-        'page' => '固定ページ',
-        'media' => 'メディアページ',
-    ];
-    foreach($list as $post_type => $label) {
-        $wp_customize->add_setting( 'is_sns_top_'.$post_type, [
-            'default' => true,
-        ]);
-        $wp_customize->add_control( 'is_sns_top_'.$post_type, [
-            'section' => 'SNS',
-            'settings' => 'is_sns_top_'.$post_type,
-            'label' =>'記事上にシェアボタンを表示する（'.$label.'）',
-            'type' => 'checkbox',
-            'priority' => 5,
-        ]);
-    }
-    //記事下SNSの表示切り替え
-    foreach($list as $post_type => $label) {
-        $wp_customize->add_setting( 'is_sns_bottom_'.$post_type, array (
-            'default' => true,
-        ));
-        $wp_customize->add_control( 'is_sns_bottom_'.$post_type, array(
-            'section' => 'SNS',
-            'settings' => 'is_sns_bottom_'.$post_type,
-            'label' =>'記事下にシェアボタンを表示する（'.$label.'）',
-            'type' => 'checkbox',
-            'priority' => 5,
-        ));
-    }
-    //SNSデザイン
-    $wp_customize->add_setting( 'sns_style', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'sns_style', [
-        'section' => 'SNS',
-        'settings' => 'sns_style',
-        'label' => 'シェアボタンのデザイン',
-        'type' => 'select',
-        'choices' => [
-            null => 'オリジナル',
-            'simple1' => 'シンプル1',
-            'simple2' => 'シンプル2',
-            'rich' => 'リッチ',
-        ],
-        'priority' => 5,
-    ]);
-    //シェアタイトル
-    $wp_customize->add_setting( 'sns_share_text', array (
-        'default' => 'この記事をシェアする',
-    ));
-    $wp_customize->add_control( 'sns_share_text', array(
-        'section' => 'SNS',
-        'settings' => 'sns_share_text',
-        'label' =>'SNSシェアタイトル',
-        'type' => 'text',
-        'priority' => 5,
-    ));
     //Twitterカード
     $wp_customize->add_setting( 'twitter_card', array (
         'default' => 'summary',
@@ -562,52 +293,6 @@ $wp_customize->add_section( 'SNS', [
         'description' => '記事がTweetされた時の「@〇〇」を表示します。',
         'type' => 'checkbox',
         'priority' => 20,
-    ));
-    //フォロータイトル
-    $wp_customize->add_setting( 'follow_section_title', array (
-        'default' => '最新情報をお届けします',
-    ));
-    $wp_customize->add_control( 'follow_section_title', array(
-        'section' => 'SNS',
-        'settings' => 'follow_section_title',
-        'label' =>'フォロー',
-        'type' => 'text',
-        'priority' => 40,
-    ));
-    //いいねボタン
-    $wp_customize->add_setting( 'is_likebox', array (
-        'default' => false,
-    ));
-    $wp_customize->add_control( 'is_likebox', array(
-        'section' => 'SNS',
-        'settings' => 'is_likebox',
-        'label' =>'いいねボックスを表示する',
-        'description' => 'サイト管理者がプロフィール画面でFacebook（ページ）のIDを入力する必要があります。',
-        'type' => 'checkbox',
-        'priority' => 50,
-    ));
-    //Twitterフォローボタン
-    $wp_customize->add_setting( 'is_twitter_follow', array (
-        'default' => false,
-    ));
-    $wp_customize->add_control( 'is_twitter_follow', array(
-        'section' => 'SNS',
-        'settings' => 'is_twitter_follow',
-        'label' =>'Twitterフォローボタンを表示する',
-        'description' => 'サイト管理者がプロフィール画面でTwitterのIDを入力する必要があります。',
-        'type' => 'checkbox',
-        'priority' => 60,
-    ));
-    //Twitterフォローボタン
-    $wp_customize->add_setting( 'is_feedly_follow', array (
-        'default' => true,
-    ));
-    $wp_customize->add_control( 'is_feedly_follow', array(
-        'section' => 'SNS',
-        'settings' => 'is_feedly_follow',
-        'label' =>'feedlyフォローボタンを表示する',
-        'type' => 'checkbox',
-        'priority' => 70,
     ));
 
 //コメント欄
@@ -788,16 +473,6 @@ $wp_customize->add_section( 'code_highlight', array (
         'label' =>'サイト上に表示するタイトル。',
         'description' => 'サイト上に表示するタイトルを変更できます（入力しない場合は、一般→「サイトタイトル」の文字が表示されます）。検索結果のサイトタイトルには、一般→「サイトタイトル」で入力した文字が使われます。',
         'type' => 'text',
-    ));
-    //トップページのディスクリプション表示切り替え
-    $wp_customize->add_setting( 'is_home_description', array (
-        'default' => true,
-    ));
-    $wp_customize->add_control( 'is_home_description', array(
-        'section' => 'title_tagline',
-        'settings' => 'is_home_description',
-        'label' =>'トップにキャッチフレーズを表示する',
-        'type' => 'checkbox',
     ));
 
 //吹き出し

@@ -3,11 +3,11 @@ if(!post_prev_next_4536()) return;
 $true = next_prev_in_same_term();
 $prevpost = get_previous_post($true);
 $nextpost = get_next_post($true);
-$flex_end = ($prevpost) ? '' : ' justify-content-flex-end';
+$flex_end = ($prevpost) ? '' : ' data-justify-content="flex-end"';
 if( empty($prevpost) && empty($nextpost) ) return;
 ?>
 
-<div id="prev-next" class="clearfix margin-2em-auto flexbox-row-wrap<?php echo $flex_end; ?>">
+<div id="prev-next" class="pt-5"<?php echo $flex_end; ?> data-display="flex">
   <?php
   switch( thumbnail_size() ) {
     case 'thumbnail-wide':
@@ -19,35 +19,28 @@ if( empty($prevpost) && empty($nextpost) ) return;
       if( is_amp() ) $thumb = [500,500];
       break;
   }
-  function prev_next_post_thumbnail( $post_id ) {
-    if( !has_post_thumbnail( $post_id) ) return;
-    if( thumbnail_display()==='image' ) {
-      echo '<figure class="prev-next-thumbnail">'.get_the_post_thumbnail($post_id, $thumb).'</figure>';
-    } else {
-      $src = get_the_post_thumbnail_url( $post_id );
-      $class = get_thumbnail_class_4536( $src );
-      echo '<div class="'.thumbnail_size().'"><div class="prev-post-thumbnail '.$class.'"></div></div>';
-    }
-  }
   if( $prevpost ) {
     $post_id = $prevpost->ID;
     ?>
-    <div id="prev-post" class="clearfix position-relative flexbox-row-wrap">
-      <div class="prev-post-arrow flexbox-row-wrap align-items-center"><i class="fas fa-angle-left"></i></div>
-      <?php prev_next_post_thumbnail( $post_id );
-      echo '<a class="prev-title post-color link-mask" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
+    <div class="xs12 sm12 md6" data-position="relative">
+      <?php prev_next_post_thumbnail( $post_id ); ?>
+      <div data-bg-color="black" class="mask t-0 b-0 r-0 l-0 w-100 h-100" data-position="absolute"></div>
+      <div data-button="floating" data-bg-color="white" class="b-0 l-0 ml-2 mb-2" data-position="absolute"><?php echo icon_4536('arrow_left_alt', '', 36); ?></div>
+      <?php
+      echo '<a data-color="white" data-overflow="hidden" data-position="absolute" class="t-0 b-0 l-0 r-0 pa-5 link-mask headline" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
       ?>
     </div>
   <?php }
   if( $nextpost ) {
     $post_id = $nextpost->ID;
     ?>
-    <div id="next-post" class="clearfix position-relative flexbox-row-wrap">
+    <div class="xs12 sm12 md6" data-position="relative">
+      <?php prev_next_post_thumbnail( $post_id ); ?>
+      <div data-bg-color="black" class="mask t-0 b-0 r-0 l-0 w-100 h-100" data-position="absolute"></div>
+      <div data-button="floating" data-bg-color="white" class="b-0 r-0 mr-2 mb-2" data-position="absolute"><?php echo icon_4536('arrow_right_alt', '', 36); ?></div>
       <?php
-      echo '<a class="next-title post-color link-mask" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
-      prev_next_post_thumbnail( $post_id );
+      echo '<a data-color="white" data-overflow="hidden" data-position="absolute" class="t-0 b-0 l-0 r-0 pa-5 link-mask headline" href="' . get_permalink( $post_id ) . '" title="' . get_the_title( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
       ?>
-      <div class="next-post-arrow flexbox-row-wrap align-items-center"><i class="fas fa-angle-right"></i></div>
     </div>
   <?php } ?>
 </div>

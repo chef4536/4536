@@ -1,71 +1,75 @@
 <?php
 
-echo '</div>'; //#wrapper
+echo '</div>'; //#main-container
 
-if( !is_amp() && is_active_sidebar('footer-top') ) { //フッター上 ?>
-  <div id="footer-top-widget-area">
-    <div class="inner padding-20px-10px">
-      <?php dynamic_sidebar('footer-top') ?>
+if (!is_home() || !is_front_page()) {
+    media_section_4536('music');
+}
+
+media_section_4536('movie'); //サブメディア
+
+if (!is_amp() && is_active_sidebar('footer') && !none_header_footer()) { ?>
+  <div id="footer-widget-container" class="container ma-auto mt-5">
+    <div data-display="flex" data-justify-content="center">
+      <?php dynamic_sidebar('footer'); ?>
     </div>
   </div>
 <?php }
+
 
 echo '</div>'; //#main-column
 
 ?>
 
-<footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
-  <div class="inner padding-20px-10px">
-    <?php
-    if( !none_header_footer() ) {
-      if( !is_amp() ) {
-        if( is_active_sidebar('footer-left') || is_active_sidebar('footer-center') || is_active_sidebar('footer-right') ) { ?>
-        <div id="footer-contents-wrapper">
-          <div class="footer-contents footer-left clearfix">
-            <?php dynamic_sidebar('footer-left'); ?>
-          </div>
-          <div class="footer-contents footer-center clearfix">
-            <?php dynamic_sidebar('footer-center'); ?>
-          </div>
-          <div class="footer-contents footer-right clearfix">
-            <?php dynamic_sidebar('footer-right'); ?>
-          </div>
-        </div>
-        <?php }
-      }
+<div id="site-bottom" class="gradation wave-shape-outline" data-position="relative">
+  <div data-position="relative">
+    <?php wave_shape('footer'); ?>
+    <a class="page-top t-50 r-0 mr-3" href="#body" data-button="floating" data-bg-color="white" data-position="absolute">
+      <?php echo icon_4536('arrow_up', '', 36); ?>
+    </a>
+  </div>
+  <footer id="footer" class="footer" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
+    <div class="container ma-auto">
+      <?php
       $defaults = [
         'theme_location'  => 'navbar_footer',
         'container' => false,
         'fallback_cb' => false,
         'echo' => false,
-        'items_wrap' => '<ul>%3$s</ul>',
+        'items_wrap' => '<ul data-display="flex" data-justify-content="center">%3$s</ul>',
       ];
-      if( has_nav_menu('navbar_footer') ) echo '<div id="footer-nav">' . wp_nav_menu( $defaults ) . '</div>';
-    } ?>
-    <div id="copyright">
+      if (has_nav_menu('navbar_footer')) {
+          echo '<div class="global-nav pa-3">' . wp_nav_menu($defaults) . '</div>';
+      }?>
+      <div id="copyright" data-text-align="center" class="meta pt-3 pb-5 pr-3 pl-3">
+        <?php
+        $name = (site_title()) ? site_title() : get_bloginfo('name');
+        $link = '<a href="'.home_url().'">'.$name.'</a>';
+        ?>
+        <span>Copyright&copy;&nbsp;<?php echo $link; ?>,&nbsp;<?php the_date('Y'); ?>&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>
+      </div>
       <?php
-      $name = (site_title()) ? site_title() : get_bloginfo('name');
-      $link = '<a href="'.home_url().'">'.$name.'</a>';
-      echo '<span>Copyright&copy;&nbsp;'.$link.',&nbsp;'.get_the_date('Y').'&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>';
-      ?>
+      if (fixed_footer() && !none_header_footer()) {
+          echo '<div data-display="none-md" class="pb-5"></div>';
+      } ?>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <?php
-if( !none_header_footer() ) {
-  get_template_part('template-parts/fixed-footer');
-  get_template_part('template-parts/fixed-footer-share-button');
-  get_template_part('template-parts/fixed-footer-search');
-  if( is_amp() ) {
-    if(!fixed_footer()) echo '<a class="page-top" href="#header"><i class="fas fa-angle-up"></i></a>';
-  } else {
-    wp_footer();
-    if(is_likebox() && is_singular()) get_template_part('template-parts/likebox');
-    if(add_html_js_body()) echo add_html_js_body();
-    echo '<a id="page-top" class="page-top display-none" href="#header"><i class="fas fa-angle-up"></i></a>';
-  }
-} else {
-  if( !is_amp() ) wp_footer();
-}
+if (!none_header_footer()) {
+          get_template_part('template-parts/fixed-footer');
+          get_template_part('template-parts/fixed-footer-share-button');
+          get_template_part('template-parts/fixed-footer-search');
+          if (!is_amp()) {
+              wp_footer();
+              if (add_html_js_body()) {
+                  echo add_html_js_body();
+              }
+          }
+      } else {
+          if (!is_amp()) {
+              wp_footer();
+          }
+      }
 echo '</body></html>';

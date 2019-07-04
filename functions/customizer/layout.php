@@ -93,44 +93,6 @@ class CustomizerLayoutSettings_4536 {
         'type' => 'select',
         'choices'    => $width_list,
     ));
-    //記事一覧のデザインスマホ
-    $post_style_list = [
-        null => 'シンプル（デフォルト）',
-        'big' => 'ビッグ（1列）',
-    ];
-    //トップページモバイル
-    $wp_customize->add_setting( 'new_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_mobile',
-        'label' => '新着記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページモバイル
-    $wp_customize->add_setting( 'archive_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_mobile',
-        'label' => 'アーカイブ記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事モバイル
-    $wp_customize->add_setting( 'related_post_list_style_mobile', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_mobile', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_mobile',
-        'label' => '関連記事一覧デザイン（スマホ）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
     //サイドバーをスライドメニューにする
     $wp_customize->add_setting( 'sidebar_to_slidemenu', [
       'default' => true,
@@ -140,46 +102,6 @@ class CustomizerLayoutSettings_4536 {
       'settings' => 'sidebar_to_slidemenu',
       'label' => 'スマホ画面でサイドバーをスライドメニューにする',
       'type' => 'checkbox',
-    ]);
-    //PC用
-    $post_style_list += [
-        '2-5' => '2列',
-        '3-3' => '3列',
-        '4-2' => '4列',
-    ];
-    unset($post_style_list['big']);
-    //トップページPC
-    $wp_customize->add_setting( 'new_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'new_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'new_post_list_style_pc',
-        'label' => '新着記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //アーカイブページPC
-    $wp_customize->add_setting( 'archive_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'archive_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'archive_post_list_style_pc',
-        'label' => 'アーカイブ記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
-    ]);
-    //関連記事PC
-    $wp_customize->add_setting( 'related_post_list_style_pc', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'related_post_list_style_pc', [
-        'section' => 'design',
-        'settings' => 'related_post_list_style_pc',
-        'label' => '関連記事一覧デザイン（PC）',
-        'type' => 'select',
-        'choices' => $post_style_list,
     ]);
     //関連記事の表示数
     $wp_customize->add_setting( 'related_post_count', [
@@ -203,21 +125,6 @@ class CustomizerLayoutSettings_4536 {
         'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
         'type' => 'number',
     ]);
-    //文字を丸める
-    $wp_customize->add_setting( 'line_clamp', [
-        'default' => null,
-    ]);
-    $wp_customize->add_control( 'line_clamp', [
-        'section' => 'design',
-        'settings' => 'line_clamp',
-        'label' => '記事一覧のタイトルが指定行より長い場合に文字を省略する',
-        'type' => 'radio',
-        'choices'    => [
-            null => '文字を省略しない',
-            '2line' => '2行で省略',
-            '3line' => '3行で省略',
-        ],
-    ]);
     //固定ヘッダー
     $wp_customize->add_setting( 'fixed_header', array (
         'default' => false,
@@ -230,7 +137,7 @@ class CustomizerLayoutSettings_4536 {
     ));
     //固定フッター
     $wp_customize->add_setting( 'fixed_footer', [
-        'default' => null,
+        'default' => 'floating_menu',
     ]);
     $wp_customize->add_control( 'fixed_footer', [
         'section' => 'design',
@@ -238,10 +145,10 @@ class CustomizerLayoutSettings_4536 {
         'label' =>'固定フッター',
         'type' => 'radio',
         'choices' => [
-          null => '非表示（デフォルト）',
-          'menu' => 'メニューを表示',
-  				'share' => 'シェアボタン',
+          'floating_menu' => 'スライドメニューを開くボタン（デフォルト）',
+          'menu' => '横並びのメニュー',
           'overlay' => 'オーバーレイ広告',
+          null => '非表示',
         ],
     ]);
     //固定フッターメニューリスト

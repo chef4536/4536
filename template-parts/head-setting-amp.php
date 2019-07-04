@@ -1,4 +1,4 @@
-<html amp>
+<html amp class="min-h-100 h-100">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,viewport-fit=cover">
@@ -24,10 +24,6 @@
     <script async custom-element="amp-soundcloud" src="https://cdn.ampproject.org/v0/amp-soundcloud-0.1.js"></script>
     <?php
     apply_filters( 'wp_head_4536', $meta );
-    $amp_facebook = '<script async custom-element="amp-facebook-like" src="https://cdn.ampproject.org/v0/amp-facebook-like-0.1.js"></script>';
-    if( is_page_template() ) $amp_facebook = null;
-    $facebook_id = get_the_author_meta('facebook', 1);
-    if(is_likebox() && $facebook_id) echo $amp_facebook;
     ogp_setting_4536();
     ?>
     <style amp-boilerplate>

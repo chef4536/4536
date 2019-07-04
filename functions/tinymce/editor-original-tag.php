@@ -225,15 +225,10 @@ add_filter('tiny_mce_before_init', function($init_array) {
             'title' => 'その他',
             'items' => [
                 [
-                    'title' => '文字の中央寄せ',
-                    'block' => 'p',
-                    'classes' => 'text-align-center'
-                ],                
-                [
                     'title' => '「参考」や「関連」などの文字装飾に',
                     'inline' => 'span',
                     'classes' => 'reference'
-                ],                
+                ],
                 ],
             ],
     ];

@@ -7,30 +7,6 @@
 function fixed_header() {
     return get_theme_mod( 'fixed_header', false );
 }
-//トップページ一覧モバイル
-function new_post_list_style_mobile() {
-    return get_theme_mod( 'new_post_list_style_mobile', null );
-}
-//アーカイブページ一覧モバイル
-function archive_post_list_style_mobile() {
-    return get_theme_mod( 'archive_post_list_style_mobile', null );
-}
-//関連記事一覧モバイル
-function related_post_list_style_mobile() {
-    return get_theme_mod( 'related_post_list_style_mobile', null );
-}
-//トップページ一覧PC
-function new_post_list_style_pc() {
-    return get_theme_mod( 'new_post_list_style_pc', null );
-}
-//アーカイブページ一覧PC
-function archive_post_list_style_pc() {
-    return get_theme_mod( 'archive_post_list_style_pc', null );
-}
-//関連記事一覧PC
-function related_post_list_style_pc() {
-    return get_theme_mod( 'related_post_list_style_pc', null );
-}
 //関連記事の表示数
 function related_post_count() {
     $count = get_theme_mod( 'related_post_count', 10 );
@@ -43,13 +19,9 @@ function custom_excerpt_length() {
   if (empty($content)) $content = 0;
   return $content;
 }
-//文字を丸める
-function line_clamp() {
-    return get_theme_mod( 'line_clamp', null );
-}
 //固定フッター
 function fixed_footer() {
-    return get_theme_mod( 'fixed_footer', null );
+    return get_theme_mod( 'fixed_footer', 'floating_menu' );
 }
 //固定フッターメニュー
 function fixed_footer_menu_item($name) {
@@ -70,26 +42,6 @@ function is_google_fonts() {
 function next_prev_in_same_term() {
     return get_theme_mod( 'next_prev_in_same_term', null );
 }
-//タイトルと日付の順番
-function post_title_date() {
-    return get_theme_mod( 'post_title_date', 'title_date' );
-}
-//検索エンジンに伝える記事の日時
-function post_datetime() {
-    return get_theme_mod( 'post_datetime', null );
-}
-//投稿日 or 投稿日時
-function posted_date_datetime() {
-    return get_theme_mod( 'posted_date_datetime', 'date' );
-}
-//更新日 or 更新日時
-function modified_date_datetime() {
-    return get_theme_mod( 'modified_date_datetime', 'date' );
-}
-//固定ページの投稿日・更新日の表示
-function is_page_time_mtime() {
-    return get_theme_mod( 'is_page_time_mtime', null );
-}
 //この記事を書いた人、記事ページ
 function is_profile_4536($post_type) {
     return get_theme_mod( $post_type, true );
@@ -105,10 +57,6 @@ function post_prev_next_4536() {
 function thumbnail_size() {
     return get_theme_mod( 'thumbnail_size', 'thumbnail-wide' );
 }
-//サムネイルの表示方法
-function thumbnail_display() {
-    return get_theme_mod( 'thumbnail_display', 'image' );
-}
 //サムネイルの画質
 function thumbnail_quality() {
     return get_theme_mod( 'thumbnail_quality', null );
@@ -119,10 +67,6 @@ function new_icon_date() {
   if (empty($date)) $date = 0;
   return $date;
 }
-//アイキャッチ画像の表示切り替え
-function is_post_thumbnail_4536() {
-    return get_theme_mod( 'is_post_thumbnail', 'image' );
-}
 //サムネの表示方法
 function get_post_first_image() {
     return get_theme_mod( 'get_post_first_image', 'get_save' );
@@ -130,10 +74,6 @@ function get_post_first_image() {
 //オリジナルのアイキャッチ画像
 function original_thumbnail_url(){
     return esc_url( get_theme_mod( 'original_thumbnail' ) );
-}
-//ブログカード表示方法
-function blogcard_thumbnail_display() {
-    return get_theme_mod( 'blogcard_thumbnail_display', 'image' );
 }
 //レイジーロード
 function is_lazy_load_4536() {
@@ -157,38 +97,6 @@ function google_custom_search_slug() {
 ////////////////////////////////////
 // SNS
 ////////////////////////////////////
-//記事上SNS表示切り替え
-function is_sns_top_4536($post_type) {
-    return get_theme_mod( $post_type, true );
-}
-//記事下SNS表示切り替え
-function is_sns_bottom_4536($post_type) {
-    return get_theme_mod( $post_type, true );
-}
-//SNSデザイン
-function sns_style() {
-    return get_theme_mod( 'sns_style', null );
-}
-//フォロータイトル
-function follow_section_title() {
-    return esc_html(get_theme_mod( 'follow_section_title', '最新情報をお届けします' ));
-}
-//いいねボタン
-function is_likebox() {
-    return get_theme_mod( 'is_likebox', false );
-}
-//Twitterフォロー
-function is_twitter_follow() {
-    return get_theme_mod( 'is_twitter_follow', false );
-}
-//feedlyフォロー
-function is_feedly_follow() {
-    return get_theme_mod( 'is_feedly_follow', true );
-}
-//SNSシェアタイトル
-function sns_share_text() {
-    return esc_html(get_theme_mod( 'sns_share_text', 'この記事をシェアする' ));
-}
 //Twitterカード
 function twitter_card() {
     return get_theme_mod( 'twitter_card', 'summary' );
@@ -433,35 +341,7 @@ function wordpress_translation_update_setting() {
 function header_logo_url() {
     return esc_url(get_theme_mod('header_logo_url'));
 }
-//ヘッダー背景画像
-function header_background_url() {
-    return esc_url(get_theme_mod('header_background_url'));
-}
-//ヘッダー背景画像のサイズ
-function header_background_size() {
-    return get_theme_mod('header_background_size','cover');
-}
-//ヘッダー背景画像の位置
-function header_background_position() {
-    return get_theme_mod('header_background_position','center center');
-}
-//ヘッダー背景画像の繰り返し
-function header_background_repeat() {
-    return get_theme_mod('header_background_repeat','no-repeat');
-}
-//ヘッダー背景画像の高さ
-function header_background_height_mobile() {
-    return get_theme_mod('header_background_height_mobile',null);
-}
-//ヘッダー背景画像の高さ
-function header_background_height_pc() {
-    return get_theme_mod('header_background_height_pc',null);
-}
 //サイトタイトルの変更
 function site_title() {
     return esc_html(get_theme_mod( 'site_title', null ));
-}
-//トップページのディスクリプション表示切り替え
-function is_home_description() {
-    return get_theme_mod( 'is_home_description', true );
 }
