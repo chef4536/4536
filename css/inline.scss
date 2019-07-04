@@ -175,6 +175,10 @@ $button_base_size: 56px;
 
 #header-container {
   max-width: 2048px;
+
+  .title {
+    letter-spacing: .1em;
+  }
 }
 
 .header-logo {
