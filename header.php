@@ -11,7 +11,7 @@ if (is_amp()) {
 }
 ?>
 <body id="body" data-display="flex" data-flex-direction="column" data-flex-wrap="nowrap" data-position="relative" <?php body_class(); ?>>
-  <div id="main-column" class="flex" data-overflow-x="hidden">
+  <div id="main-column" class="flex">
 
     <?php
 

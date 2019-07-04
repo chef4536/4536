@@ -295,7 +295,7 @@
     width: calc(100% + 32px);
     max-width: none;
   }
-  html {
+  html, #main-column, #site-bottom {
     overflow-x: hidden;
   }
   .ad {
