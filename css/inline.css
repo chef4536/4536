@@ -17,7 +17,6 @@
 .scroll-container {
   white-space: nowrap;
   overflow-x: auto;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;

@@ -104,7 +104,7 @@ function media_section_4536($media, $args = [])
       <?php wave_shape('media_top'); ?>
       <div data-position="relative" class="pa-4">
         <p data-text-align="center" class="headline mt-5 mb-3"><?php echo esc_html($section_title); ?></p>
-        <div data-text-align="center" class="scroll-container">
+        <div data-text-align="center" data-overflow-y="hidden" class="scroll-container">
           <div data-display="table" class="scroll-content mx-auto">
             <?php foreach ($customPosts as $post) : setup_postdata($post); ?>
               <div class="<?php echo $media; ?>-content mr-4" data-display="inline-block" data-text-align="left" data-position="relative">
