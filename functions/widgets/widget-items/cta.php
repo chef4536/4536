@@ -66,7 +66,9 @@ class CtaWidgetItem extends WP_Widget
             if (!empty($size['height'])) {
                 $height = ' height="'.$size['height'].'"';
             }
-            $thumbnail = '<figure class="cta-image xs12 sm12 md6"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
+            $image = '<img class="cta-image" src="' . $src . '" ' . $width . $height . ' alt />';
+            $image = lazy_load_media_4536( $image );
+            $thumbnail = '<figure class="xs12 sm12 md6">' . $image . '</figure>';
             echo convert_content_to_amp($thumbnail);
         } ?>
       <div class="content xs12 sm12 md6 pt-5 pb-5 pr-4 pl-4">
