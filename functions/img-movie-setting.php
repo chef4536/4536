@@ -113,7 +113,7 @@ function the_post_thumbnail_4536()
         <path d="M856.51,81a213,213,0,0,1,55.08,77.72c59.32,145.18-33.41,375.1-202.26,499.5-118.41,87.24-238.9,95.43-264.94,96.68C387.47,757.6,222,765.14,121.53,639.23,22.47,515.05,62.8,356.41,68.35,335.93c16.78-61.86,52.39-100.24,73.12-124.17C257.78,77.48,425.72,53.52,534,38.07,647.56,21.87,771,4.26,856.51,81Z" transform="translate(-34.08 -8.35)" fill="url(#gradation1)" fill-opacity="0.1" />
       </svg>
       <div id="post-thumbnail-4536" class="t-0 b-0 r-0 l-0 pa-3" data-position="absolute" data-display="flex" data-justify-content="center" data-align-items="center">
-        <figure class="post-thumbnail w-100" data-position="relative">
+        <figure class="post-thumbnail w-100 h-100" data-position="relative">
           <?php the_post_thumbnail(); ?>
         </figure>
       </div>
