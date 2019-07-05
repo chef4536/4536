@@ -81,7 +81,7 @@ class CtaWidgetItem extends WP_Widget
             $button = '<div data-button="submit" class="outline">' . $button_text_url . '</div>';
         }
         if (!empty($button_text) && !empty($button_url)) {
-            $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="noopener"';
+            $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="nofollow noopener"';
             $attribute = ( !empty($button_text_url) ) ? 'data-font-size="small" data-text-decoration="underline" class="pa-3"' : ' data-button="submit" class="outline"';
             $button .= '<a href="'.$button_url.'"' . $target . $attribute . '>'.$button_text.'</a>';
         }
