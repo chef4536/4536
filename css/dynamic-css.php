@@ -62,7 +62,7 @@ add_filter('inline_style_4536', function ($css) {
     $css[] = '[data-button="submit"],#submit,.primay-bg-color{background-color:' . $primary_color . '}';
 
     //画像の比率
-    $height = (thumbnail_size()==='thumbnail') ? '100' : '50' ;
+    $height = (thumbnail_size()==='thumbnail') ? '100' : '56.25' ;
     $css[] = ".post-thumbnail{padding-top:$height%}";
 
     //横幅とレイアウト
