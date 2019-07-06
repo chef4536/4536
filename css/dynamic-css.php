@@ -37,7 +37,7 @@ add_filter('inline_style_4536', function ($css) {
 
     //プライマリーカラー
     $primary_color = primary_color();
-    // $css[] = ".primary-bg-color{background-color:$primary_color}";
+    $css[] = ".primary-bg-color{background-color:$primary_color}";
     // $css[] = ".primary_color{color:$primary_color}";
 
     //セカンダリーカラー
