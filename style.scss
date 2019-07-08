@@ -116,7 +116,7 @@ Version: 2.0.1
     list-style: initial;
     padding-left: 1.5em;
 
-    &:not(.children) {
+    &:not(.children):not(.toc-parent) {
       margin-bottom: 2em;
     }
   }
