@@ -66,7 +66,9 @@ class CtaWidgetItem extends WP_Widget
             if (!empty($size['height'])) {
                 $height = ' height="'.$size['height'].'"';
             }
-            $thumbnail = '<figure class="cta-image xs12 sm12 md6"><img src="'.$src.'" '.$width.$height.' alt /></figure>';
+            $image = '<img class="cta-image" src="' . $src . '" ' . $width . $height . ' alt />';
+            $image = lazy_load_media_4536( $image );
+            $thumbnail = '<figure class="xs12 sm12 md6">' . $image . '</figure>';
             echo convert_content_to_amp($thumbnail);
         } ?>
       <div class="content xs12 sm12 md6 pt-5 pb-5 pr-4 pl-4">
@@ -81,7 +83,7 @@ class CtaWidgetItem extends WP_Widget
             $button = '<div data-button="submit" class="outline">' . $button_text_url . '</div>';
         }
         if (!empty($button_text) && !empty($button_url)) {
-            $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="noopener"';
+            $target = is_my_website($button_url) ?  '' : ' target="_blank" rel="nofollow noopener"';
             $attribute = ( !empty($button_text_url) ) ? 'data-font-size="small" data-text-decoration="underline" class="pa-3"' : ' data-button="submit" class="outline"';
             $button .= '<a href="'.$button_url.'"' . $target . $attribute . '>'.$button_text.'</a>';
         }
