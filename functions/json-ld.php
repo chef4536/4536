@@ -3,11 +3,12 @@
 add_action( 'wp_head_4536', function() {
   global $post;
   if( !is_singular() ) return;
+  $image_id = get_post_thumbnail_id();
+  if( empty($image_id) ) return;
+  $image_url = wp_get_attachment_image_src($image_id, true);
   $author = get_userdata( $post->post_author )->display_name;
   $posted_date = get_the_date('c');
   $modified_date = get_the_modified_date('c');
-  $image_id = get_post_thumbnail_id();
-  $image_url = wp_get_attachment_image_src($image_id, true);
   ?>
   <script type="application/ld+json">
   {
