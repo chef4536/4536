@@ -42,7 +42,6 @@ function scroll_content_4536() {
   const list = [
     'music',
     'movie',
-    'pickup',
   ];
 
   list.forEach(function(value) {
