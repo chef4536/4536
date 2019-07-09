@@ -1,12 +1,6 @@
 <section class="author-card mt-5" data-position="relative">
   <div class="body-bg-color author-avatar t-0" data-position="absolute">
-    <?php
-    $avatar = get_avatar(get_the_author_meta('ID'), 80);
-    if (is_amp()) {
-        $avatar = str_replace('<img', '<amp-img', $avatar);
-    }
-    echo $avatar;
-    ?>
+    <?php echo get_avatar(get_the_author_meta('ID'), 80); ?>
   </div>
   <div class="author-content gradation l-h-140">
     <h3 data-text-align="center" class="pt-5"><?php the_author(); ?></h3>
