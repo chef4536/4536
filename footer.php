@@ -24,7 +24,7 @@ echo '</div>'; //#main-column
 <div id="site-bottom" class="gradation wave-shape-outline" data-position="relative">
   <div data-position="relative">
     <?php wave_shape('footer'); ?>
-    <a class="page-top t-50 r-0 mr-3" href="#body" data-button="floating" data-bg-color="white" data-position="absolute">
+    <a class="page-top t-50 r-0 mr-3" href="#body" data-button="floating" data-bg-color="white" data-position="absolute" aria-label="ページトップへ戻る">
       <?php echo icon_4536('arrow_up', '', 36); ?>
     </a>
   </div>

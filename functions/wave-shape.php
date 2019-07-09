@@ -8,12 +8,12 @@ function wave_shape($location)
 
   <svg id="<?php echo $location; ?>-wave" data-display="block" data-position="relative" class="w-100 h-100 l-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
     <defs>
-      <linearGradient id="g1" gradientUnits="userSpaceOnUse">
+      <linearGradient id="g1-<?php echo $location; ?>" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="<?php echo $primary_color; ?>" stop-opacity=".1" />
         <stop offset=".8" stop-color="<?php echo $bg_color; ?>" stop-opacity=".3" />
         <stop offset="1" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".5" />
       </linearGradient>
-      <linearGradient id="g2" gradientUnits="userSpaceOnUse">
+      <linearGradient id="g2-<?php echo $location; ?>" gradientUnits="userSpaceOnUse">
         <stop offset="0" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".1" />
         <stop offset=".8" stop-color="<?php echo $bg_color; ?>" stop-opacity=".3" />
         <stop offset="1" stop-color="<?php echo $secandary_color; ?>" stop-opacity=".5" />
@@ -47,8 +47,8 @@ function wave_shape($location)
         break;
     } ?>
 
-    <path d="<?php echo $g1; ?>" fill="url(#g1)" />
-    <path d="<?php echo $g2; ?>" fill="url(#g2)" />
+    <path d="<?php echo $g1; ?>" fill="url(#g1-<?php echo $location; ?>)" />
+    <path d="<?php echo $g2; ?>" fill="url(#g2-<?php echo $location; ?>)" />
     <path d="<?php echo $bg; ?>" fill="<?php echo $bg_color; ?>"/>
   </svg>
 

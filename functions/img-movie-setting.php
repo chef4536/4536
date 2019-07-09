@@ -104,13 +104,13 @@ function the_post_thumbnail_4536()
     <div class="xs12 sm12 md6 pr-3 pl-3 mt-5 mb-4" data-position="relative">
       <svg class="post-thumbnail-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920.4 769.85">
         <defs>
-          <linearGradient id="gradation1" class="drop-shadow-shape" x1="25.96" y1="394.65" x2="969.22" y2="394.65" gradientUnits="userSpaceOnUse">
+          <linearGradient id="post-thumbnail-gradation" class="drop-shadow-shape" x1="25.96" y1="394.65" x2="969.22" y2="394.65" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="<?php echo $primary_color; ?>" />
             <stop offset="1" stop-color="<?php echo $secandary_color; ?>"/>
           </linearGradient>
         </defs>
-        <path d="M877.56,66c37,31.17,52.48,68.48,58,82,62.47,153.17-35.19,395.75-213,527-124.7,92-251.58,100.68-279,102-59.95,2.89-234.22,10.84-340-122-76.74-96.37-86.75-224.57-56-320C69.11,268.1,109.34,221,125,204c17.51-19.05,54.14-54.72,109-81,81.15-38.87,112.08-14,225-35C593.61,62.93,596.14,18.89,705,17,744.34,16.32,818.26,16.07,877.56,66Z" transform="translate(-31.35 -16.86)" fill="url(#gradation1)" fill-opacity="0.25" />
-        <path d="M856.51,81a213,213,0,0,1,55.08,77.72c59.32,145.18-33.41,375.1-202.26,499.5-118.41,87.24-238.9,95.43-264.94,96.68C387.47,757.6,222,765.14,121.53,639.23,22.47,515.05,62.8,356.41,68.35,335.93c16.78-61.86,52.39-100.24,73.12-124.17C257.78,77.48,425.72,53.52,534,38.07,647.56,21.87,771,4.26,856.51,81Z" transform="translate(-34.08 -8.35)" fill="url(#gradation1)" fill-opacity="0.1" />
+        <path d="M877.56,66c37,31.17,52.48,68.48,58,82,62.47,153.17-35.19,395.75-213,527-124.7,92-251.58,100.68-279,102-59.95,2.89-234.22,10.84-340-122-76.74-96.37-86.75-224.57-56-320C69.11,268.1,109.34,221,125,204c17.51-19.05,54.14-54.72,109-81,81.15-38.87,112.08-14,225-35C593.61,62.93,596.14,18.89,705,17,744.34,16.32,818.26,16.07,877.56,66Z" transform="translate(-31.35 -16.86)" fill="url(#post-thumbnail-gradation)" fill-opacity="0.25" />
+        <path d="M856.51,81a213,213,0,0,1,55.08,77.72c59.32,145.18-33.41,375.1-202.26,499.5-118.41,87.24-238.9,95.43-264.94,96.68C387.47,757.6,222,765.14,121.53,639.23,22.47,515.05,62.8,356.41,68.35,335.93c16.78-61.86,52.39-100.24,73.12-124.17C257.78,77.48,425.72,53.52,534,38.07,647.56,21.87,771,4.26,856.51,81Z" transform="translate(-34.08 -8.35)" fill="url(#post-thumbnail-gradation)" fill-opacity="0.1" />
       </svg>
       <div id="post-thumbnail-4536" class="t-0 b-0 r-0 l-0 pa-3" data-position="absolute" data-display="flex" data-justify-content="center" data-align-items="center">
         <figure class="post-thumbnail w-100 h-100" data-position="relative">

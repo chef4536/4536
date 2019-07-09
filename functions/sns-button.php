@@ -34,14 +34,18 @@ function sns_button_4536($justify_content = 'center')
     //text
 
     $arr['twitter']['text'] = I_TWITTER;
+    $arr['twitter']['title'] = 'ツイッターでシェアする';
 
     $arr['facebook']['text'] = I_FACEBOOK;
+    $arr['facebook']['title'] = 'フェイスブックでシェアする';
 
     $arr['hatebu']['text'] = I_HATEBU;
+    $arr['hatebu']['title'] = 'はてなブックマークでシェアする';
 
     // $arr['pocket']['text'] = '<i class="fab fa-get-pocket"></i>';
 
     $arr['line']['text'] = I_LINE;
+    $arr['line']['title'] = 'ラインでシェアする';
 
     //count
 
@@ -61,7 +65,8 @@ function sns_button_4536($justify_content = 'center')
     <div data-display="flex" data-justify-content="<?php echo $justify_content; ?>" class="flex">
         <?php
         foreach ($arr as $key => $value) {
-            echo '<span class="pt-2 pb-2 pr-3 pl-3"><a class="l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a>' . $value['count'] . '</span>';
+          $title = $aria_label = $value['title'];
+            echo '<span class="pt-2 pb-2 pr-3 pl-3"><a aria-label="' . $aria_label . '" title="' . $title . '" class="l-h-100 ' . $key . '" href="' . $value['url'] . '"' . $target . '>' . $value['text'] . '</a>' . $value['count'] . '</span>';
         }
     echo $twitter.$facebook.$hatebu.$line; ?>
     </div>
