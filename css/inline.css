@@ -68,7 +68,7 @@
 }
 
 .fa, .far, .fas, .fab {
-  letter-spacing: .25em;
+  letter-spacing: .1em;
 }
 
 [data-button="floating"],
