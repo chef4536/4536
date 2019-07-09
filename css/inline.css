@@ -67,6 +67,10 @@
   width: 100%;
 }
 
+.fa, .far, .fas, .fab {
+  letter-spacing: .25em;
+}
+
 [data-button="floating"],
 .f-button {
   width: 56px;
@@ -165,7 +169,7 @@
 
 .global-nav .menu-item {
   font-size: 14px;
-  margin-right: 14px;
+  margin-right: 18px;
   position: relative;
 }
 
