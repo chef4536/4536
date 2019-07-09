@@ -114,7 +114,7 @@ function the_post_thumbnail_4536()
       </svg>
       <div id="post-thumbnail-4536" class="t-0 b-0 r-0 l-0 pa-3" data-position="absolute" data-display="flex" data-justify-content="center" data-align-items="center">
         <figure class="post-thumbnail w-100 h-100" data-position="relative">
-          <?php the_post_thumbnail(); ?>
+          <?php the_post_thumbnail( 'full', ['class' => 'post-top-thumbnail'] ); ?>
         </figure>
       </div>
     </div>
