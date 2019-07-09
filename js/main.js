@@ -225,10 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
       //横スクロールコンテンツ
       scroll_content_4536();
 
-      if (fixed_header !== null && scroll_sidebar !== null) {
-        scroll_sidebar.style.top = header_h + 20 + 'px';
-      }
-
     }
 
   }

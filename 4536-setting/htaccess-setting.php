@@ -180,7 +180,8 @@ class HtaccessUpdate_4536 {
                   <?php
                   switch ($key) {
                     case '高速化':
-                      echo '<p><i class="fas fa-info-circle"></i><a href="https://4536.jp/speeding-up" target="_blank" >高速化について</a></p>';
+                      echo '<p><i class="fas fa-info-circle"></i><a href="https://4536.jp/speeding-up" target="_blank" >ブラウザキャッシュとGzip圧縮について</a></p>';
+                      echo '<p><i class="fas fa-info-circle"></i><a href="https://4536.jp/pagespeed-insights-100-points" target="_blank">4536をさらに高速化する方法はこちら</a></p>';
                       break;
                   }
                   foreach( $values as $name => $desc ) { ?>
