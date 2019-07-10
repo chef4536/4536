@@ -51,35 +51,6 @@ function post_prev_next_4536() {
     return get_theme_mod( 'post_prev_next', true );
 }
 ////////////////////////////////////
-// メディア関連
-////////////////////////////////////
-//サムネイルの比率
-function thumbnail_size() {
-    return get_theme_mod( 'thumbnail_size', 'thumbnail-wide' );
-}
-//サムネイルの画質
-function thumbnail_quality() {
-    return get_theme_mod( 'thumbnail_quality', null );
-}
-//NEWアイコン
-function new_icon_date() {
-  $date = get_theme_mod( 'new_icon_date', 1 );
-  if (empty($date)) $date = 0;
-  return $date;
-}
-//サムネの表示方法
-function get_post_first_image() {
-    return get_theme_mod( 'get_post_first_image', 'get_save' );
-}
-//オリジナルのアイキャッチ画像
-function original_thumbnail_url(){
-    return esc_url( get_theme_mod( 'original_thumbnail' ) );
-}
-//レイジーロード
-function is_lazy_load_4536() {
-    return get_theme_mod( 'is_lazy_load', false );
-}
-////////////////////////////////////
 // 検索機能
 ////////////////////////////////////
 //検索機能切り替え

@@ -3,6 +3,7 @@
 $arr = [
   'customizer',
   'layout',
+  'customizer-media',
   'customizer-color',
   'customizer-function',
 ];

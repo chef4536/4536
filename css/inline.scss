@@ -82,6 +82,11 @@
   padding-left: 30px;
   width: 100%;
 }
+
+.fa, .far, .fas, .fab {
+  letter-spacing: .1em;
+}
+
 //////////////////////////////////////////////////////////////////
 /////// button    ///////////////////////////////////////////////
 /////// reference: https://materializecss.com/buttons.html ///////
@@ -192,7 +197,7 @@ $button_base_size: 56px;
 
   .menu-item {
     font-size: 14px;
-    margin-right: 14px;
+    margin-right: 18px;
     position: relative;
 
     &:last-child {

@@ -31,7 +31,7 @@ if( fixed_footer()==='floating_menu' && is_slide_menu() ) {
           if(fixed_footer_menu_item($name) === true) {
             if($name === 'home') {
                 if( is_home() || is_front_page() ) continue;
-                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.home_url().'">';
+                $start_tag = '<a aria-label="ホームへ" data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.home_url().'">';
                 $end_tag = '</a>';
                 $icon = 'home';
                 $title = 'ホーム';
@@ -55,20 +55,20 @@ if( fixed_footer()==='floating_menu' && is_slide_menu() ) {
                 $class = ' slide-button';
                 $title = 'メニュー';
             } elseif($name === 'top') {
-                $start_tag = '<a data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#">';
+                $start_tag = '<a aria-label="ページトップに戻る" data-display="block" id="fixed-page-top-button" class="fixed-footer-menu-item' . $common_class . '" href="#">';
                 $end_tag = '</a>';
                 $icon = 'arrow_up';
                 $class = ' fixed-page-top';
                 $title = 'トップ';
             } elseif($name === 'prev') {
                 if( !get_previous_post($true) || !is_single() ) continue;
-                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_previous_post($true)->ID).'">';
+                $start_tag = '<a aria-label="前の記事を見る" data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_previous_post($true)->ID).'">';
                 $end_tag = '</a>';
                 $icon = 'arrow_left';
                 $title = '前の記事';
             } elseif($name === 'next') {
                 if( !get_next_post($true) || !is_single() ) continue;
-                $start_tag = '<a data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_next_post($true)->ID).'">';
+                $start_tag = '<a aria-label="次の記事を見る" data-display="block" class="fixed-footer-menu-item' . $common_class . '" href="'.get_permalink(get_next_post($true)->ID).'">';
                 $end_tag = '</a>';
                 $icon = 'arrow_right';
                 $title = '次の記事';
