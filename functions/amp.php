@@ -161,15 +161,28 @@ function convert_content_to_amp($the_content)
     $the_content = str_replace('<amp-soundcloud data-playlistsid', '<amp-soundcloud data-playlistid', $the_content);
 
     //amazon baner link
-    $pattern = '/<iframe.+?src="(.+?rcm-fe\.amazon-adsystem\.com.+?)".+?width="(\d+)".+?height="(\d+)".*?>/is';
+    $pattern = '/<iframe.+?src="((https:)?\/\/rcm-fe\.amazon-adsystem\.com.+?)".+?(width="\d+")?.(height="\d+")?.*?>/is';
     if (preg_match_all($pattern, $the_content, $amazon_links)) {
         $i = 0;
         foreach ($amazon_links[0] as $link) {
+          $src = '';
+          $scheme = '';
+          $width = '';
+          $height = '';
             $src = $amazon_links[1][$i];
-            $width = $amazon_links[2][$i];
-            $height = $amazon_links[3][$i];
-            if( !$src || !$width || !$height ) continue;
-            $new_link = '<amp-iframe sandbox="allow-scripts allow-same-origin allow-popups" src="' . $src . '" width="' . $width . '" height="' . $height . '">';
+            $scheme = $amazon_links[2][$i];
+            if( empty($scheme) ) $src = 'https:' . $src;
+            $width = $amazon_links[3][$i];
+            $height = $amazon_links[4][$i];
+            if( !$src ) continue;
+            if( !$width || !$height ) {
+              $width = 'width="120"';
+              $height = 'height="240"';
+            }
+            $src = ' src="' . $src . '"';
+            $width = ' ' . $width;
+            $height = ' ' . $height;
+            $new_link = '<amp-iframe sandbox="allow-scripts allow-same-origin allow-popups"' . $src . $width . $height . '>';
             $the_content = str_replace($link, $new_link, $the_content);
             $i++;
         }
