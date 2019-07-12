@@ -146,13 +146,11 @@ EOM;
       $title = get_the_title( $id );
       $content = do_shortcode( $data->post_content );
       $comment = $data->comment_count;
-      $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
       $more_text = '続きを見る';
     } else {
       if ( $url === site_url() ) {
         $title = $sitename;
         $content = (custom_home_description()) ? custom_home_description() : get_bloginfo('description');
-        $excerpt = custom_excerpt_4536($content, custom_excerpt_length());
       } else {
         $path = str_replace( site_url().'/', '', $url );
         // $parse_url = parse_url( $url );
@@ -183,7 +181,6 @@ EOM;
 
     return compact(
       'title',
-      'excerpt',
       'thumbnail',
       'sitename',
       'icon',
@@ -212,7 +209,6 @@ EOM;
 
     if( !empty( $data ) ) $data = [
       'title' => $data->title,
-      'excerpt' => custom_excerpt_4536( $data->description, custom_excerpt_length() ),
       'src' => $data->image,
       'host' => parse_url(esc_url($url))['host'],
     ];
@@ -237,7 +233,7 @@ add_filter( 'embed_head', function() {
 });
 // remove_action( 'embed_head', 'print_embed_styles' );
 
-add_filter( 'the_excerpt_embed', function() {
-  $excerpt = custom_excerpt_4536(get_the_content(), custom_excerpt_length());
-  return $excerpt;
-});
+// add_filter( 'the_excerpt_embed', function() {
+//   $excerpt = custom_excerpt_4536(get_the_content(), 80);
+//   return $excerpt;
+// });

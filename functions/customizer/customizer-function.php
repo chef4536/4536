@@ -13,12 +13,6 @@ function related_post_count() {
     if (empty($count)) $count = 0;
     return mb_convert_kana(strip_tags($count), 'n');
 }
-//抜粋長さ
-function custom_excerpt_length() {
-  $content = get_theme_mod( 'custom_excerpt_length', 80 );
-  if (empty($content)) $content = 0;
-  return $content;
-}
 //固定フッター
 function fixed_footer() {
     return get_theme_mod( 'fixed_footer', 'floating_menu' );

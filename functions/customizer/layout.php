@@ -114,17 +114,6 @@ class CustomizerLayoutSettings_4536 {
         'description' => '数字のみ入力してください（例：10記事→10、6記事→6、非表示→0または空白）',
         'type' => 'number',
     ]);
-    //抜粋の文字数
-    $wp_customize->add_setting( 'custom_excerpt_length', [
-        'default' => 80,
-    ]);
-    $wp_customize->add_control( 'custom_excerpt_length', [
-        'section' => 'design',
-        'settings' => 'custom_excerpt_length',
-        'label' => '抜粋の長さ',
-        'description' => '数字のみ入力してください（例：100文字→100、200文字→200）',
-        'type' => 'number',
-    ]);
     //固定ヘッダー
     $wp_customize->add_setting( 'fixed_header', array (
         'default' => false,
