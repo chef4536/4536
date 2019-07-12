@@ -50,17 +50,6 @@ add_action('customize_register', function ($wp_customize) {
             'high' => '高画質',
         ],
     ]);
-    //NEWアイコン
-    $wp_customize->add_setting('new_icon_date', [
-        'default' => 1,
-    ]);
-    $wp_customize->add_control('new_icon_date', [
-        'section' => 'media',
-        'settings' => 'new_icon_date',
-        'label' => 'NEWアイコンを表示する期間',
-        'description' => '数字のみ入力してください（例：1日→1、1週間→7、非表示→未入力）',
-        'type' => 'number',
-    ]);
     //アイキャッチ画像の取得方法
     $wp_customize->add_setting('get_post_first_image', [
         'default' => 'get_save',
@@ -96,15 +85,6 @@ function thumbnail_size()
 function thumbnail_quality()
 {
     return get_theme_mod('thumbnail_quality', null);
-}
-//NEWアイコン
-function new_icon_date()
-{
-    $date = get_theme_mod('new_icon_date', 1);
-    if (empty($date)) {
-        $date = 0;
-    }
-    return $date;
 }
 //サムネの表示方法
 function get_post_first_image()

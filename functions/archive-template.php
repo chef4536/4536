@@ -91,9 +91,16 @@ function post_list_card_4536( $title_tag = 'h2' )
       </div>
       <div class="flex"></div>
       <div data-display="flex" data-align-items="center" class="card-meta pa-3">
-        <div class="meta">
-          <span><?php the_time(get_option('date_format')) ?></span>
-        </div>
+        <?php
+        $days = 1;
+        $today = date_i18n('U');
+        $entry = get_the_time('U');
+        $elapsed = date('U', ($today - $entry)) / 86400;
+        if( $days > $elapsed ) { ?>
+          <span class="new-post pa-2" data-color="white">NEW</span>
+        <?php } else { ?>
+          <span class="meta"><?php the_time(get_option('date_format')) ?></span>
+        <?php } ?>
         <div class="flex"></div>
         <a data-button="submit" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">もっと見る</a>
       </div>

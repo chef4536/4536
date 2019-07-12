@@ -297,11 +297,6 @@ $button_base_size: 56px;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
 
-  .date {
-    top: 5%;
-    right: 5%;
-  }
-
   .post-thumbnail img {
     border-radius: 5px 5px 0 0;
   }
@@ -309,6 +304,12 @@ $button_base_size: 56px;
   .card-meta {
     border-top: 1px solid #ccc;
     font-size: 12px;
+  }
+
+  .new-post {
+    letter-spacing: 0.1em;
+    background-color: #ff0000;
+    border-radius: 2px;
   }
 }
 /////////////////////////////
