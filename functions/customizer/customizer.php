@@ -85,7 +85,7 @@ $wp_customize->add_section( 'page_setting', [
         $wp_customize->add_control( 'profile_'.$post_type, [
             'section' => 'page_setting',
             'settings' => 'profile_'.$post_type,
-            'label' =>'プロフィールの表示（'.$label.'）',
+            'label' => '記事下プロフィールの表示（'.$label.'）',
             'type' => 'checkbox',
         ]);
     }

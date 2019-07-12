@@ -1,17 +1,9 @@
 <?php
 function thumbnail_4536($thumbnail_style)
 {
-    $days = new_icon_date();
-    $days = mb_convert_kana(strip_tags($days), 'n');
-    $today = date_i18n('U');
-    $entry = get_the_time('U');
-    $elapsed = date('U', ($today - $entry)) / 86400;
-    // $new_icon = '<div class="icon-area"><span class="new-icon"></span></div>';
-    // $date = ($days > $elapsed) ? $new_icon : '';
     $thumbnail = '';
     $src = '';
     $class = '';
-    $content = get_the_content();
 
     if (thumbnail_size()=='thumbnail-wide') {
         $thumb500 = [500,375];
@@ -60,8 +52,8 @@ function thumbnail_4536($thumbnail_style)
 
     //サムネイル
     $start_tag = '<figure data-position="relative" class="post-thumbnail w-100 ' . $thumbnail_class . '">';
-    $thumbnail = (has_post_thumbnail()) ? $post_thumbnail : get_some_image_4536($content);
-    $end_tag = $date.$category.'</figure>';
+    $thumbnail = (has_post_thumbnail()) ? $post_thumbnail : get_some_image_4536( get_the_content() );
+    $end_tag = '</figure>';
     $thumbnail = $start_tag.$thumbnail.$end_tag;
     $thumbnail = convert_content_to_amp($thumbnail);
     return [
