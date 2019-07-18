@@ -40,6 +40,6 @@ blockquote.wp-embedded-content {
 .article-body .wp-block-heading h4 {
   font-size: 1.2em;
 }
-#post-h1 {
-  margin: 0 auto 1.4em;
+.post-thumbnail img {
+  height: 100% !important;
 }

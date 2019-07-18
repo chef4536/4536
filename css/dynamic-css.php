@@ -25,6 +25,10 @@ add_filter('inline_style_4536', function ($css) {
       break;
   }
 
+    //画像の比率
+    $height = (thumbnail_size()==='thumbnail') ? '100' : '56.25' ;
+    $css[] = ".post-thumbnail{padding-top:$height%}";
+
 
 
     ////////////////////////////////////
@@ -60,10 +64,6 @@ add_filter('inline_style_4536', function ($css) {
 
     //ボタン
     $css[] = '[data-button="submit"],#submit,.primay-bg-color{background-color:' . $primary_color . '}';
-
-    //画像の比率
-    $height = (thumbnail_size()==='thumbnail') ? '100' : '56.25' ;
-    $css[] = ".post-thumbnail{padding-top:$height%}";
 
     //横幅とレイアウト
     $body_width = body_width_4536();
@@ -122,7 +122,7 @@ add_filter('inline_style_4536', function ($css) {
     }
 
     //メディアセクション
-    if ( get_posts([ 'post_type' => 'music', 'posts_per_page'=> -1 ]) ) {
+    if (get_posts([ 'post_type' => 'music', 'posts_per_page'=> -1 ])) {
         $css[] = '.movie-content{width:196px;white-space:normal;vertical-align:top}.thumbnail-movie-4536{padding-top:56%}.thumbnail-movie-4536 img{border-radius:4px}';
     }
     if (get_posts([ 'post_type' => 'movie', 'posts_per_page'=> -1 ])) {

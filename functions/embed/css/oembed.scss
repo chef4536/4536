@@ -24,7 +24,6 @@ cite.wp-embedded-content {
     display: block;
     border-radius: 2px;
     margin-bottom: 1.5em;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     zoom: 1;
     text-decoration: none;
@@ -55,7 +54,6 @@ cite.wp-embedded-content {
 .blogcard-info {
     position: relative;
     -webkit-box-flex: 1;
-    -ms-flex: 1;
     flex: 1;
     overflow: auto;
 }
@@ -118,7 +116,6 @@ cite.wp-embedded-content {
 @media screen and (min-width: 480px) {
     .blogcard-image-info-wrap {
         display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
     }
     .blogcard-more-wrap {
