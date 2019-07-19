@@ -13,6 +13,7 @@ import './toolbar/inline-font-underline.js';
 
 //editor
 import '../../../style.css';
+import '../../../css/base.css';
 import '../../../css/inline.css';
 import '../gutenberg-editor-style.css';
 

@@ -3,7 +3,8 @@
 //TinyMCEエディタの拡張
 add_filter('before_wp_tiny_mce', function($init) {
     ob_start();
-    require_once(get_template_directory() . '/css/inline.min.css');
+    require_once( TEMPLATEPATH . '/css/base.min.css' );
+    require_once( TEMPLATEPATH . '/css/inline.min.css');
     $admin_style_color = ob_get_clean();
     $css = $admin_style_color.add_inline_style_4536();
     $css = str_replace('.article-body', '', $css );

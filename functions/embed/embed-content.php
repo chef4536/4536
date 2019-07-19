@@ -229,7 +229,7 @@ add_filter('template_include', function( $template ) {
 });
 
 add_filter( 'embed_head', function() {
-  wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('css/oembed.min.css') );
+  wp_enqueue_style( 'wp-embed-4536', get_parent_theme_file_uri('functions/embed/css/oembed.min.css') );
 });
 // remove_action( 'embed_head', 'print_embed_styles' );
 

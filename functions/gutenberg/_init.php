@@ -20,7 +20,9 @@ add_filter('block_categories', function($categories) {
 //エディタの見た目を実際のサイトに近づける
 add_action( 'enqueue_block_editor_assets', function() {
 
-  if(!empty(add_google_fonts())) wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
+  if( !empty(add_google_fonts()) ) {
+    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Nunito'.add_google_fonts(), [], theme_version_4536() );
+  }
 
   $css = add_inline_style_4536();
   wp_register_style( 'custom-gutenberg', false );
