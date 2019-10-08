@@ -1,0 +1,12 @@
+{
+	"phpcs.standard": "WordPress",
+	"editor.formatOnSave": false,
+	"phpcbf.standard": "WordPress",
+	"phpcbf.onsave": true,
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"files.eol": "\n",
+	"[php]": {
+		"editor.defaultFormatter": null,
+	},
+}
