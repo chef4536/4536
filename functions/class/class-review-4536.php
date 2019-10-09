@@ -39,6 +39,12 @@ class Review_4536 {
 	public function get_post_meta( string $key ) {
 		global $post;
 		$value = get_post_meta( $post->ID, $key, true );
+		if ( 'review_rating' === $key ) {
+			// For Old Rating.
+			if ( $value > 5 ) {
+				$value = intval( $value ) / 2;
+			}
+		}
 		return esc_html( $value );
 	}
 
@@ -215,7 +221,8 @@ EOM;
 	 */
 	public function add_rating_star_to_content( $content ) {
 		$rating = $this->get_post_meta( 'review_rating' );
-		if ( ! $rating ) {
+		$name   = $this->get_post_meta( 'review_name' );
+		if ( ! $rating || ! $name ) {
 			return $content;
 		}
 		if ( 1 < strlen( $rating ) ) {
@@ -226,7 +233,7 @@ EOM;
 		$stars = $this->rating_value_to_star( $rating );
 
 		$stars = '<p data-display="flex" data-align-items="center" data-font-size="x-large">評価：'
-				. $stars . '<span id="review_rating_value">（' . $rating . '）</span></p>';
+					. '<span id="review_rating_value">' . $rating . '</span>' . $stars . '</p>';
 		return $stars . $content;
 	}
 
@@ -242,10 +249,6 @@ EOM;
 		}
 		if ( ! $review_name || ! $review_rating ) {
 			return;
-		}
-		// For Old Rating.
-		if ( $review_rating > 5 ) {
-			$review_rating = intval( $review_rating ) / 2;
 		}
 		global $post;
 		$posted_date = get_the_date( 'c' );
@@ -293,7 +296,7 @@ EOM;
 	 * @return array
 	 */
 	public function style( $css ) {
-		$css[] = '#review_rating_value{color:#666666}';
+		$css[] = '#review_rating_value{color:#d56e0c;margin-right:.5em;}';
 		return $css;
 	}
 
