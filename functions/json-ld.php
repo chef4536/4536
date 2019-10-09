@@ -58,36 +58,5 @@ add_action(
 }
 </script>
 		<?php
-		$review_name   = get_post_meta( $post->ID, 'review_name', true );
-		$review_rating = get_post_meta( $post->ID, 'review_rating', true );
-		if ( empty( $review_name ) || empty( $review_rating ) ) {
-			return;
-		}
-		?>
-<script type="application/ld+json">
-{
-	"@context": "http://schema.org",
-	"@type": "Review",
-	"itemReviewed": {
-		"@type": "Thing",
-		"name": "<?php echo esc_html( $review_name ); ?>"
-	},
-	"reviewRating": {
-		"@type": "Rating",
-		"ratingValue": "<?php echo esc_html( $review_rating ); ?>",
-		"bestRating": "10"
-	},
-	"datePublished": "<?php echo esc_html( $posted_date ); ?>",
-	"author": {
-		"@type": "Person",
-		"name": "<?php echo esc_html( $author ); ?>"
-	},
-	"publisher": {
-		"@type": "Organization",
-		"name": "<?php echo bloginfo( 'name' ); ?>"
-	}
-}
-</script>
-		<?php
 	}
 );

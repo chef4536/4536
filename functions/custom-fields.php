@@ -37,7 +37,6 @@ class Custom_Field_4536 {
   function init() {
     $list = [
       'SEO対策' => 'add_seo_form',
-      'レビュー' => 'review',
       '追加 HTML&JS&CSS' => 'add_html_js_css_form',
       'リダイレクト' => 'add_redirect_form',
     ];
@@ -91,8 +90,6 @@ class Custom_Field_4536 {
         $arr['singular_layout_select'] = '';
         $arr['singular_body_width_select'] = '';
         $arr['toc'] = '';
-        $arr['review_name'] = '';
-        $arr['review_rating'] = '';
         $arr['none_header_footer'] = '';
         $arr['html_sitemap_thumbnail'] = '';
         $arr['html_sitemap_exclude_cat_id'] = '';
@@ -236,24 +233,6 @@ class Custom_Field_4536 {
       <?php foreach( $width_arr as $width => $description ) {
         $selected = ( $width === $get_body_width ) ? ' selected' : '';
         echo '<option value="' . $width . '"' . $selected . '>' . $description . '</option>';
-      } ?>
-    </select>
-  <?php }
-
-  function review() {
-    global $post;
-    $review_name = get_post_meta( $post->ID, 'review_name', true );
-    $review_rating = get_post_meta( $post->ID, 'review_rating', true );
-    ?>
-    <p><small>この記事がレビュー記事の場合に「評価」と「レビュー対象の名前」を設定すると検索結果にレビュー項目が表示されることがあります。</small></p>
-    <p><label>レビュー対象<input type="text" name="review_name" value="<?php echo esc_html( $review_name ); ?>" size="60" class="input-4536" /></label></p>
-    <label>評価</label>
-    <select name="review_rating" type="text">
-      <option value="">選択してください</option>
-      <?php for( $i = 2; $i <= 20; $i++ ) {
-        $x = strval( $i / 2 );
-        $selected = ( $x === strval( $review_rating ) ) ? ' selected' : '';
-        echo '<option value="' . $x . '"' . $selected . '>' . $x . '</option>';
       } ?>
     </select>
   <?php }

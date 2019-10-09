@@ -1,33 +1,37 @@
 <?php
+/**
+ * Main Functions
+ *
+ * @package    WordPress
+ * @category   Theme
+ * @subpackage 4536
+ * @author     Chef
+ * @license    https://www.gnu.org/licenses/gpl-3.0.html/ GPL v2 or later
+ * @link       https://4536.jp/
+ * @since      1.0.0
+ */
 
-//定数関連
-require_once('functions/_define.php');
+// Require Files.
+require_once 'functions/_define.php';
+require_once 'functions/_icons.php';
+require_once 'functions/-init.php';
+require_once '4536-setting/_init.php';
+require_once 'css/_init.php';
+require_once 'js/_init.php';
 
-//アイコン関連
-require_once('functions/_icons.php');
-
-//functionsフォルダのファイル読み込み
-require_once('functions/_init.php');
-
-//管理画面の設定ページ
-require_once('4536-setting/_init.php');
-
-//CSS関連
-require_once('css/_init.php');
-
-//JS関連
-require_once('js/_init.php');
-
-//テーマアップデート
-require_once('plugin-update-checker/plugin-update-checker.php');
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://raw.githubusercontent.com/chef4536/4536/master/theme-update.json',
-    __FILE__,
-    '4536'
+// Theme Update Checker.
+require_once 'plugin-update-checker/plugin-update-checker.php';
+$my_update_checker = Puc_v4_Factory::buildUpdateChecker(
+	'https://raw.githubusercontent.com/chef4536/4536/master/theme-update.json',
+	__FILE__,
+	'4536'
 );
 
-//テーマのバージョン
-function theme_version_4536()
-{
-    return wp_get_theme(get_template())->Version;
+/**
+ * Get Theme Version
+ *
+ * @return float
+ */
+function theme_version_4536() {
+	return wp_get_theme( get_template() )->Version;
 }
