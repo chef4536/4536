@@ -26,7 +26,9 @@ class Review_4536 {
 	public function __construct() {
 		add_action( 'add_meta_boxes', [ $this, 'add_meta_box' ] );
 		add_action( 'transition_post_status', [ $this, 'save' ], 10, 3 );
-		add_action( 'wp_head_4536', [ $this, 'script' ] );
+		add_action( 'wp_head_4536', [ $this, 'script' ], 30 );
+		add_filter( 'the_content', [ $this, 'add_rating_star_to_content' ], 1000 );
+		add_filter( 'inline_style_4536', [ $this, 'style' ] );
 	}
 
 	/**
@@ -41,7 +43,7 @@ class Review_4536 {
 	}
 
 	/**
-	 * Init
+	 * Add Meta Box
 	 */
 	public function add_meta_box() {
 		$title    = __( 'レビュー', '4536' );
@@ -119,8 +121,8 @@ class Review_4536 {
 				<option value="" hidden>選択してください</option>
 				<?php
 				$review_type_arr = [
-					'Product'       => '製品・サービス',
-					'LocalBusiness' => 'お店',
+					'Product'    => '製品・サービス',
+					'Restaurant' => 'レストラン（お店）',
 				];
 				foreach ( $review_type_arr as $type => $name ) {
 					$selected = ( $review_type === $type ) ? ' selected' : '';
@@ -146,12 +148,99 @@ class Review_4536 {
 	}
 
 	/**
+	 * Star
+	 *
+	 * @param string $color        is star color.
+	 * @param string $rating_float is float value.
+	 *
+	 * @return string
+	 */
+	public function star( $color = '#cccccc', $rating_float = 0 ) {
+		if ( 0 !== $rating_float ) {
+			$gradient = <<< EOM1
+<defs>
+    <linearGradient id="gradient">
+        <stop offset="0%" stop-color="{$color}" />
+        <stop offset="50%" stop-color="{$color}" />
+        <stop offset="50%" stop-color="#cccccc" />
+    </linearGradient>
+</defs>
+EOM1;
+			$fill     = 'url(#gradient)';
+		} else {
+			$gradient = '';
+			$fill     = $color;
+		}
+		$star = <<< EOM
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="32" height="32" viewBox="0 0 24 24" class="star">{$gradient}
+    <path d="M12 17.27L18.18
+    21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        stroke="none" fill="{$fill}"/>
+</svg>
+EOM;
+		return $star;
+	}
+
+	/**
+	 * Rating convert to star
+	 *
+	 * @param int $rating is rating value.
+	 *
+	 * @return string
+	 */
+	public function rating_value_to_star( $rating ) {
+		if ( $rating < 1 || $rating > 5 ) {
+			return;
+		}
+		$int   = intval( $rating );
+		$blank = 5 - $int;
+		$html  = str_repeat( $this->star( '#d56e0c' ), $int );
+		if ( is_float( $rating ) ) {
+			$html .= $this->star( '#d56e0c', 0.5 );
+			$blank--;
+		}
+		if ( $blank > 0 ) {
+			$html .= str_repeat( $this->star(), $blank );
+		}
+		return $html;
+	}
+
+	/**
+	 * Add Rating Star To First Paragraph of Content
+	 *
+	 * @param string $content is post content.
+	 *
+	 * @return string
+	 */
+	public function add_rating_star_to_content( $content ) {
+		$rating = $this->get_post_meta( 'review_rating' );
+		if ( ! $rating ) {
+			return $content;
+		}
+		if ( 1 < strlen( $rating ) ) {
+			$rating = floatval( $rating );
+		} else {
+			$rating = intval( $rating );
+		}
+		$stars = $this->rating_value_to_star( $rating );
+
+		$stars = '<p data-display="flex" data-align-items="center" data-font-size="x-large">評価：'
+				. $stars . '<span id="review_rating_value">（' . $rating . '）</span></p>';
+		return $stars . $content;
+	}
+
+	/**
 	 * Script
 	 */
 	public function script() {
 		$review_name   = $this->get_post_meta( 'review_name' );
 		$review_rating = $this->get_post_meta( 'review_rating' );
-		if ( empty( $review_name ) || empty( $review_rating ) ) {
+		$review_type   = $this->get_post_meta( 'review_type' );
+		if ( ! $review_type ) {
+			$review_type = 'Thing';
+		}
+		if ( ! $review_name || ! $review_rating ) {
 			return;
 		}
 		// For Old Rating.
@@ -159,8 +248,12 @@ class Review_4536 {
 			$review_rating = intval( $review_rating ) / 2;
 		}
 		global $post;
-		$posted_date    = get_the_date( 'c' );
-		$image_url      = esc_url( wp_get_attachment_image_src( $image_id, true ) );
+		$posted_date = get_the_date( 'c' );
+		$image_arr   = wp_get_attachment_image_src( get_post_thumbnail_id(), true );
+		$image_url   = $image_arr[0];
+		if ( 'LocalBusiness' === $review_type && ! $image_url ) {
+			return;
+		}
 		$author         = get_userdata( $post->post_author )->display_name;
 		$publisher_name = get_bloginfo( 'name' );
 		// Here Document Begin.
@@ -170,12 +263,13 @@ class Review_4536 {
 	"@context": "http://schema.org",
 	"@type": "Review",
 	"itemReviewed": {
-		"@type": "Thing",
-		"name": "<?php echo esc_html( $review_name ); ?>"
+		"@type": "<?php echo esc_html( $review_type ); ?>",
+		"name": "<?php echo esc_html( $review_name ); ?>",
+		"image": "<?php echo esc_url( $image_url ); ?>"
 	},
 	"reviewRating": {
 		"@type": "Rating",
-		"ratingValue": "<?php echo esc_html( $review_rating ); ?>",
+		"ratingValue": "<?php echo esc_html( $review_rating ); ?>"
 	},
 	"datePublished": "<?php echo esc_html( $posted_date ); ?>",
 	"author": {
@@ -190,6 +284,19 @@ class Review_4536 {
 </script>
 		<?php
 	}
+
+	/**
+	 * Style
+	 *
+	 * @param array $css is css array.
+	 *
+	 * @return array
+	 */
+	public function style( $css ) {
+		$css[] = '#review_rating_value{color:#666666}';
+		return $css;
+	}
+
 }
 $review_class = new Review_4536();
 add_action( 'init', [ $review_class, '__construct' ] );
