@@ -37,7 +37,6 @@ class Custom_Field_4536 {
   function init() {
     $list = [
       'SEO対策' => 'add_seo_form',
-      'レビュー' => 'review',
       '追加 HTML&JS&CSS' => 'add_html_js_css_form',
       'リダイレクト' => 'add_redirect_form',
     ];
@@ -68,7 +67,6 @@ class Custom_Field_4536 {
       }
     }
     add_meta_box( 'none_header_footer', '出力制御（LP向け）', [$this, 'none_header_footer'], 'page', 'side', 'default' );
-    add_meta_box( 'html_sitemap_setting', 'HTMLサイトマップ設定', [$this, 'html_sitemap_setting'], 'page', 'side', 'default' );
   }
 
   function save( $new_status, $old_status, $post ) {
@@ -91,23 +89,11 @@ class Custom_Field_4536 {
         $arr['singular_layout_select'] = '';
         $arr['singular_body_width_select'] = '';
         $arr['toc'] = '';
-        $arr['review_name'] = '';
-        $arr['review_rating'] = '';
         $arr['none_header_footer'] = '';
-        $arr['html_sitemap_thumbnail'] = '';
-        $arr['html_sitemap_exclude_cat_id'] = '';
-        $arr['html_sitemap_exclude_post_id'] = '';
         foreach( $arr as $name => $val ) {
           if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return $post_id;
           if( isset($_POST['action']) && $_POST['action'] == 'inline-save' ) return $post_id;
           if( !empty($_POST[$name]) ) {
-            if( $name === 'html_sitemap_exclude_post_id' ) {
-              $data = mb_convert_kana(strip_tags( $_POST[$name] ), 'n');
-              $data = preg_replace( '/[^0-9,]/', '', $data );
-              $data = trim( $data, ',' );
-              update_post_meta( $post_id, $name, $data );
-              continue;
-            }
             update_post_meta( $post_id, $name, $_POST[$name] );
           } else {
             delete_post_meta( $post_id, $name );
@@ -238,48 +224,6 @@ class Custom_Field_4536 {
         echo '<option value="' . $width . '"' . $selected . '>' . $description . '</option>';
       } ?>
     </select>
-  <?php }
-
-  function review() {
-    global $post;
-    $review_name = get_post_meta( $post->ID, 'review_name', true );
-    $review_rating = get_post_meta( $post->ID, 'review_rating', true );
-    ?>
-    <p><small>この記事がレビュー記事の場合に「評価」と「レビュー対象の名前」を設定すると検索結果にレビュー項目が表示されることがあります。</small></p>
-    <p><label>レビュー対象<input type="text" name="review_name" value="<?php echo esc_html( $review_name ); ?>" size="60" class="input-4536" /></label></p>
-    <label>評価</label>
-    <select name="review_rating" type="text">
-      <option value="">選択してください</option>
-      <?php for( $i = 2; $i <= 20; $i++ ) {
-        $x = strval( $i / 2 );
-        $selected = ( $x === strval( $review_rating ) ) ? ' selected' : '';
-        echo '<option value="' . $x . '"' . $selected . '>' . $x . '</option>';
-      } ?>
-    </select>
-  <?php }
-
-  function html_sitemap_setting() {
-    global $post;
-    $html_sitemap_thumbnail = get_post_meta( $post->ID, 'html_sitemap_thumbnail', true );
-    $html_sitemap_exclude_cat_id = get_post_meta( $post->ID, 'html_sitemap_exclude_cat_id', true );
-    $html_sitemap_exclude_post_id = get_post_meta( $post->ID, 'html_sitemap_exclude_post_id', true );
-    $check = ( $html_sitemap_thumbnail == 1 ) ? ' checked' : '' ;
-    ?>
-    <p><label><input type="checkbox" name="html_sitemap_thumbnail" id="html_sitemap_thumbnail" value="1"<?php echo $check; ?> />カテゴリー画像を表示する</label></p>
-    <p>
-      <label>除外記事ID（複数指定時はカンマ区切り）<br />
-      <input type="text" name="html_sitemap_exclude_post_id" value="<?php echo $html_sitemap_exclude_post_id; ?>" size="60" class="input-4536" placeholder="例：11,222,3333" />
-      </label>
-    </p>
-    <p style="margin-bottom:0;">除外カテゴリー</p>
-    <ul style="height:auto;max-height:150px;overflow-y:scroll;margin:0;background-color:#fcfcfc;padding:.5em;display:inline-block;box-sizing:border-box;">
-      <?php
-      $walker = new Walker_Category_Checklist_Widget (
-        'html_sitemap_exclude_cat_id'
-      );
-      wp_category_checklist( 0, 0, $html_sitemap_exclude_cat_id, false, $walker, false );
-      ?>
-    </ul>
   <?php }
 
   ////////////////////////////////////
