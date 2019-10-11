@@ -125,6 +125,11 @@ class Html_Sitemap_Custom_Fields {
 		} else {
 			delete_post_meta( $post_id, 'html_sitemap_exclude_cat_id' );
 		}
+		if ( filter_input( INPUT_POST, 'html_sitemap_orderby' ) ) {
+			update_post_meta( $post_id, 'html_sitemap_orderby', filter_input( INPUT_POST, 'html_sitemap_orderby' ) );
+		} else {
+			delete_post_meta( $post_id, 'html_sitemap_orderby' );
+		}
 	}
 
 	/**
@@ -135,17 +140,24 @@ class Html_Sitemap_Custom_Fields {
 		$html_sitemap_thumbnail       = $this->get_post_meta( 'html_sitemap_thumbnail' );
 		$html_sitemap_exclude_post_id = $this->get_post_meta( 'html_sitemap_exclude_post_id' );
 		$html_sitemap_exclude_cat_id  = get_post_meta( $post->ID, 'html_sitemap_exclude_cat_id', true );
+		$html_sitemap_orderby         = $this->get_post_meta( 'html_sitemap_orderby' );
 		?>
 		<p>
 			<label>
-				<input type="checkbox" name="html_sitemap_thumbnail" value="1"<?php checked( $html_sitemap_thumbnail, 1 ); ?> />
+				<input type="checkbox" name="html_sitemap_thumbnail" value="1"<?php checked( $html_sitemap_thumbnail, 1 ); ?>>
 				カテゴリー画像を表示する
+			</label>
+		</p>
+		<p>
+			<label>
+				<input type="checkbox" name="html_sitemap_orderby" value="modified"<?php checked( $html_sitemap_orderby, 'modified' ); ?>>
+				更新日順に記事を表示する
 			</label>
 		</p>
 		<p>
 			<label>除外記事ID（複数指定時はカンマ区切り）<br />
 				<input type="text" name="html_sitemap_exclude_post_id" value="<?php echo esc_html( $html_sitemap_exclude_post_id ); ?>"
-					size="60" class="input-4536" placeholder="例：11,222,3333" />
+					size="60" class="input-4536" placeholder="例：11,222,3333">
 			</label>
 		</p>
 		<p style="margin-bottom:0;">除外カテゴリー</p>

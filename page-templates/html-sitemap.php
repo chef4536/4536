@@ -20,6 +20,10 @@ get_header(); ?>
 		$icon_note          = icon_4536( 'note', font_color(), 16 );
 		$is_thumbnail       = get_post_meta( $post->ID, 'html_sitemap_thumbnail', true );
 		$exclude_cat_id_arr = get_post_meta( $post->ID, 'html_sitemap_exclude_cat_id', true );
+		$_orderby           = get_post_meta( $post->ID, 'html_sitemap_orderby', true );
+		if ( ! $_orderby ) {
+			$_orderby = 'date';
+		}
 		if ( ! empty( $exclude_cat_id_arr ) ) {
 			$exclude_categories_id = '&exclude_tree=' . implode( ',', $exclude_cat_id_arr );
 		} else {
@@ -36,10 +40,17 @@ get_header(); ?>
 			$_cat_id = $category->cat_ID;
 			echo '<h2><a href="' . esc_url( get_category_link( $_cat_id ) ) . '">'
 					. esc_html( $category->name ) . '</a></h2>';
-			$thumbnail_arr = get_posts( 'post_type=post&posts_per_page=1&category=' . $_cat_id );
+			$thumbnail_arr = get_posts(
+				[
+					'post_type'      => 'post',
+					'posts_per_page' => 1,
+					'category'       => $_cat_id,
+					'orderby'        => $_orderby,
+				]
+			);
 			$_post_id      = $thumbnail_arr[0]->ID;
 			if ( has_post_thumbnail( $_post_id ) && '1' === $is_thumbnail ) {
-				echo '<figure class="mb-4" data-text-align="center">' . get_the_post_thumbnail( $_post_id, $thumbnail, [ 'class' => 'category_thumbnail' ] ) . '</figure>';
+				echo '<figure class="mb-4" data-text-align="center">' . get_the_post_thumbnail( $_post_id, 'post-thumbnail', [ 'class' => 'category_thumbnail' ] ) . '</figure>';
 			}
 			$child_cat_arr  = get_terms(
 				[
@@ -57,6 +68,7 @@ get_header(); ?>
 					'posts_per_page' => -1,
 					'category'       => [ $_cat_id . $exclude_cat_id ],
 					'exclude'        => [ $exclude_post_id ],
+					'orderby'        => $_orderby,
 				]
 			);
 			foreach ( $post_arr as $_post ) {
@@ -67,7 +79,7 @@ get_header(); ?>
 						. '<a class="ml-1 flex-1" href="' . esc_url( get_the_permalink( $_post->ID ) ) . '">'
 						. esc_html( $_post->post_title ) . '</a></article>';
 			}
-			the_child_sitemap_4536( $_cat_id, 2, $exclude_cat_id_arr, $exclude_post_id );
+			the_child_sitemap_4536( $_cat_id, 2, $exclude_cat_id_arr, $exclude_post_id, $_orderby );
 			echo '</section>';
 		}
 
@@ -79,7 +91,7 @@ get_header(); ?>
 		 * @param array $exclude_cat_id_arr is exclude category id array.
 		 * @param int   $exclude_post_id is exclude post id.
 		 */
-		function the_child_sitemap_4536( $_cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null ) {
+		function the_child_sitemap_4536( $_cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null, $_orderby = 'date' ) {
 			$icon_note     = icon_4536( 'note', font_color(), 16 );
 			$child_cat_arr = get_terms(
 				[
@@ -116,6 +128,7 @@ get_header(); ?>
 							'posts_per_page' => -1,
 							'category'       => [ $child_cat_id . $exclude_cat_id ],
 							'exclude'        => [ $exclude_post_id ],
+							'orderby'        => $_orderby,
 						]
 					);
 					foreach ( $post_arr as $post ) {
@@ -126,7 +139,7 @@ get_header(); ?>
 								. '<a class="ml-1 flex-1" href="' . esc_url( get_the_permalink( $post->ID ) ) . '">'
 								. esc_html( $post->post_title ) . '</a></article>';
 					}
-					the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id );
+					the_child_sitemap_4536( $child_cat_id, $i, $exclude_cat_id_arr, $exclude_post_id, $_orderby );
 					echo '</section>';
 				}
 			}
