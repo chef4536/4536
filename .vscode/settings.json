@@ -9,4 +9,11 @@
 	"[php]": {
 		"editor.defaultFormatter": null,
 	},
+	"liveSassCompile.settings.formats": [
+		{
+		    "format": "expanded",
+		    "extensionName": ".css",
+		    "savePath": null
+		},
+	]
 }

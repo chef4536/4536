@@ -7,11 +7,12 @@ Author: Chef
 Author URI: https://4536.jp
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
-Version: 2.0.5
+Version: 2.0.6
 ---------------------------------------------------------*/
 #contents-wrapper {
   -webkit-box-flex: 1;
-  flex: auto;
+  -ms-flex: auto;
+      flex: auto;
 }
 
 .z-index-1 {
@@ -54,8 +55,11 @@ Version: 2.0.5
 }
 
 .toc-4536 .dot {
-  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  align-self: center;
+  -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -70,7 +74,8 @@ Version: 2.0.5
 
 .toc-4536 ul {
   -webkit-box-flex: 0;
-  flex: 0 0 95%;
+  -ms-flex: 0 0 95%;
+      flex: 0 0 95%;
   margin-left: auto;
 }
 
@@ -189,10 +194,12 @@ Version: 2.0.5
 
 .balloon {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 2em;
   -webkit-box-align: start;
-  align-items: flex-start;
+  -ms-flex-align: start;
+      align-items: flex-start;
 }
 
 .balloon p:last-child {
@@ -202,15 +209,18 @@ Version: 2.0.5
 .balloon-image-left {
   margin-right: 1em;
   -webkit-box-flex: 0;
-  flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
 }
 
 .balloon-image-right {
   margin-left: 1em;
   -webkit-box-flex: 0;
-  flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
   -webkit-box-ordinal-group: 2;
-  order: 1;
+  -ms-flex-order: 1;
+      order: 1;
 }
 
 .balloon-image-description {
@@ -429,7 +439,8 @@ button[type="submit"] {
   height: 28px;
   top: -28px;
   font-size: 18px;
-  box-shadow: 0 -3px 5px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 -3px 5px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 -3px 5px 0 rgba(0, 0, 0, 0.1);
   border: 0;
   border-top-left-radius: 9pt;
 }
@@ -668,7 +679,8 @@ img[height|="1"] {
   line-height: 1.6;
   text-align: center;
   margin: 3em auto 4em;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
 
 .button-4536 a {
