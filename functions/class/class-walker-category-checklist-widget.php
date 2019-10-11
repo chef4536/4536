@@ -22,22 +22,50 @@ require_once ABSPATH . 'wp-admin/includes/template.php';
  */
 class Walker_Category_Checklist_Widget extends Walker_Category_Checklist {
 
+	/**
+	 * Category Name
+	 *
+	 * @var string
+	 */
 	private $name;
+
+	/**
+	 * Category ID
+	 *
+	 * @var int
+	 */
 	private $id;
 
-	function __construct( $name = '', $id = '' ) {
+	/**
+	 * Init
+	 *
+	 * @param string $name is category name.
+	 * @param string $id   is category id.
+	 */
+	public function __construct( $name = '', $id = '' ) {
 		$this->name = $name;
 		$this->id   = $id;
 	}
 
-	function start_el( &$output, $cat, $depth = 0, $args = array(), $id = 0 ) {
+	/**
+	 * Main Function
+	 *
+	 * @param string  $output is html.
+	 * @param object  $cat is category object.
+	 * @param integer $depth is category depth.
+	 * @param array   $args is option array.
+	 * @param integer $id is category id.
+	 */
+	public function start_el( &$output, $cat, $depth = 0, $args = [], $id = 0 ) {
+		// @codingStandardsIgnoreStart
 		extract( $args );
+		// @codingStandardsIgnoreEnd
 		if ( empty( $taxonomy ) ) {
 			$taxonomy = 'category';
 		}
 		$class   = ' class="category-list"';
 		$id      = $this->id . '-' . $cat->term_id;
-		$checked = checked( in_array( $cat->term_id, $selected_cats ), true, false );
+		$checked = checked( in_array( $cat->term_id, $selected_cats, true ), true, false );
 		$output .= "\n<li id='{$taxonomy}-{$cat->term_id}'$class>"
 			. '<label class="selectit"><input value="'
 			. $cat->term_id . '" type="checkbox" name="' . $this->name
