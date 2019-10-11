@@ -6,9 +6,10 @@ function ogp_setting_4536() {
 
     if(!is_ogp()) return;
 
-    $fb_app_id = get_the_author_meta('fb_app_id',$user_ID);
+	global $post;
+	$user_ID = $post->post_author;
+	$fb_app_id = get_the_author_meta('fb_app_id', $user_ID);
     $twitter = get_the_author_meta('twitter',$user_ID);
-    global $post;
     $title = wp_get_document_title();
     if(is_singular() && get_post_meta($post->ID,'sns_title',true)) $title = get_post_meta($post->ID,'sns_title',true);
 

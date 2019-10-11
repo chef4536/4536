@@ -11,9 +11,6 @@
  * @since      1.0.0
  */
 
-// Class.
-require_once 'class/class-review-4536.php';
-
 require_once 'customizer/_init.php';
 require_once 'gutenberg/_init.php';
 require_once 'embed/_init.php';
@@ -41,3 +38,6 @@ require_once 'content-filter.php';
 require_once 'user-profile.php';
 require_once 'sns-button.php';
 require_once 'wave-shape.php';
+
+// Class.
+require_once 'class/-init.php';

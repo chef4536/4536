@@ -10,7 +10,7 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <?php
   if(is_rel_canonical()) get_template_part('template-parts/canonical');
-  apply_filters( 'wp_head_4536', $meta );
+  apply_filters( 'wp_head_4536', $meta = '' );
   if(!is_amp()) wp_head();
   get_template_part('template-parts/google-analytics');
   if( !empty( $exclude_category_page_ids = get_option( 'noindex_category_archive' ) ) ) {

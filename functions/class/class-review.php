@@ -15,10 +15,12 @@
 
 declare( strict_types = 1 );
 
+namespace SHINOBI_WORKS;
+
 /**
  * Review Class
  */
-class Review_4536 {
+class Review {
 
 	/**
 	 * Constractor
@@ -301,5 +303,3 @@ EOM;
 	}
 
 }
-$review_class = new Review_4536();
-add_action( 'init', [ $review_class, '__construct' ] );
