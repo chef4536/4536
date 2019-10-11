@@ -86,10 +86,11 @@ get_header(); ?>
 		/**
 		 * Echo the Child Sitemap
 		 *
-		 * @param int   $_cat_id is category id.
-		 * @param int   $i is count.
-		 * @param array $exclude_cat_id_arr is exclude category id array.
-		 * @param int   $exclude_post_id is exclude post id.
+		 * @param int    $_cat_id is category id.
+		 * @param int    $i is count.
+		 * @param array  $exclude_cat_id_arr is exclude category id array.
+		 * @param int    $exclude_post_id is exclude post id.
+		 * @param string $_orderby is get_posts option.
 		 */
 		function the_child_sitemap_4536( $_cat_id, $i, $exclude_cat_id_arr = [], $exclude_post_id = null, $_orderby = 'date' ) {
 			$icon_note     = icon_4536( 'note', font_color(), 16 );
