@@ -94,7 +94,7 @@ get_header(); ?>
 				}
 				foreach ( $child_cat_arr as $child_cat ) {
 					$child_cat_id = $child_cat->term_id;
-					if ( in_array( (string) $child_cat_id, $exclude_cat_id_arr, true ) ) {
+					if ( in_array( $child_cat_id, $exclude_cat_id_arr, true ) ) {
 						continue;
 					}
 					echo '<section class="children">';
@@ -116,7 +116,6 @@ get_header(); ?>
 							'posts_per_page' => -1,
 							'category'       => [ $child_cat_id . $exclude_cat_id ],
 							'exclude'        => [ $exclude_post_id ],
-							// 'orderby'        => 'modified',
 						]
 					);
 					foreach ( $post_arr as $post ) {

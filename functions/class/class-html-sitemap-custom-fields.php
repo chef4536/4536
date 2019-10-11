@@ -100,7 +100,9 @@ class Html_Sitemap_Custom_Fields {
 		}
 		// Exclude Post ID.
 		if ( filter_input( INPUT_POST, 'html_sitemap_exclude_post_id' ) ) {
+			// @codingStandardsIgnoreStart
 			$data = mb_convert_kana( strip_tags( filter_input( INPUT_POST, 'html_sitemap_exclude_post_id' ) ), 'n' );
+			// @codingStandardsIgnoreEnd
 			$data = preg_replace( '/[^0-9,]/', '', $data );
 			$data = trim( $data, ',' );
 			update_post_meta( $post_id, 'html_sitemap_exclude_post_id', $data );
