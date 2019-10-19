@@ -270,7 +270,12 @@ EOM;
 	"itemReviewed": {
 		"@type": "<?php echo esc_html( $review_type ); ?>",
 		"name": "<?php echo esc_html( $review_name ); ?>",
-		"image": "<?php echo esc_url( $image_url ); ?>"
+		"image": "<?php echo esc_url( $image_url ); ?>",
+		"review": {
+			"author": {
+				"@type": "Person"
+			}
+		}
 	},
 	"reviewRating": {
 		"@type": "Rating",
