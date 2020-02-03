@@ -22,7 +22,7 @@ require_once 'js/_init.php';
 // Theme Update Checker.
 require_once 'plugin-update-checker/plugin-update-checker.php';
 $_my_update_checker = Puc_v4_Factory::buildUpdateChecker(
-	'https://raw.githubusercontent.com/shinobiworks/4536/master/resources/theme-update.json',
+	'https://raw.githubusercontent.com/shinobiworks/4536/master/theme-update.json',
 	__FILE__,
 	'4536'
 );
