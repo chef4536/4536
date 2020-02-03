@@ -26,7 +26,6 @@ $_my_update_checker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__,
 	'4536'
 );
-$_my_update_checker->setBranch( 'master' );
 
 /**
  * Get Theme Version
