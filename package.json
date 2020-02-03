@@ -1,7 +1,11 @@
 {
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+	"cleanup:zip": "rimraf 4536.zip",
+	"zip:pack": "composer install --no-dev && rsync -a --exclude='.*' resources/ 4536",
+	"zip:archive": "zip -9 -qmr 4536.zip 4536",
+    "zip": "npm run cleanup:zip && npm run zip:pack && npm run zip:archive"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
