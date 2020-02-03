@@ -1,15 +1,14 @@
+const path = require('path');
 module.exports = {
-
-  mode: 'production',
-
-  entry: {
-    main_bundle: './js/main.js',
-    custom_block: './functions/gutenberg/src/_main.js',
-  },
-
-  output: {
-    filename: '[name].js'
-  },
+	mode: 'production',
+	entry: {
+		'dist/main_bundle': './resources/js/main.js',
+		'dist/custom_block': './resources/functions/gutenberg/src/_main.js'
+  	},
+	output: {
+		filename: '[name].js',
+		path: path.join(__dirname, '/resources')
+  	},
 
   module: {
     rules: [

@@ -12,9 +12,8 @@ import './toolbar/inline-font-size-small.js';
 import './toolbar/inline-font-underline.js';
 
 //editor
-import '../../../style.css';
-import '../../../css/base.css';
-import '../../../css/inline.css';
+import '../../../css/inline.min.css';
+import '../../../css/style.min.css';
 import '../gutenberg-editor-style.css';
 
 //old-blocks
