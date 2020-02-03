@@ -21,11 +21,12 @@ require_once 'js/_init.php';
 
 // Theme Update Checker.
 require_once 'plugin-update-checker/plugin-update-checker.php';
-$my_update_checker = Puc_v4_Factory::buildUpdateChecker(
-	'https://raw.githubusercontent.com/chef4536/4536/master/theme-update.json',
+$_my_update_checker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/shinobiworks/4536',
 	__FILE__,
 	'4536'
 );
+$_my_update_checker->setBranch( 'master' );
 
 /**
  * Get Theme Version
