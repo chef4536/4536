@@ -18,9 +18,9 @@
 
 ※ライセンスの詳細は[https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)をご覧ください。
 
-## 開発者（オーサー）
+## 開発者
 
-シェフ（[https://github.com/chef4536](https://github.com/chef4536)）
+Shinobi Works（シノビワークス）（[https://github.com/shinobiworks](https://github.com/shinobiworks)）
 
 ## 使用ライブラリ
 
