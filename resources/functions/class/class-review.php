@@ -13,8 +13,6 @@
  * @since      1.0.0
  */
 
-declare( strict_types = 1 );
-
 namespace SHINOBI_WORKS;
 
 /**
@@ -38,7 +36,7 @@ class Review {
 	 *
 	 * @param string $key is get_post_meta key.
 	 */
-	public function get_post_meta( string $key ) {
+	public function get_post_meta( $key ) {
 		global $post;
 		$value = get_post_meta( $post->ID, $key, true );
 		if ( 'review_rating' === $key ) {

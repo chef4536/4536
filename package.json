@@ -3,33 +3,33 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "cleanup:pack": "rimraf 4536",
-	"cleanup:zip": "rimraf 4536.zip",
-	"cleanup": "npm run cleanup:pack && npm run cleanup:zip",
+    "cleanup:zip": "rimraf 4536.zip",
+    "cleanup": "npm run cleanup:pack && npm run cleanup:zip",
     "zip:pack": "composer install --no-dev && rsync -a --exclude='.*' resources/ 4536",
     "zip:archive": "zip -9 -qmr 4536.zip 4536",
     "zip": "npm run cleanup:zip && npm run zip:pack && npm run zip:archive"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.2",
+    "style-loader": "^1.1.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "intersection-observer": "^0.7.0",
+    "intersection-observer": "^0.8.0",
     "lozad": "^1.14.0",
-    "node-gyp": "^5.0.7",
+    "node-gyp": "^6.1.0",
     "node-sass": "^4.13.1",
-    "npm": "^6.13.7",
-    "npm-check-updates": "^3.2.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "tar": "^4.4.13"
+    "npm": "^6.14.4",
+    "npm-check-updates": "^4.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tar": "^6.0.1"
   },
   "private": true
 }

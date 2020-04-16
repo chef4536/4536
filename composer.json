@@ -1,1 +1,13 @@
-{}
+{
+  "name": "shinobiworks/4536",
+  "description": "My Awesome WordPress Theme",
+  "authors": [
+    {
+      "name": "Shinobi Works",
+      "email": "support@shinobiworks.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  }
+}
