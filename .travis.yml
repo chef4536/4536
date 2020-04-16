@@ -10,8 +10,15 @@ branches:
     - "/\\d+\\.\\d+\\.\\d+?.*/"
 php:
   - 7.4
-before_deploy:
+install:
+  - npm install
+  - composer install
   - npm run build
+before_script:
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
+script:
+  - composer test
+before_deploy:
   - npm run zip
   - export RELEASE_FILE=$(ls 4536.zip)
 deploy:
