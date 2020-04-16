@@ -7,7 +7,8 @@
     "cleanup": "npm run cleanup:pack && npm run cleanup:zip",
     "zip:pack": "composer install --no-dev && rsync -a --exclude='.*' resources/ 4536",
     "zip:archive": "zip -9 -qmr 4536.zip 4536",
-    "zip": "npm run cleanup:zip && npm run zip:pack && npm run zip:archive"
+    "zip": "npm run cleanup:zip && npm run zip:pack && npm run zip:archive",
+    "test": "composer test"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
