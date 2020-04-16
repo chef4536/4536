@@ -22,5 +22,5 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: chef4536/4536
+    repo: shinobiworks/4536
     branch: master
