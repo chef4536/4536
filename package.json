@@ -1,14 +1,11 @@
 {
   "scripts": {
+    "test": "composer test",
     "build": "webpack",
     "watch": "webpack --watch",
-    "cleanup:pack": "rimraf 4536",
-    "cleanup:zip": "rimraf 4536.zip",
-    "cleanup": "npm run cleanup:pack && npm run cleanup:zip",
-    "zip:pack": "composer install --no-dev && rsync -a --exclude='.*' resources/ 4536",
-    "zip:archive": "zip -9 -qmr 4536.zip 4536",
-    "zip": "npm run cleanup:zip && npm run zip:pack && npm run zip:archive",
-    "test": "composer test"
+    "bundle:archive": "rsync --archive public/ 4536",
+    "bundle:zip": "dir-archiver --src 4536 --dest ~/Desktop/4536.zip && rimraf 4536",
+    "bundle": "npm run bundle:archive && npm run bundle:zip"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -16,6 +13,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
+    "dir-archiver": "^1.1.1",
     "style-loader": "^1.1.4",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
