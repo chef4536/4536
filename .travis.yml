@@ -1,4 +1,3 @@
-sudo: false
 dist: trusty
 
 language: php
@@ -21,27 +20,10 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - npm install
   - composer install
-  - npm run build
 
 before_script:
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
 
 script:
   - composer test
-
-before_deploy:
-  - npm run zip
-  - export RELEASE_FILE=$(ls 4536.zip)
-
-deploy:
-  provider: releases
-  api_key:
-    secure: HifQkb/k1JD/kR/jzPv24/JXW/tXLsLU2pNWKaKdM2lj7bL4pLCxnYe42z5BBG+VtGIDxSkH71gohVi2HSyIwgPb5miS5Yfy8SrRWjQB5k7sRHU64vn5EWRd5QhyYBxzEK0g11hgJ18cnHU+2oFBn7hRHGMxL8PMJXjbj7TI+BntBtLU4B3kfYn4mW3+tBo8VEAqmlFYUVIMxvrrLV/TzENnhRJiaROGZwzAE00HMahvXEquwmqhyiEcpejX9IoBkPAtld4xLepqWecX4F8Pntgi80ToECSNnl33r7HEzEXapJ72RovjSOHQUTnPcpiJFgZssDzdbPB/DHA4qd7NDdYIN77iKAEWC9NrMX3yA+szn1zpIoeOQZrY377taFzBLyHY0MwLLdfBk8GISiKHZnRvlTTRZHQYj4ZNMY0YyTWfTVU5KIMYOc3J0vtXd0DHHkihG9jZSMXm2Hi8r1eZb27I1czBFV8qdgH9TI89F/gGs85Xbz7PDPX+SB5YYsd05fCvozfK+cZ/ek3Zl9tMUHbG8naLKK3FT+FXNiCLX+9smGLIze56TAI9LzAqUwUvqisB2j67EitvIjfZLocDslQ4d+sVfMOm/OD9GkkbmMK9qy5Zc+hkGt622x6Drgn8/IP2pG8yF9XT4q74KEKMZWqDJHfKwmGq7PJoh0W/Dvc=
-  file: "${RELEASE_FILE}"
-  skip_cleanup: true
-  on:
-    tags: true
-    repo: shinobiworks/4536
-    branch: master

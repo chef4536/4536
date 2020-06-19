@@ -1,6 +1,5 @@
 .DS_Store
 node_modules/
 vendor/
-.travis/github_deploy_key
 4536
 4536.zip
