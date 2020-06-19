@@ -70,12 +70,12 @@ class GutenbergEditorJS4536 {
         window.addEventListener( 'DOMContentLoaded', function() {
             [].forEach.call(
               document.querySelectorAll( 'div.edit-post-visual-editor' ),
-              e => e.classList.add( 'simple_bg_color', 'gradation_bg_color', 'simple_border_bottom', 'gradation_border_bottom', 'gradation_border_bottom2', 'simple_border_left', 'pop', 'cool', 'cool2', 'cool3', 'body-bg-color' )
+              e => e.classList.add( 'simple_bg_color', 'gradation_bg_color', 'simple_border_bottom', 'gradation_border_bottom', 'gradation_border_bottom2', 'simple_border_left', 'pop', 'cool', 'cool2', 'cool3', 'body-bg-color', 'post', 'article-body', 'post-color' )
             );
-            [].forEach.call(
-              document.querySelectorAll( 'div.editor-writing-flow' ),
-              e => e.classList.add( 'post', 'article-body', 'post-color' )
-            );
+            // [].forEach.call(
+            //   document.querySelectorAll( 'div.editor-writing-flow' ),
+            //   e => e.classList.add( 'post', 'article-body', 'post-color' )
+            // );
             [].forEach.call(
               document.querySelectorAll( 'textarea.editor-post-title__input' ),
               e => [
